@@ -1,14 +1,23 @@
+:root{
+    --pane-background: #9a9a9a;
+
+    --gutter-main: #b9b9b9;
+}
+
 body{
     margin: 0;
 }
 
-.pane-container div{
-    background: gray;
-    border: 5px solid black;
+.editor-pane{
+    background: var(--pane-background);
 }
 
 .pane-container{
     margin:0;
+}
+
+.gutter{
+    background: var(--gutter-main);
 }
 
 .steps-pane{

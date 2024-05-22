@@ -30,7 +30,6 @@ body {
 .gutter-left {
     width: 10px;
     height: 100%;
-    background: #666;
     position: absolute;
     top: 0;
     left: 0;
@@ -39,7 +38,6 @@ body {
 .gutter-right {
     width: 10px;
     height: 100%;
-    background: #666;
     position: absolute;
     top: 0;
     left: 0;
