@@ -5,8 +5,9 @@ class EditorHandleElement extends HTMLElement {
 
     connectedCallback() {
         const block = document.createElement("div");
-        block.classList.add("editor-handle-element-block");
+        block.classList.add("edit-handle-block");
         this.appendChild(block);
+        this.classList.add("gutter");
     }
 }
 

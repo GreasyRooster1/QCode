@@ -1,7 +1,8 @@
 :root{
     --pane-background: #9a9a9a;
 
-    --gutter-main: #b9b9b9;
+    --gutter-accent: #b9b9b9;
+    --gutter-main: #8c8c8c
 }
 
 body{
@@ -20,9 +21,23 @@ body{
     background: var(--gutter-main);
 }
 
+.gutter-handle{
+    background: var(--gutter-main);
+}
+
 .steps-pane{
 }
 .code-pane{
 }
 .output-pane{
+}
+
+edit-handle .edit-handle-block{
+    height:25vh;
+    width:100%;
+    background: var(--gutter-accent);
+    position: absolute;
+    top: 50%;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
 }
