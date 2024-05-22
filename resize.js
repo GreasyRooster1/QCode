@@ -9,6 +9,7 @@ const wrapper = document.querySelector(".pane-container");
 function resizerLeft(e) {
     window.addEventListener('mousemove', mousemove);
     window.addEventListener('mouseup', mouseup);
+    e.preventDefault()
 
     let prevX = e.x;
     const paneBoundingBox = stepsPane.getBoundingClientRect();
@@ -29,6 +30,7 @@ function resizerLeft(e) {
 leftGutter.addEventListener('mousedown', resizerLeft);
 
 function resizerRight(e) {
+    e.preventDefault()
 
     window.addEventListener('mousemove', mousemove);
     window.addEventListener('mouseup', mouseup);
