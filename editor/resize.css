@@ -17,6 +17,7 @@ body {
 .resizable-pane {
     padding: 1em;
     color: #fff;
+    overflow: clip;
     min-width: 1px;
 }
 
