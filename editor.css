@@ -1,31 +1,33 @@
+body{
+    margin: 0;
+}
+
 .resizable-pane {
     height:100vh;
     min-width: 30px;
+
     resize: horizontal;
     overflow: auto;
+
     max-height: fit-content;
     max-width: fit-content;
+
+    display: inline-flex;
+    flex-direction: row;
 }
 
 .pane-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
 }
 
 .pane-container div{
-    width: 100%;
     background: gray;
+    border: 5px solid black;
 }
 
 .steps-pane{
-    grid-column-start: 1;
-    grid-column-end: 2;
 }
 .code-pane{
-    grid-column-start: 2;
-    grid-column-end: 3;
 }
 .output-pane{
-    grid-column-start: 3;
-    grid-column-end: 4;
 }
