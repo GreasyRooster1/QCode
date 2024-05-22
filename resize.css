@@ -17,7 +17,7 @@ body {
 .resizable-pane {
     padding: 1em;
     color: #fff;
-    min-width: 200px;
+    min-width: 1px;
 }
 
 
@@ -27,6 +27,7 @@ body {
 
 .output-pane {
     position: relative;
+    flex-grow: 1;
 }
 
 .gutter-left {
