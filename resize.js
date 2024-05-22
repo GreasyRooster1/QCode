@@ -42,8 +42,8 @@ function resizerRight(e) {
     function mousemove(e) {
         let newX = prevX - e.x;
         codePane.style.width = codeBoundingBox.width - newX + "px";
-        codeBoundingBox = codePane.getBoundingClientRect();
-        outputPane.style.width = wrapperBoundingBox.width-(stepsBoundingBox.width+codeBoundingBox.width)  + "px";
+        // codeBoundingBox = codePane.getBoundingClientRect();
+        // outputPane.style.width = wrapperBoundingBox.width-(stepsBoundingBox.width+codeBoundingBox.width)  + "px";
     }
 
     function mouseup() {
