@@ -4,9 +4,3 @@
     --brand-black:black;
     --brand-gray:gray;
 }
-
-.editor-handle-element-block{
-    width:100%;
-    display: flex;
-    justify-content: center;
-}
