@@ -2,24 +2,6 @@ body{
     margin: 0;
 }
 
-.resizable-pane {
-    height:100vh;
-    min-width: 30px;
-
-    resize: horizontal;
-    overflow: auto;
-
-    max-height: fit-content;
-    max-width: fit-content;
-
-    display: inline-flex;
-    flex-direction: row;
-}
-
-.pane-container{
-    display: flex;
-}
-
 .pane-container div{
     background: gray;
     border: 5px solid black;

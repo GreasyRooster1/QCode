@@ -1,0 +1,49 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.pane-container {
+    height: 100vh;
+    width: 100vw;
+    background: #333;
+    border: 6px solid #666;
+    display: flex;
+}
+
+.resizable-pane {
+    padding: 1em;
+    color: #fff;
+    min-width: 200px;
+}
+
+
+.code-pane {
+    position: relative;
+}
+
+.output-pane {
+    position: relative;
+}
+
+.gutter-left {
+    width: 10px;
+    height: 100%;
+    background: #666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: col-resize;
+}
+.gutter-right {
+    width: 10px;
+    height: 100%;
+    background: #666;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: col-resize;
+}
