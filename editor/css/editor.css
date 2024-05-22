@@ -2,16 +2,15 @@
     --pane-background: #9a9a9a;
 
     --gutter-accent: #b9b9b9;
-    --gutter-main: #8c8c8c
+    --gutter-main: #8c8c8c;
+    --gutter-dark: #777777;
 }
 
 body{
     margin: 0;
 }
 
-.editor-pane{
-    background: var(--pane-background);
-}
+
 
 .pane-container{
     margin:0;
@@ -25,11 +24,9 @@ body{
     background: var(--gutter-main);
 }
 
-.steps-pane{
-}
-.code-pane{
-}
-.output-pane{
+.editor-pane{
+    background: var(--pane-background);
+    width:33vw;
 }
 
 edit-handle .edit-handle-block{
