@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/resize.css">
 
     <script src="resize.js" defer></script>
+
+    <script src="../global/customElements.js" defer></script>
 </head>
 <body>
     <div class="pane-container">
@@ -16,11 +18,11 @@
 
         <div class="code-pane resizable-pane editor-pane">
             code
-            <div class="gutter-left gutter"></div>
+            <edit-handle class="gutter-left gutter"></edit-handle>
         </div>
         <div class="output-pane resizable-pane editor-pane">
             output
-            <div class="gutter-right gutter"></div>
+            <edit-handle class="gutter-right gutter"></edit-handle>
         </div>
     </div>
 </body>
