@@ -7,6 +7,10 @@ body{
     border: 5px solid black;
 }
 
+.pane-container{
+    margin:0;
+}
+
 .steps-pane{
 }
 .code-pane{

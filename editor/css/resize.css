@@ -9,18 +9,14 @@ body {
 .pane-container {
     height: 100vh;
     width: 100vw;
-    background: #333;
-    border: 6px solid #666;
     display: flex;
 }
 
 .resizable-pane {
     padding: 1em;
-    color: #fff;
     overflow: clip;
     min-width: 1px;
 }
-
 
 .code-pane {
     position: relative;
