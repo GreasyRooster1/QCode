@@ -28,6 +28,9 @@ class StepElement extends HTMLElement {
         const content = document.createElement("div");
         content.classList.add("step-content");
 
+        content.innerHTML = this.innerHTML;
+        this.innerHTML = "";
+
         this.appendChild(head);
         this.appendChild(content);
 

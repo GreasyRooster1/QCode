@@ -36,6 +36,7 @@
 }
 .step > .step-content{
     background:var(--step-body-background);
+    height:100%;
 }
 
 .step.info > .step-head{
