@@ -6,12 +6,14 @@
     --gutter-dark: #777777;
 
     --step-background: #dfdfdf;
+
+    --step-head-default: #d100ff;
 }
 
 body{
     margin: 0;
     overflow: hidden;
-    height: 100%;
+    height: 100vh;
 }
 
 .pane-container{
