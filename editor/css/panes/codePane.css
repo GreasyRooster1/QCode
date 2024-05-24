@@ -1,0 +1,40 @@
+.code-editor{
+    height: 100vh;
+}
+
+.code-editor {
+    display: inline-flex;
+    gap: 10px;
+    font-family: Consolas, "Courier New", Courier, monospace;
+    line-height: 21px;
+    background-color: #282a3a;
+    border-radius: 2px;
+    padding: 20px 10px;
+    margin-left:10px;
+}
+.code-editor > .text-input {
+    line-height: 21px;
+    overflow-y: hidden;
+    padding: 0;
+    border: 0;
+    background: #282a3a;
+    color: #fff;
+    min-width: 500px;
+    outline: none;
+    resize: none;
+    font-family: Consolas, "Courier New", Courier, monospace;
+}
+.code-editor > .numbers {
+    width: 20px;
+    text-align: right;
+}
+
+.code-editor > .numbers span {
+    counter-increment: linenumber;
+}
+
+.code-editor > .numbers span::before {
+    content: counter(linenumber);
+    display: block;
+    color: #506882;
+}

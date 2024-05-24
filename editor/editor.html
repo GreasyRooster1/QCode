@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="css/panes/outputPane.css">
 
     <script src="resize.js" defer></script>
+    <script src="code.js" defer></script>
 
     <script src="../global/customElements.js" defer></script>
 </head>
 <body>
     <div class="pane-container">
+
         <div class="steps-pane resizable-pane editor-pane">
             <div class="scrollable-steps">
                 <editor-step type="info" head="this is an info step">
@@ -25,14 +27,22 @@
                 <editor-step type="other"></editor-step>
             </div>
         </div>
+
         <div class="code-pane resizable-pane editor-pane">
-            code
+            <div class="code-editor">
+                <div class="numbers">
+                    <span></span>
+                </div>
+                <textarea cols="30" rows="10" class="text-input"></textarea>
+            </div>
             <editor-gutter class="gutter-left"></editor-gutter>
         </div>
+
         <div class="output-pane resizable-pane editor-pane">
             output
             <editor-gutter class="gutter-right"></editor-gutter>
         </div>
+
     </div>
 </body>
 </html>
