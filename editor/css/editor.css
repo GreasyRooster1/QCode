@@ -5,9 +5,16 @@
     --gutter-main: #8c8c8c;
     --gutter-dark: #777777;
 
-    --step-background: #dfdfdf;
+    --step-background: #c6c6c6;
+    --step-body-background: #bdbdbd;
 
-    --step-head-default: #d100ff;
+    --step-head-default: rgba(209, 0, 255, 0.44);
+
+    --step-info: rgba(21, 156, 214, 0.44);
+    --step-code: rgba(27, 214, 21, 0.44);
+    --step-challenge: rgba(214, 21, 21, 0.44);
+    --step-other: rgba(58, 58, 58, 0.44);
+
 }
 
 body{

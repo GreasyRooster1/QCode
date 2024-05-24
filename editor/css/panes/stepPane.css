@@ -21,3 +21,19 @@
     background: var(--step-head-default);
     height:20%;
 }
+.step > .step-content{
+    background:var(--step-body-background);
+}
+
+.step.info > .step-head{
+    background: var(--step-info);
+}
+.step.code > .step-head{
+    background: var(--step-code);
+}
+.step.challenge > .step-head{
+    background: var(--step-challenge);
+}
+.step.other > .step-head{
+    background: var(--step-other);
+}
