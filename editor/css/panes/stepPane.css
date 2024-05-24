@@ -1,7 +1,19 @@
+.steps-pane{
+    overflow: clip;
+}
+
 .scrollable-steps{
     overflow-y:auto;
     overflow-x:hidden;
     max-height:100vh;
+    height:100vh;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollable-steps::-webkit-scrollbar {
+    display: none;
 }
 
 .step{
