@@ -14,6 +14,7 @@ class GutterElement extends HTMLElement {
 class StepElement extends HTMLElement {
     head = null;
     content = null;
+    contentWrapper = null;
 
     constructor() {
         super();
@@ -31,6 +32,11 @@ class StepElement extends HTMLElement {
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
 
+        this.contentWrapper = document.createElement("div");
+        this.contentWrapper.classList.add("step-content-wrapper");
+
+        this.contentWrapper.appendChild(this.content);
+
         this.content.innerHTML = this.innerHTML;
         this.innerHTML = "";
 
@@ -39,7 +45,7 @@ class StepElement extends HTMLElement {
         }
 
         this.appendChild(this.head);
-        this.appendChild(this.content);
+        this.appendChild(this.contentWrapper);
 
         this.classList.add("step");
         this.style.display = "block";
