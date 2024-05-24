@@ -1,3 +1,4 @@
 .scrollable-steps{
-    overflow:scroll;
+    overflow-y:scroll;
+    max-height:100vh;
 }

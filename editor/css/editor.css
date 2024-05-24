@@ -8,6 +8,8 @@
 
 body{
     margin: 0;
+    overflow: hidden;
+    height: 100%;
 }
 
 .pane-container{
@@ -25,9 +27,10 @@ body{
 .editor-pane{
     background: var(--pane-background);
     width:33vw;
+    height:100vh;
 }
 
-edit-handle .edit-handle-block{
+.edit-handle-block{
     height:25vh;
     width:100%;
     background: var(--gutter-accent);
