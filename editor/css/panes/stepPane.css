@@ -10,6 +10,8 @@
 
     -ms-overflow-style: none;
     scrollbar-width: none;
+
+    padding: 0 1em;
 }
 
 .scrollable-steps::-webkit-scrollbar {
