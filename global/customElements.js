@@ -12,27 +12,34 @@ class GutterElement extends HTMLElement {
 }
 
 class StepElement extends HTMLElement {
+    head = null;
+    content = null;
+
     constructor() {
         super();
     }
 
     static get observedAttributes() {
-        return ['type'];
+        return ['type','head'];
     }
 
     connectedCallback() {
-        const head = document.createElement("div");
-        head.classList.add("step-head");
+        this.head = document.createElement("div");
+        this.head.classList.add("step-head");
 
 
-        const content = document.createElement("div");
-        content.classList.add("step-content");
+        this.content = document.createElement("div");
+        this.content.classList.add("step-content");
 
-        content.innerHTML = this.innerHTML;
+        this.content.innerHTML = this.innerHTML;
         this.innerHTML = "";
 
-        this.appendChild(head);
-        this.appendChild(content);
+        if(this.attributes.getNamedItem("head")!==null) {
+            this.head.innerHTML = this.attributes.getNamedItem("head").value;
+        }
+
+        this.appendChild(this.head);
+        this.appendChild(this.content);
 
         this.classList.add("step");
         this.style.display = "block";
@@ -40,7 +47,14 @@ class StepElement extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if(oldValue !== newValue) {
-            this.classList.add(newValue);
+            if(name==='type') {
+                this.classList.add(newValue);
+            }else if(name==='head') {
+                if(this.head===null){
+                    return;
+                }
+                this.head.innerHTML = newValue;
+            }
         }
     }
 }
