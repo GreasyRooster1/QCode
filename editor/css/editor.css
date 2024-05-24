@@ -30,7 +30,7 @@ body{
     height:100vh;
 }
 
-.edit-handle-block{
+.gutter-block{
     height:25vh;
     width:100%;
     background: var(--gutter-accent);
