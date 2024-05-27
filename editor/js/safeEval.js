@@ -1,10 +1,20 @@
 //safe usage of eval() in modules
 
 function safeEval(src) {
-    return eval(`with({window: {},
+    let consoleStack = eval(`with({window: {},
         document: {},
         eval: {},
         XMLHttpRequest: {},
         globalThis:{},
-        Function: {}}) {${src}}`);
+        Function: {}}) {
+            let _defaultConsoleLog = console.log;
+            let _consoleLogStack = [];
+            console.log = function (...value) {
+                _defaultConsoleLog.apply(console, value);
+                _consoleLogStack.push(value);
+                return _consoleLogStack;
+            }
+            ${src}}
+        `);
+    return consoleStack;
 }
