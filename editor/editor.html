@@ -16,9 +16,13 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/the-matrix.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/lint.min.js" integrity="sha512-fzIkwQa9H8rjoDzpZ9sMOYhgaYwh9nKALWbE1m+7wpiry9PN5OyNcZ9LySotjEysolveRyv2C9pVJ+DbEuKtmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/lint/javascript-lint.min.js" integrity="sha512-8kwyIAPFqkeXy+ZFifnFBF57n5pSsXBBWuy9ME1hPCku0evC+UFNnWZOJlITFe/OMSxGi/oWaccjZ07L6YXzJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script type="importmap">
+        {
+            "imports": {
+                "codemirror/": "https://deno.land/x/codemirror_esm@v6.0.1/esm/"
+            }
+        }
+    </script>
     <link rel="stylesheet" href="css/editor.css">
     <link rel="stylesheet" href="css/resize.css">
     <link rel="stylesheet" href="css/panes/stepPane.css">
@@ -26,7 +30,7 @@
     <link rel="stylesheet" href="css/panes/outputPane.css">
 
     <script src="resize.js" defer></script>
-    <script src="code.js" defer></script>
+    <script src="code.js" async type="module" defer></script>
 
     <script src="../global/customElements.js" defer></script>
 </head>
