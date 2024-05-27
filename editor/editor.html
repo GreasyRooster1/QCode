@@ -30,7 +30,8 @@
     <link rel="stylesheet" href="css/panes/outputPane.css">
 
     <script src="js/resize.js" defer></script>
-    <script src="js/code.js" defer type="module"></script>
+    <script src="js/safeEval.js" defer></script>
+    <script src="js/codeExecution.js" defer type="module"></script>
     <script src="js/codeEditor.js" async type="module" defer></script>
 
     <script src="../global/customElements.js" defer></script>
@@ -59,7 +60,7 @@
         </div>
 
         <div class="output-pane resizable-pane editor-pane">
-            <button onclick="runCode();"></button>
+            <button class="run-button">Run</button>
             <editor-gutter class="gutter-right"></editor-gutter>
         </div>
 

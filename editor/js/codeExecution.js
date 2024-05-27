@@ -4,7 +4,11 @@ function getCodeFromEditor(){
     return editor.state.doc.toString();
 }
 
-export function runCode(){
+function runCode(){
     let code = getCodeFromEditor();
-    console.log(code);
+    safeEval(code);
 }
+
+document.querySelector(".run-button").addEventListener("click", function() {
+    runCode();
+});
