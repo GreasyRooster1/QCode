@@ -10,3 +10,9 @@
     overflow-y:auto;
     overflow-x:hidden;
 }
+
+/* the codemirror generated editor */
+
+.CodeMirror{
+    height: 100%;
+}
