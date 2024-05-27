@@ -4,7 +4,6 @@
 
 .code-editor{
     height: 100vh;
-    padding: 0 0 0 10px;
     background: var(--code-editor-background);
 
     overflow-y:auto;

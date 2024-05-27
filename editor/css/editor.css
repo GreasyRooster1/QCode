@@ -1,12 +1,12 @@
 :root{
-    --pane-background: #9a9a9a;
+    --pane-background: #bcbcbc;
 
     --gutter-accent: #b9b9b9;
-    --gutter-main: #8c8c8c;
+    --gutter-main: #cccccc;
     --gutter-dark: #777777;
 
-    --step-background: #c2c2c2;
-    --step-content-background: #d2d2d2;
+    --step-background: #d5d5d5;
+    --step-content-background: #e4e4e4;
 
     --step-head-default: rgba(209, 0, 255, 0.44);
 
@@ -33,26 +33,19 @@ body{
 
 .gutter{
     background: var(--gutter-main);
+    background-repeat: no-repeat;
+    background-position: 50%;
 }
 
-.gutter-handle{
-    background: var(--gutter-main);
+.gutter.gutter-horizontal {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: col-resize;
 }
 
 .editor-pane{
     background: var(--pane-background);
     width:33vw;
     height:100vh;
-}
-
-.gutter-block{
-    height:25vh;
-    width:100%;
-    background: var(--gutter-accent);
-    position: absolute;
-    top: 50%;
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
 }
 
 /*pane default sizes*/
