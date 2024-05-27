@@ -17,3 +17,10 @@ for(let gutter of horzGutters){
     block.classList.add("gutter-block");
     gutter.appendChild(block);
 }
+const vertGutters = document.querySelectorAll(".gutter.gutter-vertical")
+
+for(let gutter of vertGutters){
+    let block = document.createElement("div");
+    block.classList.add("gutter-block");
+    gutter.appendChild(block);
+}

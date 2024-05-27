@@ -11,7 +11,3 @@ body {
     width: 100vw;
     display: flex;
 }
-
-.resizable-pane {
-    min-width: 1px;
-}
