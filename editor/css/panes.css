@@ -15,30 +15,3 @@ body {
 .resizable-pane {
     min-width: 1px;
 }
-
-.code-pane {
-    position: relative;
-}
-
-.output-pane {
-    position: relative;
-    flex-grow: 1;
-}
-
-.gutter-left {
-    width: 10px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: col-resize;
-}
-.gutter-right {
-    width: 10px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: col-resize;
-}
-

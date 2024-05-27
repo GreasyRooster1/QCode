@@ -6,4 +6,6 @@ const rightGutter = document.querySelector(".gutter-right");
 const wrapper = document.querySelector(".pane-container");
 
 
-Split(['.steps-pane', '.code-pane', '.output-pane']);
+Split(['.steps-pane', '.code-pane', '.output-pane'],{
+    sizes: [20, 50,30],
+});
