@@ -1,16 +1,3 @@
-class GutterElement extends HTMLElement {
-    constructor() {
-        super();
-    }
-
-    connectedCallback() {
-        const block = document.createElement("div");
-        block.classList.add("gutter-block");
-        this.appendChild(block);
-        this.classList.add("gutter");
-    }
-}
-
 class StepElement extends HTMLElement {
     head = null;
     content = null;
@@ -65,5 +52,4 @@ class StepElement extends HTMLElement {
     }
 }
 
-customElements.define("editor-gutter", GutterElement);
 customElements.define("editor-step", StepElement);
