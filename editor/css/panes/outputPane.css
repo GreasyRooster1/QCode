@@ -1,0 +1,11 @@
+.output-pane{
+    padding: 5px 5px 5px 15px;
+}
+.run-button{
+    background: var(--run-button-background);
+    border:none;
+    border-radius: 5px;
+
+    font-size: large;
+    color:var(--run-button-text-color);
+}
