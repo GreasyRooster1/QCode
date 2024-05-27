@@ -1,10 +1,10 @@
-import editor from './codeEditor.js';
+import {editor} from './codeEditor.js';
 
 function getCodeFromEditor(){
     return editor.state.doc.toString();
 }
 
-function runCode(){
+export function runCode(){
     let code = getCodeFromEditor();
     console.log(code);
 }
