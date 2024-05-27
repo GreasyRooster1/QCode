@@ -5,12 +5,10 @@ import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
 
 const linterExtension = linter(javascriptLanguage);
 
-const editor = new EditorView({
+const editorView = new EditorView({
     doc: "console.log('hello')\n",
     extensions: [basicSetup, javascript(), linterExtension],
     parent: document.querySelector(".code-editor"),
-})
+});
 
-function getCodeFromEditor(){
-    return editor.state.doc.toString();
-}
+export const editor=editorView;
