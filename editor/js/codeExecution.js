@@ -6,7 +6,14 @@ function getCodeFromEditor(){
 
 function runCode(){
     let code = getCodeFromEditor();
-    safeEval(code);
+    let logStack = safeEval(code);
+    displayLogStack(logStack);
+}
+
+function displayLogStack(logStack){
+    for (let log of logStack) {
+        //todo: output to a console
+    }
 }
 
 document.querySelector(".run-button").addEventListener("click", function() {
