@@ -1,11 +1,11 @@
-const stepsPane = document.querySelector(".steps-pane");
-const codePane = document.querySelector(".code-pane");
-const outputPane = document.querySelector(".output-pane");
-const leftGutter = document.querySelector(".gutter-left");
-const rightGutter = document.querySelector(".gutter-right");
-const wrapper = document.querySelector(".pane-container");
-
-
 Split(['.steps-pane', '.code-pane', '.output-pane'],{
     sizes: [20, 50,30],
 });
+
+const horzGutters = document.querySelectorAll(".gutter.gutter-horizontal")
+
+for(let gutter of horzGutters){
+    let block = document.createElement("div");
+    block.classList.add("gutter-block");
+    gutter.appendChild(block);
+}
