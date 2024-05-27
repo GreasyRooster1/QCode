@@ -1,5 +1,13 @@
+
 Split(['.steps-pane', '.code-pane', '.output-pane'],{
     sizes: [20, 50,30],
+});
+
+Split(['.canvas-output-pane','.console-output-pane'],{
+    sizes: [70, 30],
+    direction: 'vertical',
+    minSize: 30,
+    snapOffset: 10,
 });
 
 const horzGutters = document.querySelectorAll(".gutter.gutter-horizontal")

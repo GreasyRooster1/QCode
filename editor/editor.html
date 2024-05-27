@@ -33,7 +33,7 @@
 
     <div class="pane-container">
 
-        <div class="steps-pane resizable-pane editor-pane">
+        <div class="steps-pane editor-pane">
             <div class="scrollable-steps">
                 <editor-step type="info" head="this is an info step">
                     This step is an info step!
@@ -44,12 +44,18 @@
             </div>
         </div>
 
-        <div class="code-pane resizable-pane editor-pane">
+        <div class="code-pane editor-pane">
             <div class="code-editor"></div>
         </div>
 
-        <div class="output-pane resizable-pane editor-pane">
-            <button class="run-button">Run </button>
+        <div class="output-pane editor-pane">
+            <div class="output-head">
+                <button class="run-button">Run </button>
+            </div>
+            <div class="output-panes-wrapper">
+                <div class="canvas-output-pane"></div>
+                <div class="console-output-pane"></div>
+            </div>
         </div>
 
     </div>
