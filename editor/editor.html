@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Programming Platform</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css">
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js">
+    </script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/javascript/javascript.min.js">
+    </script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/the-matrix.min.css">
+
     <link rel="stylesheet" href="css/editor.css">
     <link rel="stylesheet" href="css/resize.css">
     <link rel="stylesheet" href="css/panes/stepPane.css">
@@ -29,12 +42,7 @@
         </div>
 
         <div class="code-pane resizable-pane editor-pane">
-            <div class="code-editor-wrapper">
-                <div class="code-editor">
-                    <ol contenteditable class="code-input">
-                        <li>type here</li>
-                    </ol>
-                </div>
+            <div class="code-editor">
             </div>
             <editor-gutter class="gutter-left"></editor-gutter>
         </div>

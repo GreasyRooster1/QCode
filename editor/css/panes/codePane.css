@@ -10,12 +10,3 @@
     overflow-y:auto;
     overflow-x:hidden;
 }
-
-.code-input{
-    margin:0;
-
-}
-
-[contenteditable] {
-    outline: 0 solid transparent;
-}
