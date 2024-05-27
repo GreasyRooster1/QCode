@@ -3,5 +3,8 @@ CodeMirror(document.querySelector('.code-editor'), {
     tabSize: 2,
     value: 'console.log("Hello, World");',
     mode: 'javascript',
-    theme: 'default'
+    theme: 'default',
+    state: EditorState.create({
+        extensions: [json(), linterExtension]
+    }),
 });
