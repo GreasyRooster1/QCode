@@ -1,5 +1,7 @@
 //safe usage of eval() in modules
 
+//todo: stop execution
+
 function handleLogOutputs(value,consoleOutputFunction){
     consoleOutputFunction(value);
 }
