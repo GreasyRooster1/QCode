@@ -1,5 +1,7 @@
 //safe usage of eval() in modules
 
+//todo: make console events exit this before completion
+
 function safeEval(src) {
     let consoleStack = eval(`with({window: {},
         document: {},
