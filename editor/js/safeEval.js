@@ -1,22 +1,22 @@
 //safe usage of eval() in modules
 
-//todo: make console events exit this before completion
+function handleLogOutputs(value,consoleOutputFunction){
+    consoleOutputFunction(value);
+}
 
-function safeEval(src) {
-    let consoleStack = eval(`with({window: {},
+function safeEval(src,consoleOutputFunction) {
+    eval(`with({window: {},
         document: {},
         eval: {},
         XMLHttpRequest: {},
         globalThis:{},
+        __handleLogOutputsConnection:{func:handleLogOutputs,handle:consoleOutputFunction},
         Function: {}}) {
-            let _defaultConsoleLog = console.log;
-            let _consoleLogStack = [];
+            let __defaultConsoleLog = console.log;
             console.log = function (...value) {
-                _defaultConsoleLog.apply(console, value);
-                _consoleLogStack.push(value);
-                return _consoleLogStack;
+                //__defaultConsoleLog.apply(console, value);
+                __handleLogOutputsConnection.func(value,__handleLogOutputsConnection.handle);
             }
             ${src}}
         `);
-    return consoleStack;
 }

@@ -6,14 +6,14 @@ function getCodeFromEditor(){
 
 function runCode(){
     let code = getCodeFromEditor();
-    let logStack = safeEval(code);
-    displayLogStack(logStack);
+    safeEval(code,logConsoleEvent);
 }
 
-function displayLogStack(logStack){
-    for (let log of logStack) {
-        //todo: output to a console
-    }
+function logConsoleEvent(message){
+    //todo: output to a console
+
+    //console log is overridden in this context
+    console.warn("outputted to console: "+message);
 }
 
 document.querySelector(".run-button").addEventListener("click", function() {
