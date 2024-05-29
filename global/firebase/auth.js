@@ -10,7 +10,7 @@ function createUser(email,password){
             currentUser = user;
         })
         .catch((error) => {
-            handleAuthErrors(error.code,error.message)
+            handleAuthErrors(error.code,error.message);
         });
 }
 
@@ -22,7 +22,7 @@ function logInUser(email,password){
             currentUser = user;
         })
         .catch((error) => {
-            handleAuthErrors(error.code,error.message)
+            handleAuthErrors(error.code,error.message);
         });
 
 }
