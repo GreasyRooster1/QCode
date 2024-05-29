@@ -4,7 +4,7 @@ function createUserDefault(email,password){
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             console.log("created user");
-            sessionStorage.setItem("currentUser", userCredential.user);
+            storeUser(userCredential.user);
         })
         .catch((error) => {
             handleAuthErrors(error.code,error.message);
@@ -15,7 +15,7 @@ function logInUserDefault(email,password){
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             console.log("logged in user");
-            sessionStorage.setItem("currentUser", userCredential.user);
+            storeUser(userCredential.user);
         })
         .catch((error) => {
             handleAuthErrors(error.code,error.message);
@@ -26,8 +26,7 @@ function logInUserDefault(email,password){
 function logOutUserDefault(){
     firebase.auth().signOut().then(() => {
         console.log("logged out user");
-        sessionStorage.setItem("currentUser",null);
-        sessionStorage.setItem("isLoggedIn", false);
+        clearStoredUser();
     }).catch((error) => {
         handleAuthErrors(error.code,error.message);
     });
@@ -54,7 +53,7 @@ function storeUser(user){
     sessionStorage.setItem("currentUser",JSON.stringify(user));
 }
 
-function clearStoredUser(user){
+function clearStoredUser(){
     sessionStorage.setItem("isLoggedIn", "false");
     sessionStorage.setItem("currentUser",null);
 }

@@ -12,13 +12,13 @@ loginButton.addEventListener("click", function(){
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             console.log("logged in user");
-            currentUser =  userCredential.user;
+            storeUser(userCredential.user);
         })
         .catch((error) => {
             let errorType = handleAuthErrors(error);
             switch (errorType){
-                case "invalid credentials": showAuthError("Email or password is incorrect"); break;
-                case "invalid email": showAuthError("Incorrect email format");break;
+                case "invalid credentials": showAuthError("Email or password is incorrect"); return;
+                case "invalid email": showAuthError("Incorrect email format");return;
                 case "ok": break;
             }
         });
