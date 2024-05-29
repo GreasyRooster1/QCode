@@ -2,7 +2,7 @@
 
 let currentUser = null;
 
-function createUser(email,password){
+function createUserDefault(email,password){
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             let user = userCredential.user;
@@ -14,7 +14,7 @@ function createUser(email,password){
         });
 }
 
-function logInUser(email,password){
+function logInUserDefault(email,password){
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             let user = userCredential.user;
@@ -27,7 +27,7 @@ function logInUser(email,password){
 
 }
 
-function logOutUser(){
+function logOutUserDefault(){
     firebase.auth().signOut().then(() => {
         console.log("logged out user");
         currentUser = null;
@@ -38,4 +38,14 @@ function logOutUser(){
 
 function handleAuthErrors(errorCode,errorMessage){
     console.error("Auth error: ",errorCode,errorMessage);
+    if(error.code==="auth/internal-error"){
+        let errorObj = JSON.parse(error.message).error;
+        if(errorObj.message==="INVALID_LOGIN_CREDENTIALS"){
+           return "invalid credentials";
+        }
+    }
+    if(error.code==="auth/invalid-email"){
+        return "invalid email";
+    }
+    return "ok";
 }

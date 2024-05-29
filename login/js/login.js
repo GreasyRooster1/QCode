@@ -12,15 +12,11 @@ loginButton.addEventListener("click", function(){
             currentUser =  userCredential.user;
         })
         .catch((error) => {
-            handleAuthErrors(error.code,error.message);
-            if(error.code==="auth/internal-error"){
-                let errorObj = JSON.parse(error.message).error;
-                if(errorObj.message==="INVALID_LOGIN_CREDENTIALS"){
-                    console.log("credentials invalid");
-                }
-            }
-            if(error.code==="auth/invalid-email"){
-                console.log("email is invalid");
+            let errorType = handleAuthErrors(error.code,error.message);
+            switch (errorType){
+                case "invalid credentials": break;
+                case "invalid email": break;
+                case "ok": break;
             }
         });
 
