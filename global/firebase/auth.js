@@ -1,13 +1,10 @@
 //https://stackoverflow.com/questions/59935608/solved-get-user-auth-data-from-firebase-add-it-to-firebase-db
 
-let currentUser = null;
-
 function createUserDefault(email,password){
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            let user = userCredential.user;
             console.log("created user");
-            currentUser = user;
+            sessionStorage.setItem("currentUser", userCredential.user);
         })
         .catch((error) => {
             handleAuthErrors(error.code,error.message);
@@ -17,9 +14,8 @@ function createUserDefault(email,password){
 function logInUserDefault(email,password){
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            let user = userCredential.user;
             console.log("logged in user");
-            currentUser = user;
+            sessionStorage.setItem("currentUser", userCredential.user);
         })
         .catch((error) => {
             handleAuthErrors(error.code,error.message);
@@ -30,7 +26,8 @@ function logInUserDefault(email,password){
 function logOutUserDefault(){
     firebase.auth().signOut().then(() => {
         console.log("logged out user");
-        currentUser = null;
+        sessionStorage.setItem("currentUser",null);
+        sessionStorage.setItem("isLoggedIn", false);
     }).catch((error) => {
         handleAuthErrors(error.code,error.message);
     });
@@ -50,4 +47,26 @@ function handleAuthErrors(error){
         return "invalid email";
     }
     return "ok";
+}
+
+function storeUser(user){
+    sessionStorage.setItem("isLoggedIn", "true");
+    sessionStorage.setItem("currentUser",JSON.stringify(user));
+}
+
+function clearStoredUser(user){
+    sessionStorage.setItem("isLoggedIn", "false");
+    sessionStorage.setItem("currentUser",null);
+}
+
+function getStoredUser(){
+    let jsonUser = sessionStorage.getItem("currentUser")
+    if(jsonUser!==null){
+        return JSON.parse(jsonUser);
+    }
+    return null;
+}
+
+function isLoggedIn(){
+    return sessionStorage.getItem("isLoggedIn")==="true";
 }
