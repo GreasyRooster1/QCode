@@ -2,4 +2,15 @@
     height:5vh;
     background: #00ffff;
     transition: height 1s;
+    position: relative;
+}
+
+.navbar-shrink-button{
+    position: absolute;
+    bottom: 0;
+}
+
+.navbar-grow-button{
+    position: absolute;
+    visibility: hidden;
 }
