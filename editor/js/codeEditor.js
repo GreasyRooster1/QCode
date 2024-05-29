@@ -11,6 +11,6 @@ const editorView = new EditorView({
     parent: document.querySelector(".code-editor"),
 });
 
-window.__exportedEditorContext = editor;
+window.__exportedEditorContext = editorView;
 
 export const editor=editorView;

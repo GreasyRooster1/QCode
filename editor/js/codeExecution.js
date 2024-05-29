@@ -1,5 +1,9 @@
 const stopElement = document.querySelector('.stop-button');
-const editor = window.__exportedEditorContext;
+let editor;
+
+onload = function () {
+    editor = window.__exportedEditorContext;
+}
 
 function getCodeFromEditor(){
     return editor.state.doc.toString();
@@ -23,7 +27,6 @@ document.querySelector(".run-button").addEventListener("click", function() {
 
 //todo: stop execution
 //maybe run in an iframe??
-
 
 function safeEval(src,consoleOutputFunction) {
     eval(`with({window: {},
