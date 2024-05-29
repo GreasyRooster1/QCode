@@ -36,15 +36,17 @@ function logOutUserDefault(){
     });
 }
 
-function handleAuthErrors(errorCode,errorMessage){
+function handleAuthErrors(error){
+    let errorCode = error.code;
+    let errorMessage = error.message;
     console.error("Auth error: ",errorCode,errorMessage);
-    if(error.code==="auth/internal-error"){
-        let errorObj = JSON.parse(error.message).error;
+    if(errorCode==="auth/internal-error"){
+        let errorObj = JSON.parse(errorMessage).error;
         if(errorObj.message==="INVALID_LOGIN_CREDENTIALS"){
            return "invalid credentials";
         }
     }
-    if(error.code==="auth/invalid-email"){
+    if(errorCode==="auth/invalid-email"){
         return "invalid email";
     }
     return "ok";
