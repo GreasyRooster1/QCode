@@ -1,0 +1,18 @@
+:root{
+    --background-color: #b4b4b4;
+    --login-pane-color: #c2c2c2;
+}
+
+body{
+    background: var(--background-color);
+}
+
+.login-pane{
+    position: absolute;
+    background: var(--login-pane-color);
+    width:50vmin;
+    height:50vmin;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
