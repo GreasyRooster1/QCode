@@ -10,6 +10,6 @@ navbarVisibilityButton.addEventListener("click",function (){
         navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
     }else{
         navbar.style.height = "0";
-        navbarVisibilityButton.style.transform = "scaleY(-1) translateY(10px)";
+        navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
     }
 });

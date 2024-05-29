@@ -7,4 +7,5 @@
 .navbar-visibility-button{
     position: absolute;
     transition: 1s;
+    margin:3px
 }
