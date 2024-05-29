@@ -1,6 +1,10 @@
 :root{
     --background-color: #b4b4b4;
     --login-pane-color: #c2c2c2;
+
+    --auth-error-background: rgba(210, 22, 22, 0.39);
+    --auth-error-solid: rgb(211, 48, 48);
+    --auth-error-text: rgb(35, 2, 2);
 }
 
 body{
@@ -15,4 +19,12 @@ body{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+}
+
+.auth-error{
+    margin: 10% auto auto;
+    width:80%;
+    background:var(--auth-error-background);
+    border-left:5px solid var(--auth-error-solid);
+    color:var(--auth-error-text);
 }
