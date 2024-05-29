@@ -1,10 +1,15 @@
 const navbar = document.querySelector(".navbar");
-const navbarShrinkButton = document.querySelector(".navbar-shrink-button");
-const navbarGrowButton = document.querySelector(".navbar-grow-button");
+const navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
 
-navbarShrinkButton.addEventListener("click",function (){
-    navbar.style.height = "0";
-});
-navbarGrowButton.addEventListener("click",function (){
-    navbar.style.height = "5vh";
+let navbarVisible = true;
+
+navbarVisibilityButton.addEventListener("click",function (){
+    navbarVisible = !navbarVisible;
+    if(navbarVisible){
+        navbar.style.height = "5vh";
+        navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
+    }else{
+        navbar.style.height = "0";
+        navbarVisibilityButton.style.transform = "scaleY(-1) translateY(10px)";
+    }
 });
