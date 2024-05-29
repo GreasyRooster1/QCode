@@ -1,4 +1,5 @@
 .navbar{
     height:5vh;
     background: #00ffff;
+    transition: height 1s;
 }
