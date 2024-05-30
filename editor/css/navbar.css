@@ -8,7 +8,7 @@
 
 .navbar{
     height:5vh;
-    background: linear-gradient(106deg, rgba(0,0,0,1) 9%, rgba(0,255,0,1) 24%, rgba(124,124,124,1) 47%, rgba(0,0,0,1) 66%, rgba(0,0,255,1) 87%, rgba(0,0,0,1) 99%);
+    background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-green)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-blue) 87%, var(--brand-black) 99%);
 
     transition: height 1s;
 }
