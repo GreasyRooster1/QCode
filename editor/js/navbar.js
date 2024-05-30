@@ -30,7 +30,11 @@ navbarVisibilityButton.addEventListener("click",function (){
 });
 
 userLink.addEventListener("click", function (e){
-    e.preventDefault();
+    if(userLink.innerHTML==="Login"){
+        window.location.href = '../';
+        return;
+    }
+
     accountOptionsVisible = !accountOptionsVisible;
     if(accountOptionsVisible) {
         accountOptions.style.height = "200%";
@@ -39,6 +43,9 @@ userLink.addEventListener("click", function (e){
     }
 });
 
+logoutButton.addEventListener("click", function (e){
+    logOutUserDefault();
+})
 
 
 initNavbar();
