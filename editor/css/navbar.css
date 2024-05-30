@@ -1,6 +1,13 @@
+:root{
+    --account-name-text:#000000;
+    --account-dropdown-background:#000000;
+    --account-dropdown-option:#000000;
+}
+
 .navbar{
     height:5vh;
-    background: #00ffff;
+    background: linear-gradient(106deg, rgba(0,0,0,1) 9%, rgba(0,255,0,1) 24%, rgba(124,124,124,1) 47%, rgba(0,0,0,1) 66%, rgba(0,0,255,1) 87%, rgba(0,0,0,1) 99%);
+
     transition: height 1s;
 }
 
@@ -15,6 +22,14 @@
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none;
+
+    font-weight: 700;
+    font-size: 23px;
+    font-family: Calibri, serif;
+
+    text-align: center;
+
+    min-width: 100px;
 }
 
 .account-dropdown-wrapper{
