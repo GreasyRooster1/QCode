@@ -11,9 +11,22 @@
 }
 
 .username-link{
+    color: white;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+}
+
+.account-dropdown-wrapper{
     float: right;
     position: relative;
     top:50%;
     margin-right:15px;
     transform: translate(0,-50%);
+}
+
+.account-options{
+    position: absolute;
+    visibility: hidden;
+    z-index: 100;
 }
