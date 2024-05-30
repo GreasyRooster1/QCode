@@ -4,6 +4,10 @@ const userLink = document.querySelector(".username-link");
 
 let navbarVisible = true;
 
+function initNavbar(){
+    userLink.innerHTML = getStoredUser().email;
+}
+
 navbarVisibilityButton.addEventListener("click",function (){
     navbarVisible = !navbarVisible;
     if(navbarVisible){
@@ -15,8 +19,6 @@ navbarVisibilityButton.addEventListener("click",function (){
     }
 });
 
-function initNavbar(){
-   userLink.innerHTML = getStoredUser().email;
-}
+
 
 initNavbar();

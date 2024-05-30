@@ -9,3 +9,11 @@
     transition: 1s;
     margin:3px
 }
+
+.username-link{
+    float: right;
+    position: relative;
+    top:50%;
+    margin-right:15px;
+    transform: translate(0,-50%);
+}
