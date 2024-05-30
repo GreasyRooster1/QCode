@@ -13,6 +13,7 @@ loginButton.addEventListener("click", function(){
         .then((userCredential) => {
             console.log("logged in user");
             storeUser(userCredential.user);
+            window.location.href = "../";
         })
         .catch((error) => {
             let errorType = handleAuthErrors(error);
