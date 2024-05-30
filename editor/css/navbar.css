@@ -29,4 +29,10 @@
     position: absolute;
     visibility: hidden;
     z-index: 100;
+    width: 100%;
+}
+.account-options > .option{
+    background: #ff00ff;
+    width: 100%;
+    text-align: center;
 }

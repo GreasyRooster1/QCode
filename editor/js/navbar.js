@@ -2,6 +2,7 @@ const navbar = document.querySelector(".navbar");
 const navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
 const userLink = document.querySelector(".username-link");
 const accountOptions = document.querySelector(".account-options");
+const logoutButton = document.querySelector(".logout-button");
 
 let navbarVisible = true;
 let accountOptionsVisible = false;
