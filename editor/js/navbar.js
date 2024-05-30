@@ -18,14 +18,14 @@ navbarVisibilityButton.addEventListener("click",function (){
         navbar.style.height = "5vh";
         setTimeout(function () {
             accountOptionsWrapper.style.display = "block";
-        },400);
+        },300);
         navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
     }else{
         navbar.style.height = "0";
         navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
         setTimeout(function () {
             accountOptionsWrapper.style.display = "none";
-        },400);
+        },300);
     }
 });
 
