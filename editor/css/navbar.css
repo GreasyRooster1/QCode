@@ -1,7 +1,7 @@
 :root{
-    --account-name-text:#000000;
-    --account-dropdown-background:#000000;
-    --account-dropdown-option:#000000;
+    --account-name-text: #ffffff;
+    --account-dropdown-background: #2e2e2e;
+    --account-dropdown-option: #d1d1d1;
 }
 
 .navbar{
@@ -18,7 +18,8 @@
 }
 
 .username-link{
-    color: white;
+    color: var(--account-name-text);
+    background:var(--account-dropdown-background);
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none;
@@ -30,6 +31,7 @@
     text-align: center;
 
     min-width: 100px;
+    padding: 4px;
 }
 
 .account-dropdown-wrapper{
@@ -42,12 +44,15 @@
 
 .account-options{
     position: absolute;
-    visibility: hidden;
+    overflow: clip;
     z-index: 100;
     width: 100%;
+    height:0;
+    transition: 1s;
 }
 .account-options > .option{
-    background: #ff00ff;
+    background:var(--account-dropdown-background);
     width: 100%;
+    color: var(--account-dropdown-option);
     text-align: center;
 }

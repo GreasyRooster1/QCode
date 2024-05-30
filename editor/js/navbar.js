@@ -33,9 +33,9 @@ userLink.addEventListener("click", function (e){
     e.preventDefault();
     accountOptionsVisible = !accountOptionsVisible;
     if(accountOptionsVisible) {
-        accountOptions.style.visibility = "visible";
+        accountOptions.style.height = "200%";
     }else{
-        accountOptions.style.visibility = "hidden";
+        accountOptions.style.height = "0";
     }
 });
 
