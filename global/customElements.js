@@ -53,16 +53,9 @@ class StepElement extends HTMLElement {
 }
 
 class BrandNav extends HTMLElement {
-    head = null;
-    content = null;
-    contentWrapper = null;
 
     constructor() {
         super();
-    }
-
-    static get observedAttributes() {
-        return ['type', 'head'];
     }
 
     connectedCallback() {
