@@ -5,15 +5,15 @@
 
 .badges{
     height:40vh;
-    background: #0ed144;
+    background: var(--right-sections-background);
 }
 
 .points{
     height:20vh;
-    background: #0ed144;
+    background: var(--right-sections-background);
 }
 
 .user{
     height:20vh;
-    background: #0ed144;
+    background: var(--right-sections-background);
 }

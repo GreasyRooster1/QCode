@@ -1,4 +1,4 @@
 .projects{
     min-height: 60%;
-    background: #0ed144;
+    background: var(--project-section-background);
 }

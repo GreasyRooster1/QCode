@@ -1,3 +1,11 @@
+:root{
+    --center-background: #eaeaea;
+    --bar-background: #d9d9d9;
+    --project-section-background: #bdbdbd;
+    --right-sections-background: #b7b7b7;
+    --footer-background: #c5c5c5;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -13,17 +21,17 @@ body{
 
 .left-bar{
     width:20vw;
-    background:#00ffff;
+    background:var(--bar-background);
 }
 
 .center-content{
     width:60vw;
-    background:#ff00ff;
+    background:var(--center-background);
 }
 
 .right-bar{
     width:20vw;
-    background:#00ffff;
+    background:var(--bar-background);;
 }
 
 .navbar-visibility-button{
@@ -37,5 +45,5 @@ body{
 
 .footer{
     height:25vh;
-    background:#ffff00;
+    background:var(--footer-background);
 }
