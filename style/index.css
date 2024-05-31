@@ -34,3 +34,8 @@ body{
     margin:5%;
     width:90%;
 }
+
+.footer{
+    height:25vh;
+    background:#ffff00;
+}
