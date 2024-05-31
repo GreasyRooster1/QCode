@@ -29,3 +29,8 @@ body{
 .navbar-visibility-button{
     display: none;
 }
+
+.bar-section{
+    margin:5%;
+    width:90%;
+}
