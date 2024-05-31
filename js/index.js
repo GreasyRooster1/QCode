@@ -18,7 +18,8 @@ function loadBadges(){
                 badgeElement.classList.add("badge");
                 let img = document.createElement("img");
                 img.setAttribute("src",badgeProperties.image);
-                img.setAttribute("alt",badgeProperties.name);
+                img.setAttribute("alt",badgeProperties.name+" badge");
+                img.setAttribute("title",badgeProperties.name);
                 badgeElement.appendChild(img);
                 badgeDisplay.appendChild(badgeElement)
             });
