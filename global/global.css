@@ -4,3 +4,12 @@
     --brand-black:black;
     --brand-gray:gray;
 }
+
+.no-scrollbar{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollable-steps::-webkit-scrollbar {
+    display: none;
+}
