@@ -1,0 +1,25 @@
+.right-bar{
+    display: flex;
+    flex-direction: column;
+}
+
+.badges{
+    width:90%;
+    height:40%;
+    margin:5%;
+    background: #0ed144;
+}
+
+.points{
+    width:90%;
+    height:20%;
+    margin:5%;
+    background: #0ed144;
+}
+
+.user{
+    width:90%;
+    height:20%;
+    margin:5%;
+    background: #0ed144;
+}
