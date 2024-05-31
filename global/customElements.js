@@ -8,7 +8,7 @@ class StepElement extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['type','head'];
+        return ['type', 'head'];
     }
 
     connectedCallback() {
@@ -27,7 +27,7 @@ class StepElement extends HTMLElement {
         this.content.innerHTML = this.innerHTML;
         this.innerHTML = "";
 
-        if(this.attributes.getNamedItem("head")!==null) {
+        if (this.attributes.getNamedItem("head") !== null) {
             this.head.innerHTML = this.attributes.getNamedItem("head").value;
         }
 
@@ -39,11 +39,11 @@ class StepElement extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if(oldValue !== newValue) {
-            if(name==='type') {
+        if (oldValue !== newValue) {
+            if (name === 'type') {
                 this.classList.add(newValue);
-            }else if(name==='head') {
-                if(this.head===null){
+            } else if (name === 'head') {
+                if (this.head === null) {
                     return;
                 }
                 this.head.innerHTML = newValue;
@@ -52,4 +52,35 @@ class StepElement extends HTMLElement {
     }
 }
 
+class BrandNav extends HTMLElement {
+    head = null;
+    content = null;
+    contentWrapper = null;
+
+    constructor() {
+        super();
+    }
+
+    static get observedAttributes() {
+        return ['type', 'head'];
+    }
+
+    connectedCallback() {
+        this.innerHTML = `
+            <div class="navbar">
+                <div class="account-dropdown-wrapper">
+                    <div class="username-link">Login</div>
+                    <div class="account-options">
+                        <div class="logout-button option">Logout</div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-visibility-button">
+                ^
+            </div>
+        `
+    }
+}
+
 customElements.define("editor-step", StepElement);
+customElements.define("brand-nav", BrandNav);

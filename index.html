@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <title>Home</title>
 
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script src="../global/firebase/init.js" type="module" ></script>
+    <script src="../global/firebase/auth.js" ></script>
+    <script src="../global/firebase/database.js" ></script>
+
     <script src="global/customElements.js" defer></script>
+    <script src="global/nav/navbar.js" defer></script>
+
+    <link href="global/nav/navbar.css" rel="stylesheet">
+    <link href="global/global.css" rel="stylesheet">
 </head>
 <body>
+
+    <brand-nav></brand-nav>
+
     <p> this is a wip site</p>
     <a href="editor/editor.html">editor</a>
     <a href="login/login.html">login</a>
