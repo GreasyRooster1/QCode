@@ -37,9 +37,11 @@ userLink.addEventListener("click", function (e){
 
     accountOptionsVisible = !accountOptionsVisible;
     if(accountOptionsVisible) {
-        accountOptions.style.height = "200%";
+        accountOptions.style.height = "20px";
+        userLink.style.borderRadius = "0";
     }else{
         accountOptions.style.height = "0";
+        userLink.style.borderRadius = "10px";
     }
 });
 

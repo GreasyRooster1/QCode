@@ -36,6 +36,9 @@
 
     min-width: 100px;
     padding: 4px;
+    border-radius: 10px;
+
+    transition: .1s;
 }
 
 .account-dropdown-wrapper{
@@ -52,11 +55,12 @@
     z-index: 100;
     width: 100%;
     height:0;
-    transition: 1s;
+    transition: .4s;
 }
 .account-options > .option{
     background:var(--account-dropdown-background);
     width: 100%;
     color: var(--account-dropdown-option);
+    height:20px;
     text-align: center;
 }
