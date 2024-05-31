@@ -1,0 +1,38 @@
+:root{
+    --badge-size:50px;
+    --badge-hover-color: #dcdcdc;
+}
+
+.badges-display{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    line-height: 0;
+}
+
+.badge{
+    margin:3px;
+    width:var(--badge-size);
+    height:var(--badge-size);
+}
+
+.badge > img{
+    width:var(--badge-size);
+    height:var(--badge-size);
+}
+
+.badge-desc:hover{
+    opacity: 1;
+}
+
+.badge-desc{
+    position: relative;
+    height: var(--badge-size);
+    width: var(--badge-size);
+    opacity: 0;
+    transform: translate(0,-100%);
+    transition: .5s ease;
+    text-align: center;
+    text-wrap: normal;
+    background:var(--badge-hover-color)
+}
