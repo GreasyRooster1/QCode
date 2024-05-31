@@ -5,6 +5,8 @@ const passwordInput = document.querySelector(".password-input");
 const authErrorDisplayWrapper = document.querySelector(".auth-error");
 const authErrorContent = document.querySelector(".auth-error-message");
 
+let retUrl;
+
 loginButton.addEventListener("click", function(){
     let email = emailInput.value;
     let password = passwordInput.value;
@@ -13,7 +15,7 @@ loginButton.addEventListener("click", function(){
         .then((userCredential) => {
             console.log("logged in user");
             storeUser(userCredential.user);
-            window.location.href = "../";
+            window.location.replace("../");
         })
         .catch((error) => {
             let errorType = handleAuthErrors(error);
@@ -29,3 +31,10 @@ function showAuthError(msg){
     authErrorDisplayWrapper.style.visibility = "true"
     authErrorContent.innerHTML = msg;
 }
+
+function initReturnAddress(){
+    retUrl = new URLSearchParams(window.location.search).get('retURL');
+    console.log(retUrl);
+}
+
+initReturnAddress();

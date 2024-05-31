@@ -31,7 +31,11 @@ navbarVisibilityButton.addEventListener("click",function (){
 
 userLink.addEventListener("click", function (e){
     if(userLink.innerHTML==="Login"){
-        window.location.href = '../';
+        if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
+            window.location.replace("login/login.html");
+        }else {
+            window.location.href = "../login/login.html";
+        }
         return;
     }
 
@@ -48,7 +52,11 @@ userLink.addEventListener("click", function (e){
 logoutButton.addEventListener("click", function (e){
     logOutUserDefault();
     clearStoredUser();
-    window.location.href = '../';
+    if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
+        window.location.replace("login/login.html");
+    }else {
+        window.location.href = "../login/login.html";
+    }
 })
 
 
