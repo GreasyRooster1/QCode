@@ -25,7 +25,12 @@ function loadBadges(){
 
                 let hoverText = document.createElement("div");
                 hoverText.classList.add("badge-desc");
-                hoverText.innerHTML = badgeProperties.description;
+
+                let hoverTextContent = document.createElement("div");
+                hoverTextContent.classList.add("badge-desc-text");
+                hoverTextContent.innerHTML = badgeProperties.value+"pts";
+
+                hoverText.appendChild(hoverTextContent);
 
                 badgeElement.appendChild(img);
                 badgeElement.appendChild(hoverText);
