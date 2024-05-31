@@ -6,6 +6,11 @@
     --navbar-shrink-color: #1a1a1a;
 }
 
+brand-nav{
+    position: fixed;
+    width:100vw;
+}
+
 .navbar{
     height:5vh;
     background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-green)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-blue) 87%, var(--brand-black) 99%);
