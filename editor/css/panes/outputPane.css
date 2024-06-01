@@ -23,8 +23,12 @@
     width: 100%;
 }
 
+.console-output-pane{
+    overflow-y: auto;
+}
+
 .console-log{
-    min-height: 20%;
+    min-height: 75px;
     margin-top: 10px;
 }
 
