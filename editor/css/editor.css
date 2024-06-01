@@ -19,6 +19,9 @@
     --run-button-background: #0ed144;
     --run-button-text-color: #ffffff;
 
+    --stop-button-background: #d10e0e;
+    --stop-button-text-color: #ffffff;
+
     --log-error-background: rgba(255, 27, 27, 0.37);
     --log-warn-background: rgba(255, 243, 17, 0.37);
     --log-log-background: rgb(71 70 68 / 22%);

@@ -1,4 +1,6 @@
-const stopElement = document.querySelector('.stop-button');
+const stopButton = document.querySelector('.stop-button');
+const runButton = document.querySelector('.run-button');
+
 const frame = document.querySelector('#exec-frame');
 const consoleOut = document.querySelector('.console-output-pane');
 const logHeads = {log:"Info",warn:"Warning",error:"Error"};
@@ -9,9 +11,19 @@ onload = function () {
     editor = window.__exportedEditorContext;
 }
 
-document.querySelector(".run-button").addEventListener("click", function() {
+runButton.addEventListener("click", function() {
+    resetAllOutputs()
     runCode();
 });
+
+stopButton.addEventListener("click", function() {
+    resetAllOutputs()
+});
+
+function resetAllOutputs(){
+    frame.contentWindow.location.reload();
+    consoleOut.innerHTML = "";
+}
 
 function getCodeFromEditor(){
     return editor.state.doc.toString();

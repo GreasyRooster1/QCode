@@ -14,6 +14,16 @@
     color:var(--run-button-text-color);
 }
 
+.stop-button{
+    background: var(--stop-button-background);
+    border:none;
+    border-radius: 5px;
+
+    font-size: 20px;
+    height:30px;
+    color:var(--stop-button-text-color);
+}
+
 .output-panes-wrapper{
     height: calc(100% - 40px);
 }
