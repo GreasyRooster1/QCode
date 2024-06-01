@@ -85,7 +85,7 @@ class ConsoleLogElement extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['type', 'message'];
+        return ['type', 'message',"head"];
     }
 
     connectedCallback() {
@@ -97,6 +97,10 @@ class ConsoleLogElement extends HTMLElement {
 
         if (this.attributes.getNamedItem("message") !== null) {
             this.content.innerHTML = this.attributes.getNamedItem("message").value;
+        }
+
+        if (this.attributes.getNamedItem("head") !== null) {
+            this.head.innerHTML = this.attributes.getNamedItem("head").value;
         }
 
         this.appendChild(this.head);
@@ -115,6 +119,11 @@ class ConsoleLogElement extends HTMLElement {
                     return;
                 }
                 this.content.innerHTML = newValue;
+            }else if (name === 'head') {
+                if (this.head === null) {
+                    return;
+                }
+                this.head.innerHTML = newValue;
             }
         }
     }

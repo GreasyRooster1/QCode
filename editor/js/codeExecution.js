@@ -1,6 +1,7 @@
 const stopElement = document.querySelector('.stop-button');
 const frame = document.querySelector('#exec-frame');
 const consoleOut = document.querySelector('.console-output-pane');
+const logHeads = {log:"Info",warn:"Warning",error:"Error"};
 let iWindow = null;
 let editor;
 
@@ -35,6 +36,7 @@ window.addEventListener("message", (event) => {
     let logEl = document.createElement("console-log");
     logEl.setAttribute("type", log.type);
     logEl.setAttribute("message", log.message);
+    logEl.setAttribute("head", logHeads[log.type]);
     consoleOut.insertBefore(logEl,consoleOut.firstChild);
 });
 
