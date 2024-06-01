@@ -1,12 +1,27 @@
 let parent = null;
 
 const oldLog = console.log;
+const oldWarn = console.warn;
+const oldErr = console.error;
 
 //send data back up to editor
 console.log = function (...args) {
+    logMessage("log",args);
+}
+
+console.warn = function (...args) {
+    logMessage("warn",args);
+}
+
+console.error = function (...args) {
+    logMessage("error",args);
+}
+
+function logMessage(type,...args){
     if (parent === null) {
         return;
     }
+    let log = {type:type,message:args.join(" ")};
     parent.postMessage(args.join(" "));
 }
 

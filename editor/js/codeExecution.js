@@ -28,7 +28,8 @@ function runCode(){
 
 //when we get a message from the frame
 window.addEventListener("message", (event) => {
-    console.log(event);
+    let log = JSON.parse(event.data);
+    console.log(log.type,log.message);
 });
 
 frame.addEventListener("load", () => {
