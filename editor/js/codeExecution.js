@@ -35,7 +35,7 @@ window.addEventListener("message", (event) => {
     let logEl = document.createElement("console-log");
     logEl.setAttribute("type", log.type);
     logEl.setAttribute("message", log.message);
-    consoleOut.appendChild(logEl);
+    consoleOut.insertBefore(logEl,consoleOut.firstChild);
 });
 
 frame.addEventListener("load", () => {
