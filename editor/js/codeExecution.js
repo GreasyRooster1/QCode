@@ -1,5 +1,5 @@
 const stopElement = document.querySelector('.stop-button');
-const frame = document.getElementById('exec-frame').contentWindow;
+const frame = document.getElementById('exec-frame');
 let iWindow = null;
 let editor;
 
@@ -29,4 +29,9 @@ function runCode(){
 //when we get a message from the frame
 window.addEventListener("message", (event) => {
     console.log(event);
+});
+
+frame.addEventListener("load", () => {
+    iWindow = frame.contentWindow;
+    console.log(iWindow);
 });

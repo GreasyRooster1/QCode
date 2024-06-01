@@ -13,11 +13,10 @@ console.log = function (...args) {
 
 //receive data
 window.addEventListener("message", ({ data, source }) => {
+    document.write(data);
     if (parent === null) {
         parent = source;
     }
-
-    document.write(data);
 
     runJs(data);
 });
