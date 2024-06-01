@@ -18,6 +18,14 @@
 
     --run-button-background: #0ed144;
     --run-button-text-color: #ffffff;
+
+    --log-error-background: rgba(218, 24, 24, 0.37);
+    --log-warn-background: rgba(218, 179, 24, 0.37);
+    --log-log-background: rgb(71 70 68 / 22%);
+
+    --log-error-solid: rgb(186, 14, 14);
+    --log-warn-solid: rgb(175, 161, 18);
+    --log-log-solid: rgb(120, 119, 118);
 }
 
 body{

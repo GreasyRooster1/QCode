@@ -22,3 +22,13 @@
     height: 100%;
     width: 100%;
 }
+
+.console-log{
+    min-height: 20%;
+    margin-top: 10px;
+}
+
+.console-log.log{
+    background: var(--log-log-background);
+    border-left: 5px solid var(--log-log-solid);
+}
