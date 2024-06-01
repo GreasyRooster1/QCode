@@ -2,7 +2,6 @@ let parent = null;
 
 const oldLog = console.log;
 
-
 //send data back up to editor
 console.log = function (...args) {
     if (parent === null) {
@@ -13,7 +12,6 @@ console.log = function (...args) {
 
 //receive data
 window.addEventListener("message", ({ data, source }) => {
-    document.write(data);
     if (parent === null) {
         parent = source;
     }
