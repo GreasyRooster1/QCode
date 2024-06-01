@@ -36,3 +36,13 @@
     background: var(--log-log-background);
     border-left: 5px solid var(--log-log-solid);
 }
+
+.console-log.warn{
+    background: var(--log-warn-background);
+    border-left: 5px solid var(--log-warn-solid);
+}
+
+.console-log.error{
+    background: var(--log-error-background);
+    border-left: 5px solid var(--log-error-solid);
+}
