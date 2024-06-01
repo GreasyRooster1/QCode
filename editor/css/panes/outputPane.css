@@ -54,7 +54,15 @@
     border-left: 5px solid var(--log-warn-solid);
 }
 
+.console-log.warn > .log-head{
+    border-bottom: 2px solid var(--log-warn-background);
+}
+
 .console-log.error{
     background: var(--log-error-background);
     border-left: 5px solid var(--log-error-solid);
+}
+
+.console-log.error > .log-head{
+    border-bottom: 2px solid var(--log-error-background);
 }
