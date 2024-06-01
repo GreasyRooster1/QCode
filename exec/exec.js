@@ -22,7 +22,7 @@ function logMessage(type,...args){
         return;
     }
     let log = {type:type,message:args.join(" ")};
-    parent.postMessage(args.join(" "));
+    parent.postMessage(JSON.stringify(log));
 }
 
 //receive data
