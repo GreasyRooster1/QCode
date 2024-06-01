@@ -4,6 +4,8 @@ const oldLog = console.log;
 const oldWarn = console.warn;
 const oldErr = console.error;
 
+let __userGeneratedDrawFunc;
+
 
 console.log = function (...args) {
     logMessage("log",args);
@@ -19,7 +21,7 @@ console.error = function (...args) {
 
 //log errors
 window.onerror = function(error) {
-    console.error(error);
+    logMessage("error",error);
 }
 
 function logMessage(type,...args){
@@ -41,13 +43,25 @@ window.addEventListener("message", ({ data, source }) => {
 
 function runJs(js){
     //clear dangerous objects and run code
+    let __defaultDrawFunc = draw;
+
     eval(`
         window=null;
         document=null;
         XMLHttpRequest=null;
         XMLHttpRequestUpload=null;
+        runJs=null;
         setup=null;
+        draw=null;
     `+js);
+    try {
+        setup();
+    }catch (e) {
+
+    }
+    loop();
+    __userGeneratedDrawFunc=draw;
+    draw = __defaultDrawFunc;
 }
 
 function canvasTest(){
@@ -78,3 +92,15 @@ function setup(){
     document.getElementById("defaultCanvas0").style.height = "100vmin";
 }
 
+function draw(){
+    window=null;
+    document=null;
+    XMLHttpRequest=null;
+    XMLHttpRequestUpload=null;
+    if(__userGeneratedDrawFunc===undefined||__userGeneratedDrawFunc===null){
+        console.log("no run");
+    }else {
+        console.log("run");
+        __userGeneratedDrawFunc();
+    }
+}
