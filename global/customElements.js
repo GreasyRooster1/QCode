@@ -85,7 +85,7 @@ class ConsoleLogElement extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['type', 'head'];
+        return ['type', 'message'];
     }
 
     connectedCallback() {
@@ -94,6 +94,10 @@ class ConsoleLogElement extends HTMLElement {
 
         this.content = document.createElement("div");
         this.content.classList.add("log-content");
+
+        if (this.attributes.getNamedItem("message") !== null) {
+            this.content.innerHTML = this.attributes.getNamedItem("message").value;
+        }
 
         this.appendChild(this.head);
         this.appendChild(this.content);
@@ -106,6 +110,11 @@ class ConsoleLogElement extends HTMLElement {
         if (oldValue !== newValue) {
             if (name === 'type') {
                 this.classList.add(newValue);
+            } else if (name === 'message') {
+                if (this.content === null) {
+                    return;
+                }
+                this.content.innerHTML = newValue;
             }
         }
     }

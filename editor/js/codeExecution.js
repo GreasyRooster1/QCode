@@ -1,5 +1,6 @@
 const stopElement = document.querySelector('.stop-button');
-const frame = document.getElementById('exec-frame');
+const frame = document.querySelector('#exec-frame');
+const consoleOut = document.querySelector('.console-output-pane');
 let iWindow = null;
 let editor;
 
@@ -29,7 +30,12 @@ function runCode(){
 //when we get a message from the frame
 window.addEventListener("message", (event) => {
     let log = JSON.parse(event.data);
-    console.log(log.type,log.message);
+    console.log("received log from frame: "+log.type+" - "+log.message);
+
+    let logEl = document.createElement("console-log");
+    logEl.setAttribute("type", log.type);
+    logEl.setAttribute("message", log.message);
+    consoleOut.appendChild(logEl);
 });
 
 frame.addEventListener("load", () => {
