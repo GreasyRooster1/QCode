@@ -32,9 +32,21 @@
     margin-top: 10px;
 }
 
+.console-log > .log-head{
+    min-height:20px;
+}
+
+.console-log > .log-content{
+    min-height:15px;
+    padding: 2px 2px 2px 15px;
+}
+
 .console-log.log{
     background: var(--log-log-background);
     border-left: 5px solid var(--log-log-solid);
+}
+.console-log.log > .log-head{
+    border-bottom: 2px solid var(--log-log-background);
 }
 
 .console-log.warn{
