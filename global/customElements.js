@@ -76,5 +76,41 @@ class BrandNav extends HTMLElement {
     }
 }
 
+class ConsoleLogElement extends HTMLElement {
+    head = null;
+    content = null;
+
+    constructor() {
+        super();
+    }
+
+    static get observedAttributes() {
+        return ['type', 'head'];
+    }
+
+    connectedCallback() {
+        this.head = document.createElement("div");
+        this.head.classList.add("log-head");
+
+        this.content = document.createElement("div");
+        this.content.classList.add("log-content");
+
+        this.appendChild(this.head);
+        this.appendChild(this.content);
+
+        this.classList.add("console-log");
+        this.style.display = "block";
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue !== newValue) {
+            if (name === 'type') {
+                this.classList.add(newValue);
+            }
+        }
+    }
+}
+
 customElements.define("editor-step", StepElement);
 customElements.define("brand-nav", BrandNav);
+customElements.define("console-log", ConsoleLogElement);
