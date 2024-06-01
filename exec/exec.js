@@ -4,7 +4,7 @@ const oldLog = console.log;
 const oldWarn = console.warn;
 const oldErr = console.error;
 
-//send data back up to editor
+
 console.log = function (...args) {
     logMessage("log",args);
 }
@@ -15,6 +15,11 @@ console.warn = function (...args) {
 
 console.error = function (...args) {
     logMessage("error",args);
+}
+
+//log errors
+window.onerror = function(error) {
+    console.error(error);
 }
 
 function logMessage(type,...args){
