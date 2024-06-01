@@ -1,4 +1,26 @@
-const test = 1;
+let parent = null;
+
+const oldLog = console.log;
+
+
+//send data back up to editor
+console.log = function (...args) {
+    if (parent === null) {
+        return;
+    }
+    parent.postMessage(args.join(" "));
+}
+
+//receive data
+window.addEventListener("message", ({ data, source }) => {
+    if (parent === null) {
+        parent = source;
+    }
+
+    document.write(data);
+
+    runJs(data);
+});
 
 function runJs(js){
     //clear dangerous objects and run code
@@ -38,3 +60,4 @@ function setup(){
     document.getElementById("defaultCanvas0").style.width = "100vmin";
     document.getElementById("defaultCanvas0").style.height = "100vmin";
 }
+
