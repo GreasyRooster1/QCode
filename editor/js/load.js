@@ -1,4 +1,5 @@
 let projectId=null;
+let hasLesson = false;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 function getProject(){
@@ -7,6 +8,7 @@ function getProject(){
         projectId = searchParams.get("projectId");
         loadProjectCode(projectId);
     }
+    setupPanes(hasLesson);
 }
 
 function loadProjectCode(id){
@@ -16,6 +18,7 @@ function loadProjectCode(id){
         writeToEditor(data.code);
         if(data.lessonId!=="none"){
             loadLesson(data.lessonId);
+            hasLesson = true;
         }
     });
 }
