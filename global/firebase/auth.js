@@ -45,6 +45,9 @@ function handleAuthErrors(error){
     if(errorCode==="auth/invalid-email"){
         return "invalid email";
     }
+    if(errorCode==="auth/email-already-in-use"){
+        return "email already in use";
+    }
     return "ok";
 }
 

@@ -38,7 +38,13 @@ createButton.addEventListener("click", function(){
             createUserData(userCredential.user);
         })
         .catch((error) => {
-            console.log(error.code);
+            let errorType = handleAuthErrors(error);
+            switch (errorType){
+                case "invalid credentials": showAuthError("Email or password is incorrect"); return;
+                case "invalid email": showAuthError("Incorrect email format");return;
+                case "email already in use": showAuthError("That account already exists!");return;
+                case "ok": break;
+            }
         });
 })
 
@@ -46,6 +52,7 @@ function showAuthError(msg){
     authErrorDisplayWrapper.style.visibility = "true"
     authErrorContent.innerHTML = msg;
 }
+
 
 function initReturnAddress(){
     retUrl = new URLSearchParams(window.location.search).get('retURL');
