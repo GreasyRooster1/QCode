@@ -1,7 +1,12 @@
 
-function startP5(draw,setup) {
-    window.setup = setup;
-    window.draw = draw;
+function startP5(drawArg,setupArg) {
+    window.setup = function(){
+        createCanvas(500,500);
+        document.getElementById("defaultCanvas0").style.width = "100vmin";
+        document.getElementById("defaultCanvas0").style.height = "100vmin";
+        setupArg()
+    };
+    window.draw = drawArg;
     new p5();
 }
 

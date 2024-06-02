@@ -47,5 +47,5 @@ function runJs(js){
         XMLHttpRequestUpload=null;
         runJs=null;
     `+js);
-    startP5(draw1,setup1);
+    startP5(draw,setup);
 }
