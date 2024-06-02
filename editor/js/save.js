@@ -1,6 +1,4 @@
 const saveButton = document.querySelector('.save-button');
-let projectId = "test-project-1"
-
 
 saveButton.addEventListener("click", function() {
     saveCode();

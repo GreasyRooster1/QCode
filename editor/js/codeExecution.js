@@ -5,12 +5,7 @@ const frame = document.querySelector('#exec-frame');
 const consoleOut = document.querySelector('.console-output-pane');
 const logHeads = {log:"Info",warn:"Warning",error:"Error"};
 let iWindow = null;
-let editor;
 let runningCode = false;
-
-onload = function () {
-    editor = window.__exportedEditorContext;
-}
 
 runButton.addEventListener("click", function() {
     resetAllOutputs()
@@ -30,7 +25,7 @@ function resetAllOutputs(){
 }
 
 function getCodeFromEditor(){
-    return editor.state.doc.toString();
+    return window.editor.state.doc.toString();
 }
 
 function runCode(){

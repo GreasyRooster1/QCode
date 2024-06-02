@@ -1,16 +1,27 @@
-let lessonId=null;
+let projectId=null;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
-function getLesson(){
+function getProject(){
     const searchParams = new URLSearchParams(window.location.search);
-    if(searchParams.has("lessonId")){
-        lessonId = searchParams.get("lessonId");
-        loadLesson();
+    if(searchParams.has("projectId")){
+        projectId = searchParams.get("projectId");
+        loadProjectCode(projectId);
     }
 }
 
-function loadLesson(){
-    database.ref("lessons/"+lessonId).on('value', (snapshot) => {
+function loadProjectCode(id){
+    user = getStoredUser();
+    database.ref("userdata/"+user.uid+"/projects/"+projectId).on('value', (snapshot) => {
+        const data = snapshot.val();
+        editor.getDoc().setValue(data.code);
+        if(data.lessonId!=="none"){
+            loadLesson(data.lessonId);
+        }
+    });
+}
+
+function loadLesson(id){
+    database.ref("lessons/"+id).on('value', (snapshot) => {
         const data = snapshot.val();
         console.log(data)
         scrollableSteps.innerHTML = "";
@@ -28,4 +39,4 @@ function populateSteps(data){
     }
 }
 
-getLesson();
+getProject()
