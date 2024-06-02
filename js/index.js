@@ -2,18 +2,7 @@ const badgeDisplay = document.querySelector(".badges-display");
 let user = getStoredUser();
 
 function init(){
-    checkUserDataExists();
     loadBadges();
-}
-
-function checkUserDataExists(){
-    let userDataFolder = database.ref('userdata/');
-
-    try{
-        userDataFolder.get(user.uid);
-    }catch(e){
-        console.log("user does not exist!")
-    }
 }
 
 function loadBadges(){
