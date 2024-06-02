@@ -4,9 +4,6 @@ const oldLog = console.log;
 const oldWarn = console.warn;
 const oldErr = console.error;
 
-let __userGeneratedDrawFunc;
-
-
 console.log = function (...args) {
     logMessage("log",args);
 }
@@ -32,20 +29,6 @@ function logMessage(type,...args){
     parent.postMessage(JSON.stringify(log));
 }
 
-function setup(){
-    createCanvas(500,500);
-
-    document.getElementById("defaultCanvas0").style.width = "100vmin";
-    document.getElementById("defaultCanvas0").style.height = "100vmin";
-}
-
-function drawHandler(){
-    if(__userGeneratedDrawFunc!==null&&__userGeneratedDrawFunc!==undefined){
-        __userGeneratedDrawFunc()
-        debugger;
-    }
-    window.requestAnimationFrame(drawHandler);
-}
 
 window.addEventListener("message", ({ data, source }) => {
     if (parent === null) {
@@ -57,21 +40,17 @@ window.addEventListener("message", ({ data, source }) => {
 
 function runJs(js){
     //clear dangerous objects and run code
+    js=js.replace("function draw(){","function __userGeneratedDrawHandle(){")
     eval(`
         window=null;
         document=null;
         XMLHttpRequest=null;
         XMLHttpRequestUpload=null;
         runJs=null;
-        setup=null;
     `+js);
-    try {
-        setup();
-    }catch (e) {}
-    try{
-        __userGeneratedDrawFunc = draw;
-        drawHandler();
-    }catch(e) {}
+    window.__userGeneratedDrawFunc = __userGeneratedDrawHandle;
+    console.log(draw);
+    console.log(js);
 }
 
 function canvasTest(){
@@ -94,3 +73,26 @@ function canvasTest(){
     textAlign(CENTER);
     text("Welcome back",250,250);
 }
+
+function setup(){
+    createCanvas(500,500);
+
+    document.getElementById("defaultCanvas0").style.width = "100vmin";
+    document.getElementById("defaultCanvas0").style.height = "100vmin";
+
+}
+
+function draw(){
+    fill(frameCount%255)
+    rect(0,100,100,100);
+    if(window.__userGeneratedDrawFunc!==null) {
+        window.__userGeneratedDrawFunc.apply();
+    }
+    console.log(window.__userGeneratedDrawFunc)
+}
+
+function __userGeneratedDrawFunc(){
+
+}
+
+window.__userGeneratedDrawFunc = __userGeneratedDrawFunc;
