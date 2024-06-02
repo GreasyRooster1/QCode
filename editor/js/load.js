@@ -8,7 +8,6 @@ function getProject(){
         projectId = searchParams.get("projectId");
         loadProjectCode(projectId);
     }
-    setupPanes(hasLesson);
 }
 
 function loadProjectCode(id){
@@ -20,6 +19,7 @@ function loadProjectCode(id){
             loadLesson(data.lessonId);
             hasLesson = true;
         }
+        setupPanes(hasLesson);
     });
 }
 
