@@ -14,19 +14,21 @@ function canvasTest(){
     background(0);
     stroke(255);
 
-    fill(0,0,0);
-    rect(0,0,50,50);
+    for (let i = 0; i < 500; i+=10) {
+        let timeRatio = (frameCount % 500-i) / 490;
+        let bRat = i/500;
 
-    fill(255,0,0);
-    rect(450,0,50,50);
+        fill(timeRatio * 255, 0, bRat*255);
+        rect(timeRatio * 490, 0, 10, 10);
 
-    fill(255,255,0);
-    rect(450,450,50,50);
-
-    fill(0,255,0);
-    rect(0,450,50,50);
+        fill(0, timeRatio * 255, bRat*255);
+        rect(0, timeRatio * 490, 10, 10);
+    }
 
     fill(255);
+
+    ellipse(mouseX,mouseY,10,10);
+
     textAlign(CENTER);
     text("Welcome back",250,250);
 }
