@@ -63,7 +63,8 @@ function createUserData(user) {
     database.ref('userdata/' + user.uid).set({
         badges:{
             0:{id:"user"}
-        }
+        },
+        projects:{}
     });
 }
 
