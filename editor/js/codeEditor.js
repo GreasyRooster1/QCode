@@ -6,7 +6,13 @@ import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
 const linterExtension = linter(javascriptLanguage);
 
 const editorView = new EditorView({
-    doc: "console.log('hello')\n",
+    doc: "function setup(){\n" +
+        "  //setup code goes here\n" +
+        "}\n" +
+        "\n" +
+        "function draw(){\n" +
+        "  //drawing code goes here\n" +
+        "}",
     extensions: [basicSetup, javascript(), linterExtension],
     parent: document.querySelector(".code-editor"),
 });
