@@ -12,7 +12,7 @@ onload = function () {
 }
 
 runButton.addEventListener("click", function() {
-    resetAllOutputs()
+    //resetAllOutputs()
     runCode();
 });
 

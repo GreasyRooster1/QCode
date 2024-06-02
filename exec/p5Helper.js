@@ -1,5 +1,5 @@
 
-function startP5() {
+function startP5(draw,setup) {
     window.setup = setup;
     window.draw = draw;
     new p5();
@@ -25,26 +25,3 @@ function canvasTest(){
     textAlign(CENTER);
     text("Welcome back",250,250);
 }
-
-function setup(){
-    createCanvas(500,500);
-
-    document.getElementById("defaultCanvas0").style.width = "100vmin";
-    document.getElementById("defaultCanvas0").style.height = "100vmin";
-
-}
-
-function draw(){
-    fill(frameCount%255)
-    rect(0,100,100,100);
-    if(window.__userGeneratedDrawFunc!==null) {
-        window.__userGeneratedDrawFunc.apply();
-    }
-    console.log(window.__userGeneratedDrawFunc)
-}
-
-function __userGeneratedDrawFunc(){
-
-}
-
-window.__userGeneratedDrawFunc = __userGeneratedDrawFunc;

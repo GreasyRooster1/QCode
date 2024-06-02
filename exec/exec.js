@@ -40,7 +40,6 @@ window.addEventListener("message", ({ data, source }) => {
 
 function runJs(js){
     //clear dangerous objects and run code
-    js=js.replace("function draw(){","function __userGeneratedDrawHandle(){")
     eval(`
         window=null;
         document=null;
@@ -48,4 +47,5 @@ function runJs(js){
         XMLHttpRequestUpload=null;
         runJs=null;
     `+js);
+    startP5(draw1,setup1);
 }
