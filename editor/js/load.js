@@ -13,7 +13,7 @@ function loadProjectCode(id){
     user = getStoredUser();
     database.ref("userdata/"+user.uid+"/projects/"+projectId).on('value', (snapshot) => {
         const data = snapshot.val();
-        editor.getDoc().setValue(data.code);
+        writeToEditor(data.code);
         if(data.lessonId!=="none"){
             loadLesson(data.lessonId);
         }
@@ -37,6 +37,12 @@ function populateSteps(data){
         stepEl.innerHTML = step.content;
         scrollableSteps.appendChild(stepEl);
     }
+}
+
+function writeToEditor(data){
+    const transaction = editor.state.update({changes: {from: 0, to: editor.state.doc.length, insert: data}})
+    const update = editor.state.update(transaction);
+    editor.update([update]);
 }
 
 getProject()
