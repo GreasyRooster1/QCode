@@ -64,3 +64,5 @@ frame.addEventListener("load", () => {
         runCode();
     }
 });
+
+window.getCodeFromEditor = getCodeFromEditor;
