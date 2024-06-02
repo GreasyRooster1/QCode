@@ -6,13 +6,15 @@ const consoleOut = document.querySelector('.console-output-pane');
 const logHeads = {log:"Info",warn:"Warning",error:"Error"};
 let iWindow = null;
 let editor;
+let runningCode = false;
 
 onload = function () {
     editor = window.__exportedEditorContext;
 }
 
 runButton.addEventListener("click", function() {
-    //resetAllOutputs()
+    resetAllOutputs()
+    runningCode = true;
     runCode();
 });
 
@@ -21,8 +23,10 @@ stopButton.addEventListener("click", function() {
 });
 
 function resetAllOutputs(){
-    frame.contentWindow.location.reload();
     consoleOut.innerHTML = "";
+    frame.contentWindow.location.reload();
+    iWindow = null;
+    runningCode = false;
 }
 
 function getCodeFromEditor(){
@@ -40,6 +44,7 @@ function runCode(){
     iWindow.postMessage(code);
 }
 
+
 //when we get a message from the frame
 window.addEventListener("message", (event) => {
     let log = JSON.parse(event.data);
@@ -55,4 +60,7 @@ window.addEventListener("message", (event) => {
 frame.addEventListener("load", () => {
     iWindow = frame.contentWindow;
     console.log(iWindow);
+    if(runningCode){
+        runCode();
+    }
 });
