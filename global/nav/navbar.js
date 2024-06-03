@@ -9,7 +9,11 @@ let navbarVisible = true;
 let accountOptionsVisible = false;
 
 function initNavbar(){
-    userLink.innerHTML = extractUsernameFromEmail(getStoredUser().email);
+    database.ref("userdata/"+getStoredUser().uid).child("username").once('value').then((snapshot) => {
+        let username = snapshot.val();
+        let formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
+        userLink.innerHTML = formattedUsername;
+    });
 }
 
 navbarVisibilityButton.addEventListener("click",function (){
