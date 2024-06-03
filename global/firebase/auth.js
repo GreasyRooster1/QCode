@@ -72,3 +72,14 @@ function getStoredUser(){
 function isLoggedIn(){
     return sessionStorage.getItem("isLoggedIn")==="true";
 }
+
+
+//firebase auth requires email, but users should log in and create an account based on a username
+//i am aware this is bad
+function extractEmailFromUsername(username){
+    return username+"@thisisnotanemail.noreply.com"
+}
+
+function extractUsernameFromEmail(email){
+    return email.replace("@thisisnotanemail.noreply.com","");
+}

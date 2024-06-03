@@ -1,18 +1,16 @@
 const loginButton = document.querySelector(".login-button");
 const createButton = document.querySelector(".create-button");
-const emailInput = document.querySelector(".email-input");
+const usernameInput = document.querySelector(".username-input");
 const passwordInput = document.querySelector(".password-input");
 
 const authErrorDisplayWrapper = document.querySelector(".auth-error");
 const authErrorContent = document.querySelector(".auth-error-message");
 
-let retUrl;
-
 loginButton.addEventListener("click", function(){
-    let email = emailInput.value;
+    let username = usernameInput.value;
     let password = passwordInput.value;
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth().signInWithEmailAndPassword(extractEmailFromUsername(username), password)
         .then((userCredential) => {
             console.log("logged in user");
             storeUser(userCredential.user);
@@ -29,9 +27,9 @@ loginButton.addEventListener("click", function(){
 });
 
 createButton.addEventListener("click", function(){
-    let email = emailInput.value;
+    let username = usernameInput.value;
     let password = passwordInput.value;
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    firebase.auth().createUserWithEmailAndPassword(extractEmailFromUsername(username), password)
         .then((userCredential) => {
             console.log("created user");
             storeUser(userCredential.user);
@@ -53,12 +51,6 @@ function showAuthError(msg){
     authErrorContent.innerHTML = msg;
 }
 
-
-function initReturnAddress(){
-    retUrl = new URLSearchParams(window.location.search).get('retURL');
-    console.log(retUrl);
-}
-
 function createUserData(user) {
     database.ref('userdata/' + user.uid).set({
         badges:{
@@ -67,5 +59,3 @@ function createUserData(user) {
         projects:{}
     });
 }
-
-initReturnAddress();

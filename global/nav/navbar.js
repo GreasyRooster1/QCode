@@ -9,7 +9,7 @@ let navbarVisible = true;
 let accountOptionsVisible = false;
 
 function initNavbar(){
-    userLink.innerHTML = getStoredUser().email;
+    userLink.innerHTML = extractUsernameFromEmail(getStoredUser().email);
 }
 
 navbarVisibilityButton.addEventListener("click",function (){
