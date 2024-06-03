@@ -32,6 +32,9 @@
     --log-error-solid: rgb(255, 45, 45);
     --log-warn-solid: rgb(220, 188, 13);
     --log-log-solid: rgb(120, 119, 118);
+
+    --save-alert-background: #cfe6f8;
+    --save-alert-accent: #4094d6;
 }
 
 body{

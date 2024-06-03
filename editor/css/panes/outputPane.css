@@ -89,3 +89,31 @@
 .console-log.error > .log-head{
     border-bottom: 2px solid var(--log-error-background);
 }
+
+.save-alert{
+    position: absolute;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width:30%;
+    height:20%;
+
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+    background: var(--save-alert-background);
+
+    border: 7px solid var(--save-alert-accent);
+    border-radius: 20px;
+}
+
+.save-alert-header{
+    color:var(--save-alert-accent);
+
+    font-weight: bold;
+    font-size: 70px;
+    text-align: center;
+}

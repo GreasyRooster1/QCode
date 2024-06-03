@@ -19,6 +19,10 @@
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
     <script src="../global/firebase/init.js" defer></script>
     <script src="../global/firebase/auth.js" defer></script>
     <script src="../global/firebase/database.js" defer></script>
@@ -66,6 +70,11 @@
             </div>
             <div class="output-panes-wrapper">
                 <div class="canvas-output-pane">
+                    <div class="save-alert">
+                        <div class="save-alert-header">
+                            Saved!
+                        </div>
+                    </div>
                     <iframe class="canvas-output-iframe" src="../exec/exec.html" id="exec-frame"></iframe>
                 </div>
                 <div class="console-output-pane"></div>
