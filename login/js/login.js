@@ -45,6 +45,7 @@ function createUserData(user) {
         badges:{
             0:{id:"user"}
         },
-        projects:{}
+        projects:{},
+        username:extractEmailFromUsername(user.email),
     });
 }
