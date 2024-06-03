@@ -1,8 +1,10 @@
 const badgeDisplay = document.querySelector(".badges-display");
+const projectsDisplay = document.querySelector(".projects-display");
 let user = getStoredUser();
 
 function init(){
     loadBadges();
+    loadProjects();
 }
 
 function loadBadges(){
@@ -52,9 +54,19 @@ function loadProjects(){
         const data = snapshot.val();
 
         for(const [projectId, projectData] of Object.entries(data)){
-            console.log(projectId, projectData.name);
+            console.log("loaded project "+projectId);
+            createProjectElement(projectId,projectData);
         }
     });
+}
+
+
+//todo: style this
+function createProjectElement(projectId,projectData){
+    let el = document.createElement("a");
+    el.setAttribute("href","editor/editor.html?projectId="+projectId);
+    el.innerHTML = projectData.name;
+    projectsDisplay.appendChild(el);
 }
 
 init();
