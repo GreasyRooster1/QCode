@@ -24,6 +24,7 @@ brand-nav{
     margin:3px;
     font-weight: 800;
     color:var(--navbar-shrink-color);
+    z-index: 1000;
 }
 
 .username-link{
