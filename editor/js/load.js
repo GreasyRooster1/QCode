@@ -12,7 +12,7 @@ function getProject(){
 
 function loadProjectCode(id){
     user = getStoredUser();
-    database.ref("userdata/"+user.uid+"/projects/"+projectId).on('value', (snapshot) => {
+    database.ref("userdata/"+user.uid+"/projects/"+projectId).once('value').then((snapshot) => {
         const data = snapshot.val();
         writeToEditor(data.code);
         if(data.lessonId!=="none"){
@@ -24,7 +24,7 @@ function loadProjectCode(id){
 }
 
 function loadLesson(id){
-    database.ref("lessons/"+id).on('value', (snapshot) => {
+    database.ref("lessons/"+id).once('value').then((snapshot) => {
         const data = snapshot.val();
         console.log(data)
         scrollableSteps.innerHTML = "";
