@@ -17,12 +17,7 @@ loginButton.addEventListener("click", function(){
             window.location.replace("../");
         })
         .catch((error) => {
-            let errorType = handleAuthErrors(error);
-            switch (errorType){
-                case "invalid credentials": showAuthError("Email or password is incorrect"); return;
-                case "invalid email": showAuthError("Incorrect email format");return;
-                case "ok": break;
-            }
+            displayAuthErrors(handleAuthErrors(error));
         });
 });
 
@@ -36,13 +31,7 @@ createButton.addEventListener("click", function(){
             createUserData(userCredential.user);
         })
         .catch((error) => {
-            let errorType = handleAuthErrors(error);
-            switch (errorType){
-                case "invalid credentials": showAuthError("Email or password is incorrect"); return;
-                case "invalid email": showAuthError("Incorrect email format");return;
-                case "email already in use": showAuthError("That account already exists!");return;
-                case "ok": break;
-            }
+            displayAuthErrors(handleAuthErrors(error));
         });
 })
 

@@ -51,6 +51,15 @@ function handleAuthErrors(error){
     return "ok";
 }
 
+function displayAuthErrors(errorType){
+    switch (errorType){
+        case "invalid credentials": showAuthError("Username or password is incorrect"); return;
+        case "invalid email": showAuthError("That username is not valid");return;
+        case "email already in use": showAuthError("That account already exists!");return;
+        case "ok": break;
+    }
+}
+
 function storeUser(user){
     sessionStorage.setItem("isLoggedIn", "true");
     sessionStorage.setItem("currentUser",JSON.stringify(user));
