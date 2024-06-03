@@ -46,6 +46,6 @@ function createUserData(user) {
             0:{id:"user"}
         },
         projects:{},
-        username:extractEmailFromUsername(user.email),
+        username:extractUsernameFromEmail(user.email),
     });
 }
