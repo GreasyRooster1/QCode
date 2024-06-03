@@ -46,4 +46,15 @@ function createBadgeElementFromSnap(snap){
     badgeDisplay.appendChild(badgeElement)
 }
 
+function loadProjects(){
+    let projectsRef = database.ref('userdata/'+user.uid+"/projects");
+    projectsRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+
+        for(const [projectId, projectData] of Object.entries(data)){
+            console.log(projectId, projectData.name);
+        }
+    });
+}
+
 init();
