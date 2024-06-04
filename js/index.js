@@ -61,11 +61,10 @@ function loadProjects(){
 }
 
 
-//todo: style this
 function createProjectElement(projectId,projectData){
-    let el = document.createElement("a");
+    let el = document.createElement("project-link");
     el.setAttribute("href","editor/editor.html?projectId="+projectId);
-    el.innerHTML = projectData.name;
+    el.setAttribute("name",projectData.name);
     projectsDisplay.appendChild(el);
 }
 
