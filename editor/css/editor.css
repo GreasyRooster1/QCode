@@ -1,4 +1,6 @@
 :root{
+    --default-font:"JetBrians Mono";
+
     --pane-background: #bcbcbc;
 
     --gutter-accent: #b3b3b3;
@@ -35,6 +37,10 @@
 
     --save-alert-background: #cfe6f8;
     --save-alert-accent: #4094d6;
+}
+
+*{
+    font-family: var(--default-font), monospace;
 }
 
 body{
