@@ -15,3 +15,12 @@
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }
+
+.esporterz-logo-text{
+    font-family:'Esporterz Logo';
+}
+
+@font-face {
+    font-family: 'Esporterz Logo';
+    src: url('../font/Esporterzlogo1-Regular.ttf');
+}
