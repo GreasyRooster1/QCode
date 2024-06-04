@@ -1,11 +1,17 @@
 let projectId=null;
+let userUid = null;
 let hasLesson = false;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
-function getProject(){
+function getUrlData(){
     const searchParams = new URLSearchParams(window.location.search);
+    if(searchParams.has("uid")){
+        userUid = searchParams.get("uid");
+    }
     if(searchParams.has("projectId")){
         projectId = searchParams.get("projectId");
+    }
+    if(userUid===getStoredUser().uid){
         loadProjectCode(projectId);
     }
 }
@@ -48,4 +54,4 @@ function writeToEditor(data){
     editor.update([update]);
 }
 
-getProject()
+getUrlData()
