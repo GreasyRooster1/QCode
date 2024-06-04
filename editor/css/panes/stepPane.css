@@ -78,10 +78,21 @@
 .step-head > .type-display{
     background:var(--step-type-background);
     display: block;
+
     height: fit-content;
     margin-left: auto;
     border-radius: 5px;
     font-size:0.8em;
     padding:3px;
     color:white;
+}
+
+.step-head > .step-count{
+    display: block;
+    height: fit-content;
+    width:fit-content;
+    text-wrap: none;
+    margin-left: auto;
+    font-size:0.8em;
+    padding:3px;
 }

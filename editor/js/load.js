@@ -43,12 +43,17 @@ function loadLesson(id){
 }
 
 function populateSteps(data){
+    console.log(data);
+    let count = 0;
     for (let step of data.steps) {
         let stepEl = document.createElement("editor-step");
         stepEl.setAttribute("head", step.head);
         stepEl.setAttribute("type", step.type);
+        stepEl.setAttribute("count", count+1);
         stepEl.innerHTML = step.content;
         scrollableSteps.appendChild(stepEl);
+
+        count++;
     }
     setupPanes(true);
 }
