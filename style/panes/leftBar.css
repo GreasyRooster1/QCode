@@ -5,7 +5,7 @@
 }
 
 .projects-title{
-    margin: 7px 10px 10px;
+    margin: 10px 7px 7px;
     font-size:30px;
 }
 
@@ -23,4 +23,18 @@
     color: var(--project-link-text);
     text-decoration: none;
     font-weight: bold;
+}
+
+.new-project-button{
+    background: var(--new-button-background);
+    border-radius: 5px;
+
+    margin: 10px 7px 7px;
+    padding:2px;
+
+    text-align: center;
+    font-weight: 600;
+    font-size:17px;
+
+    color: var(--new-button-text-color);
 }

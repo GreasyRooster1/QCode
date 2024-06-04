@@ -8,7 +8,10 @@
     --footer-text-color: #717171;
 
     --project-link-background: #afafaf;
-    --project-link-text: #191919
+    --project-link-text: #191919;
+
+    --new-button-background: #0c8ad3;
+    --new-button-text-color: #dde5e8;
 }
 
 *{
