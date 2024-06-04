@@ -23,6 +23,20 @@ function loadBadges(){
     });
 }
 
+function loadProjects(){
+    let projectsRef = database.ref('userdata/'+user.uid+"/projects");
+    projectsRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        clearProjects();
+
+        for(const [projectId, projectData] of Object.entries(data)){
+            console.log("loaded project "+projectId);
+            createProjectElement(projectId,projectData);
+        }
+    });
+}
+
+
 function createBadgeElementFromSnap(snap){
     let badgeProperties = snap.val();
 
@@ -48,20 +62,6 @@ function createBadgeElementFromSnap(snap){
 
     badgeDisplay.appendChild(badgeElement)
 }
-
-function loadProjects(){
-    let projectsRef = database.ref('userdata/'+user.uid+"/projects");
-    projectsRef.on('value', (snapshot) => {
-        const data = snapshot.val();
-        clearProjects();
-
-        for(const [projectId, projectData] of Object.entries(data)){
-            console.log("loaded project "+projectId);
-            createProjectElement(projectId,projectData);
-        }
-    });
-}
-
 
 function createProjectElement(projectId,projectData){
     let el = document.createElement("project-link");
