@@ -23,18 +23,22 @@ function loadProjectCode(id){
         writeToEditor(data.code);
         if(data.lessonId!=="none"){
             loadLesson(data.lessonId);
-            hasLesson = true;
+        }else{
+            setupPanes(false);
         }
-        setupPanes(hasLesson);
     });
 }
 
 function loadLesson(id){
     database.ref("lessons/"+id).once('value').then((snapshot) => {
         const data = snapshot.val();
-        console.log(data)
-        scrollableSteps.innerHTML = "";
-        populateSteps(data)
+        if(data!==null) {
+            scrollableSteps.innerHTML = "";
+            populateSteps(data)
+        }else{
+            console.log("invalid lesson identifier!");
+            setupPanes(false);
+        }
     });
 }
 
@@ -46,6 +50,7 @@ function populateSteps(data){
         stepEl.innerHTML = step.content;
         scrollableSteps.appendChild(stepEl);
     }
+    setupPanes(true);
 }
 
 function writeToEditor(data){

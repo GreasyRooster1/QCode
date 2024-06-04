@@ -13,13 +13,7 @@ const customTheme = EditorView.theme({
 })
 
 const editorView = new EditorView({
-    doc: "function setup(){\n" +
-        "  //setup code goes here\n" +
-        "}\n" +
-        "\n" +
-        "function draw(){\n" +
-        "  //drawing code goes here\n" +
-        "}",
+    doc: "",
     extensions: [
         basicSetup,
         javascript(),
