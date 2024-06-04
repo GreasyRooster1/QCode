@@ -1,7 +1,9 @@
 class StepElement extends HTMLElement {
     head = null;
+    headContent = null;
     content = null;
     contentWrapper = null;
+    typeDisplay = null;
 
     constructor() {
         super();
@@ -15,6 +17,14 @@ class StepElement extends HTMLElement {
         this.head = document.createElement("div");
         this.head.classList.add("step-head");
 
+        this.typeDisplay = document.createElement("div");
+        this.typeDisplay.classList.add("type-display");
+
+        this.headContent = document.createElement("div");
+        this.headContent.classList.add("step-head-content");
+
+        this.head.appendChild(this.headContent);
+        this.head.appendChild(this.typeDisplay);
 
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
@@ -28,7 +38,11 @@ class StepElement extends HTMLElement {
         this.innerHTML = "";
 
         if (this.attributes.getNamedItem("head") !== null) {
-            this.head.innerHTML = this.attributes.getNamedItem("head").value+" - "+this.getTypeDisplayString();
+            this.headContent.innerHTML = this.attributes.getNamedItem("head").value;
+        }
+
+        if (this.attributes.getNamedItem("type") !== null) {
+            this.typeDisplay.innerHTML = this.attributes.getNamedItem("type").value;
         }
 
         this.appendChild(this.head);
@@ -47,11 +61,15 @@ class StepElement extends HTMLElement {
         if (oldValue !== newValue) {
             if (name === 'type') {
                 this.classList.add(newValue);
+                if (this.typeDisplay === null) {
+                    return;
+                }
+                this.typeDisplay = this.getTypeDisplayString();
             } else if (name === 'head') {
                 if (this.head === null) {
                     return;
                 }
-                this.head.innerHTML = newValue+" - "+this.getTypeDisplayString();
+                this.head.innerHTML = newValue;
             }
         }
     }
