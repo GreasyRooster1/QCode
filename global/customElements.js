@@ -28,7 +28,7 @@ class StepElement extends HTMLElement {
         this.innerHTML = "";
 
         if (this.attributes.getNamedItem("head") !== null) {
-            this.head.innerHTML = this.attributes.getNamedItem("head").value;
+            this.head.innerHTML = this.attributes.getNamedItem("head").value+" - "+this.getTypeDisplayString();
         }
 
         this.appendChild(this.head);
@@ -36,6 +36,11 @@ class StepElement extends HTMLElement {
 
         this.classList.add("step");
         this.style.display = "block";
+    }
+
+    getTypeDisplayString(){
+        let typeStr = this.getAttribute("type");
+        return typeStr.charAt(0).toUpperCase() + typeStr.slice(1);
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
@@ -46,7 +51,7 @@ class StepElement extends HTMLElement {
                 if (this.head === null) {
                     return;
                 }
-                this.head.innerHTML = newValue;
+                this.head.innerHTML = newValue+" - "+this.getTypeDisplayString();
             }
         }
     }

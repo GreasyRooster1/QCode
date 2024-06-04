@@ -36,8 +36,10 @@
 
 .step > .step-head{
     background: var(--step-head-default);
-    height:10%;
+    min-height:10%;
+    max-height:20%;
     padding:3%;
+    font-size:1.1em;
 }
 .step > .step-content-wrapper{
     width:100%;
