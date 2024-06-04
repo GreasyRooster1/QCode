@@ -10,6 +10,6 @@
     scrollbar-width: none;
 }
 
-.scrollable-steps::-webkit-scrollbar {
+.no-scrollbar::-webkit-scrollbar {
     display: none;
 }
