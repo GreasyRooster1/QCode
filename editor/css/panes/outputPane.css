@@ -108,6 +108,8 @@
 
     border: 7px solid var(--save-alert-accent);
     border-radius: 20px;
+
+    opacity: 0;
 }
 
 .save-alert-header{
