@@ -77,7 +77,8 @@
 
 .step-head > .type-display{
     background:var(--step-type-background);
-    display: inline;
+    display: block;
+    height: fit-content;
     margin-left: auto;
     border-radius: 5px;
     font-size:0.8em;
