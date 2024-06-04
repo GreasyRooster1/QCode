@@ -4,6 +4,13 @@
     --project-section-background: #bdbdbd;
     --right-sections-background: #b7b7b7;
     --footer-background: #c5c5c5;
+
+    --project-link-background: #a8a8a8;
+    --project-link-text: #191919
+}
+
+*{
+    font-family: var(--default-font), monospace;
 }
 
 body{

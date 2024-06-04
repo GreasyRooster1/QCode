@@ -1,4 +1,6 @@
 :root{
+    --default-font:"JetBrians Mono";
+
     --brand-blue:blue;
     --brand-green: #00ff00;
     --brand-black:black;

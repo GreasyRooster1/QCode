@@ -1,6 +1,21 @@
 .projects{
     min-height: 60%;
     background: var(--project-section-background);
+    padding-top:3px
 }
 
-.project-link
+.project-link{
+    display: block;
+    margin: 10px 7px 7px;
+}
+
+.project-link > a{
+    padding: 3px;
+
+    background: var(--project-link-background);
+    border-radius: 5px;
+
+    color: var(--project-link-text);
+    text-decoration: none;
+    font-weight: bold;
+}
