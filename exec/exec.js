@@ -38,6 +38,10 @@ window.addEventListener("message", ({ data, source }) => {
     runJs(data);
 });
 
+document.addEventListener('contextmenu', event => {
+    event.preventDefault();
+});
+
 function runJs(js){
     //clear dangerous objects and run code
     eval(`
