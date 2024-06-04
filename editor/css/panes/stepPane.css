@@ -40,6 +40,7 @@
     max-height:20%;
     padding:3%;
     font-size:1.1em;
+    display:flex;
 }
 .step > .step-content-wrapper{
     width:100%;
@@ -67,4 +68,18 @@
 }
 .step.other > .step-head{
     background: var(--step-other);
+}
+
+.step-head > .step-head-content{
+    display:inline;
+}
+
+.step-head > .type-display{
+    background:var(--step-type-background);
+    display: inline;
+    margin-left: auto;
+    border-radius: 5px;
+    font-size:0.8em;
+    padding:3px;
+    color:white;
 }
