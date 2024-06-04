@@ -4,6 +4,11 @@
     padding-top:3px
 }
 
+.projects-title{
+    margin: 7px 10px 10px;
+    font-size:30px;
+}
+
 .project-link{
     display: block;
     margin: 10px 7px 7px;
