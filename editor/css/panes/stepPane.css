@@ -72,6 +72,7 @@
 
 .step-head > .step-head-content{
     display:inline;
+    text-wrap: avoid;
 }
 
 .step-head > .type-display{
