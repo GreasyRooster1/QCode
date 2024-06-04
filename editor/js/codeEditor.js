@@ -8,7 +8,7 @@ const linterExtension = linter(javascriptLanguage);
 const customTheme = EditorView.theme({
     '&': {
         font:"'JetBrains Mono', monospace",
-        fontSize: "16px",
+        fontSize: "15px",
     }
 })
 
