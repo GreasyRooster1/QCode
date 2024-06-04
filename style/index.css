@@ -3,7 +3,9 @@
     --bar-background: #d9d9d9;
     --project-section-background: #bdbdbd;
     --right-sections-background: #b7b7b7;
+
     --footer-background: #c5c5c5;
+    --footer-text-color: #717171;
 
     --project-link-background: #a8a8a8;
     --project-link-text: #191919
@@ -51,6 +53,38 @@ body{
 }
 
 .footer{
+    display:flex;
+
+    align-items: center;
+    justify-content: center;
+
     height:25vh;
     background:var(--footer-background);
 }
+
+.footer-content{
+    color:var(--footer-text-color);
+}
+
+.footer-content .title{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.footer-content .links{
+    display: flex;
+    justify-content: center;
+
+}
+
+.footer-content a{
+    color: var(--footer-text-color);
+    text-decoration: none;
+    margin: 10px;
+}
+
+.footer-content a:hover{
+    color: var(--footer-text-color);
+    text-decoration: underline;
+}
+
