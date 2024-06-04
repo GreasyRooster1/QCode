@@ -11,6 +11,7 @@ function loadBadges(){
     let badgesRef = database.ref('userdata/'+user.uid+"/badges");
     badgesRef.on('value', (snapshot) => {
         const data = snapshot.val();
+        clearBadges();
 
         badgeDisplay.innerHTML = "";
         for(let badge of data){
@@ -52,6 +53,7 @@ function loadProjects(){
     let projectsRef = database.ref('userdata/'+user.uid+"/projects");
     projectsRef.on('value', (snapshot) => {
         const data = snapshot.val();
+        clearProjects();
 
         for(const [projectId, projectData] of Object.entries(data)){
             console.log("loaded project "+projectId);
@@ -66,6 +68,14 @@ function createProjectElement(projectId,projectData){
     el.setAttribute("href","editor/editor.html?projectId="+projectId);
     el.setAttribute("name",projectData.name);
     projectsDisplay.appendChild(el);
+}
+
+function clearProjects(){
+    projectsDisplay.innerHTML = "";
+}
+
+function clearBadges(){
+    badgeDisplay.innerHTML = "";
 }
 
 init();
