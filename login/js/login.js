@@ -55,7 +55,7 @@ function createUserData(user) {
 function getReturnURL(){
     const searchParams = new URLSearchParams(window.location.search);
     if(searchParams.has("retUrl")) {
-        returnURL = searchParams.get("retUrl");
+        returnURL = atob(searchParams.get("retUrl"));
     }
 }
 
