@@ -50,12 +50,20 @@ function populateSteps(data){
         stepEl.setAttribute("head", step.head);
         stepEl.setAttribute("type", step.type);
         stepEl.setAttribute("count", count+1);
+        stepEl.setAttribute("image", step.image);
         stepEl.innerHTML = step.content;
         scrollableSteps.appendChild(stepEl);
 
         count++;
     }
+    createBufferSpace()
     setupPanes(true);
+}
+
+function createBufferSpace(){
+    let buffer = document.createElement("div");
+    buffer.classList.add("buffer");
+    scrollableSteps.appendChild(buffer);
 }
 
 function writeToEditor(data){
