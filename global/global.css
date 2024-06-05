@@ -5,6 +5,12 @@
     --brand-green: #00ff00;
     --brand-black:black;
     --brand-gray:gray;
+
+    --common-rarity-color: #484848;
+    --uncommon-rarity-color: #0091e1;
+    --rare-rarity-color: #9a25fa;
+    --legendary-rarity-color: #fac825;
+    --mythic-rarity-color: #36ffe1;
 }
 
 .no-scrollbar{
