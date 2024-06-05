@@ -65,7 +65,7 @@ function createBadgeElementFromSnap(snap){
 
 function createProjectElement(projectId,projectData){
     let el = document.createElement("project-link");
-    el.setAttribute("href","editor/editor.html?projectId="+projectId);
+    el.setAttribute("href","editor/editor.html?projectId="+projectId+"&uid="+getStoredUser().uid);
     el.setAttribute("name",projectData.name);
     projectsDisplay.appendChild(el);
 }

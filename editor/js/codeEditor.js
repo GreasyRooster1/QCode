@@ -8,18 +8,12 @@ const linterExtension = linter(javascriptLanguage);
 const customTheme = EditorView.theme({
     '&': {
         font:"'JetBrains Mono', monospace",
-        fontSize: "16px",
+        fontSize: "15px",
     }
 })
 
 const editorView = new EditorView({
-    doc: "function setup(){\n" +
-        "  //setup code goes here\n" +
-        "}\n" +
-        "\n" +
-        "function draw(){\n" +
-        "  //drawing code goes here\n" +
-        "}",
+    doc: "",
     extensions: [
         basicSetup,
         javascript(),

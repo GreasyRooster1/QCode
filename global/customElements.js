@@ -1,9 +1,11 @@
 class StepElement extends HTMLElement {
     head = null;
     headContent = null;
+    typeDisplay = null;
+    stepCount = null;
+
     content = null;
     contentWrapper = null;
-    typeDisplay = null;
 
     constructor() {
         super();
@@ -20,11 +22,15 @@ class StepElement extends HTMLElement {
         this.typeDisplay = document.createElement("div");
         this.typeDisplay.classList.add("type-display");
 
+        this.stepCount = document.createElement("div");
+        this.stepCount.classList.add("step-count");
+
         this.headContent = document.createElement("div");
         this.headContent.classList.add("step-head-content");
 
         this.head.appendChild(this.headContent);
         this.head.appendChild(this.typeDisplay);
+        this.head.appendChild(this.stepCount);
 
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
@@ -43,6 +49,10 @@ class StepElement extends HTMLElement {
 
         if (this.attributes.getNamedItem("type") !== null) {
             this.typeDisplay.innerHTML = this.attributes.getNamedItem("type").value;
+        }
+
+        if (this.attributes.getNamedItem("count") !== null) {
+            this.stepCount.innerHTML = "Step "+this.attributes.getNamedItem("count").value;
         }
 
         this.appendChild(this.head);
@@ -70,6 +80,11 @@ class StepElement extends HTMLElement {
                     return;
                 }
                 this.head.innerHTML = newValue;
+            }else if (name === 'count') {
+                if (this.stepCount === null) {
+                    return;
+                }
+                this.stepCount.innerHTML = "Step "+newValue;
             }
         }
     }
