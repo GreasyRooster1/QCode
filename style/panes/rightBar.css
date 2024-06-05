@@ -4,8 +4,21 @@
 }
 
 .badges{
-    height:40vh;
+    height:60vh;
     background: var(--right-sections-background);
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-details{
+    height:30%;
+    background:var(--badge-details-background);
+    margin-top: auto;
+}
+
+.badge-title{
+    margin: 10px 7px 7px;
+    font-size:30px;
 }
 
 .points{
