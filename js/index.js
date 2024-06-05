@@ -17,7 +17,7 @@ function loadBadges(){
         for(let badge of data){
             let badgeConnect = firebase.database().ref().child("badges").child(badge.id).get();
             badgeConnect.then((snap)=>{
-                createBadgeElementFromSnap(snap)
+                createBadgeElementFromSnap(snap,badge.id)
             });
         }
     });
@@ -37,7 +37,7 @@ function loadProjects(){
 }
 
 
-function createBadgeElementFromSnap(snap){
+function createBadgeElementFromSnap(snap,id){
     let badgeProperties = snap.val();
 
     let badgeElement = document.createElement("div");
@@ -57,8 +57,14 @@ function createBadgeElementFromSnap(snap){
 
     hoverText.appendChild(hoverTextContent);
 
+    badgeElement.setAttribute("data-badgeid",id)
+
     badgeElement.appendChild(img);
     badgeElement.appendChild(hoverText);
+
+    badgeElement.addEventListener("click",function (e) {
+        badgeClickEvent(e.currentTarget);
+    })
 
     badgeDisplay.appendChild(badgeElement)
 }

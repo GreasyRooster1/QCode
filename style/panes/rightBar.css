@@ -14,11 +14,41 @@
     height:30%;
     background:var(--badge-details-background);
     margin-top: auto;
+    overflow: clip;
 }
 
 .badge-title{
     margin: 10px 7px 7px;
     font-size:30px;
+    text-align: center;
+}
+
+.badge-info-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding:5px
+}
+
+.badge-rarity{
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.badge-name{
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.badge-info-image{
+    width: 30%;
+    height:30%;
+    margin:5px;
+}
+
+.badge-info-desc{
+    margin:5px;
 }
 
 .points{
