@@ -3,6 +3,7 @@ class StepElement extends HTMLElement {
     headContent = null;
     typeDisplay = null;
     stepCount = null;
+    headStat = null;
     image = null;
 
     content = null;
@@ -29,9 +30,15 @@ class StepElement extends HTMLElement {
         this.headContent = document.createElement("div");
         this.headContent.classList.add("step-head-content");
 
+        this.headStat = document.createElement("div");
+        this.headStat.classList.add("step-head-stats")
+
+
+        this.headStat.appendChild(this.typeDisplay);
+        this.headStat.appendChild(this.stepCount);
+
         this.head.appendChild(this.headContent);
-        this.head.appendChild(this.typeDisplay);
-        this.head.appendChild(this.stepCount);
+        this.head.appendChild(this.headStat);
 
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
