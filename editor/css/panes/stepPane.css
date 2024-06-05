@@ -44,17 +44,32 @@
 }
 .step > .step-content-wrapper{
     width:100%;
-    height:90%;
+    height:80%;
     padding:2%;
 }
-.step > .step-content-wrapper > .step-content{
+.step-content{
     background:var(--step-content-background);
+
+    display:flex;
+    flex-direction: column;
+
     padding:3%;
 
+    max-height:100%;
     height:100%;
+    max-width:100%;
     width:100%;
 
     border-radius: 5px;
+}
+
+.step-text-content{
+
+}
+
+.step-image{
+    width:80%;
+    height:80%;
 }
 
 .step.info > .step-head{
@@ -72,7 +87,7 @@
 
 .step-head > .step-head-content{
     display:inline;
-    text-wrap: avoid;
+    text-wrap: none;
 }
 
 .step-head > .type-display{

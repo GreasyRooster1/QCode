@@ -3,9 +3,10 @@ class StepElement extends HTMLElement {
     headContent = null;
     typeDisplay = null;
     stepCount = null;
+    image = null;
 
     content = null;
-    contentWrapper = null;
+    textContent = null;
 
     constructor() {
         super();
@@ -35,12 +36,16 @@ class StepElement extends HTMLElement {
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
 
-        this.contentWrapper = document.createElement("div");
-        this.contentWrapper.classList.add("step-content-wrapper");
+        this.image = document.createElement("img");
+        this.image.classList.add("step-image");
 
-        this.contentWrapper.appendChild(this.content);
+        this.textContent = document.createElement("div");
+        this.textContent.classList.add("step-text-content");
 
-        this.content.innerHTML = this.innerHTML;
+        this.content.appendChild(this.textContent);
+        this.content.appendChild(this.image);
+
+        this.textContent.innerHTML = this.innerHTML;
         this.innerHTML = "";
 
         if (this.attributes.getNamedItem("head") !== null) {
@@ -55,8 +60,12 @@ class StepElement extends HTMLElement {
             this.stepCount.innerHTML = "Step "+this.attributes.getNamedItem("count").value;
         }
 
+        if (this.attributes.getNamedItem("image") !== null) {
+            this.image.src = this.attributes.getNamedItem("image").value;
+        }
+
         this.appendChild(this.head);
-        this.appendChild(this.contentWrapper);
+        this.appendChild(this.content);
 
         this.classList.add("step");
         this.style.display = "block";
@@ -81,6 +90,11 @@ class StepElement extends HTMLElement {
                 }
                 this.head.innerHTML = newValue;
             }else if (name === 'count') {
+                if (this.stepCount === null) {
+                    return;
+                }
+                this.stepCount.innerHTML = "Step "+newValue;
+            }else if (name === 'image') {
                 if (this.stepCount === null) {
                     return;
                 }
