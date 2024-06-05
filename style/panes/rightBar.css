@@ -56,7 +56,8 @@
 }
 .badge-rarity.uncommon{
     color:var(--uncommon-rarity-color);
-    text-shadow: 0 0 1px var(--uncommon-rarity-color)
+    text-shadow: 0 0 3px var(--uncommon-rarity-color);
+    text-
 }
 .badge-rarity.rare{
     color:var(--rare-rarity-color);
