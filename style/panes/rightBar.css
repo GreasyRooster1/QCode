@@ -30,12 +30,6 @@
     padding:5px
 }
 
-.badge-rarity{
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: 500;
-}
-
 .badge-name{
     text-align: center;
     font-size: 1.3em;
@@ -49,6 +43,28 @@
 
 .badge-info-desc{
     margin:5px;
+}
+
+.badge-rarity{
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.badge-rarity.common{
+    color:var(--common-rarity-color);
+}
+.badge-rarity.uncommon{
+    color:var(--uncommon-rarity-color);
+}
+.badge-rarity.rare{
+    color:var(--rare-rarity-color);
+}
+.badge-rarity.legendary{
+    color:var(--legendary-rarity-color);
+}
+.badge-rarity.mythic{
+    color:var(--mythic-rarity-color);
 }
 
 .points{

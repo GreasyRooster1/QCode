@@ -14,6 +14,8 @@ function badgeClickEvent(badgeEl){
 
         let capRarity = data.rarity.charAt(0).toUpperCase() + data.rarity.slice(1);
         badgeDetailRarity.innerHTML = capRarity;
+        badgeDetailRarity.className = "";
+        badgeDetailRarity.classList.add("badge-rarity");
         badgeDetailRarity.classList.add(data.rarity);
     })
 }
