@@ -4,6 +4,12 @@
     --input-container-color: #cecece;
     --input-wrapper-color: #e1e1e1;
 
+    --button-container-color: #cecece;
+    --button-color: #e1e1e1;
+    --button-color-hover: #f1f1f1;
+
+    --auth-container-color: #cecece;
+
     --auth-error-background: rgba(210, 22, 22, 0.39);
     --auth-error-solid: rgb(211, 48, 48);
     --auth-error-text: rgb(35, 2, 2);
@@ -62,9 +68,39 @@ body{
 .input-wrapper label{
     font-family: var(--default-font);
 }
+
+.button-container{
+    padding:10px;
+    border-radius: 5px;
+    margin-top:10px;
+    background: var(--button-container-color);
+}
+
+.button-container > .button{
+    background:var(--button-color);
+    border-radius: 5px;
+    padding:5px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.button-container > .button:hover{
+    background:var(--button-color-hover);
+}
+
+.auth-error-container{
+    background: var(--auth-container-color);
+    height:100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
 .auth-error{
+    display: none;
     margin: 10% auto auto;
+    border-radius: 5px;
     width:80%;
+    padding: 5px;
     background:var(--auth-error-background);
     border-left:5px solid var(--auth-error-solid);
     color:var(--auth-error-text);

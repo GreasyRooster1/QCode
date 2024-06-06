@@ -23,7 +23,7 @@ loginButton.addEventListener("click", function(){
 });
 
 function showAuthError(msg){
-    authErrorDisplayWrapper.style.visibility = "true"
+    authErrorDisplayWrapper.style.display = "block"
     authErrorContent.innerHTML = msg;
 }
 
