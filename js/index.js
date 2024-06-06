@@ -14,7 +14,8 @@ function loadBadges(){
         clearBadges();
 
         badgeDisplay.innerHTML = "";
-        for(let badge of data){
+        let badges = data.values().toArray().filter(b => b!==undefined);
+        for(let badge of badges){
             let badgeConnect = firebase.database().ref().child("badges").child(badge.id).get();
             badgeConnect.then((snap)=>{
                 createBadgeElementFromSnap(snap,badge.id)
