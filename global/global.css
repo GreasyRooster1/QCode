@@ -21,10 +21,6 @@
     --legendary-rarity-color-faded: rgba(170, 135, 20, 0.71);
 }
 
-*{
-    font-family: var(--default-font) monospace;
-}
-
 .no-scrollbar{
     -ms-overflow-style: none;
     scrollbar-width: none;

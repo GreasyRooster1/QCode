@@ -9,6 +9,10 @@
     --auth-error-text: rgb(35, 2, 2);
 }
 
+*{
+    font-family: var(--default-font) monospace;
+}
+
 body{
     background: var(--background-color);
 }
@@ -46,6 +50,15 @@ body{
     border-radius: 5px;
 }
 
+.input-wrapper input{
+    border: none;
+    background-color: var(--input-wrapper-color);
+    outline: none;
+    font-family: var(--default-font);
+}
+.input-wrapper label{
+    font-family: var(--default-font);
+}
 .auth-error{
     margin: 10% auto auto;
     width:80%;

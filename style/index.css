@@ -16,6 +16,10 @@
     --new-button-text-color: #dde5e8;
 }
 
+*{
+    font-family: var(--default-font) monospace;
+}
+
 body{
     margin: 0;
     padding: 0;

@@ -39,6 +39,10 @@
     --save-alert-accent: #4094d6;
 }
 
+*{
+    font-family: var(--default-font) monospace;
+}
+
 body{
     margin: 0;
     overflow: hidden;
