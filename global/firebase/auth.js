@@ -65,15 +65,28 @@ function storeUser(user){
     sessionStorage.setItem("currentUser",JSON.stringify(user));
 }
 
+function storeUserPermissions(perms){
+    sessionStorage.setItem("currentUserPermissions",JSON.stringify(perms));
+}
+
 function clearStoredUser(){
     sessionStorage.setItem("isLoggedIn", "false");
     sessionStorage.setItem("currentUser",null);
+    sessionStorage.setItem("currentUserPermissions",null);
+
 }
 
 function getStoredUser(){
     let jsonUser = sessionStorage.getItem("currentUser")
     if(jsonUser!==null){
         return JSON.parse(jsonUser);
+    }
+    return null;
+}
+function getStoredUserPermissions(){
+    let jsonUserPerms = sessionStorage.getItem("currentUserPermissions")
+    if(jsonUserPerms!==null){
+        return JSON.parse(jsonUserPerms);
     }
     return null;
 }
