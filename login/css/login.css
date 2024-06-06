@@ -10,6 +10,8 @@
 
     --auth-container-color: #cecece;
 
+    --admin-link-color: #626262;
+
     --auth-error-background: rgba(210, 22, 22, 0.39);
     --auth-error-solid: rgb(211, 48, 48);
     --auth-error-text: rgb(35, 2, 2);
@@ -108,4 +110,14 @@ body{
     background:var(--auth-error-background);
     border-left:5px solid var(--auth-error-solid);
     color:var(--auth-error-text);
+}
+
+.admin-console-link{
+    position: absolute;
+    right:0;
+    bottom: 0;
+}
+
+.admin-console-link > a{
+    color:var(--admin-link-color);
 }
