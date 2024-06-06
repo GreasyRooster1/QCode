@@ -9,10 +9,6 @@
     --auth-error-text: rgb(35, 2, 2);
 }
 
-*{
-    font-family: var(--default-font) monospace;
-}
-
 body{
     background: var(--background-color);
 }
