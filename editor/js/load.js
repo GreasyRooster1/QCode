@@ -1,6 +1,7 @@
 let projectId=null;
 let userUid = null;
 let hasLesson = false;
+let isLessonCreator = false;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 function getUrlData(){
@@ -10,6 +11,11 @@ function getUrlData(){
     }
     if(searchParams.has("projectId")){
         projectId = searchParams.get("projectId");
+        if(projectId==="$$lesson$$creator$$"){
+            isLessonCreator = true;
+            setupLessonCreator();
+            return;
+        }
     }
     if(userUid===getStoredUser().uid){
         loadProjectCode(projectId);
@@ -44,20 +50,23 @@ function loadLesson(id){
 
 function populateSteps(data){
     console.log(data);
-    let count = 0;
+    let count = 1;
     for (let step of data.steps) {
-        let stepEl = document.createElement("editor-step");
-        stepEl.setAttribute("head", step.head);
-        stepEl.setAttribute("type", step.type);
-        stepEl.setAttribute("count", count+1);
-        stepEl.setAttribute("image", step.image);
-        stepEl.innerHTML = step.content;
-        scrollableSteps.appendChild(stepEl);
-
+        createStep(step.head,step.content,step.image,step.type,count);
         count++;
     }
     createBufferSpace()
     setupPanes(true);
+}
+
+function createStep(head,content,image,type,count){
+    let stepEl = document.createElement("editor-step");
+    stepEl.setAttribute("head", head);
+    stepEl.setAttribute("type", type);
+    stepEl.setAttribute("count", count);
+    stepEl.setAttribute("image", image);
+    stepEl.innerHTML = content;
+    scrollableSteps.appendChild(stepEl);
 }
 
 function createBufferSpace(){

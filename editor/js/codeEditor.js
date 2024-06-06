@@ -13,7 +13,7 @@ const customTheme = EditorView.theme({
 })
 
 const editorView = new EditorView({
-    doc: "",
+    doc: "\n",
     extensions: [
         basicSetup,
         javascript(),
