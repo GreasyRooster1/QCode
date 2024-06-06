@@ -69,6 +69,10 @@ function createStep(head,content,image,type,count){
     scrollableSteps.appendChild(stepEl);
 }
 
+function createStepFromObj(step){
+    createStep(step.head,step.content,step.image,step.type,step.count);
+}
+
 function createBufferSpace(){
     let buffer = document.createElement("div");
     buffer.classList.add("buffer");
