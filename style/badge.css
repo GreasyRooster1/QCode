@@ -1,6 +1,7 @@
 :root{
     --badge-size:50px;
     --badge-hover-color: #dcdcdc;
+    --badge-color: #c7c7c7;
 }
 
 .badges-display{
@@ -14,15 +15,20 @@
     margin:3px;
     width:var(--badge-size);
     height:var(--badge-size);
+    background:var(--badge-color);
+    border: 2px solid var(--badge-color);
+    border-radius: 4px;
 }
 
 .badge > img{
     width:var(--badge-size);
     height:var(--badge-size);
+    border-radius: 4px;
 }
 
 .badge-desc:hover{
     opacity: 1;
+    border-radius: 4px;
 }
 
 .badge-desc{
