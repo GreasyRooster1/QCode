@@ -95,6 +95,10 @@ body{
     border-radius: 5px;
 }
 
+.admin-console-link{
+    font-size: 0.7em;
+}
+
 .auth-error{
     display: none;
     margin: 10% auto auto;
