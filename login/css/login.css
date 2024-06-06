@@ -1,6 +1,8 @@
 :root{
     --background-color: #b4b4b4;
     --login-pane-color: #c2c2c2;
+    --input-container-color: #cecece;
+    --input-wrapper-color: #e1e1e1;
 
     --auth-error-background: rgba(210, 22, 22, 0.39);
     --auth-error-solid: rgb(211, 48, 48);
@@ -12,13 +14,36 @@ body{
 }
 
 .login-pane{
+    display: flex;
+    flex-direction: column;
+
     position: absolute;
-    background: var(--login-pane-color);
-    width:50vmin;
-    height:50vmin;
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
+
+    background: var(--login-pane-color);
+    width:50vmin;
+    height:50vmin;
+
+    border-radius: 10px;
+
+    padding:5px
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    background: var(--input-container-color);
+    border-radius: 5px;
+    padding:4px;
+}
+
+.input-wrapper{
+    margin:5px;
+    padding:5px;
+    background:var(--input-wrapper-color);
+    border-radius: 5px;
 }
 
 .auth-error{

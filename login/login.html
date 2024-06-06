@@ -16,22 +16,28 @@
     <script src="../global/firebase/database.js" defer></script>
 
     <script src="js/login.js" defer></script>
+    <link href="../global/global.css" rel="stylesheet">
 </head>
 <body>
     <div class="login-pane">
-        <label>
-            Username
-            <input type="text" class="username-input">
-        </label>
-        <br>
-        <label>
-            Password
-            <input type="password" class="password-input">
-        </label>
-        <br>
-        <hr>
-        <button class="login-button">Login</button>
-        <button class="create-button">Sign-Up</button>
+        <div class="input-container">
+            <div class="username-input-wrapper input-wrapper">
+                <label>
+                    Username
+                    <input type="text" class="username-input">
+                </label>
+            </div>
+            <div class="password-input-wrapper input-wrapper">
+                <label>
+                    Password
+                    <input type="password" class="password-input">
+                </label>
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="login-button">Login</button>
+            <button class="create-button">Sign-Up</button>
+        </div>
         <div class="auth-error">
             <div class="auth-error-message">
 
