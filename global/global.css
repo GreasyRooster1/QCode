@@ -14,9 +14,11 @@
 
     --common-rarity-color-dark: #2c2c2c;
     --uncommon-rarity-color-dark: #00699f;
-    --rare-rarity-color-dark: #6812a6;
-    --legendary-rarity-color-dark: #836906;
+    --rare-rarity-color-dark: #8313d6;
+    --legendary-rarity-color-dark: #d3ac0f;
     --mythic-rarity-color-dark: #129a86;
+
+    --legendary-rarity-color-faded: rgba(170, 135, 20, 0.71);
 }
 
 .no-scrollbar{
