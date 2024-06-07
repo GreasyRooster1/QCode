@@ -59,5 +59,10 @@ function escapeOnEnter(e){
 
 function addStepClick(){
     currentStep++;
+    let bufferSpace = document.querySelector(".buffer")
+    if (bufferSpace!==null) {
+        bufferSpace.remove();
+    }
     createEditableStep(currentStep);
+    createBufferSpace();
 }

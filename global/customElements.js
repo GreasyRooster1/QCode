@@ -110,7 +110,6 @@ class StepElement extends HTMLElement {
                 }
                 this.stepCount.innerHTML = "Step "+newValue;
             }else if (name === 'image') {
-                console.log(newValue)
                 if(this.image===null) {
                     return;
                 }
