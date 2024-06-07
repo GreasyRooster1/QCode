@@ -1,33 +1,52 @@
 const buttonContainer = document.querySelector(".lesson-creator-new-button-container");
 let newStepButton = null;
 let addedSteps = []
+let currentStep = 0;
+
 const defaultStep = {
     head:"head",
     content:"content",
     image:"https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/missing.png?raw=true",
     type:"info",
-    count:-1,
+    count:1,
 }
 
 function setupLessonCreator(){
     setupPanes(true);
-    createStepFromObj(defaultStep);
 
-    createNewStepButton();
-}
-//todo: save steps to lesson
-function createEditableStep(){
-    createStepFromObj(defaultStep);
+    createAddStepButton();
 }
 
-function createNewStepButton(){
+function createAddStepButton(){
     let buttonEl = document.createElement("div")
     buttonEl.innerHTML = "New Step";
+
     newStepButton = buttonEl;
 
-    newStepButton.addEventListener("click",function () {
-        createStepFromObj(defaultStep);
-    })
+    newStepButton.addEventListener("click",addStepClick);
 
     buttonContainer.appendChild(buttonEl);
+}
+
+function createEditableStep(count){
+    defaultStep.count = count;
+    let stepEl = createStepFromObj(defaultStep);
+    stepEl.querySelector(".step-head-content").setAttribute("contenteditable","true");
+    stepEl.querySelector(".step-head-content").addEventListener("keypress",enterBlur);
+
+    stepEl.querySelector(".step-text-content").setAttribute("contenteditable","true");
+
+}
+
+function enterBlur(e){
+    if(e.key==="Enter"){
+        e.preventDefault();
+        e.target.blur();
+        console.log("enterPressed");
+    }
+}
+
+function addStepClick(){
+    currentStep++;
+    createEditableStep(currentStep);
 }

@@ -67,10 +67,11 @@ function createStep(head,content,image,type,count){
     stepEl.setAttribute("image", image);
     stepEl.innerHTML = content;
     scrollableSteps.appendChild(stepEl);
+    return stepEl;
 }
 
 function createStepFromObj(step){
-    createStep(step.head,step.content,step.image,step.type,step.count);
+    return createStep(step.head,step.content,step.image,step.type,step.count);
 }
 
 function createBufferSpace(){
