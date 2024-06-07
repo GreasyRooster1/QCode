@@ -46,7 +46,7 @@ function swapTypes(e){
 }
 
 function changeImage(e){
-    e.target.setAttribute("image", prompt("Enter image link"));
+    e.target.setAttribute("src", prompt("Enter image link"));
 }
 
 function escapeOnEnter(e){
