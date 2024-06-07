@@ -46,7 +46,8 @@ function swapTypes(e){
 }
 
 function changeImage(e){
-    e.target.setAttribute("src", prompt("Enter image link"));
+    let stepEl = e.target.closest(".step")
+    stepEl.setAttribute("image", prompt("Enter image link"));
 }
 
 function escapeOnEnter(e){
