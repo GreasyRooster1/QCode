@@ -31,6 +31,17 @@
     font-weight: bold;
 }
 
+.lesson-link{
+    padding: 3px;
+
+    background: var(--project-link-background);
+    border-radius: 5px;
+
+    color: var(--project-link-text);
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .new-project-button{
     background: var(--new-button-background);
     border-radius: 5px;
