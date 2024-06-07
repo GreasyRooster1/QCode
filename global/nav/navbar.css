@@ -9,14 +9,17 @@
 brand-nav{
     height:5vh;
     width:100vw;
+    display: block;
 }
 
 .navbar{
+    position: relative;
     height:5vh;
     display: flex;
     justify-content: space-between;
     background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-green)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-blue) 87%, var(--brand-black) 99%);
 
+    z-index: 999;
     transition: height 1s;
 }
 
