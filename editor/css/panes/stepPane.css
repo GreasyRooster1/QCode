@@ -23,23 +23,18 @@
     background: var(--step-background);
     border-radius:10px;
     overflow:clip;
-    display:flex;
-    flex-direction: column;
 
     width:100%;
 
     min-width: 10vw;
-    max-height: 30vw;
     max-width: 30vw;
 
-    aspect-ratio: 1/1;
 
     margin: 30px auto;
 }
 
 .step > .step-head{
     background: var(--step-head-default);
-    height:10%;
     padding:3%;
     font-size:1.1em;
     display:flex;
