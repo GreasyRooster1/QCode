@@ -19,11 +19,15 @@ function createEditableStep(count){
     let head = stepEl.querySelector(".step-head-content");
     let textContent = stepEl.querySelector(".step-text-content");
     let type = stepEl.querySelector(".type-display");
+    let image = stepEl.querySelector(".step-image");
+
 
     head.setAttribute("contenteditable","true");
     head.addEventListener("keypress",escapeOnEnter);
 
     type.addEventListener("click", swapTypes);
+
+    image.addEventListener("click", changeImage);
 
     textContent.setAttribute("contenteditable","true");
 }
@@ -39,6 +43,10 @@ function swapTypes(e){
         nextType = stepTypes[stepTypes.indexOf(currentType) + 1];
     }
     stepEl.setAttribute("type",nextType);
+}
+
+function changeImage(e){
+    e.target.setAttribute("image", prompt("Enter image link"));
 }
 
 function escapeOnEnter(e){
