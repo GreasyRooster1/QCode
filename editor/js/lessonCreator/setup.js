@@ -1,4 +1,4 @@
-const buttonContainer = document.querySelector(".lesson-creator-new-button-container");
+const buttonContainer = document.querySelector(".lesson-creator-button-container");
 let newStepButton = null;
 const defaultStep = {
     head:"head",

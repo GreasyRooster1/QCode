@@ -2,14 +2,14 @@ let addedSteps = []
 let currentStep = 0;
 
 function createAddStepButton(){
-    let buttonEl = document.createElement("div")
-    buttonEl.innerHTML = "New Step";
+    newStepButton = document.createElement("div")
+    newStepButton.innerHTML = "New Step";
 
-    newStepButton = buttonEl;
+    newStepButton.classList.add("add-step-button");
 
     newStepButton.addEventListener("click",addStepClick);
 
-    buttonContainer.appendChild(buttonEl);
+    buttonContainer.appendChild(newStepButton);
 }
 
 function createEditableStep(count){
