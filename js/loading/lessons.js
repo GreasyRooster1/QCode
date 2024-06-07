@@ -26,7 +26,7 @@ function lessonClickHandle(e){
     let uid = getStoredUser().uid;
     let lessonId = link.getAttribute("data-lessonid");
     let ref = "userdata/"+uid+"/projects/";
-    let projectId = lessonId+""
+    let projectId = lessonId
     database.ref(ref+projectId).once("value").then(function (snap) {
         if(snap.exists()){
             window.location.href = "editor/editor.html?projectId="+projectId+"&uid="+uid;
