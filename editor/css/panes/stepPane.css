@@ -84,7 +84,6 @@
 
 .step-head > .step-head-content{
     display:inline;
-    text-wrap: none;
 }
 
 .step-head-stats{
@@ -108,7 +107,6 @@
     display: block;
     height: fit-content;
     width:fit-content;
-    text-wrap: none;
     margin-left: auto;
     font-size:0.7em;
     font-weight: bold;
