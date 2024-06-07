@@ -4,6 +4,7 @@ const userLink = document.querySelector(".username-link");
 const accountOptions = document.querySelector(".account-options");
 const accountOptionsWrapper = document.querySelector(".account-dropdown-wrapper");
 const logoutButton = document.querySelector(".logout-button");
+const homeButton = document.querySelector(".home-link")
 
 let navbarVisible = true;
 let accountOptionsVisible = false;
@@ -62,6 +63,10 @@ logoutButton.addEventListener("click", function (e){
         window.location.href = "../login/login.html";
     }
 })
+
+homeButton.addEventListener("click",function () {
+   window.location.href = "../";
+});
 
 
 initNavbar();

@@ -5,6 +5,7 @@ let user = getStoredUser();
 function init(){
     loadBadges();
     loadProjects();
+    removeNavHome();
 }
 
 function loadBadges(){
@@ -83,6 +84,11 @@ function clearProjects(){
 
 function clearBadges(){
     badgeDisplay.innerHTML = "";
+}
+
+function removeNavHome(){
+    let home = document.querySelector(".home-link");
+    home.remove();
 }
 
 init();
