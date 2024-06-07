@@ -78,7 +78,6 @@ brand-nav{
 }
 
 .account-options{
-    position: absolute;
     overflow: clip;
     z-index: 100;
     width: 100%;
