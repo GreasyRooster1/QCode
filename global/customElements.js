@@ -75,7 +75,6 @@ class StepElement extends HTMLElement {
         this.appendChild(this.content);
 
         this.classList.add("step");
-        this.style.display = "block";
     }
 
     getTypeDisplayString(){
