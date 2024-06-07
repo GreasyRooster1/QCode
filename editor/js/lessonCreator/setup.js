@@ -13,12 +13,3 @@ function setupLessonCreator(){
 
     createAddStepButton();
 }
-
-function createEditableStep(count){
-    defaultStep.count = count;
-    let stepEl = createStepFromObj(defaultStep);
-    stepEl.querySelector(".step-head-content").setAttribute("contenteditable","true");
-    stepEl.querySelector(".step-head-content").addEventListener("keypress",escapeOnEnter);
-
-    stepEl.querySelector(".step-text-content").setAttribute("contenteditable","true");
-}

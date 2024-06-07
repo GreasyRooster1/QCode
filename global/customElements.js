@@ -1,3 +1,5 @@
+let stepTypes = ["info","code","challenge"]
+
 class StepElement extends HTMLElement {
     head = null;
     headContent = null;
@@ -60,7 +62,7 @@ class StepElement extends HTMLElement {
         }
 
         if (this.attributes.getNamedItem("type") !== null) {
-            this.typeDisplay.innerHTML = this.attributes.getNamedItem("type").value;
+            this.typeDisplay.innerHTML = this.getTypeDisplayString();
         }
 
         if (this.attributes.getNamedItem("count") !== null) {
@@ -82,14 +84,21 @@ class StepElement extends HTMLElement {
         return typeStr.charAt(0).toUpperCase() + typeStr.slice(1);
     }
 
+    clearTypes(){
+        for(let type of stepTypes){
+            this.classList.remove(type);
+        }
+    }
+
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue !== newValue) {
             if (name === 'type') {
+                this.clearTypes();
                 this.classList.add(newValue);
                 if (this.typeDisplay === null) {
                     return;
                 }
-                this.typeDisplay = this.getTypeDisplayString();
+                this.typeDisplay.innerHTML = this.getTypeDisplayString();
             } else if (name === 'head') {
                 if (this.head === null) {
                     return;
