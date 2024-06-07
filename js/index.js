@@ -1,5 +1,6 @@
 const badgeDisplay = document.querySelector(".badges-display");
 const projectsDisplay = document.querySelector(".projects-display");
+const lessonsDisplay = document.querySelector(".lessons-display");
 let user = getStoredUser();
 
 function init(){
@@ -38,6 +39,17 @@ function loadProjects(){
     });
 }
 
+function loadLessons(){
+    let lessonsRef = database.ref('lessons');
+    lessonsRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        clearLessons();
+
+        for(const [lessonId, lessonData] of Object.entries(data)){
+
+        }
+    });
+}
 
 function createBadgeElementFromSnap(snap,id){
     let badgeProperties = snap.val();
@@ -80,6 +92,9 @@ function createProjectElement(projectId,projectData){
 
 function clearProjects(){
     projectsDisplay.innerHTML = "";
+}
+function clearLessons(){
+    lessonsDisplay.innerHTML = "";
 }
 
 function clearBadges(){

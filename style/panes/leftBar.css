@@ -1,10 +1,16 @@
 .projects{
+    min-height: 35%;
+    background: var(--project-section-background);
+    padding-top:3px
+}
+
+.lessons{
     min-height: 60%;
     background: var(--project-section-background);
     padding-top:3px
 }
 
-.projects-title{
+.bar-title{
     margin: 10px 7px 7px;
     font-size:30px;
 }
