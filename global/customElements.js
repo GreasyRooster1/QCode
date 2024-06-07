@@ -131,9 +131,11 @@ class BrandNav extends HTMLElement {
             <div class="navbar">
                 <div class="home-link">Home</div>
                 <div class="account-dropdown-wrapper">
-                    <div class="username-link">Login</div>
-                    <div class="account-options">
-                        <div class="logout-button option">Logout</div>
+                    <div class="account-dropdown">
+                        <div class="username-link">Login</div>
+                        <div class="account-options">
+                            <div class="logout-button option">Logout</div>
+                        </div>
                     </div>
                 </div>
             </div>
