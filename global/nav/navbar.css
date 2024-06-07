@@ -70,11 +70,8 @@ brand-nav{
 }
 
 .account-dropdown-wrapper{
-    float: right;
-    position: relative;
-    top:50%;
     margin-right:15px;
-    transform: translate(0,-50%);
+    margin-left:auto;
 }
 
 .account-options{
