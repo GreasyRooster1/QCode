@@ -16,6 +16,9 @@ function createLessonElement(lessonId,lessonData){
     el.addEventListener("click",lessonClickHandle);
     database.ref("lessons/"+lessonId).once("value").then(function (snap) {
         let data = snap.val();
+        if(data.unlisted){
+            return;
+        }
         el.innerHTML = data.name;
     })
     lessonsDisplay.appendChild(el);
