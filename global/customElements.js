@@ -16,7 +16,7 @@ class StepElement extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['type', 'head'];
+        return ['type', 'head', 'image', 'count'];
     }
 
     connectedCallback() {
@@ -70,7 +70,7 @@ class StepElement extends HTMLElement {
         }
 
         if (this.attributes.getNamedItem("image") !== null) {
-            this.image.src = this.attributes.getNamedItem("image").value;
+            this.image.setAttribute("src",this.attributes.getNamedItem("image").value);
         }
 
         this.appendChild(this.head);
@@ -110,10 +110,12 @@ class StepElement extends HTMLElement {
                 }
                 this.stepCount.innerHTML = "Step "+newValue;
             }else if (name === 'image') {
-                if (this.stepCount === null) {
+                console.log(newValue)
+                if(this.image===null) {
                     return;
                 }
-                this.stepCount.innerHTML = "Step "+newValue;
+
+                this.image.setAttribute("src",newValue);
             }
         }
     }
