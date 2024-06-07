@@ -5,25 +5,26 @@ function loadLessons(){
         clearLessons();
         console.log(data);
         for(const [lessonId, lessonData] of Object.entries(data)){
+            if(lessonData.unlisted){
+                continue;
+            }
             createLessonElement(lessonId,lessonData);
         }
     });
 }
 
 function createLessonElement(lessonId,lessonData){
-    //check if lesson exists or not
-    database.ref("lessons/"+lessonId).once("value").then(function (snap) {
-        let data = snap.val();
-        if(data.unlisted){
-            return;
-        }
-        let el = document.createElement("div");
-        el.setAttribute("data-lessonid",lessonId);
-        el.classList.add("lesson-link");
-        el.addEventListener("click",lessonClickHandle);
-        lessonsDisplay.appendChild(el);
-        el.innerHTML = data.name;
-    });
+    let linkWrapper = document.createElement("div");
+    let link = document.createElement("span");
+
+    link.setAttribute("data-lessonid",lessonId);
+    link.addEventListener("click",lessonClickHandle);
+    link.classList.add("lesson-link");
+
+    link.innerHTML = lessonData.name;
+
+    linkWrapper.appendChild(link)
+    lessonsDisplay.appendChild(linkWrapper);
 }
 
 function lessonClickHandle(e){
