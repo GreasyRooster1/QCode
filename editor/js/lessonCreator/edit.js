@@ -1,5 +1,5 @@
-let addedSteps = []
 let currentStep = 0;
+let newStepButton = null;
 
 function createAddStepButton(){
     newStepButton = document.createElement("div")

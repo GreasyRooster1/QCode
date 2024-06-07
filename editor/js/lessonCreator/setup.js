@@ -1,5 +1,5 @@
 const buttonContainer = document.querySelector(".lesson-creator-button-container");
-let newStepButton = null;
+
 const defaultStep = {
     head:"head",
     content:"content",
@@ -12,4 +12,5 @@ function setupLessonCreator(){
     setupPanes(true);
 
     createAddStepButton();
+    createSaveButton();
 }
