@@ -9,13 +9,11 @@ loginButton.addEventListener("click", function(){
     let email = emailInput.value;
     let password = passwordInput.value;
 
-    console.log(email,password);
-
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
 
             let user = userCredential.user;
-
+            console.log(user);
             database.ref("userpermissions/"+user.uid).once("value").then(function (snap) {
                 let data = snap.val();
                 console.log(data);

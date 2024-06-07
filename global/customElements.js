@@ -129,6 +129,7 @@ class BrandNav extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <div class="navbar">
+                <div class="home-link">Home</div>
                 <div class="account-dropdown-wrapper">
                     <div class="username-link">Login</div>
                     <div class="account-options">

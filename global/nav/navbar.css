@@ -13,6 +13,8 @@ brand-nav{
 
 .navbar{
     height:5vh;
+    display: flex;
+    justify-content: space-between;
     background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-green)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-blue) 87%, var(--brand-black) 99%);
 
     transition: height 1s;
@@ -25,6 +27,26 @@ brand-nav{
     font-weight: 800;
     color:var(--navbar-shrink-color);
     z-index: 1000;
+}
+
+.home-link{
+    color: var(--account-name-text);
+    background:var(--account-dropdown-background);
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+
+    font-weight: 700;
+    font-size: 23px;
+    font-family: Calibri, serif;
+    text-align: center;
+
+    min-width: 100px;
+    padding: 4px;
+    border-radius: 10px;
+
+    transition: .1s;
+    margin: 3px;
 }
 
 .username-link{
