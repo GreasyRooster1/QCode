@@ -32,17 +32,16 @@ function createEditableStep(count){
     defaultStep.count = count;
     let stepEl = createStepFromObj(defaultStep);
     stepEl.querySelector(".step-head-content").setAttribute("contenteditable","true");
-    stepEl.querySelector(".step-head-content").addEventListener("keypress",enterBlur);
+    stepEl.querySelector(".step-head-content").addEventListener("keypress",escapeOnEnter);
 
     stepEl.querySelector(".step-text-content").setAttribute("contenteditable","true");
 
 }
 
-function enterBlur(e){
+function escapeOnEnter(e){
     if(e.key==="Enter"){
         e.preventDefault();
         e.target.blur();
-        console.log("enterPressed");
     }
 }
 
