@@ -29,6 +29,7 @@ function createEditableStep(count){
 }
 
 function swapTypes(e){
+    e.preventDefault()
     let stepEl = e.target.closest(".step")
     let currentType = stepEl.getAttribute("type");
     let nextType;
