@@ -1,22 +1,23 @@
+:root{
+
+}
+
 .lesson-creator-button-container {
     position: fixed;
     bottom: 0;
+    left:50%;
+    transform: translateX(-50%);
     background: #ff00ff;
     display: flex;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
-.add-step-button{
+.lesson-creator-button {
     background: #00ffff;
     margin: 5px;
-}
-
-.save-lesson-button{
-    background: #00ffff;
-    margin: 5px;
-}
-.meta-lesson-button{
-    background: #00ffff;
-    margin: 5px;
+    padding: 2px;
+    border-radius: 5px;
 }
 
 .meta-edit-pane{
