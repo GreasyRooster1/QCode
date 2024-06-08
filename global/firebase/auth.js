@@ -48,7 +48,11 @@ function handleAuthErrors(error){
     if(errorCode==="auth/email-already-in-use"){
         return "email already in use";
     }
-    return "ok";
+    if(errorCode==="auth/network-request-failed"){
+        return "network request failed";
+    }
+
+    return "something went wrong!";
 }
 
 function displayAuthErrors(errorType){
