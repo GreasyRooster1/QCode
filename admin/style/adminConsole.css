@@ -1,0 +1,32 @@
+:root{
+    --background-color: #555555;
+    --main-content-background: #8f8f8f;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color);
+    margin: 0;
+}
+
+.title-bar{
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+}
+
+.main-title{
+    font-size: 5em;
+}
+
+.main-content{
+    background-color: var(--main-content-background);
+    min-height: 80vh;
+    width: 60vw;
+    margin: auto;
+}
