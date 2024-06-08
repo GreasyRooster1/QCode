@@ -17,9 +17,13 @@ function createMetaEditPane(){
     lessonMetaEditPane = document.createElement("div")
     lessonMetaEditPane.classList.add("meta-edit-pane");
 
-    let nameInput = createInputWithLabel("Name","text");
-    let starterCodeInput =createInputWithLabel("Starter Code","textarea");
-    let unlistedInput = createInputWithLabel("Unlisted?","checkbox");
+    let nameInput = createInputWithLabel("Name","text","meta-name-input");
+    let starterCodeInput =createInputWithLabel("Starter Code","textarea","meta-code-input");
+    let unlistedInput = createInputWithLabel("Unlisted?","checkbox","meta-unlisted-input");
+
+    let submitButton = document.createElement("button");
+    submitButton.classList.add("meta-submit-button");
+    submitButton.addEventListener("click", saveMeta);
 
     lessonMetaEditPane.appendChild(nameInput);
     lessonMetaEditPane.appendChild(starterCodeInput);
@@ -28,7 +32,7 @@ function createMetaEditPane(){
     document.body.appendChild(lessonMetaEditPane);
 }
 
-function createInputWithLabel(name,type){
+function createInputWithLabel(name,type,clazz){
     let wrap = document.createElement("div");
 
     let label = document.createElement("label");
@@ -41,6 +45,7 @@ function createInputWithLabel(name,type){
         input = document.createElement("input");
     }
     input.setAttribute("type",type);
+    input.classList.add(clazz);
 
     label.appendChild(input);
     wrap.appendChild(label);
@@ -55,4 +60,8 @@ function editLessonMeta(){
     }else{
         lessonMetaEditPane.style.display = "none";
     }
+}
+
+function saveMeta(){
+
 }
