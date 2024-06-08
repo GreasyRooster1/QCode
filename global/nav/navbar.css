@@ -4,17 +4,19 @@
     --account-dropdown-option: #d1d1d1;
 
     --navbar-shrink-color: #1a1a1a;
+
+    --navbar-height:fit-content;
 }
 
 brand-nav{
-    height:5vh;
+    height:var(--navbar-height);
     width:100vw;
     display: block;
 }
 
 .navbar{
     position: relative;
-    height:5vh;
+    height:var(--navbar-height);
     display: flex;
     justify-content: space-between;
     background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-green)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-blue) 87%, var(--brand-black) 99%);
@@ -73,14 +75,13 @@ brand-nav{
 }
 
 .account-dropdown-wrapper{
+    position: relative;
     margin-right:15px;
     margin-left:auto;
 }
 
-.account-dropdown{
-}
-
 .account-options{
+    position: absolute;
     overflow: clip;
     z-index: 100;
     width: 100%;
