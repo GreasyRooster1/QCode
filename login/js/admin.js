@@ -18,12 +18,12 @@ loginButton.addEventListener("click", function(){
                 let data = snap.val();
                 console.log(data);
 
-                if(data===null||data.role === null){
+                if(data===null){
                     showAuthError("It appears you aren't an admin!");
                     return;
                 }
 
-                if (data.role==="admin"){
+                if (data.hasAdminConsoleAccess){
                     handleAuthAdminLogin(user,data);
                 }else{
                     showAuthError("It appears you aren't an admin!");
