@@ -37,5 +37,15 @@ body{
     background-color: var(--content-pane-background);
     display: flex;
     margin: 10px;
-    min-height: 40vh;
+    height: 40vh;
+}
+
+.scrollable-content{
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none;
 }
