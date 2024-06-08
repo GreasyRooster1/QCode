@@ -2,6 +2,16 @@ let lessonCreatorMetaButton;
 let lessonMetaEditPane;
 let metaPaneOpen = false;
 
+let nameInput;
+let starterCodeInput;
+let unlistedInput;
+
+let lessonMetadata ={
+    name:"",
+    unlisted:true,
+    starterCode:defaultCode,
+}
+
 function createMetaButton(){
     lessonCreatorMetaButton = document.createElement("div")
     lessonCreatorMetaButton.innerHTML = "Lesson Metadata";
@@ -17,17 +27,19 @@ function createMetaEditPane(){
     lessonMetaEditPane = document.createElement("div")
     lessonMetaEditPane.classList.add("meta-edit-pane");
 
-    let nameInput = createInputWithLabel("Name","text","meta-name-input");
-    let starterCodeInput =createInputWithLabel("Starter Code","textarea","meta-code-input");
-    let unlistedInput = createInputWithLabel("Unlisted?","checkbox","meta-unlisted-input");
+    nameInput = createInputWithLabel("Name","text","meta-name-input");
+    starterCodeInput =createInputWithLabel("Starter Code","textarea","meta-code-input");
+    unlistedInput = createInputWithLabel("Unlisted?","checkbox","meta-unlisted-input");
 
     let submitButton = document.createElement("button");
     submitButton.classList.add("meta-submit-button");
     submitButton.addEventListener("click", saveMeta);
+    submitButton.innerHTML = "Save Meta";
 
     lessonMetaEditPane.appendChild(nameInput);
     lessonMetaEditPane.appendChild(starterCodeInput);
     lessonMetaEditPane.appendChild(unlistedInput);
+    lessonMetaEditPane.appendChild(submitButton);
 
     document.body.appendChild(lessonMetaEditPane);
 }
@@ -63,5 +75,10 @@ function editLessonMeta(){
 }
 
 function saveMeta(){
-
+    lessonMetadata.name=nameInput.querySelector("input").value;
+    lessonMetadata.unlisted=unlistedInput.querySelector("input").value==="on";
+    lessonMetadata.starterCode=starterCodeInput.querySelector("textarea").value;
+    if(lessonMetadata.starterCode==="default"){
+        lessonMetadata.starterCode=defaultCode;
+    }
 }

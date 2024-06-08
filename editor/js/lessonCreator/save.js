@@ -22,15 +22,21 @@ function saveLesson(){
         }
         addedSteps.push(stepData);
     }
-    download(JSON.stringify(addedSteps,null,4));
+    let lessonData = {
+        name:lessonMetadata.name,
+        unlisted:lessonMetadata.unlisted,
+        starterCode:lessonMetadata.starterCode,
+        steps:addedSteps,
+    }
+    downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
     addedSteps=[];
 }
 
 
 
-function download(data) {
+function downloadLessonData(data,name) {
     let date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
-    const file = new File([data], 'QCode_Lesson'+date+'.json', {
+    const file = new File([data], 'QCode_Lesson-'+name+"-"+date+'.json', {
         type: 'text/plain',
     })
     const link = document.createElement('a')
