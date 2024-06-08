@@ -1,13 +1,10 @@
 :root{
     --background-color: #555555;
     --main-content-background: #8f8f8f;
+    --content-pane-background: #b5b5b5;
 }
 
 body{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-
     width: 100vw;
     height: 100vh;
     background-color: var(--background-color);
@@ -15,7 +12,7 @@ body{
 }
 
 .title-bar{
-    height: 20vh;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,8 +23,19 @@ body{
 }
 
 .main-content{
+    display: flex;
+    flex-direction: column;
+
     background-color: var(--main-content-background);
-    min-height: 80vh;
     width: 60vw;
-    margin: auto;
+    margin: 100px auto auto;
+
+    padding: 1vmin;
+}
+
+.content-pane{
+    background-color: var(--content-pane-background);
+    display: flex;
+    margin: 10px;
+    min-height: 40vh;
 }
