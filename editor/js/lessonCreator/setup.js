@@ -13,4 +13,6 @@ function setupLessonCreator(){
 
     createAddStepButton();
     createSaveButton();
+    createMetaButton();
+    createMetaEditPane();
 }

@@ -14,3 +14,18 @@
     background: #00ffff;
     margin: 5px;
 }
+.meta-lesson-button{
+    background: #00ffff;
+    margin: 5px;
+}
+
+.meta-edit-pane{
+    position: fixed;
+    display: none;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:50%;
+    height:50%;
+    background: #00ffff;
+}
