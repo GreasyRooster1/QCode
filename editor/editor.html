@@ -38,8 +38,13 @@
     <link rel="stylesheet" href="css/panes/outputPane.css">
     <link rel="stylesheet" href="css/lessonCreator.css">
 
+    <script src="../global/customElements.js" defer></script>
+    <script src="../global/nav/navbar.js" defer></script>
+    <script src="../global/util/code.js" defer></script>
+
     <script src="js/lessonCreator/setup.js" defer></script>
     <script src="js/lessonCreator/edit.js" defer></script>
+    <script src="js/lessonCreator/metadata.js" defer></script>
     <script src="js/lessonCreator/save.js" defer></script>
 
     <script src="js/panes.js" defer></script>
@@ -47,9 +52,6 @@
     <script src="js/codeEditor.js" async type="module" defer></script>
     <script src="js/load.js" defer></script>
     <script src="js/save.js" defer></script>
-
-    <script src="../global/customElements.js" defer></script>
-    <script src="../global/nav/navbar.js" defer></script>
 </head>
 <body>
     <brand-nav></brand-nav>
@@ -59,8 +61,6 @@
         <div class="steps-pane editor-pane">
             <div class="scrollable-steps">
                 <!-- Steps go here -->
-                <div class="lesson-creator-button-container">
-                </div>
             </div>
         </div>
 
@@ -86,6 +86,8 @@
                 <div class="console-output-pane"></div>
             </div>
         </div>
+    </div>
+    <div class="lesson-creator-button-container">
     </div>
 </body>
 </html>
