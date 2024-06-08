@@ -17,8 +17,10 @@ function createMetaButton(){
     lessonCreatorMetaButton.innerHTML = "Lesson Metadata";
 
     lessonCreatorMetaButton.classList.add("meta-lesson-button");
+    lessonCreatorMetaButton.classList.add("lesson-creator-button");
 
     lessonCreatorMetaButton.addEventListener("click",editLessonMeta);
+
 
     buttonContainer.appendChild(lessonCreatorMetaButton);
 }

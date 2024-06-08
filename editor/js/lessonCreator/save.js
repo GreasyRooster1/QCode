@@ -6,6 +6,7 @@ function createSaveButton(){
     lessonCreatorSaveButton.innerHTML = "Save Lesson";
 
     lessonCreatorSaveButton.classList.add("save-lesson-button");
+    lessonCreatorSaveButton.classList.add("lesson-creator-button");
 
     lessonCreatorSaveButton.addEventListener("click",saveLesson);
 

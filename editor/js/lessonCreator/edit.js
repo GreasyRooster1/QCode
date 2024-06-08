@@ -6,6 +6,7 @@ function createAddStepButton(){
     newStepButton.innerHTML = "New Step";
 
     newStepButton.classList.add("add-step-button");
+    newStepButton.classList.add("lesson-creator-button");
 
     newStepButton.addEventListener("click",addStepClick);
 
