@@ -27,7 +27,12 @@ function saveChapter(chapterNum){
         }
         chapterSteps.push(stepData);
     }
-    createdLessonChapters[chapterNum] = chapterSteps;
+    createdLessonChapters[chapterNum]={
+        steps:[],
+        name:"",
+    }
+    createdLessonChapters[chapterNum].steps = chapterSteps;
+    createdLessonChapters[chapterNum].name = scrollableSteps.querySelector(".step:first-child .step-head-content").innerText;
 }
 
 function saveLesson(){
