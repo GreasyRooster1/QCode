@@ -9,11 +9,15 @@ saveButton.addEventListener("click", function() {
 });
 
 function saveCode() {
+    rawSave()
+    hasSavedRecently = true;
+    showSaveAlert();
+}
+
+function rawSave(){
     let code = getCodeFromEditor();
     let user = getStoredUser();
     database.ref("userdata/"+user.uid+"/projects/"+projectId+"/code").set(code);
-    hasSavedRecently = true;
-    showSaveAlert();
 }
 
 function showSaveAlert(){
@@ -28,13 +32,5 @@ function showSaveAlert(){
 }
 
 window.addEventListener("beforeunload", function (e) {
-    saveCode();
-    if(hasSavedRecently){
-       return undefined
-    }
-
-    //produce dialog
-    let confirmationMessage = "unsaved changes";
-    e.returnValue = confirmationMessage; //Gecko + IE
-    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+    rawSave();
 });

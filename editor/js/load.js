@@ -117,12 +117,9 @@ function getChapterStepContentNoLink(chapters){
 
 function createChapterLink(chapterNum,chapterData){
     let name = "Chapter "+chapterNum+" - "+chapterData.name;
-    let linkEl = document.createElement("a");
+    let linkEl = document.createElement("span");
     linkEl.innerHTML = name;
-    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNum));
-    linkEl.addEventListener("click",()=>{
-        hasSavedRecently = true;
-    })
+    linkEl.setAttribute("data-href",getLinkToProject(projectId,getStoredUser().uid,chapterNum));
     linkEl.classList.add("chapter-link")
     return linkEl.outerHTML;
 }
