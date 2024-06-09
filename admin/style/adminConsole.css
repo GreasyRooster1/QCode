@@ -2,6 +2,11 @@
     --background-color: #555555;
     --main-content-background: #8f8f8f;
     --content-pane-background: #b5b5b5;
+
+    --lesson-link-color: #8c8c8c;
+
+    --lesson-link-accent: #1e6ec6;
+    --lesson-link-unlisted-accent: #d32f2f;
 }
 
 body{
@@ -38,6 +43,28 @@ body{
     display: flex;
     margin: 10px;
     height: 40vh;
+}
+
+.lessons-pane{
+    display: flex;
+    flex-direction: column;
+}
+
+.lesson-link-wrapper{
+    margin:7px;
+}
+
+.lesson-link{
+    background: var(--lesson-link-color);
+    padding:3px;
+
+    border-left: 3px solid var(--lesson-link-accent);
+
+    /*background: linear-gradient(90deg, var(--lesson-link-color),var(--lesson-link-color) 25%,transparent);*/
+}
+
+.lesson-link.unlisted{
+    border-left: 3px solid var(--lesson-link-unlisted-accent);
 }
 
 .scrollable-content{

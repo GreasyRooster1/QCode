@@ -18,6 +18,7 @@ function createLessonElement(lessonId,lessonData){
 
     link.setAttribute("data-lessonid",lessonId);
     link.classList.add("lesson-link");
+    linkWrapper.classList.add("lesson-link-wrapper");
     if(lessonData.unlisted){
         link.classList.add("unlisted");
     }
