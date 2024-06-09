@@ -1,4 +1,4 @@
-let addedSteps = []
+let createdLessonChapters = []
 let lessonCreatorSaveButton = null;
 
 function createSaveButton(){
@@ -14,26 +14,14 @@ function createSaveButton(){
 }
 
 function saveLesson(){
-    for (let step of scrollableSteps.children){
-        let stepData = {
-            head:step.getAttribute("head"),
-            content:step.querySelector(".step-text-content"),
-            image:step.getAttribute("image"),
-            type:step.getAttribute("type"),
-        }
-        addedSteps.push(stepData);
-    }
     let lessonData = {
         name:lessonMetadata.name,
         unlisted:lessonMetadata.unlisted,
         starterCode:lessonMetadata.starterCode,
-        steps:addedSteps,
+        chapters:createdLessonChapters,
     }
     downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
-    addedSteps=[];
 }
-
-
 
 function downloadLessonData(data,name) {
     let date = new Date().toJSON().slice(0,10).replace(/-/g,'/');

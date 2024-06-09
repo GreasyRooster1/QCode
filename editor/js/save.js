@@ -1,5 +1,6 @@
 const saveButton = document.querySelector('.save-button');
 const saveAlert = document.querySelector('.save-alert');
+let hasSavedRecently = false;
 
 const saveAlertFadeDuration = .75;
 
@@ -8,10 +9,15 @@ saveButton.addEventListener("click", function() {
 });
 
 function saveCode() {
+    rawSave()
+    hasSavedRecently = true;
+    showSaveAlert();
+}
+
+function rawSave(){
     let code = getCodeFromEditor();
     let user = getStoredUser();
     database.ref("userdata/"+user.uid+"/projects/"+projectId+"/code").set(code);
-    showSaveAlert();
 }
 
 function showSaveAlert(){
@@ -24,3 +30,7 @@ function showSaveAlert(){
         }
     },10)
 }
+
+window.addEventListener("beforeunload", function (e) {
+    rawSave();
+});

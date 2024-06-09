@@ -1,5 +1,3 @@
-let stepTypes = ["info","code","challenge"]
-
 class StepElement extends HTMLElement {
     head = null;
     headContent = null;

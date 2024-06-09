@@ -1,4 +1,5 @@
 const buttonContainer = document.querySelector(".lesson-creator-button-container");
+let chapterStep;
 
 const defaultStep = {
     head:"head",
@@ -12,7 +13,19 @@ function setupLessonCreator(){
     setupPanes(true);
 
     createAddStepButton();
+    createChapterButton();
     createSaveButton();
     createMetaButton();
     createMetaEditPane();
+
+    createLessonCreatorChapterStep();
+}
+
+function createLessonCreatorChapterStep(){
+    let content = "edit head to set chapter name"
+    if(createdLessonChapters.length>0) {
+        content = getChapterStepContentNoLink(createdLessonChapters)
+    }
+    chapterStep = createStep("[Lesson Name]",content,"none","chapters",0);
+    chapterStep.querySelector(".step:first-child .step-head-content").setAttribute("contenteditable","true")
 }

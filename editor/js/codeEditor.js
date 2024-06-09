@@ -19,9 +19,15 @@ const editorView = new EditorView({
         javascript(),
         linterExtension,
         customTheme,
+
     ],
+    updateListener:onDocUpdate,
     parent: document.querySelector(".code-editor"),
 });
+
+function onDocUpdate(){
+    hasSavedRecently = false;
+}
 
 window.editor = editorView;
 

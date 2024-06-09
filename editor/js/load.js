@@ -1,6 +1,6 @@
 let projectId=null;
 let userUid = null;
-let hasLesson = false;
+let chapterNum = null;
 let isLessonCreator = false;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
@@ -17,6 +17,11 @@ function getUrlData(){
             return;
         }
     }
+
+    if(searchParams.has("cNum")){
+        chapterNum = searchParams.get("cNum");
+    }
+
     if(userUid===getStoredUser().uid){
         loadProjectCode(projectId);
     }
@@ -24,7 +29,7 @@ function getUrlData(){
 
 function loadProjectCode(id){
     user = getStoredUser();
-    database.ref("userdata/"+user.uid+"/projects/"+projectId).once('value').then((snapshot) => {
+    database.ref("userdata/"+user.uid+"/projects/"+id).once('value').then((snapshot) => {
         const data = snapshot.val();
         writeToEditor(data.code);
         if(data.lessonId!=="none"){
@@ -38,20 +43,21 @@ function loadProjectCode(id){
 function loadLesson(id){
     database.ref("lessons/"+id).once('value').then((snapshot) => {
         const data = snapshot.val();
-        if(data!==null) {
+        if(data.chapters[chapterNum]!==null) {
             scrollableSteps.innerHTML = "";
             populateSteps(data)
         }else{
-            console.log("invalid lesson identifier!");
+            console.log("invalid lesson!");
             setupPanes(false);
         }
     });
 }
 
 function populateSteps(data){
-    console.log(data);
+    createChapterStep(data);
+
     let count = 1;
-    for (let step of data.steps) {
+    for (let step of data.chapters[chapterNum].steps) {
         createStep(step.head,step.content,step.image,step.type,count);
         count++;
     }
@@ -84,6 +90,38 @@ function writeToEditor(data){
     const transaction = editor.state.update({changes: {from: 0, to: editor.state.doc.length, insert: data}})
     const update = editor.state.update(transaction);
     editor.update([update]);
+}
+
+function createChapterStep(data){
+    createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","0");
+}
+
+function getChapterStepContent(chapters){
+    let content="";
+    let count=1;
+    for(let chapter of chapters){
+        content+=createChapterLink(count-1,chapter)+"<br>";
+        count++;
+    }
+    return content;
+}
+function getChapterStepContentNoLink(chapters){
+    let content="";
+    let count=1;
+    for(let chapter of chapters){
+        content+="Chapter "+count+" - "+chapter.name+"<br>";
+        count++;
+    }
+    return content;
+}
+
+function createChapterLink(chapterNum,chapterData){
+    let name = "Chapter "+chapterNum+" - "+chapterData.name;
+    let linkEl = document.createElement("a");
+    linkEl.innerHTML = name;
+    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNum));
+    linkEl.classList.add("chapter-link")
+    return linkEl.outerHTML;
 }
 
 getUrlData()
