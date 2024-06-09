@@ -13,28 +13,6 @@ function createSaveButton(){
     buttonContainer.appendChild(lessonCreatorSaveButton);
 }
 
-function saveChapter(chapterNum){
-    let chapterSteps = [];
-    for (let step of scrollableSteps.children){
-        if(step.classList.contains("buffer")){
-            continue;
-        }
-        let stepData = {
-            head:step.getAttribute("head"),
-            content:step.querySelector(".step-text-content").innerHTML,
-            image:step.getAttribute("image"),
-            type:step.getAttribute("type"),
-        }
-        chapterSteps.push(stepData);
-    }
-    createdLessonChapters[chapterNum]={
-        steps:[],
-        name:"",
-    }
-    createdLessonChapters[chapterNum].steps = chapterSteps;
-    createdLessonChapters[chapterNum].name = scrollableSteps.querySelector(".step:first-child .step-head-content").innerText;
-}
-
 function saveLesson(){
     let lessonData = {
         name:lessonMetadata.name,
@@ -44,8 +22,6 @@ function saveLesson(){
     }
     downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
 }
-
-
 
 function downloadLessonData(data,name) {
     let date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
