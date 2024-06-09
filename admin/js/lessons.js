@@ -7,7 +7,7 @@ const lessonDetailsStepCount = document.querySelector(".lesson-details .step-cou
 
 const lessonCreatorButton = document.querySelector(".lesson-creator-button");
 
-function lessons(){
+function setupLessons(){
     let lessonsRef = database.ref('lessons');
     lessonsRef.on('value', (snapshot) => {
         const data = snapshot.val();
@@ -68,4 +68,4 @@ lessonCreatorButton.addEventListener("click",(e) => {
     window.location.href = "../editor/editor.html?projectId=$$lesson$$creator$$"
 })
 
-lessons();
+setupLessons();

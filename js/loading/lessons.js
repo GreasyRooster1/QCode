@@ -35,7 +35,7 @@ function lessonClickHandle(e){
     let projectId = lessonId
     database.ref(ref+projectId).once("value").then(function (snap) {
         if(snap.exists()){
-            window.location.href = "editor/editor.html?projectId="+projectId+"&uid="+uid;
+            window.location.href = "editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+snap.val().currentChapter;
             return;
         }
         database.ref("lessons/"+lessonId).once("value").then(function (snap) {
@@ -49,7 +49,7 @@ function lessonClickHandle(e){
                 name:lessonData.name,
                 lessonId: lessonId,
             });
-            window.location.href = "editor/editor.html?projectId="+projectId+"&uid="+getStoredUser().uid;
+            window.location.href = "editor/editor.html?projectId="+projectId+"&uid="+getStoredUser().uid+"&cNum=0";
         });
     })
 }

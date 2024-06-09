@@ -1,6 +1,6 @@
 let projectId=null;
 let userUid = null;
-let hasLesson = false;
+let chapterNum = null;
 let isLessonCreator = false;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
@@ -17,6 +17,11 @@ function getUrlData(){
             return;
         }
     }
+
+    if(searchParams.has("cNum")){
+        chapterNum = searchParams.get("cNum");
+    }
+
     if(userUid===getStoredUser().uid){
         loadProjectCode(projectId);
     }
