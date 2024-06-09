@@ -1,4 +1,4 @@
-
+const lessonsPane = document.querySelector(".lessons-pane");
 
 function loadLessons(){
     let lessonsRef = database.ref('lessons');
@@ -7,9 +7,6 @@ function loadLessons(){
         clearLessons();
         console.log(data);
         for(const [lessonId, lessonData] of Object.entries(data)){
-            if(lessonData.unlisted){
-                continue;
-            }
             createLessonElement(lessonId,lessonData);
         }
     });
@@ -21,13 +18,18 @@ function createLessonElement(lessonId,lessonData){
 
     link.setAttribute("data-lessonid",lessonId);
     link.classList.add("lesson-link");
+    if(lessonData.unlisted){
+        link.classList.add("unlisted");
+    }
 
     link.innerHTML = lessonData.name;
 
     linkWrapper.appendChild(link)
-    lessonsDisplay.appendChild(linkWrapper);
+    lessonsPane.appendChild(linkWrapper);
 }
 
 function clearLessons(){
-    lessonsDisplay.innerHTML = "";
+    lessonsPane.innerHTML = "";
 }
+
+loadLessons();
