@@ -1,4 +1,4 @@
-const lessonsPane = document.querySelector(".lessons-pane");
+const lessonsDisplay = document.querySelector(".lessons-display");
 
 function loadLessons(){
     let lessonsRef = database.ref('lessons');
@@ -26,11 +26,11 @@ function createLessonElement(lessonId,lessonData){
     link.innerHTML = lessonData.name;
 
     linkWrapper.appendChild(link)
-    lessonsPane.appendChild(linkWrapper);
+    lessonsDisplay.appendChild(linkWrapper);
 }
 
 function clearLessons(){
-    lessonsPane.innerHTML = "";
+    lessonsDisplay.innerHTML = "";
 }
 
 loadLessons();

@@ -3,10 +3,12 @@
     --main-content-background: #8f8f8f;
     --content-pane-background: #b5b5b5;
 
-    --lesson-link-color: #8c8c8c;
+    --lesson-link-color: #a3a3a3;
 
     --lesson-link-accent: #1e6ec6;
     --lesson-link-unlisted-accent: #d32f2f;
+
+    --lesson-details-background:#a3a3a3;
 }
 
 body{
@@ -52,6 +54,15 @@ body{
 
 .lesson-link-wrapper{
     margin:7px;
+}
+
+.lessons-display{
+    height: 60%;
+}
+
+.lesson-details{
+    height:40%;
+    background: var(--lesson-details-background);
 }
 
 .lesson-link{
