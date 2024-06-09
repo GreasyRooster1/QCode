@@ -22,3 +22,4 @@ function createProjectElement(projectId,projectData){
 function clearProjects(){
     projectsDisplay.innerHTML = "";
 }
+
