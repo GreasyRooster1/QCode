@@ -14,7 +14,7 @@ function loadProjects(){
 
 function createProjectElement(projectId,projectData){
     let el = document.createElement("project-link");
-    el.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,"auto"));
+    el.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,projectData.currentChapter));
     el.setAttribute("name",projectData.name);
     projectsDisplay.appendChild(el);
 }
