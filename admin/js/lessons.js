@@ -43,7 +43,16 @@ function clearLessons(){
 
 function showLessonDetails(e){
     let lessonId = e.currentTarget.getAttribute("data-lessonid");
-    database.ref("lessons/"+lessonId).once("value").then(s)
+    database.ref("lessons/"+lessonId).once("value").then((snap)=>{
+        let data = snap.val();
+        lessonDetailsName.innerHTML = data.name;
+        lessonDetailsId.innerHTML = lessonId;
+        lessonDetailsUnlisted.innerHTML = data.steps.length.toLocaleString();
+
+        if(data.unlisted){
+            lessonDetailsUnlisted.classList.add("active");
+        }
+    });
 }
 
 lessons();
