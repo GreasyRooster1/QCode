@@ -1,4 +1,4 @@
-let addedSteps = []
+let createdLessonChapters = []
 let lessonCreatorSaveButton = null;
 
 function createSaveButton(){
@@ -13,24 +13,31 @@ function createSaveButton(){
     buttonContainer.appendChild(lessonCreatorSaveButton);
 }
 
-function saveLesson(){
+function saveChapter(chapterNum){
+    let chapterSteps = [];
     for (let step of scrollableSteps.children){
+        if(step.classList.contains("buffer")){
+            continue;
+        }
         let stepData = {
             head:step.getAttribute("head"),
-            content:step.querySelector(".step-text-content"),
+            content:step.querySelector(".step-text-content").innerHTML,
             image:step.getAttribute("image"),
             type:step.getAttribute("type"),
         }
-        addedSteps.push(stepData);
+        chapterSteps.push(stepData);
     }
+    createdLessonChapters[chapterNum] = chapterSteps;
+}
+
+function saveLesson(){
     let lessonData = {
         name:lessonMetadata.name,
         unlisted:lessonMetadata.unlisted,
         starterCode:lessonMetadata.starterCode,
-        steps:addedSteps,
+        chapters:createdLessonChapters,
     }
     downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
-    addedSteps=[];
 }
 
 

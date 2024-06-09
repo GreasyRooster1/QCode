@@ -93,13 +93,17 @@ function writeToEditor(data){
 }
 
 function createChapterStep(data){
+    createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","0");
+}
+
+function getChapterStepContent(chapters){
     let content="";
     let count=1;
-    for(let chapter of data.chapters){
+    for(let chapter of chapters){
         content+=createChapterLink(count-1,chapter)+"<br>";
         count++;
     }
-    createStep(data.name,content,"none","chapters","0");
+    return content;
 }
 
 function createChapterLink(chapterNum,chapterData){

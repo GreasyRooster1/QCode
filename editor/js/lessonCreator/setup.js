@@ -13,9 +13,18 @@ function setupLessonCreator(){
     setupPanes(true);
 
     createAddStepButton();
+    createChapterButton();
     createSaveButton();
     createMetaButton();
     createMetaEditPane();
 
-    chapterStep = createStep("[Lesson Name]","you dont need to modify this step","none","chapters",0);
+    createLessonCreatorChapterStep();
+}
+
+function createLessonCreatorChapterStep(){
+    let content = "edit this steps head to set this chapters name"
+    if(createdLessonChapters.length>0) {
+        content = getChapterStepContent(createdLessonChapters)
+    }
+    chapterStep = createStep("[Lesson Name]",content,"none","chapters",0);
 }
