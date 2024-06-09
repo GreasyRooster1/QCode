@@ -1,4 +1,4 @@
-function reCalculateUserPoints(){
+function reCalculateUserPoints(exitFunc){
     database.ref("userdata/"+getStoredUser().uid+"/badges").once("value", function(snap){
        let data = snap.val();
        let totalPoints = 0;
@@ -11,6 +11,7 @@ function reCalculateUserPoints(){
 
                if(count===data.length){
                    setPointValue(totalPoints);
+                   exitFunc(totalPoints);
                }
            })
 

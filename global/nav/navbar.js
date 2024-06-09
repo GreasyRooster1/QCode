@@ -5,12 +5,24 @@ const accountOptions = document.querySelector(".account-options");
 const accountOptionsWrapper = document.querySelector(".account-dropdown-wrapper");
 const logoutButton = document.querySelector(".logout-button");
 const homeButton = document.querySelector(".home-link")
+const pointsDisplayNum = document.querySelector(".points-display-num");
 
 let navbarVisible = true;
 let accountOptionsVisible = false;
 
 function initNavbar(){
-    database.ref("userdata/"+getStoredUser().uid).child("username").once('value').then((snapshot) => {
+    initUsername();
+    initPoints();
+}
+
+function initPoints(){
+    reCalculateUserPoints((points) => {
+        pointsDisplayNum.innerText = points;
+    });
+}
+
+function initUsername(){
+    database.ref("userdata/"+getStoredUser().uid+"/username").once('value').then((snapshot) => {
         let username = snapshot.val();
         let formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
         userLink.innerHTML = formattedUsername;
