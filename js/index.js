@@ -6,7 +6,7 @@ let user = getStoredUser();
 function init(){
     loadBadges();
     loadProjects();
-    loadLessons();
+    lessons();
     removeNavHome();
 }
 

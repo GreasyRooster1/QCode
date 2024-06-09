@@ -39,24 +39,20 @@ function handleAuthErrors(error){
     if(errorCode==="auth/internal-error"){
         let errorObj = JSON.parse(errorMessage).error;
         if(errorObj.message==="INVALID_LOGIN_CREDENTIALS"){
-           return "invalid credentials";
+           return "invalid-credentials";
         }
     }
-    if(errorCode==="auth/invalid-email"){
-        return "invalid email";
-    }
-    if(errorCode==="auth/email-already-in-use"){
-        return "email already in use";
-    }
-    return "ok";
+
+    return errorCode;
 }
 
 function displayAuthErrors(errorType){
     switch (errorType){
-        case "invalid credentials": showAuthError("Username or password is incorrect"); return;
-        case "invalid email": showAuthError("That username is not valid");return;
-        case "email already in use": showAuthError("That account already exists!");return;
-        case "ok": break;
+        case "invalid-credentials": showAuthError("Username or password is incorrect"); return;
+        case "auth/invalid-email": showAuthError("That username is not valid");return;
+        case "auth/email-already-in-use": showAuthError("That account already exists!");return;
+        case "auth/network-request-failed": showAuthError("Bad network!");return;
+        case "something went wrong!": break;
     }
 }
 
