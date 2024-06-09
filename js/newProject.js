@@ -4,11 +4,12 @@ newProjectButton.addEventListener('click', (e) => {
 })
 
 function createProject(projectName){
+    let cleanProjectId = projectName.toLowerCase().replaceAll("[^a-z0-9]","");
     let user = getStoredUser();
-    let projectId = projectName.replace(" ","-").toLowerCase();
-    database.ref("userdata/"+user.uid+"/projects").child(projectId).set({
+    database.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).set({
         code:defaultCode,
         lessonId:"none",
-        name:projectName
+        name:projectName,
+        currentChapter:0,
     })
 }
