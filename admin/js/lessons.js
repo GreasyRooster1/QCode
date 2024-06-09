@@ -3,6 +3,7 @@ const lessonsDisplay = document.querySelector(".lessons-display");
 const lessonDetailsName = document.querySelector(".lesson-details .name");
 const lessonDetailsId = document.querySelector(".lesson-details .id");
 const lessonDetailsUnlisted = document.querySelector(".lesson-details .unlisted");
+const lessonDetailsChapterCount = document.querySelector(".lesson-details .chapter-count");
 const lessonDetailsStepCount = document.querySelector(".lesson-details .step-count");
 
 const lessonCreatorButton = document.querySelector(".lesson-creator-button");
@@ -49,7 +50,13 @@ function showLessonDetails(e){
         let data = snap.val();
         lessonDetailsName.innerHTML = data.name;
         lessonDetailsId.innerHTML = lessonId;
-        lessonDetailsStepCount.innerHTML = data.steps.length.toLocaleString();
+        lessonDetailsChapterCount.innerHTML = data.chapters.length.toLocaleString();
+
+        let totalSteps = 0;
+        for(let chapter of data.chapters){
+            totalSteps += chapter.steps.length;
+        }
+        lessonDetailsStepCount.innerHTML = totalSteps.toLocaleString();
 
 
         if(data.unlisted){
