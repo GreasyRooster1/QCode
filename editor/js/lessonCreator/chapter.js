@@ -1,5 +1,5 @@
 let lessonCreatorChapterButton = null;
-let currentChapter = 0;
+let currentChapter = 1;
 
 function createChapterButton(){
     lessonCreatorChapterButton = document.createElement("div")
@@ -14,14 +14,16 @@ function createChapterButton(){
 }
 
 function chapterClick(){
-    saveChapter(currentChapter);
+    saveChapter(currentChapter-1);
 
     scrollableSteps.innerHTML = '';
 
     createLessonCreatorChapterStep();
 
     currentChapter = prompt("Enter a chapter to jump to");
-    if(lessonCreatorChapterButton[currentChapter]===undefined){
-        currentChapter.name = prompt("Enter a name for the new chapter");
-    }
+    loadCreatedChapter(currentChapter);
+}
+
+function loadCreatedChapter(){
+
 }

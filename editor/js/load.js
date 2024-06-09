@@ -105,6 +105,15 @@ function getChapterStepContent(chapters){
     }
     return content;
 }
+function getChapterStepContentNoLink(chapters){
+    let content="";
+    let count=1;
+    for(let chapter of chapters){
+        content+="Chapter "+count+" - "+chapter.name+"<br>";
+        count++;
+    }
+    return content;
+}
 
 function createChapterLink(chapterNum,chapterData){
     let name = "Chapter "+chapterNum+" - "+chapterData.name;
