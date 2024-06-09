@@ -120,6 +120,9 @@ function createChapterLink(chapterNum,chapterData){
     let linkEl = document.createElement("a");
     linkEl.innerHTML = name;
     linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNum));
+    linkEl.addEventListener("click",()=>{
+        hasSavedRecently = true;
+    })
     linkEl.classList.add("chapter-link")
     return linkEl.outerHTML;
 }
