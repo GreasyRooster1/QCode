@@ -1,5 +1,6 @@
 const saveButton = document.querySelector('.save-button');
 const saveAlert = document.querySelector('.save-alert');
+let hasSavedRecently = false;
 
 const saveAlertFadeDuration = .75;
 
@@ -11,6 +12,7 @@ function saveCode() {
     let code = getCodeFromEditor();
     let user = getStoredUser();
     database.ref("userdata/"+user.uid+"/projects/"+projectId+"/code").set(code);
+    hasSavedRecently = true;
     showSaveAlert();
 }
 
@@ -24,3 +26,15 @@ function showSaveAlert(){
         }
     },10)
 }
+
+window.addEventListener("beforeunload", function (e) {
+    saveCode();
+    if(hasSavedRecently){
+       return undefined
+    }
+
+    //produce dialog
+    let confirmationMessage = "unsaved changes";
+    e.returnValue = confirmationMessage; //Gecko + IE
+    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+});
