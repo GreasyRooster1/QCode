@@ -1,4 +1,5 @@
 const buttonContainer = document.querySelector(".lesson-creator-button-container");
+let chapterStep;
 
 const defaultStep = {
     head:"head",
@@ -15,4 +16,6 @@ function setupLessonCreator(){
     createSaveButton();
     createMetaButton();
     createMetaEditPane();
+
+    chapterStep = createStep("[Lesson Name]","you dont need to modify this step","none","chapters",0);
 }
