@@ -9,6 +9,8 @@
     --lesson-link-unlisted-accent: #d32f2f;
 
     --lesson-details-background:#a3a3a3;
+
+    --lesson-creator-button-color: #1aca52;
 }
 
 .scrollable-content{
@@ -111,4 +113,12 @@ body{
 .lesson-details-title{
     font-size: 1.3em;
     text-align: center;
+}
+
+.lesson-creator-button-container{
+    margin: 5px;
+}
+
+.lesson-creator-button{
+    background: var(--lesson-creator-button-color);
 }

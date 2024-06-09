@@ -52,7 +52,9 @@ function showLessonDetails(e){
         lessonDetailsStepCount.innerHTML = data.steps.length.toLocaleString();
 
         if(data.unlisted){
-            lessonDetailsUnlisted.classList.add("active");
+            lessonDetailsUnlisted.innerHTML = "Unlisted"
+        }else{
+            lessonDetailsUnlisted.innerHTML = "Visible"
         }
     });
 }
