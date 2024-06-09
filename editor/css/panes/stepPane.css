@@ -5,7 +5,7 @@
 .scrollable-steps{
     overflow-y:auto;
     overflow-x:hidden;
-    height:90%;
+    height:100%;
 
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -101,6 +101,11 @@
     height:25vh;
 }
 
-.chapter-view{
-    height: 10%;
+.chapter-link{
+    text-decoration: none;
+    color:var(--chapter-link-color);
+    transition:.2s;
+}
+.chapter-link:hover{
+    color:var(--chapter-link-color-hover)
 }
