@@ -51,9 +51,14 @@ function showLessonDetails(e){
         lessonDetailsId.innerHTML = lessonId;
         lessonDetailsStepCount.innerHTML = data.steps.length.toLocaleString();
 
+
         if(data.unlisted){
+            lessonDetailsUnlisted.classList.add("unlisted-red")
+            lessonDetailsUnlisted.classList.remove("unlisted-blue")
             lessonDetailsUnlisted.innerHTML = "Unlisted"
         }else{
+            lessonDetailsUnlisted.classList.add("unlisted-blue")
+            lessonDetailsUnlisted.classList.remove("unlisted-red")
             lessonDetailsUnlisted.innerHTML = "Visible"
         }
     });
