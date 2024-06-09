@@ -8,9 +8,8 @@ function reCalculateUserPoints(){
 
            database.ref("badges/"+badge.id+"/value").once("value", function(snap){
                totalPoints+=snap.val();
-               console.log(totalPoints,count,data.length);
-               if(count===data.length){
 
+               if(count===data.length){
                    setPointValue(totalPoints);
                }
            })
