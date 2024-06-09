@@ -11,6 +11,16 @@
     --lesson-details-background:#a3a3a3;
 }
 
+.scrollable-content{
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+}
+
 body{
     width: 100vw;
     height: 100vh;
@@ -60,11 +70,6 @@ body{
     height: 60%;
 }
 
-.lesson-details{
-    height:40%;
-    background: var(--lesson-details-background);
-}
-
 .lesson-link{
     background: var(--lesson-link-color);
     padding:3px;
@@ -78,12 +83,32 @@ body{
     border-left: 3px solid var(--lesson-link-unlisted-accent);
 }
 
-.scrollable-content{
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.lesson-details{
+    height:40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--lesson-details-background);
 }
 
-.scrollable-content::-webkit-scrollbar {
-    display: none;
+.lesson-details-pane{
+    margin-left:10%;
+    margin-right:10%;
+    width: 100%;
+}
+
+.lesson-details-content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.lesson-details .name{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.lesson-details-title{
+    font-size: 1.3em;
+    text-align: center;
 }
