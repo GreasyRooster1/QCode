@@ -1,4 +1,5 @@
 const userDisplay = document.querySelector('.users-display');
+const userDetailsBadgeDisplay = document.querySelector('.user-details-badges-display');
 
 const userDetailsName = document.querySelector(".user-details .name");
 const userDetailsUid = document.querySelector(".user-details .uid");
@@ -13,6 +14,31 @@ function setupUsers(){
             createUserElement(uid,userData);
         }
     });
+}
+
+function loadUserBadges(badges){
+    userDetailsBadgeDisplay.innerHTML = '';
+    for(const badge of badges){
+        createBadgeElement(badge.id);
+    }
+}
+
+
+function clearUsers(){
+    userDisplay.innerHTML = ""
+}
+
+function createBadgeElement(id){
+    let badgeEl = document.createElement("div");
+    let wrapperEl = document.createElement("div");
+
+    wrapperEl.classList.add("listed-data-item-wrapper");
+    badgeEl.classList.add("listed-data-item");
+
+    badgeEl.innerHTML = id;
+
+    wrapperEl.appendChild(badgeEl);
+    userDetailsBadgeDisplay.appendChild(wrapperEl);
 }
 
 function createUserElement(uid,userData){
@@ -35,21 +61,17 @@ function createUserElement(uid,userData){
     userDisplay.appendChild(wrapperEl);
 }
 
-function clearUsers(){
-    userDisplay.innerHTML = ""
-}
-
-function showUserDetails(e){
+function showUserDetails(e) {
     let uid = e.currentTarget.getAttribute("data-uid");
 
     userDetailsUid.innerHTML = uid;
-    database.ref("userdata/"+uid).once("value").then((snap)=>{
+    database.ref("userdata/" + uid).once("value").then((snap) => {
         let data = snap.val();
 
         userDetailsName.innerHTML = data.username;
         userDetailsPoints.innerHTML = data.points;
+        loadUserBadges(data.badges)
     });
-
 }
 
 setupUsers();
