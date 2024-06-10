@@ -48,6 +48,7 @@ function lessonClickHandle(e){
                 code:starterCode,
                 name:lessonData.name,
                 lessonId: lessonId,
+                currentChapter: 0,
             });
             openProjectInEditor(projectId,uid,0);
         });
