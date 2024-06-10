@@ -1,5 +1,5 @@
 .listed-data-item{
-    background: var(--lesson-link-color);
+    background: var(--data-item-color);
     padding:3px;
 }
 

@@ -3,12 +3,11 @@
     --main-content-background: #8f8f8f;
     --content-pane-background: #b5b5b5;
 
-    --lesson-link-color: #a3a3a3;
+    --data-item-color: #a3a3a3;
+    --details-background:#a3a3a3;
 
     --lesson-link-accent: #1e6ec6;
     --lesson-link-unlisted-accent: #d32f2f;
-
-    --lesson-details-background:#a3a3a3;
 
     --lesson-creator-button-color: #1aca52;
 }

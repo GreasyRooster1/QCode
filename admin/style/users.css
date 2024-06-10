@@ -1,0 +1,11 @@
+.users-pane{
+    flex-direction: column;
+}
+
+.user-display-wrapper{
+    height: 60%;
+}
+
+.user-details{
+    background: var(--right-sections-background);
+}
