@@ -3,10 +3,8 @@
     flex-direction: column;
 }
 
-.lessons-display{
+.lessons-display-wrapper{
     height: 60%;
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .lesson-link{
