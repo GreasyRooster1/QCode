@@ -20,8 +20,12 @@
 
     <link rel="stylesheet" href="../global/global.css">
     <link rel="stylesheet" href="style/adminConsole.css">
+    <link rel="stylesheet" href="style/dataLists.css">
+    <link rel="stylesheet" href="style/lessons.css">
+    <link rel="stylesheet" href="style/users.css">
 
     <script src="js/lessons.js" defer></script>
+    <script src="js/users.js" defer></script>
 </head>
 <body>
     <div class="main-content">
@@ -35,18 +39,20 @@
             <div class="lesson-creator-button-container">
                 <span class="lesson-creator-button">Lesson Creator</span>
             </div>
-            <div class="lessons-display scrollable-content">
+            <div class="listed-data-wrapper lessons-display-wrapper scrollable-content">
+                <div class="lessons-display listed-data">
+                </div>
             </div>
             <div class="lesson-details">
-                <div class="name">Click a lesson</div>
+                <div class="name">Click any lesson</div>
                 <div class="lesson-details-content">
-                    <div class="lesson-details-meta lesson-details-pane">
-                        <div class="lesson-details-title">Metadata</div>
+                    <div class="lesson-details-meta details-pane">
+                        <div class="details-title">Metadata</div>
                         <div class="detail-container">Internal identifier: <span class="id">none</span></div>
                         <div class="detail-container">Unlisted: <span class="unlisted"></span></div>
                     </div>
-                    <div class="lesson-details-stats lesson-details-pane">
-                        <div class="lesson-details-title">Stats</div>
+                    <div class="lesson-details-stats details-pane">
+                        <div class="details-title">Stats</div>
                         <div class="detail-container">Amount of chapters: <span class="chapter-count">0</span></div>
                         <div class="detail-container">Total steps: <span class="step-count">0</span></div>
                     </div>
@@ -55,9 +61,31 @@
 
         </div>
 
-<!--        <div class="users-pane content-pane scrollable-content">-->
-<!--            users pane-->
-<!--        </div>-->
+        <div class="users-pane content-pane">
+            <div class="listed-data-wrapper scrollable-content user-display-wrapper">
+                <div class="users-display listed-data">
+                </div>
+            </div>
+            <div class="user-details">
+                <div class="name">Click any user</div>
+                <div class="user-details-content">
+                    <div class="user-details-data details-pane">
+                        <div class="details-title">Data</div>
+                        <div class="detail-container">Uid: <span class="uid"></span></div>
+                        <div class="detail-container">Points: <span class="points"></span></div>
+                    </div>
+                    <div class="user-details-badges details-pane">
+                        <div class="details-title">Badges</div>
+
+                        <div class="listed-data-wrapper scrollable-content">
+                            <div class="user-details-badges-display listed-data">
+                            </div>
+                        </div>
+                        <div class="add-badge-button">Grant Badge</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <!--        <div class="badges-pane content-pane scrollable-content">-->
 <!--            badges pane-->

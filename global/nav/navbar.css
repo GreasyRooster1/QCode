@@ -1,9 +1,13 @@
 :root{
     --account-name-text: #ffffff;
-    --account-dropdown-background: #2e2e2e;
     --account-dropdown-option: #d1d1d1;
 
     --navbar-shrink-color: #1a1a1a;
+
+    --generic-nav-button-color: #2e2e2e;
+
+    --points-display-background: #11df5a;
+    --points-display-text: #ffffff;
 
     --navbar-height:fit-content;
 }
@@ -21,6 +25,7 @@ brand-nav{
     justify-content: space-between;
     background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-green)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-blue) 87%, var(--brand-black) 99%);
 
+
     z-index: 999;
     transition: height 1s;
 }
@@ -36,7 +41,7 @@ brand-nav{
 
 .home-link{
     color: var(--account-name-text);
-    background:var(--account-dropdown-background);
+    background:var(--generic-nav-button-color);
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none;
@@ -56,7 +61,7 @@ brand-nav{
 
 .username-link{
     color: var(--account-name-text);
-    background:var(--account-dropdown-background);
+    background:var(--generic-nav-button-color);
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none;
@@ -89,9 +94,19 @@ brand-nav{
     transition: .4s;
 }
 .account-options > .option{
-    background:var(--account-dropdown-background);
+    background:var(--generic-nav-button-color);
     width: 100%;
     color: var(--account-dropdown-option);
     height:20px;
     text-align: center;
+}
+
+.points-display{
+    color: var(--points-display-text);
+    background: var(--points-display-background);
+    border-radius: 5px;
+    text-align: center;
+    align-self: center;
+    padding:2px;
+    margin-left: 10px;
 }

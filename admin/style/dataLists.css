@@ -1,0 +1,22 @@
+.listed-data-item{
+    background: var(--data-item-color);
+    padding:3px;
+}
+
+.listed-data-item-wrapper{
+    margin:7px;
+    flex: 0 0 25%;
+    height:fit-content;
+}
+
+.listed-data{
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+}
+
+.listed-data-wrapper{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
