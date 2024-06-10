@@ -1,3 +1,4 @@
+const navWrapper = document.querySelector('brand-nav');
 const navbar = document.querySelector(".navbar");
 const navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
 const userLink = document.querySelector(".username-link");
@@ -8,7 +9,7 @@ const homeButton = document.querySelector(".home-link")
 const pointsDisplayNum = document.querySelector(".points-display-num");
 
 let navbarVisible = true;
-let contentVisible = false;
+let accountDropdownActive = false;
 
 function initNavbar(){
     initUsername();
@@ -33,16 +34,15 @@ navbarVisibilityButton.addEventListener("click",function (){
     innerContent = document.querySelectorAll(".navbar *");
     navbarVisible = !navbarVisible;
     if(navbarVisible){
-        navbar.style.height = "var(--navbar-height)";
+        navWrapper.style.height = "var(--navbar-height)";
         setTimeout(function () {
             setVisibilityForInner("visible")
         },500);
         navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
     }else{
-        navbar.style.height = "0";
+        navWrapper.style.height = "0";
         navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
-        accountOptions.style.height = "0";
-        contentVisible=false;
+        accountDropdownActive=false;
         setVisibilityForInner("hidden")
     }
 });
@@ -57,8 +57,8 @@ userLink.addEventListener("click", function (e){
         return;
     }
 
-    contentVisible = !contentVisible;
-    if(contentVisible) {
+    accountDropdownActive = !accountDropdownActive;
+    if(accountDropdownActive) {
         accountOptions.style.height = "20px";
         userLink.style.borderRadius = "0";
     }else{
