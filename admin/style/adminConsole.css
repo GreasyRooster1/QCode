@@ -66,6 +66,8 @@ body{
 
 .lessons-display{
     height: 60%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .listed-data-item{
@@ -75,6 +77,7 @@ body{
 
 .listed-data-item-wrapper{
     margin:7px;
+    flex: 1 0 25%;
 }
 
 .lesson-link{
@@ -129,4 +132,10 @@ body{
 
 .unlisted-blue{
     color: var(--lesson-link-accent);
+}
+
+.users-display{
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
 }
