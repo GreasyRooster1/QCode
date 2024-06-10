@@ -18,6 +18,7 @@ const editorView = new EditorView({
         basicSetup,
         javascript(),
         linterExtension,
+
         customTheme,
 
     ],
