@@ -9,13 +9,15 @@
     --points-display-background: #11df5a;
     --points-display-text: #ffffff;
 
-    --navbar-height:fit-content;
+    --navbar-height:40px;
 }
 
 brand-nav{
     height:var(--navbar-height);
     width:100vw;
     display: block;
+    position: fixed;
+    z-index: 999;
 }
 
 .navbar{

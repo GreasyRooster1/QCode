@@ -2,13 +2,13 @@ const navbar = document.querySelector(".navbar");
 const navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
 const userLink = document.querySelector(".username-link");
 const accountOptions = document.querySelector(".account-options");
-const accountOptionsWrapper = document.querySelector(".account-dropdown-wrapper");
+let innerContent;
 const logoutButton = document.querySelector(".logout-button");
 const homeButton = document.querySelector(".home-link")
 const pointsDisplayNum = document.querySelector(".points-display-num");
 
 let navbarVisible = true;
-let accountOptionsVisible = false;
+let contentVisible = false;
 
 function initNavbar(){
     initUsername();
@@ -30,19 +30,20 @@ function initUsername(){
 }
 
 navbarVisibilityButton.addEventListener("click",function (){
+    innerContent = document.querySelectorAll(".navbar *");
     navbarVisible = !navbarVisible;
     if(navbarVisible){
-        navbar.style.height = "5vh";
+        navbar.style.height = "var(--navbar-height)";
         setTimeout(function () {
-            accountOptionsWrapper.style.display = "block";
+            setVisibilityForInner("visible")
         },500);
         navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
     }else{
         navbar.style.height = "0";
         navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
         accountOptions.style.height = "0";
-        accountOptionsVisible=false;
-        accountOptionsWrapper.style.display = "none";
+        contentVisible=false;
+        setVisibilityForInner("hidden")
     }
 });
 
@@ -56,8 +57,8 @@ userLink.addEventListener("click", function (e){
         return;
     }
 
-    accountOptionsVisible = !accountOptionsVisible;
-    if(accountOptionsVisible) {
+    contentVisible = !contentVisible;
+    if(contentVisible) {
         accountOptions.style.height = "20px";
         userLink.style.borderRadius = "0";
     }else{
@@ -80,5 +81,10 @@ homeButton.addEventListener("click",function () {
    window.location.href = "../";
 });
 
+function setVisibilityForInner(vis){
+    innerContent.forEach((item) => {
+        item.style.visibility = vis;
+    })
+}
 
 initNavbar();
