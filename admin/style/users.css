@@ -28,3 +28,9 @@
 .user-details .name{
     font-size: 1.4em;
 }
+
+.add-badge-button{
+    background: var(--add-badge-button-color);
+    border-radius: 5px;
+    padding: 1px;
+}
