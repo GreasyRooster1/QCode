@@ -5,6 +5,10 @@ const userDetailsName = document.querySelector(".user-details .name");
 const userDetailsUid = document.querySelector(".user-details .uid");
 const userDetailsPoints = document.querySelector(".user-details .points");
 
+let selectedUserUid = null;
+
+const addBadgeButton = document.querySelector(".add-badge-button");
+
 function setupUsers(){
     database.ref('userdata').once('value').then((snapshot) => {
         const data = snapshot.val();
@@ -65,6 +69,8 @@ function showUserDetails(e) {
     let uid = e.currentTarget.getAttribute("data-uid");
 
     userDetailsUid.innerHTML = uid;
+    selectedUserUid = uid;
+
     database.ref("userdata/" + uid).once("value").then((snap) => {
         let data = snap.val();
 
@@ -73,5 +79,20 @@ function showUserDetails(e) {
         loadUserBadges(data.badges)
     });
 }
+
+addBadgeButton.addEventListener("click",function (){
+    if(selectedUserUid===null){
+        return;
+    }
+
+    let newBadgeId = prompt("Please enter the id of the badge to add");
+
+    database.ref("userdata/" + selectedUserUid+"/badges").once("value").then((snapshot) => {
+        let badges = snapshot.val();
+        badges.push({id:newBadgeId});
+
+        database.ref("userdata/" + selectedUserUid+"/badges").set(badges);
+    })
+})
 
 setupUsers();
