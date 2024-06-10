@@ -13,15 +13,21 @@ function setupUsers(){
 
 function createUserElement(userUid,userData){
     let userEl = document.createElement("div");
+    let wrapperEl = document.createElement("div");
 
+    wrapperEl.classList.add("listed-data-item-wrapper");
+
+    userEl.classList.add("listed-data-item");
     userEl.setAttribute("data-userid",userUid);
+
     if(userData.username===undefined){
         userEl.innerHTML = "[Username Not Set]";
     }else {
         userEl.innerHTML = userData.username;
     }
 
-    userDisplay.appendChild(userEl);
+    wrapperEl.appendChild(userEl);
+    userDisplay.appendChild(wrapperEl);
 }
 
 function clearUsers(){

@@ -22,11 +22,12 @@ function setupLessons(){
 
 function createLessonElement(lessonId,lessonData){
     let linkWrapper = document.createElement("div");
-    linkWrapper.classList.add("lesson-link-wrapper");
+    linkWrapper.classList.add("listed-data-item-wrapper");
 
     let link = document.createElement("span");
 
     link.classList.add("lesson-link");
+    link.classList.add("listed-data-item");
     link.setAttribute("data-lessonid",lessonId);
     link.addEventListener("click",showLessonDetails);
 
@@ -38,10 +39,6 @@ function createLessonElement(lessonId,lessonData){
 
     linkWrapper.appendChild(link)
     lessonsDisplay.appendChild(linkWrapper);
-}
-
-function clearLessons(){
-    lessonsDisplay.innerHTML = "";
 }
 
 function showLessonDetails(e){
@@ -69,6 +66,10 @@ function showLessonDetails(e){
             lessonDetailsUnlisted.innerHTML = "Visible"
         }
     });
+}
+
+function clearLessons(){
+    lessonsDisplay.innerHTML = "";
 }
 
 lessonCreatorButton.addEventListener("click",(e) => {

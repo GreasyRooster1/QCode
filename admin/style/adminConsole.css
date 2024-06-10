@@ -64,21 +64,21 @@ body{
     flex-direction: column;
 }
 
-.lesson-link-wrapper{
-    margin:7px;
-}
-
 .lessons-display{
     height: 60%;
 }
 
-.lesson-link{
+.listed-data-item{
     background: var(--lesson-link-color);
     padding:3px;
+}
 
+.listed-data-item-wrapper{
+    margin:7px;
+}
+
+.lesson-link{
     border-left: 3px solid var(--lesson-link-accent);
-
-    /*background: linear-gradient(90deg, var(--lesson-link-color),var(--lesson-link-color) 25%,transparent);*/
 }
 
 .lesson-link.unlisted{
