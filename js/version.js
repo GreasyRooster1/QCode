@@ -12,8 +12,13 @@ function httpGet(theUrl, return_headers) {
 }
 
 function displayVersion(){
-    versionEl.innerHTML = "V beta-"+getCommitNum()+"a";
+    database.ref("version").on("value", (snapshot)=>{
+        let rawVersionString = snapshot.val();
+        let formattedVersion = rawVersionString.replace("{commitNum}",getCommitNum);
+        versionEl.innerHTML = formattedVersion;
+    })
 }
+
 
 function getCommitNum() {
     const response = httpGet(gitApiLink,true);
