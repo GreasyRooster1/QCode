@@ -12,16 +12,25 @@ function loadAnnouncements(){
     });
 }
 
-function createAnnouncementElement(lessonId,lessonData){
-    let linkWrapper = document.createElement("div");
-    let link = document.createElement("span");
+function createAnnouncementElement(data){
+    let announcementWrapper = document.createElement("div");
+    let title = document.createElement("div");
+    let content = document.createElement("div");
+    let date = document.createElement("div");
 
-    link.classList.add("lesson-link");
+    title.innerHTML = data.title;
+    content.innerHTML = data.content;
+    date.innerHTML = data.date;
 
-    link.innerHTML = lessonData.title;
+    announcementWrapper.classList.add("announcement")
+    title.classList.add("title")
+    content.classList.add("content")
+    date.classList.add("date")
 
-    linkWrapper.appendChild(link)
-    announcementsDisplay.appendChild(linkWrapper);
+    announcementWrapper.appendChild(title)
+    announcementWrapper.appendChild(content)
+    announcementWrapper.appendChild(date)
+    announcementsDisplay.appendChild(announcementWrapper);
 }
 
 function clearAnnouncements(){
