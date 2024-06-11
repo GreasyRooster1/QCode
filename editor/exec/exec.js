@@ -65,5 +65,9 @@ function runJs(js){
         }
     }
 
+    if(draw===undefined||setup===undefined){
+        return;
+    }
+
     startP5(draw,setup,eventFunctions);
 }

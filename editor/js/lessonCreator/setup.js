@@ -17,6 +17,7 @@ function setupLessonCreator(){
     createSaveButton();
     createMetaButton();
     createMetaEditPane();
+    createAutoSaveButton();
 
     createLessonCreatorChapterStep();
 }

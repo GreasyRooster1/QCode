@@ -14,6 +14,12 @@
 
     --new-button-background: #0c8ad3;
     --new-button-text-color: #dde5e8;
+
+    --announcement-background: #d9d9d9;
+    --announcement-side-color: #bebebe;
+    --announcement-content-background: #e1e1e1;
+    --announcement-content-text: #4d4d4d;
+    --announcement-date-text: #4d4d4d;
 }
 
 body{
@@ -74,18 +80,24 @@ body{
 .footer-content .title{
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
+}
+
+.footer-content .sub-title{
+    font-size: 13px;
+    text-align: center;
 }
 
 .footer-content .links{
     display: flex;
     justify-content: center;
-
 }
 
 .footer-content .legal{
     display: flex;
     justify-content: center;
-
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer-content a{
@@ -98,4 +110,3 @@ body{
     color: var(--footer-text-color);
     text-decoration: underline;
 }
-

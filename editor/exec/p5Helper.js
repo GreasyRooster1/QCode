@@ -16,9 +16,6 @@ const acceptedFunctions = [
 ]
 
 function startP5(drawArg,setupArg,otherFunctions) {
-
-
-
     window.setup = function(){
         createCanvas(500,500);
         document.getElementById("defaultCanvas0").style.width = "100vmin";

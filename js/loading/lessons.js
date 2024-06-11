@@ -23,6 +23,8 @@ function createLessonElement(lessonId,lessonData){
 
     link.innerHTML = lessonData.name;
 
+    linkWrapper.classList.add("lesson-link-wrapper")
+
     linkWrapper.appendChild(link)
     lessonsDisplay.appendChild(linkWrapper);
 }

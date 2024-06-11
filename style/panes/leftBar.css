@@ -1,11 +1,11 @@
 .projects{
-    min-height: 35%;
+    min-height: 35vh;
     background: var(--project-section-background);
     padding-top:3px
 }
 
 .lessons{
-    min-height: 60%;
+    min-height: 60vh;
     background: var(--project-section-background);
     padding-top:3px
 }
@@ -40,6 +40,10 @@
     color: var(--project-link-text);
     text-decoration: none;
     font-weight: bold;
+}
+
+.lesson-link-wrapper{
+    margin: 10px;
 }
 
 .new-project-button{
