@@ -45,11 +45,27 @@ document.addEventListener('contextmenu', event => {
 function runJs(js){
     //clear dangerous objects and run code
     eval(`
-        window=null;
-        document=null;
         XMLHttpRequest=null;
         XMLHttpRequestUpload=null;
         runJs=null;
     `+js);
-    startP5(draw,setup);
+
+    let eventFunctions = [];
+
+    for (let acceptedFunc of acceptedFunctions){
+        let funcDef;
+        try {
+            funcDef = eval(acceptedFunc);
+        }catch(e){
+            funcDef = undefined;
+        }
+
+        if (funcDef !== undefined) {
+            eventFunctions.push(funcDef);
+        }
+    }
+
+    console.log(JSON.stringify(eventFunctions));
+
+    startP5(draw,setup,eventFunctions);
 }
