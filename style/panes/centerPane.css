@@ -2,3 +2,27 @@
     text-align: center;
     font-size: 2em;
 }
+
+.announcements-pane{
+    padding: 5px;
+}
+
+.announcement{
+    background:var(--announcement-background);
+    border-left: 5px solid var(--announcement-side-color);
+    padding: 5px;
+}
+
+.announcement .title{
+    font-size: 1.3em;
+}
+.announcement .content{
+    background: var(--announcement-content-background);
+    padding: 5px;
+    color:var(--announcement-content-text);
+}
+.announcement .date{
+    padding: 5px;
+    text-align: right;
+    color:var(--announcement-content-text);
+}
