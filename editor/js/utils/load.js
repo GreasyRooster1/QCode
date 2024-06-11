@@ -1,8 +1,11 @@
 function populateSteps(data){
     createChapterStep(data);
 
+    console.log(data.chapters[chapterNum])
+    let steps = data.chapters[chapterNum].steps.values().toArray()
+
     let count = 1;
-    for (let step of data.chapters[chapterNum].steps) {
+    for (let step of steps) {
         createStep(step.head,step.content,step.image,step.type,count);
         count++;
     }
