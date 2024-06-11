@@ -14,13 +14,23 @@ function createSaveButton(){
 }
 
 function saveLesson(){
+    saveChapter(currentChapter);
     let lessonData = {
         name:lessonMetadata.name,
         unlisted:lessonMetadata.unlisted,
         starterCode:lessonMetadata.starterCode,
-        chapters:createdLessonChapters,
+        chapters:convertChaptersToObjFormat(createdLessonChapters),
     }
+    console.log(lessonData.chapters)
     downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
+}
+
+function convertChaptersToObjFormat(chapters){
+    let outputChaptersArr = [];
+    for(let chapter of chapters){
+        outputChaptersArr.push(Object.assign({},chapter.steps));
+    }
+    return Object.assign({},outputChaptersArr);
 }
 
 function downloadLessonData(data,name) {
