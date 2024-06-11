@@ -21,6 +21,11 @@ body{
     padding: 0;
 }
 
+.nav-shift-fix{
+    height:var(--navbar-height);
+    width:100%;
+}
+
 .main-content{
     min-height: 100vh;
     display: flex;

@@ -1,12 +1,40 @@
+const acceptedFunctions = [
+    "mousePressed",
+    "mouseReleased",
+    "mouseClicked",
+    "mouseMoved",
+    "mouseDragged",
+    "doubleClicked",
+    "mouseWheel",
 
-function startP5(drawArg,setupArg) {
+    "keyPressed",
+    "keyReleased",
+    "keyTyped",
+
+    "touchStarted",
+    "touchEnded",
+]
+
+function startP5(drawArg,setupArg,otherFunctions) {
+
+
+
     window.setup = function(){
         createCanvas(500,500);
         document.getElementById("defaultCanvas0").style.width = "100vmin";
         document.getElementById("defaultCanvas0").style.height = "100vmin";
         setupArg()
     };
+
+    for(let func of otherFunctions){
+        console.log(func.name);
+        if(acceptedFunctions.includes(func.name)) {
+            window[func.name] = func;
+        }
+    }
+
     window.draw = drawArg;
+
     new p5();
 }
 
