@@ -1,4 +1,6 @@
 let everyStep;
+let highestViewedStepCount;
+let highestViewedStepEl;
 
 function isScrolledIntoView(parent,el) {
     let rect = el.getBoundingClientRect();
@@ -13,15 +15,23 @@ function isScrolledIntoView(parent,el) {
     return (elemTop >= parentTop) && (elemBottom <= parentBottom);
 }
 
+//we could add styling to the steps if wanted
+
 scrollableSteps.addEventListener("scroll", (e) => {
 
     everyStep = document.querySelectorAll('.step');
 
+    highestViewedStepCount = 0;
     everyStep.forEach((el) => {
+        let stepCount = el.getAttribute("count");
+        if(stepCount > highestViewedStepCount) {
+            highestViewedStepCount = stepCount;
+            highestViewedStepEl = el;
+        }
         if(isScrolledIntoView(scrollableSteps,el)){
-            el.style.border = "5px solid pink";
+            el.classList.add(".focused-step")
         }else{
-            el.style.border = "";
+            el.classList.remove(".focused-step")
         }
     })
 });
