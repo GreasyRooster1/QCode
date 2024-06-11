@@ -4,7 +4,7 @@ let chapterNum = null;
 let isLessonCreator = false;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
-function getUrlData(){
+function loadProjectFromUrlData(){
     const searchParams = new URLSearchParams(window.location.search);
     if(searchParams.has("uid")){
         userUid = searchParams.get("uid");
@@ -40,12 +40,13 @@ function loadProjectCode(id){
     });
 }
 
-function loadLesson(id){
-    database.ref("lessons/"+id).once('value').then((snapshot) => {
+function loadLesson(projectId){
+    database.ref("lessons/"+projectId).once('value').then((snapshot) => {
         const data = snapshot.val();
         if(data.chapters[chapterNum]!==null) {
             scrollableSteps.innerHTML = "";
             populateSteps(data)
+            scrollToCurrentStep(projectId)
         }else{
             console.log("invalid lesson!");
             setupPanes(false);
@@ -53,4 +54,18 @@ function loadLesson(id){
     });
 }
 
-getUrlData()
+function scrollToCurrentStep(projectId){
+    let currentStepRef = database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
+
+    currentStepRef.once('value').then((snapshot) => {
+        if(!snapshot.exists()){
+            currentStepRef.set(0);
+            console.log("no current step was set, defaulting to 0")
+            return;
+        }
+        let currentStep = snapshot.val();
+        scrollableSteps.querySelector('editor-step[count="'+currentStep+'"]');
+    });
+}
+
+loadProjectFromUrlData()
