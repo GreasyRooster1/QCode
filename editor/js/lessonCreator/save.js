@@ -26,11 +26,15 @@ function saveLesson(){
 }
 
 function convertChaptersToObjFormat(chapters){
-    let outputChaptersArr = [];
+    let outputChapters = {};
+    let i=0;
     for(let chapter of chapters){
-        outputChaptersArr.push(Object.assign({},chapter.steps));
+        outputChapters[i.toString()] = {steps:{},name:""};
+        outputChapters[i.toString()].steps = Object.assign({},chapter.steps);
+        outputChapters[i.toString()].name = chapter.name;
+        i++;
     }
-    return Object.assign({},outputChaptersArr);
+    return outputChapters
 }
 
 function downloadLessonData(data,name) {
