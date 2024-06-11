@@ -19,7 +19,7 @@ function loadProjectFromUrlData(){
     }
 
     if(searchParams.has("cNum")){
-        chapterNum = searchParams.get("cNum");
+        chapterNum = parseInt(searchParams.get("cNum"));
     }
 
     if(userUid===getStoredUser().uid){
@@ -64,8 +64,25 @@ function scrollToCurrentStep(projectId){
             return;
         }
         let currentStep = snapshot.val();
-        scrollableSteps.querySelector('editor-step[count="'+currentStep+'"]');
+        scrollWhenAllImagesAreLoaded(currentStep);
     });
+}
+
+function scrollWhenAllImagesAreLoaded(toStep){
+    let currentStepEl = scrollableSteps.querySelector('editor-step[count="'+toStep+'"]');
+    let imagesToLoad = [...document.images].filter(x => !x.complete);
+
+    if (imagesToLoad.length === 0) {
+        scrollableSteps.scrollTop = currentStepEl.offsetTop;
+    } else {
+        imagesToLoad.forEach(imageToLoad => {
+            imageToLoad.onload = imageToLoad.onerror = () => {
+                if ([...document.images].every(x => x.complete)) {
+                    scrollableSteps.scrollTop = currentStepEl.offsetTop;
+                }
+            };
+        });
+    }
 }
 
 loadProjectFromUrlData()
