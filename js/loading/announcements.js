@@ -20,14 +20,14 @@ function createAnnouncementElement(data){
 
     title.innerHTML = data.title;
     content.innerHTML = data.content;
-    date.innerHTML = timeDifference(data.date*1000);
+    date.innerHTML = timeDifference(data.unixTimestamp*1000);
 
     announcementWrapper.classList.add("announcement")
-    title.classList.add("title")
-    content.classList.add("content")
-    date.classList.add("date")
+    title.classList.add("title");
+    content.classList.add("content");
+    date.classList.add("date");
 
-    date.setAttribute("data-date",data.date)
+    date.setAttribute("data-date",data.unixTimestamp);
     date.addEventListener("mouseover",dateHoverIn);
     date.addEventListener("mouseout",dateHoverOut);
 
