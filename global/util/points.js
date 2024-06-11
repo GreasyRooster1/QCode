@@ -1,24 +1,23 @@
 function reCalculateUserPoints(exitFunc){
     database.ref("userdata/"+getStoredUser().uid+"/badges").once("value", function(snap){
-       let data = snap.val();
-       let totalPoints = 0;
-       let count = 0;
+        let data = snap.val();
+        let badges = data.values().toArray().filter(b => b!==undefined);
+        let totalPoints = 0;
+        let count = 0;
 
-       for(let badge of data){
-           if(badge===undefined){
-               continue;
-           }
-           database.ref("badges/"+badge.id+"/value").once("value", function(snap){
-               totalPoints+=snap.val();
+       console.log(data)
 
-               if(count===data.length){
-                   setPointValue(totalPoints);
-                   exitFunc(totalPoints);
-               }
-           })
-
-           count++;
-       }
+        for(let badge of badges){
+            database.ref("badges/"+badge.id+"/value").once("value", function(snap){
+                totalPoints+=snap.val();
+                console.log(count,badges.length)
+                if(count===badges.length){
+                    setPointValue(totalPoints);
+                    exitFunc(totalPoints);
+                }
+            })
+            count++;
+        }
 
     });
 }
