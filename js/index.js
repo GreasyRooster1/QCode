@@ -8,6 +8,7 @@ function init(){
     loadProjects();
     loadLessons();
     removeNavHome();
+    displayVersion()
 }
 
 function removeNavHome(){

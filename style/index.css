@@ -74,6 +74,12 @@ body{
 .footer-content .title{
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
+}
+
+.footer-content .sub-title{
+    font-size: 13px;
+    text-align: center;
 }
 
 .footer-content .links{
