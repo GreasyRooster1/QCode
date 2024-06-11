@@ -92,5 +92,5 @@ function timeDifference(previous) {
 }
 
 function clearAnnouncements(){
-    lessonsDisplay.innerHTML = "";
+    announcementsDisplay.innerHTML = "";
 }

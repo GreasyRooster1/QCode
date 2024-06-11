@@ -42,6 +42,10 @@
     font-weight: bold;
 }
 
+.lesson-link-wrapper{
+    margin: 10px;
+}
+
 .new-project-button{
     background: var(--new-button-background);
     border-radius: 5px;
