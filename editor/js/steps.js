@@ -23,12 +23,13 @@ scrollableSteps.addEventListener("scroll", (e) => {
 
     highestViewedStepCount = 0;
     everyStep.forEach((el) => {
-        let stepCount = el.getAttribute("count");
-        if(stepCount > highestViewedStepCount) {
-            highestViewedStepCount = stepCount;
-            highestViewedStepEl = el;
-        }
         if(isScrolledIntoView(scrollableSteps,el)){
+            let stepCount = el.getAttribute("count");
+            if(stepCount > highestViewedStepCount) {
+                highestViewedStepCount = stepCount;
+                highestViewedStepEl = el;
+            }
+
             el.classList.add(".focused-step")
         }else{
             el.classList.remove(".focused-step")
