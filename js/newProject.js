@@ -11,5 +11,6 @@ function createProject(projectName){
         lessonId:"none",
         name:projectName,
         currentChapter:0,
+        currentStep:0,
     })
 }
