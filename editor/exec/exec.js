@@ -65,7 +65,5 @@ function runJs(js){
         }
     }
 
-    console.log(JSON.stringify(eventFunctions));
-
     startP5(draw,setup,eventFunctions);
 }
