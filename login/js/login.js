@@ -27,18 +27,6 @@ function showAuthError(msg){
     authErrorContent.innerHTML = msg;
 }
 
-
-//todo: create users
-function createUserData(user) {
-    database.ref('userdata/' + user.uid).set({
-        badges:{
-            0:{id:"user"}
-        },
-        projects:{},
-        username:usernameInput.value,
-    });
-}
-
 function getReturnURL(){
     const searchParams = new URLSearchParams(window.location.search);
     if(searchParams.has("retUrl")) {
