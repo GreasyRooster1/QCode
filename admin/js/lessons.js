@@ -6,8 +6,6 @@ const lessonDetailsUnlisted = document.querySelector(".lesson-details .unlisted"
 const lessonDetailsChapterCount = document.querySelector(".lesson-details .chapter-count");
 const lessonDetailsStepCount = document.querySelector(".lesson-details .step-count");
 
-const lessonCreatorButton = document.querySelector(".lesson-creator-button");
-
 function setupLessons(){
     let lessonsRef = database.ref('lessons');
     lessonsRef.on('value', (snapshot) => {
@@ -72,8 +70,6 @@ function clearLessons(){
     lessonsDisplay.innerHTML = "";
 }
 
-lessonCreatorButton.addEventListener("click",(e) => {
-    window.location.href = "../editor/editor.html?projectId=$$lesson$$creator$$"
-})
+
 
 setupLessons();
