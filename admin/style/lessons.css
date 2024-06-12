@@ -34,14 +34,6 @@
     text-align: center;
 }
 
-.lesson-creator-button-container{
-    margin: 5px;
-}
-
-.lesson-creator-button{
-    background: var(--lesson-creator-button-color);
-}
-
 .unlisted-red{
     color: var(--lesson-link-unlisted-accent);
 }

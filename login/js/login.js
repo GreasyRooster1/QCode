@@ -5,6 +5,13 @@ const passwordInput = document.querySelector(".password-input");
 const authErrorDisplayWrapper = document.querySelector(".auth-error");
 const authErrorContent = document.querySelector(".auth-error-message");
 
+const requiredUserData = [
+    {name:"projects",val:{}},
+    {name:"badges",val:{0:{id:"user"}}},
+    {name:"points",val:0},
+    {name:"spentPoints",val:0},
+]
+
 let returnURL = "../";
 
 loginButton.addEventListener("click", function(){
@@ -15,7 +22,13 @@ loginButton.addEventListener("click", function(){
         .then((userCredential) => {
             console.log("logged in user");
             storeUser(userCredential.user);
-            window.location.replace(returnURL);
+
+            database.ref("userdata/"+userCredential.user.uid).once("value").then((snap)=>{
+                if(!snap.exists()){
+                    createUser(userCredential.user.uid,username)
+                }
+            })
+
         })
         .catch((error) => {
             displayAuthErrors(handleAuthErrors(error));
@@ -27,23 +40,18 @@ function showAuthError(msg){
     authErrorContent.innerHTML = msg;
 }
 
-
-//todo: create users
-function createUserData(user) {
-    database.ref('userdata/' + user.uid).set({
-        badges:{
-            0:{id:"user"}
-        },
-        projects:{},
-        username:usernameInput.value,
-    });
-}
-
 function getReturnURL(){
     const searchParams = new URLSearchParams(window.location.search);
     if(searchParams.has("retUrl")) {
         returnURL = atob(searchParams.get("retUrl"));
     }
+}
+
+function createUser(uid,username){
+    for(let dataPoint of requiredUserData) {
+        database.ref("userdata/" + uid+"/"+dataPoint.name).set(dataPoint.val);
+    }
+    database.ref("userdata/" + uid+"/username").set(username);
 }
 
 getReturnURL();
