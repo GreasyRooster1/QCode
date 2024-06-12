@@ -11,6 +11,7 @@ const customTheme = EditorView.theme({
     '&': {
         font:"'JetBrains Mono', monospace",
         fontSize: "15px",
+        fontVariantLigatures:"none",
     }
 })
 
