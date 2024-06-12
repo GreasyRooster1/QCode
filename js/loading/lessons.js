@@ -14,8 +14,7 @@ function loadLessons(){
 }
 
 function createLessonElement(lessonId,lessonData){
-    let linkWrapper = document.createElement("div");
-    let link = document.createElement("span");
+    let link = document.createElement("div");
 
     link.setAttribute("data-lessonid",lessonId);
     link.addEventListener("click",lessonClickHandle);
@@ -23,10 +22,7 @@ function createLessonElement(lessonId,lessonData){
 
     link.innerHTML = lessonData.name;
 
-    linkWrapper.classList.add("lesson-link-wrapper")
-
-    linkWrapper.appendChild(link)
-    lessonsDisplay.appendChild(linkWrapper);
+    lessonsDisplay.appendChild(link);
 }
 
 function lessonClickHandle(e){

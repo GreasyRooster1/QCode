@@ -22,6 +22,7 @@
 
 .project-link > a{
     padding: 3px;
+    display: block;
 
     background: var(--project-link-background);
     border-radius: 5px;
@@ -40,11 +41,9 @@
     color: var(--project-link-text);
     text-decoration: none;
     font-weight: bold;
-}
-
-.lesson-link-wrapper{
     margin: 10px;
 }
+
 
 .new-project-button{
     background: var(--new-button-background);
