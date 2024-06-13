@@ -30,7 +30,7 @@ function chapterClick(){
 function loadCreatedChapter(chapterNum){
     let count = 1;
     for (let step of createdLessonChapters[chapterNum].steps) {
-        createStep(step.head,step.content,step.image,step.type,count);
+        createEditableStepFromData(step.head,step.content,step.image,step.type,count);
         count++;
     }
     chapterStep.querySelector(".step-head-content").innerHTML = createdLessonChapters[chapterNum].name;
@@ -44,7 +44,7 @@ function saveChapter(chapterNum){
             continue;
         }
         let stepData = {
-            head:step.getAttribute("head"),
+            head:step.querySelector(".step-head-content").innerHTML,
             content:step.querySelector(".step-text-content").innerHTML,
             image:step.getAttribute("image"),
             type:step.getAttribute("type"),
