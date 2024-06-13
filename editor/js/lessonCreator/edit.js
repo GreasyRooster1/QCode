@@ -13,9 +13,14 @@ function createAddStepButton(){
     buttonContainer.appendChild(newStepButton);
 }
 
-function createEditableStep(count){
-    defaultStep.count = count;
-    let stepEl = createStepFromObj(defaultStep);
+function createDefaultEditableStep(count){
+    let stepData = defaultStep;
+    stepData.count = count;
+    createEditableStep(stepData);
+}
+
+function createEditableStep(data){
+    let stepEl = createStepFromObj(data);
 
     let head = stepEl.querySelector(".step-head-content");
     let textContent = stepEl.querySelector(".step-text-content");
@@ -31,6 +36,10 @@ function createEditableStep(count){
     image.addEventListener("click", changeImage);
 
     textContent.setAttribute("contenteditable","true");
+}
+
+function createEditableStepFromData(head,content,image,type,count){
+    createEditableStep({head:head,content:content,image:image,type:type,count:count});
 }
 
 function swapTypes(e){
@@ -64,6 +73,6 @@ function addStepClick(){
     if (bufferSpace!==null) {
         bufferSpace.remove();
     }
-    createEditableStep(currentStep);
+    createDefaultEditableStep(currentStep);
     createBufferSpace();
 }

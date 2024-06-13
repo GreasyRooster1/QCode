@@ -34,7 +34,6 @@
 .step > .step-head{
     background: var(--step-head-default);
     padding:3%;
-    font-size:1.1em;
     display:flex;
     justify-content: space-between;
 }

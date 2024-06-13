@@ -23,6 +23,7 @@
 
 *{
     font-family: var(--default-font), monospace;
+    font-variant-ligatures: none;
 }
 
 
