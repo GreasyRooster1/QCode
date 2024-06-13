@@ -1,4 +1,5 @@
-const localStorageLocation = "lessonCreatorAutoSave";
+const lessonDataStorageLocation = "lessonDataAutoSave";
+const codeStorageLocation = "lessonCodeAutoSave";
 const autoSaveToLocalStorageMinutes = 3;
 
 let lessonCreatorAutoSaveButton = null;
@@ -9,16 +10,15 @@ function autoSaveToLocalStorage(){
 }
 
 function loadAutoSave(){
-    createdLessonChapters = getAutoSaveData();
+    createdLessonChapters = JSON.parse(localStorage.getItem(lessonDataStorageLocation));
+    writeToEditor(localStorage.getItem(codeStorageLocation));
     loadCreatedChapter(currentChapter);
 }
 
-function getAutoSaveData(){
-    return JSON.parse(localStorage.getItem(localStorageLocation));
-}
 
 function setAutoSaveData(data){
-    return localStorage.setItem(localStorageLocation,JSON.stringify(data))
+    localStorage.setItem(lessonDataStorageLocation,JSON.stringify(data));
+    localStorage.setItem(codeStorageLocation,getCodeFromEditor());
 }
 
 function createAutoSaveButton(){
