@@ -77,12 +77,62 @@
     color:var(--mythic-rarity-color);
 }
 
+
+
 .points{
     height:20vh;
     background: var(--right-sections-background);
 }
 
+
+
 .user{
     height:20vh;
     background: var(--right-sections-background);
+    display: flex;
+    flex-direction: column;
+}
+
+.username-title{
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.user-main-content{
+    flex:1;
+}
+
+.user-profile-icon{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-profile-img{
+    height: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+}
+
+.user-points-bar-container{
+    height:10%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-points-progress-bar{
+    width:90%;
+    appearance: none;
+    border-radius: 100px;
+    overflow: clip;
+}
+
+.user-points-progress-bar::-webkit-progress-value {
+    background-color: var(--points-progress-bar-fill);
+}
+
+.user-points-progress-bar::-webkit-progress-bar {
+    background-color: var(--points-progress-bar-background);
 }
