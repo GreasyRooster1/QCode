@@ -13,6 +13,7 @@ function loadAutoSave(){
     scrollableSteps.innerHTML = "";
     createdLessonChapters = JSON.parse(localStorage.getItem(lessonDataStorageLocation));
     writeToEditor(localStorage.getItem(codeStorageLocation));
+    createLessonCreatorChapterStep();
     loadCreatedChapter(currentChapter);
 }
 
