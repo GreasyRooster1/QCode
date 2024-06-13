@@ -59,6 +59,9 @@
     background: var(--step-challenge);
 }
 .step.chapters > .step-head{
+    background: var(--step-check);
+}
+.step.chapters > .step-head{
     background: var(--step-chapters);
 }
 .step.other > .step-head{
