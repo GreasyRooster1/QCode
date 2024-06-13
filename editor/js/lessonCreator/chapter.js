@@ -45,7 +45,7 @@ function saveChapter(chapterNum){
         }
         let stepData = {
             head:step.querySelector(".step-head-content").innerHTML,
-            content:step.querySelector(".step-text-content").innerHTML,
+            content:step.querySelector(".step-text-content").innerHTML.replace(/&lt;/g,"<").replace(/&gt;/g,">"),
             image:step.getAttribute("image"),
             type:step.getAttribute("type"),
         }

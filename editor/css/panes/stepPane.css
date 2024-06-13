@@ -111,3 +111,11 @@
 .chapter-link:hover{
     color:var(--chapter-link-color-hover)
 }
+
+code{
+    display: inline;
+    border-radius: 5px;
+    padding:2px;
+    background: var(--step-code-text-background);
+    color:var(--step-code-text-color);
+}
