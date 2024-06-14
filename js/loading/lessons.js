@@ -15,14 +15,40 @@ function loadLessons(){
 
 function createLessonElement(lessonId,lessonData){
     let link = document.createElement("div");
+    let linkWrapper = document.createElement("div");
+    let statusDisplay = document.createElement("div");
+
+    linkWrapper.classList.add("lesson-link-wrapper");
 
     link.setAttribute("data-lessonid",lessonId);
     link.addEventListener("click",lessonClickHandle);
     link.classList.add("lesson-link");
 
+    setupStatusDisplay(statusDisplay,lessonData.isExternal,lessonId);
+
     link.innerHTML = lessonData.name;
 
-    lessonsDisplay.appendChild(link);
+    linkWrapper.appendChild(link)
+    linkWrapper.appendChild(statusDisplay);
+    lessonsDisplay.appendChild(linkWrapper);
+}
+
+function setupStatusDisplay(statusDisplay,isExternal,lessonId){
+    statusDisplay.classList.add("status-display");
+    if(isExternal){
+        statusDisplay.innerHTML = "external";
+        statusDisplay.classList.add("external");
+    }else{
+        statusDisplay.innerHTML = "not started";
+        statusDisplay.classList.add("not-started");
+    }
+
+    database.ref("userdata/"+getStoredUser().uid+"/projects/"+lessonId).once("value").then((snapshot)=>{
+        if(snapshot.exists()){
+            statusDisplay.innerHTML = "started";
+            statusDisplay.classList.add("started");
+        }
+    })
 }
 
 function lessonClickHandle(e){

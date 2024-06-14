@@ -23,6 +23,11 @@
 
     --points-progress-bar-background: #cdcdcd;
     --points-progress-bar-fill: #64d888;
+
+    --status-display-text: #dfdfdf;
+    --status-display-external: #ea473a;
+    --status-display-not-started: #3a78ea;
+    --status-display-started: #3aea78;
 }
 
 body{
