@@ -64,19 +64,31 @@ function lessonClickHandle(e){
         }
         database.ref("lessons/"+lessonId).once("value").then(function (snap) {
             let lessonData = snap.val();
-            let starterCode = lessonData.starterCode;
-            if(starterCode==="default"){
-                starterCode = defaultCode;
+            if(lessonData.isExternal){
+                startExternalLesson(lessonData);
+            }else {
+                startInternalLesson(lessonData)
             }
-            database.ref(ref).child(projectId).set({
-                code:starterCode,
-                name:lessonData.name,
-                lessonId: lessonId,
-                currentChapter: 0,
-            });
-            openProjectInEditor(projectId,uid,0);
         });
     })
+}
+
+function startExternalLesson(lessonData){
+    window.location.href = lessonData.link;
+}
+
+function startInternalLesson(lessonData){
+    let starterCode = lessonData.starterCode;
+    if(starterCode==="default"){
+        starterCode = defaultCode;
+    }
+    database.ref(ref).child(projectId).set({
+        code:starterCode,
+        name:lessonData.name,
+        lessonId: lessonId,
+        currentChapter: 0,
+    });
+    openProjectInEditor(projectId,uid,0);
 }
 
 function clearLessons(){
