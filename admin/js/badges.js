@@ -5,6 +5,7 @@ const badgeDetailsId = document.querySelector(".badge-details .id");
 const badgeDetailsValue = document.querySelector(".badge-details .value");
 const badgeDetailsRarity = document.querySelector(".badge-details .rarity");
 const badgeDetailsDesc = document.querySelector(".badge-details .description");
+const badgeDetailsImg = document.querySelector(".badge-details .badge-img");
 
 function setupBadge(){
     let lessonsRef = database.ref('badges');
@@ -44,6 +45,7 @@ function showBadgeDetails(e){
         badgeDetailsValue.innerHTML = data.value;
         badgeDetailsRarity.innerHTML = data.rarity;
         badgeDetailsDesc.innerHTML = data.description;
+        badgeDetailsImg.setAttribute("src",data.image);
     });
 }
 
