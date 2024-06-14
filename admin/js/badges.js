@@ -1,6 +1,7 @@
 const badgesDisplay = document.querySelector(".badges-display");
 
 const badgeDetailsName = document.querySelector(".badge-details .name");
+const badgeDetailsId = document.querySelector(".badge-details .id");
 const badgeDetailsValue = document.querySelector(".badge-details .value");
 const badgeDetailsRarity = document.querySelector(".badge-details .rarity");
 const badgeDetailsDesc = document.querySelector(".badge-details .description");
@@ -38,6 +39,11 @@ function showBadgeDetails(e){
     let badgeId = e.currentTarget.getAttribute("data-badgeid");
     database.ref("badges/"+badgeId).once("value").then((snap)=>{
         let data = snap.val();
+        badgeDetailsName.innerHTML = data.name;
+        badgeDetailsId.innerHTML = badgeId;
+        badgeDetailsValue.innerHTML = data.value;
+        badgeDetailsRarity.innerHTML = data.rarity;
+        badgeDetailsDesc.innerHTML = data.description;
     });
 }
 
