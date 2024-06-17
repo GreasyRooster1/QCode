@@ -3,6 +3,7 @@ const lessonsDisplay = document.querySelector(".lessons-display");
 const lessonDetailsName = document.querySelector(".lesson-details .name");
 const lessonDetailsId = document.querySelector(".lesson-details .id");
 const lessonDetailsUnlisted = document.querySelector(".lesson-details .unlisted");
+const lessonDetailsExternal = document.querySelector(".lesson-details .external");
 const lessonDetailsChapterCount = document.querySelector(".lesson-details .chapter-count");
 const lessonDetailsStepCount = document.querySelector(".lesson-details .step-count");
 
@@ -45,13 +46,21 @@ function showLessonDetails(e){
         let data = snap.val();
         lessonDetailsName.innerHTML = data.name;
         lessonDetailsId.innerHTML = lessonId;
-        lessonDetailsChapterCount.innerHTML = data.chapters.length.toLocaleString();
 
-        let totalSteps = 0;
-        for(let chapter of data.chapters){
-            totalSteps += chapter.steps.length;
+        lessonDetailsChapterCount.innerHTML = "N/A";
+        lessonDetailsStepCount.innerHTML = "N/A"
+
+        if(!data.isExternal) {
+            displayStepStats(data);
+
+            lessonDetailsExternal.classList.add("external-blue")
+            lessonDetailsExternal.classList.remove("external-red")
+            lessonDetailsExternal.innerHTML = "Internal";
+        }else{
+            lessonDetailsExternal.classList.add("external-red")
+            lessonDetailsExternal.classList.remove("external-blue")
+            lessonDetailsExternal.innerHTML = "External";
         }
-        lessonDetailsStepCount.innerHTML = totalSteps.toLocaleString();
 
 
         if(data.unlisted){
@@ -64,6 +73,15 @@ function showLessonDetails(e){
             lessonDetailsUnlisted.innerHTML = "Visible"
         }
     });
+}
+
+function displayStepStats(data){
+    lessonDetailsChapterCount.innerHTML = data.chapters.length.toLocaleString();
+    let totalSteps = 0;
+    for(let chapter of data.chapters){
+        totalSteps += chapter.steps.length;
+    }
+    lessonDetailsStepCount.innerHTML = totalSteps.toLocaleString();
 }
 
 function clearLessons(){
