@@ -5,7 +5,6 @@ import { indentWithTab } from "codemirror/commands/dist/index.js"
 import { linter } from 'codemirror/lint/dist/index.js'
 import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
 
-const linterExtension = linter(javascriptLanguage);
 
 const customTheme = EditorView.theme({
     '&': {
@@ -20,7 +19,7 @@ const editorView = new EditorView({
     extensions: [
         basicSetup,
         javascript(),
-        linterExtension,
+        linter(javascriptLanguage),
         keymap.of([indentWithTab]),
         customTheme,
     ],

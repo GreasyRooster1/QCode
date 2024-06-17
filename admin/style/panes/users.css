@@ -17,6 +17,7 @@
 .user-details-content{
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
     width: 100%;
 }
 
@@ -33,4 +34,13 @@
     background: var(--add-badge-button-color);
     border-radius: 5px;
     padding: 1px;
+}
+.user-details-badges-display{
+    max-height: 75%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.user-details-badges-wrapper{
+    flex-grow: 1;
 }

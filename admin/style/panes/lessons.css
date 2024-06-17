@@ -41,3 +41,10 @@
 .unlisted-blue{
     color: var(--lesson-link-accent);
 }
+.external-red{
+    color: var(--lesson-link-unlisted-accent);
+}
+
+.external-blue{
+    color: var(--lesson-link-accent);
+}
