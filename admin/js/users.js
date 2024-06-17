@@ -23,7 +23,7 @@ function setupUsers(){
 function loadUserBadges(badges){
     userDetailsBadgeDisplay.innerHTML = '';
     for(const badge of badges){
-        createBadgeElement(badge.id);
+        createUserBadgeElement(badge.id);
     }
 }
 
@@ -32,7 +32,7 @@ function clearUsers(){
     userDisplay.innerHTML = ""
 }
 
-function createBadgeElement(id){
+function createUserBadgeElement(id){
     let badgeEl = document.createElement("div");
     let wrapperEl = document.createElement("div");
 
