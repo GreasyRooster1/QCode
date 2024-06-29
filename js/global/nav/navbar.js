@@ -52,7 +52,7 @@ userLink.addEventListener("click", function (e){
         if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
             window.location.replace("login/login.html");
         }else {
-            window.location.href = "../login/login.html";
+            window.location.href = "../../../login.html";
         }
         return;
     }
@@ -73,7 +73,7 @@ logoutButton.addEventListener("click", function (e){
     if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
         window.location.replace("login/login.html");
     }else {
-        window.location.href = "../login/login.html";
+        window.location.href = "../../../login.html";
     }
 })
 
