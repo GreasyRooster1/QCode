@@ -64,3 +64,5 @@ class StepComponent extends ApiComponent{
         }
     }
 }
+
+ComponentRegistry.registerApiComponent(StepComponent);
