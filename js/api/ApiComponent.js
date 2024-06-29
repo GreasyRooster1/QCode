@@ -1,6 +1,6 @@
 class ApiComponent extends HTMLElement{
     static validAttributes = [];
-    name = "";
+    static name = "";
     defaultClass = "";
 
     static get observedAttributes() {
@@ -14,7 +14,6 @@ class ApiComponent extends HTMLElement{
     //events
 
     onRegister(){
-        customElements.define(name, this.constructor);
     }
 
     createContent(){

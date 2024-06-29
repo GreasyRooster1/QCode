@@ -11,7 +11,6 @@ function addScripts(){
     for(let scriptSrc of scripts){
         let script = document.createElement("script");
         script.src = "js/api/"+scriptSrc;
-        script.defer = true;
         document.head.appendChild(script)
     }
 

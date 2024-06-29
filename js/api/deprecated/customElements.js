@@ -165,7 +165,6 @@ class ProjectLinkElement extends HTMLElement {
 }
 
 
-customElements.define("editor-step", StepElement);
 customElements.define("brand-nav", BrandNav);
 customElements.define("console-log", ConsoleLogElement);
 customElements.define("project-link", ProjectLinkElement);

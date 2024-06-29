@@ -1,6 +1,6 @@
 class StepComponent extends ApiComponent{
     static validAttributes = ["head","image","count","type"]
-    name = "editor-step";
+    static name = "editor-step";
     defaultClass = "step";
 
     constructor() {
@@ -70,5 +70,4 @@ class StepComponent extends ApiComponent{
     }
 }
 
-ComponentRegistry.registerApiComponent(new StepComponent()
-);
+ComponentRegistry.registerApiComponent(StepComponent);
