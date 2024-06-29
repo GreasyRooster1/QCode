@@ -39,7 +39,7 @@ function handleAuthAdminLogin(user,perms){
     storeUserPermissions(perms)
     storeUser(user);
     console.log("logged in user");
-    window.location.replace("../admin/adminConsole.html");
+    window.location.replace("adminConsole.html");
 }
 
 function showAuthError(msg){

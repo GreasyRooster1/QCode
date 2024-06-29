@@ -52,7 +52,7 @@ userLink.addEventListener("click", function (e){
         if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
             window.location.replace("login/login.html");
         }else {
-            window.location.href = "../../../login.html";
+            window.location.href = "login.html";
         }
         return;
     }
@@ -73,12 +73,12 @@ logoutButton.addEventListener("click", function (e){
     if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
         window.location.replace("login/login.html");
     }else {
-        window.location.href = "../../../login.html";
+        window.location.href = "login.html";
     }
 })
 
 homeButton.addEventListener("click",function () {
-   window.location.href = "../";
+   window.location.href = "index.html";
 });
 
 function setVisibilityForInner(vis){

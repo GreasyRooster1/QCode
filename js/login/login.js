@@ -13,7 +13,7 @@ const requiredUserData = [
     {name:"profileIcon",val:"https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/user.png?raw=true"},
 ]
 
-let returnURL = "../";
+let returnURL = "index.html";
 
 loginButton.addEventListener("click", function(){
     let username = usernameInput.value;
@@ -28,7 +28,7 @@ loginButton.addEventListener("click", function(){
                 if(!snap.exists()){
                     createUser(userCredential.user.uid,username)
                 }
-                window.location.href = "../";
+                window.location.href = "index.html";
             })
         })
         .catch((error) => {

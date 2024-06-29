@@ -28,5 +28,5 @@ function openProjectInEditor(projectId,uid,chapterNumber){
 }
 
 function getLinkToProject(projectId,uid,chapterNumber){
-    return "editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
+    return "editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
 }
