@@ -18,63 +18,7 @@ class StepElement extends HTMLElement {
     }
 
     connectedCallback() {
-        this.head = document.createElement("div");
-        this.head.classList.add("step-head");
 
-        this.typeDisplay = document.createElement("div");
-        this.typeDisplay.classList.add("type-display");
-
-        this.stepCount = document.createElement("div");
-        this.stepCount.classList.add("step-count");
-
-        this.headContent = document.createElement("div");
-        this.headContent.classList.add("step-head-content");
-
-        this.headStat = document.createElement("div");
-        this.headStat.classList.add("step-head-stats")
-
-
-        this.headStat.appendChild(this.typeDisplay);
-        this.headStat.appendChild(this.stepCount);
-
-        this.head.appendChild(this.headContent);
-        this.head.appendChild(this.headStat);
-
-        this.content = document.createElement("div");
-        this.content.classList.add("step-content");
-
-        this.image = document.createElement("img");
-        this.image.classList.add("step-image");
-
-        this.textContent = document.createElement("div");
-        this.textContent.classList.add("step-text-content");
-
-        this.content.appendChild(this.textContent);
-        this.content.appendChild(this.image);
-
-        this.textContent.innerHTML = this.innerHTML;
-        this.innerHTML = "";
-
-        if (this.attributes.getNamedItem("head") !== null) {
-            this.headContent.innerHTML = this.attributes.getNamedItem("head").value;
-        }
-
-        if (this.attributes.getNamedItem("type") !== null) {
-            this.typeDisplay.innerHTML = this.getTypeDisplayString();
-        }
-
-        if (this.attributes.getNamedItem("count") !== null) {
-            this.stepCount.innerHTML = "Step "+this.attributes.getNamedItem("count").value;
-        }
-
-        if (this.attributes.getNamedItem("image") !== null) {
-            this.image.setAttribute("src",this.attributes.getNamedItem("image").value);
-        }
-
-        this.appendChild(this.head);
-        this.appendChild(this.content);
-
-        this.classList.add("step");
     }
 
     getTypeDisplayString(){
@@ -90,30 +34,7 @@ class StepElement extends HTMLElement {
 
     attributeChangedCallback(name, oldValue, newValue) {
         if (oldValue !== newValue) {
-            if (name === 'type') {
-                this.clearTypes();
-                this.classList.add(newValue);
-                if (this.typeDisplay === null) {
-                    return;
-                }
-                this.typeDisplay.innerHTML = this.getTypeDisplayString();
-            } else if (name === 'head') {
-                if (this.head === null) {
-                    return;
-                }
-                this.head.innerHTML = newValue;
-            }else if (name === 'count') {
-                if (this.stepCount === null) {
-                    return;
-                }
-                this.stepCount.innerHTML = "Step "+newValue;
-            }else if (name === 'image') {
-                if(this.image===null) {
-                    return;
-                }
 
-                this.image.setAttribute("src",newValue);
-            }
         }
     }
 }
