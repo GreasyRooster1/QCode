@@ -1,5 +1,6 @@
 const gitApiLink = "https://api.github.com/repos/GreasyRooster1/QCode/commits?sha=production&per_page=1&page=1"
 const versionEl = document.querySelector(".footer-content .version")
+const versionSuffix = ".ex (Experimental API)"
 
 function httpGet(theUrl, return_headers) {
     let xmlHttp = new XMLHttpRequest();
@@ -15,7 +16,7 @@ function displayVersion(){
     database.ref("version").on("value", (snapshot)=>{
         let rawVersionString = snapshot.val();
         let formattedVersion = rawVersionString.replace("{commitNum}",getCommitNum);
-        versionEl.innerHTML = formattedVersion;
+        versionEl.innerHTML = formattedVersion + versionSuffix;
     })
 }
 
