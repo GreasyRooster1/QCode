@@ -1,6 +1,7 @@
 class ApiComponent extends HTMLElement{
     observedAttributes = [];
     name = "";
+    defaultClass = "";
 
     constructor(){
         super();
@@ -33,11 +34,21 @@ class ApiComponent extends HTMLElement{
         }
     }
 
+    getInnerByClass(name){
+        return this.querySelector("."+name);
+    }
+    getInnerById(id){
+        return this.querySelector("#"+id);
+    }
+    getInnerQuerySelector(selector){
+        return this.querySelector(selector);
+    }
+
     //HTMLElement callbacks
 
     connectedCallback(){
+        this.innerHTML = this.createContent();
         this.callAttributeEventOnSet()
-        this.createContent();
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
