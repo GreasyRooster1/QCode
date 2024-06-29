@@ -1,9 +1,13 @@
 class ApiComponent extends HTMLElement{
-    observedAttributes = [];
+    static validAttributes = [];
     name = "";
     defaultClass = "";
 
-    constructor(){
+    static get observedAttributes() {
+        return this.validAttributes;
+    }
+
+    constructor() {
         super();
     }
 
@@ -48,6 +52,7 @@ class ApiComponent extends HTMLElement{
 
     connectedCallback(){
         this.innerHTML = this.createContent();
+        this.classList.add(this.defaultClass);
         this.callAttributeEventOnSet()
     }
 

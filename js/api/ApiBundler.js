@@ -18,7 +18,6 @@ function addScripts(){
     for(let componentSrc of components){
         let script = document.createElement("script");
         script.src = "js/api/components/"+componentSrc;
-        script.defer = true;
         document.head.appendChild(script)
     }
 }
