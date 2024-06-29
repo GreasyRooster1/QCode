@@ -4,7 +4,8 @@ class ComponentRegistry {
 
     static registerApiComponent(component) {
         customElements.define(component.name, component);
-        this.componentRegistry.push(component);
-        component.onRegister();
+        let instance = new component()
+        this.componentRegistry.push(instance);
+        instance.onRegister();
     }
 }
