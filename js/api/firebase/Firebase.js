@@ -52,7 +52,15 @@ class FBAuth {
     static getStoredRawUserData(){
         let jsonData = localStorage.getItem("currentUserData");
         if(jsonData!==null){
-            return JSON.parse(jsonUser);
+            return JSON.parse(jsonData);
+        }
+        return null;
+    }
+
+    static getStoredUser(){
+        let jsonData = localStorage.getItem("currentUser");
+        if(jsonData!==null){
+            return JSON.parse(jsonData);
         }
         return null;
     }
@@ -70,4 +78,21 @@ class FBAuth {
 
 class FBDatabase{
     static database = firebase.database;
+
+    static getValueFromPath(path,callback){
+        database.ref(path).once("value", callback);
+    }
+
+    static addUpdateListenerToPath(path,callback){
+        database.ref(path).on("value", callback);
+    }
+
+    static getValueFromStoredUser(relativePath,callback){
+        if(relativePath==="projects"){
+            throw "Cannot access entire project folder directly!";
+        }
+
+        let path = "/userData/"+FBAuth.getStoredUser().uid+relativePath
+        this.getValueFromPath(path,callback);
+    }
 }
