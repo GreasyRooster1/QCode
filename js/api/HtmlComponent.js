@@ -20,6 +20,10 @@ class HtmlComponent extends HTMLElement{
 
     }
 
+    onCreated(){
+
+    }
+
     onAttributeChanged(name, oldValue, newValue){
 
     }
