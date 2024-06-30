@@ -1,4 +1,4 @@
-class ApiComponent extends HTMLElement{
+class HtmlComponent extends HTMLElement{
     static validAttributes = [];
     static name = "";
     defaultClass = "";
@@ -28,6 +28,10 @@ class ApiComponent extends HTMLElement{
 
     }
 
+    setStyle(style){
+
+    }
+
     //helper functions
 
     callAttributeEventOnSet(){
@@ -53,6 +57,7 @@ class ApiComponent extends HTMLElement{
         this.innerHTML = this.createContent();
         this.classList.add(this.defaultClass);
         this.callAttributeEventOnSet()
+        this.setStyle(this.style);
     }
 
     attributeChangedCallback(name, oldValue, newValue) {

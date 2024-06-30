@@ -1,4 +1,4 @@
-class StepComponent extends ApiComponent{
+class StepComponent extends HtmlComponent{
     static validAttributes = ["head","image","count","type"]
     static name = "editor-step";
     defaultClass = "step";
@@ -70,4 +70,4 @@ class StepComponent extends ApiComponent{
     }
 }
 
-ComponentRegistry.registerApiComponent(StepComponent);
+ComponentRegistry.registerHtmlComponent(StepComponent);
