@@ -1,5 +1,7 @@
 class NavComponent extends HtmlComponent{
     static name = "nav"
+    isVisible = true;
+    accountDropdownActive = false;
 
     createContent() {
         return `
@@ -22,6 +24,29 @@ class NavComponent extends HtmlComponent{
             </div>
             <div class="nav-shift-fix"></div>
         `;
+    }
+
+    addEvents() {
+        this.addInnerClickListener("navbar-visibility-button",(e,target) => {
+            this.isVisible = !this.isVisible;
+            if(this.isVisible){
+                this.style.height = "var(--navbar-height)";
+                target.style.transform = "scaleY(1) translateY(0px)";
+
+                this.setVisibilityForInner("visible")
+            }else{
+                this.style.height = "0";
+                target.style.transform = "scaleY(-1) translateY(5px)";
+
+                this.setVisibilityForInner("hidden")
+            }
+        })
+    }
+
+    setVisibilityForInner(visibility){
+        this.childNodes.forEach((child) => {
+            child.style.visibility = visibility;
+        })
     }
 }
 

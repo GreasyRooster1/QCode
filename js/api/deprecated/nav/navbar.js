@@ -30,23 +30,6 @@ function initUsername(){
     });
 }
 
-navbarVisibilityButton.addEventListener("click",function (){
-    innerContent = document.querySelectorAll(".navbar *");
-    navbarVisible = !navbarVisible;
-    if(navbarVisible){
-        navWrapper.style.height = "var(--navbar-height)";
-        setTimeout(function () {
-            setVisibilityForInner("visible")
-        },500);
-        navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
-    }else{
-        navWrapper.style.height = "0";
-        navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
-        accountDropdownActive=false;
-        setVisibilityForInner("hidden")
-    }
-});
-
 userLink.addEventListener("click", function (e){
     if(userLink.innerHTML==="Login"){
         if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
