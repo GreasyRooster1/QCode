@@ -12,7 +12,7 @@
     --navbar-height:40px;
 }
 
-brand-nav{
+nav-component{
     height:var(--navbar-height);
     width:100vw;
     display: block;
