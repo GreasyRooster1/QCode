@@ -79,20 +79,20 @@ class FBAuth {
 class FBDatabase{
     static database = firebase.database;
 
-    static getValueFromPath(path,callback){
+    static querySpecific(path, callback){
         database.ref(path).once("value", callback);
     }
 
-    static addUpdateListenerToPath(path,callback){
+    static addQueryListenerToPath(path,callback){
         database.ref(path).on("value", callback);
     }
 
-    static getValueFromStoredUser(relativePath,callback){
+    static queryUserValue(relativePath,callback){
         if(relativePath==="projects"){
             throw "Cannot access entire project folder directly!";
         }
 
-        let path = "/userData/"+FBAuth.getStoredUser().uid+relativePath
-        this.getValueFromPath(path,callback);
+        let path = "userData/"+FBAuth.getStoredUser().uid+relativePath
+        this.querySpecific(path,callback);
     }
 }
