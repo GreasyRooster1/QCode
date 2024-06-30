@@ -1,4 +1,4 @@
-class OnLoadRegistry {
+class LoadRegistry {
 
     static registry = [];
 
@@ -8,7 +8,7 @@ class OnLoadRegistry {
 }
 
 window.onload = function (){
-    for(let func of OnLoadRegistry.registry){
+    for(let func of LoadRegistry.registry){
         func()
     }
 }

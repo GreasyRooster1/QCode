@@ -88,7 +88,7 @@ class FBDatabase{
     }
 }
 
-window.onload = function(){
+onfunction(){
     const firebaseConfig = {
         apiKey: "AIzaSyC1GB-hiznIqC51ppB23rIgHSIRM0MT9B8",
         authDomain: "qcode-cdfc6.firebaseapp.com",
