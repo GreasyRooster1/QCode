@@ -30,25 +30,6 @@ function initUsername(){
     });
 }
 
-userLink.addEventListener("click", function (e){
-    if(userLink.innerHTML==="Login"){
-        if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-            window.location.replace("login/login.html");
-        }else {
-            window.location.href = "login.html";
-        }
-        return;
-    }
-
-    accountDropdownActive = !accountDropdownActive;
-    if(accountDropdownActive) {
-        accountOptions.style.height = "20px";
-        userLink.style.borderRadius = "0";
-    }else{
-        accountOptions.style.height = "0";
-        userLink.style.borderRadius = "10px";
-    }
-});
 
 logoutButton.addEventListener("click", function (e){
     logOutUserDefault();

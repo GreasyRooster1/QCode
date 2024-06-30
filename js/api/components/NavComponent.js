@@ -31,40 +31,46 @@ class NavComponent extends HtmlComponent{
     }
 
     addEvents() {
-        this.addInnerClickListener("navbar-visibility-button",(e,target) => {
+        this.addInnerClickListener("navbar-visibility-button", (e, target) => {
             this.isVisible = !this.isVisible;
-            if(this.isVisible){
+            if (this.isVisible) {
                 this.style.height = "var(--navbar-height)";
                 target.style.transform = "scaleY(1) translateY(0px)";
 
                 this.setVisibilityForInner("visible")
-            }else{
+            } else {
                 this.style.height = "0";
                 target.style.transform = "scaleY(-1) translateY(5px)";
 
                 this.setVisibilityForInner("hidden")
             }
-        })
+        });
 
-        this.addInnerClickListener("username-link",(e,target) => {
-            if(userLink.innerHTML==="Login"){
-                if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-                    window.location.replace("login/login.html");
-                }else {
-                    window.location.href = "login.html";
-                }
+        this.addInnerClickListener("username-link", (e, target) => {
+            if (userLink.innerHTML === "Login") {
+                window.location.href = "login.html";
                 return;
             }
 
             this.accountDropdownOpen = !this.accountDropdownOpen;
-            if(this.accountDropdownActive) {
+            if (this.accountDropdownOpen) {
                 this.getInnerByClass("account-options").style.height = "20px";
-                this.getInnerByClass("username-link").style.borderRadius = "0";
-            }else{
+                target.style.borderRadius = "0";
+            } else {
                 this.getInnerByClass("account-options").style.height = "0";
-                this.getInnerByClass("username-link").style.borderRadius = "10px";
+                target.style.borderRadius = "10px";
             }
-        })
+        });
+
+        this.addInnerClickListener("logout-button", (e, target) => {
+            logOutUserDefault();
+            clearStoredUser();
+            window.location.href = "login.html";
+        });
+
+        this.addInnerClickListener("home-link", (e, target) => {
+            window.location.href = "index.html";
+        });
     }
 
     setVisibilityForInner(visibility){
