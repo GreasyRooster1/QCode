@@ -52,6 +52,13 @@ class HtmlComponent extends HTMLElement{
         Interaction.elementClickEvent(this,func);
     }
 
+    addInnerClickListener(name,func){
+        let el = this.getInnerByClass(name)
+        Interaction.elementClickEvent(el,(e)=>{
+            func(e,e.target);
+        });
+    }
+
     //internal helpers
 
     callAttributeEventOnSet(){
@@ -81,6 +88,7 @@ class HtmlComponent extends HTMLElement{
         this.setStyle();
         this.callAttributeEventOnSet()
         this.setStyle(this.style);
+        this.addEvents()
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
