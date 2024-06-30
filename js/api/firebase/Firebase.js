@@ -29,8 +29,38 @@ class Firebase {
         localStorage.setItem("currentUserData",JSON.stringify(data));
     }
 
+    static clearStoredUser(){
+        localStorage.setItem("isLoggedIn", "false");
+        localStorage.setItem("currentUserData",null);
+    }
+
+    static signOutUser(){
+        firebase.auth().signOut().then(() => {
+            console.log("logged out user");
+            clearStoredUser();
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
+
+    static getEmailFromUsername(username){
+        return username+"@esporterz.com"
+    }
+
+    static getUsernameFromEmail(email){
+        return email.replace("@esporterz.com","");
+    }
+
     static get getStoredUserData(){
-        return localStorage.getItem("currentUserData");
+        let jsonData = localStorage.getItem("currentUserData");
+        if(jsonData!==null){
+            return JSON.parse(jsonUser);
+        }
+        return null;
+    }
+
+    static get isLoggedIn(){
+        return localStorage.getItem("isLoggedIn");
     }
 
     //DB
