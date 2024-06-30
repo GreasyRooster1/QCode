@@ -6,6 +6,6 @@ class EditorHelper {
     }
 
     static clearSteps() {
-        scrollableSteps.innerHTML = "";
+        EditorDOM.scrollableSteps.innerHTML = "";
     }
 }
