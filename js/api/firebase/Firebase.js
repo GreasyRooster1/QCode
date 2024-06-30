@@ -11,11 +11,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-class Firebase {
-    static database = firebase.database;
-
-    //Auth
-
+class FBAuth {
     static lockPageToAuth(){
         if(getStoredUser()===null){
             window.location.href = "login.html?retUrl="+btoa(window.location.href);
@@ -41,17 +37,19 @@ class Firebase {
         return email.replace("@esporterz.com","");
     }
 
-    static storeUserData(data){
+    static storeUser(data){
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("currentUserData",JSON.stringify(data));
+        localStorage.setItem("currentUserRawData",JSON.stringify(data));
+        this.loadUserFromRemote(data);
     }
 
     static clearStoredUser(){
         localStorage.setItem("isLoggedIn", "false");
-        localStorage.setItem("currentUserData",null);
+        localStorage.setItem("currentUserRawData",null);
+        localStorage.setItem("currentUser",null);
     }
 
-    static getStoredUserData(){
+    static getStoredRawUserData(){
         let jsonData = localStorage.getItem("currentUserData");
         if(jsonData!==null){
             return JSON.parse(jsonUser);
@@ -59,10 +57,17 @@ class Firebase {
         return null;
     }
 
+    static loadUserFromRemote(fbData){
+        let user = new User(fbData);
+        user.loadUserPermissions()
+        localStorage.setItem("currentUser",JSON.stringify(user));
+    }
+
     static get isLoggedIn(){
         return localStorage.getItem("isLoggedIn");
     }
+}
 
-    //DB
-
+class FBDatabase{
+    static database = firebase.database;
 }
