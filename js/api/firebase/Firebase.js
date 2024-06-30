@@ -83,6 +83,10 @@ class FBDatabase{
             throw "Cannot access entire project folder directly!";
         }
 
+        if(!relativePath.startsWith("/")){
+            relativePath = "/"+relativePath
+        }
+
         let path = "userData/"+FBAuth.getStoredUser().uid+relativePath
         this.querySpecific(path,callback);
     }
