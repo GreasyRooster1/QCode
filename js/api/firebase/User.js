@@ -1,10 +1,11 @@
 class User{
 
     createdAt = "";
-    username = "";
     email = "";
     lastLoginAt = "";
     uid = "";
+
+    username = "";
     permissions = {};
 
     constructor(firebaseUserObj){
@@ -12,6 +13,13 @@ class User{
         this.email = firebaseUserObj.email;
         this.lastLoginAt = firebaseUserObj.lastLoginAt;
         this.uid = firebaseUserObj.uid;
+    }
+
+    static from(userObj) {
+        let user = new User(userObj);
+        user.permissions = userObj.permissions;
+        user.uid = userObj.username;
+
     }
 
     loadUserPermissions(data){
