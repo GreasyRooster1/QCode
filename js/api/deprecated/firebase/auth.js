@@ -57,8 +57,7 @@ function displayAuthErrors(errorType){
 }
 
 function storeUser(user){
-    sessionStorage.setItem("isLoggedIn", "true");
-    sessionStorage.setItem("currentUser",JSON.stringify(user));
+
 }
 
 function storeUserPermissions(perms){
