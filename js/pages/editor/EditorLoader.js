@@ -53,7 +53,7 @@ class EditorLoader {
     static loadProjectLesson(){
         FBDatabase.querySpecific("lessons/"+EditorData.lessonId+"/chapters/"+EditorData.currentChapter, (data)=>{
             EditorHelper.clearSteps();
-            EditorHelper.createChapterHeader()
+            HeaderHelper.createChapterHeader()
             EditorHelper.createSteps(data.steps)
         })
     }
