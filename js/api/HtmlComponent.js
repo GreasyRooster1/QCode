@@ -11,6 +11,10 @@ class HtmlComponent extends HTMLElement{
         super();
     }
 
+    static new(){
+        return document.createElement(name+"-component");
+    }
+
     //events
 
     onRegister(){
