@@ -28,13 +28,13 @@ class NavComponent extends HtmlComponent{
 
     onCreated(){
         reCalculateUserPoints((points) => {
-            pointsDisplayNum.innerText = points;
+            this.getInnerByClass("points-display-num").innerText = points;
         });
 
         database.ref("userdata/"+getStoredUser().uid+"/username").once('value').then((snapshot) => {
             let username = snapshot.val();
             let formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
-            userLink.innerHTML = formattedUsername;
+            this.getInnerByClass("username-link").innerHTML = formattedUsername;
         });
     }
 
