@@ -24,9 +24,13 @@ class Firebase {
         }
     }
 
-    static storeUser(){
-        sessionStorage.setItem("isLoggedIn", "true");
-        sessionStorage.setItem("currentUser",JSON.stringify(user));
+    static storeUserData(data){
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("currentUserData",JSON.stringify(data));
+    }
+
+    static get getStoredUserData(){
+        return localStorage.getItem("currentUserData");
     }
 
     //DB
