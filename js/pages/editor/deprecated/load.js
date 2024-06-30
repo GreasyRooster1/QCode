@@ -13,8 +13,7 @@ function loadProjectFromUrlData(){
         projectId = searchParams.get("projectId");
         if(projectId==="$$lesson$$creator$$"){
             isLessonCreator = true;
-            setupLessonCreator();
-            return;
+
         }
     }
 
