@@ -46,13 +46,13 @@ class EditorLoader {
 
     static loadProjectCode(){
         FBDatabase.queryUserValue("projects/"+EditorData.projectId+"/code", (data)=>{
-            writeToEditor(data);
+            EditorHelper.writeToEditor(data);
         })
     }
 
     static loadProjectLesson(){
         FBDatabase.querySpecific("lessons/"+EditorData.lessonId+"/chapters/"+EditorData.currentChapter, (data)=>{
-
+            EditorHelper.clearSteps();
         })
     }
 
