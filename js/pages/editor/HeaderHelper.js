@@ -1,14 +1,15 @@
 class HeaderHelper {
 
     static createChapterHeader(name, chapterNames, useLinks) {
-        let lines = EditorHelper.getChapterHeaderContentLines(chapterNames);
+        let lines = HeaderHelper.getChapterHeaderContentLines(chapterNames);
 
         let content = ""
-        for (let line of lines) {
+        for (let i=0;i<lines.length;i++) {
+            let line = lines[i];
             if (useLinks) {
-                content += applyChapterLink(line) + "\n";
+                content += HeaderHelper.applyChapterLinkToLine(line,i) + "<br>";
             } else {
-                content += line + "\n";
+                content += line + "<br>";
             }
         }
 
@@ -21,5 +22,13 @@ class HeaderHelper {
             out.push("Chapter " + i + " - " + chapterNames[i] + "\n");
         }
         return out;
+    }
+
+    static applyChapterLinkToLine(line,num){
+        let linkEl = document.createElement("a");
+        linkEl.innerHTML = line;
+        linkEl.setAttribute("href",getLinkToProject(projectId,FBAuth.getStoredUser().uid,num));
+        linkEl.classList.add("chapter-link")
+        return linkEl.outerHTML;
     }
 }
