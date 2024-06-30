@@ -51,11 +51,20 @@ class HtmlComponent extends HTMLElement{
         return this.querySelector(selector);
     }
 
+    setClassToDefault(){
+        if(this.defaultClass === ""){
+            this.classList.add(this.name);
+            return;
+        }
+
+        this.classList.add(this.defaultClass);
+    }
+
     //HTMLElement callbacks
 
     connectedCallback(){
         this.innerHTML = this.createContent();
-        this.classList.add(this.defaultClass);
+
         this.callAttributeEventOnSet()
         this.setStyle(this.style);
     }
