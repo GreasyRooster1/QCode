@@ -44,9 +44,9 @@ class NavComponent extends HtmlComponent{
     }
 
     setVisibilityForInner(visibility){
-        this.childNodes.forEach((child) => {
+        for(let child of this.getInnerByClass("navbar").children){
             child.style.visibility = visibility;
-        })
+        }
     }
 }
 
