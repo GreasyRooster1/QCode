@@ -1,8 +1,7 @@
 class Points {
 
     static calcUserPoints(exitFunc) {
-        database.ref("userdata/" + getStoredUser().uid + "/badges").once("value", function (snap) {
-            let data = snap.val();
+        FBDatabase.queryUserValue("",(data) => {
             let badges = data.values().toArray().filter(b => b !== undefined);
             let totalPoints = 0;
             let count = 0;
