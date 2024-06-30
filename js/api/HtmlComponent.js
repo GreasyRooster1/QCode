@@ -32,14 +32,11 @@ class HtmlComponent extends HTMLElement{
 
     }
 
-    //helper functions
+    addEvents(){
 
-    callAttributeEventOnSet(){
-        for(let i=0;i<this.attributes.length;i++){
-            let attr = this.attributes.item(i);
-            this.onAttributeChanged(attr.name, null, attr.value);
-        }
     }
+
+    //helper functions
 
     getInnerByClass(name){
         return this.querySelector("."+name);
@@ -49,6 +46,19 @@ class HtmlComponent extends HTMLElement{
     }
     getInnerQuerySelector(selector){
         return this.querySelector(selector);
+    }
+
+    addClickListener(func){
+        Interaction.elementClickEvent(this,func);
+    }
+
+    //internal helpers
+
+    callAttributeEventOnSet(){
+        for(let i=0;i<this.attributes.length;i++){
+            let attr = this.attributes.item(i);
+            this.onAttributeChanged(attr.name, null, attr.value);
+        }
     }
 
     setClassToDefault(){
