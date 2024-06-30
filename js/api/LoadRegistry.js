@@ -2,7 +2,7 @@ class LoadRegistry {
 
     static registry = [];
 
-    static registerHtmlComponent(func) {
+    static register(func) {
         this.registry.push(func);
     }
 }
