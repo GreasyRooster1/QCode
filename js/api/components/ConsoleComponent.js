@@ -1,6 +1,6 @@
 class ConsoleComponent extends HtmlComponent{
     static validAttributes = ['type', 'message',"head"];
-    defaultClass = "console-log"
+    static name = "console"
 
     createContent() {
         return `
@@ -28,4 +28,4 @@ class ConsoleComponent extends HtmlComponent{
     }
 }
 
-ComponentRegistry.registerHtmlComponent(NavComponent);
+ComponentRegistry.registerHtmlComponent(ConsoleComponent);

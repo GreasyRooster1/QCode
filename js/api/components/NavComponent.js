@@ -1,4 +1,6 @@
 class NavComponent extends HtmlComponent{
+    static name = "nav"
+
     createContent() {
         return `
             <div class="navbar">
