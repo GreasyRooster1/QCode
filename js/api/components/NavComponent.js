@@ -1,7 +1,7 @@
 class NavComponent extends HtmlComponent{
     static name = "nav"
     isVisible = true;
-    accountDropdownActive = false;
+    accountDropdownOpen = false;
 
     createContent() {
         return `
@@ -26,6 +26,10 @@ class NavComponent extends HtmlComponent{
         `;
     }
 
+    onCreated(){
+
+    }
+
     addEvents() {
         this.addInnerClickListener("navbar-visibility-button",(e,target) => {
             this.isVisible = !this.isVisible;
@@ -39,6 +43,26 @@ class NavComponent extends HtmlComponent{
                 target.style.transform = "scaleY(-1) translateY(5px)";
 
                 this.setVisibilityForInner("hidden")
+            }
+        })
+
+        this.addInnerClickListener("username-link",(e,target) => {
+            if(userLink.innerHTML==="Login"){
+                if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
+                    window.location.replace("login/login.html");
+                }else {
+                    window.location.href = "login.html";
+                }
+                return;
+            }
+
+            this.accountDropdownOpen = !this.accountDropdownOpen;
+            if(this.accountDropdownActive) {
+                this.getInnerByClass("account-options").style.height = "20px";
+                this.getInnerByClass("username-link").style.borderRadius = "0";
+            }else{
+                this.getInnerByClass("account-options").style.height = "0";
+                this.getInnerByClass("username-link").style.borderRadius = "10px";
             }
         })
     }
