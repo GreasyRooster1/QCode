@@ -60,7 +60,7 @@ class FBAuth {
     static getStoredUser(){
         let jsonData = localStorage.getItem("currentUser");
         if(jsonData!==null){
-            return JSON.parse(jsonData);
+            return User.from(JSON.parse(jsonData));
         }
         return null;
     }
@@ -80,11 +80,15 @@ class FBDatabase{
     static database = firebase.database;
 
     static querySpecific(path, callback){
-        database.ref(path).once("value", callback);
+        database.ref(path).once("value", (snapshot)=>{
+            callback(snapshot.val());
+        });
     }
 
     static addQueryListenerToPath(path,callback){
-        database.ref(path).on("value", callback);
+        database.ref(path).on("value", (snapshot)=>{
+            callback(snapshot.val());
+        });
     }
 
     static queryUserValue(relativePath,callback){
