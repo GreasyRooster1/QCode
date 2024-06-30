@@ -1,14 +1,14 @@
 class EditorLoader {
     static onLoad(){
-        if(!this.getUrlData()){
+        if(!EditorLoader.getUrlData()){
             console.log("project failed to load");
             return;
         }
 
-        this.getProjectLesson()
+        EditorLoader.getProjectLesson()
 
-        this.loadProjectCode()
-        this.loadProjectLesson()
+        EditorLoader.loadProjectCode()
+        EditorLoader.loadProjectLesson()
     }
 
     static getUrlData(){
