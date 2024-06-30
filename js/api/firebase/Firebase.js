@@ -24,16 +24,6 @@ class Firebase {
         }
     }
 
-    static storeUserData(data){
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("currentUserData",JSON.stringify(data));
-    }
-
-    static clearStoredUser(){
-        localStorage.setItem("isLoggedIn", "false");
-        localStorage.setItem("currentUserData",null);
-    }
-
     static signOutUser(){
         firebase.auth().signOut().then(() => {
             console.log("logged out user");
@@ -51,7 +41,17 @@ class Firebase {
         return email.replace("@esporterz.com","");
     }
 
-    static get getStoredUserData(){
+    static storeUserData(data){
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("currentUserData",JSON.stringify(data));
+    }
+
+    static clearStoredUser(){
+        localStorage.setItem("isLoggedIn", "false");
+        localStorage.setItem("currentUserData",null);
+    }
+
+    static getStoredUserData(){
         let jsonData = localStorage.getItem("currentUserData");
         if(jsonData!==null){
             return JSON.parse(jsonUser);
