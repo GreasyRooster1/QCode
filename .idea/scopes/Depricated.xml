@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Depricated" pattern="file[QCode]:js/api/deprecated//*" />
+</component>
