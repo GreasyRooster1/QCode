@@ -22,9 +22,11 @@ class User{
         return user;
     }
 
-    loadUserPermissions(data){
-        for (let [key,value] of Object.entries(data)){
-            this.permissions[key] = value;
-        }
+    loadUserPermissions(){
+        FBDatabase.querySpecific("userpermissions/"+uid, (data) => {
+            for (let [key,value] of Object.entries(data)){
+                this.permissions[key] = value;
+            }
+        })
     }
 }
