@@ -93,6 +93,7 @@ class HtmlComponent extends HTMLElement{
         this.callAttributeEventOnSet()
         this.setStyle(this.style);
         this.addEvents()
+        this.onCreated()
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
