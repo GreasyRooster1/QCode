@@ -19,7 +19,7 @@ class User{
         let user = new User(userObj);
         user.permissions = userObj.permissions;
         user.uid = userObj.username;
-
+        return user;
     }
 
     loadUserPermissions(data){
