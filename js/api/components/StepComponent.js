@@ -69,4 +69,4 @@ class StepComponent extends HtmlComponent{
     }
 }
 
-ComponentRegistry.registerHtmlComponent(StepComponent);
+ComponentRegistry.register(StepComponent);

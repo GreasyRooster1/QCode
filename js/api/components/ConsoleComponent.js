@@ -28,4 +28,4 @@ class ConsoleComponent extends HtmlComponent{
     }
 }
 
-ComponentRegistry.registerHtmlComponent(ConsoleComponent);
+ComponentRegistry.register(ConsoleComponent);

@@ -1,11 +1,11 @@
 class ComponentRegistry {
 
-    static componentRegistry = [];
+    static registry = [];
 
-    static registerHtmlComponent(component) {
+    static register(component) {
         customElements.define(component.name+"-component", component);
         let instance = new component()
-        this.componentRegistry.push(instance);
+        this.registry.push(instance);
         instance.onRegister();
     }
 }

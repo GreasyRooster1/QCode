@@ -86,4 +86,4 @@ class NavComponent extends HtmlComponent{
     }
 }
 
-ComponentRegistry.registerHtmlComponent(NavComponent);
+ComponentRegistry.register(NavComponent);
