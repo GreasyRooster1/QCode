@@ -27,14 +27,12 @@ class NavComponent extends HtmlComponent{
     }
 
     onCreated(){
-        reCalculateUserPoints((points) => {
+        Points.calcUserPoints((points) => {
             this.getInnerByClass("points-display-num").innerText = points;
         });
 
-        database.ref("userdata/"+getStoredUser().uid+"/username").once('value').then((snapshot) => {
-            let username = snapshot.val();
-            let formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
-            this.getInnerByClass("username-link").innerHTML = formattedUsername;
+        FBDatabase.queryUserValue((data) => {
+            this.getInnerByClass("username-link").innerHTML = String.firstCap();
         });
     }
 
