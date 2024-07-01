@@ -3,7 +3,7 @@ class NavComponent extends HtmlComponent{
     isVisible = true;
     accountDropdownOpen = false;
 
-    createContent() {
+    generateContent() {
         return `
             <div class="navbar">
                 <div class="home-link">Home</div>

@@ -6,7 +6,7 @@ class StepComponent extends HtmlComponent{
         super();
     }
 
-    createContent() {
+    generateContent() {
         return `
             <div class="step-head">
                 <div class="step-head-content">

@@ -2,7 +2,7 @@ class ConsoleComponent extends HtmlComponent{
     static validAttributes = ['type', 'message',"head"];
     static name = "console"
 
-    createContent() {
+    generateContent() {
         return `
             <div class="log-head">
             
