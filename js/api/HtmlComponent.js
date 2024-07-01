@@ -20,7 +20,7 @@ class HtmlComponent extends HTMLElement{
     onRegister(){
     }
 
-    createContent(){
+    generateContent(){
 
     }
 
@@ -92,7 +92,7 @@ class HtmlComponent extends HTMLElement{
     //HTMLElement callbacks
 
     connectedCallback(){
-        this.innerHTML = this.createContent();
+        this.innerHTML = this.generateContent();
         this.setStyle();
         this.callAttributeEventOnSet()
         this.setStyle(this.style);
