@@ -5,7 +5,12 @@ class SignInButtonComponent extends GenericButtonEvents{
     }
 
     onClick(){
-        console.log("working")
+        let username = LoginDOM.usernameInput.value;
+        let password = LoginDOM.passwordInput.value;
+
+        FBAuth.signInUser(username, password,(user) => {
+
+        });
     }
 }
 
