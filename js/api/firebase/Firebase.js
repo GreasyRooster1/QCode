@@ -16,6 +16,13 @@ class FBAuth {
         });
     }
 
+    static signInUser(email,password,then){
+        firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
+            console.log("logged in user");
+            this.storeUserFromRaw(userCredential.user);
+        })
+    }
+
     static getEmailFromUsername(username){
         return username+"@esporterz.com"
     }
@@ -24,7 +31,7 @@ class FBAuth {
         return email.replace("@esporterz.com","");
     }
 
-    static storeUser(data){
+    static storeUserFromRaw(data){
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("currentUserRawData",JSON.stringify(data));
         this.loadUserFromRemote(data);
