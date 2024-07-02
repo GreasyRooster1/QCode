@@ -20,6 +20,7 @@ class FBAuth {
         firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
             console.log("logged in user");
             this.storeUserFromRaw(userCredential.user);
+            then(userCredential.user)
         })
     }
 
