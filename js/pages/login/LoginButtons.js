@@ -1,4 +1,9 @@
-class SignInButtonComponent extends GenericButtonComponent{
+class SignInButtonComponent extends GenericButtonEvents{
+
+    constructor() {
+        super();
+    }
+
     onClick(){
         console.log("working")
     }
