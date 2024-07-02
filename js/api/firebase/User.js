@@ -18,15 +18,16 @@ class User{
     static from(userObj) {
         let user = new User(userObj);
         user.permissions = userObj.permissions;
-        user.uid = userObj.username;
+        user.username = userObj.username;
         return user;
     }
 
-    loadUserPermissions(){
-        FBDatabase.querySpecific("userpermissions/"+uid, (data) => {
+    loadUserPermissions(then){
+        FBDatabase.querySpecific("userpermissions/"+this.uid, (data) => {
             for (let [key,value] of Object.entries(data)){
                 this.permissions[key] = value;
             }
+            then(this);
         })
     }
 }

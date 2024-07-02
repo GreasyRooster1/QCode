@@ -19,6 +19,7 @@ class FBAuth {
     static signInUser(email,password,then){
         firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
             console.log("logged in user");
+            console.log(userCredential.user)
             this.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
         })
@@ -62,8 +63,9 @@ class FBAuth {
 
     static loadUserFromRemote(fbData){
         let user = new User(fbData);
-        user.loadUserPermissions()
-        localStorage.setItem("currentUser",JSON.stringify(user));
+        user.loadUserPermissions((userWithPermissions)=>{
+            localStorage.setItem("currentUser",JSON.stringify(userWithPermissions));
+        });
     }
 
     static get isLoggedIn(){
@@ -75,13 +77,13 @@ class FBDatabase{
     static database;
 
     static querySpecific(path, callback){
-        database.ref(path).once("value", (snapshot)=>{
+        this.database.ref(path).once("value", (snapshot)=>{
             callback(snapshot.val());
         });
     }
 
     static addQueryListenerToPath(path,callback){
-        database.ref(path).on("value", (snapshot)=>{
+        this.database.ref(path).on("value", (snapshot)=>{
             callback(snapshot.val());
         });
     }
@@ -113,5 +115,6 @@ LoadRegistry.register(() => {
     };
 
     firebase.initializeApp(firebaseConfig);
-    FBDatabase.database = firebase.database
+
+    FBDatabase.database = firebase.database();
 });
