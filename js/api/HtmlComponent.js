@@ -89,10 +89,15 @@ class HtmlComponent extends HTMLElement{
         this.classList.add(this.defaultClass);
     }
 
+    checkGeneratedContent(){
+        if(this.generateContent()!==null){
+            this.innerHTML = this.generateContent();
+        }
+    }
+
     //HTMLElement callbacks
 
     connectedCallback(){
-        this.innerHTML = this.generateContent();
         this.setStyle();
         this.callAttributeEventOnSet()
         this.setStyle(this.style);
