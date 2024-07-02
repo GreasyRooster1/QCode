@@ -6,10 +6,14 @@ class GenericButtonComponent extends HtmlComponent{
 
     static getRegistry(name){
         for(let r of GenericButtonComponent.registry){
-            if(r.name === name){
+            if(r.constructor.name === name){
                 return r
             }
         }
+    }
+
+    static register(component){
+        registry.push(component)
     }
 
     onAttributeChanged(name, oldValue, newValue) {
@@ -22,6 +26,10 @@ class GenericButtonComponent extends HtmlComponent{
         this.addClickListener((e)=>{
             this.attachedComponent.onClick(e);
         })
+    }
+
+    onClick(){
+
     }
 }
 
