@@ -16,12 +16,14 @@ class FBAuth {
         });
     }
 
-    static signInUser(email,password,then){
+    static signInUser(email,password,then,cat){
         firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
             console.log("logged in user");
             console.log(userCredential.user)
             this.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
+        }).catch((error)=>{
+            cat(error);
         })
     }
 
