@@ -1,0 +1,9 @@
+.generic-button-component{
+    --generic-button-background: #818181;
+}
+
+.generic-button-component{
+    background: var(--generic-button-background);
+    border-radius: 5px;
+    padding:3px;
+}
