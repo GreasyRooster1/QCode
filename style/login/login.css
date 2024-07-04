@@ -12,6 +12,17 @@
 
     --admin-link-color: #626262;
 
+    --admin-background-color: #4f4f4f;
+    --admin-login-pane-color: #6b6b6b;
+    --admin-input-container-color: #808080;
+    --admin-input-wrapper-color: #939393;
+
+    --admin-button-container-color: #808080;
+    --admin-button-color: #939393;
+    --admin-button-color-hover: #b0b0b0;
+
+    --admin-auth-container-color: #808080;
+
     --auth-error-background: rgba(210, 22, 22, 0.39);
     --auth-error-solid: rgb(211, 48, 48);
     --auth-error-text: rgb(35, 2, 2);
