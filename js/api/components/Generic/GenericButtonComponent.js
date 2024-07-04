@@ -22,6 +22,19 @@ class GenericButtonComponent extends HtmlComponent{
         GenericButtonComponent.registry.push(instance)
     }
 
+    setClassToDefault() {
+        this.classList.add(this.defaultClass);
+        if(this.constructor.name!=="GenericButtonComponent"){
+            console.log(this.constructor.name)
+            let splitClass =  this.constructor.name.match(/[A-Z][a-z]+/g);
+            let lowerSplit = []
+            for(let str of splitClass){
+                lowerSplit.push(str.toLowerCase());
+            }
+            this.classList.add(lowerSplit.join("-"));
+        }
+    }
+
     onAttributeChanged(name, oldValue, newValue) {
         this.attachedComponent = GenericButtonComponent.getRegistry(newValue);
     }
