@@ -89,7 +89,7 @@ body{
     background: var(--button-container-color);
 }
 
-.button-container > .button{
+.admin-switch-button-component{
     background:var(--button-color);
     border-radius: 5px;
     padding:5px;
