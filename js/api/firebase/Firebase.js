@@ -23,6 +23,9 @@ class FBAuth {
             this.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
         }).catch((error)=>{
+            if(error.code==="auth/internal-error"){
+                error.message = "Username or password is incorrect.";
+            }
             cat(error);
         })
     }

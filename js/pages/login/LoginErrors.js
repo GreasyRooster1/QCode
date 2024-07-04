@@ -1,10 +1,6 @@
 class LoginErrors{
     static handleError(error){
-        if(error.code==="auth/internal-error"){
-            showAuthError("Username or password is incorrect!");
-        }else {
-            showAuthError(error.message);
-        }
+        showAuthError(error.message);
     }
 
     static showAuthError(message){
