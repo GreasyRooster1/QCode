@@ -1,7 +1,7 @@
 class HtmlComponent extends HTMLElement{
     static validAttributes = [];
     static name = "";
-    defaultClass = "";
+    defaultClass;
 
     static get observedAttributes() {
         return this.validAttributes;
@@ -77,6 +77,9 @@ class HtmlComponent extends HTMLElement{
     }
 
     setClassToDefault(){
+        if(this.defaultClass===undefined){
+            return;
+        }
         this.classList.add(this.defaultClass);
     }
 

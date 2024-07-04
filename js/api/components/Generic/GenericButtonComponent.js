@@ -1,6 +1,7 @@
 class GenericButtonComponent extends HtmlComponent{
     static validAttributes = ['component'];
     static name = "generic-button";
+    defaultClass = "generic-button-component"
     static registry = []
     attachedComponent;
 
