@@ -15,4 +15,17 @@ class SignInButtonComponent extends GenericButtonEvents{
     }
 }
 
+class AdminSwitchButtonComponent extends GenericButtonEvents{
+
+    constructor() {
+        super();
+    }
+
+    onClick(){
+        LoginAdmin.isAdminLogin = true;
+        LoginAdmin.switchStyleToAdmin();
+    }
+}
+
 GenericButtonComponent.register(SignInButtonComponent);
+GenericButtonComponent.register(AdminSwitchButtonComponent);

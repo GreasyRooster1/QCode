@@ -34,7 +34,7 @@
     <script src="js/pages/login/LoginDOM.js"></script>
     <script src="js/pages/login/LoginErrors.js"></script>
     <script src="js/pages/login/LoginButtons.js"></script>
-    <script src="js/pages/login/LoginHandle.js"></script>
+    <script src="js/pages/login/LoginAdmin.js"></script>
 
     <link href="style/global.css" rel="stylesheet">
     <link rel="stylesheet" href="style/login/login.css">
@@ -71,8 +71,6 @@
             </div>
         </div>
     </div>
-    <div class="admin-console-link">
-        <a href="admin.html">Admin</a>
-    </div>
+    <generic-button-component class="admin-console-link" component="AdminSwitchButtonComponent">Admin</generic-button-component>
 </body>
 </html>
