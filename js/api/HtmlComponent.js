@@ -77,15 +77,6 @@ class HtmlComponent extends HTMLElement{
     }
 
     setClassToDefault(){
-        if(this.defaultClass === null){
-            return;
-        }
-
-        if(this.defaultClass === ""){
-            this.classList.add(this.name);
-            return;
-        }
-
         this.classList.add(this.defaultClass);
     }
 
@@ -100,6 +91,7 @@ class HtmlComponent extends HTMLElement{
     connectedCallback(){
         this.setStyle();
         this.callAttributeEventOnSet()
+        this.setClassToDefault();
         this.setStyle(this.style);
         this.addEvents()
         this.onCreated()
