@@ -1,6 +1,6 @@
 class HtmlComponent extends HTMLElement{
     static validAttributes = [];
-    static name = "";
+    static identifier = "";
     defaultClass;
 
     static get observedAttributes() {

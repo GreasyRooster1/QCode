@@ -1,5 +1,5 @@
 class NavComponent extends HtmlComponent{
-    static name = "nav"
+    static identifier = "nav"
     isVisible = true;
     accountDropdownOpen = false;
 

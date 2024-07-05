@@ -1,6 +1,6 @@
 class StepComponent extends HtmlComponent{
     static validAttributes = ["head","image","count","type"]
-    static name = "step";
+    static identifier = "step";
 
     constructor() {
         super();

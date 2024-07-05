@@ -1,6 +1,6 @@
 class ConsoleComponent extends HtmlComponent{
     static validAttributes = ['type', 'message',"head"];
-    static name = "console"
+    static identifier = "console"
 
     generateContent() {
         return `
