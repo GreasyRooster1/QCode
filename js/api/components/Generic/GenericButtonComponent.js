@@ -24,9 +24,9 @@ class GenericButtonComponent extends HtmlComponent{
 
     setClassToDefault() {
         this.classList.add(this.defaultClass);
-        if(this.constructor.name!=="GenericButtonComponent"){
-            console.log(this.constructor.name)
-            let splitClass =  this.constructor.name.match(/[A-Z][a-z]+/g);
+        if(this.attachedComponent!==null){
+            console.log(this.attachedComponent)
+            let splitClass =  this.attachedComponent.constructor.name.match(/[A-Z][a-z]+/g);
             let lowerSplit = []
             for(let str of splitClass){
                 lowerSplit.push(str.toLowerCase());
