@@ -27,8 +27,6 @@ class FBAuth {
 
     static signInUser(email,password,then,cat){
         firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
-            console.log("logged in user");
-            console.log(userCredential.user)
             this.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
         }).catch((error)=>{
@@ -36,6 +34,18 @@ class FBAuth {
                 error.message = "Username or password is incorrect.";
             }
             cat(error);
+        })
+    }
+
+    static createNewUser(email,password,callback,cat){
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential)=>{
+            this.storeUserFromRaw(userCredential.user);
+            then(userCredential.user)
+        }).catch((error)=>{
+            if(error.code==="auth/internal-error"){
+                error.message = "Username or password is incorrect.";
+            }
+            cat(error)
         })
     }
 
