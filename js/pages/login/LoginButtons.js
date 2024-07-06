@@ -10,7 +10,11 @@ class SignInButtonComponent extends GenericButtonEvents{
         let loginName = LoginAdmin.isAdminLogin ? email : FBAuth.getEmailFromUsername(email);
 
         FBAuth.signInUser(loginName, password,(user) => {
-            window.location.href = "index.html"
+            if(LoginAdmin.isAdminLogin){
+                window.location.href = "admin.html"
+            }else {
+                window.location.href = "index.html"
+            }
         },LoginErrors.handleError);
     }
 }
