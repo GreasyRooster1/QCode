@@ -7,6 +7,15 @@ class FBAuth {
         }
     }
 
+    static lockPageToAdminAuth(){
+        FBAuth.lockPageToAuth()
+        FBDatabase.querySpecific("userpermissions/"+getStoredUser().uid+"/hasAdminConsoleAccess",(val)=>{
+            if(!val){
+                window.location.href = "login.html?retUrl="+btoa(window.location.href);
+            }
+        })
+    }
+
     static signOutUser(){
         firebase.auth().signOut().then(() => {
             console.log("logged out user");

@@ -1,0 +1,1 @@
+FBAuth.lockPageToAdminAuth();
