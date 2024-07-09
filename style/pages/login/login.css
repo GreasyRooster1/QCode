@@ -123,11 +123,12 @@ body{
     color:var(--auth-error-text);
 }
 
-.admin-console-link{
+.admin-switch-button{
     position: absolute;
     right:0;
     bottom: 0;
     color:var(--admin-link-color);
     background: none;
     padding:0;
+    font-size:.7em;
 }
