@@ -46,3 +46,6 @@ class AddUserButtonComponent extends GenericButtonComponent{
 
     }
 }
+
+GenericButtonComponent.register(LessonCreatorButtonComponent);
+GenericButtonComponent.register(AddUserButtonComponent);
