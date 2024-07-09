@@ -92,7 +92,6 @@ class HtmlComponent extends HTMLElement{
     //HTMLElement callbacks
 
     connectedCallback(){
-        this.setStyle();
         this.callAttributeEventOnSet()
         this.setClassToDefault();
         this.setStyle(this.style);

@@ -1,4 +1,4 @@
-class SignInButtonComponent extends GenericButtonEvents{
+class SignInButtonEvent extends GenericButtonEvents{
 
     constructor() {
         super();
@@ -19,7 +19,7 @@ class SignInButtonComponent extends GenericButtonEvents{
     }
 }
 
-class AdminSwitchButtonComponent extends GenericButtonEvents{
+class AdminSwitchButtonEvent extends GenericButtonEvents{
 
     constructor() {
         super();
@@ -31,5 +31,5 @@ class AdminSwitchButtonComponent extends GenericButtonEvents{
     }
 }
 
-GenericButtonComponent.register(SignInButtonComponent);
-GenericButtonComponent.register(AdminSwitchButtonComponent);
+GenericButtonComponent.register(SignInButtonEvent);
+GenericButtonComponent.register(AdminSwitchButtonEvent);

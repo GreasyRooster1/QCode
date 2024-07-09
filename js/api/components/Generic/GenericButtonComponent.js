@@ -11,6 +11,7 @@ class GenericButtonComponent extends HtmlComponent{
 
     static getRegistry(name){
         for(let r of GenericButtonComponent.registry){
+            console.log(r.constructor.name,name)
             if(r.constructor.name === name){
                 return r
             }
@@ -22,7 +23,7 @@ class GenericButtonComponent extends HtmlComponent{
         GenericButtonComponent.registry.push(instance)
     }
 
-    setClassToDefault() {
+    addComponentClass() {
         this.classList.add(this.defaultClass);
         if(this.attachedComponent!==null){
             console.log(this.attachedComponent)
@@ -33,10 +34,15 @@ class GenericButtonComponent extends HtmlComponent{
             }
             this.classList.add(lowerSplit.join("-"));
         }
+        console.log(GenericButtonComponent.registry)
     }
 
     onAttributeChanged(name, oldValue, newValue) {
+        if(name!=="component"){
+            return;
+        }
         this.attachedComponent = GenericButtonComponent.getRegistry(newValue);
+        this.addComponentClass()
     }
 
     addEvents() {
@@ -44,14 +50,12 @@ class GenericButtonComponent extends HtmlComponent{
             this.attachedComponent.onClick(e);
         })
     }
-
-    onClick(){
-
-    }
 }
 
 class GenericButtonEvents{
+    onClick(){
 
+    }
 }
 
 ComponentRegistry.register(GenericButtonComponent);

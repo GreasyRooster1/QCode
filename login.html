@@ -39,8 +39,6 @@
     <link href="style/global.css" rel="stylesheet">
     <link href="style/components/GenericButtonComponent.css" rel="stylesheet">
     <link rel="stylesheet" href="style/pages/login/login.css">
-
-    <script src="js/pages/login/deprecated/login.js" defer></script>
 </head>
 <body>
     <div class="login-pane">
@@ -62,7 +60,7 @@
             </div>
         </div>
         <div class="button-container">
-            <generic-button-component component="SignInButtonComponent">Login</generic-button-component>
+            <generic-button-component component="SignInButtonEvent">Login</generic-button-component>
         </div>
         <div class="auth-error-container">
             <div class="auth-error">
@@ -72,6 +70,6 @@
             </div>
         </div>
     </div>
-    <generic-button-component class="admin-console-link" component="AdminSwitchButtonComponent">Admin</generic-button-component>
+    <generic-button-component class="admin-console-link" component="AdminSwitchButtonEvent">Admin</generic-button-component>
 </body>
 </html>
