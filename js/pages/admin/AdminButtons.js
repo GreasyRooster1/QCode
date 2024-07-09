@@ -8,7 +8,7 @@ class LessonCreatorButtonEvent extends GenericButtonEvents{
     }
 }
 
-class HomeButtonComponent extends GenericButtonEvents{
+class HomeButtonEvent extends GenericButtonEvents{
     constructor() {
         super();
     }
@@ -49,3 +49,4 @@ class AddUserButtonEvent extends GenericButtonEvents{
 
 GenericButtonComponent.register(LessonCreatorButtonEvent);
 GenericButtonComponent.register(AddUserButtonEvent);
+GenericButtonComponent.register(HomeButtonEvent);
