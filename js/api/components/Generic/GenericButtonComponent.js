@@ -11,7 +11,6 @@ class GenericButtonComponent extends HtmlComponent{
 
     static getRegistry(name){
         for(let r of GenericButtonComponent.registry){
-            console.log(r.constructor.name,name)
             if(r.constructor.name === name){
                 return r
             }
@@ -26,15 +25,13 @@ class GenericButtonComponent extends HtmlComponent{
     addComponentClass() {
         this.classList.add(this.defaultClass);
         if(this.attachedComponent!==null){
-            console.log(this.attachedComponent)
             let splitClass =  this.attachedComponent.constructor.name.match(/[A-Z][a-z]+/g);
             let lowerSplit = []
             for(let str of splitClass){
                 lowerSplit.push(str.toLowerCase());
             }
-            this.classList.add(lowerSplit.join("-"));
+            this.classList.add(lowerSplit.join("-").replace("-event", ""));
         }
-        console.log(GenericButtonComponent.registry)
     }
 
     onAttributeChanged(name, oldValue, newValue) {
