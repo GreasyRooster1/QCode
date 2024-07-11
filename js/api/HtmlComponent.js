@@ -84,7 +84,7 @@ class HtmlComponent extends HTMLElement{
     }
 
     checkGeneratedContent(){
-        if(this.generateContent()!==null){
+        if(this.generateContent()!==null&&this.generateContent()!==undefined){
             this.innerHTML = this.generateContent();
         }
     }
@@ -93,6 +93,7 @@ class HtmlComponent extends HTMLElement{
 
     connectedCallback(){
         this.callAttributeEventOnSet()
+        this.checkGeneratedContent()
         this.setClassToDefault();
         this.setStyle(this.style);
         this.addEvents()

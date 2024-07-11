@@ -27,12 +27,11 @@
     <script src="js/api/firebase/User.js"></script>
 
     <script src="js/api/components/Generic/GenericButtonComponent.js"></script>
-    <script src="js/api/components/StepComponent.js"></script>
-    <script src="js/api/components/NavComponent.js"></script>
-    <script src="js/api/components/ConsoleComponent.js"></script>
+    <script src="js/api/components/Generic/GenericListPane.js"></script>
 
     <script src="js/pages/admin/AdminLock.js"></script>
     <script src="js/pages/admin/AdminButtons.js"></script>
+    <script src="js/pages/admin/AdminListPanes.js"></script>
 
     <link rel="stylesheet" href="style/global.css">
     <link rel="stylesheet" href="style/components/GenericButtonComponent.css">
@@ -58,10 +57,9 @@
         </div>
 
         <div class="lessons-pane content-pane">
-            <div class="listed-data-wrapper lessons-display-wrapper scrollable-content">
-                <div class="lessons-display listed-data">
-                </div>
-            </div>
+            <generic-list-pane-component component="LessonListPane">
+
+            </generic-list-pane-component>
             <div class="lesson-details">
                 <div class="name">Click any lesson</div>
                 <div class="lesson-details-content">

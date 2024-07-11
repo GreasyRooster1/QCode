@@ -1,6 +1,8 @@
 class FBAuth {
+    static auth = null;
+    
     static lockPageToAuth(){
-        if(getStoredUser()===null){
+        if(this.getStoredUser()===null){
             window.location.href = "login.html?retUrl="+btoa(window.location.href);
         }else{
             console.log("authorized!");
@@ -9,7 +11,7 @@ class FBAuth {
 
     static lockPageToAdminAuth(){
         FBAuth.lockPageToAuth()
-        FBDatabase.querySpecific("userpermissions/"+getStoredUser().uid+"/hasAdminConsoleAccess",(val)=>{
+        FBDatabase.querySpecific("userpermissions/"+this.getStoredUser().uid+"/hasAdminConsoleAccess",(val)=>{
             if(!val){
                 window.location.href = "login.html?retUrl="+btoa(window.location.href);
             }
@@ -17,16 +19,16 @@ class FBAuth {
     }
 
     static signOutUser(){
-        firebase.auth().signOut().then(() => {
+        this.auth.signOut().then(() => {
             console.log("logged out user");
-            clearStoredUser();
+            this.clearStoredUser();
         }).catch((error) => {
             console.log(error);
         });
     }
 
     static signInUser(email,password,then,cat){
-        firebase.auth().signInWithEmailAndPassword(email, password).then((userCredential) => {
+        this.auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
             this.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
         }).catch((error)=>{
@@ -38,7 +40,7 @@ class FBAuth {
     }
 
     static createNewUser(email,password,callback,cat){
-        firebase.auth().createUserWithEmailAndPassword(email, password).then((userCredential)=>{
+        this.auth.createUserWithEmailAndPassword(email, password).then((userCredential)=>{
             this.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
         }).catch((error)=>{
@@ -140,5 +142,6 @@ LoadRegistry.register(() => {
 
     firebase.initializeApp(firebaseConfig);
 
-    FBDatabase.database = firebase.database();
+    FBDatabase.database = firebase.database()
+    FBAuth.auth = firebase.auth();
 });
