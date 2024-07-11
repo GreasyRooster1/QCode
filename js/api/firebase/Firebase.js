@@ -2,7 +2,7 @@ class FBAuth {
     static auth = null;
     
     static lockPageToAuth(){
-        if(this.getStoredUser()===null){
+        if(FBAuth.getStoredUser()===null){
             window.location.href = "login.html?retUrl="+btoa(window.location.href);
         }else{
             console.log("authorized!");
@@ -19,17 +19,17 @@ class FBAuth {
     }
 
     static signOutUser(){
-        this.auth.signOut().then(() => {
+        FBAuth.auth.signOut().then(() => {
             console.log("logged out user");
-            this.clearStoredUser();
+            FBAuth.clearStoredUser();
         }).catch((error) => {
             console.log(error);
         });
     }
 
     static signInUser(email,password,then,cat){
-        this.auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
-            this.storeUserFromRaw(userCredential.user);
+        FBAuth.auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
+            FBAuth.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
         }).catch((error)=>{
             if(error.code==="auth/internal-error"){
@@ -40,8 +40,8 @@ class FBAuth {
     }
 
     static createNewUser(email,password,callback,cat){
-        this.auth.createUserWithEmailAndPassword(email, password).then((userCredential)=>{
-            this.storeUserFromRaw(userCredential.user);
+        FBAuth.auth.createUserWithEmailAndPassword(email, password).then((userCredential)=>{
+            FBAuth.storeUserFromRaw(userCredential.user);
             then(userCredential.user)
         }).catch((error)=>{
             if(error.code==="auth/internal-error"){
@@ -62,7 +62,7 @@ class FBAuth {
     static storeUserFromRaw(data){
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("currentUserRawData",JSON.stringify(data));
-        this.loadUserFromRemote(data);
+        FBAuth.loadUserFromRemote(data);
     }
 
     static clearStoredUser(){
