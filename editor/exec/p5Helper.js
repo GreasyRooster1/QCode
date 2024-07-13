@@ -24,7 +24,6 @@ function startP5(drawArg,setupArg,otherFunctions) {
     };
 
     for(let func of otherFunctions){
-        console.log(func.name);
         if(acceptedFunctions.includes(func.name)) {
             window[func.name] = func;
         }
