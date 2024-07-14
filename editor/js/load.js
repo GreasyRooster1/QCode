@@ -2,6 +2,7 @@ let projectId=null;
 let userUid = null;
 let chapterNum = null;
 let isLessonCreator = false;
+let hasLesson = true;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 function loadProjectFromUrlData(){
@@ -35,6 +36,7 @@ function loadProjectCode(id){
         if(data.lessonId!=="none"){
             loadLesson(data.lessonId);
         }else{
+            hasLesson = false;
             setupPanes(false);
         }
     });
