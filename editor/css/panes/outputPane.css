@@ -110,6 +110,7 @@
     border-radius: 20px;
 
     opacity: 0;
+    pointer-events: none
 }
 
 .save-alert-header{
