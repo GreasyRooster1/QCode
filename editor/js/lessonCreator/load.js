@@ -17,18 +17,21 @@ function uploadLesson(){
     input.type = 'file';
 
     input.onchange = e => {
-
-        // getting a hold of the file reference
         let file = e.target.files[0];
-
-        // setting up the reader
         let reader = new FileReader();
         reader.readAsText(file,'UTF-8');
-
-        // here we tell the reader what to do when it's done reading...
         reader.onload = readerEvent => {
-            let content = readerEvent.target.result; // this is the content!
-            createdLessonChapters = content;
+            let content = readerEvent.target.result;
+            let chapters = [];
+            for(let [_,chapter] of Object.entries(JSON.parse(content).chapters)){
+                let steps = chapter.steps
+                chapter.steps = [];
+                for(let [_,step] of Object.entries(steps)){
+                    chapter.steps.push(step);
+                }
+                chapters.push(chapter);
+            }
+            createdLessonChapters = chapters;
             loadCreatedChapter(0)
         }
 
