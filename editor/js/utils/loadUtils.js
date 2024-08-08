@@ -42,11 +42,14 @@ function writeToEditor(data){
 }
 
 function createChapterStep(data){
-    createStep(data.name,"<a href='"+window.location.href.replace("cNum="+currentChapter,"cNum="+currentChapter+1)+"'>"+data.chapters[currentChapter+1].name+"</a>","none","chapters","0");
+    createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","0");
 }
 
 function createNextChapterStep(data){
-    createStep("Move on to the next chapter",getChapterStepContent(data.chapters),"none","chapters","0");
+    if(data.chapters[currentChapter+1]===undefined){
+        return;
+    }
+    createStep("Move on to the next chapter","<a href='"+window.location.href.replace("cNum="+currentChapter,"cNum="+currentChapter+1)+"'>"+data.chapters[currentChapter+1].name+"</a>","none","chapters","0");
 }
 
 function getChapterStepContent(chapters){
