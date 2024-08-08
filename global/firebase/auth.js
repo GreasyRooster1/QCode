@@ -57,30 +57,30 @@ function displayAuthErrors(errorType){
 }
 
 function storeUser(user){
-    sessionStorage.setItem("isLoggedIn", "true");
-    sessionStorage.setItem("currentUser",JSON.stringify(user));
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("currentUser",JSON.stringify(user));
 }
 
 function storeUserPermissions(perms){
-    sessionStorage.setItem("currentUserPermissions",JSON.stringify(perms));
+    localStorage.setItem("currentUserPermissions",JSON.stringify(perms));
 }
 
 function clearStoredUser(){
-    sessionStorage.setItem("isLoggedIn", "false");
-    sessionStorage.setItem("currentUser",null);
-    sessionStorage.setItem("currentUserPermissions",null);
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("currentUser",null);
+    localStorage.setItem("currentUserPermissions",null);
 
 }
 
 function getStoredUser(){
-    let jsonUser = sessionStorage.getItem("currentUser")
+    let jsonUser = localStorage.getItem("currentUser")
     if(jsonUser!==null){
         return JSON.parse(jsonUser);
     }
     return null;
 }
 function getStoredUserPermissions(){
-    let jsonUserPerms = sessionStorage.getItem("currentUserPermissions")
+    let jsonUserPerms = localStorage.getItem("currentUserPermissions")
     if(jsonUserPerms!==null){
         return JSON.parse(jsonUserPerms);
     }
@@ -88,7 +88,7 @@ function getStoredUserPermissions(){
 }
 
 function isLoggedIn(){
-    return sessionStorage.getItem("isLoggedIn")==="true";
+    return localStorage.getItem("isLoggedIn")==="true";
 }
 
 
