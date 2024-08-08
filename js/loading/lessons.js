@@ -87,6 +87,7 @@ function startInternalLesson(lessonData){
         name:lessonData.name,
         lessonId: lessonId,
         currentChapter: 0,
+        currentStep:1,
     });
     openProjectInEditor(projectId,uid,0);
 }
