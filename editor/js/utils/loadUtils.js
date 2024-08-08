@@ -49,7 +49,13 @@ function createNextChapterStep(data){
     if(data.chapters[currentChapter+1]===undefined){
         return;
     }
-    createStep("Move on to the next chapter","<a href='"+window.location.href.replace("cNum="+currentChapter,"cNum="+currentChapter+1)+"'>"+data.chapters[currentChapter+1].name+"</a>","none","chapters","0");
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>"+data.chapters[currentChapter+1].name+"</span>","none","next","0");
+    document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
+}
+
+function nextChapterClick(){
+    saveCode();
+    window.location.href = window.location.href.replace("cNum="+currentChapter,"cNum="+currentChapter+1)
 }
 
 function getChapterStepContent(chapters){
