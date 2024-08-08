@@ -34,9 +34,9 @@ function loadProjectCode(id){
         const data = snapshot.val();
         writeToEditor(data);
         database.ref("userdata/"+user.uid+"/projects/"+id+"/lessonId").once('value').then((snapshot) => {
-            let data = snapshot.val();
-            if (data !== "none") {
-                loadLesson(data);
+            let lessonId = snapshot.val();
+            if (lessonId !== "none") {
+                loadLesson(lessonId);
             } else {
                 hasLesson = false;
                 setupPanes(false);
@@ -63,12 +63,15 @@ function scrollToCurrentStep(projectId){
     let currentStepRef = database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
 
     currentStepRef.once('value').then((snapshot) => {
+        let currentStep;
         if(!snapshot.exists()){
             currentStepRef.set(0);
+            currentStep = 0;
             console.log("no current step was set, defaulting to 0")
             return;
+        }else{
+            currentStep = snapshot.val();
         }
-        let currentStep = snapshot.val();
         scrollWhenAllImagesAreLoaded(currentStep);
     });
 }

@@ -55,7 +55,7 @@ function createNextChapterStep(data){
 
 function nextChapterClick(){
     saveCode();
-    window.location.href = window.location.href.replace("cNum="+currentChapter,"cNum="+currentChapter+1)
+    window.location.href = window.location.href.replace("cNum="+currentChapter,"cNum="+(currentChapter+1))
 }
 
 function getChapterStepContent(chapters){
