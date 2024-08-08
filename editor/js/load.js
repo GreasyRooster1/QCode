@@ -30,15 +30,18 @@ function loadProjectFromUrlData(){
 
 function loadProjectCode(id){
     user = getStoredUser();
-    database.ref("userdata/"+user.uid+"/projects/"+id).once('value').then((snapshot) => {
+    database.ref("userdata/"+user.uid+"/projects/"+id+"/code").once('value').then((snapshot) => {
         const data = snapshot.val();
-        writeToEditor(data.code);
-        if(data.lessonId!=="none"){
-            loadLesson(data.lessonId);
-        }else{
-            hasLesson = false;
-            setupPanes(false);
-        }
+        writeToEditor(data);
+        database.ref("userdata/"+user.uid+"/projects/"+id+"/lessonId").once('value').then((snapshot) => {
+            let data = snapshot.val();
+            if (data !== "none") {
+                loadLesson(data);
+            } else {
+                hasLesson = false;
+                setupPanes(false);
+            }
+        });
     });
 }
 
