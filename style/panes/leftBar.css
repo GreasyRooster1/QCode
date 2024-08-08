@@ -1,12 +1,12 @@
 .projects{
     min-height: 50vh;
-    background: var(--project-section-background);
+    background: var(--left-sections-background);
     padding-top:3px
 }
 
 .lessons{
     min-height: 50vh;
-    background: var(--project-section-background);
+    background: var(--left-sections-background);
     padding-top:3px
 }
 
