@@ -72,11 +72,11 @@ function scrollToCurrentStep(projectId){
         }else{
             currentStep = snapshot.val();
         }
-        scrollWhenAllImagesAreLoaded(currentStep);
+        scrollWhenAllImagesAreLoaded(currentStep,currentStepRef);
     });
 }
 
-function scrollWhenAllImagesAreLoaded(toStep){
+function scrollWhenAllImagesAreLoaded(toStep,ref){
     let currentStepEl = scrollableSteps.querySelector('editor-step[count="'+toStep+'"]');
     let imagesToLoad = [...document.images].filter(x => !x.complete);
 
@@ -86,7 +86,11 @@ function scrollWhenAllImagesAreLoaded(toStep){
         imagesToLoad.forEach(imageToLoad => {
             imageToLoad.onload = imageToLoad.onerror = () => {
                 if ([...document.images].every(x => x.complete)) {
-                    scrollableSteps.scrollTop = currentStepEl.offsetTop;
+                    if(currentStepEl===null){
+                        ref.set(0);
+                    }else {
+                        scrollableSteps.scrollTop = currentStepEl.offsetTop;
+                    }
                 }
             };
         });
