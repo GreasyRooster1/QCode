@@ -1,18 +1,20 @@
 :root{
     --center-background: #eaeaea;
-    --bar-background: #d9d9d9;
-    --project-section-background: #bdbdbd;
-    --right-sections-background: #b7b7b7;
 
-    --footer-background: #c5c5c5;
-    --footer-text-color: #717171;
+    --left-bar-background: #dcdcdc;
+    --left-sections-background: #aab4dc;
 
-    --project-link-background: #afafaf;
+    --right-bar-background: #dddddd;
+    --right-sections-background: #aadcb4;
+
+    --project-link-background: #98a2da;
     --project-link-text: #191919;
 
-    --badge-details-background: #a2a2a2;
+    --badge-details-background: #94d89d;
+    --badge-hover-color: #83d88f;
+    --badge-color: #94d89d;
 
-    --new-button-background: #0c8ad3;
+    --new-button-background: #7583e1;
     --new-button-text-color: #dde5e8;
 
     --announcement-background: #d9d9d9;
@@ -28,6 +30,11 @@
     --status-display-external: #ea473a;
     --status-display-not-started: #3a78ea;
     --status-display-started: #3aea78;
+
+    --footer-background: #c5c5c5;
+    --footer-text-color: #717171;
+
+    --badge-size:50px;
 }
 
 body{
@@ -49,7 +56,7 @@ body{
 
 .left-bar{
     width:20vw;
-    background:var(--bar-background);
+    background:var(--left-bar-background);
 }
 
 .center-content{
@@ -59,7 +66,7 @@ body{
 
 .right-bar{
     width:20vw;
-    background:var(--bar-background);;
+    background:var(--right-bar-background);;
 }
 
 .navbar-visibility-button{

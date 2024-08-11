@@ -9,6 +9,7 @@ function populateSteps(data){
         createStep(step.head,step.content,step.image,step.type,count);
         count++;
     }
+    createNextChapterStep(data);
     createBufferSpace()
     setupPanes(true);
 }
@@ -42,6 +43,19 @@ function writeToEditor(data){
 
 function createChapterStep(data){
     createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","0");
+}
+
+function createNextChapterStep(data){
+    if(data.chapters[currentChapter+1]===undefined){
+        return;
+    }
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>"+data.chapters[currentChapter+1].name+"</span>","none","next","0");
+    document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
+}
+
+function nextChapterClick(){
+    saveCode();
+    window.location.href = window.location.href.replace("cNum="+currentChapter,"cNum="+(currentChapter+1))
 }
 
 function getChapterStepContent(chapters){

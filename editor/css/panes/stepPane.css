@@ -64,6 +64,9 @@
 .step.chapters > .step-head{
     background: var(--step-chapters);
 }
+.step.next > .step-head{
+    background: var(--step-next);
+}
 .step.other > .step-head{
     background: var(--step-other);
 }

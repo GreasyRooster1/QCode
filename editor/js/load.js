@@ -30,15 +30,18 @@ function loadProjectFromUrlData(){
 
 function loadProjectCode(id){
     user = getStoredUser();
-    database.ref("userdata/"+user.uid+"/projects/"+id).once('value').then((snapshot) => {
+    database.ref("userdata/"+user.uid+"/projects/"+id+"/code").once('value').then((snapshot) => {
         const data = snapshot.val();
-        writeToEditor(data.code);
-        if(data.lessonId!=="none"){
-            loadLesson(data.lessonId);
-        }else{
-            hasLesson = false;
-            setupPanes(false);
-        }
+        writeToEditor(data);
+        database.ref("userdata/"+user.uid+"/projects/"+id+"/lessonId").once('value').then((snapshot) => {
+            let lessonId = snapshot.val();
+            if (lessonId !== "none") {
+                loadLesson(lessonId);
+            } else {
+                hasLesson = false;
+                setupPanes(false);
+            }
+        });
     });
 }
 
@@ -60,17 +63,20 @@ function scrollToCurrentStep(projectId){
     let currentStepRef = database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
 
     currentStepRef.once('value').then((snapshot) => {
+        let currentStep;
         if(!snapshot.exists()){
             currentStepRef.set(0);
+            currentStep = 0;
             console.log("no current step was set, defaulting to 0")
             return;
+        }else{
+            currentStep = snapshot.val();
         }
-        let currentStep = snapshot.val();
-        scrollWhenAllImagesAreLoaded(currentStep);
+        scrollWhenAllImagesAreLoaded(currentStep,currentStepRef);
     });
 }
 
-function scrollWhenAllImagesAreLoaded(toStep){
+function scrollWhenAllImagesAreLoaded(toStep,ref){
     let currentStepEl = scrollableSteps.querySelector('editor-step[count="'+toStep+'"]');
     let imagesToLoad = [...document.images].filter(x => !x.complete);
 
@@ -80,7 +86,11 @@ function scrollWhenAllImagesAreLoaded(toStep){
         imagesToLoad.forEach(imageToLoad => {
             imageToLoad.onload = imageToLoad.onerror = () => {
                 if ([...document.images].every(x => x.complete)) {
-                    scrollableSteps.scrollTop = currentStepEl.offsetTop;
+                    if(currentStepEl===null){
+                        ref.set(0);
+                    }else {
+                        scrollableSteps.scrollTop = currentStepEl.offsetTop;
+                    }
                 }
             };
         });

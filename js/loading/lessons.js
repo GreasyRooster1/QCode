@@ -67,7 +67,7 @@ function lessonClickHandle(e){
             if(lessonData.isExternal){
                 startExternalLesson(lessonData);
             }else {
-                startInternalLesson(lessonData)
+                startInternalLesson(ref,lessonId,lessonData)
             }
         });
     })
@@ -77,18 +77,19 @@ function startExternalLesson(lessonData){
     window.location.href = lessonData.link;
 }
 
-function startInternalLesson(lessonData){
+function startInternalLesson(ref,lessonId,lessonData){
     let starterCode = lessonData.starterCode;
     if(starterCode==="default"){
         starterCode = defaultCode;
     }
-    database.ref(ref).child(projectId).set({
+    database.ref(ref).child(lessonId).set({
         code:starterCode,
         name:lessonData.name,
         lessonId: lessonId,
         currentChapter: 0,
+        currentStep:1,
     });
-    openProjectInEditor(projectId,uid,0);
+    openProjectInEditor(lessonId,getStoredUser().uid,0);
 }
 
 function clearLessons(){
