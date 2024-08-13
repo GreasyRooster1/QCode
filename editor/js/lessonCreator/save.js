@@ -20,9 +20,9 @@ function saveLesson(){
         unlisted:lessonMetadata.unlisted,
         starterCode:lessonMetadata.starterCode,
         chapters:convertChaptersToObjFormat(createdLessonChapters),
+        coachCode:getCodeFromEditor(),
     }
     console.log(lessonData.chapters)
-    lessonData.coachCode = getCodeFromEditor();
     downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
 }
 
