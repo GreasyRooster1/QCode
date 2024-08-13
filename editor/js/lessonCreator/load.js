@@ -23,7 +23,8 @@ function uploadLesson(){
         reader.onload = readerEvent => {
             let content = readerEvent.target.result;
             let chapters = [];
-            for(let [_,chapter] of Object.entries(JSON.parse(content).chapters)){
+            let parsed = JSON.parse(content)
+            for(let [_,chapter] of Object.entries(parsed.chapters)){
                 let steps = chapter.steps
                 chapter.steps = [];
                 for(let [_,step] of Object.entries(steps)){
@@ -33,6 +34,7 @@ function uploadLesson(){
             }
             createdLessonChapters = chapters;
             loadCreatedChapter(0)
+            writeToEditor(parsed.coachCode);
         }
 
     }

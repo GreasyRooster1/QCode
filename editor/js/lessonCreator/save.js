@@ -22,6 +22,7 @@ function saveLesson(){
         chapters:convertChaptersToObjFormat(createdLessonChapters),
     }
     console.log(lessonData.chapters)
+    lessonData.coachCode = getCodeFromEditor();
     downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
 }
 
