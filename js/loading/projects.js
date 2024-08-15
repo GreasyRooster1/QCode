@@ -1,14 +1,14 @@
 
 function loadProjects(){
-    let projectsRef = database.ref('userdata/'+user.uid+"/projects").limitToLast(5);
+    let projectsRef = database.ref('userdata/'+user.uid+"/projects").orderByChild("timestamp").limitToLast(5);
     projectsRef.on('value', (snapshot) => {
-        const data = snapshot.val();
         clearProjects();
+        snapshot.forEach((childSnapshot) => {
+            const data = childSnapshot.val();
 
-        for(const [projectId, projectData] of Object.entries(data)){
-            console.log("loaded project "+projectId);
-            createProjectElement(projectId,projectData);
-        }
+            console.log("loaded project " + childSnapshot.key);
+            createProjectElement(childSnapshot.key, data);
+        });
     });
 }
 
@@ -16,7 +16,7 @@ function createProjectElement(projectId,projectData){
     let el = document.createElement("project-link");
     el.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,projectData.currentChapter));
     el.setAttribute("name",projectData.name);
-    projectsDisplay.appendChild(el);
+    projectsDisplay.prepend(el);
 }
 
 function clearProjects(){
