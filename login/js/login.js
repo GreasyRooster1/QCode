@@ -13,6 +13,7 @@ const requiredUserData = [
             currentChapter:0,
             currentStep:1,
             lessonId:"bouncing-rainbow-squares",
+            timestamp:Date.now()/1000,
         }
     }},
     {name:"badges",val:{0:{id:"user"}}},
