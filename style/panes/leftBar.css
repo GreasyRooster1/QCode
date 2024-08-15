@@ -44,11 +44,27 @@
 }
 
 .project-pages{
+    user-select: none;
     display: flex;
     justify-content: space-evenly;
     font-weight: bolder;
+    align-items: center;
 }
 
+.project-pages .page-display{
+    font-size: 1.2em;
+}
+
+.project-pages .arrow{
+    transition:0.1s;
+}
+
+.project-pages .arrow:hover{
+    font-size: 1.2em;
+}
+.project-pages .arrow:active{
+    color:#ffffff;
+}
 
 .lesson-link-wrapper{
     padding: 3px;

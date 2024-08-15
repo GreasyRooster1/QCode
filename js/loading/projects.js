@@ -1,6 +1,8 @@
+let currentProjectViewPage = 1;
 
 function loadProjects(){
-    let projectsRef = database.ref('userdata/'+user.uid+"/projects").orderByChild("timestamp").limitToLast(5);
+    console.log((currentProjectViewPage-1)*5,(currentProjectViewPage)*5)
+    let projectsRef = database.ref('userdata/'+user.uid+"/projects").orderByChild("timestamp").endBefore(50);
     projectsRef.on('value', (snapshot) => {
         clearProjects();
         snapshot.forEach((childSnapshot) => {
@@ -30,4 +32,21 @@ function openProjectInEditor(projectId,uid,chapterNumber){
 
 function getLinkToProject(projectId,uid,chapterNumber){
     return "editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
+}
+
+function updateProjectPageDisplay(){
+    document.querySelector(".project-pages > .page-display").innerHTML = currentProjectViewPage;
+    loadProjects()
+}
+
+document.querySelector(".project-pages > .left-arrow").onclick = function(){
+    if(currentProjectViewPage > 1){
+        currentProjectViewPage--;
+        updateProjectPageDisplay()
+    }
+}
+
+document.querySelector(".project-pages > .right-arrow").onclick = function(){
+    currentProjectViewPage++;
+    updateProjectPageDisplay()
 }
