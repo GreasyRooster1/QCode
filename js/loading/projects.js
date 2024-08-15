@@ -1,6 +1,6 @@
 
 function loadProjects(){
-    let projectsRef = database.ref('userdata/'+user.uid+"/projects");
+    let projectsRef = database.ref('userdata/'+user.uid+"/projects").limitToLast(5);
     projectsRef.on('value', (snapshot) => {
         const data = snapshot.val();
         clearProjects();
