@@ -16,6 +16,7 @@ function createProjectElement(projectId,projectData){
     let el = document.createElement("project-link");
     el.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,projectData.currentChapter));
     el.setAttribute("name",projectData.name);
+    el.setAttribute("timestamp",projectData.timestamp);
     projectsDisplay.prepend(el);
 }
 

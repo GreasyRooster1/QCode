@@ -203,17 +203,19 @@ class ConsoleLogElement extends HTMLElement {
 
 class ProjectLinkElement extends HTMLElement {
     link = null;
+    stamp = null;
 
     constructor() {
         super();
     }
 
     static get observedAttributes() {
-        return ['href','name'];
+        return ['href','name','timestamp'];
     }
 
     connectedCallback() {
         this.link = document.createElement("a");
+        this.stamp = document.createElement("span");
 
         if (this.attributes.getNamedItem("href") !== null) {
             let href = this.attributes.getNamedItem("href").value;
@@ -224,7 +226,12 @@ class ProjectLinkElement extends HTMLElement {
             this.link.innerHTML = this.attributes.getNamedItem("name").value;
         }
 
+        if (this.attributes.getNamedItem("timestamp") !== null) {
+            this.stamp.innerHTML = shortTimeDifference(this.attributes.getNamedItem("timestamp").value);
+        }
+
         this.appendChild(this.link);
+        this.link.appendChild(this.stamp);
         this.classList.add("project-link");
     }
 
@@ -237,6 +244,10 @@ class ProjectLinkElement extends HTMLElement {
             }else if(name === 'name'){
                 if(this.link!==null) {
                     this.link.innerHTML = newValue;
+                }
+            }else if(name === 'timestamp'){
+                if(this.stamp!==null) {
+                    this.stamp.innerHTML = shortTimeDifference(newValue, this.stamp);
                 }
             }
         }

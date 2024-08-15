@@ -93,6 +93,7 @@ function timeDifference(previous) {
 
 function shortTimeDifference(previous) {
 
+    previous*=1000;
     let msPerMinute = 60 * 1000;
     let msPerHour = msPerMinute * 60;
     let msPerDay = msPerHour * 24;
@@ -116,15 +117,15 @@ function shortTimeDifference(previous) {
     }
 
     else if (elapsed < msPerMonth) {
-        return 'approximately ' + Math.round(elapsed/msPerDay) + 'd';
+        return Math.round(elapsed/msPerDay) + 'd';
     }
 
     else if (elapsed < msPerYear) {
-        return 'approximately ' + Math.round(elapsed/msPerMonth) + 'm';
+        return Math.round(elapsed/msPerMonth) + 'm';
     }
 
     else {
-        return 'approximately ' + Math.round(elapsed/msPerYear ) + 'y';
+        return Math.round(elapsed/msPerYear ) + 'y';
     }
 }
 

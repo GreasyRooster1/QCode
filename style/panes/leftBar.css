@@ -22,7 +22,9 @@
 
 .project-link > a{
     padding: 3px;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     background: var(--project-link-background);
     border-radius: 5px;
@@ -32,6 +34,11 @@
     font-weight: bold;
 }
 
+.project-link > a > span{
+    color: var(--project-date-text);
+    font-size:  0.7em;
+    font-weight: lighter;
+}
 
 
 .lesson-link-wrapper{
