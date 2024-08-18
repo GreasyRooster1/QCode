@@ -141,3 +141,8 @@
     color:var(--step-red-text-color);
     font-weight: bold;
 }
+
+.chapter-end-home-link{
+    color:var(--chapter-end-home-link-color);
+    text-decoration: underline;
+}
