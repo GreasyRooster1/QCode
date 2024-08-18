@@ -114,6 +114,9 @@
 .chapter-link:hover{
     color:var(--chapter-link-color-hover)
 }
+.chapter-link.current-chapter{
+    font-weight: bold;
+}
 
 /* step styles */
 

@@ -85,11 +85,14 @@ function getChapterStepContentNoLink(chapters){
     return content;
 }
 
-function createChapterLink(chapterNum,chapterData){
-    let name = "Chapter "+chapterNum+" - "+chapterData.name;
+function createChapterLink(chapterNumber,chapterData){
+    let name = "Chapter "+chapterNumber+" - "+chapterData.name;
     let linkEl = document.createElement("a");
     linkEl.innerHTML = name;
-    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNum-1));
+    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNumber-1));
     linkEl.classList.add("chapter-link")
+    if(chapterNumber-1 === chapterNum) {
+        linkEl.classList.add("current-chapter")
+    }
     return linkEl.outerHTML;
 }
