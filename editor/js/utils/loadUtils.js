@@ -42,16 +42,16 @@ function writeToEditor(data){
 }
 
 function createChapterStep(data){
-    createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","0");
+    createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","-1");
 }
 
 function createNextChapterStep(data){
     if(data.chapters[chapterNum+1]===undefined){
-        createStep("You're done!","You finished the lesson!\nGo back <span class='chapter-end-home-link'>home</span>","none","next","0");
+        createStep("You're done!","You finished the lesson!\nGo back <span class='chapter-end-home-link'>home</span>","none","next","-1");
         document.querySelector(".chapter-end-home-link").addEventListener('click',homeLinkClick)
         return;
     }
-    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(chapterNum+2)+" - "+data.chapters[chapterNum+1].name+"</span>","none","next","0");
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(chapterNum+2)+" - "+data.chapters[chapterNum+1].name+"</span>","none","next","-1");
     document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
 }
 
