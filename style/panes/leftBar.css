@@ -1,7 +1,9 @@
 .projects{
     min-height: 50vh;
     background: var(--left-sections-background);
-    padding-top:3px
+    padding-top:3px;
+    display:flex;
+    flex-direction: column;
 }
 
 .lessons{
@@ -22,7 +24,9 @@
 
 .project-link > a{
     padding: 3px;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     background: var(--project-link-background);
     border-radius: 5px;
@@ -30,9 +34,37 @@
     color: var(--project-link-text);
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.3em;
 }
 
+.project-link > a > span{
+    color: var(--project-date-text);
+    font-size:  0.7em;
+    font-weight: lighter;
+}
 
+.project-pages{
+    user-select: none;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bolder;
+    align-items: center;
+}
+
+.project-pages .page-display{
+    font-size: 1.2em;
+}
+
+.project-pages .arrow{
+    transition:0.1s;
+}
+
+.project-pages .arrow:hover{
+    font-size: 1.2em;
+}
+.project-pages .arrow:active{
+    color:#ffffff;
+}
 
 .lesson-link-wrapper{
     padding: 3px;

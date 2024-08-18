@@ -12,5 +12,6 @@ function createProject(projectName){
         name:projectName,
         currentChapter:0,
         currentStep:0,
+        timestamp:Date.now()/1000,
     })
 }
