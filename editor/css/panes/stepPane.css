@@ -125,6 +125,14 @@
     color:var(--step-code-text-color);
 }
 
+.step multi-code{
+    display: inline-block;
+    border-radius: 5px;
+    padding:2px;
+    background: var(--step-code-text-background);
+    color:var(--step-code-text-color);
+}
+
 .step red{
     display: inline;
     color:var(--step-red-text-color);
