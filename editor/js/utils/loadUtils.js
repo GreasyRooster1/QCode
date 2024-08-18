@@ -47,10 +47,18 @@ function createChapterStep(data){
 
 function createNextChapterStep(data){
     if(data.chapters[currentChapter+1]===undefined){
+        createStep("You're done!","You finished the lesson!\nGo back <span class='home-link'>home</span>","none","next","0");
+        document.querySelector(".home-link").addEventListener('click',homeLinkClick)
         return;
     }
     createStep("Move on to the next chapter","<span class='next-chapter-text'>"+data.chapters[currentChapter+1].name+"</span>","none","next","0");
     document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
+}
+
+
+function homeLinkClick(){
+    saveCode();
+    window.location.href = window.location.href="../index.html";
 }
 
 function nextChapterClick(){
