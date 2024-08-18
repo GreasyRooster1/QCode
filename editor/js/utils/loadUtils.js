@@ -70,7 +70,7 @@ function getChapterStepContent(chapters){
     let content="";
     let count=1;
     for(let chapter of chapters){
-        content+=createChapterLink(count-1,chapter)+"<br>";
+        content+=createChapterLink(count,chapter)+"<br>";
         count++;
     }
     return content;
@@ -89,7 +89,7 @@ function createChapterLink(chapterNum,chapterData){
     let name = "Chapter "+chapterNum+" - "+chapterData.name;
     let linkEl = document.createElement("a");
     linkEl.innerHTML = name;
-    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNum));
+    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNum-1));
     linkEl.classList.add("chapter-link")
     return linkEl.outerHTML;
 }
