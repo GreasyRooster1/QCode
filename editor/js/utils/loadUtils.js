@@ -46,12 +46,12 @@ function createChapterStep(data){
 }
 
 function createNextChapterStep(data){
-    if(data.chapters[currentChapter+1]===undefined){
-        createStep("You're done!","You finished the lesson!\nGo back <span class='home-link'>home</span>","none","next","0");
-        document.querySelector(".home-link").addEventListener('click',homeLinkClick)
+    if(data.chapters[chapterNum+1]===undefined){
+        createStep("You're done!","You finished the lesson!\nGo back <span class='chapter-end-home-link'>home</span>","none","next","0");
+        document.querySelector(".chapter-end-home-link").addEventListener('click',homeLinkClick)
         return;
     }
-    createStep("Move on to the next chapter","<span class='next-chapter-text'>"+data.chapters[currentChapter+1].name+"</span>","none","next","0");
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(chapterNum+2)+" - "+data.chapters[chapterNum+1].name+"</span>","none","next","0");
     document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
 }
 
@@ -63,7 +63,7 @@ function homeLinkClick(){
 
 function nextChapterClick(){
     saveCode();
-    window.location.href = window.location.href.replace("cNum="+currentChapter,"cNum="+(currentChapter+1))
+    window.location.href = window.location.href.replace("cNum="+chapterNum,"cNum="+(chapterNum+1))
 }
 
 function getChapterStepContent(chapters){
