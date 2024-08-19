@@ -42,27 +42,35 @@ function writeToEditor(data){
 }
 
 function createChapterStep(data){
-    createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","0");
+    createStep(data.name,getChapterStepContent(data.chapters),"none","chapters","-1");
 }
 
 function createNextChapterStep(data){
-    if(data.chapters[currentChapter+1]===undefined){
+    if(data.chapters[chapterNum+1]===undefined){
+        createStep("You're done!","You finished the lesson!\nGo back <span class='chapter-end-home-link'>home</span>","none","next","-1");
+        document.querySelector(".chapter-end-home-link").addEventListener('click',homeLinkClick)
         return;
     }
-    createStep("Move on to the next chapter","<span class='next-chapter-text'>"+data.chapters[currentChapter+1].name+"</span>","none","next","0");
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(chapterNum+2)+" - "+data.chapters[chapterNum+1].name+"</span>","none","next","-1");
     document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
+}
+
+
+function homeLinkClick(){
+    saveCode();
+    window.location.href = window.location.href="../index.html";
 }
 
 function nextChapterClick(){
     saveCode();
-    window.location.href = window.location.href.replace("cNum="+currentChapter,"cNum="+(currentChapter+1))
+    window.location.href = window.location.href.replace("cNum="+chapterNum,"cNum="+(chapterNum+1))
 }
 
 function getChapterStepContent(chapters){
     let content="";
     let count=1;
     for(let chapter of chapters){
-        content+=createChapterLink(count-1,chapter)+"<br>";
+        content+=createChapterLink(count,chapter)+"<br>";
         count++;
     }
     return content;
@@ -77,11 +85,14 @@ function getChapterStepContentNoLink(chapters){
     return content;
 }
 
-function createChapterLink(chapterNum,chapterData){
-    let name = "Chapter "+chapterNum+" - "+chapterData.name;
+function createChapterLink(chapterNumber,chapterData){
+    let name = "Chapter "+chapterNumber+" - "+chapterData.name;
     let linkEl = document.createElement("a");
     linkEl.innerHTML = name;
-    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNum));
+    linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNumber-1));
     linkEl.classList.add("chapter-link")
+    if(chapterNumber-1 === chapterNum) {
+        linkEl.classList.add("current-chapter")
+    }
     return linkEl.outerHTML;
 }

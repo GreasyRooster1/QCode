@@ -69,6 +69,9 @@ class StepElement extends HTMLElement {
 
         if (this.attributes.getNamedItem("image") !== null) {
             this.image.setAttribute("src",this.attributes.getNamedItem("image").value);
+            if(this.attributes.getNamedItem("image").value==="none"){
+                this.image.style.display = "none";
+            }
         }
 
         this.appendChild(this.head);
@@ -110,6 +113,10 @@ class StepElement extends HTMLElement {
             }else if (name === 'image') {
                 if(this.image===null) {
                     return;
+                }
+
+                if(newValue==="none"){
+                    this.image.style.display = "none";
                 }
 
                 this.image.setAttribute("src",newValue);

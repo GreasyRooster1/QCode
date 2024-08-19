@@ -114,6 +114,9 @@
 .chapter-link:hover{
     color:var(--chapter-link-color-hover)
 }
+.chapter-link.current-chapter{
+    font-weight: bold;
+}
 
 /* step styles */
 
@@ -125,8 +128,25 @@
     color:var(--step-code-text-color);
 }
 
+.step multi-code{
+    display: inline-block;
+    border-radius: 5px;
+    padding:2px;
+    background: var(--step-code-text-background);
+    color:var(--step-code-text-color);
+}
+
 .step red{
     display: inline;
     color:var(--step-red-text-color);
     font-weight: bold;
+}
+
+.chapter-end-home-link{
+    color:var(--chapter-end-home-link-color);
+    text-decoration: underline;
+}
+.next-chapter-text{
+    color:var(--chapter-end-home-link-color);
+    text-decoration: underline;
 }
