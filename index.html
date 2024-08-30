@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
     <script src="global/firebase/init.js" defer></script>
     <script src="global/firebase/auth.js" defer></script>
     <script src="global/firebase/database.js" defer></script>
@@ -42,6 +45,7 @@
     <script src="js/loading/announcements.js" defer></script>
     <script src="js/loading/user.js" defer></script>
 
+    <script src="js/featuredProject.js" defer></script>
     <script src="js/newProject.js" defer></script>
     <script src="js/badgeDisplay.js" defer></script>
     <script src="js/version.js" defer></script>
@@ -70,6 +74,22 @@
         </div>
 
         <div class="center-content">
+            <div class="featured-project-wrapper">
+                <div class="featured-project-canvas">
+                    <iframe id="exec-frame" src="editor/exec/exec.html"></iframe>
+                </div>
+                <div class="featured-project-thumb">
+<!--                    <div class="title">-->
+<!--                        Title-->
+<!--                    </div>-->
+                    <div class="play-icon">
+                        <i class="fa fa-play"></i>
+                    </div>
+                </div>
+                <div class="featured-project-bar">
+<!--                    <i class="fa fa-refresh"></i>-->
+                </div>
+            </div>
             <div class="announcements-pane">
                 <div class="announcements-title">
                     Announcements

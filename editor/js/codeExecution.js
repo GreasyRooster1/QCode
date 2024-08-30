@@ -8,6 +8,7 @@ let iWindow = null;
 let runningCode = false;
 
 runButton.addEventListener("click", function() {
+    saveCode()
     resetAllOutputs()
     runningCode = true;
     runCode();

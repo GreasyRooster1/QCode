@@ -18,6 +18,8 @@
     --new-button-background: #7583e1;
     --new-button-text-color: #dde5e8;
 
+    --featured-project-thumb-background: rgba(0, 0, 0, 0.5);
+
     --announcement-background: #d9d9d9;
     --announcement-side-color: #bebebe;
     --announcement-content-background: #e1e1e1;
@@ -63,6 +65,10 @@ body{
 .center-content{
     width:60vw;
     background:var(--center-background);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 .right-bar{
