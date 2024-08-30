@@ -11,6 +11,9 @@
     width:60vh;
     margin-top: -100%;
     background: var(--featured-project-thumb-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .featured-project-canvas{
@@ -20,6 +23,11 @@
 
 .featured-project-bar{
     height:30px;
+}
+
+.featured-project-thumb .play-icon{
+    font-size: 6em;
+    text-align: center;
 }
 
 .announcements-title{
