@@ -159,7 +159,7 @@
     justify-content: center;
 }
 .user-profile-img{
-    height:75%;
+    height:10vh;
     aspect-ratio: 1/1;
     border-radius: 5px;
 }
