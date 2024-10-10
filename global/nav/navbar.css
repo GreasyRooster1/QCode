@@ -2,6 +2,8 @@
     --account-name-text: #ffffff;
     --account-dropdown-option: #d1d1d1;
 
+    --account-dropdown-seperator: #4c4c4c;
+
     --navbar-shrink-color: #1a1a1a;
 
     --generic-nav-button-color: #2e2e2e;
@@ -101,6 +103,7 @@ brand-nav{
     width: 100%;
     color: var(--account-dropdown-option);
     height:20px;
+    border-top: 1px solid var(--account-dropdown-seperator);
     text-align: center;
 }
 
