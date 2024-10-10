@@ -32,6 +32,9 @@ function initUsername(){
 }
 
 function initAdmin(){
+    if(getStoredUserPermissions().hasAdminConsoleAccess){
+        return;
+    }
     let option = document.createElement("div")
     option.classList.add("option");
     option.classList.add("admin-option");
