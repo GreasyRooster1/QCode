@@ -138,9 +138,15 @@
     text-align: center;
 }
 
-.share-board-project-canvas{
+.share-board-featured-wrapper{
     display: flex;
     justify-content: center;
+}
+
+.share-board-featured{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .share-board .heart-icon {
@@ -161,9 +167,14 @@
     font-weight: bold;
 }
 
-.share-board-project-canvas > iframe{
+.share-board-featured > iframe{
     aspect-ratio: 1/1;
     width:13vh;
+}
+
+.more-wrapper{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .user{
