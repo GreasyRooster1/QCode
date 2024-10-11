@@ -172,9 +172,13 @@
     width:13vh;
 }
 
-.more-wrapper{
+.share-board .more-wrapper{
     display: flex;
     justify-content: flex-end;
+}
+
+.share-board .more-button{
+    background: var(--more-button-color);
 }
 
 .user{
