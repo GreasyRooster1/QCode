@@ -129,8 +129,23 @@
 
 
 
-.points{
+.share-board{
     background: var(--right-sections-background);
+}
+
+.share-board-title{
+    font-size:30px;
+    text-align: center;
+}
+
+.share-board-project-canvas{
+    display: flex;
+    justify-content: center;
+}
+
+.share-board-project-canvas > iframe{
+    aspect-ratio: 1/1;
+    width:13vh;
 }
 
 .user{
