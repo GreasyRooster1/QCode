@@ -143,6 +143,24 @@
     justify-content: center;
 }
 
+.share-board .heart-icon {
+    color:var(--likes-color);
+}
+.share-board .heart-count {
+    color:var(--likes-text-color);
+}
+
+.share-board .star-icon {
+    color:var(--stars-color);
+}
+.share-board .star-count {
+    color:var(--stars-text-color);
+}
+
+.share-board .interaction-count{
+    font-weight: bold;
+}
+
 .share-board-project-canvas > iframe{
     aspect-ratio: 1/1;
     width:13vh;
