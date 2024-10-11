@@ -85,6 +85,17 @@ body{
     width:90%;
 }
 
+.bar-section.short{
+    margin:5%;
+    width:90%;
+    height:20vh;
+}
+.bar-section.tall{
+    margin:5%;
+    width:90%;
+    height:50vh;
+}
+
 .footer{
     display:flex;
 

@@ -130,14 +130,10 @@
 
 
 .points{
-    height:20vh;
     background: var(--right-sections-background);
 }
 
-
-
 .user{
-    height:20vh;
     background: var(--right-sections-background);
     display: flex;
     flex-direction: column;
