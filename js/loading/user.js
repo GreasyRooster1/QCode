@@ -33,7 +33,7 @@ const isValidUrl = urlString => {
     inputElement.type = 'url';
     inputElement.value = urlString;
 
-    return inputElement.checkValidity();
+    return inputElement.checkValidity() && urlString!==null;
 }
 
 profileDisplayImg.addEventListener("click",function (){
