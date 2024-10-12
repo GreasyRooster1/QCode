@@ -52,7 +52,15 @@ class ShareBoardProject{
 
 function getShareBoardFeaturedProjects(next=function(){}){
     let projects = [];
-    database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
+    database.ref("sharedProjects/featured").once("value").then((snapshot) => {
+        let data = snapshot.val();
+        for (let [_, pid] of Object.entries(data)){
+            database.ref("sharedProjects/metadata/"+pid).once("value").then((snapshot) => {
+                projects.push(new ShareBoardProject(pid, snapshot.val()));
+            });
+        }
+        next(projects);
+    });
 }
 
 function getShareBoardProjects(next=function(){}){
