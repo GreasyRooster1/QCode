@@ -50,6 +50,11 @@ class ShareBoardProject{
     }
 }
 
+function getShareBoardFeaturedProjects(next=function(){}){
+    let projects = [];
+    database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
+}
+
 function getShareBoardProjects(next=function(){}){
     let projects = [];
     database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
