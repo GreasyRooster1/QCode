@@ -32,6 +32,22 @@ class ShareBoardProject{
             next(this.code);
         })
     }
+
+    like(){
+        database.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).set(Date.now()/1000)
+    }
+
+    star(){
+        database.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).set(Date.now()/1000)
+    }
+
+    removeLike(){
+        database.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).remove()
+    }
+
+    removeStar(){
+        database.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).remove()
+    }
 }
 
 function getShareBoardProjects(next=function(){}){
