@@ -35,26 +35,36 @@ class ShareBoardProject{
 
     like(){
         database.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).set(Date.now()/1000)
+        this.likedBy[getStoredUser().uid] = Date.now()/1000;
     }
 
     star(){
         database.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).set(Date.now()/1000)
+        this.staredBy[getStoredUser().uid] = Date.now()/1000;
     }
 
     removeLike(){
         database.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).remove()
+        delete this.likedBy[getStoredUser().uid]
     }
 
     removeStar(){
         database.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).remove()
+        delete this.staredBy[getStoredUser().uid]
     }
 
     isLiked(){
-        return currentProject.likedBy.hasOwnProperty(getStoredUser().uid);
+        if(this.likedBy===null){
+            return false;
+        }
+        return this.likedBy.hasOwnProperty(getStoredUser().uid);
     }
 
     isStared(){
-        return currentProject.staredBy.hasOwnProperty(getStoredUser().uid);
+        if(this.staredBy===null){
+            return false;
+        }
+        return this.staredBy.hasOwnProperty(getStoredUser().uid);
     }
 }
 

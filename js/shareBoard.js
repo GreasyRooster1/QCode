@@ -18,7 +18,21 @@ function initShareBoard(){
 
 function setupInteractionEvents(){
     heartInteractIcon.addEventListener("click", () => {
-        featuredProjects[currentFeaturedProject].like();
+        if(featuredProjects[currentFeaturedProject].isLiked()){
+            featuredProjects[currentFeaturedProject].removeLike();
+        }else{
+            featuredProjects[currentFeaturedProject].like();
+        }
+        checkHeartInteractFilled()
+    })
+
+    starInteractIcon.addEventListener("click", () => {
+        if(featuredProjects[currentFeaturedProject].isStared()){
+            featuredProjects[currentFeaturedProject].removeStar();
+        }else{
+            featuredProjects[currentFeaturedProject].star();
+        }
+        checkStarInteractFilled()
     })
 }
 
