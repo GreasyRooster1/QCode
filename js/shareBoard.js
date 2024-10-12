@@ -13,6 +13,13 @@ function initShareBoard(){
         featuredProjects = projects;
         setCurrentFeaturedProject(0);
     });
+    setupInteractionEvents();
+}
+
+function setupInteractionEvents(){
+    heartInteractIcon.addEventListener("click", () => {
+        featuredProjects[currentFeaturedProject].like();
+    })
 }
 
 function setCurrentFeaturedProject(index){
@@ -29,7 +36,7 @@ function checkHeartInteractFilled(){
     let currentProject = featuredProjects[currentFeaturedProject];
     heartInteractIcon.classList.remove("far");
     heartInteractIcon.classList.remove("fas");
-    if(currentProject.likedBy.hasOwnProperty(getStoredUser().uid)){
+    if(currentProject.isLiked()){
         console.log("asd");
         heartInteractIcon.classList.add("fas");
     }else{
@@ -41,9 +48,7 @@ function checkStarInteractFilled(){
     let currentProject = featuredProjects[currentFeaturedProject];
     starInteractIcon.classList.remove("far");
     starInteractIcon.classList.remove("fas");
-    if(currentProject.staredBy.hasOwnProperty(getStoredUser().uid)){
-        console.log("asd");
-
+    if(currentProject.isStared()){
         starInteractIcon.classList.add("fas");
     }else{
         starInteractIcon.classList.add("far");

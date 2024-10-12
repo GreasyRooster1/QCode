@@ -48,6 +48,14 @@ class ShareBoardProject{
     removeStar(){
         database.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).remove()
     }
+
+    isLiked(){
+        return currentProject.likedBy.hasOwnProperty(getStoredUser().uid);
+    }
+
+    isStared(){
+        return currentProject.staredBy.hasOwnProperty(getStoredUser().uid);
+    }
 }
 
 function getShareBoardFeaturedProjects(next=function(){}){
