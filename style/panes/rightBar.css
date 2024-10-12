@@ -180,7 +180,7 @@
 .share-board .more-button{
     background: var(--share-board-more-button-color);
     color: var(--share-board-more-button-text-color);
-    padding: 2px;
+    padding: 2px 4px;
     border-radius: 7px;
 }
 
