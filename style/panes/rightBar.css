@@ -169,12 +169,14 @@
 
 .share-board-featured > iframe{
     aspect-ratio: 1/1;
-    width:13vh;
+    width:14vh;
 }
 
 .share-board .more-wrapper{
     display: flex;
     justify-content: flex-end;
+    position: relative;
+    top:-1em;
 }
 
 .share-board .more-button{
