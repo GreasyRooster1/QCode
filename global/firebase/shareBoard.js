@@ -26,7 +26,7 @@ class ShareBoardProject{
         this.code = null;
     }
 
-    loadProjectCode(next){
+    loadProjectCode(next=function(){}){
         database.ref("sharedProjects/projectData/"+this.pid).once("value").then((snapshot) => {
             this.code = snapshot.val();
             next(this.code);
@@ -34,7 +34,7 @@ class ShareBoardProject{
     }
 }
 
-function getShareBoardProjects(next){
+function getShareBoardProjects(next=function(){}){
     let projects = [];
     database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
         let data = snapshot.val();
