@@ -22,6 +22,15 @@ class ShareBoardProject{
         this.likedBy = metadata.likedBy;
         this.staredBy = metadata.staredBy;
         this.pid = pid;
+
+        this.code = null;
+    }
+
+    loadProjectCode(next){
+        database.ref("sharedProjects/projectData/"+this.pid).once("value").then((snapshot) => {
+            this.code = snapshot.val();
+            next(this.code);
+        })
     }
 }
 
@@ -32,6 +41,6 @@ function getShareBoardProjects(next){
         for (let [pid, metadata] of Object.entries(data)) {
             projects.push(new ShareBoardProject(pid, metadata));
         }
-        next.apply(projects);
+        next(projects);
     })
 }
