@@ -178,7 +178,10 @@
 }
 
 .share-board .more-button{
-    background: var(--more-button-color);
+    background: var(--share-board-more-button-color);
+    color: var(--share-board-more-button-text-color);
+    padding: 2px;
+    border-radius: 7px;
 }
 
 .user{
