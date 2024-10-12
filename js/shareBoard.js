@@ -9,14 +9,13 @@ function initShareBoard(){
     getShareBoardFeaturedProjects(function(projects){
         featuredProjects = projects;
         setCurrentFeaturedProject(0);
-        console.log(projects)
     });
 }
 
 function setCurrentFeaturedProject(index){
     currentFeaturedProject = index;
-    console.log(featuredProjects[0])
-    //heartInteractCount.innerHTML = featuredProjects[currentFeaturedProject].likedBy.length;
-    //starInteractCount.innerHTML = featuredProjects[currentFeaturedProject].staredBy.length;
+    console.log(featuredProjects[currentFeaturedProject])
+    heartInteractCount.innerHTML = Object.keys(featuredProjects[currentFeaturedProject].likedBy).length;
+    starInteractCount.innerHTML = Object.keys(featuredProjects[currentFeaturedProject].staredBy).length;
 
 }
