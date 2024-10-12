@@ -14,4 +14,24 @@ const cyrb53 = (str, seed = 0) => {
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
+class ShareBoardProject{
+    constructor(pid,metadata){
+        this.timestamp = metadata.timestamp;
+        this.author = metadata.author;
+        this.name = metadata.name;
+        this.likedBy = metadata.likedBy;
+        this.staredBy = metadata.staredBy;
+        this.pid = pid;
+    }
+}
 
+function getShareBoardProjects(next){
+    let projects = [];
+    database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
+        let data = snapshot.val();
+        for (let [pid, metadata] of Object.entries(data)) {
+            projects.push(new ShareBoardProject(pid, metadata));
+        }
+        next.apply(projects);
+    })
+}
