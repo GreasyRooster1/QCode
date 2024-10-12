@@ -167,7 +167,7 @@
     font-weight: bold;
 }
 
-.share-board-featured > iframe{
+.share-board-featured iframe{
     aspect-ratio: 1/1;
     width:14vh;
 }
@@ -184,6 +184,17 @@
     color: var(--share-board-more-button-text-color);
     padding: 2px 4px;
     border-radius: 7px;
+}
+.slides-wrapper{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.slides-wrapper .slide-arrow{
+    font-size: 7em;
+    margin: calc(5% - 21px) 5% 5%;
 }
 
 .user{
