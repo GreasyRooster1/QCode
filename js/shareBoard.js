@@ -10,6 +10,8 @@ let starInteractIcon = document.querySelector(".star-icon>i");
 let leftArrow = document.querySelector(".slide-arrow.left");
 let rightArrow = document.querySelector(".slide-arrow.right");
 
+let moreButton = document.querySelector(".more-button");
+
 const shareBoardFrame = document.querySelector('#share-board-exec-frame');
 let iWindow = null;
 
@@ -24,6 +26,7 @@ function initShareBoard(){
     });
     setupInteractionEvents();
     setupArrowEvents();
+    setupMoreRedirect();
 }
 
 function setupInteractionEvents(){
@@ -61,6 +64,12 @@ function setupArrowEvents(){
         }
         changeCurrentFeaturedProject(next);
     });
+}
+
+function setupMoreRedirect(){
+    moreButton.addEventListener("click", () => {
+        window.location.href = "./shareBoard/board.html";
+    })
 }
 
 function changeCurrentFeaturedProject(index){

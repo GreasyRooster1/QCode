@@ -1,0 +1,13 @@
+:root{
+
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.nav-shift-fix{
+    height:var(--navbar-height);
+    width:100%;
+}
