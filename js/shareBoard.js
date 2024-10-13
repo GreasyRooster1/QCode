@@ -1,4 +1,4 @@
-let featuredProjects = [];
+let featuredProjects = null;
 let currentFeaturedProject = 0;
 
 let heartInteractCount = document.querySelector(".heart-count");
@@ -7,7 +7,11 @@ let starInteractCount = document.querySelector(".star-count");
 let heartInteractIcon = document.querySelector(".heart-icon>i");
 let starInteractIcon = document.querySelector(".star-icon>i");
 
+let leftArrow = document.querySelector(".slide-arrow.left");
+let rightArrow = document.querySelector(".slide-arrow.right");
+
 const shareBoardFrame = document.querySelector('#share-board-exec-frame');
+let iWindow = null;
 
 function initShareBoard(){
     getShareBoardFeaturedProjects(function(projects){
@@ -39,7 +43,20 @@ function setupInteractionEvents(){
 }
 
 function setupArrowEvents(){
-
+    leftArrow.addEventListener("click", () => {
+        let next = currentFeaturedProject-1;
+        if(next<0){
+            next = featuredProjects.length-1;
+        }
+        setCurrentFeaturedProject(next);
+    });
+    rightArrow.addEventListener("click", () => {
+        let next = currentFeaturedProject+1;
+        if(next>=featuredProjects.length){
+            next = 0;
+        }
+        setCurrentFeaturedProject(next);
+    });
 }
 
 function setCurrentFeaturedProject(index){
@@ -61,7 +78,7 @@ function reloadCurrentFeaturedProject(){
     checkHeartInteractFilled()
     checkStarInteractFilled()
 
-    runShareBoardCode();
+    runShareBoardCode()
 }
 
 function checkHeartInteractFilled(){
@@ -85,11 +102,19 @@ function checkStarInteractFilled(){
         starInteractIcon.classList.add("far");
     }
 }
-
+function resetShareBoardFrame(){
+    iWindow = null;
+    shareBoardFrame.contentWindow.location.reload();
+}
+frame.addEventListener("load", () => {
+    iWindow = shareBoardFrame.contentWindow;
+    console.log(iWindow);
+    runShareBoardCode();
+});
 function runShareBoardCode(){
-    if (shareBoardFrame.contentWindow === null) {
+    if (iWindow === null||featuredProjects===null) {
         return;
     }
 
-    shareBoardFrame.contentWindow.postMessage(featuredProjects[currentFeaturedProject].code);
+    iWindow.postMessage(featuredProjects[currentFeaturedProject].code);
 }
