@@ -39,8 +39,8 @@ function setupInteractionEvents(){
 function setCurrentFeaturedProject(index){
     currentFeaturedProject = index;
 
-    heartInteractCount.innerHTML = Object.keys(featuredProjects[currentFeaturedProject].likedBy).length;
-    starInteractCount.innerHTML = Object.keys(featuredProjects[currentFeaturedProject].staredBy).length;
+    heartInteractCount.innerHTML = featuredProjects[currentFeaturedProject].likeCount();
+    starInteractCount.innerHTML = featuredProjects[currentFeaturedProject].starCount();
 
     checkHeartInteractFilled()
     checkStarInteractFilled()

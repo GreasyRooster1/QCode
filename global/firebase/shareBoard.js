@@ -24,6 +24,13 @@ class ShareBoardProject{
         this.pid = pid;
 
         this.code = null;
+
+        if(this.likedBy===undefined){
+            this.likedBy = {};
+        }
+        if(this.staredBy===undefined){
+            this.staredBy = {};
+        }
     }
 
     loadProjectCode(next=function(){}){
@@ -54,17 +61,31 @@ class ShareBoardProject{
     }
 
     isLiked(){
-        if(this.likedBy===null){
+        if(this.likedBy==={}){
             return false;
         }
         return this.likedBy.hasOwnProperty(getStoredUser().uid);
     }
 
     isStared(){
-        if(this.staredBy===null){
+        if(this.staredBy==={}){
             return false;
         }
         return this.staredBy.hasOwnProperty(getStoredUser().uid);
+    }
+
+    likeCount(){
+        if(this.likedBy==={}){
+            return 0;
+        }
+        return Object.keys(this.likedBy).length
+    }
+
+    starCount(){
+        if(this.staredBy==={}){
+            return 0;
+        }
+        return Object.keys(this.staredBy).length
     }
 }
 
