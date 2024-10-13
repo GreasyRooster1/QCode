@@ -23,7 +23,7 @@ function setupInteractionEvents(){
         }else{
             featuredProjects[currentFeaturedProject].like();
         }
-        checkHeartInteractFilled()
+        reloadCurrentFeaturedProject()
     })
 
     starInteractIcon.addEventListener("click", () => {
@@ -32,13 +32,17 @@ function setupInteractionEvents(){
         }else{
             featuredProjects[currentFeaturedProject].star();
         }
-        checkStarInteractFilled()
+        reloadCurrentFeaturedProject()
     })
 }
 
 function setCurrentFeaturedProject(index){
     currentFeaturedProject = index;
 
+    reloadCurrentFeaturedProject()
+}
+
+function reloadCurrentFeaturedProject(){
     heartInteractCount.innerHTML = featuredProjects[currentFeaturedProject].likeCount();
     starInteractCount.innerHTML = featuredProjects[currentFeaturedProject].starCount();
 
@@ -51,7 +55,6 @@ function checkHeartInteractFilled(){
     heartInteractIcon.classList.remove("far");
     heartInteractIcon.classList.remove("fas");
     if(currentProject.isLiked()){
-        console.log("asd");
         heartInteractIcon.classList.add("fas");
     }else{
         heartInteractIcon.classList.add("far");
