@@ -11,7 +11,7 @@ class FeaturedProject{
         this.iframe = document.createElement("iframe");
         this.overlayWrapper = document.createElement("div");
 
-        this.interactTray = document.createElement("div");
+        this.interactTray = document.createElement("span");
 
         this.heartWrapper = document.createElement("span");
         this.heartIcon = document.createElement("span");
@@ -53,6 +53,9 @@ class FeaturedProject{
 
         this.heartIcon.innerHTML = "<i class='far fa-heart'></i>";
         this.starIcon.innerHTML = "<i class='far fa-star'></i>";
+
+        this.heartCount.innerHTML = "0";
+        this.starCount.innerHTML = "0";
     }
 
     appendToFeaturedBar(){

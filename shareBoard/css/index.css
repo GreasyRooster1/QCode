@@ -2,6 +2,7 @@
     --featured-project-bar-background: #eaeaea;
     --bulk-project-bar-background: #dddddd;
     --bar-seperator: #b1b1b1;
+    --interact-tray-background: #b5b5b5;
 
     --bar-seperator-height: 2px;
 }
@@ -41,6 +42,31 @@ body{
     pointer-events: none;
     justify-content: flex-end;
     flex-direction: column;
+}
+
+.heart-icon{
+    color: var(--likes-color);
+}
+.star-icon{
+    color: var(--stars-color);
+}
+
+.heart-count{
+    color: var(--likes-text-color);
+}
+.star-count{
+    color: var(--stars-text-color);
+}
+
+.interaction-count{
+    font-weight: bold;
+    margin-left:1%;
+    margin-right:2%;
+}
+
+.interact-tray{
+    background:var(--interact-tray-background);
+    /*padding-left:1%;*/
 }
 
 .bar-separator{
