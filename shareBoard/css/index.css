@@ -1,5 +1,9 @@
 :root{
+    --featured-project-bar-background: #eaeaea;
+    --bulk-project-bar-background: #dddddd;
+    --bar-seperator: #b1b1b1;
 
+    --bar-seperator-height: 2px;
 }
 
 body{
@@ -10,4 +14,36 @@ body{
 .nav-shift-fix{
     height:var(--navbar-height);
     width:100%;
+}
+
+.featured-project-bar{
+    height:40vh;
+    background: var(--featured-project-bar-background);
+}
+
+.bar-separator{
+    height:0;
+    display: flex;
+    position: relative;
+    top:calc(-1*var(--bar-seperator-height)/2);
+}
+.bar-separator > .empty{
+    width:10vw
+}
+
+.bar-separator > .dotted{
+    width:5vw;
+    height:0;
+    border-top:var(--bar-seperator-height) dashed var(--bar-seperator);
+}
+
+.bar-separator > .solid{
+    width:60vw;
+    height:0;
+    border-top:var(--bar-seperator-height) solid var(--bar-seperator);
+}
+
+.bulk-projects-bar{
+    min-height:60vh;
+    background: var(--bulk-project-bar-background);
 }
