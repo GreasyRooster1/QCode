@@ -7,6 +7,7 @@ let starInteractCount = document.querySelector(".star-count");
 let heartInteractIcon = document.querySelector(".heart-icon>i");
 let starInteractIcon = document.querySelector(".star-icon>i");
 
+const shareBoardFrame = document.querySelector('#share-board-exec-frame');
 
 function initShareBoard(){
     getShareBoardFeaturedProjects(function(projects){
@@ -38,8 +39,14 @@ function setupInteractionEvents(){
 
 function setCurrentFeaturedProject(index){
     currentFeaturedProject = index;
+    if(featuredProjects[currentFeaturedProject].code===null){
+        featuredProjects[currentFeaturedProject].loadProjectCode(function(){
+            reloadCurrentFeaturedProject();
+        });
+    }else{
+        reloadCurrentFeaturedProject();
+    }
 
-    reloadCurrentFeaturedProject()
 }
 
 function reloadCurrentFeaturedProject(){
@@ -48,6 +55,8 @@ function reloadCurrentFeaturedProject(){
 
     checkHeartInteractFilled()
     checkStarInteractFilled()
+
+    runShareBoardCode();
 }
 
 function checkHeartInteractFilled(){
@@ -70,4 +79,12 @@ function checkStarInteractFilled(){
     }else{
         starInteractIcon.classList.add("far");
     }
+}
+
+function runShareBoardCode(){
+    if (shareBoardFrame.contentWindow === null) {
+        return;
+    }
+
+    shareBoardFrame.contentWindow.postMessage(featuredProjects[currentFeaturedProject].code);
 }
