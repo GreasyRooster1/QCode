@@ -66,6 +66,8 @@ body{
 
 .interact-tray{
     background:var(--interact-tray-background);
+    padding-left: 5px;
+    border-radius: 7px;
 }
 
 .interact-tray-wrapper{
