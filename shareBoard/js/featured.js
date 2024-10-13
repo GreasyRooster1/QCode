@@ -30,6 +30,8 @@ class FeaturedProject{
         this.domElement.appendChild(this.interactTray);
 
 
+        this.domElement.classList.add("featured-project-display")
+
         this.iframe.src = "../editor/exec/exec.html";
 
         this.interactTray.classList.add("interact-tray");
