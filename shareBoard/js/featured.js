@@ -9,6 +9,8 @@ class FeaturedProject{
         this.domElement = document.createElement("div");
 
         this.iframe = document.createElement("iframe");
+        this.overlayWrapper = document.createElement("div");
+
         this.interactTray = document.createElement("div");
 
         this.heartWrapper = document.createElement("span");
@@ -26,8 +28,10 @@ class FeaturedProject{
         this.interactTray.appendChild(this.heartWrapper);
         this.interactTray.appendChild(this.starWrapper);
 
+        this.overlayWrapper.appendChild(this.interactTray);
+
         this.domElement.appendChild(this.iframe);
-        this.domElement.appendChild(this.interactTray);
+        this.domElement.appendChild(this.overlayWrapper);
 
 
         this.domElement.classList.add("featured-project-display")
@@ -44,6 +48,8 @@ class FeaturedProject{
         this.starCount.classList.add("star-count");
         this.starCount.classList.add("interaction-count");
         this.starIcon.classList.add("star-icon");
+
+        this.overlayWrapper.classList.add("overlay-wrapper");
 
         this.heartIcon.innerHTML = "<i class='far fa-heart'></i>";
         this.starIcon.innerHTML = "<i class='far fa-star'></i>";
