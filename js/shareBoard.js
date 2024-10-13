@@ -15,6 +15,7 @@ function initShareBoard(){
         setCurrentFeaturedProject(0);
     });
     setupInteractionEvents();
+    setupArrowEvents();
 }
 
 function setupInteractionEvents(){
@@ -35,6 +36,10 @@ function setupInteractionEvents(){
         }
         reloadCurrentFeaturedProject()
     })
+}
+
+function setupArrowEvents(){
+
 }
 
 function setCurrentFeaturedProject(index){

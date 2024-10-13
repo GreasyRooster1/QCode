@@ -177,9 +177,11 @@
     justify-content: flex-end;
     position: relative;
     top:-1em;
+    pointer-events: none
 }
 
 .share-board .more-button{
+    pointer-events: auto;
     background: var(--share-board-more-button-color);
     color: var(--share-board-more-button-text-color);
     padding: 2px 4px;
