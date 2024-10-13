@@ -28,11 +28,13 @@ body{
 .featured-project-display{
     width:38vh;
     height:38vh;
-
+    border-radius: 10px;
+    overflow: clip;
 }
 .featured-project-display iframe{
     width: 100%;
     height: 100%;
+    border: none;
 }
 
 .featured-project-display > .overlay-wrapper{
