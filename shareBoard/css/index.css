@@ -20,7 +20,7 @@ body{
     height:40vh;
     background: var(--featured-project-bar-background);
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
