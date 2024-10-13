@@ -16,7 +16,11 @@ let iWindow = null;
 function initShareBoard(){
     getShareBoardFeaturedProjects(function(projects){
         featuredProjects = projects;
-        setCurrentFeaturedProject(0);
+        featuredProjects[currentFeaturedProject].loadProjectCode(function(){
+            reloadCurrentFeaturedProject();
+            runShareBoardCode()
+        });
+
     });
     setupInteractionEvents();
     setupArrowEvents();
@@ -48,19 +52,20 @@ function setupArrowEvents(){
         if(next<0){
             next = featuredProjects.length-1;
         }
-        setCurrentFeaturedProject(next);
+        changeCurrentFeaturedProject(next);
     });
     rightArrow.addEventListener("click", () => {
         let next = currentFeaturedProject+1;
         if(next>=featuredProjects.length){
             next = 0;
         }
-        setCurrentFeaturedProject(next);
+        changeCurrentFeaturedProject(next);
     });
 }
 
-function setCurrentFeaturedProject(index){
+function changeCurrentFeaturedProject(index){
     currentFeaturedProject = index;
+    resetShareBoardFrame()
     if(featuredProjects[currentFeaturedProject].code===null){
         featuredProjects[currentFeaturedProject].loadProjectCode(function(){
             reloadCurrentFeaturedProject();
@@ -68,6 +73,7 @@ function setCurrentFeaturedProject(index){
     }else{
         reloadCurrentFeaturedProject();
     }
+    runShareBoardCode();
 
 }
 
@@ -77,8 +83,6 @@ function reloadCurrentFeaturedProject(){
 
     checkHeartInteractFilled()
     checkStarInteractFilled()
-
-    runShareBoardCode()
 }
 
 function checkHeartInteractFilled(){
@@ -106,7 +110,7 @@ function resetShareBoardFrame(){
     iWindow = null;
     shareBoardFrame.contentWindow.location.reload();
 }
-frame.addEventListener("load", () => {
+shareBoardFrame.addEventListener("load", () => {
     iWindow = shareBoardFrame.contentWindow;
     console.log(iWindow);
     runShareBoardCode();
