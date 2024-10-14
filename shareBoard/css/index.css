@@ -70,6 +70,7 @@ body{
     background:var(--interact-tray-background);
     padding-left: 5px;
     border-radius: 7px;
+    pointer-events: auto;
 }
 
 .interact-tray-wrapper{

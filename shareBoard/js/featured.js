@@ -2,9 +2,10 @@ let featuredBarProjects = []
 
 class FeaturedProject{
     constructor(projectData){
-        this.projectMetadata = projectData;
+        this.project = projectData;
         this.createDomElement();
-        this.appendToFeaturedBar()
+        this.appendToFeaturedBar();
+        this.setupDOMEvents();
     }
 
     createDomElement(){
@@ -62,6 +63,25 @@ class FeaturedProject{
 
         this.heartCount.innerHTML = "0";
         this.starCount.innerHTML = "0";
+    }
+
+    setupDOMEvents(){
+        this.heartIcon.addEventListener("click", function(){
+            if(this.project.isLiked()){
+                this.project.removeLike();
+            }else{
+                this.project.like();
+            }
+        })
+        console.log("asd")
+        this.starIcon.addEventListener("click", function(){
+            console.log(this.project)
+            if(this.project.isStared()){
+                this.project.removeStar();
+            }else{
+                this.project.star();
+            }
+        })
     }
 
     appendToFeaturedBar(){
