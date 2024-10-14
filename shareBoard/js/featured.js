@@ -1,3 +1,5 @@
+let featuredBarProjects = []
+
 class FeaturedProject{
     constructor(projectData){
         this.projectMetadata = projectData;
@@ -67,4 +69,11 @@ class FeaturedProject{
     }
 }
 
-new FeaturedProject(0);
+function initFeaturedBar(){
+    getShareBoardFeaturedProjects(function (projects) {
+        for(let proj of projects) {
+            featuredBarProjects.push(new FeaturedProject(proj));
+        }
+    })
+}
+
