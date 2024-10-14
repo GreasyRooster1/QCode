@@ -123,7 +123,7 @@ class FeaturedProject{
     runCode(){
         this.iWindow = this.iframe.contentWindow;
 
-        iWindow.postMessage(this.project.code);
+        this.iWindow.postMessage(this.project.code);
     }
 }
 
