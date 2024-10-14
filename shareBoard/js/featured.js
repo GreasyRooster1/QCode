@@ -106,6 +106,9 @@ class FeaturedProject{
         }else{
             this.starIcon.firstElementChild.classList.add("far")
         }
+
+        this.heartCount.innerHTML = this.project.likeCount();
+        this.starCount.innerHTML = this.project.starCount();
     }
 
     appendToFeaturedBar(){
