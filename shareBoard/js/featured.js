@@ -21,6 +21,8 @@ class FeaturedProject{
         this.iframe = document.createElement("iframe");
         this.overlayWrapper = document.createElement("div");
 
+        this.title = document.createElement("span");
+
         this.interactTrayWrapper = document.createElement("div");
         this.interactTray = document.createElement("span");
 
@@ -49,6 +51,8 @@ class FeaturedProject{
         this.domElement.classList.add("featured-project-display")
 
         this.iframe.src = "../editor/exec/exec.html";
+
+        this.title.classList.add("title");
 
         this.interactTray.classList.add("interact-tray");
         this.heartWrapper.classList.add("hearts-wrapper");
