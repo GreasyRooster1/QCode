@@ -1,11 +1,13 @@
 let featuredBarProjects = []
 
 class FeaturedProject{
-    constructor(projectData){
+    constructor(projectData,index){
+        this.index = index;
         this.project = projectData;
         this.createDomElement();
         this.appendToFeaturedBar();
         this.setupDOMEvents();
+        this.updateInteractions()
     }
 
     createDomElement(){
@@ -63,25 +65,47 @@ class FeaturedProject{
 
         this.heartCount.innerHTML = "0";
         this.starCount.innerHTML = "0";
+
+        this.heartIcon.setAttribute("data-index", this.index);
+        this.starIcon.setAttribute("data-index", this.index);
+
     }
 
     setupDOMEvents(){
         this.heartIcon.addEventListener("click", function(){
-            if(this.project.isLiked()){
-                this.project.removeLike();
+            let thisProject = featuredBarProjects[this.getAttribute("data-index")];
+            if(thisProject.project.isLiked()){
+                thisProject.project.removeLike();
             }else{
-                this.project.like();
+                thisProject.project.like();
             }
+            thisProject.updateInteractions();
         })
-        console.log("asd")
         this.starIcon.addEventListener("click", function(){
-            console.log(this.project)
-            if(this.project.isStared()){
-                this.project.removeStar();
+            let thisProject = featuredBarProjects[this.getAttribute("data-index")];
+            if(thisProject.project.isStared()){
+                thisProject.project.removeStar();
             }else{
-                this.project.star();
+                thisProject.project.star();
             }
+            thisProject.updateInteractions();
         })
+    }
+
+    updateInteractions(){
+        this.heartIcon.firstElementChild.classList.remove("fas","far")
+        if(this.project.isLiked()){
+            this.heartIcon.firstElementChild.classList.add("fas")
+        }else{
+            this.heartIcon.firstElementChild.classList.add("far")
+        }
+
+        this.starIcon.firstElementChild.classList.remove("fas","far")
+        if(this.project.isStared()){
+            this.starIcon.firstElementChild.classList.add("fas")
+        }else{
+            this.starIcon.firstElementChild.classList.add("far")
+        }
     }
 
     appendToFeaturedBar(){
@@ -91,8 +115,10 @@ class FeaturedProject{
 
 function initFeaturedBar(){
     getShareBoardFeaturedProjects(function (projects) {
+        let c=0;
         for(let proj of projects) {
-            featuredBarProjects.push(new FeaturedProject(proj));
+            featuredBarProjects.push(new FeaturedProject(proj,c));
+            c++;
         }
     })
 }
