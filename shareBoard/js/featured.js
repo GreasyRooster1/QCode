@@ -4,10 +4,15 @@ class FeaturedProject{
     constructor(projectData,index){
         this.index = index;
         this.project = projectData;
+        this.iWindow = null;
         this.createDomElement();
         this.appendToFeaturedBar();
         this.setupDOMEvents();
         this.updateInteractions()
+
+        this.project.loadProjectCode(function (code,project){
+            arguments[1].runCode();
+        },this)
     }
 
     createDomElement(){
@@ -113,6 +118,12 @@ class FeaturedProject{
 
     appendToFeaturedBar(){
         document.querySelector(".featured-project-bar").appendChild(this.domElement);
+    }
+
+    runCode(){
+        this.iWindow = this.iframe.contentWindow;
+
+        iWindow.postMessage(this.project.code);
     }
 }
 
