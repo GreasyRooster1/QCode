@@ -125,6 +125,6 @@ body{
 }
 
 .bulk-projects-bar{
-    min-height:60vh;
+    min-height:70vh;
     background: var(--bulk-project-bar-background);
 }
