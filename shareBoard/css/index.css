@@ -108,7 +108,8 @@ body{
 }
 
 .user-display span{
-    margin-right:2px;
+    margin-right:4px;
+    margin-left:4px;
 }
 
 .user-display img{
@@ -120,7 +121,6 @@ body{
     border-radius:6px;;
     overflow: clip;
     margin-left:4px;
-    margin-right:4px;
 }
 
 .bar-separator{
