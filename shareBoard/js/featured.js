@@ -4,9 +4,9 @@ class FeaturedProject extends ProjectDisplay{
         super(projectData,index);
         this.domClass = "featured";
         this.parent = ".featured-project-bar"
-        this.loadCode();
         this.updateClass();
-        this.appendToDom()
+        this.appendToDom();
+        this.loadCode();
     }
 }
 
