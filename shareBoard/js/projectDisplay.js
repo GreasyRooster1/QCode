@@ -92,7 +92,7 @@ class ProjectDisplay {
 
     setupDOMEvents(){
         this.heartIcon.addEventListener("click", function(){
-            let thisProject = featuredBarProjects[this.getAttribute("data-index")];
+            let thisProject = projectDataHeap[this.getAttribute("data-index")];
             if(thisProject.project.isLiked()){
                 thisProject.project.removeLike();
             }else{
@@ -101,7 +101,7 @@ class ProjectDisplay {
             thisProject.updateInteractions();
         })
         this.starIcon.addEventListener("click", function(){
-            let thisProject = featuredBarProjects[this.getAttribute("data-index")];
+            let thisProject = projectDataHeap[this.getAttribute("data-index")];
             if(thisProject.project.isStared()){
                 thisProject.project.removeStar();
             }else{

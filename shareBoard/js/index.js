@@ -1,3 +1,5 @@
+let projectDataHeap = [];
+
 function init(){
     initFeaturedBar();
     removeNavArrow();

@@ -1,4 +1,4 @@
-let featuredBarProjects = []
+let projectDataHeap = []
 
 class FeaturedProject extends ProjectDisplay{
     constructor(projectData,index) {
@@ -13,7 +13,7 @@ function initFeaturedBar(){
     getShareBoardFeaturedProjects(function (projects) {
         let c=0;
         for(let proj of projects) {
-            featuredBarProjects.push(new FeaturedProject(proj,c));
+            projectDataHeap.push(new FeaturedProject(proj,c));
             c++;
         }
     })
