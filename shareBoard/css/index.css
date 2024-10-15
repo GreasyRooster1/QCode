@@ -102,6 +102,9 @@ body{
     margin:1px;
 }
 
+.user-display{
+}
+
 .bar-separator{
     height:0;
     display: flex;

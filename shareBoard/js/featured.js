@@ -38,10 +38,13 @@ class FeaturedProject{
         this.starWrapper.appendChild(this.starIcon);
         this.starWrapper.appendChild(this.starCount);
 
+        this.userDisplay = document.createElement("div");
+
         this.interactTray.appendChild(this.heartWrapper);
         this.interactTray.appendChild(this.starWrapper);
 
         this.interactTrayWrapper.appendChild(this.interactTray);
+        this.interactTrayWrapper.appendChild(this.userDisplay);
         this.overlayWrapper.appendChild(this.title);
         this.overlayWrapper.appendChild(this.interactTrayWrapper);
 
@@ -66,6 +69,8 @@ class FeaturedProject{
         this.starCount.classList.add("star-count");
         this.starCount.classList.add("interaction-count");
         this.starIcon.classList.add("star-icon");
+
+        this.userDisplay.classList.add("user-display");
 
         this.interactTrayWrapper.classList.add("interact-tray-wrapper");
 
