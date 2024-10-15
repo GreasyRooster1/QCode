@@ -64,6 +64,10 @@ body{
     font-weight: bold;
     margin-left:1%;
     margin-right:2%;
+    overflow: clip;
+    display: inline-block;
+
+    transition:.3s ease;
 }
 
 .interact-tray{
@@ -71,10 +75,30 @@ body{
     padding-left: 5px;
     border-radius: 7px;
     pointer-events: auto;
+
+    transition:.3s ease;
 }
 
 .interact-tray-wrapper{
     margin: 1%;
+}
+
+.featured-project-display .title{
+    margin: 1%;
+    font-size: 2em;
+    font-weight: 500;
+    transition: opacity .3s ease;
+}
+
+.featured-project-display:hover .title{
+    opacity: 0;
+}
+.featured-project-display:hover .interact-tray{
+    padding-left: 3px;
+}
+.featured-project-display:hover .interaction-count{
+    width:0;
+    margin:1px;
 }
 
 .bar-separator{
