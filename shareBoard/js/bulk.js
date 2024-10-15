@@ -12,10 +12,8 @@ class BulkProject extends ProjectDisplay{
 
 function initBulk() {
     getShareBoardProjects(function (projects) {
-        let c=0;
         for(let proj of projects) {
             projectDataHeap.push(new BulkProject(proj,projectDataHeap.length));
-            c++;
         }
     })
 }

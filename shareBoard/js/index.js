@@ -2,7 +2,7 @@ let projectDataHeap = [];
 
 function init(){
     initFeaturedBar();
-    initBulk();
+    //initBulk();
     removeNavArrow();
 }
 

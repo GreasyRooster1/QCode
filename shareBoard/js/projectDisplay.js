@@ -153,6 +153,7 @@ class ProjectDisplay {
 
     loadCode(){
         this.project.loadProjectCode(function (code,project){
+            project.project.code = code;
             project.runCode();
         },this)
     }
