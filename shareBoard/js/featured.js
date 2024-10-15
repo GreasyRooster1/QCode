@@ -42,8 +42,9 @@ class FeaturedProject{
         this.userDisplay = document.createElement("span");
         this.userNameDisplay = document.createElement("span");
         this.userIconDisplay = document.createElement("img");
-        this.userDisplay.appendChild(this.userNameDisplay)
         this.userDisplay.appendChild(this.userIconDisplay)
+        this.userDisplay.appendChild(this.userNameDisplay)
+
 
 
         this.interactTray.appendChild(this.heartWrapper);

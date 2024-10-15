@@ -107,6 +107,10 @@ body{
     border-radius: 0 7px 7px 0;
 }
 
+.user-display span{
+    margin-right:2px;
+}
+
 .user-display img{
     aspect-ratio: 1;
     width: 1.2em;
@@ -115,7 +119,8 @@ body{
     top: 15%;
     border-radius:6px;;
     overflow: clip;
-    margin-left:2px;
+    margin-left:4px;
+    margin-right:4px;
 }
 
 .bar-separator{
