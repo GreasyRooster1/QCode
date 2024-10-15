@@ -54,7 +54,7 @@ class ProjectDisplay {
         this.domElement.appendChild(this.overlayWrapper);
 
 
-        this.domElement.classList.add("featured-project-display");
+        this.domElement.classList.add("project-display");
 
         this.iframe.src = "../editor/exec/exec.html";
 
