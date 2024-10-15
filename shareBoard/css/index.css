@@ -67,7 +67,7 @@ body{
     overflow: clip;
     display: inline-block;
 
-    transition:.3s ease;
+    transition: .3s ease;
 }
 
 .interact-tray{
@@ -97,6 +97,7 @@ body{
     padding-left: 3px;
 }
 .featured-project-display:hover .interaction-count{
+    opacity:0;
     width:0;
     margin:1px;
 }
