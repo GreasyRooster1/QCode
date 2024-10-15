@@ -12,10 +12,8 @@ class FeaturedProject extends ProjectDisplay{
 
 function initFeaturedBar(){
     getShareBoardFeaturedProjects(function (projects) {
-        let c=0;
         for(let proj of projects) {
-            projectDataHeap.push(new FeaturedProject(proj,c));
-            c++;
+            projectDataHeap.push(new FeaturedProject(proj,projectDataHeap.length));
         }
     })
 }

@@ -14,7 +14,7 @@ function initBulk() {
     getShareBoardProjects(function (projects) {
         let c=0;
         for(let proj of projects) {
-            projectDataHeap.push(new BulkProject(proj,c+projectDataHeap.length));
+            projectDataHeap.push(new BulkProject(proj,projectDataHeap.length));
             c++;
         }
     })
