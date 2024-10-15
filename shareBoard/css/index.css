@@ -87,7 +87,8 @@ body{
     margin: 1%;
     font-size: 2em;
     font-weight: 500;
-    transition: opacity .3s ease;
+
+    transition: .3s ease;
 }
 
 .user-display{
