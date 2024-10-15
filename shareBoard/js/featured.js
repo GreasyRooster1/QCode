@@ -42,7 +42,9 @@ class FeaturedProject{
         this.interactTray.appendChild(this.starWrapper);
 
         this.interactTrayWrapper.appendChild(this.interactTray);
+        this.overlayWrapper.appendChild(this.title);
         this.overlayWrapper.appendChild(this.interactTrayWrapper);
+
 
         this.domElement.appendChild(this.iframe);
         this.domElement.appendChild(this.overlayWrapper);
@@ -74,6 +76,8 @@ class FeaturedProject{
 
         this.heartCount.innerHTML = "0";
         this.starCount.innerHTML = "0";
+
+        this.title.innerHTML = this.project.name;
 
         this.heartIcon.setAttribute("data-index", this.index);
         this.starIcon.setAttribute("data-index", this.index);
