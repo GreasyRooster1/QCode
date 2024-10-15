@@ -103,6 +103,7 @@ body{
 }
 
 .user-display{
+    background: var(--interact-tray-background);
 }
 
 .bar-separator{

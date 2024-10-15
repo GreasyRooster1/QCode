@@ -9,6 +9,7 @@ class FeaturedProject{
         this.appendToFeaturedBar();
         this.setupDOMEvents();
         this.updateInteractions()
+        this.updateUserData();
 
         this.project.loadProjectCode(function (code,project){
             arguments[1].runCode();
@@ -38,7 +39,12 @@ class FeaturedProject{
         this.starWrapper.appendChild(this.starIcon);
         this.starWrapper.appendChild(this.starCount);
 
-        this.userDisplay = document.createElement("div");
+        this.userDisplay = document.createElement("span");
+        this.userNameDisplay = document.createElement("span");
+        this.userIconDisplay = document.createElement("img");
+        this.userDisplay.appendChild(this.userNameDisplay)
+        this.userDisplay.appendChild(this.userIconDisplay)
+
 
         this.interactTray.appendChild(this.heartWrapper);
         this.interactTray.appendChild(this.starWrapper);
@@ -127,6 +133,18 @@ class FeaturedProject{
 
         this.heartCount.innerHTML = this.project.likeCount();
         this.starCount.innerHTML = this.project.starCount();
+    }
+
+    updateUserData(){
+        database.ref("userdata/"+this.project.author+"/username").once("value",(snapshot) => {
+            console.log(this);
+            this.userNameDisplay.innerHTML = snapshot.val();
+        })
+
+        database.ref("userdata/"+this.project.author+"/profileIcon").once("value",function (snapshot) {
+            this.userIconDisplay.src = snapshot.val();
+        })
+
     }
 
     appendToFeaturedBar(){
