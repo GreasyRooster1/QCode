@@ -1,11 +1,12 @@
-let projectDataHeap = []
 
 class FeaturedProject extends ProjectDisplay{
     constructor(projectData,index) {
         super(projectData,index);
         this.domClass = "featured";
+        this.parent = ".featured-project-bar"
         this.loadCode();
         this.updateClass();
+        this.appendToDom()
     }
 }
 

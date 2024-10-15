@@ -4,7 +4,6 @@ class ProjectDisplay {
         this.project = projectData;
         this.iWindow = null;
         this.createDomElement();
-        this.appendToFeaturedBar();
         this.setupDOMEvents();
         this.updateInteractions()
         this.updateUserData();
@@ -142,8 +141,8 @@ class ProjectDisplay {
 
     }
 
-    appendToFeaturedBar(){
-        document.querySelector(".featured-project-bar").appendChild(this.domElement);
+    appendToDom(){
+        document.querySelector(this.parent).appendChild(this.domElement);
     }
 
     runCode(){
