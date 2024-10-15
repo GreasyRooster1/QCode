@@ -141,8 +141,8 @@ class FeaturedProject{
             this.userNameDisplay.innerHTML = snapshot.val();
         })
 
-        database.ref("userdata/"+this.project.author+"/profileIcon").once("value",function (snapshot) {
-            this.userIconDisplay.src = snapshot.val();
+        database.ref("userdata/"+this.project.author+"/profileIcon").once("value",(snapshot) => {
+            this.userIconDisplay.setAttribute("src", snapshot.val());
         })
 
     }
