@@ -1,0 +1,10 @@
+uses: actions/configure-pages@v5.0.0
+  with:
+    # Optional static site generator to attempt to configure: "nuxt", "next", "gatsby", or "sveltekit"
+    #static_site_generator: # optional
+    # Optional file path to static site generator configuration file
+    #generator_config_file: # optional
+    # GitHub token
+    token: ${{ github.token }}
+    # Try to enable Pages for the repository if it is not already enabled. This option requires a token other than `GITHUB_TOKEN` to be provided. In the context of a Personal Access Token, the `repo` scope or Pages write permission is required. In the context of a GitHub App, the `administration:write` and `pages:write` permissions are required.
+    #enablement: # optional, default is false
