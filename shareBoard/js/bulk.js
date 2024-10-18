@@ -8,6 +8,10 @@ class BulkProject extends ProjectDisplay{
         this.updateClass();
         this.appendToDom()
     }
+
+    addPlayOverlay(){
+
+    }
 }
 
 function initBulk() {
