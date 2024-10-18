@@ -3,7 +3,7 @@
     --bulk-project-bar-background: #dddddd;
     --bar-seperator: #b1b1b1;
     --interact-tray-background: #b5b5b5;
-    --bulk-project-overlay-background: rgba(0, 0, 0, 0.45);
+    --bulk-project-overlay-background: rgba(0, 0, 0, 0.48);
 
     --bar-seperator-height: 2px;
 }
@@ -208,6 +208,7 @@ body{
     pointer-events: none;
     justify-content: space-between;
     flex-direction: column;
+    position: relative;
     z-index: 999;
 }
 

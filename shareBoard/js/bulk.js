@@ -4,7 +4,6 @@ class BulkProject extends ProjectDisplay{
         super(projectData,index);
         this.domClass = "bulk";
         this.parent = ".bulk-projects-bar";
-        this.loadCode();
         this.updateClass();
         this.addPlayOverlay()
         this.appendToDom();
