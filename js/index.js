@@ -10,7 +10,8 @@ function init(){
     loadLessons();
     loadAnnouncements();
     removeNavHome();
-    displayVersion()
+    displayVersion();
+    initShareBoard();
 }
 
 function removeNavHome(){

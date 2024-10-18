@@ -1,5 +1,5 @@
 let featuredProjectData = {};
-const frame = document.querySelector('#exec-frame');
+const frame = document.querySelector('#featured-exec-frame');
 
 
 database.ref("userdata/"+getStoredUser().uid+"/projects").orderByChild('timestamp').limitToLast(1).once("value").then(function(snapshot) {

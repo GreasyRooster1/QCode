@@ -14,6 +14,7 @@ let accountDropdownActive = false;
 function initNavbar(){
     initUsername();
     initPoints();
+    initAdmin();
 }
 
 function initPoints(){
@@ -27,6 +28,21 @@ function initUsername(){
         let username = snapshot.val();
         let formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
         userLink.innerHTML = formattedUsername;
+    });
+}
+
+function initAdmin(){
+    if(getStoredUserPermissions().hasAdminConsoleAccess){
+        return;
+    }
+    let option = document.createElement("div")
+    option.classList.add("option");
+    option.classList.add("admin-option");
+    option.innerHTML = "Admin Console";
+    accountOptions.appendChild(option);
+
+    option.addEventListener("click",function () {
+        window.location.replace("admin/adminConsole.html");
     });
 }
 
@@ -59,7 +75,7 @@ userLink.addEventListener("click", function (e){
 
     accountDropdownActive = !accountDropdownActive;
     if(accountDropdownActive) {
-        accountOptions.style.height = "20px";
+        accountOptions.style.height = "42px";
         userLink.style.borderRadius = "0";
     }else{
         accountOptions.style.height = "0";
