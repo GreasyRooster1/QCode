@@ -6,11 +6,17 @@ class BulkProject extends ProjectDisplay{
         this.parent = ".bulk-projects-bar";
         this.loadCode();
         this.updateClass();
-        this.appendToDom()
+        this.addPlayOverlay()
+        this.appendToDom();
     }
 
     addPlayOverlay(){
+        this.playIconWrapper = document.createElement("div");
+        this.playIcon = document.createElement("span");
 
+        this.playIcon.innerHTML = "<i class='fas fa-play'></i>";
+
+        this.overlayWrapper.insertBefore(this.playIconWrapper, this.overlayWrapper.lastElementChild);
     }
 }
 
