@@ -16,6 +16,11 @@ class BulkProject extends ProjectDisplay{
 
         this.playIcon.innerHTML = "<i class='fas fa-play'></i>";
 
+        this.playIconWrapper.classList.add("play-icon-wrapper");
+        this.playIcon.classList.add("play-icon");
+
+        this.playIconWrapper.appendChild(this.playIcon);
+
         this.overlayWrapper.insertBefore(this.playIconWrapper, this.overlayWrapper.lastElementChild);
     }
 }

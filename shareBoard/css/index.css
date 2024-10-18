@@ -3,6 +3,7 @@
     --bulk-project-bar-background: #dddddd;
     --bar-seperator: #b1b1b1;
     --interact-tray-background: #b5b5b5;
+    --bulk-project-overlay-background: rgba(0, 0, 0, 0.45);
 
     --bar-seperator-height: 2px;
 }
@@ -202,10 +203,12 @@ body{
 .project-display.bulk > .overlay-wrapper{
     margin-top: -101.2%;
     height: 100%;
+    background: var(--bulk-project-overlay-background);
     display: flex;
     pointer-events: none;
     justify-content: space-between;
     flex-direction: column;
+    z-index: 999;
 }
 
 .project-display.bulk .user-display span{
@@ -217,4 +220,13 @@ body{
     max-width:100%;
 
     transition: .3s ease;
+}
+
+.play-icon-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.play-icon{
+    font-size:5em
 }
