@@ -209,7 +209,7 @@ body{
     height: 100%;
     background: var(--bulk-project-overlay-background);
     display: flex;
-    pointer-events: none;
+    /*pointer-events: none;*/
     justify-content: space-between;
     flex-direction: column;
     position: relative;

@@ -6,6 +6,7 @@ class BulkProject extends ProjectDisplay{
         this.parent = ".bulk-projects-bar";
         this.updateClass();
         this.addPlayOverlay()
+        this.addOverlayEvents()
         this.appendToDom();
     }
 
@@ -21,6 +22,13 @@ class BulkProject extends ProjectDisplay{
         this.playIconWrapper.appendChild(this.playIcon);
 
         this.overlayWrapper.insertBefore(this.playIconWrapper, this.overlayWrapper.lastElementChild);
+    }
+
+    addOverlayEvents(){
+        this.playIcon.addEventListener("click" ,()=>{
+            this.overlayWrapper.style.background = "none";
+            this.playIconWrapper.remove();
+        })
     }
 }
 
