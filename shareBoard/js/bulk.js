@@ -27,6 +27,7 @@ class BulkProject extends ProjectDisplay{
     addOverlayEvents(){
         this.playIcon.addEventListener("click" ,()=>{
             this.overlayWrapper.style.background = "none";
+            this.overlayWrapper.style.pointerEvents = "none";
             this.playIconWrapper.remove();
             this.loadCode();
         })
