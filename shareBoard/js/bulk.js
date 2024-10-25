@@ -28,6 +28,7 @@ class BulkProject extends ProjectDisplay{
         this.playIcon.addEventListener("click" ,()=>{
             this.overlayWrapper.style.background = "none";
             this.playIconWrapper.remove();
+            this.loadCode();
         })
     }
 }
