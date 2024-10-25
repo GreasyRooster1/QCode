@@ -19,13 +19,13 @@ sharePopupButton.addEventListener('click', (e) => {
 
     //set metadata
     database.ref("sharedProjects/metadata/"+projectId).set({
-        author:getStoredUser(),
+        author:getStoredUser().uid,
         name:shareNameInput.value,
         timestamp:Date.now()/1000,
+    }).then(()=> {
+        //set projectData
+        database.ref("sharedProjects/projectData/" + projectId).set(getCodeFromEditor());
     })
-
-    //set projectData
-    database.ref("sharedProjects/projectData/"+projectId).set(getCodeFromEditor());
 })
 
 function showPopup(){
