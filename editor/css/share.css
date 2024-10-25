@@ -18,6 +18,8 @@
     display:flex;
     flex-wrap: nowrap;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 
     width:33vw;
     height:20vw;
@@ -31,6 +33,6 @@
 }
 
 .share-preview{
-    width:50%;
+    width:40%;
     aspect-ratio: 1;
 }
