@@ -16,12 +16,16 @@ sharePopupButton.addEventListener('click', (e) => {
         return;
     }
     let projectId = generateSharedProjectId()
+
     //set metadata
     database.ref("sharedProjects/metadata/"+projectId).set({
         author:getStoredUser(),
         name:shareNameInput.value,
         timestamp:Date.now()/1000,
     })
+
+    //set projectData
+    database.ref("sharedProjects/projectData/"+projectId).set(getCodeFromEditor());
 })
 
 function showPopup(){
