@@ -15,16 +15,16 @@ sharePopupButton.addEventListener('click', (e) => {
         shareNameInput.style.border = "5px solid red";
         return;
     }
-    let projectId = generateSharedProjectId()
+    let sharedProjectId = generateSharedProjectId(projectId,getStoredUser().uid);
 
     //set metadata
-    database.ref("sharedProjects/metadata/"+projectId).set({
+    database.ref("sharedProjects/metadata/"+sharedProjectId).set({
         author:getStoredUser().uid,
         name:shareNameInput.value,
         timestamp:Date.now()/1000,
     }).then(()=> {
         //set projectData
-        database.ref("sharedProjects/projectData/" + projectId).set(getCodeFromEditor());
+        database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
     })
 })
 
