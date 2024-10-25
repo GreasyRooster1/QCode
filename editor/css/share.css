@@ -30,3 +30,7 @@
     font-size:3em;
 }
 
+.share-preview{
+    width:50%;
+    aspect-ratio: 1;
+}
