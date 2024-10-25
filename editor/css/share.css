@@ -8,5 +8,18 @@
     background-color: rgba(0,0,0, 0.8);
     opacity:0;
     pointer-events:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.share-popup-content{
+    background-color:var(--share-popup-background);
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+    width:33vw;
+    height:20vw;
 }
 

@@ -33,6 +33,8 @@
     --share-button-background: #7f21e4;
     --share-button-text-color: #ffffff;
 
+    --share-popup-background: #efefef;
+
     --log-error-background: rgba(255, 27, 27, 0.37);
     --log-warn-background: rgba(255, 243, 17, 0.37);
     --log-log-background: rgb(71 70 68 / 22%);
