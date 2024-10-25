@@ -21,5 +21,12 @@
 
     width:33vw;
     height:20vw;
+
+    border-radius:10px;
+    overflow:clip;
+}
+
+.share-popup-content .title{
+    font-size:3em;
 }
 
