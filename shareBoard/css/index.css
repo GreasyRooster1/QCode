@@ -169,6 +169,8 @@ body{
     min-height:70vh;
     background: var(--bulk-project-bar-background);
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .project-display.bulk{
@@ -176,6 +178,8 @@ body{
     height:20vh;
     border-radius: 10px;
     overflow: clip;
+    margin-left:2%;
+    margin-right:2%;
 }
 
 .project-display.bulk .title{
