@@ -16,6 +16,7 @@ class ProjectDisplay {
         this.overlayWrapper = document.createElement("div");
 
         this.title = document.createElement("span");
+        this.titleWrapper = document.createElement("span");
 
         this.interactTrayWrapper = document.createElement("div");
         this.interactTray = document.createElement("span");
@@ -38,14 +39,14 @@ class ProjectDisplay {
         this.userDisplay.appendChild(this.userIconDisplay)
         this.userDisplay.appendChild(this.userNameDisplay)
 
-
+        this.titleWrapper.appendChild(this.title);
 
         this.interactTray.appendChild(this.heartWrapper);
         this.interactTray.appendChild(this.starWrapper);
 
         this.interactTrayWrapper.appendChild(this.interactTray);
         this.interactTrayWrapper.appendChild(this.userDisplay);
-        this.overlayWrapper.appendChild(this.title);
+        this.overlayWrapper.appendChild(this.titleWrapper);
         this.overlayWrapper.appendChild(this.interactTrayWrapper);
 
 
@@ -58,6 +59,7 @@ class ProjectDisplay {
         this.iframe.src = "../editor/exec/exec.html";
 
         this.title.classList.add("title");
+        this.titleWrapper.classList.add("title-wrapper");
 
         this.interactTray.classList.add("interact-tray");
         this.heartWrapper.classList.add("hearts-wrapper");

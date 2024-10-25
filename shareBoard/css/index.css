@@ -3,6 +3,7 @@
     --bulk-project-bar-background: #dddddd;
     --bar-seperator: #b1b1b1;
     --interact-tray-background: #b5b5b5;
+    --title-color-background: #b5b5b5;
     --bulk-project-overlay-background: rgba(0, 0, 0, 0.48);
 
     --bar-seperator-height: 2px;
@@ -83,11 +84,16 @@ body{
 .interact-tray-wrapper{
     margin: 1%;
 }
-
+.project-display.featured .title-wrapper{
+    margin:5px
+}
 .project-display.featured .title{
-    margin: 1%;
     font-size: 2em;
     font-weight: 500;
+
+    background: var(--title-color-background);
+    border-radius:5px;
+    text-align: center;
 
     transition: .3s ease;
 }
@@ -182,7 +188,14 @@ body{
     margin-right:2%;
 }
 
+
+.project-display.bulk .title-wrapper{
+    margin:2px
+}
 .project-display.bulk .title{
+    background: var(--title-color-background);
+    border-radius:5px;
+    text-align: center;
     transition: .3s ease;
 }
 
