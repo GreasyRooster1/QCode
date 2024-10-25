@@ -14,6 +14,10 @@ const cyrb53 = (str, seed = 0) => {
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
+function generateSharedProjectId(){
+    return cyrb53(Date.now(),Math.random()*98213479823);
+}
+
 class ShareBoardProject{
     constructor(pid,metadata){
         this.timestamp = metadata.timestamp;
