@@ -45,3 +45,13 @@
     font-size:1.7em;
     color:var(--share-button-text-color);
 }
+
+.share-popup-content .name-input{
+    background:var(--share-project-name-input);
+    min-width:75%;
+    padding:5px;
+    border-radius:5px;
+    overflow:clip;
+    text-align: center;
+    border:none;
+}
