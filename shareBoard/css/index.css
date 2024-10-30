@@ -91,8 +91,6 @@ body{
     font-size: 2em;
     font-weight: 500;
 
-    background: var(--title-color-background);
-    border-radius:5px;
     text-align: center;
 
     transition: .3s ease;
@@ -180,8 +178,8 @@ body{
 }
 
 .project-display.bulk{
-    width:20vh;
-    height:20vh;
+    width:20vw;
+    height:20vw;
     border-radius: 10px;
     overflow: clip;
     margin-left:2%;
@@ -193,8 +191,7 @@ body{
     margin:2px
 }
 .project-display.bulk .title{
-    background: var(--title-color-background);
-    border-radius:5px;
+
     text-align: center;
     transition: .3s ease;
 }
