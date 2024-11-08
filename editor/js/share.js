@@ -1,6 +1,7 @@
 const shareButton = document.querySelector('.share-button');
 const popupContainer = document.querySelector('.share-popup-container');
 const sharePopupButton = document.querySelector('.share-popup-button');
+const closePopupButton = document.querySelector('.close-button');
 const shareNameInput = document.querySelector('.share-popup-content .name-input');
 const previewIframe = document.getElementById('share-preview-frame');
 
@@ -9,6 +10,10 @@ shareButton.addEventListener('click', (e) => {
     showPopup();
     runPopupPreviewCode();
 });
+
+closePopupButton.addEventListener("click", (e) => {
+    hidePopup();
+})
 
 sharePopupButton.addEventListener('click', (e) => {
     if(shareNameInput.value === ''){
@@ -31,6 +36,11 @@ sharePopupButton.addEventListener('click', (e) => {
 function showPopup(){
     popupContainer.style.opacity = "1";
     popupContainer.style.pointerEvents = "auto";
+}
+
+function hidePopup() {
+    popupContainer.style.opacity = "0";
+    popupContainer.style.pointerEvents = "none";
 }
 
 function runPopupPreviewCode(){

@@ -11,6 +11,7 @@
     display:flex;
     justify-content:center;
     align-items:center;
+    transition:.3s ease-in-out;
 }
 
 .share-popup-content{
@@ -60,4 +61,15 @@
 .share-preview{
     border-radius: 10px;
     overflow:clip;
+}
+
+.share-popup-content .top-bar{
+    display:flex;
+    width:100%;
+    flex-direction: row-reverse;
+}
+
+.share-popup-content .close-button{
+    margin: 5px;
+    color:var(--close-button-text-color);
 }
