@@ -118,6 +118,9 @@ class ProjectDisplay {
             }
             thisProject.updateInteractions();
         })
+        this.openIcon.addEventListener("click",function (){
+           window.location.href = "project.html";
+        });
     }
 
     updateInteractions(){

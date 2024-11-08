@@ -7,6 +7,7 @@ class FeaturedProject extends ProjectDisplay{
         this.updateClass();
         this.appendToDom();
         this.loadCode();
+
     }
 }
 
