@@ -2,6 +2,10 @@
     --code-pane-background: #d3d3d3;
     --view-pane-background: #b6b6b6;
 }
+.nav-shift-fix{
+    height:var(--navbar-height);
+    width:100%;
+}
 body{
     margin: 0;
     padding: 0;

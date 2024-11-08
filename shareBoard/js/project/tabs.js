@@ -1,10 +1,10 @@
 let tabBarSections = document.getElementsByClassName("section");
 let tabBarTabs = document.getElementsByClassName("tab");
 
-function changeTab(className){
-    for (let section in tabBarSections) {
+function changeTab(idName){
+    for (let section of tabBarSections) {
         section.style.display = "none";
     }
 
-    section.getElementsByClassName(className).style.display = "block";
+    document.getElementById(idName).style.display = "block";
 }

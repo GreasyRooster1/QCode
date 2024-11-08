@@ -1,5 +1,6 @@
 function init(){
     removeNavArrow();
+    changeTab("info")
 }
 
 function removeNavArrow(){
