@@ -1,0 +1,24 @@
+:root{
+    --code-pane-background: #d3d3d3;
+    --view-pane-background: #b6b6b6;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.main-content{
+    display: flex;
+}
+
+.code-pane{
+    background: var(--code-pane-background);
+    width: 45vw;
+    height: 100vh;
+}
+
+.view-pane{
+    background: var(--view-pane-background);
+    width: 55vw;
+    height: 100vh;
+}
