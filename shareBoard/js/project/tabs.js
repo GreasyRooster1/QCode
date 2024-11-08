@@ -8,3 +8,12 @@ function changeTab(idName){
 
     document.getElementById(idName).style.display = "block";
 }
+
+function initTabs(){
+    changeTab("info")
+    for (let tab of tabBarTabs) {
+        tab.addEventListener("click", (e)=>{
+            changeTab(e.target.id);
+        })
+    }
+}
