@@ -11,7 +11,7 @@ body{
     display: flex;
 }
 
-.code-pane{
+.info-pane{
     background: var(--code-pane-background);
     width: 45vw;
     height: 100vh;
