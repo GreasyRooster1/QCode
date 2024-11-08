@@ -36,6 +36,9 @@ class ProjectDisplay {
         this.userDisplay = document.createElement("span");
         this.userNameDisplay = document.createElement("span");
         this.userIconDisplay = document.createElement("img");
+
+        this.openIcon = document.createElement("div");
+
         this.userDisplay.appendChild(this.userIconDisplay)
         this.userDisplay.appendChild(this.userNameDisplay)
 
@@ -46,6 +49,7 @@ class ProjectDisplay {
 
         this.interactTrayWrapper.appendChild(this.interactTray);
         this.interactTrayWrapper.appendChild(this.userDisplay);
+        this.interactTrayWrapper.appendChild(this.openIcon);
         this.overlayWrapper.appendChild(this.titleWrapper);
         this.overlayWrapper.appendChild(this.interactTrayWrapper);
 
@@ -72,6 +76,8 @@ class ProjectDisplay {
         this.starCount.classList.add("interaction-count");
         this.starIcon.classList.add("star-icon");
 
+        this.openIcon.classList.add("open-icon");
+
         this.userDisplay.classList.add("user-display");
 
         this.interactTrayWrapper.classList.add("interact-tray-wrapper");
@@ -80,6 +86,8 @@ class ProjectDisplay {
 
         this.heartIcon.innerHTML = "<i class='far fa-heart'></i>";
         this.starIcon.innerHTML = "<i class='far fa-star'></i>";
+
+        this.openIcon.innerHTML = "<i class='fas fa-external-link-alt'></i>";
 
         this.heartCount.innerHTML = "0";
         this.starCount.innerHTML = "0";
