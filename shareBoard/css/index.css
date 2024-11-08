@@ -135,7 +135,7 @@ body{
 
 .open-icon{
     float: right;
-    font-size: 1.3em;
+    font-size: 1em;
     opacity: 0;
     transition: .3s ease;
     color: var(--open-icon-color);
