@@ -143,6 +143,7 @@ body{
     border-radius: 3px;
     overflow: clip;
     padding-left: 3px;
+    pointer-events: auto;
 }
 .project-display:hover .open-icon{
     opacity: 1;
