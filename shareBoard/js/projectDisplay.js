@@ -87,7 +87,7 @@ class ProjectDisplay {
         this.heartIcon.innerHTML = "<i class='far fa-heart'></i>";
         this.starIcon.innerHTML = "<i class='far fa-star'></i>";
 
-        this.openIcon.innerHTML = "<i class='fas fa-external-link-alt'></i>";
+        this.openIcon.innerHTML = "<i class='fas fa-share-square'></i>";
 
         this.heartCount.innerHTML = "0";
         this.starCount.innerHTML = "0";

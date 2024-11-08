@@ -4,6 +4,10 @@
     --bar-seperator: #b1b1b1;
     --interact-tray-background: #b5b5b5;
     --title-color-background: #b5b5b5;
+
+    --open-icon-color: #000000;
+    --open-icon-border-color: #ffffff;
+
     --bulk-project-overlay-background: rgba(0, 0, 0, 0.48);
 
     --bar-seperator-height: 2px;
@@ -134,7 +138,11 @@ body{
     font-size: 1.3em;
     opacity: 0;
     transition: .3s ease;
-    -webkit-text-stroke: 2px white; /* width and color */
+    color: var(--open-icon-color);
+    background-color: var(--interact-tray-background);
+    border-radius: 3px;
+    overflow: clip;
+    padding-left: 3px;
 }
 .project-display:hover .open-icon{
     opacity: 1;
