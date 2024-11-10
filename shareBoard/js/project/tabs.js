@@ -11,10 +11,11 @@ function changeTab(idName){
 
 function initTabs(){
     changeTab("info")
+    console.log(tabBarTabs);
     for (let tab of tabBarTabs) {
-        tab.addEventListener("click", (e)=>{
-            console.log(e.target.id);
-            changeTab(e.target.id);
-        })
+        console.log(tabBarTabs[0]);
+        document.querySelector(".tab-bar").addEventListener("click", function(){
+            console.log("asdasd");
+        });
     }
 }

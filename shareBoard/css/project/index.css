@@ -2,10 +2,10 @@
     --code-pane-background: #d3d3d3;
     --view-pane-background: #b6b6b6;
 
-    --info-tab-background: #50a4e1;
-    --code-tab-background: #50e152;
-    --info-tab-color: #dae1e6;
-    --code-tab-color: #dbe8db;
+    --info-tab-background: #95a2da;
+    --code-tab-background: #90d89e;
+    --info-tab-color: #021930;
+    --code-tab-color: #033c03;
     --tab-bar-background: #919191;
 }
 .nav-shift-fix{
@@ -46,6 +46,7 @@ body{
     padding: 1px 6px 1px 3px;
     width:20%;
     margin-left:5px;
+    font-weight: bold;
 }
 
 .tab.info{
