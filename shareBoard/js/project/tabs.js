@@ -13,6 +13,7 @@ function initTabs(){
     changeTab("info")
     for (let tab of tabBarTabs) {
         tab.addEventListener("click", (e)=>{
+            console.log(e.target.id);
             changeTab(e.target.id);
         })
     }

@@ -1,6 +1,8 @@
 :root{
     --code-pane-background: #d3d3d3;
     --view-pane-background: #b6b6b6;
+
+    --view-tab-background:#000;
 }
 .nav-shift-fix{
     height:var(--navbar-height);
@@ -13,16 +15,21 @@ body{
 
 .main-content{
     display: flex;
+    height: calc(100vh - var(--navbar-height));
 }
 
 .info-pane{
     background: var(--code-pane-background);
     width: 45vw;
-    height: 100vh;
+    height: 100%;
 }
 
 .view-pane{
     background: var(--view-pane-background);
     width: 55vw;
-    height: 100vh;
+    height: 100%;
+}
+
+.tab{
+    background: var(--view-tab-background);
 }
