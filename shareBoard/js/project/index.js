@@ -1,6 +1,7 @@
 function init(){
     removeNavArrow();
     initTabs();
+    setupFrame();
     loadProject();
 }
 
