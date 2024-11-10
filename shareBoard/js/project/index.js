@@ -1,6 +1,7 @@
 function init(){
     removeNavArrow();
     initTabs();
+    loadProject();
 }
 
 function removeNavArrow(){
