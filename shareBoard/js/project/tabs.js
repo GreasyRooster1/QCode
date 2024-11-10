@@ -14,8 +14,8 @@ function initTabs(){
     console.log(tabBarTabs);
     for (let tab of tabBarTabs) {
         console.log(tabBarTabs[0]);
-        document.querySelector(".tab-bar").addEventListener("click", function(){
-            console.log("asdasd");
+        tab.addEventListener("click", (e)=>{
+            changeTab(e.target.classList[1]);
         });
     }
 }
