@@ -2,11 +2,13 @@
     --code-pane-background: #d3d3d3;
     --view-pane-background: #b6b6b6;
 
-    --info-tab-background: #95a2da;
+    --info-tab-background: #acb4d6;
     --code-tab-background: #90d89e;
     --info-tab-color: #021930;
     --code-tab-color: #033c03;
-    --tab-bar-background: #919191;
+    --info-section-background: #d1d7e8;
+
+    --tab-bar-background: #c3c3c3;
 }
 .nav-shift-fix{
     height:var(--navbar-height);
@@ -53,6 +55,13 @@ body{
     color: var(--code-tab-color);
 }
 
+.section{
+    height: 100%;
+}
+
+.section.info{
+    background: var(--info-section-background);
+}
 
 
 .view-pane{
