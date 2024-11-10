@@ -2,7 +2,11 @@
     --code-pane-background: #d3d3d3;
     --view-pane-background: #b6b6b6;
 
-    --view-tab-background:#000;
+    --info-tab-background: #50a4e1;
+    --code-tab-background: #50e152;
+    --info-tab-color: #dae1e6;
+    --code-tab-color: #dbe8db;
+    --tab-bar-background: #919191;
 }
 .nav-shift-fix{
     height:var(--navbar-height);
@@ -30,6 +34,22 @@ body{
     height: 100%;
 }
 
+.tab-bar{
+    display: flex;
+    background: var(--tab-bar-background);
+}
+
 .tab{
-    background: var(--view-tab-background);
+    border-radius: 10px 10px 0 0;
+    font-size: 1.3em;
+    padding: 4px;
+}
+
+.tab.info{
+    background: var(--info-tab-background);
+    color: var(--info-tab-color);
+}
+.tab.code{
+    background: var(--code-tab-background);
+    color: var(--code-tab-color);
 }
