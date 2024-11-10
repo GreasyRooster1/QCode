@@ -35,14 +35,17 @@ body{
 }
 
 .tab-bar{
+    padding-top: 4px;
     display: flex;
     background: var(--tab-bar-background);
 }
 
 .tab{
-    border-radius: 10px 10px 0 0;
-    font-size: 1.3em;
-    padding: 4px;
+    border-radius: 6px 6px 0 0;
+    font-size: 1.1em;
+    padding: 1px 6px 1px 3px;
+    width:20%;
+    margin-left:5px;
 }
 
 .tab.info{
