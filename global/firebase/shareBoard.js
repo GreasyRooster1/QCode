@@ -115,7 +115,7 @@ function getShareBoardProjects(next=function(){}){
         for (let [pid, metadata] of Object.entries(data)) {
             projects.push(new ShareBoardProject(pid, metadata));
         }
-        projects.sort((a, b) =>  b.shareDate-a.shareDate);
+        projects.reverse()
         next(projects);
     })
 }
