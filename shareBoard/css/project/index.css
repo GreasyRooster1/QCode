@@ -8,6 +8,9 @@
     --code-tab-color: #033c03;
     --info-section-background: #d1d7e8;
 
+    --info-inset-background: #c6cee3;
+    --author-block-background: #b6c3e6;
+
     --tab-bar-background: #c3c3c3;
 }
 .nav-shift-fix{
@@ -81,7 +84,14 @@ body{
 .info-author{
     display: flex;
     flex-direction: column;
-    height:10vh;
+    align-items: center;
+}
+
+.author-block{
+    background: var(--author-block-background);
+    padding:1%;
+    margin:5px;
+    border-radius: 10px;
 }
 
 .author-icon img{
@@ -94,4 +104,25 @@ body{
 .info-title{
     font-size: 3em;
     font-weight: bold;
+}
+
+.date-container{
+    background: var(--info-inset-background);
+    padding:2px;
+    margin: 1%;
+    border-radius:5px;
+}
+
+.info-desc{
+    background: var(--info-inset-background);
+    padding:2px;
+    margin: 1%;
+    border-radius:5px;
+}
+
+.info-author{
+    background: var(--info-inset-background);
+    padding:2px;
+    margin: 1%;
+    border-radius:5px;
 }
