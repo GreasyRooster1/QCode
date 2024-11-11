@@ -88,7 +88,7 @@ function startInternalLesson(ref,lessonId,lessonData){
         lessonId: lessonId,
         currentChapter: 0,
         currentStep:1,
-        timestamp:Date.now()
+        timestamp:Date.now()/1000
     });
     openProjectInEditor(lessonId,getStoredUser().uid,0);
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Programming Platform</title>
+    <title>QCode | Editor</title>
 
     <script type="importmap">
         {
@@ -27,6 +27,7 @@
     <script src="../global/firebase/auth.js" defer></script>
     <script src="../global/firebase/database.js" defer></script>
     <script src="../global/firebase/lockPageToAuth.js" defer></script>
+    <script src="../global/firebase/shareBoard.js" defer></script>
 
     <link rel="stylesheet" href="../global/global.css">
 
@@ -37,6 +38,7 @@
     <link rel="stylesheet" href="css/panes/codePane.css">
     <link rel="stylesheet" href="css/panes/outputPane.css">
     <link rel="stylesheet" href="css/lessonCreator.css">
+    <link rel="stylesheet" href="css/share.css">
 
     <script src="../global/customElements.js" defer></script>
     <script src="../global/util/points.js" defer></script>
@@ -58,6 +60,7 @@
     <script src="js/codeEditor.js" async type="module" defer></script>
     <script src="js/load.js" defer></script>
     <script src="js/save.js" defer></script>
+    <script src="js/share.js" defer></script>
     <script src="js/steps.js" defer></script>
 </head>
 <body>
@@ -77,9 +80,12 @@
 
         <div class="output-pane editor-pane">
             <div class="output-head">
-                <button class="run-button">Run </button>
-                <button class="stop-button">Stop </button>
-                <button class="save-button">Save </button>
+                <div>
+                    <button class="run-button">Run </button>
+                    <button class="stop-button">Stop </button>
+                    <button class="save-button">Save </button>
+                    <button class="share-button">Share </button>
+                </div>
             </div>
             <div class="output-panes-wrapper">
                 <div class="canvas-output-pane">
@@ -95,6 +101,24 @@
         </div>
     </div>
     <div class="lesson-creator-button-container">
+    </div>
+
+    <div class="share-popup-container">
+        <div class="share-popup-content">
+            <div class="top-bar">
+                <span class="close-button">
+                    X
+                </span>
+            </div>
+            <div class="title">Share Project</div>
+            <div class="share-preview">
+                <iframe class="canvas-output-iframe" src="exec/exec.html" id="share-preview-frame"></iframe>
+            </div>
+            <input class="name-input" placeholder="Type project name" type="text">
+            <textarea class="desc-input" placeholder="Type project description" cols="40" rows="3"></textarea>
+            <div class="share-popup-button">Share</div>
+<!--            <div class="disclaimer">By sharing this project you agree that this project and its code will be publicly accessible, and can be removed from the share board at any time</div>-->
+        </div>
     </div>
 </body>
 </html>

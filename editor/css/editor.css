@@ -30,6 +30,14 @@
     --save-button-background: #0e86d1;
     --save-button-text-color: #ffffff;
 
+    --share-button-background: #7f21e4;
+    --share-button-text-color: #ffffff;
+
+    --share-popup-background: #efefef;
+    --share-project-name-input: #cfcfcf;
+
+    --close-button-text-color: #6a6a6a;
+
     --log-error-background: rgba(255, 27, 27, 0.37);
     --log-warn-background: rgba(255, 243, 17, 0.37);
     --log-log-background: rgb(71 70 68 / 22%);

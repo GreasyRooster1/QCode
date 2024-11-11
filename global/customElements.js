@@ -150,7 +150,6 @@ class BrandNav extends HTMLElement {
             <div class="navbar-visibility-button">
                 ^
             </div>
-            <div class="nav-shift-fix"></div>
         `
     }
 }
