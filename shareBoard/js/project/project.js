@@ -37,7 +37,7 @@ function insertInfo(){
         desc.innerText = projectMetadata.desc;
     }
     dateShared.innerText = "Date Shared: "+getDateString(projectMetadata.shareDate);
-    dateCreated.innerText = "Date Shared: "+getDateString(projectMetadata.createdDate);
+    dateCreated.innerText = "Date Created: "+getDateString(projectMetadata.createdDate);
 
     database.ref("userdata/"+projectMetadata.author+"/username").once("value").then((snapshot) => {
         authorUsername.innerText = snapshot.val();
