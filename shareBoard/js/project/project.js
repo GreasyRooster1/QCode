@@ -27,10 +27,23 @@ function insertInfo(){
 
     title.innerText = projectMetadata.name;
     desc.innerText = projectMetadata.desc;
-    date.innerText = "Date Shared: "+getDateString(projectMetadata.shareDate);
+    dateShared.innerText = "Date Shared: "+getDateString(projectMetadata.shareDate);
+    dateCreated.innerText = "Date Shared: "+getDateString(projectMetadata.createdDate);
+
+    database.ref("userdata/"+projectMetadata.author+"/username").once("value").then((snapshot) => {
+        authorUsername.innerText = snapshot.val();
+    });
+    database.ref("userdata/"+projectMetadata.author+"/profileIcon").once("value").then((snapshot) => {
+        authorImg.setAttribute("src",snapshot.val());
+    });
 }
 
+
+
 function getDateString(unixStamp){
+    if(unixStamp==0){
+        return "Date not available"
+    }
     let date = new Date(unixStamp * 1000);
 
     let day = date.getDate();
