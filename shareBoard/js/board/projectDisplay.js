@@ -118,8 +118,9 @@ class ProjectDisplay {
             }
             thisProject.updateInteractions();
         })
-        this.openIcon.addEventListener("click",function (){
-           window.location.href = "project.html";
+        this.openIcon.addEventListener("click",()=>{
+            console.log("project.html?shareboardid="+this.project.pid)
+            window.location.href = "project.html?shareboardid="+this.project.pid;
         });
     }
 
