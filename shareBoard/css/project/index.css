@@ -59,11 +59,6 @@ body{
     height: 100%;
 }
 
-.section.info{
-    background: var(--info-section-background);
-}
-
-
 .view-pane{
     background: var(--view-pane-background);
     width: 55vw;
@@ -74,6 +69,13 @@ body{
     width: 100%;
     height: 100%;
     border:none
+}
+
+
+
+.section.info{
+    background: var(--info-section-background);
+    font-size: 1.1em;
 }
 
 .info-author{
@@ -87,4 +89,9 @@ body{
     height:10vh;
     border-radius: 15px;
     overflow: clip;
+}
+
+.info-title{
+    font-size: 3em;
+    font-weight: bold;
 }
