@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>Project View | QCode</title>
 
+    <script type="importmap">
+        {
+            "imports": {
+                "codemirror/": "https://deno.land/x/codemirror_esm@v6.0.1/esm/"
+            }
+        }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
 
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -39,6 +47,7 @@
 
     <script src="js/project/tabs.js"></script>
     <script src="js/project/project.js"></script>
+    <script src="js/project/code.js" async type="module" defer></script>
     <script src="js/project/index.js" defer></script>
 </head>
 <body>
@@ -72,7 +81,9 @@
 
             </div>
             <div class="code section" id="code">
-              CODEEEEE
+                <div class="code-editor">
+
+                </div>
             </div>
         </div>
         <div class="view-pane">

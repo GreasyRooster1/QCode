@@ -126,3 +126,24 @@ body{
     margin: 1%;
     border-radius:5px;
 }
+
+
+.code-editor-wrapper{
+    overflow: clip;
+}
+
+.code-editor{
+    height: 100vh;
+    background: var(--code-editor-background);
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    pointer-events: none;
+}
+
+/* the codemirror generated editor */
+
+.cm-editor{
+    height: 100%;
+}
