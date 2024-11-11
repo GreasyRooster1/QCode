@@ -3,6 +3,7 @@ const popupContainer = document.querySelector('.share-popup-container');
 const sharePopupButton = document.querySelector('.share-popup-button');
 const closePopupButton = document.querySelector('.close-button');
 const shareNameInput = document.querySelector('.share-popup-content .name-input');
+const shareDescInput = document.querySelector('.share-popup-content .desc-input');
 const previewIframe = document.getElementById('share-preview-frame');
 
 shareButton.addEventListener('click', (e) => {
@@ -20,6 +21,10 @@ sharePopupButton.addEventListener('click', (e) => {
         shareNameInput.style.border = "5px solid red";
         return;
     }
+    let desc = shareDescInput.value
+    if(desc === ''){
+        desc = undefined;
+    }
     let sharedProjectId = generateSharedProjectId(projectId,getStoredUser().uid);
 
     database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/timestamp").once("value").then(function (snap) {
@@ -29,11 +34,13 @@ sharePopupButton.addEventListener('click', (e) => {
             name:shareNameInput.value,
             shareDate:Date.now()/1000,
             createdDate:snap.val(),
+            desc:desc,
         }).then(()=> {
             //set projectData
             database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
         })
     })
+    hidePopup();
 })
 
 function showPopup(){
