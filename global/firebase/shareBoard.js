@@ -20,7 +20,8 @@ function generateSharedProjectId(project,user){
 
 class ShareBoardProject{
     constructor(pid,metadata){
-        this.timestamp = metadata.timestamp;
+        this.shareDate = metadata.shareDate;
+        this.createdDate = metadata.createdDate;
         this.author = metadata.author;
         this.name = metadata.name;
         this.likedBy = metadata.likedBy;
@@ -109,11 +110,12 @@ function getShareBoardFeaturedProjects(next=function(){}){
 
 function getShareBoardProjects(next=function(){}){
     let projects = [];
-    database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
+    database.ref("sharedProjects/metadata").orderByChild("shareDate").once("value").then((snapshot) => {
         let data = snapshot.val();
         for (let [pid, metadata] of Object.entries(data)) {
             projects.push(new ShareBoardProject(pid, metadata));
         }
+        projects.sort((a, b) =>  b.shareDate-a.shareDate);
         next(projects);
     })
 }

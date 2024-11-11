@@ -211,7 +211,7 @@ body{
     margin:2px
 }
 .project-display.bulk .title{
-
+    font-size: 2em;
     text-align: center;
     transition: .3s ease;
 }
@@ -263,5 +263,5 @@ body{
 }
 
 .play-icon{
-    font-size:5em
+    font-size:7em
 }
