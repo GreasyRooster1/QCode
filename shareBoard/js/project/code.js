@@ -10,7 +10,7 @@ const customTheme = EditorView.theme({
         font:"'JetBrains Mono', monospace",
         fontSize: "15px",
         fontVariantLigatures:"none",
-    }
+    },
 })
 
 let editorView = new EditorView({

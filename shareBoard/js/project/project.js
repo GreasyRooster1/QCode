@@ -14,6 +14,11 @@ function loadProject() {
     database.ref("sharedProjects/projectData/"+shareBoardID).once("value").then((snapshot) => {
         projectCode = snapshot.val();
         execFrame.contentWindow.location.reload();
+        window.editor.dispatch({changes: {
+            from: 0,
+            to: window.editor.state.doc.length,
+            insert: projectCode
+        }})
     })
 }
 
@@ -40,6 +45,8 @@ function insertInfo(){
     database.ref("userdata/"+projectMetadata.author+"/profileIcon").once("value").then((snapshot) => {
         authorImg.setAttribute("src",snapshot.val());
     });
+
+
 }
 
 
