@@ -3,7 +3,12 @@ function loadAnnouncements(){
         const data = snapshot.val();
         clearAnnouncements();
         console.log(data);
+        let arr = []
         for(const [announcementId, announcementData] of Object.entries(data)){
+            arr.push(announcementData);
+        }
+        arr.reverse();
+        for (let announcementData of arr){
             if(!announcementData.visible){
                 continue;
             }
