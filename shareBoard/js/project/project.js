@@ -26,7 +26,11 @@ function insertInfo(){
     let desc = document.querySelector(".info-desc");
 
     title.innerText = projectMetadata.name;
-    desc.innerText = projectMetadata.desc;
+    if(projectMetadata.desc===undefined) {
+        desc.innerText = "No Description";
+    }else{
+        desc.innerText = projectMetadata.desc;
+    }
     dateShared.innerText = "Date Shared: "+getDateString(projectMetadata.shareDate);
     dateCreated.innerText = "Date Shared: "+getDateString(projectMetadata.createdDate);
 
