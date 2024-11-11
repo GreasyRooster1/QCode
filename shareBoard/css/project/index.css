@@ -75,3 +75,16 @@ body{
     height: 100%;
     border:none
 }
+
+.info-author{
+    display: flex;
+    flex-direction: column;
+    height:10vh;
+}
+
+.author-icon img{
+    width:10vh;
+    height:10vh;
+    border-radius: 15px;
+    overflow: clip;
+}

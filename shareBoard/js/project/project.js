@@ -21,8 +21,8 @@ function insertInfo(){
     let title = document.querySelector(".info-title");
     let dateShared = document.querySelector(".info-date-shared");
     let dateCreated = document.querySelector(".info-date-created");
-    let authorImg = document.querySelector(".info-author.author-icon img");
-    let authorUsername = document.querySelector(".info-author.author-username");
+    let authorImg = document.querySelector(".info-author .author-icon img");
+    let authorUsername = document.querySelector(".info-author .author-username");
     let desc = document.querySelector(".info-desc");
 
     title.innerText = projectMetadata.name;
