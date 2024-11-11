@@ -22,14 +22,17 @@ sharePopupButton.addEventListener('click', (e) => {
     }
     let sharedProjectId = generateSharedProjectId(projectId,getStoredUser().uid);
 
-    //set metadata
-    database.ref("sharedProjects/metadata/"+sharedProjectId).set({
-        author:getStoredUser().uid,
-        name:shareNameInput.value,
-        timestamp:Date.now()/1000,
-    }).then(()=> {
-        //set projectData
-        database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/timestamp").once("value").then(function (snap) {
+        //set metadata
+        database.ref("sharedProjects/metadata/"+sharedProjectId).set({
+            author:getStoredUser().uid,
+            name:shareNameInput.value,
+            shareDate:Date.now()/1000,
+            createdDate:snap.val(),
+        }).then(()=> {
+            //set projectData
+            database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+        })
     })
 })
 

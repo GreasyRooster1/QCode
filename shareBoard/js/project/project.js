@@ -19,14 +19,25 @@ function loadProject() {
 
 function insertInfo(){
     let title = document.querySelector(".info-title");
-    let date = document.querySelector(".info-date");
+    let dateShared = document.querySelector(".info-date-shared");
+    let dateCreated = document.querySelector(".info-date-created");
     let authorImg = document.querySelector(".info-author.author-icon img");
     let authorUsername = document.querySelector(".info-author.author-username");
     let desc = document.querySelector(".info-desc");
 
     title.innerText = projectMetadata.name;
     desc.innerText = projectMetadata.desc;
-    date.innerText = projectMetadata.timestamp;
+    date.innerText = "Date Shared: "+getDateString(projectMetadata.shareDate);
+}
+
+function getDateString(unixStamp){
+    let date = new Date(unixStamp * 1000);
+
+    let day = date.getDate();
+    let month = date.getMonth()+1;
+    let year = date.getFullYear();
+
+    return month+"/"+day+"/"+year;
 }
 
 function setupFrame(){
