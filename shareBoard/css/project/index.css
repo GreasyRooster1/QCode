@@ -138,12 +138,11 @@ body{
 
     overflow-y:auto;
     overflow-x:hidden;
-
-    pointer-events: none;
 }
 
 /* the codemirror generated editor */
 
 .cm-editor{
     height: 100%;
+    pointer-events: none;
 }

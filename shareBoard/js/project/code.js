@@ -21,13 +21,14 @@ let editorView = new EditorView({
         linter(javascriptLanguage),
         keymap.of([indentWithTab]),
         customTheme,
+        EditorView.editable.of(false),
     ],
     updateListener:onDocUpdate,
     parent: document.querySelector(".code-editor"),
 });
 
 function onDocUpdate(){
-    hasSavedRecently = false;
+    window.editor.state.doc.toString();
 }
 
 window.editor = editorView;
