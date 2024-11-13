@@ -17,6 +17,11 @@
     font-size:30px;
 }
 
+.projects-display{
+    max-height:40vh;
+    overflow:auto;
+}
+
 .project-link{
     display: block;
     margin: 10px 7px 7px;
@@ -50,6 +55,7 @@
     font-weight: bolder;
     align-items: center;
 }
+
 
 .project-pages .page-display{
     font-size: 1.2em;
