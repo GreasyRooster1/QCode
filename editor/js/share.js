@@ -20,7 +20,7 @@ sharePopupButton.addEventListener('click', (e) => {
         shareNameInput.style.border = "5px solid red";
         return;
     }
-    let sharedProjectId = generateSharedProjectId(projectId,getStoredUser().uid);
+    let sharedProjectId = getSharedProjectId(projectId,getStoredUser().uid);
 
     //set metadata
     database.ref("sharedProjects/metadata/"+sharedProjectId).set({
@@ -50,3 +50,14 @@ function runPopupPreviewCode(){
         previewIframe.contentWindow.postMessage(getCodeFromEditor())
     })
 }
+
+function checkSharedStatus(){
+    database.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
+        if(snap.exists()){
+            console.log("project is shared!");
+            shareButton.innerText = "Update";
+        }
+    })
+}
+
+checkSharedStatus();
