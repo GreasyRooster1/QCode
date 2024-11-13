@@ -3,6 +3,7 @@ const popupContainer = document.querySelector('.share-popup-container');
 const sharePopupButton = document.querySelector('.share-popup-button');
 const closePopupButton = document.querySelector('.close-button');
 const shareNameInput = document.querySelector('.share-popup-content .name-input');
+const shareDescInput = document.querySelector('.share-popup-content .desc-input');
 const previewIframe = document.getElementById('share-preview-frame');
 
 shareButton.addEventListener('click', (e) => {
@@ -20,17 +21,26 @@ sharePopupButton.addEventListener('click', (e) => {
         shareNameInput.style.border = "5px solid red";
         return;
     }
-    let sharedProjectId = getSharedProjectId(projectId,getStoredUser().uid);
+    let desc = shareDescInput.value
+    if(desc === ''){
+        desc = undefined;
+    }
+    let sharedProjectId = generateSharedProjectId(projectId,getStoredUser().uid);
 
-    //set metadata
-    database.ref("sharedProjects/metadata/"+sharedProjectId).set({
-        author:getStoredUser().uid,
-        name:shareNameInput.value,
-        timestamp:Date.now()/1000,
-    }).then(()=> {
-        //set projectData
-        database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/timestamp").once("value").then(function (snap) {
+        //set metadata
+        database.ref("sharedProjects/metadata/"+sharedProjectId).set({
+            author:getStoredUser().uid,
+            name:shareNameInput.value,
+            shareDate:Date.now()/1000,
+            createdDate:snap.val(),
+            desc:desc,
+        }).then(()=> {
+            //set projectData
+            database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+        })
     })
+    hidePopup();
 })
 
 function showPopup(){
@@ -50,14 +60,3 @@ function runPopupPreviewCode(){
         previewIframe.contentWindow.postMessage(getCodeFromEditor())
     })
 }
-
-function checkSharedStatus(){
-    database.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
-        if(snap.exists()){
-            console.log("project is shared!");
-            shareButton.innerText = "Update";
-        }
-    })
-}
-
-checkSharedStatus();

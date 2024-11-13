@@ -131,3 +131,7 @@ function runShareBoardCode(){
 
     iWindow.postMessage(featuredProjects[currentFeaturedProject].code);
 }
+
+shareBoardFrame.contentWindow.addEventListener("click", () => {
+    window.location.href = "./shareBoard/board.html";
+})
