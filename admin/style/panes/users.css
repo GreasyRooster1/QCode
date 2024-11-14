@@ -1,5 +1,6 @@
 .users-pane{
     flex-direction: column;
+    height:80vh;
 }
 
 .user-display-wrapper{

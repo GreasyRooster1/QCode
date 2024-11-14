@@ -59,7 +59,7 @@ body{
     background-color: var(--content-pane-background);
     display: flex;
     margin: 10px;
-    height: 40vh;
+    height: 60vh;
 }
 
 .details-pane{
