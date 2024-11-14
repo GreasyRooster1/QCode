@@ -4,6 +4,8 @@ const userDetailsBadgeDisplay = document.querySelector('.user-details-badges-dis
 const userDetailsName = document.querySelector(".user-details .name");
 const userDetailsUid = document.querySelector(".user-details .uid");
 const userDetailsPoints = document.querySelector(".user-details .points");
+const userDetailsSpentPoints = document.querySelector(".user-details .spent-points");
+const userDetailsProjects = document.querySelector(".user-details .projects");
 
 let selectedUserUid = null;
 
@@ -77,6 +79,8 @@ function showUserDetails(e) {
 
     userDetailsName.innerHTML = data.username;
     userDetailsPoints.innerHTML = data.points;
+    userDetailsSpentPoints.innerHTML = data.spentPoints;
+    userDetailsProjects.innerHTML = Object.keys(data.projects).length;
     loadUserBadges(data.badges)
 }
 
@@ -87,12 +91,10 @@ addBadgeButton.addEventListener("click",function (){
 
     let newBadgeId = prompt("Please enter the id of the badge to add");
 
-    database.ref("userdata/" + selectedUserUid+"/badges").once("value").then((snapshot) => {
-        let badges = snapshot.val();
-        badges.push({id:newBadgeId});
+    let badges = dbUserdata[uid].badges;
+    badges.push({id:newBadgeId});
 
-        database.ref("userdata/" + selectedUserUid+"/badges").set(badges);
-    })
+    database.ref("userdata/" + selectedUserUid+"/badges").set(badges);
 })
 
 setupUsers();
