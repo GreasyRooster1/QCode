@@ -9,11 +9,14 @@ let selectedUserUid = null;
 
 const addBadgeButton = document.querySelector(".add-badge-button");
 
+let dbUserdata={}
+
 function setupUsers(){
     database.ref('userdata').once('value').then((snapshot) => {
         const data = snapshot.val();
         clearUsers();
         console.log(data);
+        dbUserdata = data;
         for(const [uid, userData] of Object.entries(data)){
             createUserElement(uid,userData);
         }
@@ -70,14 +73,11 @@ function showUserDetails(e) {
 
     userDetailsUid.innerHTML = uid;
     selectedUserUid = uid;
+    let data = dbUserdata[uid];
 
-    database.ref("userdata/" + uid).once("value").then((snap) => {
-        let data = snap.val();
-
-        userDetailsName.innerHTML = data.username;
-        userDetailsPoints.innerHTML = data.points;
-        loadUserBadges(data.badges)
-    });
+    userDetailsName.innerHTML = data.username;
+    userDetailsPoints.innerHTML = data.points;
+    loadUserBadges(data.badges)
 }
 
 addBadgeButton.addEventListener("click",function (){
