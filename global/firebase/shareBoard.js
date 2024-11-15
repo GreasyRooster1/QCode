@@ -110,12 +110,14 @@ function getShareBoardFeaturedProjects(next=function(){}){
 
 function getShareBoardProjects(next=function(){}){
     let projects = [];
-    database.ref("sharedProjects/metadata").orderByChild("shareDate").once("value").then((snapshot) => {
+    database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
         let data = snapshot.val();
         for (let [pid, metadata] of Object.entries(data)) {
+            console.log(metadata.shareDate)
             projects.push(new ShareBoardProject(pid, metadata));
         }
-        projects.reverse()
+        projects.sort((a, b) => b.shareDate-a.shareDate);
+        console.log(projects);
         next(projects);
     })
 }
