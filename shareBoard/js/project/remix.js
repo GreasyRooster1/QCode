@@ -17,7 +17,11 @@ function initRemix(){
             timestamp:Date.now()/1000,
             original:shareBoardID,
         }).then(() => {
-            location.href = "../editor/editor.html"
+            location.href = getLinkToProject(cleanProjectId,getStoredUser().uid,0);
         })
     })
+}
+
+function getLinkToProject(projectId,uid,chapterNumber){
+    return "editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
 }
