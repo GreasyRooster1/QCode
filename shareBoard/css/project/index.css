@@ -130,31 +130,35 @@ body{
     border-radius:5px;
 }
 
-.section.code{
-}
 
-.code-editor-wrapper{
-    overflow: clip;
-}
 
 .code-editor{
-    height: 90%;
+    height: 100%;
     background: var(--code-editor-background);
 
     overflow-y:auto;
     overflow-x:hidden;
 }
 
+.remix-container{
+    background: var(--info-inset-background);
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 .remix-button{
+    margin:5px;
+    width:fit-content;
     background:var(--remix-button-color);
     border-radius:5px;
-    width:100%;
     height:auto;
     display:flex;
     align-items: center;
     justify-content: center;
-    flex: 1 1 auto;
 }
+
 .remix-button span{
     font-size: 2em;
     color:var(--remix-button-text-color);
