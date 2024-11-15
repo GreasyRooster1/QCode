@@ -3,6 +3,7 @@ function init(){
     initTabs();
     setupFrame();
     loadProject();
+    initRemix();
 }
 
 function removeNavArrow(){
