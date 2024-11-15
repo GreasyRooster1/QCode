@@ -12,6 +12,9 @@
     --author-block-background: #b6c3e6;
 
     --tab-bar-background: #c3c3c3;
+
+    --remix-button-color: #2078e8;
+    --remix-button-text-color: #e3e5e8;
 }
 .nav-shift-fix{
     height:var(--navbar-height);
@@ -127,19 +130,35 @@ body{
     border-radius:5px;
 }
 
+.section.code{
+}
 
 .code-editor-wrapper{
     overflow: clip;
 }
 
 .code-editor{
-    height: 100vh;
+    height: 90%;
     background: var(--code-editor-background);
 
     overflow-y:auto;
     overflow-x:hidden;
 }
 
+.remix-button{
+    background:var(--remix-button-color);
+    border-radius:5px;
+    width:100%;
+    height:auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+}
+.remix-button span{
+    font-size: 2em;
+    color:var(--remix-button-text-color);
+}
 /* the codemirror generated editor */
 
 .cm-editor{
