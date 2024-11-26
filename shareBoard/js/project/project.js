@@ -1,12 +1,14 @@
 let projectMetadata;
 let projectCode;
 
+let shareBoardId;
+
 let execFrame;
 let iWindow = null;
 
 function loadProject() {
     const urlParams = new URLSearchParams(window.location.search);
-    const shareBoardID = urlParams.get('shareboardid');
+    shareBoardID = urlParams.get('shareboardid');
     database.ref("sharedProjects/metadata/"+shareBoardID).once("value").then((snapshot) => {
         projectMetadata = snapshot.val();
         insertInfo()
