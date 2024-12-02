@@ -16,6 +16,8 @@
     --remix-button-color: #2078e8;
     --remix-button-text-color: #e3e5e8;
 
+    --original-title-border: #4b6ec8;
+
     --user-img-size:13vh;
 }
 .nav-shift-fix{
@@ -146,6 +148,12 @@ body{
     border-radius: 10px;
 }
 
+.original-block .title{
+    font-size: 1.25em;
+    border-bottom: 2px solid var(--original-title-border);
+    text-align: center;
+}
+
 .original-icon img{
     width:var(--user-img-size);
     height:var(--user-img-size);
@@ -153,7 +161,10 @@ body{
     overflow: clip;
 }
 
-
+.user-title{
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
 
 .code-editor{
