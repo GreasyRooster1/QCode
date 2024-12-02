@@ -33,6 +33,7 @@ function insertInfo(){
     let originalInfo = document.querySelector(".info-original");
     let originalImg = document.querySelector(".info-original .original-icon img");
     let originalUsername = document.querySelector(".info-original .original-username");
+    let originalTitle = document.querySelector(".info-original .original-block .title");
     let desc = document.querySelector(".info-desc");
 
     title.innerText = projectMetadata.name;
@@ -52,17 +53,18 @@ function insertInfo(){
     });
 
     if(projectMetadata.original!==undefined){
-        insertOriginalInfo(originalInfo,originalImg,originalUsername);
+        insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle);
     }
 }
 
-function insertOriginalInfo(originalInfo,originalImg,originalUsername){
+function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle){
     originalInfo.style.display="flex";
 
-    database.ref("sharedProjects/metadata/"+projectMetadata.original+"/author").once("value").then((snapshot) => {
+    database.ref("sharedProjects/metadata/"+projectMetadata.original).once("value").then((snapshot) => {
         let data = snapshot.val();
 
-        loadUserToHTML(originalUsername,originalImg,data);
+        loadUserToHTML(originalUsername,originalImg,data.author);
+        originalTitle.innerText=data.name;
     })
 
     originalInfo.firstElementChild.addEventListener("click",()=>{
