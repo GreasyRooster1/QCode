@@ -8,7 +8,7 @@ function initRemix(){
             return;
         }
         let cleanProjectId = name.toLowerCase().replaceAll("[^a-z0-9]","-");
-        database.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).once("value", (snap) => {
+        database.ref("userdata/"+getStoredUser().uid+"/projects").child(cleanProjectId).once("value", (snap) => {
             if(snap.exists()){
                 alert("Project already exists with that name!");
                 return;
