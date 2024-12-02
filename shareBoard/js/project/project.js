@@ -30,6 +30,9 @@ function insertInfo(){
     let dateCreated = document.querySelector(".info-date-created");
     let authorImg = document.querySelector(".info-author .author-icon img");
     let authorUsername = document.querySelector(".info-author .author-username");
+    let originalInfo = document.querySelector(".info-original");
+    let originalImg = document.querySelector(".info-original .original-icon img");
+    let originalUsername = document.querySelector(".info-original .original-username");
     let desc = document.querySelector(".info-desc");
 
     title.innerText = projectMetadata.name;
@@ -48,7 +51,13 @@ function insertInfo(){
         authorImg.setAttribute("src",snapshot.val());
     });
 
+    if(projectMetadata.original!==undefined){
+        insertOriginalInfo(originalInfo,originalImg,originalUsername);
+    }
+}
 
+function insertOriginalInfo(originalInfo,originalImg,originalUsername){
+    originalInfo.style.display="flex";
 }
 
 

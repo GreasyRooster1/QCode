@@ -132,7 +132,7 @@ body{
     padding:2px;
     margin: 1%;
     border-radius:5px;
-    display: flex;
+    display: none;  /*set to flex in js*/
     flex-direction: column;
     align-items: center;
 }
@@ -150,6 +150,7 @@ body{
     border-radius: 15px;
     overflow: clip;
 }
+
 
 
 
