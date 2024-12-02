@@ -101,7 +101,7 @@ addBadgeButton.addEventListener("click",function (){
 
     let newBadgeId = prompt("Please enter the id of the badge to add");
 
-    let badges = dbUserdata[uid].badges;
+    let badges = dbUserdata[selectedUserUid].badges;
     badges.push({id:newBadgeId});
 
     database.ref("userdata/" + selectedUserUid+"/badges").set(badges);
