@@ -15,6 +15,8 @@
 
     --remix-button-color: #2078e8;
     --remix-button-text-color: #e3e5e8;
+
+    --user-img-size:13vh;
 }
 .nav-shift-fix{
     height:var(--navbar-height);
@@ -121,8 +123,8 @@ body{
 }
 
 .author-icon img{
-    width:10vh;
-    height:10vh;
+    width:var(--user-img-size);
+    height:var(--user-img-size);
     border-radius: 15px;
     overflow: clip;
 }
@@ -145,8 +147,8 @@ body{
 }
 
 .original-icon img{
-    width:10vh;
-    height:10vh;
+    width:var(--user-img-size);
+    height:var(--user-img-size);
     border-radius: 15px;
     overflow: clip;
 }

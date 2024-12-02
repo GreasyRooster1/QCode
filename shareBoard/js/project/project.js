@@ -65,8 +65,8 @@ function insertOriginalInfo(originalInfo,originalImg,originalUsername){
         loadUserToHTML(originalUsername,originalImg,data);
     })
 
-    originalInfo.addEventListener("click",()=>{
-        window.location.href="shareBoard/project.html?shareboardid="+projectMetadata.original;
+    originalInfo.firstElementChild.addEventListener("click",()=>{
+        window.location.href="project.html?shareboardid="+projectMetadata.original;
     })
 
 }
