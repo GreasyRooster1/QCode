@@ -35,6 +35,6 @@
 }
 
 .badge-img{
-    height: 100%;
-    aspect-ratio: 1/1;
+    width:256px;
+    height:256px;
 }

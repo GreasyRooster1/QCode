@@ -29,6 +29,7 @@
 
 .user-details .name{
     font-size: 1.4em;
+    display: none;
 }
 
 .add-badge-button{
@@ -44,4 +45,12 @@
 
 .user-details-badges-wrapper{
     flex-grow: 1;
+}
+
+.users-load-button{
+    font-size: 1.4em;
+    border-radius: 5px;
+    background: var(--load-button-background);
+    margin:2px;
+    padding: 1px;
 }

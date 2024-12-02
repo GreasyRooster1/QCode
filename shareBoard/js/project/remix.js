@@ -8,16 +8,22 @@ function initRemix(){
             return;
         }
         let cleanProjectId = name.toLowerCase().replaceAll("[^a-z0-9]","-");
-        database.ref("userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId).set({
-            code:projectCode,
-            lessonId:"none",
-            name:name,
-            currentChapter:0,
-            currentStep:0,
-            timestamp:Date.now()/1000,
-            original:shareBoardID,
-        }).then(() => {
-            location.href = getLinkToProject(cleanProjectId,getStoredUser().uid,0);
+        database.ref("userdata/"+getStoredUser().uid+"/projects").child(cleanProjectId).once("value", (snap) => {
+            if(snap.exists()){
+                alert("Project already exists with that name!");
+                return;
+            }
+            database.ref("userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId).set({
+                code:projectCode,
+                lessonId:"none",
+                name:name,
+                currentChapter:0,
+                currentStep:0,
+                timestamp:Date.now()/1000,
+                original:shareBoardID,
+            }).then(() => {
+                location.href = getLinkToProject(cleanProjectId,getStoredUser().uid,0);
+            })
         })
     })
 }

@@ -30,6 +30,10 @@ function insertInfo(){
     let dateCreated = document.querySelector(".info-date-created");
     let authorImg = document.querySelector(".info-author .author-icon img");
     let authorUsername = document.querySelector(".info-author .author-username");
+    let originalInfo = document.querySelector(".info-original");
+    let originalImg = document.querySelector(".info-original .original-icon img");
+    let originalUsername = document.querySelector(".info-original .original-username");
+    let originalTitle = document.querySelector(".info-original .original-block .title");
     let desc = document.querySelector(".info-desc");
 
     title.innerText = projectMetadata.name;
@@ -48,13 +52,40 @@ function insertInfo(){
         authorImg.setAttribute("src",snapshot.val());
     });
 
+    if(projectMetadata.original!==undefined){
+        insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle);
+    }
+}
 
+function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle){
+    originalInfo.style.display="flex";
+
+    database.ref("sharedProjects/metadata/"+projectMetadata.original).once("value").then((snapshot) => {
+        let data = snapshot.val();
+
+        loadUserToHTML(originalUsername,originalImg,data.author);
+        originalTitle.innerText=data.name;
+    })
+
+    originalInfo.lastElementChild.addEventListener("click",()=>{
+        window.location.href="project.html?shareboardid="+projectMetadata.original;
+    })
+
+}
+
+function loadUserToHTML(usernameEl,imgEl,uid){
+    database.ref("userdata/"+uid+"/username").once("value").then((snapshot) => {
+        usernameEl.innerText = snapshot.val();
+    });
+    database.ref("userdata/"+uid+"/profileIcon").once("value").then((snapshot) => {
+        imgEl.setAttribute("src",snapshot.val());
+    });
 }
 
 
 
 function getDateString(unixStamp){
-    if(unixStamp==0){
+    if(unixStamp===0){
         return "Date not available"
     }
     let date = new Date(unixStamp * 1000);
