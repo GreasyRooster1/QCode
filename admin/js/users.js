@@ -7,6 +7,8 @@ const userDetailsPoints = document.querySelector(".user-details .points");
 const userDetailsSpentPoints = document.querySelector(".user-details .spent-points");
 const userDetailsProjects = document.querySelector(".user-details .projects");
 
+const usersLoadButton = document.querySelector(".users-load-button");
+
 let selectedUserUid = null;
 
 const addBadgeButton = document.querySelector(".add-badge-button");
@@ -14,6 +16,14 @@ const addBadgeButton = document.querySelector(".add-badge-button");
 let dbUserdata={}
 
 function setupUsers(){
+    usersLoadButton.addEventListener("click", ()=>{
+        userDetailsName.style.display = "block";
+        usersLoadButton.style.display = "none";
+        loadUsers();
+    })
+}
+
+function loadUsers(){
     database.ref('userdata').once('value').then((snapshot) => {
         const data = snapshot.val();
         clearUsers();
