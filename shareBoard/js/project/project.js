@@ -58,12 +58,32 @@ function insertInfo(){
 
 function insertOriginalInfo(originalInfo,originalImg,originalUsername){
     originalInfo.style.display="flex";
+
+    database.ref("sharedProjects/metadata/"+projectMetadata.original+"/author").once("value").then((snapshot) => {
+        let data = snapshot.val();
+
+        loadUserToHTML(originalUsername,originalImg,data);
+    })
+
+    originalInfo.addEventListener("click",()=>{
+        window.location.href="shareBoard/project.html?shareboardid="+projectMetadata.original;
+    })
+
+}
+
+function loadUserToHTML(usernameEl,imgEl,uid){
+    database.ref("userdata/"+uid+"/username").once("value").then((snapshot) => {
+        usernameEl.innerText = snapshot.val();
+    });
+    database.ref("userdata/"+uid+"/profileIcon").once("value").then((snapshot) => {
+        imgEl.setAttribute("src",snapshot.val());
+    });
 }
 
 
 
 function getDateString(unixStamp){
-    if(unixStamp==0){
+    if(unixStamp===0){
         return "Date not available"
     }
     let date = new Date(unixStamp * 1000);
