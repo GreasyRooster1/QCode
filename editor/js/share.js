@@ -27,14 +27,16 @@ sharePopupButton.addEventListener('click', (e) => {
     }
     let sharedProjectId = getSharedProjectId(projectId,getStoredUser().uid);
 
-    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/timestamp").once("value").then(function (snap) {
+    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId).once("value").then(function (snap) {
+        let data = snap.val();
         //set metadata
         database.ref("sharedProjects/metadata/"+sharedProjectId).set({
             author:getStoredUser().uid,
             name:shareNameInput.value,
             shareDate:Date.now()/1000,
-            createdDate:snap.val(),
+            createdDate:data.timestamp,
             desc:desc,
+            original:data.original,
         }).then(()=> {
             //set projectData
             database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
