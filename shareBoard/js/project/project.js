@@ -67,7 +67,7 @@ function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTi
         originalTitle.innerText=data.name;
     })
 
-    originalInfo.firstElementChild.addEventListener("click",()=>{
+    originalInfo.lastElementChild.addEventListener("click",()=>{
         window.location.href="project.html?shareboardid="+projectMetadata.original;
     })
 
