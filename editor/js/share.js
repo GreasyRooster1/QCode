@@ -30,16 +30,22 @@ sharePopupButton.addEventListener('click', (e) => {
     let sharedProjectId = getSharedProjectId(projectId,getStoredUser().uid);
 
     if(isAlreadyShared){
-        database.ref("sharedProjects/metadata/"+sharedProjectId).set({
-            author:getStoredUser().uid,
-            name:shareNameInput.value,
-            shareDate:Date.now()/1000,
-            createdDate:data.timestamp,
-            desc:desc,
-            original:data.original,
-        }).then(()=> {
-            //set projectData
-            database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+        database.ref("sharedProjects/metadata/" + sharedProjectId).once("value").then(function (snap) {
+            let data = snap.val();
+            console.log(data);
+            database.ref("sharedProjects/metadata/" + sharedProjectId).set({
+                author: getStoredUser().uid,
+                name: shareNameInput.value,
+                shareDate: data.shareDate,
+                createdDate: data.createdDate,
+                updatedDate: Date.now() / 1000,
+                version: (data.version===undefined?0:data.version) + 1,
+                desc: desc,
+                original: data.original,
+            }).then(() => {
+                //set projectData
+                database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+            })
         })
         hidePopup();
         return;
@@ -53,6 +59,7 @@ sharePopupButton.addEventListener('click', (e) => {
             name:shareNameInput.value,
             shareDate:Date.now()/1000,
             createdDate:data.timestamp,
+            version:1,
             desc:desc,
             original:data.original,
         }).then(()=> {
@@ -67,8 +74,10 @@ function showPopup(){
     popupContainer.style.opacity = "1";
     popupContainer.style.pointerEvents = "auto";
     if(isAlreadyShared){
-        database.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)+"/name").once("value", (snap) => {
-            shareNameInput.value = snap.val();
+        database.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
+            let data= snap.val();
+            shareNameInput.value =data.name;
+            shareDescInput.value =data.desc;
         })
     }else {
         database.ref("userdata/" + getStoredUser().uid + "/projects/" + projectId + "/name").once("value").then(function (snap) {
