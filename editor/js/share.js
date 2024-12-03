@@ -6,6 +6,8 @@ const shareNameInput = document.querySelector('.share-popup-content .name-input'
 const shareDescInput = document.querySelector('.share-popup-content .desc-input');
 const previewIframe = document.getElementById('share-preview-frame');
 
+let isAlreadyShared = false;
+
 shareButton.addEventListener('click', (e) => {
     rawSave();
     showPopup();
@@ -48,6 +50,9 @@ sharePopupButton.addEventListener('click', (e) => {
 function showPopup(){
     popupContainer.style.opacity = "1";
     popupContainer.style.pointerEvents = "auto";
+    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/name").once("value").then(function (snap) {
+        shareNameInput.value = snap.val();
+    })
 }
 
 function hidePopup() {
@@ -67,6 +72,7 @@ function checkSharedStatus(){
         if(snap.exists()){
             console.log("project is shared!");
             shareButton.innerText = "Update";
+            isAlreadyShared = true;
         }
     })
 }
