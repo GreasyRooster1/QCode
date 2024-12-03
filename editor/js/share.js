@@ -29,6 +29,22 @@ sharePopupButton.addEventListener('click', (e) => {
     }
     let sharedProjectId = getSharedProjectId(projectId,getStoredUser().uid);
 
+    if(isAlreadyShared){
+        database.ref("sharedProjects/metadata/"+sharedProjectId).set({
+            author:getStoredUser().uid,
+            name:shareNameInput.value,
+            shareDate:Date.now()/1000,
+            createdDate:data.timestamp,
+            desc:desc,
+            original:data.original,
+        }).then(()=> {
+            //set projectData
+            database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+        })
+        hidePopup();
+        return;
+    }
+
     database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId).once("value").then(function (snap) {
         let data = snap.val();
         //set metadata
@@ -50,9 +66,15 @@ sharePopupButton.addEventListener('click', (e) => {
 function showPopup(){
     popupContainer.style.opacity = "1";
     popupContainer.style.pointerEvents = "auto";
-    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/name").once("value").then(function (snap) {
-        shareNameInput.value = snap.val();
-    })
+    if(isAlreadyShared){
+        database.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)+"/name").once("value", (snap) => {
+            shareNameInput.value = snap.val();
+        })
+    }else {
+        database.ref("userdata/" + getStoredUser().uid + "/projects/" + projectId + "/name").once("value").then(function (snap) {
+            shareNameInput.value = snap.val();
+        })
+    }
 }
 
 function hidePopup() {
