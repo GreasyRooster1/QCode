@@ -33,7 +33,8 @@ sharePopupButton.addEventListener('click', (e) => {
         database.ref("sharedProjects/metadata/" + sharedProjectId).once("value").then(function (snap) {
             let data = snap.val();
             console.log(data);
-            database.ref("sharedProjects/metadata/" + sharedProjectId).set({
+
+            let setData = {
                 author: getStoredUser().uid,
                 name: shareNameInput.value,
                 shareDate: data.shareDate,
@@ -42,7 +43,18 @@ sharePopupButton.addEventListener('click', (e) => {
                 version: (data.version===undefined?0:data.version) + 1,
                 desc: desc,
                 original: data.original,
-            }).then(() => {
+            }
+
+            if(data.likedBy!==undefined){
+                setData.likedBy = data.likedBy;
+            }
+            if(data.staredBy!==undefined){
+                setData.staredBy = data.staredBy;
+            }
+
+            database.ref("sharedProjects/metadata/" + sharedProjectId).set(
+                setData
+            ).then(() => {
                 //set projectData
                 database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
             })
