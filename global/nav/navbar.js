@@ -5,8 +5,10 @@ const userLink = document.querySelector(".username-link");
 const accountOptions = document.querySelector(".account-options");
 let innerContent;
 const logoutButton = document.querySelector(".logout-button");
+const changeProfileButton = document.querySelector(".change-profile-button");
 const homeButton = document.querySelector(".home-link")
 const pointsDisplayNum = document.querySelector(".points-display-num");
+let navDropdownItemCount = 2;
 
 let navbarVisible = true;
 let accountDropdownActive = false;
@@ -32,9 +34,10 @@ function initUsername(){
 }
 
 function initAdmin(){
-    if(getStoredUserPermissions().hasAdminConsoleAccess){
+    if(!getStoredUserPermissions().hasAdminConsoleAccess){
         return;
     }
+    navDropdownItemCount++;
     let option = document.createElement("div")
     option.classList.add("option");
     option.classList.add("admin-option");
@@ -75,7 +78,7 @@ userLink.addEventListener("click", function (e){
 
     accountDropdownActive = !accountDropdownActive;
     if(accountDropdownActive) {
-        accountOptions.style.height = "42px";
+        accountOptions.style.height = (navDropdownItemCount*21)+"px";
         userLink.style.borderRadius = "0";
     }else{
         accountOptions.style.height = "0";
@@ -93,6 +96,10 @@ logoutButton.addEventListener("click", function (e){
     }
 })
 
+changeProfileButton.addEventListener("click",()=>{
+    promptProfileIconChange()
+});
+
 homeButton.addEventListener("click",function () {
    window.location.href = "../";
 });
@@ -101,6 +108,16 @@ function setVisibilityForInner(vis){
     innerContent.forEach((item) => {
         item.style.visibility = vis;
     })
+}
+
+function promptProfileIconChange(){
+    let imageLink = prompt("Enter link to image");
+    if(isValidUrl(imageLink)){
+        database.ref("userdata/"+getStoredUser().uid+"/profileIcon").set(imageLink);
+        profileDisplayImg.setAttribute("src", imageLink);
+    }else{
+        console.log("not a url");
+    }
 }
 
 initNavbar();
