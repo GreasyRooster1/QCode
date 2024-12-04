@@ -32,7 +32,7 @@ function initUsername(){
 }
 
 function initAdmin(){
-    if(getStoredUserPermissions().hasAdminConsoleAccess){
+    if(!getStoredUserPermissions().hasAdminConsoleAccess){
         return;
     }
     let option = document.createElement("div")
