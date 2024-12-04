@@ -30,7 +30,7 @@ function insertInfo(){
     let dateShared = document.querySelector(".info-date-shared");
     let dateCreated = document.querySelector(".info-date-created");
     let dateUpdated = document.querySelector(".info-date-updated");
-    let version = document.querySelector(".version");
+    let version = document.querySelector(".info-version");
 
     let authorImg = document.querySelector(".info-author .author-icon img");
     let authorUsername = document.querySelector(".info-author .author-username");
@@ -52,7 +52,11 @@ function insertInfo(){
     dateCreated.innerText = "Date Created: "+getDateString(projectMetadata.createdDate);
     dateUpdated.innerText = "Date Updated: "+getDateString(projectMetadata.updatedDate);
 
-    version.innerText = "Version: "+projectMetadata.version===undefined?1:projectMetadata.version;
+    if(projectMetadata.version===undefined){
+        version.innerText = "Version: 1";
+    }else{
+        version.innerText = "Version: "+ projectMetadata.version;
+    }
 
     database.ref("userdata/"+projectMetadata.author+"/username").once("value").then((snapshot) => {
         authorUsername.innerText = snapshot.val();
