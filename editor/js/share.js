@@ -42,7 +42,6 @@ sharePopupButton.addEventListener('click', (e) => {
                 updatedDate: Date.now() / 1000,
                 version: (data.version===undefined?0:data.version) + 1,
                 desc: desc,
-                original: data.original,
             }
 
             if(data.likedBy!==undefined){
@@ -50,6 +49,9 @@ sharePopupButton.addEventListener('click', (e) => {
             }
             if(data.staredBy!==undefined){
                 setData.staredBy = data.staredBy;
+            }
+            if(data.original!==undefined){
+                setData.original = data.original;
             }
 
             database.ref("sharedProjects/metadata/" + sharedProjectId).set(
