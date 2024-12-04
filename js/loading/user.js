@@ -18,16 +18,6 @@ function loadProfileIcon(){
     })
 }
 
-function promptProfileIconChange(){
-    let imageLink = prompt("Enter link to profile");
-    if(isValidUrl(imageLink)){
-        database.ref("userdata/"+getStoredUser().uid+"/profileIcon").set(imageLink);
-        profileDisplayImg.setAttribute("src", imageLink);
-    }else{
-        console.log("not a url");
-    }
-}
-
 const isValidUrl = urlString => {
     let inputElement = document.createElement('input');
     inputElement.type = 'url';
@@ -38,7 +28,6 @@ const isValidUrl = urlString => {
 
 profileDisplayImg.addEventListener("click",function (){
    promptProfileIconChange();
-
 });
 
 loadUserDataToDisplay();
