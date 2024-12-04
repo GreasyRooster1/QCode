@@ -26,14 +26,20 @@ function loadProject() {
 
 function insertInfo(){
     let title = document.querySelector(".info-title");
+
     let dateShared = document.querySelector(".info-date-shared");
     let dateCreated = document.querySelector(".info-date-created");
+    let dateUpdated = document.querySelector(".info-date-updated");
+    let version = document.querySelector(".version");
+
     let authorImg = document.querySelector(".info-author .author-icon img");
     let authorUsername = document.querySelector(".info-author .author-username");
+
     let originalInfo = document.querySelector(".info-original");
     let originalImg = document.querySelector(".info-original .original-icon img");
     let originalUsername = document.querySelector(".info-original .original-username");
     let originalTitle = document.querySelector(".info-original .original-block .title");
+
     let desc = document.querySelector(".info-desc");
 
     title.innerText = projectMetadata.name;
@@ -44,6 +50,9 @@ function insertInfo(){
     }
     dateShared.innerText = "Date Shared: "+getDateString(projectMetadata.shareDate);
     dateCreated.innerText = "Date Created: "+getDateString(projectMetadata.createdDate);
+    dateUpdated.innerText = "Date Updated: "+getDateString(projectMetadata.updatedDate);
+
+    version.innerText = "Version: "+projectMetadata.version===undefined?1:projectMetadata.version;
 
     database.ref("userdata/"+projectMetadata.author+"/username").once("value").then((snapshot) => {
         authorUsername.innerText = snapshot.val();
@@ -85,7 +94,7 @@ function loadUserToHTML(usernameEl,imgEl,uid){
 
 
 function getDateString(unixStamp){
-    if(unixStamp===0){
+    if(unixStamp===0||unixStamp===undefined||unixStamp===null){
         return "Date not available"
     }
     let date = new Date(unixStamp * 1000);
