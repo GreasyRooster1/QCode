@@ -8,7 +8,9 @@ let iWindow = null;
 let runningCode = false;
 
 runButton.addEventListener("click", function() {
-    saveCode()
+    if(!isLessonCreator){
+        saveCode()
+    }
     resetAllOutputs()
     runningCode = true;
     runCode();
