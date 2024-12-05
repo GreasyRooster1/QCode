@@ -42,13 +42,11 @@ document.addEventListener('contextmenu', event => {
     event.preventDefault();
 });
 
+
+
 function runJs(js){
     //clear dangerous objects and run code
-    eval(`
-        XMLHttpRequest=null;
-        XMLHttpRequestUpload=null;
-        runJs=null;
-    `+js);
+    eval(js);
 
     let eventFunctions = [];
 
