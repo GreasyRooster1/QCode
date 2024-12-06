@@ -1,4 +1,5 @@
 function loadLessons(){
+    setupLessonChartLink();
     let lessonsRef = database.ref('lessons');
     lessonsRef.on('value', (snapshot) => {
         const data = snapshot.val();
@@ -95,4 +96,10 @@ function startInternalLesson(ref,lessonId,lessonData){
 
 function clearLessons(){
     lessonsDisplay.innerHTML = "";
+}
+
+function setupLessonChartLink(){
+    document.querySelector(".lessons-chart-link").addEventListener("click", function(){
+        window.location.href = "lessons/lessons.html";
+    })
 }
