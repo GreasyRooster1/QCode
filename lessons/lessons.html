@@ -9,7 +9,9 @@
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-    <style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js" integrity="sha512-d6sc8kbZEtA2LwB9m/ck0FhvyUwVfdmvTeyJRprmj7Wg9wRFtHDIpr6qk4g/y3Ix3O9I6KHIv6SGu9f7RaP1Gw==" crossorigin="anonymous" referrerpolicy="no-referrer" async="async"></script>
+
+  <style>
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
     </style>
 
@@ -26,10 +28,15 @@
     <link href="../global/global.css" rel="stylesheet">
 
     <script src="js/index.js" defer></script>
+    <script src="js/chart.js" defer></script>
 
     <link href="css/index.css" rel="stylesheet">
 </head>
 <body>
   <brand-nav></brand-nav>
+  <div class="nav-shift-fix"></div>
+  <div class="canvas-container" id="canvas-parent">
+
+  </div>
 </body>
 </html>
