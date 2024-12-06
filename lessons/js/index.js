@@ -1,0 +1,5 @@
+function init(){
+    removeNavArrow()
+}
+
+init();
