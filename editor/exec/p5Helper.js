@@ -15,9 +15,13 @@ const acceptedFunctions = [
     "touchEnded",
 ]
 
+
 function startP5(drawArg,setupArg,otherFunctions) {
     window.setup = function(){
         createCanvas(500,500);
+        createCanvas = function (){
+            console.error("createCanvas is disabled");
+        }
         document.getElementById("defaultCanvas0").style.width = "100vmin";
         document.getElementById("defaultCanvas0").style.height = "100vmin";
         setupArg()
@@ -34,7 +38,7 @@ function startP5(drawArg,setupArg,otherFunctions) {
     new p5();
 }
 
-function canvasTest(){
+function __canvasTest(){
     background(0);
     stroke(255);
 

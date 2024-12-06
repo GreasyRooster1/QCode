@@ -45,7 +45,11 @@ function initAdmin(){
     accountOptions.appendChild(option);
 
     option.addEventListener("click",function () {
-        window.location.replace("admin/adminConsole.html");
+        if(window.location.href.includes("index.html")||window.location.href.endsWith("/")) {
+            window.location.href = "admin/adminConsole.html";
+        }else{
+            window.location.href = "../admin/adminConsole.html";
+        }
     });
 }
 
@@ -90,7 +94,7 @@ logoutButton.addEventListener("click", function (e){
     logOutUserDefault();
     clearStoredUser();
     if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-        window.location.replace("login/login.html");
+        window.location.href = "login/login.html";
     }else {
         window.location.href = "../login/login.html";
     }
