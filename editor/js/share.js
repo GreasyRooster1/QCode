@@ -33,17 +33,20 @@ sharePopupButton.addEventListener('click', (e) => {
         database.ref("sharedProjects/metadata/" + sharedProjectId).once("value").then(function (snap) {
             let data = snap.val();
             console.log(data);
+            let now = Date.now() / 1000
 
             let setData = {
                 author: getStoredUser().uid,
                 name: shareNameInput.value,
-                shareDate: data.shareDate,
-                createdDate: data.createdDate,
-                updatedDate: Date.now() / 1000,
+                shareDate: data.shareDate===undefined?now:data.shareDate,
+                createdDate: data.createdDate===undefined?now:data.createdDate,
+                updatedDate: now,
                 version: (data.version===undefined?0:data.version) + 1,
-                desc: desc,
             }
 
+            if(desc!==undefined){
+                setData.desc = desc;
+            }
             if(data.likedBy!==undefined){
                 setData.likedBy = data.likedBy;
             }
