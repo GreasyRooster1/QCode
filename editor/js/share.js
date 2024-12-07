@@ -35,31 +35,20 @@ sharePopupButton.addEventListener('click', (e) => {
             console.log(data);
             let now = Date.now() / 1000
 
-            let setData = {
-                author: getStoredUser().uid,
-                name: shareNameInput.value,
-                shareDate: data.shareDate===undefined?now:data.shareDate,
-                createdDate: data.createdDate===undefined?now:data.createdDate,
-                updatedDate: now,
-                version: (data.version===undefined?0:data.version) + 1,
-            }
-
-            if(desc!==undefined){
-                setData.desc = desc;
-            }
-            if(data.likedBy!==undefined){
-                setData.likedBy = data.likedBy;
-            }
-            if(data.staredBy!==undefined){
-                setData.staredBy = data.staredBy;
-            }
-            if(data.original!==undefined){
-                setData.original = data.original;
-            }
-
-            database.ref("sharedProjects/metadata/" + sharedProjectId).set(
-                setData
-            ).then(() => {
+            database.ref("sharedProjects/metadata/" + sharedProjectId).set(cleanData(
+                {
+                    author: getStoredUser().uid,
+                    name: shareNameInput.value,
+                    shareDate: data.shareDate,
+                    createdDate: data.createdDate,
+                    updatedDate: now,
+                    version: (data.version === undefined ? 0 : data.version) + 1,
+                    desc: desc,
+                    likedBy: data.likedBy,
+                    startedBy: data.staredBy,
+                    original: data.original,
+                }
+            )).then(() => {
                 //set projectData
                 database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
             })
@@ -71,7 +60,7 @@ sharePopupButton.addEventListener('click', (e) => {
     database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId).once("value").then(function (snap) {
         let data = snap.val();
         //set metadata
-        database.ref("sharedProjects/metadata/"+sharedProjectId).set({
+        database.ref("sharedProjects/metadata/"+sharedProjectId).set(cleanData({
             author:getStoredUser().uid,
             name:shareNameInput.value,
             shareDate:Date.now()/1000,
@@ -79,13 +68,17 @@ sharePopupButton.addEventListener('click', (e) => {
             version:1,
             desc:desc,
             original:data.original,
-        }).then(()=> {
+        })).then(()=> {
             //set projectData
             database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
         })
     })
     hidePopup();
 })
+
+function cleanData(data){
+    return JSON.parse( JSON.stringify(data ) )
+}
 
 function showPopup(){
     popupContainer.style.opacity = "1";
