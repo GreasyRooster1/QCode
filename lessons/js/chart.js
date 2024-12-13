@@ -3,7 +3,8 @@
 
 let darkMode = false;
 let camera = new Camera(0,0);
-let lessons = []
+let lessons = [];
+let lessonsIndex = [];
 
 function setup(){
     const root = document.documentElement;
@@ -12,6 +13,7 @@ function setup(){
     let height = window.innerHeight - navHeight;
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
     setupColors();
+    loadLessons();
 }
 
 function draw(){

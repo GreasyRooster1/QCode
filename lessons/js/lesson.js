@@ -1,7 +1,7 @@
 class Lesson{
-    constructor(x,y,children){
-        this.x = x;
-        this.y = y;
+    constructor(children){
+        this.x = 0;
+        this.y = 0;
         this.children = children;
     }
     update(){
@@ -13,5 +13,9 @@ class Lesson{
 }
 
 function loadLessons(){
-
+    database.ref("lessonChart").once("value").then((snapshot) => {
+        for(const [id, data] of Object.entries(snapshot.val())){
+            lessonsIndex[id] = new Lesson(data.children);
+        }
+    })
 }
