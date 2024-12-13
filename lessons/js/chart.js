@@ -25,7 +25,7 @@ function draw(){
 }
 
 function drawLessons(){
-    for(let lesson of lessons){
+    for(let lesson of lessonsIndex){
         lesson.update();
     }
 }

@@ -17,7 +17,6 @@ function loadLessons(){
     database.ref("lessonChart").once("value").then((snapshot) => {
         for(const [id, data] of Object.entries(snapshot.val())){
             lessonsIndex[id] = new Lesson(data.children);
-            lessons.push(lessonsIndex[id]);
             if(data.root===true){
                 root = id;
             }
@@ -26,6 +25,8 @@ function loadLessons(){
     return root;
 }
 
-function solvePositions(){
+function solvePosition(id,isRoot){
+    for (let child in lessonsIndex[id].children){
 
+    }
 }
