@@ -3,6 +3,7 @@
 
 let darkMode = false;
 let camera = new Camera(0,0);
+let lessons = []
 
 function setup(){
     const root = document.documentElement;
