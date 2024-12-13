@@ -1,8 +1,8 @@
 class Lesson{
-    constructor(x,y,parent){
+    constructor(x,y,children){
         this.x = x;
         this.y = y;
-        this.parent = parent;
+        this.children = children;
     }
     update(){
         this.draw()
