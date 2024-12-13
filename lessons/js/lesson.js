@@ -12,7 +12,7 @@ class Lesson{
     }
 }
 
-function loadLessons(){
+function loadLessons(next){
     let root;
     database.ref("lessonChart").once("value").then((snapshot) => {
         for(const [id, data] of Object.entries(snapshot.val())){
@@ -21,12 +21,20 @@ function loadLessons(){
                 root = id;
             }
         }
+    }).then(()=>{
+        next(root)
     })
-    return root;
 }
 
-function solvePosition(id,isRoot){
-    for (let child in lessonsIndex[id].children){
-
+function solvePosition(id){
+    let current = lessonsIndex[id];
+    let count = 0;
+    for (let childId in current.children){
+        let child = lessonsIndex[childId];
+        if(count===0){
+            child.x = current.x;
+            child.y = current.y+100;
+        }
+        count++;
     }
 }
