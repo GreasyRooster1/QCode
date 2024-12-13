@@ -13,23 +13,23 @@ class Lesson{
 }
 
 function loadLessons(next){
-    let root;
+    let rootLesson;
     database.ref("lessonChart").once("value").then((snapshot) => {
         for(const [id, data] of Object.entries(snapshot.val())){
             lessonsIndex[id] = new Lesson(data.children);
             if(data.root===true){
-                root = id;
+                rootLesson = id;
             }
         }
     }).then(()=>{
-        next(root)
+        next(rootLesson)
     })
 }
 
 function solvePosition(id){
     let current = lessonsIndex[id];
     let count = 0;
-    for (let childId in current.children){
+    for (let childId of current.children){
         let child = lessonsIndex[childId];
         if(count===0){
             child.x = current.x;
