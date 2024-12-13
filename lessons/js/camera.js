@@ -9,4 +9,11 @@ class Camera{
         translate(this.x,this.y);
         scale(this.zoom)
     }
+
+    move(){
+        if(mouseIsPressed){
+            this.x+=(mouseX-pmouseX)*this.zoom;
+            this.y+=(mouseY-pmouseY)*this.zoom;
+        }
+    }
 }

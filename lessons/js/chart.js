@@ -14,6 +14,7 @@ function setup(){
 }
 
 function draw(){
+    camera.move();
     camera.apply();
     drawBackground();
 }
@@ -22,11 +23,13 @@ function drawBackground(){
     let spacing = 30;
     background(currentColors.background)
 
-    for(let i=0;i<width;i+=spacing){
-        for(let j=0;j<height;j+=spacing){
+    for(let i=0;i<width*camera.zoom;i+=spacing){
+        for(let j=0;j<height*camera.zoom;j+=spacing){
             noStroke();
             fill(127);
-            ellipse(i,j,3,3);
+            let x = i-floor(camera.x/spacing)*spacing;
+            let y = j-floor(camera.y/spacing)*spacing;
+            ellipse(x,y,3,3);
         }
     }
 }
