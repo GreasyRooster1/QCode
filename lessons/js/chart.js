@@ -1,6 +1,7 @@
 //yes im using p5 while teaching it at the same time
 //no i dont want to know how this can be done better
 
+let darkMode = false;
 let camera = new Camera(0,0);
 
 function setup(){
@@ -22,7 +23,11 @@ function drawBackground(){
         for(let j=0;j<height;j+=spacing){
             noStroke();
             fill(127);
-            ellipse(i,j,5,5);
+            ellipse(i,j,3,3);
         }
     }
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
