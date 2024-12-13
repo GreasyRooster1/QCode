@@ -28,7 +28,7 @@ function draw(){
 }
 
 function drawLessons(){
-    for(let lesson of lessonsIndex){
+    for(let [id,lesson] of Object.entries(lessonsIndex)){
         lesson.update();
     }
 }
