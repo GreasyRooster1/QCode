@@ -9,6 +9,9 @@ class Lesson{
     }
     draw(){
         rect(this.x,this.y,100,100);
+        for(let childId of this.children){
+            let child = lessonsIndex[childId]
+        }
     }
 }
 
@@ -31,10 +34,14 @@ function solvePosition(id){
     let count = 0;
     for (let childId of current.children){
         let child = lessonsIndex[childId];
+        if(child===undefined){
+            continue;
+        }
         if(count===0){
             child.x = current.x;
-            child.y = current.y+100;
+            child.y = current.y+200;
         }
+        solvePosition(childId)
         count++;
     }
 }
