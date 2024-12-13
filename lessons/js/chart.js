@@ -20,6 +20,13 @@ function draw(){
     camera.move();
     camera.apply();
     drawBackground();
+    drawLessons();
+}
+
+function drawLessons(){
+    for(let lesson of lessons){
+        lesson.update();
+    }
 }
 
 function drawBackground(){
