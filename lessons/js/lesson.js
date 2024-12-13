@@ -2,15 +2,20 @@ class Lesson{
     constructor(children){
         this.x = 0;
         this.y = 0;
+        this.w = 100;
+        this.h = 100;
         this.children = children;
     }
     update(){
         this.draw()
     }
     draw(){
-        rect(this.x,this.y,100,100);
+        noStroke();
+        rect(this.x,this.y,this.w,this.h);
         for(let childId of this.children){
             let child = lessonsIndex[childId]
+            stroke(0);
+            line(this.x+this.w/2,this.y+this.h,child.x+child.w/2,child.y)
         }
     }
 }
