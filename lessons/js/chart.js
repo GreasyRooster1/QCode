@@ -32,9 +32,10 @@ function drawLessons(){
 function drawBackground(){
     let spacing = 30;
     background(currentColors.background)
-
-    for(let i=0;i<width*camera.zoom;i+=spacing){
-        for(let j=0;j<height*camera.zoom;j+=spacing){
+    let w= width/2*camera.zoom;
+    let h= height/2*camera.zoom;
+    for(let i=-w;i<w;i+=spacing){
+        for(let j=-h;j<h;j+=spacing){
             noStroke();
             fill(127);
             let x = i-floor(camera.x/spacing)*spacing;
