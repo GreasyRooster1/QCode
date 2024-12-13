@@ -10,6 +10,7 @@ function setup(){
     const navHeight = styles.getPropertyValue("--navbar-height").replace("px","");
     let height = window.innerHeight - navHeight;
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
+    setupColors();
 }
 
 function draw(){
@@ -19,6 +20,8 @@ function draw(){
 
 function drawBackground(){
     let spacing = 30;
+    background(currentColors.background)
+
     for(let i=0;i<width;i+=spacing){
         for(let j=0;j<height;j+=spacing){
             noStroke();

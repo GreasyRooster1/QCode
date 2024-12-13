@@ -1,12 +1,5 @@
 let currentColors = {}
-let colors = {
-    light:{
-      background:0xffffff
-    },
-    dark:{
-        background:0x000000
-    }
-}
+let colors;
 
 function swapColors(){
     darkMode = !darkMode;
@@ -16,4 +9,16 @@ function swapColors(){
     }else{
         currentColors = colors.light
     }
+}
+
+function setupColors(){
+    colors = {
+        light:{
+            background:color("#ffffff"),
+        },
+        dark:{
+            background:color("#000000"),
+        }
+    }
+    currentColors = colors.light;
 }
