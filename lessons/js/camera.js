@@ -6,7 +6,7 @@ class Camera{
     }
 
     apply(){
-        translate(this.x,this.y);
+        translate(this.x+width/2,this.y+height/2);
         scale(this.zoom)
     }
 
