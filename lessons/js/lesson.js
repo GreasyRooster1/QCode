@@ -13,12 +13,17 @@ class Lesson{
 }
 
 function loadLessons(){
+    let root;
     database.ref("lessonChart").once("value").then((snapshot) => {
         for(const [id, data] of Object.entries(snapshot.val())){
             lessonsIndex[id] = new Lesson(data.children);
             lessons.push(lessonsIndex[id]);
+            if(data.root===true){
+                root = id;
+            }
         }
     })
+    return root;
 }
 
 function solvePositions(){
