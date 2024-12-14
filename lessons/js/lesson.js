@@ -115,7 +115,7 @@ function solvePosition(id){
         }else{
             child.y = current.y+sideYShift;
             let amt = Math.ceil(count/2);
-            if(count%2===0){
+            if((count+1)%2===0){
                 child.x = current.x+xMargin*amt;
             }else{
                 child.x = current.x-xMargin*amt;
