@@ -26,7 +26,11 @@ class Lesson{
         rect(this.x,this.y,this.w,this.h,10);
     }
     drawWithData(){
-        image(this.image, this.x, this.y, this.w, this.h);
+        image(this.image, this.x+10, this.y+10, 180, 180);
+        noFill();
+        strokeWeight(10);
+        stroke(255)
+        rect(this.x+10, this.y+10, 180, 180,10)
     }
     drawLines(){
         for(let childId of this.children){
