@@ -5,8 +5,8 @@ class Lesson{
         this.w = 200;
         this.h = 250;
         this.children = children;
-        this.metadata=undefined;
         this.image = null;
+        this.metadata = [];
     }
     update(){
         this.draw()
@@ -14,7 +14,7 @@ class Lesson{
     draw(){
         this.drawBody()
         this.drawLines()
-        if(this.metadata!==undefined){
+        if(this.image!==null){
             this.drawWithData()
         }
     }
@@ -40,10 +40,8 @@ class Lesson{
         }
     }
 
-    loadMetadata(metadata){
-        this.metadata = metadata;
-        this.image = loadImage(metadata.thumb);
-        this.image.crossOrigin = "";
+    loadImage(img){
+        this.image = loadImage("https://cors-anywhere.herokuapp.com/"+img);
     }
 }
 
@@ -63,10 +61,17 @@ function loadLessons(next){
 }
 
 function loadLessonsMetadata(){
+    let dataPoints = ["thumb","name"]
     for(const [id, lesson] of Object.entries(lessonsIndex)){
-        database.ref("lessons/"+id).once("value").then((snapshot) => {
-            lesson.loadMetadata(snapshot.val());
-        });
+        for(let dp of dataPoints) {
+            database.ref("lessons/" + id+"/"+dp).once("value").then((snapshot) => {
+                lesson.metadata[dp] = snapshot.val();
+                console.log(lesson.metadata);
+                if(dp==="thumb"){
+                    lesson.loadImage(snapshot.val())
+                }
+            });
+        }
     }
 }
 
