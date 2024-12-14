@@ -57,7 +57,9 @@ class Lesson{
     }
 
     loadImage(img){
-        this.image = loadImage("https://cors-anywhere.herokuapp.com/"+img);
+        toDataURL(img,(data)=>{
+            this.image = loadImage(data);
+        })
     }
 }
 
