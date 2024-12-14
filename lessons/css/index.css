@@ -1,3 +1,8 @@
+:root {
+    --ui-tray-background:#fff;
+    --ui-tray-border: #9f9f9f;
+}
+
 body{
     margin:0;
     overflow: hidden;
@@ -8,6 +13,14 @@ body{
 }
 
 .ui-tray{
+    padding-right:5px;
+    padding-top:3px;
+    padding-left:3px;
     position: fixed;
     bottom: 0;
+    background:var(--ui-tray-background);
+    border: 1px solid var(--ui-tray-border);
+    border-bottom:none;
+    border-left:none;
+    border-top-right-radius: 5px;
 }
