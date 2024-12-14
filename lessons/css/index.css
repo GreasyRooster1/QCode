@@ -1,6 +1,7 @@
 :root {
     --ui-tray-background:#fff;
     --ui-tray-border: #9f9f9f;
+    --ui-tray-icons: #474747;
 }
 
 body{
@@ -26,5 +27,6 @@ body{
 }
 
 .ui-tray i {
+    color: var(--ui-tray-icons);
     font-size:1.7em;
 }
