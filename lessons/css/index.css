@@ -6,3 +6,8 @@ body{
 .nav-shift-fix{
     height:var(--navbar-height);
 }
+
+.ui-tray{
+    position: fixed;
+    bottom: 0;
+}
