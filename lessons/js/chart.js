@@ -16,6 +16,7 @@ function setup(){
     loadLessons((r)=>{
         rootLesson = r;
         solvePosition(rootLesson);
+        loadLessonsMetadata()
     });
 
 }

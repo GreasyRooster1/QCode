@@ -1,11 +1,12 @@
 class Lesson{
-    constructor(children,metadata){
+    constructor(children){
         this.x = 0;
         this.y = 0;
         this.w = 200;
         this.h = 250;
         this.children = children;
-        this.image=metadata.image;
+        this.metadata=undefined;
+        this.image = null;
     }
     update(){
         this.draw()
@@ -20,6 +21,8 @@ class Lesson{
         stroke(127);
         strokeWeight(1.5)
         rect(this.x,this.y,this.w,this.h,10);
+
+        image(this.image, this.x, this.y, this.w, this.h);
     }
     drawLines(){
         for(let childId of this.children){
@@ -32,22 +35,34 @@ class Lesson{
             line(this.x+this.w/2,this.y+this.h,child.x+child.w/2,child.y)
         }
     }
+
+    loadMetadata(metadata){
+        this.metadata = metadata;
+        this.image = loadImage(metadata.image);
+    }
 }
 
 function loadLessons(next){
     let rootLesson;
     database.ref("lessonChart").once("value").then((snapshot) => {
         for(const [id, data] of Object.entries(snapshot.val())){
-            database.ref("lessons/"+id).once("value").then((snapshot) => {
-                lessonsIndex[id] = new Lesson(data.children,snapshot.val());
-                if(data.root===true){
-                    rootLesson = id;
-                }
-            })
+            lessonsIndex[id] = new Lesson(data.children);
+            if(data.root===true){
+                rootLesson = id;
+            }
         }
     }).then(()=>{
         next(rootLesson)
     })
+
+}
+
+function loadLessonsMetadata(){
+    for(const [id, lesson] of Object.entries(lessonsIndex)){
+        database.ref("lessons/"+id).once("value").then((snapshot) => {
+            lesson.loadMetadata(snapshot.val());
+        });
+    }
 }
 
 function solvePosition(id){
