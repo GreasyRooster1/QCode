@@ -42,7 +42,8 @@ class Lesson{
 
     loadMetadata(metadata){
         this.metadata = metadata;
-        this.image = loadImage(metadata.image);
+        this.image = loadImage(metadata.thumb);
+        this.image.crossOrigin = "";
     }
 }
 

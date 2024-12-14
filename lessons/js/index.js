@@ -13,5 +13,4 @@ function setupButtons(){
         swapColors()
     })
 }
-
 init();
