@@ -86,8 +86,11 @@ function loadLessonsMetadata(){
         for(let dp of dataPoints) {
             database.ref("lessons/" + id+"/"+dp).once("value").then((snapshot) => {
                 lesson.metadata[dp] = snapshot.val();
-                console.log(lesson.metadata);
                 if(dp==="thumb"){
+                    if(!snapshot.exists()){
+                        lesson.loadImage("https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/404.png");
+                        return;
+                    }
                     lesson.loadImage(snapshot.val())
                 }
             });
