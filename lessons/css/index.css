@@ -24,3 +24,7 @@ body{
     border-left:none;
     border-top-right-radius: 5px;
 }
+
+.ui-tray i {
+    font-size:1.7em;
+}
