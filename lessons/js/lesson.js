@@ -14,9 +14,7 @@ class Lesson{
     draw(){
         this.drawBody()
         this.drawLines()
-        if(this.image!==null){
-            this.drawWithData()
-        }
+        this.drawImage()
     }
     drawBody(){
         noStroke();
@@ -25,7 +23,10 @@ class Lesson{
         strokeWeight(1.5)
         rect(this.x,this.y,this.w,this.h,10);
     }
-    drawWithData(){
+    drawImage(){
+        if(this.image==null) {
+            return;
+        }
         image(this.image, this.x+10, this.y+10, 180, 180);
         noFill();
         strokeWeight(10);
