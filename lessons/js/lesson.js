@@ -40,9 +40,9 @@ class Lesson{
         }
         fill(0);
         noStroke();
-        textSize(20)
+        textSize(19)
         textAlign(CENTER)
-        text(this.metadata.name, this.x+10, this.y+200, 180, 50);
+        text(this.metadata.name, this.x, this.y+200, this.w, 50);
     }
     drawLines(){
         for(let childId of this.children){
