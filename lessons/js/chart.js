@@ -5,12 +5,14 @@ let darkMode = false;
 let camera = new Camera(0,0);
 let lessonsIndex = [];
 let rootLesson;
+let font;
 
 function setup(){
     const root = document.documentElement;
     const styles = getComputedStyle(root);
     const navHeight = styles.getPropertyValue("--navbar-height").replace("px","");
     let height = window.innerHeight - navHeight;
+    textFont("JetBrains Mono")
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
     setupColors();
     loadLessons((r)=>{

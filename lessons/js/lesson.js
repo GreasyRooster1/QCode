@@ -3,7 +3,7 @@ class Lesson{
         this.x = 0;
         this.y = 0;
         this.w = 200;
-        this.h = 250;
+        this.h = 260;
         this.children = children;
         this.image = null;
         this.metadata = [];
@@ -15,6 +15,7 @@ class Lesson{
         this.drawBody()
         this.drawLines()
         this.drawImage()
+        this.drawTitle()
     }
     drawBody(){
         noStroke();
@@ -32,6 +33,16 @@ class Lesson{
         strokeWeight(10);
         stroke(255)
         rect(this.x+10, this.y+10, 180, 180,10)
+    }
+    drawTitle(){
+        if(this.metadata.name==null) {
+            return;
+        }
+        fill(0);
+        noStroke();
+        textSize(20)
+        textAlign(CENTER)
+        text(this.metadata.name, this.x+10, this.y+200, 180, 50);
     }
     drawLines(){
         for(let childId of this.children){
