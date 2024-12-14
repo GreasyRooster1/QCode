@@ -101,6 +101,9 @@ function loadLessonsMetadata(){
 function solvePosition(id){
     let current = lessonsIndex[id];
     let count = 0;
+    let mainYShift = 400;
+    let sideYShift = 300;
+    let xMargin = 300;
     for (let childId of current.children){
         let child = lessonsIndex[childId];
         if(child===undefined){
@@ -108,7 +111,15 @@ function solvePosition(id){
         }
         if(count===0){
             child.x = current.x;
-            child.y = current.y+400;
+            child.y = current.y+mainYShift;
+        }else{
+            child.y = current.y+sideYShift;
+            let amt = Math.ceil(count/2);
+            if(count%2===0){
+                child.x = current.x+xMargin*amt;
+            }else{
+                child.x = current.x-xMargin*amt;
+            }
         }
         solvePosition(childId)
         count++;
