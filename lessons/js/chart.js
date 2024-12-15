@@ -39,14 +39,18 @@ function drawLessons(){
 function drawBackground(){
     let spacing = 30;
     background(currentColors.background)
-    let w= width/2*camera.zoom;
-    let h= height/2*camera.zoom;
+    if(camera.zoom<0.5){
+        return;
+    }
+    let w= width/2/camera.zoom;
+    let h= height/2/camera.zoom;
+    let alpha = map(camera.zoom,0.5,0.75,0,255)
     for(let i=-w;i<w;i+=spacing){
         for(let j=-h;j<h;j+=spacing){
             noStroke();
-            fill(127);
-            let x = i-floor(camera.x/spacing)*spacing;
-            let y = j-floor(camera.y/spacing)*spacing;
+            fill(127,alpha);
+            let x = i-floor(camera.x/camera.zoom/spacing)*spacing;
+            let y = j-floor(camera.y/camera.zoom/spacing)*spacing;
             ellipse(x,y,3,3);
         }
     }
