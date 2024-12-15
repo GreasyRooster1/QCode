@@ -12,8 +12,8 @@ class Camera{
 
     move(){
         if(mouseIsPressed){
-            this.x+=(mouseX-pmouseX)*this.zoom;
-            this.y+=(mouseY-pmouseY)*this.zoom;
+            this.x+=(mouseX-pmouseX);
+            this.y+=(mouseY-pmouseY);
         }
     }
 }
