@@ -70,8 +70,8 @@ function loadLessons(next){
             lessonsIndex[id] = new Lesson(data.children);
             if(data.root===true){
                 rootLesson = id;
-                lessonsIndex[id].y=-height/3;
-                lessonsIndex[id].x=-lessonsIndex[id].w/2;
+                lessonsIndex[id].y=height/2-height/3;
+                lessonsIndex[id].x=width/2-lessonsIndex[id].w/2;
             }
         }
     }).then(()=>{
