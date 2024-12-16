@@ -61,8 +61,12 @@ function mouseWheel(event) {
     camera.zoom += event.delta * -0.0005;
     camera.zoom = constrain(camera.zoom, 0.1, 2.5);
     let delta = camera.zoom-prev;
-    camera.x-=mouseX*delta;
-    camera.y-=mouseY*delta;
+    camera.x -= mouseX;
+    camera.y -= mouseY;
+    camera.x*=delta;
+    camera.y*=delta;
+    camera.x+=mouseX;
+    camera.y+=mouseY;
 }
 
 function windowResized() {
