@@ -57,16 +57,13 @@ function drawBackground(){
 }
 
 function mouseWheel(event) {
-    let prev = camera.zoom;
-    camera.zoom += event.delta * -0.0005;
-    camera.zoom = constrain(camera.zoom, 0.1, 2.5);
-    let delta = camera.zoom-prev;
-    camera.x -= mouseX;
-    camera.y -= mouseY;
-    camera.x*=delta;
-    camera.y*=delta;
-    camera.x+=mouseX;
-    camera.y+=mouseY;
+    const s = 1 - (event.delta / 1000);
+    camera.zoom *= s;
+    const mouse = createVector(mouseX, mouseY);
+    let offset = createVector(camera.x,camera.y);
+    offset.sub(mouse).mult(s).add(mouse);
+    camera.x = offset.x;
+    camera.y = offset.y;
 }
 
 function windowResized() {
