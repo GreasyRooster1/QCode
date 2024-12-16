@@ -40,8 +40,8 @@ class Lesson{
             }
             database.ref("lessons/"+this.id).once("value").then((snap)=> {
                 let lessonData = snap.val();
-                console.log(projData.currentChapter,lessonData.chapters.length)
-                if (projData.currentChapter>=lessonData.chapters.length&&projData.currentStep>=lessonData.chapters[lessonData.chapters.length-1].length) {
+                console.log(projData.currentStep,lessonData.chapters[lessonData.chapters.length-1].steps.length,this.id)
+                if (projData.currentChapter>=lessonData.chapters.length-1&&projData.currentStep>=lessonData.chapters[lessonData.chapters.length-1].steps.length) {
                     this.completed = true;
                 }
             });
