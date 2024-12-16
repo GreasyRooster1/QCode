@@ -7,23 +7,36 @@ class Lesson{
         this.children = children;
         this.image = null;
         this.metadata = [];
+        this.isHovering = false;
     }
     update(){
         this.draw()
     }
     draw(){
+        this.checkMouse()
         this.drawBody()
         this.drawLines()
         this.drawImage()
         this.drawTitle()
     }
+
+    checkMouse(){
+        if(camera.mouseCollision(this.x,this.y,this.w,this.y,mouseX,mouseY,1,1)){
+            this.isHovering = true;
+        }else{
+            this.isHovering = false;
+        }
+    }
+
     drawBody(){
         noStroke();
         fill(255)
         stroke(127);
-        strokeWeight(1.5)
+
+        strokeWeight(this.isHovering?2.5:1.5)
         rect(this.x,this.y,this.w,this.h,10);
     }
+
     drawImage(){
         if(this.image==null) {
             return;
@@ -34,6 +47,7 @@ class Lesson{
         stroke(255)
         rect(this.x+10, this.y+10, 180, 180,10)
     }
+
     drawTitle(){
         if(this.metadata.name==null) {
             return;
@@ -44,6 +58,7 @@ class Lesson{
         textAlign(CENTER)
         text(this.metadata.name, this.x, this.y+200, this.w, 50);
     }
+
     drawLines(){
         for(let childId of this.children){
             let child = lessonsIndex[childId]
@@ -129,3 +144,4 @@ function solvePosition(id){
         count++;
     }
 }
+
