@@ -19,6 +19,20 @@ class Lesson{
         this.drawLines()
         this.drawImage()
         this.drawTitle()
+        if(this.selected){
+            this.drawStart()
+        }
+    }
+
+    drawStart(){
+        fill("#15e368");
+        strokeWeight(5)
+        stroke("#7fe8a9")
+        rect(this.x,this.y+this.h+20,this.w,50,10)
+        fill(255);
+        textAlign(CENTER)
+        textSize(30)
+        text("Start",this.x+this.w/2,this.y+this.h+55)
     }
 
     checkMouse(){
@@ -32,6 +46,9 @@ class Lesson{
             }
         }else{
             this.isHovering = false;
+        }
+        if(camera.mouseCollision(this.x,this.y+this.h+20,this.w,50,10)&&this.selected&&mouseIsPressed){
+            window.location.href=
         }
     }
 
