@@ -9,8 +9,14 @@ function setupButtons(){
         camera.x = 0;
         camera.y = 0;
     })
-    document.querySelector(".dark-mode").addEventListener('click', function(){
-        swapColors()
+    // document.querySelector(".dark-mode").addEventListener('click', function(){
+    //     swapColors()
+    // })
+    document.querySelector(".zoom-in").addEventListener('click', function(){
+        camera.zoom *= 1.2;
+    })
+    document.querySelector(".zoom-out").addEventListener('click', function(){
+        camera.zoom *= 0.8;
     })
 }
 
