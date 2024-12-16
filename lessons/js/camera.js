@@ -14,6 +14,9 @@ class Camera{
         if(mouseIsPressed){
             this.x+=(mouseX-pmouseX);
             this.y+=(mouseY-pmouseY);
+            cursor(MOVE)
+        }else{
+            cursor(ARROW)
         }
     }
 }
