@@ -9,9 +9,8 @@ class Lesson{
         this.metadata = [];
         this.isHovering = false;
         this.selected = false;
-        this.completed = true;
+        this.completed = false;
         this.started = false;
-        this.checkStatus()
     }
 
     update(){
@@ -31,7 +30,22 @@ class Lesson{
     }
 
     checkStatus(){
-
+        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.id).once("value").then((snapshot)=> {
+            let projData = snapshot.val();
+            console.log(projData)
+            if (snapshot.exists()) {
+                this.started = true;
+            }else{
+                return;
+            }
+            database.ref("lessons/"+this.id).once("value").then((snap)=> {
+                let lessonData = snap.val();
+                console.log(projData.currentChapter,lessonData.chapters.length)
+                if (projData.currentChapter>=lessonData.chapters.length&&projData.currentStep>=lessonData.chapters[lessonData.chapters.length-1].length) {
+                    this.completed = true;
+                }
+            });
+        });
     }
     renderStatus(){
         if(this.started) {
@@ -134,6 +148,7 @@ function loadLessons(next){
         for(const [id, data] of Object.entries(snapshot.val())){
             lessonsIndex[id] = new Lesson(data.children);
             lessonsIndex[id].id = id;
+            lessonsIndex[id].checkStatus();
             if(data.root===true){
                 rootLesson = id;
                 lessonsIndex[id].y=height/2-height/3;
