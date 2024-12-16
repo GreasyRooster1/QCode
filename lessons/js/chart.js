@@ -57,8 +57,12 @@ function drawBackground(){
 }
 
 function mouseWheel(event) {
+    let prev = camera.zoom;
     camera.zoom += event.delta * -0.0005;
     camera.zoom = constrain(camera.zoom, 0.1, 2.5);
+    let delta = camera.zoom-prev;
+    camera.x-=mouseX*delta;
+    camera.y-=mouseY*delta;
 }
 
 function windowResized() {
