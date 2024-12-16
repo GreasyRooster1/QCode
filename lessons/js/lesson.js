@@ -8,6 +8,7 @@ class Lesson{
         this.image = null;
         this.metadata = [];
         this.isHovering = false;
+        this.selected = false
     }
     update(){
         this.draw()
@@ -21,8 +22,14 @@ class Lesson{
     }
 
     checkMouse(){
+        if(mouseIsPressed){
+            this.selected = false;
+        }
         if(camera.mouseCollision(this.x,this.y,this.w,this.h)){
             this.isHovering = true;
+            if(mouseIsPressed){
+                this.selected = true;
+            }
         }else{
             this.isHovering = false;
         }
@@ -33,7 +40,7 @@ class Lesson{
         fill(255)
         stroke(127);
 
-        strokeWeight(this.isHovering?2.5:1.5)
+        strokeWeight(this.isHovering||this.selected?2.5:1.5)
         rect(this.x,this.y,this.w,this.h,10);
     }
 
