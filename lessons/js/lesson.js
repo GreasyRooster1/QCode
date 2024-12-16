@@ -70,7 +70,7 @@ class Lesson{
         fill(255);
         textAlign(CENTER)
         textSize(30)
-        text("Start",this.x+this.w/2,this.y+this.h+55)
+        text(this.started?"Resume":"Start",this.x+this.w/2,this.y+this.h+55)
     }
 
     checkMouse(){
