@@ -39,10 +39,11 @@ class Camera{
         return false;
     }
     mouseCollision(r1x,r1y,r1w,r1h){
-        r1x+=this.x;
+
         r1x*=this.zoom;
-        r1y+=this.y;
         r1y*=this.zoom;
+        r1x+=this.x;
+        r1y+=this.y;
         r1w*=this.zoom;
         r1h*=this.zoom;
 

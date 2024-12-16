@@ -21,7 +21,7 @@ class Lesson{
     }
 
     checkMouse(){
-        if(camera.mouseCollision(this.x,this.y,this.w,this.y,mouseX,mouseY,1,1)){
+        if(camera.mouseCollision(this.x,this.y,this.w,this.h)){
             this.isHovering = true;
         }else{
             this.isHovering = false;
