@@ -36,9 +36,10 @@ class Lesson{
     }
 
     checkMouse(){
-        if(mouseIsPressed){
-            this.selected = false;
+        if(camera.mouseCollision(this.x,this.y+this.h+20,this.w,50,10)&&this.selected&&mouseIsPressed){
+            openLesson(this.id)
         }
+
         if(camera.mouseCollision(this.x,this.y,this.w,this.h)){
             this.isHovering = true;
             if(mouseIsPressed){
@@ -46,10 +47,11 @@ class Lesson{
             }
         }else{
             this.isHovering = false;
+            if(mouseIsPressed){
+                this.selected = false;
+            }
         }
-        if(camera.mouseCollision(this.x,this.y+this.h+20,this.w,50,10)&&this.selected&&mouseIsPressed){
-            window.location.href=
-        }
+
     }
 
     drawBody(){
@@ -107,6 +109,7 @@ function loadLessons(next){
     database.ref("lessonChart").once("value").then((snapshot) => {
         for(const [id, data] of Object.entries(snapshot.val())){
             lessonsIndex[id] = new Lesson(data.children);
+            lessonsIndex[id].id = id;
             if(data.root===true){
                 rootLesson = id;
                 lessonsIndex[id].y=height/2-height/3;

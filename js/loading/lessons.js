@@ -54,8 +54,12 @@ function setupStatusDisplay(statusDisplay,isExternal,lessonId){
 
 function lessonClickHandle(e){
     let linkEl = e.target;
-    let uid = getStoredUser().uid;
     let lessonId = linkEl.getAttribute("data-lessonid");
+    openLesson(lessonId);
+}
+
+function openLesson(lessonId){
+    let uid = getStoredUser().uid;
     let ref = "userdata/"+uid+"/projects/";
     let projectId = lessonId
     database.ref(ref+projectId).once("value").then(function (snap) {
