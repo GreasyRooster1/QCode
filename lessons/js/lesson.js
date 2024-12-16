@@ -8,11 +8,16 @@ class Lesson{
         this.image = null;
         this.metadata = [];
         this.isHovering = false;
-        this.selected = false
+        this.selected = false;
+        this.completed = true;
+        this.started = false;
+        this.checkStatus()
     }
+
     update(){
         this.draw()
     }
+
     draw(){
         this.checkMouse()
         this.drawBody()
@@ -21,6 +26,25 @@ class Lesson{
         this.drawTitle()
         if(this.selected){
             this.drawStart()
+        }
+        this.renderStatus()
+    }
+
+    checkStatus(){
+
+    }
+    renderStatus(){
+        if(this.started) {
+            stroke("#15e368");
+            noFill()
+            strokeWeight(3)
+            rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
+        }
+        if(this.completed) {
+            stroke("#15e368");
+            fill("#15e36877")
+            strokeWeight(3)
+            rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
     }
 
