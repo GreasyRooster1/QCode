@@ -42,11 +42,11 @@ function drawBackground(){
     if(camera.zoom<0.5){
         return;
     }
-    let w= width/2/camera.zoom;
-    let h= height/2/camera.zoom;
+    let w= width/camera.zoom;
+    let h= height/camera.zoom;
     let alpha = map(camera.zoom,0.5,0.75,0,255)
-    for(let i=-w;i<w;i+=spacing){
-        for(let j=-h;j<h;j+=spacing){
+    for(let i=0;i<w;i+=spacing){
+        for(let j=0;j<h;j+=spacing){
             noStroke();
             fill(127,alpha);
             let x = i-floor(camera.x/camera.zoom/spacing)*spacing;
