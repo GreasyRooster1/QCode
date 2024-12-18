@@ -1,5 +1,5 @@
 :root{
-    --code-pane-background: #d3d3d3;
+    --code-pane-background: #d0efcc;
     --view-pane-background: #b6b6b6;
 
     --info-tab-background: #acb4d6;
@@ -18,8 +18,8 @@
 
     --original-title-border: #4b6ec8;
 
-    --lesson-card: #90d89e;
-    --lesson-button: #59cd6f;
+    --lesson-card: #a4ecad;
+    --lesson-button: #6de383;
 
     --user-img-size:13vh;
 }
@@ -207,7 +207,11 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height:100%
+    height:100%;
+
+    background-image: radial-gradient(black 1px, var(--code-pane-background) 0);
+    background-size: 40px 40px;
+    background-position: -19px -19px;
 }
 
 .lesson-button-container .card{
