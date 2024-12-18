@@ -218,10 +218,14 @@ body{
     width:25vh;
     height:25vh;
     background:var(--lesson-card);
+    border-radius:10px;
 }
 
 .lesson-button{
     background:var(--lesson-button);
+    padding:10px;
+    border-radius:5px;
+    font-size: 1.2em;
 }
 
 .lesson-title{
