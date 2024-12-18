@@ -7,16 +7,16 @@ function beginCheckingStatuses(){
 }
 
 function checkStatuses(interval){
-    console.log("s",updatedStatus,lessonsIndex)
     if(updatedStatus){
         clearInterval(interval)
         return;
     }
-    if(lessonsIndex.length<1){
+    if( Object.entries(lessonsIndex).length<1){
         return;
     }
     for(let lesson of lessonsIndex){
         if(!lesson.statusChecked){
+            console.log(lesson)
             return;
         }
     }
