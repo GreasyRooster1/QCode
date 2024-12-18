@@ -68,6 +68,11 @@ function insertInfo(){
     if(projectMetadata.original!==undefined){
         insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle);
     }
+
+    if(projectMetadata.lessonId!==null&&projectMetadata.lessonId!==undefined){
+        document.querySelector(".code-editor").remove()
+        document.querySelector(".lesson-button-container").style.display = "flex";
+    }
 }
 
 function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle){

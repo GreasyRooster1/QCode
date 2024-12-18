@@ -198,6 +198,11 @@ body{
     font-size: 2em;
     color:var(--remix-button-text-color);
 }
+
+.lesson-button-container{
+    display: none;
+}
+
 /* the codemirror generated editor */
 
 .cm-editor{
