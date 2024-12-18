@@ -1,9 +1,11 @@
 const usernameTitle = document.querySelector('.username-title');
 const profileDisplayImg = document.querySelector('.user-profile-img');
+const pointsDisplayBar = document.querySelector('.user-points-progress-bar');
 
 function loadUserDataToDisplay(){
     loadUsername();
     loadProfileIcon();
+    renderPoints();
 }
 
 function loadUsername(){
@@ -18,6 +20,13 @@ function loadProfileIcon(){
     })
 }
 
+function renderPoints(){
+    database.ref("userdata/"+getStoredUser().uid+"/points").once("value").then((snapshot)=>{
+        pointsDisplayBar.setAttribute("value",snapshot.val());
+    })
+
+}
+
 const isValidUrl = urlString => {
     let inputElement = document.createElement('input');
     inputElement.type = 'url';
@@ -25,7 +34,6 @@ const isValidUrl = urlString => {
 
     return inputElement.checkValidity() && urlString!==null;
 }
-
 profileDisplayImg.addEventListener("click",function (){
    promptProfileIconChange();
 });
