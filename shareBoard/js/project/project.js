@@ -78,6 +78,9 @@ function insertInfo(){
         database.ref("lessons/"+projectMetadata.lessonId+"/thumb").once("value").then((snapshot) => {
             document.querySelector(".lesson-thumb").src = snapshot.val()
         });
+        document.querySelector(".lesson-button").addEventListener("click",()=>{
+            openLesson(projectMetadata.lessonId);
+        });
     }
 }
 
