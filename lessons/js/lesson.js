@@ -47,12 +47,14 @@ class Lesson{
         textSize(15);
         textAlign(LEFT)
         noStroke()
+        let pos = 0;
         for (let tag of tags){
             let width = textWidth(tag)+10;
             fill(getTagColor(tag))
-            rect(this.x+20,this.y+162.5,width,17,10)
+            rect(this.x+5+pos,this.y+this.h-20,width,17,10)
             fill(255)
-            text(tag,this.x+25,this.y+175)
+            text(tag,this.x+10+pos,this.y+this.h-18,width,17,10)
+            pos+=width+5
         }
     }
 
