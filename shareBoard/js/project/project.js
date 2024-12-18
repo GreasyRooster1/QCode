@@ -75,6 +75,9 @@ function insertInfo(){
         database.ref("lessons/"+projectMetadata.lessonId+"/name").once("value").then((snapshot) => {
             document.querySelector(".lesson-title").innerHTML = snapshot.val()
         });
+        database.ref("lessons/"+projectMetadata.lessonId+"/thumb").once("value").then((snapshot) => {
+            document.querySelector(".lesson-thumb").src = snapshot.val()
+        });
     }
 }
 

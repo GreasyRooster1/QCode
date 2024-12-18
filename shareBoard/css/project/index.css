@@ -215,8 +215,8 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width:25vh;
-    height:25vh;
+    width:40vh;
+    height:40vh;
     background:var(--lesson-card);
     border-radius:10px;
 }
@@ -232,6 +232,12 @@ body{
     font-size: 2em;
     font-weight: bold;
     text-align: center;
+}
+
+.lesson-thumb{
+    aspect-ratio: 1/1;
+    width: 50%;
+    border-radius: 10px;
 }
 
 /* the codemirror generated editor */
