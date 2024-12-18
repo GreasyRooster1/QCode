@@ -72,6 +72,9 @@ function insertInfo(){
     if(projectMetadata.lessonId!==null&&projectMetadata.lessonId!==undefined){
         document.querySelector(".code-editor").remove()
         document.querySelector(".lesson-button-container").style.display = "flex";
+        database.ref("lessons/"+projectMetadata.lessonId+"/name").once("value").then((snapshot) => {
+            document.querySelector(".lesson-title").innerHTML = snapshot.val()
+        });
     }
 }
 

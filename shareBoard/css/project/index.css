@@ -231,6 +231,7 @@ body{
 .lesson-title{
     font-size: 2em;
     font-weight: bold;
+    text-align: center;
 }
 
 /* the codemirror generated editor */
