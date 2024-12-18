@@ -19,15 +19,22 @@ class Lesson{
     }
 
     draw(){
-        this.checkMouse()
-        this.drawBody()
-        this.drawLines()
-        this.drawImage()
-        this.drawTitle()
+
+        if(!this.metadata.unlisted) {
+            this.checkMouse()
+            this.drawBody()
+            this.drawLines()
+            this.drawImage()
+            this.drawTitle()
+            this.renderStatus()
+        }else{
+            this.drawUnlisted();
+            this.drawLines()
+        }
         if(this.selected){
             this.drawStart()
         }
-        this.renderStatus()
+
     }
 
     checkStatus(){
@@ -42,7 +49,6 @@ class Lesson{
             }
             database.ref("lessons/"+this.id).once("value").then((snap)=> {
                 let lessonData = snap.val();
-                console.log(projData.currentStep,lessonData.chapters[lessonData.chapters.length-1].steps.length,this.id)
                 if (projData.currentChapter>=lessonData.chapters.length-1&&projData.currentStep>=lessonData.chapters[lessonData.chapters.length-1].steps.length) {
                     this.completed = true;
                 }
@@ -51,6 +57,17 @@ class Lesson{
             });
         });
     }
+
+    drawUnlisted(){
+        drawingContext.setLineDash([6]);
+        noFill()
+        stroke(127);
+
+        strokeWeight(2.5)
+        rect(this.x,this.y,this.w,this.h,10);
+        drawingContext.setLineDash([]);
+    }
+
     renderStatus(){
         if(this.started) {
             stroke("#15e368");
@@ -97,7 +114,6 @@ class Lesson{
     }
 
     drawBody(){
-        noStroke();
         fill(255)
         stroke(127);
 
@@ -133,7 +149,7 @@ class Lesson{
             if(child===undefined){
                 continue;
             }
-            stroke(127);
+            stroke(0);
             strokeWeight(1.5)
             line(this.x+this.w/2,this.y+this.h,child.x+child.w/2,child.y)
         }
@@ -166,7 +182,7 @@ function loadLessons(next){
 }
 
 function loadLessonsMetadata(){
-    let dataPoints = ["thumb","name"]
+    let dataPoints = ["thumb","name","unlisted"]
     for(const [id, lesson] of Object.entries(lessonsIndex)){
         for(let dp of dataPoints) {
             database.ref("lessons/" + id+"/"+dp).once("value").then((snapshot) => {
