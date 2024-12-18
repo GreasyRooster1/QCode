@@ -21,7 +21,36 @@ function checkStatuses(interval){
         }
     }
     updatedStatus = true;
+    updateAllDb()
+}
+
+function updateAllDb(){
     updateLessonStatusDb()
+    updateLessonRecommendationsDb()
+}
+
+function updateLessonRecommendationsDb() {
+    let recs = []
+    searchForRecommendation(rootLesson,10,recs)
+
+}
+
+function searchForRecommendation(lessonId,depth,recs){
+    if(depth<1){
+        recs.push(lessonId)
+    }
+    let lesson = lessonsIndex[lessonId]
+    for(let childId of lesson.children){
+        let child = lessonsIndex[childId];
+        if(child.completed) {
+            searchForRecommendation(childId, depth - 1,recs);
+            continue
+        }
+        if(child.started) {
+            searchForRecommendation(childId, depth - 1,recs);
+        }
+        recs.push(childId)
+    }
 }
 
 function updateLessonStatusDb(){
