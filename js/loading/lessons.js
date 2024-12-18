@@ -1,5 +1,26 @@
+let defaultRecommendedLessons = [
+    "intro-to-js",
+    "bouncing-rainbow-squares"
+]
+
 function loadLessons(){
     setupLessonChartLink();
+
+    database.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").once('value').then( (snapshot) => {
+        let data;
+        if(snapshot.exists()){
+            data = snapshot.val();
+        }else{
+            database.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").set(defaultRecommendedLessons);
+            data = defaultRecommendedLessons;
+        }
+        for(let lessonId of data){
+            database.ref("lessons/"+lessonId).once("value").then((lesson) => {
+
+            })
+        }
+    }
+
     let lessonsRef = database.ref('lessons');
     lessonsRef.on('value', (snapshot) => {
         const data = snapshot.val();
