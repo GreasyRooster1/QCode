@@ -25,6 +25,7 @@ class Lesson{
             this.drawBody()
             this.drawLines()
             this.drawImage()
+            this.drawTags()
             this.drawTitle()
             this.renderStatus()
         }else{
@@ -38,10 +39,12 @@ class Lesson{
     }
 
     drawTags(){
-        if(this.metadata.tags===undefined){
+        if(this.metadata.tags===null||this.metadata.tags===undefined){
             return;
         }
         let tags = this.metadata.tags;
+        console.log(tags)
+        textSize(15);
         for (let tag of tags){
             let width = textWidth(tag);
             fill(getTagColor(tag))
