@@ -15,22 +15,9 @@ function loadLessons(){
             data = defaultRecommendedLessons;
         }
         for(let lessonId of data){
-            database.ref("lessons/"+lessonId).once("value").then((lesson) => {
-
+            database.ref("lessons/"+lessonId).once("value").then((snapshot) => {
+                createLessonElement(lessonId,snapshot.val())
             })
-        }
-    }
-
-    let lessonsRef = database.ref('lessons');
-    lessonsRef.on('value', (snapshot) => {
-        const data = snapshot.val();
-        clearLessons();
-        console.log(data);
-        for(const [lessonId, lessonData] of Object.entries(data)){
-            if(lessonData.unlisted){
-                continue;
-            }
-            createLessonElement(lessonId,lessonData);
         }
     });
 }
