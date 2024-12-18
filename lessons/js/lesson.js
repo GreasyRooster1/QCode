@@ -37,6 +37,18 @@ class Lesson{
 
     }
 
+    drawTags(){
+        if(this.metadata.tags===undefined){
+            return;
+        }
+        let tags = this.metadata.tags;
+        for (let tag of tags){
+            let width = textWidth(tag);
+            fill(getTagColor(tag))
+            rect(this.x+20,this.y+175,width,10,5)
+        }
+    }
+
     checkStatus(){
         database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.id).once("value").then((snapshot)=> {
             let projData = snapshot.val();
@@ -182,7 +194,7 @@ function loadLessons(next){
 }
 
 function loadLessonsMetadata(){
-    let dataPoints = ["thumb","name","unlisted"]
+    let dataPoints = ["thumb","name","unlisted","tags"]
     for(const [id, lesson] of Object.entries(lessonsIndex)){
         for(let dp of dataPoints) {
             database.ref("lessons/" + id+"/"+dp).once("value").then((snapshot) => {
@@ -231,3 +243,15 @@ function solvePosition(id){
     }
 }
 
+function getTagColor(tag){
+    let tagColors = {
+        "game":"#cc23a2",
+        "art":"#2399cc",
+        "simulation":"#23cc3f",
+        "exercise":"#cca523",
+        "challenging":"#cc234a"
+    }
+    let id = tag.toLowerCase();
+    let col = tagColors[id]
+    return col??"#676767"
+}
