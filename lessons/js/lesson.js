@@ -3,7 +3,8 @@ class Lesson{
         this.x = 0;
         this.y = 0;
         this.w = 200;
-        this.h = 260;
+        this.baseHeight = 250;
+        this.h = this.baseHeight;
         this.children = children;
         this.image = null;
         this.metadata = [];
@@ -51,9 +52,9 @@ class Lesson{
         for (let tag of tags){
             let width = textWidth(tag)+10;
             fill(getTagColor(tag))
-            rect(this.x+5+pos,this.y+this.h-20,width,17,10)
+            rect(this.x+5+pos,this.y+this.h-22,width,17,10)
             fill(255)
-            text(tag,this.x+10+pos,this.y+this.h-18,width,17,10)
+            text(tag,this.x+10+pos,this.y+this.h-20,width,17,10)
             pos+=width+5
         }
     }
@@ -137,6 +138,9 @@ class Lesson{
     drawBody(){
         fill(255)
         stroke(127);
+
+        let lines = floor(textWidth(this.metadata.name)/this.w)
+        this.h = this.baseHeight+lines*20;
 
         strokeWeight(this.isHovering||this.selected?2.5:1.5)
         rect(this.x,this.y,this.w,this.h,10);
