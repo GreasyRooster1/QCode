@@ -262,7 +262,7 @@ function getTagColor(tag){
         "art":"#2399cc",
         "simulation":"#23cc3f",
         "exercise":"#cca523",
-        "challenging":"#cc234a"
+        "hard":"#cc234a"
     }
     let id = tag.toLowerCase();
     let col = tagColors[id]
