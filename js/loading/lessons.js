@@ -39,15 +39,23 @@ function setupStatusDisplay(statusDisplay,isExternal,lessonId){
     if(isExternal){
         statusDisplay.innerHTML = "external";
         statusDisplay.classList.add("external");
-    }else{
-        statusDisplay.innerHTML = "not started";
-        statusDisplay.classList.add("not-started");
+        return;
     }
+    statusDisplay.innerHTML = "not started";
+    statusDisplay.classList.add("not-started");
 
-    database.ref("userdata/"+getStoredUser().uid+"/projects/"+lessonId).once("value").then((snapshot)=>{
+    database.ref("userdata/"+getStoredUser().uid+"/lessonStatuses/"+lessonId).once("value").then((snapshot)=>{
+
         if(snapshot.exists()){
-            statusDisplay.innerHTML = "started";
-            statusDisplay.classList.add("started");
+            let data= snapshot.val()
+            if(data.started) {
+                statusDisplay.innerHTML = "started";
+                statusDisplay.classList.add("started");
+            }
+            if(data.completed){
+                statusDisplay.innerHTML = "completed";
+                statusDisplay.classList.add("completed");
+            }
         }
     })
 }
