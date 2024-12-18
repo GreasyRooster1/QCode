@@ -37,6 +37,7 @@ class Lesson{
             if (snapshot.exists()) {
                 this.started = true;
             }else{
+                this.statusChecked = true;
                 return;
             }
             database.ref("lessons/"+this.id).once("value").then((snap)=> {

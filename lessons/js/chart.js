@@ -29,7 +29,6 @@ function draw(){
     camera.apply();
     drawBackground();
     drawLessons();
-    checkStatuses()
 }
 
 function drawLessons(){
