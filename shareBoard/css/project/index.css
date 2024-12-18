@@ -18,6 +18,8 @@
 
     --original-title-border: #4b6ec8;
 
+    --lesson-card: #90d89e;
+
     --user-img-size:13vh;
 }
 .nav-shift-fix{
@@ -201,6 +203,25 @@ body{
 
 .lesson-button-container{
     display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100%
+}
+
+.lesson-button-container .card{
+    width:25vh;
+    height:25vh;
+    background:var(--lesson-card);
+}
+
+.lesson-button{
+    background:var(--lesson-card);
+}
+
+.lesson-title{
+    font-size: 2em;
+    font-weight: bold;
 }
 
 /* the codemirror generated editor */
