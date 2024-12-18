@@ -11,6 +11,7 @@ class Lesson{
         this.selected = false;
         this.completed = false;
         this.started = false;
+        this.statusChecked = false;
     }
 
     update(){
@@ -44,6 +45,8 @@ class Lesson{
                 if (projData.currentChapter>=lessonData.chapters.length-1&&projData.currentStep>=lessonData.chapters[lessonData.chapters.length-1].steps.length) {
                     this.completed = true;
                 }
+            }).then(()=>{
+                this.statusChecked = true;
             });
         });
     }

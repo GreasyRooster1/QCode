@@ -19,6 +19,7 @@ function setup(){
         rootLesson = r;
         solvePosition(rootLesson);
         loadLessonsMetadata()
+        beginCheckingStatuses();
     });
 
 }
@@ -28,6 +29,7 @@ function draw(){
     camera.apply();
     drawBackground();
     drawLessons();
+    checkStatuses()
 }
 
 function drawLessons(){
