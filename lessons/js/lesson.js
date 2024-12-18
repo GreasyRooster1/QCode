@@ -139,9 +139,6 @@ class Lesson{
         fill(255)
         stroke(127);
 
-        let lines = floor(textWidth(this.metadata.name)/this.w)
-        this.h = this.baseHeight+lines*20;
-
         strokeWeight(this.isHovering||this.selected?2.5:1.5)
         rect(this.x,this.y,this.w,this.h,10);
     }
@@ -161,9 +158,12 @@ class Lesson{
         if(this.metadata.name==null) {
             return;
         }
+
         fill(0);
         noStroke();
         textSize(19)
+        let lines = floor(textWidth(this.metadata.name)/this.w)
+        this.h = this.baseHeight+lines*20;
         textAlign(CENTER)
         text(this.metadata.name, this.x, this.y+200, this.w, 50);
     }
