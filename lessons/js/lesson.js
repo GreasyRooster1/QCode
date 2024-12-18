@@ -45,10 +45,14 @@ class Lesson{
         let tags = this.metadata.tags;
         console.log(tags)
         textSize(15);
+        textAlign(LEFT)
+        noStroke()
         for (let tag of tags){
-            let width = textWidth(tag);
+            let width = textWidth(tag)+10;
             fill(getTagColor(tag))
-            rect(this.x+20,this.y+175,width,10,5)
+            rect(this.x+20,this.y+162.5,width,17,10)
+            fill(255)
+            text(tag,this.x+25,this.y+175)
         }
     }
 
@@ -248,7 +252,7 @@ function solvePosition(id){
 
 function getTagColor(tag){
     let tagColors = {
-        "game":"#cc23a2",
+        "game":"#f42cc2",
         "art":"#2399cc",
         "simulation":"#23cc3f",
         "exercise":"#cca523",
