@@ -19,6 +19,7 @@
     --original-title-border: #4b6ec8;
 
     --lesson-card: #90d89e;
+    --lesson-button: #59cd6f;
 
     --user-img-size:13vh;
 }
@@ -210,13 +211,17 @@ body{
 }
 
 .lesson-button-container .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     width:25vh;
     height:25vh;
     background:var(--lesson-card);
 }
 
 .lesson-button{
-    background:var(--lesson-card);
+    background:var(--lesson-button);
 }
 
 .lesson-title{
