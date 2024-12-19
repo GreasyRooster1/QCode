@@ -44,6 +44,17 @@ function loadProjectCode(id){
             }
         });
     });
+
+    database.ref("userdata/"+user.uid+"/projects/"+id+"/languageType").once('value').then((snapshot) => {
+        if(snapshot.exists()){
+            languageType = snapshot.val();
+            updateLanguage();
+        }
+    })
+}
+
+function updateLanguage(){
+
 }
 
 function loadLesson(projectId){
