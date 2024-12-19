@@ -3,6 +3,7 @@ let userUid = null;
 let chapterNum = null;
 let isLessonCreator = false;
 let hasLesson = true;
+let languageType = "javascript";
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 function loadProjectFromUrlData(){
