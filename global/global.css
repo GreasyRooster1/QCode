@@ -1,10 +1,10 @@
 :root{
     --default-font: "JetBrains Mono";
 
-    --brand-blue:blue;
-    --brand-green: #00ff00;
+    --brand-blue:#0D5DC5;
+    --brand-green: #03FC04;
     --brand-black:black;
-    --brand-gray:gray;
+    --brand-gray:#999999;
 
     --common-rarity-color: #484848;
     --uncommon-rarity-color: #0091e1;

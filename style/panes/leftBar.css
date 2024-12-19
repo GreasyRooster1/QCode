@@ -72,6 +72,17 @@
     color:#ffffff;
 }
 
+.recommended-lessons{
+    background:var(--lessons-recommended-background);
+    padding:3px;
+    border-radius:5px;
+    margin:5px;
+}
+
+.recommended-lessons .title{
+    font-size: 1.3em;
+}
+
 .lesson-link-wrapper{
     padding: 3px;
     display: flex;
@@ -91,6 +102,14 @@
 
 .lesson-link{
     font-size: 0.9em;
+}
+
+.lessons-chart-link{
+    background: var(--lessons-chart-link-background);
+    font-weight: bold;
+    margin:5px;
+    padding:2px;
+    border-radius: 5px;
 }
 
 .status-display{

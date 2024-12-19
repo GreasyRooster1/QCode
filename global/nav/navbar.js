@@ -124,4 +124,14 @@ function promptProfileIconChange(){
     }
 }
 
+function removeNavHome(){
+    let home = document.querySelector(".home-link");
+    home.remove();
+}
+
+function removeNavArrow(){
+    let arrow = document.querySelector(".navbar-visibility-button");
+    arrow.remove();
+}
+
 initNavbar();

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title>QCode | Lessons</title>
+
+      <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+      <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+      <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js" integrity="sha512-d6sc8kbZEtA2LwB9m/ck0FhvyUwVfdmvTeyJRprmj7Wg9wRFtHDIpr6qk4g/y3Ix3O9I6KHIv6SGu9f7RaP1Gw==" crossorigin="anonymous" referrerpolicy="no-referrer" async="async"></script>
+    <script src="https://kit.fontawesome.com/464579a9a3.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
+    <script src="../global/firebase/init.js" defer></script>
+    <script src="../global/firebase/auth.js" defer></script>
+    <script src="../global/firebase/database.js" defer></script>
+    <script src="../global/firebase/lockPageToAuth.js" defer></script>
+
+    <script src="../global/util/points.js" defer></script>
+    <script src="../global/customElements.js" defer></script>
+    <script src="../global/nav/navbar.js" defer></script>
+
+    <link href="../global/nav/navbar.css" rel="stylesheet">
+    <link href="../global/global.css" rel="stylesheet">
+
+    <script src="../js/loading/lessons.js" defer></script>
+    <script src="../js/loading/projects.js" defer></script>
+
+    <script src="js/index.js" defer></script>
+    <script src="js/dbUpdate.js" defer></script>
+    <script src="js/camera.js" defer></script>
+    <script src="js/colors.js" defer></script>
+    <script src="js/lesson.js" defer></script>
+    <script src="js/chart.js" defer></script>
+
+    <link href="css/index.css" rel="stylesheet">
+</head>
+<body>
+    <brand-nav></brand-nav>
+    <div class="nav-shift-fix"></div>
+    <div class="canvas-container" id="canvas-parent">
+
+    </div>
+    <span class="ui-tray">
+        <span class="recenter"><i class='fas fa-compress'></i></span>
+        <span class="zoom-in"><i class='fas fa-plus'></i></span>
+        <span class="zoom-out"><i class='fas fa-minus'></i></span>
+<!--        <span class="dark-mode"><i class='far fa-sun'></i></span>-->
+    </span>
+</body>
+</html>

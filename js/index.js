@@ -14,9 +14,6 @@ function init(){
     initShareBoard();
 }
 
-function removeNavHome(){
-    let home = document.querySelector(".home-link");
-    home.remove();
-}
+
 
 init();

@@ -1,5 +1,5 @@
 :root{
-    --code-pane-background: #d3d3d3;
+    --code-pane-background: #d0efcc;
     --view-pane-background: #b6b6b6;
 
     --info-tab-background: #acb4d6;
@@ -17,6 +17,9 @@
     --remix-button-text-color: #e3e5e8;
 
     --original-title-border: #4b6ec8;
+
+    --lesson-card: #a4ecad;
+    --lesson-button: #6de383;
 
     --user-img-size:13vh;
 }
@@ -198,6 +201,49 @@ body{
     font-size: 2em;
     color:var(--remix-button-text-color);
 }
+
+.lesson-button-container{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+
+    background-image: radial-gradient(black 1px, var(--code-pane-background) 0);
+    background-size: 40px 40px;
+    background-position: -19px -19px;
+}
+
+.lesson-button-container .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width:40vh;
+    height:40vh;
+    background:var(--lesson-card);
+    border-radius:10px;
+}
+
+.lesson-button{
+    background:var(--lesson-button);
+    padding:10px;
+    border-radius:5px;
+    font-size: 1.2em;
+}
+
+.lesson-title{
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.lesson-thumb{
+    aspect-ratio: 1/1;
+    width: 50%;
+    border-radius: 10px;
+}
+
 /* the codemirror generated editor */
 
 .cm-editor{

@@ -68,6 +68,20 @@ function insertInfo(){
     if(projectMetadata.original!==undefined){
         insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle);
     }
+
+    if(projectMetadata.lessonId!==null&&projectMetadata.lessonId!==undefined){
+        document.querySelector(".code-editor").remove()
+        document.querySelector(".lesson-button-container").style.display = "flex";
+        database.ref("lessons/"+projectMetadata.lessonId+"/name").once("value").then((snapshot) => {
+            document.querySelector(".lesson-title").innerHTML = snapshot.val()
+        });
+        database.ref("lessons/"+projectMetadata.lessonId+"/thumb").once("value").then((snapshot) => {
+            document.querySelector(".lesson-thumb").src = snapshot.val()
+        });
+        document.querySelector(".lesson-button").addEventListener("click",()=>{
+            openLesson(projectMetadata.lessonId);
+        });
+    }
 }
 
 function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle){
