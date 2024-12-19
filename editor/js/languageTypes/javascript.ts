@@ -1,1 +1,4 @@
 
+class JavascriptLang extends LanguageType{
+
+}
