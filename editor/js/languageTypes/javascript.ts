@@ -6,6 +6,7 @@ class JavascriptType extends ProjectType {
     }
 
     setupEditor(): void {
+
     }
 
     onLoad(){
@@ -22,6 +23,9 @@ class JavascriptType extends ProjectType {
 
     stop(){
 
+    }
+
+    runErrorCallback(content: string, type: string): void {
     }
 }
 

@@ -16,6 +16,11 @@ abstract class ProjectType {
         this.projectId = projectId;
         database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId).once("value",(snapshot:any)=>{
             this.projectData = snapshot.val();
+            if(this.projectData!["lessonId"]===undefined){
+                setupPanes(false);
+            }else{
+                setupPanes(true);
+            }
         }).then(()=>{
             this.onLoad()
         });
