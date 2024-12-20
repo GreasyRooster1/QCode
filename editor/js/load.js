@@ -3,7 +3,7 @@ let userUid = null;
 let chapterNum = null;
 let isLessonCreator = false;
 let hasLesson = true;
-let languageType = "javascript";
+let languageType;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 function loadProjectFromUrlData(){
@@ -46,15 +46,20 @@ function loadProjectCode(id){
     });
 
     database.ref("userdata/"+user.uid+"/projects/"+id+"/languageType").once('value').then((snapshot) => {
+        let id = "javascript"
         if(snapshot.exists()){
-            languageType = snapshot.val();
-            updateLanguage();
+            id = snapshot.val();
         }
+        updateLanguage(id);
     })
 }
 
-function updateLanguage(){
-
+function updateLanguage(id){
+    if(id==="javascript"){
+        import("./languageTypes/javascript.js").then((mod)=> {
+            languageType = new mod.JavascriptType();
+        });
+    }
 }
 
 function loadLesson(projectId){

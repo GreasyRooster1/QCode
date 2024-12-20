@@ -1,8 +1,11 @@
-import {ProjectType,ErrorCallback} from "./projectType";
+import {ProjectType,ErrorCallback} from "./projectType.js";
 
-class JavascriptLang extends ProjectType {
+class JavascriptType extends ProjectType {
     constructor() {
-        super("javascript",true);
+        super(true);
+    }
+
+    setupEditor(): void {
     }
 
     onLoad(){
@@ -21,3 +24,6 @@ class JavascriptLang extends ProjectType {
 
     }
 }
+
+
+export {JavascriptType};
