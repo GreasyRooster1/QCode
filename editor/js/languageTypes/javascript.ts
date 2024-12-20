@@ -1,5 +1,5 @@
-import {LanguageType} from "./languageType";
+import {LanguageType} from "./languageType.js";
 
-class JavascriptLang extends LanguageType{
+class JavascriptLang extends LanguageType {
 
 }
