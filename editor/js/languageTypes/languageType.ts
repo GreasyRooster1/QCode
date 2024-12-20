@@ -8,6 +8,7 @@ class LanguageType{
 
     constructor(identifier:string,allowShare:boolean) {
         this.identifier = identifier;
+        this.allowShare = allowShare;
     }
 
     onLoad(){
@@ -26,3 +27,5 @@ class LanguageType{
 
     }
 }
+
+export {LanguageType};
