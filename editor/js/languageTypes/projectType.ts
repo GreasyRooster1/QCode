@@ -22,7 +22,12 @@ abstract class ProjectType {
     }
 
     setupEventListeners(){
-
+        document.querySelector(".save-button")!.addEventListener("click", ()=>{
+            this.saveCode();
+        })
+        document.querySelector(".run-button")!.addEventListener("click", ()=>{
+            this.run();
+        })
     }
 
     /*
@@ -38,6 +43,7 @@ abstract class ProjectType {
     abstract run(errorCallback:ErrorCallback):void;
 
     abstract stop():void;
+    abstract errorCallback():void;
 }
 
 export {ProjectType,ErrorCallback};
