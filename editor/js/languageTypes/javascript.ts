@@ -10,7 +10,7 @@ class JavascriptType extends ProjectType {
     }
 
     onLoad(){
-
+        writeToEditor(this.projectData!["code"]);
     }
 
     saveCode(){
