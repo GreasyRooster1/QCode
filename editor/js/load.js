@@ -21,31 +21,6 @@ function loadProjectFromUrlData(){
     }
 }
 
-function loadProjectCode(id){
-    user = getStoredUser();
-    database.ref("userdata/"+user.uid+"/projects/"+id+"/code").once('value').then((snapshot) => {
-        const data = snapshot.val();
-        writeToEditor(data);
-        database.ref("userdata/"+user.uid+"/projects/"+id+"/lessonId").once('value').then((snapshot) => {
-            let lessonId = snapshot.val();
-            if (lessonId !== "none") {
-                loadLesson(lessonId);
-            } else {
-                hasLesson = false;
-                setupPanes(false);
-            }
-        });
-    });
-
-    database.ref("userdata/"+user.uid+"/projects/"+id+"/languageType").once('value').then((snapshot) => {
-        let id = "javascript"
-        if(snapshot.exists()){
-            id = snapshot.val();
-        }
-        updateLanguage(id);
-    })
-}
-
 function updateLanguage(id){
     return new Promise((resolve, reject) => {
         if (id === "javascript") {
@@ -80,3 +55,5 @@ function loadLesson(projectId){
         }
     });
 }
+
+loadProjectFromUrlData()
