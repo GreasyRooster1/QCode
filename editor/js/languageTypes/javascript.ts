@@ -1,6 +1,6 @@
-import {LanguageType,ErrorCallback} from "./languageType.js";
+import {ProjectType,ErrorCallback} from "./projectType";
 
-class JavascriptLang extends LanguageType {
+class JavascriptLang extends ProjectType {
     constructor() {
         super("javascript",true);
     }
