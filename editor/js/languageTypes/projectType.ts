@@ -16,7 +16,8 @@ abstract class ProjectType {
         this.projectId = projectId;
         database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId).once("value",(snapshot:any)=>{
             this.projectData = snapshot.val();
-            if(this.projectData!["lessonId"]===undefined){
+            console.log(this.projectData);
+            if(this.projectData!["lessonId"]==="none"){
                 setupPanes(false);
             }else{
                 setupPanes(true);
