@@ -60,6 +60,11 @@ function updateLanguage(id){
             languageType = new mod.JavascriptType();
         });
     }
+    if(id==="web"){
+        import("./languageTypes/web.js").then((mod)=> {
+            languageType = new mod.WebType();
+        });
+    }
 }
 
 function loadLesson(projectId){
