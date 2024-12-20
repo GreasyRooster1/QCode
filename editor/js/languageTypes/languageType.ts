@@ -28,4 +28,4 @@ class LanguageType{
     }
 }
 
-export {LanguageType};
+export {LanguageType,ErrorCallback};
