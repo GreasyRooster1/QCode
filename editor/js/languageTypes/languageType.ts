@@ -2,7 +2,7 @@ interface ErrorCallback {
     (content:string,type:string):void,
 }
 
-class LanguageType{
+abstract class LanguageType{
     identifier:string;
     allowShare:boolean;
 
@@ -11,21 +11,27 @@ class LanguageType{
         this.allowShare = allowShare;
     }
 
-    onLoad(){
+    setup(){
+        this.loadProjectData()
+    }
+
+    loadProjectData(){
 
     }
 
-    saveCode(){
+    /*
+    * Abstract methods
+    */
 
-    }
+    abstract setupEditor():void;
 
-    run(errorCallback:ErrorCallback) {
+    abstract onLoad():void;
 
-    }
+    abstract saveCode():void;
 
-    stop(){
+    abstract run(errorCallback:ErrorCallback):void;
 
-    }
+    abstract stop():void;
 }
 
 export {LanguageType,ErrorCallback};
