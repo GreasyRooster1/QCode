@@ -7,6 +7,7 @@ let projectType;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 function loadProjectFromUrlData(){
+    let searchParams = new URLSearchParams(location.search);
     if(!searchParams.has("projectId")){
         return;
     }
@@ -15,26 +16,34 @@ function loadProjectFromUrlData(){
     }
 
     if(searchParams.get("uid")===getStoredUser().uid){
-        updateLanguage().then(()=>{
-            projectType.setupEditor();
-            projectType.loadProjectData(searchParams.get("projectId"));
-        })
+        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId).once("value",(snapshot)=> {
+            let id = "javascript";
+            if(snapshot.exists()){
+                id = snapshot.val();
+            }
+            updateLanguage(id).then((projectType) => {
+                projectType.setupEditor();
+                projectType.loadProjectData(searchParams.get("projectId"));
+            })
+        });
     }
 }
+
+
 
 function updateLanguage(id){
     return new Promise((resolve, reject) => {
         if (id === "javascript") {
             import("./languageTypes/javascript.js").then((mod) => {
-                languageType = new mod.JavascriptType();
-                resolve(languageType)
+                projectType = new mod.JavascriptType();
+                resolve(projectType)
             });
             return;
         }
         if (id === "web") {
             import("./languageTypes/web.js").then((mod) => {
-                languageType = new mod.WebType();
-                resolve(languageType)
+                projectType = new mod.WebType();
+                resolve(projectType)
             });
             return;
         }
