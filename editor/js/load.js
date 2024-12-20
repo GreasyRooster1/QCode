@@ -3,29 +3,21 @@ let userUid = null;
 let chapterNum = null;
 let isLessonCreator = false;
 let hasLesson = true;
-let languageType;
+let projectType;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 function loadProjectFromUrlData(){
-    const searchParams = new URLSearchParams(window.location.search);
-    if(searchParams.has("uid")){
-        userUid = searchParams.get("uid");
+    if(!searchParams.has("projectId")){
+        return;
     }
-    if(searchParams.has("projectId")){
-        projectId = searchParams.get("projectId");
-        if(projectId==="$$lesson$$creator$$"){
-            isLessonCreator = true;
-            setupLessonCreator();
-            return;
-        }
+    if(!searchParams.has("uid")) {
+        return;
     }
 
-    if(searchParams.has("cNum")){
-        chapterNum = parseInt(searchParams.get("cNum"));
-    }
-
-    if(userUid===getStoredUser().uid){
-        loadProjectCode(projectId);
+    if(searchParams.get("uid")===getStoredUser().uid){
+        updateLanguage().then(()=>{
+            projectType.loadProjectData(searchParams.get("projectId"));
+        })
     }
 }
 
@@ -55,17 +47,25 @@ function loadProjectCode(id){
 }
 
 function updateLanguage(id){
-    if(id==="javascript"){
-        import("./languageTypes/javascript.js").then((mod)=> {
-            languageType = new mod.JavascriptType();
-        });
-    }
-    if(id==="web"){
-        import("./languageTypes/web.js").then((mod)=> {
-            languageType = new mod.WebType();
-        });
-    }
+    return new Promise((resolve, reject) => {
+        if (id === "javascript") {
+            import("./languageTypes/javascript.js").then((mod) => {
+                languageType = new mod.JavascriptType();
+                resolve(languageType)
+            });
+            return;
+        }
+        if (id === "web") {
+            import("./languageTypes/web.js").then((mod) => {
+                languageType = new mod.WebType();
+                resolve(languageType)
+            });
+            return;
+        }
+        reject();
+    });
 }
+
 
 function loadLesson(projectId){
     database.ref("lessons/"+projectId).once('value').then((snapshot) => {
@@ -80,4 +80,3 @@ function loadLesson(projectId){
         }
     });
 }
-loadProjectFromUrlData()
