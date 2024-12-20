@@ -14,9 +14,15 @@ abstract class ProjectType {
 
     loadProjectData(projectId:string){
         this.projectId = projectId;
-        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this,projectId).once("value",(snapshot:any)=>{
+        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId).once("value",(snapshot:any)=>{
             this.projectData = snapshot.val();
+        }).then(()=>{
+            this.onLoad()
         });
+    }
+
+    setupEventListeners(){
+
     }
 
     /*

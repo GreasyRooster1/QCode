@@ -16,6 +16,7 @@ function loadProjectFromUrlData(){
 
     if(searchParams.get("uid")===getStoredUser().uid){
         updateLanguage().then(()=>{
+            projectType.setupEditor();
             projectType.loadProjectData(searchParams.get("projectId"));
         })
     }
