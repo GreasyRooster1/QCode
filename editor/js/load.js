@@ -80,43 +80,4 @@ function loadLesson(projectId){
         }
     });
 }
-
-function scrollToCurrentStep(projectId){
-    let currentStepRef = database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
-
-    currentStepRef.once('value').then((snapshot) => {
-        let currentStep;
-        if(!snapshot.exists()){
-            currentStepRef.set(0);
-            currentStep = 0;
-            console.log("no current step was set, defaulting to 0")
-            return;
-        }else{
-            currentStep = snapshot.val();
-        }
-        scrollWhenAllImagesAreLoaded(currentStep,currentStepRef);
-    });
-}
-
-function scrollWhenAllImagesAreLoaded(toStep,ref){
-    let currentStepEl = scrollableSteps.querySelector('editor-step[count="'+toStep+'"]');
-    let imagesToLoad = [...document.images].filter(x => !x.complete);
-
-    if (imagesToLoad.length === 0) {
-        scrollableSteps.scrollTop = currentStepEl.offsetTop;
-    } else {
-        imagesToLoad.forEach(imageToLoad => {
-            imageToLoad.onload = imageToLoad.onerror = () => {
-                if ([...document.images].every(x => x.complete)) {
-                    if(currentStepEl===null){
-                        ref.set(0);
-                    }else {
-                        scrollableSteps.scrollTop = currentStepEl.offsetTop;
-                    }
-                }
-            };
-        });
-    }
-}
-
 loadProjectFromUrlData()
