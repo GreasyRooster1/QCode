@@ -26,7 +26,10 @@ abstract class ProjectType {
             this.saveCode();
         })
         document.querySelector(".run-button")!.addEventListener("click", ()=>{
-            this.run();
+            this.run(this.runErrorCallback);
+        })
+        document.querySelector(".stop-button")!.addEventListener("click", ()=>{
+            this.stop();
         })
     }
 
@@ -43,7 +46,8 @@ abstract class ProjectType {
     abstract run(errorCallback:ErrorCallback):void;
 
     abstract stop():void;
-    abstract errorCallback():void;
+
+    abstract runErrorCallback(content:string,type:string):void;
 }
 
 export {ProjectType,ErrorCallback};
