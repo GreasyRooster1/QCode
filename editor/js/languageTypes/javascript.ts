@@ -17,10 +17,12 @@ class JavascriptType extends ProjectType {
         let code = getCodeFromEditor();
         let user = getStoredUser();
         database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/code").set(code);
-        if(hasLesson) {
+        if(this.hasLesson) {
+            console.log(this.highestViewedStep)
             database.ref("userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep").set(this.highestViewedStep);
+            database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter").set(this.currentChapter);
         }
-        database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter").set(this.currentChapter);
+
     }
 
     run(errorCallback:ErrorCallback) {
