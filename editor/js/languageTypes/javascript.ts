@@ -1,5 +1,5 @@
 import {ProjectType,RunErrCallback} from "./projectType.js";
-import {getCode,setupEvents as setupExecEvents,logNames} from "../executionHelper.js"
+import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent} from "../executionHelper.js"
 
 class JavascriptType extends ProjectType {
     constructor() {
@@ -7,7 +7,9 @@ class JavascriptType extends ProjectType {
     }
 
     setupEditor(): void {
-        setupExecEvents(this.runErrorCallback);
+        setupExecEvents(()=>{
+            runCode(getCode())
+        },this.runErrorCallback);
     }
 
     onLoad(){
@@ -28,8 +30,7 @@ class JavascriptType extends ProjectType {
     }
 
     run(errorCallback:RunErrCallback) {
-        let code = getCode();
-
+        frameContent!.location.reload();
     }
 
     stop(){

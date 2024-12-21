@@ -1,4 +1,4 @@
-import {editor} from "./codeEditor"
+import {editor} from "./codeEditor.js"
 import {RunErrCallback} from "./languageTypes/projectType.js";
 
 interface Logs {
@@ -11,7 +11,7 @@ export interface frameLoadCallback {
 
 const frame: HTMLIFrameElement | null = document.querySelector('#exec-frame');
 const consoleOut = document.querySelector('.console-output-pane');
-let frameContent: Window | null;
+export let frameContent: Window | null;
 export const logNames: Logs = {log:"Info",warn:"Warning",error:"Error"};
 
 export function getCode(){
@@ -38,7 +38,7 @@ export function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:Ru
     });
 }
 
-function runCode(code:string){
+export function runCode(code:string){
     if (frameContent === null) {
         return;
     }
