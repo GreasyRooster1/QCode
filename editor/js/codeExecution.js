@@ -1,9 +1,7 @@
 const stopButton = document.querySelector('.stop-button');
 const runButton = document.querySelector('.run-button');
 
-const frame = document.querySelector('#exec-frame');
-const consoleOut = document.querySelector('.console-output-pane');
-const logHeads = {log:"Info",warn:"Warning",error:"Error"};
+
 let iWindow = null;
 let runningCode = false;
 
@@ -44,23 +42,6 @@ function runCode(){
 
 
 //when we get a message from the frame
-window.addEventListener("message", (event) => {
-    let log = JSON.parse(event.data);
-    console.log("received log from frame: "+log.type+" - "+log.message);
 
-    let logEl = document.createElement("console-log");
-    logEl.setAttribute("type", log.type);
-    logEl.setAttribute("message", log.message);
-    logEl.setAttribute("head", logHeads[log.type]);
-    consoleOut.insertBefore(logEl,consoleOut.firstChild);
-});
-
-frame.addEventListener("load", () => {
-    iWindow = frame.contentWindow;
-    console.log(iWindow);
-    if(runningCode){
-        runCode();
-    }
-});
 
 window.getCodeFromEditor = getCodeFromEditor;
