@@ -46,10 +46,14 @@ class JavascriptType extends ProjectType {
     runErrorCallback(content: string, type: string): void {
         let logEl = document.createElement("console-log");
         let consoleOut = document.querySelector(".console-output-pane")
+        if(consoleOut!.children.length > 100){
+            return;
+        }
         logEl.setAttribute("type", type);
         logEl.setAttribute("message", content);
         logEl.setAttribute("head", logNames[type]);
         consoleOut!.insertBefore(logEl,consoleOut!.firstChild);
+
     }
 }
 
