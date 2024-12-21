@@ -19,6 +19,7 @@ export function getCode(){
 }
 
 export function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:RunErrCallback){
+    console.log(frame)
     window.addEventListener("message", (event) => {
         let log;
         try {
@@ -36,6 +37,7 @@ export function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:Ru
         console.log(frameContent);
         frameLoadCallback();
     });
+    frame?.contentWindow?.location.reload();
 }
 
 export function runCode(code:string){

@@ -30,7 +30,8 @@ class JavascriptType extends ProjectType {
     }
 
     run(errorCallback:RunErrCallback) {
-        frameContent!.location.reload();
+        console.log(frameContent)
+        frameContent?.location.reload();
     }
 
     stop(){
