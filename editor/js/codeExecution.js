@@ -29,18 +29,6 @@ function getCodeFromEditor(){
     return window.editor.state.doc.toString();
 }
 
-function runCode(){
-    if (iWindow === null) {
-        return;
-    }
-
-    let code = getCodeFromEditor();
-
-    //send code to frame
-    iWindow.postMessage(code);
-}
-
-
 //when we get a message from the frame
 
 

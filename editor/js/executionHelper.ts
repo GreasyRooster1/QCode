@@ -5,15 +5,20 @@ interface Logs {
     [log: string] : string;
 }
 
+export interface frameLoadCallback {
+    ():void
+}
+
 const frame: HTMLIFrameElement | null = document.querySelector('#exec-frame');
 const consoleOut = document.querySelector('.console-output-pane');
+let frameContent: Window | null;
 export const logNames: Logs = {log:"Info",warn:"Warning",error:"Error"};
 
 export function getCode(){
     return editor.state.doc.toString();
 }
 
-export function setupEvents(errorCallback:RunErrCallback){
+export function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:RunErrCallback){
     window.addEventListener("message", (event) => {
         let log;
         try {
@@ -27,9 +32,17 @@ export function setupEvents(errorCallback:RunErrCallback){
     });
 
     frame!.addEventListener("load", () => {
-        iWindow = frame!.contentWindow;
-        console.log(iWindow);
-        runCode();
+        frameContent = frame!.contentWindow;
+        console.log(frameContent);
+        frameLoadCallback();
     });
 }
 
+function runCode(code:string){
+    if (frameContent === null) {
+        return;
+    }
+
+    //send code to frame
+    frameContent.postMessage(code);
+}
