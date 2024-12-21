@@ -1,4 +1,5 @@
 import {ProjectType,ErrorCallback} from "./projectType.js";
+import {getCode,setupEvents as setupExecEvents,logNames} from "../executionHelper.js"
 
 class JavascriptType extends ProjectType {
     constructor() {
@@ -6,7 +7,7 @@ class JavascriptType extends ProjectType {
     }
 
     setupEditor(): void {
-
+        setupExecEvents()
     }
 
     onLoad(){
@@ -14,7 +15,7 @@ class JavascriptType extends ProjectType {
     }
 
     saveCode(){
-        let code = getCodeFromEditor();
+        let code = getCode();
         let user = getStoredUser();
         database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/code").set(code);
         database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/dateUpdated").set(Date.now()/1000);
@@ -27,6 +28,7 @@ class JavascriptType extends ProjectType {
     }
 
     run(errorCallback:ErrorCallback) {
+        let code = getCode();
 
     }
 
@@ -35,6 +37,11 @@ class JavascriptType extends ProjectType {
     }
 
     runErrorCallback(content: string, type: string): void {
+        let logEl = document.createElement("console-log");
+        logEl.setAttribute("type", type);
+        logEl.setAttribute("message", content);
+        logEl.setAttribute("head", logNames[type]);
+        consoleOut!.insertBefore(logEl,consoleOut!.firstChild);
     }
 }
 
