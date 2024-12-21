@@ -32,6 +32,8 @@ class JavascriptType extends ProjectType {
     run(errorCallback:RunErrCallback) {
         console.log(frameContent)
         frameContent?.location.reload();
+        let consoleOut = document.querySelector(".console-output-pane")
+        consoleOut!.innerHTML = "";
     }
 
     stop(){

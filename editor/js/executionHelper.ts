@@ -5,20 +5,20 @@ interface Logs {
     [log: string] : string;
 }
 
-export interface frameLoadCallback {
+interface frameLoadCallback {
     ():void
 }
 
 const frame: HTMLIFrameElement | null = document.querySelector('#exec-frame');
 const consoleOut = document.querySelector('.console-output-pane');
-export let frameContent: Window | null;
-export const logNames: Logs = {log:"Info",warn:"Warning",error:"Error"};
+let frameContent: Window | null;
+const logNames: Logs = {log:"Info",warn:"Warning",error:"Error"};
 
-export function getCode(){
+function getCode(){
     return editor.state.doc.toString();
 }
 
-export function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:RunErrCallback){
+function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:RunErrCallback){
     console.log(frame)
     window.addEventListener("message", (event) => {
         let log;
@@ -29,7 +29,7 @@ export function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:Ru
         }
         console.log("received log from frame: "+log.type+" - "+log.message);
 
-        errorCallback(log.type,log.message);
+        errorCallback(log.message,log.type);
     });
 
     frame!.addEventListener("load", () => {
@@ -37,10 +37,9 @@ export function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:Ru
         console.log(frameContent);
         frameLoadCallback();
     });
-    frame?.contentWindow?.location.reload();
 }
 
-export function runCode(code:string){
+function runCode(code:string){
     if (frameContent === null) {
         return;
     }
@@ -48,3 +47,5 @@ export function runCode(code:string){
     //send code to frame
     frameContent.postMessage(code);
 }
+
+export {runCode,setupEvents,getCode,logNames,frameContent,frame,frameLoadCallback};
