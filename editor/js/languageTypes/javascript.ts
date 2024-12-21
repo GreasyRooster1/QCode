@@ -18,9 +18,9 @@ class JavascriptType extends ProjectType {
         let user = getStoredUser();
         database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/code").set(code);
         if(hasLesson) {
-            database.ref("userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep").set(highestViewedStepCount);
+            database.ref("userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep").set(this.highestViewedStep);
         }
-        database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter").set(chapterNum);
+        database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter").set(this.currentChapter);
     }
 
     run(errorCallback:ErrorCallback) {

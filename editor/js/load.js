@@ -1,8 +1,5 @@
 let projectId=null;
 let userUid = null;
-/**
- * @type {string | number | null}
- */
 let chapterNum = null;
 let isLessonCreator = false;
 let hasLesson = true;
@@ -26,7 +23,12 @@ function loadProjectFromUrlData(){
             }
             updateLanguage(id).then((projectType) => {
                 projectType.setupEditor();
+                projectType.setupEventListeners()
                 projectType.loadProjectData(searchParams.get("projectId"));
+                if(!searchParams.has("cNum")) {
+                    return;
+                }
+                projectType.chapterNum = searchParams.get("cNum");
             })
         });
     }

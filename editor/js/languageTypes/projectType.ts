@@ -7,6 +7,8 @@ abstract class ProjectType {
     allowShare:boolean;
     projectData: { [key: string]: any; } | undefined;
     projectId: string | undefined;
+    highestViewedStep: number | undefined;
+    currentChapter: number | undefined;
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;
