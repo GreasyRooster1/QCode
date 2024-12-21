@@ -4,9 +4,9 @@ let hasSavedRecently = false;
 
 const saveAlertFadeDuration = .75;
 
-saveButton.addEventListener("click", function() {
-    saveCode();
-});
+// saveButton.addEventListener("click", function() {
+//     saveCode();
+// });
 
 function saveCode() {
     rawSave()

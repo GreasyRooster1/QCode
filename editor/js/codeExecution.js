@@ -7,18 +7,18 @@ const logHeads = {log:"Info",warn:"Warning",error:"Error"};
 let iWindow = null;
 let runningCode = false;
 
-runButton.addEventListener("click", function() {
-    if(!isLessonCreator){
-        saveCode()
-    }
-    resetAllOutputs()
-    runningCode = true;
-    runCode();
-});
-
-stopButton.addEventListener("click", function() {
-    resetAllOutputs()
-});
+// runButton.addEventListener("click", function() {
+//     if(!isLessonCreator){
+//         saveCode()
+//     }
+//     resetAllOutputs()
+//     runningCode = true;
+//     runCode();
+// });
+//
+// stopButton.addEventListener("click", function() {
+//     resetAllOutputs()
+// });
 
 function resetAllOutputs(){
     consoleOut.innerHTML = "";

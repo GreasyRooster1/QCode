@@ -8,11 +8,11 @@ const previewIframe = document.getElementById('share-preview-frame');
 
 let isAlreadyShared = false;
 
-shareButton.addEventListener('click', (e) => {
-    rawSave();
-    showPopup();
-    runPopupPreviewCode();
-});
+// shareButton.addEventListener('click', (e) => {
+//     rawSave();
+//     showPopup();
+//     runPopupPreviewCode();
+// });
 
 closePopupButton.addEventListener("click", (e) => {
     hidePopup();
