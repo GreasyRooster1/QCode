@@ -5,6 +5,7 @@ interface ErrorCallback {
 
 abstract class ProjectType {
     allowShare:boolean;
+    hasLesson: boolean | undefined;
     projectData: { [key: string]: any; } | undefined;
     projectId: string | undefined;
     highestViewedStep: number | undefined;
@@ -21,8 +22,10 @@ abstract class ProjectType {
             console.log(this.projectData);
             if(this.projectData!["lessonId"]==="none"){
                 setupPanes(false);
+                this.hasLesson = false;
             }else{
                 setupPanes(true);
+                this.hasLesson = true;
             }
         }).then(()=>{
             this.onLoad()
