@@ -1,4 +1,5 @@
 import {editor} from "./codeEditor"
+import {RunErrCallback} from "./languageTypes/projectType.js";
 
 interface Logs {
     [log: string] : string;
@@ -12,7 +13,7 @@ export function getCode(){
     return editor.state.doc.toString();
 }
 
-export function setupEvents(){
+export function setupEvents(errorCallback:RunErrCallback){
     window.addEventListener("message", (event) => {
         let log;
         try {
@@ -22,7 +23,7 @@ export function setupEvents(){
         }
         console.log("received log from frame: "+log.type+" - "+log.message);
 
-
+        errorCallback(log.type,log.message);
     });
 
     frame!.addEventListener("load", () => {

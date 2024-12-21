@@ -1,4 +1,4 @@
-import {ProjectType,ErrorCallback} from "./projectType.js";
+import {ProjectType,RunErrCallback} from "./projectType.js";
 import {getCode,setupEvents as setupExecEvents,logNames} from "../executionHelper.js"
 
 class JavascriptType extends ProjectType {
@@ -7,7 +7,7 @@ class JavascriptType extends ProjectType {
     }
 
     setupEditor(): void {
-        setupExecEvents()
+        setupExecEvents(this.runErrorCallback);
     }
 
     onLoad(){
@@ -27,7 +27,7 @@ class JavascriptType extends ProjectType {
 
     }
 
-    run(errorCallback:ErrorCallback) {
+    run(errorCallback:RunErrCallback) {
         let code = getCode();
 
     }
@@ -38,6 +38,7 @@ class JavascriptType extends ProjectType {
 
     runErrorCallback(content: string, type: string): void {
         let logEl = document.createElement("console-log");
+        let consoleOut = document.querySelector(".console-output-pane")
         logEl.setAttribute("type", type);
         logEl.setAttribute("message", content);
         logEl.setAttribute("head", logNames[type]);

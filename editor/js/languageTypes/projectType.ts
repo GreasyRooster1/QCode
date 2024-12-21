@@ -1,5 +1,5 @@
 
-interface ErrorCallback {
+interface RunErrCallback {
     (content:string,type:string):void,
 }
 
@@ -57,11 +57,11 @@ abstract class ProjectType {
 
     abstract saveCode():void;
 
-    abstract run(errorCallback:ErrorCallback):void;
+    abstract run(errorCallback:RunErrCallback):void;
 
     abstract stop():void;
 
     abstract runErrorCallback(content:string,type:string):void;
 }
 
-export {ProjectType,ErrorCallback};
+export {ProjectType,RunErrCallback};
