@@ -38,6 +38,8 @@ abstract class ProjectType {
             this.saveCode();
         })
         document.querySelector(".run-button")!.addEventListener("click", ()=>{
+            this.saveCode();
+            showSaveAlert()
             this.run(this.runErrorCallback);
         })
         document.querySelector(".stop-button")!.addEventListener("click", ()=>{
