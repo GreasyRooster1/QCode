@@ -1,6 +1,5 @@
 let everyStep;
 let highestViewedStepCount;
-let highestViewedStepEl;
 
 function isScrolledIntoView(parent,el) {
     let rect = el.getBoundingClientRect();
@@ -60,13 +59,12 @@ scrollableSteps.addEventListener("scroll", (e) => {
 
     everyStep = document.querySelectorAll('.step');
 
-    highestViewedStepCount = 0;
+    let high = 0;
     everyStep.forEach((el) => {
         if(isScrolledIntoView(scrollableSteps,el)){
             let stepCount = el.getAttribute("count");
-            if(stepCount > highestViewedStepCount) {
-                highestViewedStepCount = stepCount;
-                highestViewedStepEl = el;
+            if(stepCount > high) {
+                high = stepCount;
             }
 
             el.classList.add(".focused-step")
@@ -74,4 +72,5 @@ scrollableSteps.addEventListener("scroll", (e) => {
             el.classList.remove(".focused-step")
         }
     })
+    projectType.highestViewedStep = high;
 });
