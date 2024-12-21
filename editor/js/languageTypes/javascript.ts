@@ -17,6 +17,7 @@ class JavascriptType extends ProjectType {
         let code = getCodeFromEditor();
         let user = getStoredUser();
         database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/code").set(code);
+        database.ref("userdata/"+user.uid+"/projects/"+this.projectId+"/dateUpdated").set(Date.now()/1000);
         if(this.hasLesson) {
             console.log(this.highestViewedStep)
             database.ref("userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep").set(this.highestViewedStep);
