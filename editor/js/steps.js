@@ -1,4 +1,7 @@
 let everyStep;
+/**
+ * @type {string | number | null}
+ */
 let highestViewedStepCount;
 let highestViewedStepEl;
 

@@ -15,13 +15,7 @@ function saveCode() {
 }
 
 function rawSave(){
-    let code = getCodeFromEditor();
-    let user = getStoredUser();
-    database.ref("userdata/"+user.uid+"/projects/"+projectId+"/code").set(code);
-    if(hasLesson) {
-        database.ref("userdata/" + user.uid + "/projects/" + projectId + "/currentStep").set(highestViewedStepCount);
-    }
-    database.ref("userdata/"+user.uid+"/projects/"+projectId+"/currentChapter").set(chapterNum);
+
 }
 
 function showSaveAlert(){

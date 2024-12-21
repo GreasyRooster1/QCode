@@ -1,5 +1,8 @@
 let projectId=null;
 let userUid = null;
+/**
+ * @type {string | number | null}
+ */
 let chapterNum = null;
 let isLessonCreator = false;
 let hasLesson = true;

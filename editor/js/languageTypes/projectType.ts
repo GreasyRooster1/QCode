@@ -29,6 +29,7 @@ abstract class ProjectType {
 
     setupEventListeners(){
         document.querySelector(".save-button")!.addEventListener("click", ()=>{
+            showSaveAlert()
             this.saveCode();
         })
         document.querySelector(".run-button")!.addEventListener("click", ()=>{
