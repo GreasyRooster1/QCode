@@ -47,7 +47,7 @@ class JavascriptType extends ProjectType {
         let logEl = document.createElement("console-log");
         let consoleOut = document.querySelector(".console-output-pane")
         if(consoleOut!.children.length > 100){
-            return;
+            consoleOut!.children[0].remove()
         }
         logEl.setAttribute("type", type);
         logEl.setAttribute("message", content);
