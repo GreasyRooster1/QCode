@@ -1,5 +1,5 @@
 import {ProjectType,RunErrCallback} from "./projectType.js";
-import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent} from "../executionHelper.js"
+import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame} from "../executionHelper.js"
 
 class JavascriptType extends ProjectType {
     constructor() {
@@ -31,7 +31,10 @@ class JavascriptType extends ProjectType {
 
     run(errorCallback:RunErrCallback) {
         console.log(frameContent)
-        frameContent?.location.reload();
+        if(frameContent==undefined){
+            frame?.contentWindow?.location?.reload()
+        }
+        frameContent?.location.reload()
         let consoleOut = document.querySelector(".console-output-pane")
         consoleOut!.innerHTML = "";
     }
