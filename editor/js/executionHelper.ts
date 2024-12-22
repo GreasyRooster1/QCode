@@ -52,7 +52,9 @@ function runCode(code:string){
 function stopFrame(){
     frame?.removeEventListener("load",frameLoadEvent)
     frame?.contentWindow?.location.reload();
-    frame?.addEventListener("load", frameLoadEvent);
+    frame?.addEventListener("load", ()=>{
+        frame!.addEventListener("load", frameLoadEvent);
+    });
 }
 
 export {runCode,setupEvents,getCode,logNames,frameContent,frame,frameLoadCallback,stopFrame};
