@@ -1,7 +1,26 @@
 const newProjectButton = document.querySelector('.new-project-button');
+const newProjectPopupContainer = document.querySelector('.new-project-popup-container');
+
+
 newProjectButton.addEventListener('click', (e) => {
-    createProject(prompt("name for new project"));
+    showNewProjectPopup();
 })
+
+newProjectPopupContainer.addEventListener('click', (e) => {
+    if(e.target===newProjectPopupContainer){
+        hideNewProjectPopup();
+    }
+})
+
+function showNewProjectPopup() {
+    newProjectPopupContainer.style.opacity = '1';
+    newProjectPopupContainer.style.pointerEvents = 'all';
+}
+
+function hideNewProjectPopup() {
+    newProjectPopupContainer.style.opacity = '0';
+    newProjectPopupContainer.style.pointerEvents = 'none';
+}
 
 function createProject(projectName){
     let cleanProjectId = projectName.toLowerCase().replaceAll("[^a-z0-9]","-");
