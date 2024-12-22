@@ -1,8 +1,14 @@
+// @ts-ignore
 import { basicSetup, EditorView} from "codemirror/codemirror/dist/index.js"
+// @ts-ignore
 import { keymap } from "codemirror/view/dist/index.js"
+// @ts-ignore
 import { javascript } from "codemirror/lang-javascript/dist/index.js"
+// @ts-ignore
 import { indentWithTab } from "codemirror/commands/dist/index.js"
+// @ts-ignore
 import { linter } from 'codemirror/lint/dist/index.js'
+// @ts-ignore
 import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
 
 
@@ -30,7 +36,5 @@ const editorView = new EditorView({
 function onDocUpdate(){
     hasSavedRecently = false;
 }
-
-window.editor = editorView;
 
 export const editor=editorView;
