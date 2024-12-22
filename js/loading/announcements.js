@@ -120,7 +120,7 @@ function shortTimeDifference(previous) {
     }
 
     else if (elapsed < msPerHour) {
-        return Math.round(elapsed/msPerMinute) + 'm';
+        return Math.round(elapsed/msPerMinute) + 'min';
     }
 
     else if (elapsed < msPerDay ) {
@@ -132,7 +132,7 @@ function shortTimeDifference(previous) {
     }
 
     else if (elapsed < msPerYear) {
-        return Math.round(elapsed/msPerMonth) + 'm';
+        return Math.round(elapsed/msPerMonth) + 'mo';
     }
 
     else {
