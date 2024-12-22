@@ -32,10 +32,15 @@ function setupEditor(languageFunc:any,language:any){
         updateListener:onDocUpdate,
         parent: document.querySelector(".code-editor"),
     });
+    // @ts-ignore
+    window.editor = editor;
 }
 
 function onDocUpdate(){
     hasSavedRecently = false;
 }
+
+// @ts-ignore
+window.editor = null;
 
 export {editor,setupEditor};

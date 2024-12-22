@@ -1,4 +1,4 @@
-import { setupEditor } from "../codeEditor";
+import { setupEditor } from "../codeEditor.js";
 
 interface RunErrCallback {
     (content:string,type:string):void,

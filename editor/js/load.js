@@ -1,5 +1,3 @@
-import {setupEditor} from "./codeEditor";
-
 let projectId=null;
 let userUid = null;
 let chapterNum = null;
@@ -25,6 +23,7 @@ function loadProjectFromUrlData(){
             }
             updateLanguage(id).then((projectType) =>
             {
+                projectType.setupEditorLanguage()
                 projectType.setupEditor();
                 projectType.setupEventListeners()
                 projectType.loadProjectData(searchParams.get("projectId"));
