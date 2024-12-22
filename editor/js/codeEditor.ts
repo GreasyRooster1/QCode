@@ -12,6 +12,11 @@ import { javascript } from "codemirror/lang-javascript/dist/index.js"
 // @ts-ignore
 import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
 
+// @ts-ignore
+import { rust } from "codemirror/lang-rust/dist/index.js"
+// @ts-ignore
+import { rustLanguage } from 'codemirror/lang-rust/dist/index.js'
+
 
 const customTheme = EditorView.theme({
     '&': {
@@ -46,6 +51,12 @@ function getLanguagePair(identifier:string): { func: any; lang: any } | null{
         return {
             func: javascript(),
             lang: javascriptLanguage
+        }
+    }
+    if(identifier == "rust"){
+        return {
+            func: rust(),
+            lang: rustLanguage
         }
     }
     return null;

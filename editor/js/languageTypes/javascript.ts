@@ -62,7 +62,7 @@ class JavascriptType extends ProjectType {
     }
 
     getLanguage():string {
-        return "javascript"
+        return "rust"
     }
 }
 
