@@ -11,29 +11,34 @@ function loadProjectFromUrlData(){
     if(!searchParams.has("projectId")){
         return;
     }
+    let projectId = searchParams.get("projectId");
     if(!searchParams.has("uid")) {
         return;
     }
 
-    if(searchParams.get("uid")===getStoredUser().uid){
-        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId).once("value",(snapshot)=> {
-            let id = "javascript";
-            if(snapshot.exists()){
-                id = snapshot.val();
-            }
-            updateLanguage(id).then((projectType) =>
-            {
-                projectType.setupEditorLanguage()
-                projectType.setupEditor();
-                projectType.setupEventListeners()
-                projectType.loadProjectData(searchParams.get("projectId"));
-                if(!searchParams.has("cNum")) {
-                    return;
-                }
-                projectType.chapterNum = searchParams.get("cNum");
-            })
-        });
+    if(searchParams.get("uid")!==getStoredUser().uid){
+        return;
     }
+
+    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").once("value",(snapshot)=> {
+        let id = "javascript";
+        if(snapshot.exists()){
+            id = snapshot.val();
+        }else{
+            database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").set("javascript");
+        }
+        updateLanguage(id).then((projectType) =>
+        {
+            projectType.setupEditorLanguage()
+            projectType.setupEditor();
+            projectType.setupEventListeners()
+            projectType.loadProjectData(searchParams.get("projectId"));
+            if(!searchParams.has("cNum")) {
+                return;
+            }
+            projectType.chapterNum = searchParams.get("cNum");
+        })
+    });
 }
 
 
