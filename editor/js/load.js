@@ -1,3 +1,5 @@
+import {setupEditor} from "./codeEditor";
+
 let projectId=null;
 let userUid = null;
 let chapterNum = null;
@@ -21,7 +23,8 @@ function loadProjectFromUrlData(){
             if(snapshot.exists()){
                 id = snapshot.val();
             }
-            updateLanguage(id).then((projectType) => {
+            updateLanguage(id).then((projectType) =>
+            {
                 projectType.setupEditor();
                 projectType.setupEventListeners()
                 projectType.loadProjectData(searchParams.get("projectId"));

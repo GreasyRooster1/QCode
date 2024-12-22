@@ -38,4 +38,4 @@ function onDocUpdate(){
     hasSavedRecently = false;
 }
 
-export {editor};
+export {editor,setupEditor};

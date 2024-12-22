@@ -1,3 +1,4 @@
+// @ts-ignore
 import {editor} from "./codeEditor.js"
 import {RunErrCallback} from "./languageTypes/projectType.js";
 
@@ -16,6 +17,7 @@ const logNames: Logs = {log:"Info",warn:"Warning",error:"Error"};
 let frameLoadEvent: {():void};
 
 function getCode(){
+    // @ts-ignore
     return editor.state.doc.toString();
 }
 

@@ -1,3 +1,4 @@
+import { setupEditor } from "../codeEditor";
 
 interface RunErrCallback {
     (content:string,type:string):void,
@@ -54,6 +55,11 @@ abstract class ProjectType {
         }else{
             document.querySelector(".share-button")!.classList.remove("disabled");
         }
+    }
+
+    setupEditorLanguage(){
+        let l = this.getLanguage();
+        setupEditor(l.function,l.language);
     }
 
     /*
