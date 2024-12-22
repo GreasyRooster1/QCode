@@ -16,8 +16,8 @@
 
 .new-project-popup{
     background: var(--new-project-popup-background);
-    width: 25%;
-    height: 25%;
+    width: 20%;
+    aspect-ratio: 7/3;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -51,4 +51,16 @@
     border: none;
     border-radius: 5px;
     font-size: 1.1rem;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.create-button{
+    background: var(--popup-inputs-background);
+    padding:3px;
+    border-radius: 5px;
+    margin:5px;
 }
