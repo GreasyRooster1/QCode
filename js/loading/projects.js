@@ -1,16 +1,28 @@
 let currentProjectViewPage = 1;
 
 function loadProjects(){
-    let projectsRef = database.ref('userdata/'+user.uid+"/projects").orderByChild("timestamp")
+    let projectsRef = database.ref('userdata/'+user.uid+"/projects").orderByChild("dateUpdated")
+    let projects = []
     projectsRef.on('value', (snapshot) => {
         clearProjects();
         let i=0;
         snapshot.forEach((childSnapshot) => {
             const data = childSnapshot.val();
             console.log("loaded project " + childSnapshot.key + " " + i);
-            createProjectElement(childSnapshot.key, data);
+            projects.push({
+                key: childSnapshot.key,
+                data: data
+            });
         });
+        console.log(projects);
+        projects.sort((a,b) => {
+            return a.data.timestamp - b.data.timestamp;
+        })
+        for(let project of projects){
+            createProjectElement(project.key, project.data);
+        }
     });
+
 }
 
 function createProjectElement(projectId,projectData){
