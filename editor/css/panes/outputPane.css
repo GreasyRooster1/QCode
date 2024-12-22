@@ -45,6 +45,7 @@
 
 .share-button.disabled{
     background: var(--share-button-disabled-background);
+    pointer-events: none;
 }
 
 .output-panes-wrapper{
