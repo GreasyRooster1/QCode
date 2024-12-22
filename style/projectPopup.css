@@ -17,12 +17,13 @@
 .new-project-popup{
     background: var(--new-project-popup-background);
     width: 20%;
+    min-width: 350px;
     aspect-ratio: 7/3;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .inputs-container{
@@ -63,4 +64,10 @@
     padding:3px;
     border-radius: 5px;
     margin:5px;
+}
+
+.new-project-popup .title{
+    font-size: 1.5rem;
+    justify-self: center;
+    text-align: center;
 }
