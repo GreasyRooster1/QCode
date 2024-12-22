@@ -13,6 +13,7 @@ abstract class ProjectType {
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;
+        this.checkShareAllowed()
     }
 
     loadProjectData(projectId:string){
@@ -45,6 +46,14 @@ abstract class ProjectType {
         document.querySelector(".stop-button")!.addEventListener("click", ()=>{
             this.stop();
         })
+    }
+
+    checkShareAllowed(){
+        if(!this.allowShare){
+            document.querySelector(".share-button")!.classList.add("disabled");
+        }else{
+            document.querySelector(".share-button")!.classList.remove("disabled");
+        }
     }
 
     /*

@@ -3,7 +3,7 @@ import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,fra
 
 class JavascriptType extends ProjectType {
     constructor() {
-        super(true);
+        super(false);
     }
 
     setupEditor(): void {
