@@ -1,0 +1,16 @@
+.new-project-popup-container{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.new-project-popup{
+    background: var(--new-project-popup-background);
+}
