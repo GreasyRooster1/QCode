@@ -61,11 +61,8 @@ class JavascriptType extends ProjectType {
 
     }
 
-    getLanguage(): { function: any; language: any } {
-        return {
-            function:javascript,
-            language:javascriptLanguage,
-        }
+    getLanguage():string {
+        return "javascript"
     }
 }
 

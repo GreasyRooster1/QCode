@@ -58,8 +58,7 @@ abstract class ProjectType {
     }
 
     setupEditorLanguage(){
-        let l = this.getLanguage();
-        setupEditor(l.function,l.language);
+        setupEditor(this.getLanguage());
     }
 
     /*
@@ -78,7 +77,7 @@ abstract class ProjectType {
 
     abstract runErrorCallback(content:string,type:string):void;
 
-    abstract getLanguage(): {function:any,language:any};
+    abstract getLanguage(): string;
 }
 
 export {ProjectType,RunErrCallback};

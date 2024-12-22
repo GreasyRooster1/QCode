@@ -6,7 +6,11 @@ import { keymap } from "codemirror/view/dist/index.js"
 import { indentWithTab } from "codemirror/commands/dist/index.js"
 // @ts-ignore
 import { linter } from 'codemirror/lint/dist/index.js'
+
 // @ts-ignore
+import { javascript } from "codemirror/lang-javascript/dist/index.js"
+// @ts-ignore
+import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
 
 
 const customTheme = EditorView.theme({
@@ -19,13 +23,14 @@ const customTheme = EditorView.theme({
 
 let editor;
 
-function setupEditor(languageFunc:any,language:any){
+function setupEditor(language: string) {
+    let languagePair = getLanguagePair(language);
     editor = new EditorView({
         doc: "\n",
         extensions: [
             basicSetup,
-            languageFunc,
-            linter(language),
+            languagePair?.func,
+            linter(languagePair?.lang),
             keymap.of([indentWithTab]),
             customTheme,
         ],
@@ -34,6 +39,16 @@ function setupEditor(languageFunc:any,language:any){
     });
     // @ts-ignore
     window.editor = editor;
+}
+
+function getLanguagePair(identifier:string): { func: any; lang: any } | null{
+    if(identifier == "javascript"){
+        return {
+            func: javascript(),
+            lang: javascriptLanguage
+        }
+    }
+    return null;
 }
 
 function onDocUpdate(){
