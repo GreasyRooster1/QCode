@@ -32,6 +32,7 @@
 
     --share-button-background: #7f21e4;
     --share-button-text-color: #ffffff;
+    --share-button-disabled-background: #808080;
 
     --share-popup-background: #efefef;
     --share-project-name-input: #cfcfcf;

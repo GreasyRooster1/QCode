@@ -43,6 +43,10 @@
     color:var(--share-button-text-color);
 }
 
+.share-button.disabled{
+    background: var(--share-button-disabled-background);
+}
+
 .output-panes-wrapper{
     height: calc(100% - 40px);
 }
