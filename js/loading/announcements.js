@@ -60,6 +60,9 @@ function getDateString(unixStamp){
 }
 
 function timeDifference(previous) {
+    if(previous===null||previous===undefined) {
+        return "";
+    }
 
     let msPerMinute = 60 * 1000;
     let msPerHour = msPerMinute * 60;
@@ -97,6 +100,9 @@ function timeDifference(previous) {
 }
 
 function shortTimeDifference(previous) {
+    if(previous===null||previous===undefined) {
+        return "";
+    }
 
     previous*=1000;
     let msPerMinute = 60 * 1000;
