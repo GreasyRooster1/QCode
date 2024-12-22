@@ -1,5 +1,5 @@
 import {ProjectType,RunErrCallback} from "./projectType.js";
-import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame} from "../executionHelper.js"
+import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../executionHelper.js"
 
 class JavascriptType extends ProjectType {
     constructor() {
@@ -40,7 +40,7 @@ class JavascriptType extends ProjectType {
     }
 
     stop(){
-
+        stopFrame();
     }
 
     runErrorCallback(content: string, type: string): void {

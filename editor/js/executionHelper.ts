@@ -13,6 +13,7 @@ const frame: HTMLIFrameElement | null = document.querySelector('#exec-frame');
 const consoleOut = document.querySelector('.console-output-pane');
 let frameContent: Window | null;
 const logNames: Logs = {log:"Info",warn:"Warning",error:"Error"};
+let frameLoadEvent: {():void};
 
 function getCode(){
     return editor.state.doc.toString();
@@ -32,20 +33,26 @@ function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:RunErrCal
         errorCallback(log.message,log.type);
     });
 
-    frame!.addEventListener("load", () => {
+    frameLoadEvent = () => {
         frameContent = frame!.contentWindow;
         console.log(frameContent);
         frameLoadCallback();
-    });
+    }
+    frame!.addEventListener("load", frameLoadEvent);
 }
 
 function runCode(code:string){
     if (frameContent === null) {
         return;
     }
-
     //send code to frame
     frameContent.postMessage(code);
 }
 
-export {runCode,setupEvents,getCode,logNames,frameContent,frame,frameLoadCallback};
+function stopFrame(){
+    frame?.removeEventListener("load",frameLoadEvent)
+    frame?.contentWindow?.location.reload();
+    frame?.addEventListener("load", frameLoadEvent);
+}
+
+export {runCode,setupEvents,getCode,logNames,frameContent,frame,frameLoadCallback,stopFrame};
