@@ -16,7 +16,7 @@ function loadProjects(){
         });
         console.log(projects);
         projects.sort((a,b) => {
-            return a.data.timestamp - b.data.timestamp;
+            return (a.data.dateUpdated??a.data.timestamp) - (b.data.dateUpdated??b.data.timestamp);
         })
         for(let project of projects){
             createProjectElement(project.key, project.data);
