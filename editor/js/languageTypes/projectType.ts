@@ -71,6 +71,8 @@ abstract class ProjectType {
     abstract stop():void;
 
     abstract runErrorCallback(content:string,type:string):void;
+
+    abstract getLanguage(): {function:any,language:any};
 }
 
 export {ProjectType,RunErrCallback};
