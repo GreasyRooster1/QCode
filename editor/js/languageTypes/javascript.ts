@@ -35,12 +35,12 @@ class JavascriptType extends ProjectType {
             frame?.contentWindow?.location?.reload()
         }
         frameContent?.location.reload()
-        let consoleOut = document.querySelector(".console-output-pane")
-        consoleOut!.innerHTML = "";
+        clearConsole()
     }
 
     stop(){
         stopFrame();
+        clearConsole()
     }
 
     runErrorCallback(content: string, type: string): void {
@@ -57,5 +57,9 @@ class JavascriptType extends ProjectType {
     }
 }
 
+function clearConsole(){
+    let consoleOut = document.querySelector(".console-output-pane")
+    consoleOut!.innerHTML = "";
+}
 
 export {JavascriptType};
