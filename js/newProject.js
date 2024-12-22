@@ -1,8 +1,8 @@
 const newProjectButton = document.querySelector('.new-project-button');
 const popupCloseButton = document.querySelector('.close-button');
 const popupCreateButton = document.querySelector('.create-button');
-const popupNameInput = document.querySelector('.new-project-name-input');
-const popupTypeInput = document.querySelector('.new-project-type');
+const popupNameInput = document.querySelector('.name-input');
+const popupTypeInput = document.querySelector('.type-select');
 const newProjectPopupContainer = document.querySelector('.new-project-popup-container');
 
 
@@ -24,7 +24,11 @@ popupCreateButton.addEventListener('click', (e) => {
     let projectName = popupNameInput.value;
     let type = popupTypeInput.value;
     let cleanProjectId = projectName.toLowerCase().replaceAll("[^a-z0-9]","-");
-    createProject(cleanProjectId,projectName,type)
+    createProject(cleanProjectId,projectName,type).then(()=>{
+        openProjectInEditor(cleanProjectId,getStoredUser().uid,0);
+    }).catch(() => {
+        alert("Project with that name already exists");
+    })
 })
 
 function showNewProjectPopup() {

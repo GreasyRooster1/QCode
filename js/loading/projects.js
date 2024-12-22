@@ -2,9 +2,9 @@ let currentProjectViewPage = 1;
 
 function loadProjects(){
     let projectsRef = database.ref('userdata/'+user.uid+"/projects").orderByChild("dateUpdated")
-    let projects = []
     projectsRef.on('value', (snapshot) => {
         clearProjects();
+        let projects = []
         let i=0;
         snapshot.forEach((childSnapshot) => {
             const data = childSnapshot.val();
