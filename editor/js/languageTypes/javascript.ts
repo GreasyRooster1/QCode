@@ -1,11 +1,6 @@
 import {ProjectType,RunErrCallback} from "./projectType.js";
 import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../executionHelper.js"
 
-// @ts-ignore
-import { javascript } from "codemirror/lang-javascript/dist/index.js"
-// @ts-ignore
-import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
-
 class JavascriptType extends ProjectType {
     constructor() {
         super(false);
