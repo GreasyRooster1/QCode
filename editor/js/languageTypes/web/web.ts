@@ -19,7 +19,25 @@ class WebType extends ProjectType {
     }
 
     setupFileEventListeners(){
-        document.querySelector(".")
+        let list = document.querySelector(".file-list")
+        let children = list!.children;
+        for(let child of children){
+            if(!child.classList.contains("file")){
+                continue;
+            }
+            child.addEventListener("click", (e)=>{
+                let target = e.target!;
+                if(target.parentElement?.classList.contains("file")){
+                    target = target.parentElement;
+                }
+                console.log(target);
+                this.openFile(target.getAttribute("data-id")!);
+            })
+        }
+    }
+
+    openFile(fileId:number){
+
     }
 
     populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
