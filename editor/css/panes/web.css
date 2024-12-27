@@ -4,9 +4,9 @@
 }
 
 .code-editor{
-    width: 85%;
+    flex: 1
 }
 
 .filesystem-sidebar{
-    width: 15%;
+    width: 10vw;
 }
