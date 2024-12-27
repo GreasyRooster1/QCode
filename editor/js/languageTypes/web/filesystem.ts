@@ -53,6 +53,10 @@ class Filesystem{
         this.getFolder(location)[file.name] = file;
         this.onFileSystemUpdate();
     }
+
+    getAll(){
+        return this.folders
+    }
 }
 
 const isFolder = (value: Folder|File)=> {
@@ -72,6 +76,19 @@ class File{
         this.extension = extension;
         this.content = "";
     }
+
+    appendToHtml(upperHtml:any){
+        let el = document.createElement("div");
+        el.innerHTML = `
+            <span class="icon">`+this.extension+`</span>
+            <span class="filename">`+this.name+`</span>
+        `
+        upperHtml.appendChild(el);
+    }
+
+    getIcon(){
+
+    }
 }
 
-export {Filesystem}
+export {Filesystem,isFolder,File,Folder,System}
