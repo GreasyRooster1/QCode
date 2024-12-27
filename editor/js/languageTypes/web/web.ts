@@ -1,4 +1,4 @@
-import {ProjectType,RunErrCallback} from "./projectType.js";
+import {ProjectType,RunErrCallback} from "../projectType.js";
 
 class WebType extends ProjectType {
     //filesystem: {[name:string] : string}
