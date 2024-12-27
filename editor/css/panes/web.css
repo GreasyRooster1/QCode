@@ -19,5 +19,5 @@
 .filesystem-sidebar .header{
     background: var(--filesystem-header);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
