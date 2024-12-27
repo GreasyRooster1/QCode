@@ -15,9 +15,8 @@ class Filesystem{
         this.folders = {
             "/": {
                 "index.html": new File("index", "html"),
-                "js": {
-                    "index.js": new File("index", "js"),
-                }
+                "index.js": new File("index", "js"),
+                "index.css": new File("index", "css"),
             }
         }
         this.onFileSystemUpdate = ()=>{};
