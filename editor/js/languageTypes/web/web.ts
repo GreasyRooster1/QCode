@@ -29,7 +29,7 @@ class WebType extends ProjectType {
 
                 let folderIconEl = document.createElement("div");
                 folderIconEl.classList.add("folder-icon");
-                folderIconEl.innerHTML = "<i class='fas fa-folder-open'></i><div class='line'></div>"
+                folderIconEl.innerHTML = "<i class='fas fa-folder-open'></i> <span class='name'>"+key+"</span>"
 
                 wrapperEl.appendChild(folderIconEl);
                 wrapperEl.appendChild(folderEl);

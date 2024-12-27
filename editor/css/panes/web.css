@@ -47,9 +47,6 @@
     display:flex;
     align-items: center;
 }
-.folder-icon .line{
-    width:60%;
-    height:1px;
+.folder-icon .name{
     margin-left:20px;
-    background-color: var(--folder-icon-line);
 }
