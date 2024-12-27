@@ -86,8 +86,8 @@ class File{
         upperHtml.appendChild(el);
     }
 
-    getIcon(){
-
+    getIconUrl(){
+        return ""
     }
 }
 
