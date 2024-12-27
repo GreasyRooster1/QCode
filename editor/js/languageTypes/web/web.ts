@@ -1,14 +1,17 @@
+import { getCode } from "../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
 import {Filesystem, Folder, isFolder} from "./filesystem.js";
 
 class WebType extends ProjectType {
     filesystem:Filesystem
+    currentFileId:number;
 
     constructor() {
         super(false);
         this.filesystem = new Filesystem();
         this.filesystem.onFileSystemUpdate = this.updateFilesystemBar
-
+        this.currentFileId = 0;
+        this.openFile(this.filesystem.getFile("index.html").id);
     }
 
     updateFilesystemBar(){
@@ -38,7 +41,15 @@ class WebType extends ProjectType {
     }
 
     openFile(fileId:number){
-
+        this.saveCurrentFile()
+        this.currentFileId = fileId;
+        let file = this.filesystem.getFileById(this.currentFileId);
+        writeToEditor(file!.content)
+    }
+    saveCurrentFile(){
+        let code = getCode();
+        let file = this.filesystem.getFileById(this.currentFileId);
+        file!.content = code;
     }
 
     populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){

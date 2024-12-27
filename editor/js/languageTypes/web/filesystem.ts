@@ -9,6 +9,7 @@ interface Folder{
 
 class Filesystem{
     private folders:System;
+    defaultFile:File;
     onFileSystemUpdate:Function;
 
     constructor() {
@@ -19,6 +20,7 @@ class Filesystem{
                 "index.css": new File("index", "css"),
             }
         }
+        this.defaultFile = <File>this.folders["/"]["index.html"];
         this.onFileSystemUpdate = ()=>{};
     }
 
@@ -51,6 +53,25 @@ class Filesystem{
     addFile(file:File,location:string){
         this.getFolder(location)[file.name] = file;
         this.onFileSystemUpdate();
+    }
+
+    getFileById(id:number):File|null{
+        return this.findFile(this.folders[id],id);
+    }
+    findFile(folder:Folder,id:number):File|null{
+        // @ts-ignore
+        for (let [key,frag] of Object.entries(this.folders["/"])){
+            if(isFolder(frag)){
+                let out = this.findFile(folder,id)
+                if(out!==null){
+                    return out;
+                }
+            }
+            if(frag.id==id){
+                return frag;
+            }
+        }
+        return null;
     }
 
     getAll(){
