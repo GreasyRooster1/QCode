@@ -26,12 +26,13 @@ class WebType extends ProjectType {
                 continue;
             }
             child.addEventListener("click", (e)=>{
-                let target = e.target!;
+                // @ts-ignore
+                let target:HTMLElement = e.target!;
                 if(target.parentElement?.classList.contains("file")){
                     target = target.parentElement;
                 }
                 console.log(target);
-                this.openFile(target.getAttribute("data-id")!);
+                this.openFile(Number(target.getAttribute("data-id")!));
             })
         }
     }
