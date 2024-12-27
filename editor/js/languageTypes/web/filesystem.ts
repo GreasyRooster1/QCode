@@ -9,20 +9,22 @@ interface Folder{
 class Filesystem{
     folders:System;
     constructor() {
-        this.folders = [
-            "/":[
-                "index.html":new File("index","html"),
-            ]
-        ]
+        this.folders = {
+            "/": {
+                "index.html": new File("index", "html"),
+            }
+        }
     }
 }
 
 class File{
     name: string;
     extension: string;
+    content:string;
     constructor(name:string, extension: string) {
         this.name = name;
         this.extension = extension;
+        this.content = "";
     }
 }
 
