@@ -1,5 +1,5 @@
 import {ProjectType,RunErrCallback} from "../projectType.js";
-import {Filesystem, Folder, isFolder} from "./filesystem";
+import {Filesystem, Folder, isFolder} from "./filesystem.js";
 
 class WebType extends ProjectType {
     filesystem:Filesystem
@@ -8,6 +8,7 @@ class WebType extends ProjectType {
         super(false);
         this.filesystem = new Filesystem();
         this.filesystem.onFileSystemUpdate = this.updateFilesystemBar
+
     }
 
     updateFilesystemBar(){
@@ -17,7 +18,7 @@ class WebType extends ProjectType {
     }
     populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
         // @ts-ignore
-        for (let [key,frag] of Object.entries(folders)){
+        for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
                 let folderEl = document.createElement("div");
                 folderEl.classList.add("folder");
@@ -47,6 +48,7 @@ class WebType extends ProjectType {
             <div class="code-editor"></div>
         </div> 
         `
+        this.updateFilesystemBar()
     }
 
     onLoad(){

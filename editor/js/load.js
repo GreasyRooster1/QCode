@@ -53,7 +53,7 @@ function updateLanguage(id){
             return;
         }
         if (id === "web") {
-            import("./languageTypes/web.js").then((mod) => {
+            import("./languageTypes/web/web.js").then((mod) => {
                 projectType = new mod.WebType();
                 resolve(projectType)
             });
