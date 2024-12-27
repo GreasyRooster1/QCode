@@ -1,10 +1,12 @@
 import {ProjectType,RunErrCallback} from "../projectType.js";
+import {Filesystem} from "./filesystem";
 
 class WebType extends ProjectType {
-    //filesystem: {[name:string] : string}
+    filesystem:Filesystem
 
     constructor() {
         super(false);
+        this.filesystem = new Filesystem();
     }
 
     setupEditor(): void {
