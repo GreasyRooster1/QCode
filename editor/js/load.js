@@ -29,8 +29,8 @@ function loadProjectFromUrlData(){
         }
         updateLanguage(id).then((projectType) =>
         {
-            projectType.setupEditorLanguage()
             projectType.setupEditor();
+            projectType.setupEditorLanguage()
             projectType.setupEventListeners()
             projectType.loadProjectData(searchParams.get("projectId"));
             if(!searchParams.has("cNum")) {
