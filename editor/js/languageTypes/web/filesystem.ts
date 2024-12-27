@@ -80,14 +80,16 @@ class File{
     appendToHtml(upperHtml:any){
         let el = document.createElement("div");
         el.innerHTML = `
-            <span class="icon">`+this.extension+`</span>
+            <span class="icon">
+                <img src="`+this.getIconUrl()+`">
+            </span>
             <span class="filename">`+this.name+`</span>
         `
         upperHtml.appendChild(el);
     }
 
     getIconUrl(){
-        return ""
+        return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/"+this.extension+".png?raw=true"
     }
 }
 
