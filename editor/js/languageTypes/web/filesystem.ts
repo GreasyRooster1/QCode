@@ -70,10 +70,12 @@ class File{
     name: string;
     extension: string;
     content:string;
+    id:number;
     constructor(name:string, extension: string) {
         this.name = name;
         this.extension = extension;
         this.content = "";
+        this.id = Math.random()*999999;
     }
 
     appendToHtml(upperHtml:any){
@@ -84,6 +86,8 @@ class File{
         `
         el.classList.add("file")
         el.classList.add(this.name)
+        el.setAttribute("data-filename",this.name+"."+this.extension);
+        el.setAttribute("data-id",String(this.id));
         upperHtml.appendChild(el);
     }
 

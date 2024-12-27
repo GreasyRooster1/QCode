@@ -15,7 +15,13 @@ class WebType extends ProjectType {
         let folders = this.filesystem.getAll();
 
         this.populateHTMLForFolder("root",folders["/"],document.querySelector(".file-list"));
+        this.setupFileEventListeners()
     }
+
+    setupFileEventListeners(){
+        document.querySelector(".")
+    }
+
     populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
         // @ts-ignore
         for (let [key,frag] of Object.entries(folder)){
