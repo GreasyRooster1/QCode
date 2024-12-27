@@ -13,7 +13,10 @@ class WebType extends ProjectType {
             <div class="filesystem-sidebar">
                 <div class="header">
                     <span>Files</span>
-                    <span><i class='far fa-file-alt'></i></span>
+                    <span>
+                    <i class='far fa-file-alt'></i>
+                    <i class="far fa-folder"></i>
+                    </span>
                 </div>
                 <div class="file-list">
                 </div>
