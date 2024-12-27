@@ -1,0 +1,12 @@
+
+.code-editor-wrapper{
+    display: flex;
+}
+
+.code-editor{
+    width: 85%;
+}
+
+.filesystem-sidebar{
+    width: 15%;
+}

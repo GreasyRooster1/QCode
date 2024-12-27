@@ -1,6 +1,8 @@
 import {ProjectType,RunErrCallback} from "./projectType.js";
 
 class WebType extends ProjectType {
+    //filesystem: {[name:string] : string}
+
     constructor() {
         super(false);
     }
@@ -8,7 +10,7 @@ class WebType extends ProjectType {
     setupEditor(): void {
         document.querySelector(".code-pane")!.innerHTML = `
         <div class="code-editor-wrapper">
-            <div class="filesystem-side-bar">
+            <div class="filesystem-sidebar">
                 <div class="header">Head</div>
                 <div class="file-list">
                 </div>
