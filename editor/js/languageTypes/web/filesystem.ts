@@ -80,11 +80,13 @@ class File{
     appendToHtml(upperHtml:any){
         let el = document.createElement("div");
         el.innerHTML = `
-            <span class="icon">
-                <img src="`+this.getIconUrl()+`">
+            <span>
+                <img class="icon" src="`+this.getIconUrl()+`">
             </span>
             <span class="filename">`+this.name+`</span>
         `
+        el.classList.add("file")
+        el.classList.add(this.name)
         upperHtml.appendChild(el);
     }
 

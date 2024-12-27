@@ -22,7 +22,7 @@ class WebType extends ProjectType {
             if(isFolder(frag)){
                 let folderEl = document.createElement("div");
                 folderEl.classList.add("folder");
-                folderEl.classList.add(name);
+                folderEl.classList.add(key);
                 upperHtml.appendChild(folderEl);
                 this.populateHTMLForFolder(key,frag,folderEl)
             }else{
