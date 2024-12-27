@@ -20,10 +20,18 @@ class WebType extends ProjectType {
         // @ts-ignore
         for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
+                let wrapperEl = document.createElement("div");
                 let folderEl = document.createElement("div");
                 folderEl.classList.add("folder");
                 folderEl.classList.add(key);
-                upperHtml.appendChild(folderEl);
+
+                let folderIconEl = document.createElement("div");
+                folderIconEl.classList.add("folder-icon");
+
+                wrapperEl.appendChild(folderIconEl);
+                wrapperEl.appendChild(folderEl);
+                upperHtml.appendChild(wrapperEl);
+
                 this.populateHTMLForFolder(key,frag,folderEl)
             }else{
                 frag.appendToHtml(upperHtml);
