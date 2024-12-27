@@ -7,6 +7,11 @@ class WebType extends ProjectType {
     constructor() {
         super(false);
         this.filesystem = new Filesystem();
+        this.filesystem.onFileSystemUpdate = this.updateFilesystemBar
+    }
+
+    updateFilesystemBar(){
+
     }
 
     setupEditor(): void {
