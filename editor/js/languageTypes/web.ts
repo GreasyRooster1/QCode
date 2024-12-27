@@ -6,6 +6,16 @@ class WebType extends ProjectType {
     }
 
     setupEditor(): void {
+        document.querySelector(".code-pane")!.innerHTML = `
+        <div class="code-editor-wrapper">
+            <div class="filesystem-side-bar">
+                <div class="header">Head</div>
+                <div class="file-list">
+                </div>
+            </div>
+            <div class="code-editor"></div>
+        </div> 
+        `
     }
 
     onLoad(){
