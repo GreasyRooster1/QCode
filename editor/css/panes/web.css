@@ -61,5 +61,6 @@
 }
 
 .current-file-view{
+    padding:2px;
     background: var(--current-file-view);
 }

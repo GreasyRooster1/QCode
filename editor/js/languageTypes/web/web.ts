@@ -43,7 +43,7 @@ class WebType extends ProjectType {
     openFile(fileId:number){
         this.currentFileId = fileId;
         let file = this.filesystem.getFileById(this.currentFileId);
-        console.log(file);
+        document.querySelector(".current-file-view")!.innerHTML = file!.name+"."+file!.extension;
         writeToEditor(file!.content)
     }
     saveCurrentFile(){
