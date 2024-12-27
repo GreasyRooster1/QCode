@@ -1,3 +1,7 @@
+:root{
+    --filesystem-sidebar: #939393;
+    --filesystem-header: #858585;
+}
 
 .code-editor-wrapper{
     display: flex;
@@ -9,4 +13,9 @@
 
 .filesystem-sidebar{
     width: 10vw;
+    background: var(--filesystem-sidebar);
+}
+
+.filesystem-sidebar .header{
+    background: var(--filesystem-header);
 }
