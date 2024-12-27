@@ -11,7 +11,7 @@ class WebType extends ProjectType {
     }
 
     updateFilesystemBar(){
-
+        let folders =
     }
 
     setupEditor(): void {

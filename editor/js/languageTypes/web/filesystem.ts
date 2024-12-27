@@ -3,7 +3,7 @@ interface System{
     [location:string]:Folder
 }
 interface Folder{
-    [name:string]:File
+    [name:string]:File|Folder
 }
 
 
@@ -15,30 +15,38 @@ class Filesystem{
         this.folders = {
             "/": {
                 "index.html": new File("index", "html"),
-            },
-            "/js": {
-                "index.js": new File("index", "js"),
+                "js": {
+                    "index.js": new File("index", "js"),
+                }
             }
         }
         this.onFileSystemUpdate = ()=>{};
     }
 
-    getFile(path:string):File|undefined{
+    getFile(path:string):File{
         let sections = path.split("/");
         let name = sections.pop()
-        let parentFolder = this.folders[sections.join("/")];
-        if(name==undefined){
-            return undefined;
+        let parentFolder = this.folders["/"];
+        for(let folder in sections){
+            let next = parentFolder[folder]
+            if(isFolder(next)){
+                parentFolder = <Folder>next;
+            }
         }
-        // @ts-ignore
-        return <File>parentFolder[name]
+        return <File>parentFolder[name!.split(".")[0]]
     }
 
     getFolder(path:string):Folder{
         let sections = path.split("/");
-        sections.pop()
-        let parentFolder = sections.join("/");
-        return this.folders[parentFolder]
+        sections.pop();
+        let parentFolder = this.folders["/"];
+        for(let folder in sections){
+            let next = parentFolder[folder]
+            if(isFolder(next)){
+                parentFolder = <Folder>next;
+            }
+        }
+        return parentFolder;
     }
 
     addFile(file:File,location:string){
