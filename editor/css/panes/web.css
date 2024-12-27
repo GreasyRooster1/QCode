@@ -23,3 +23,16 @@
     font-size: 1.2rem;
 }
 
+.file-list{
+    font-size: 1.1rem;
+}
+
+.file{
+    display: flex;
+    margin-top:5px
+}
+
+.file-list .icon{
+    width:1.2em;
+    aspect-ratio: 1/1;
+}
