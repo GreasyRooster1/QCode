@@ -12,10 +12,12 @@
 }
 
 .filesystem-sidebar{
-    width: 12vw;
+    width: 13vw;
     background: var(--filesystem-sidebar);
 }
 
 .filesystem-sidebar .header{
     background: var(--filesystem-header);
+    display: flex;
+    justify-content: space-between;
 }

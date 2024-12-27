@@ -11,7 +11,10 @@ class WebType extends ProjectType {
         document.querySelector(".code-pane")!.innerHTML = `
         <div class="code-editor-wrapper">
             <div class="filesystem-sidebar">
-                <div class="header">Head</div>
+                <div class="header">
+                    <span>Files</span>
+                    <span><i class='far fa-file-alt'></i></span>
+                </div>
                 <div class="file-list">
                 </div>
             </div>
