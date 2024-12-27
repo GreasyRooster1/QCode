@@ -10,8 +10,7 @@ class WebType extends ProjectType {
         super(false);
         this.filesystem = new Filesystem();
         this.filesystem.onFileSystemUpdate = this.updateFilesystemBar
-        this.currentFileId = 0;
-        this.openFile(this.filesystem.getFile("index.html").id);
+        this.currentFileId = this.filesystem.defaultFile.id
     }
 
     updateFilesystemBar(){
@@ -35,15 +34,16 @@ class WebType extends ProjectType {
                     target = target.parentElement;
                 }
                 console.log(target);
+                this.saveCurrentFile()
                 this.openFile(Number(target.getAttribute("data-id")!));
             })
         }
     }
 
     openFile(fileId:number){
-        this.saveCurrentFile()
         this.currentFileId = fileId;
         let file = this.filesystem.getFileById(this.currentFileId);
+        console.log(file);
         writeToEditor(file!.content)
     }
     saveCurrentFile(){
@@ -102,6 +102,7 @@ class WebType extends ProjectType {
     }
 
     onLoad(){
+        this.openFile(this.currentFileId);
     }
 
     saveCode(){
