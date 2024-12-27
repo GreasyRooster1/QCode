@@ -2,6 +2,7 @@
     --filesystem-sidebar: #939393;
     --filesystem-header: #858585;
     --folder-icon-line: #636363;
+    --current-file-view: #717171;
 }
 
 .code-editor-wrapper{
@@ -50,4 +51,15 @@
 }
 .folder-icon .name{
     margin-left:5px;
+}
+
+.text-editor-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    flex: 1
+}
+
+.current-file-view{
+    background: var(--current-file-view);
 }

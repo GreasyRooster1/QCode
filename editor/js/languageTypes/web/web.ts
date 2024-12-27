@@ -56,7 +56,10 @@ class WebType extends ProjectType {
                 <div class="file-list">
                 </div>
             </div>
-            <div class="code-editor"></div>
+            <div class="text-editor-wrapper">
+                <div class="current-file-view">index.html</div>
+                <div class="code-editor"></div>
+            </div>
         </div> 
         `
         this.updateFilesystemBar()
