@@ -21,12 +21,15 @@ class WebType extends ProjectType {
         for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
                 let wrapperEl = document.createElement("div");
+                wrapperEl.classList.add("folder-wrapper");
+
                 let folderEl = document.createElement("div");
                 folderEl.classList.add("folder");
                 folderEl.classList.add(key);
 
                 let folderIconEl = document.createElement("div");
                 folderIconEl.classList.add("folder-icon");
+                folderIconEl.innerHTML = "<i class='fas fa-folder-open'></i><div class='line'></div>"
 
                 wrapperEl.appendChild(folderIconEl);
                 wrapperEl.appendChild(folderEl);

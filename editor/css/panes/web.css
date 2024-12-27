@@ -1,6 +1,7 @@
 :root{
     --filesystem-sidebar: #939393;
     --filesystem-header: #858585;
+    --folder-icon-line: #636363;
 }
 
 .code-editor-wrapper{
@@ -35,4 +36,20 @@
 .file-list .icon{
     width:1.2em;
     aspect-ratio: 1/1;
+}
+
+.folder{
+    margin-left:20px;
+}
+
+.folder-icon{
+    margin-left:2px;
+    display:flex;
+    align-items: center;
+}
+.folder-icon .line{
+    width:60%;
+    height:1px;
+    margin-left:20px;
+    background-color: var(--folder-icon-line);
 }
