@@ -81,7 +81,7 @@ class File{
         let el = document.createElement("div");
         el.innerHTML = `
             <img class="icon" src="`+this.getIconUrl()+`">
-            <span class="filename">`+this.name+`</span>
+            <span class="filename">`+this.name+"."+this.extension+`</span>
         `
         el.classList.add("file")
         el.classList.add(this.name)
