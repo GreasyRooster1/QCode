@@ -57,12 +57,12 @@ function createNextChapterStep(data){
 
 
 function homeLinkClick(){
-    saveCode();
+    projectType.saveCode();
     window.location.href = window.location.href="../index.html";
 }
 
 function nextChapterClick(){
-    saveCode();
+    projectType.saveCode();
     window.location.href = window.location.href.replace("cNum="+chapterNum,"cNum="+(chapterNum+1))
 }
 

@@ -4,20 +4,6 @@ let hasSavedRecently = false;
 
 const saveAlertFadeDuration = .75;
 
-// saveButton.addEventListener("click", function() {
-//     saveCode();
-// });
-
-function saveCode() {
-    rawSave()
-    hasSavedRecently = true;
-    showSaveAlert();
-}
-
-function rawSave(){
-
-}
-
 function showSaveAlert(){
     saveAlert.style.opacity="1";
     let amountPerFrame = (1/saveAlertFadeDuration)/100;
@@ -30,5 +16,5 @@ function showSaveAlert(){
 }
 
 window.addEventListener("beforeunload", function (e) {
-    rawSave();
+    projectType.saveCode();
 });
