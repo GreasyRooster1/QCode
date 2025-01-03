@@ -22,12 +22,12 @@
     background: var(--filesystem-header);
     display: flex;
     justify-content: space-around;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .file-list{
     padding:3px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .file{
@@ -61,6 +61,7 @@
 }
 
 .current-file-view{
-    padding:2px;
+    padding-left:4px;
     background: var(--current-file-view);
+    font-size: 1.3rem;
 }
