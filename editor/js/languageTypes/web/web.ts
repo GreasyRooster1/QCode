@@ -22,6 +22,7 @@ class WebType extends ProjectType {
 
     setupFileEventListeners(){
         let list = document.querySelectorAll(".file-list, .folder")
+        console.log(list)
         for (let folder of list) {
             let children = folder.children;
             for (let child of children) {

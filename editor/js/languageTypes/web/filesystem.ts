@@ -62,13 +62,13 @@ class Filesystem{
     }
 
     getFileById(id:number):File|null{
-        return this.findFile(this.system[id],id);
+        return this.findFile(this.system["/"],id);
     }
     findFile(folder:Folder,id:number):File|null{
         // @ts-ignore
-        for (let [key,frag] of Object.entries(this.system["/"])){
+        for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
-                let out = this.findFile(folder,id)
+                let out = this.findFile(frag,id)
                 if(out!==null){
                     return out;
                 }
