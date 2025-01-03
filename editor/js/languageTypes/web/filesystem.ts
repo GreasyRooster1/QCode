@@ -103,8 +103,11 @@ class Filesystem{
         }
     }
 
-    deserialize(){
-
+    deserialize(jsonObject:any){
+        // @ts-ignore
+        for (let [key,frag] of Object.entries(jsonObject)){
+            if(typeof frag === "object"){}
+        }
     }
 }
 
