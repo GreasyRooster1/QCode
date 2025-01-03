@@ -107,7 +107,7 @@ class WebType extends ProjectType {
 
     saveCode(){
         let serializedFiles = this.filesystem.serialize();
-        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/code").set(serializedFiles);
+        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files").set(serializedFiles);
     }
 
     run(errorCallback:RunErrCallback) {
