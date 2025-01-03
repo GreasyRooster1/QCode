@@ -104,9 +104,20 @@ class Filesystem{
     }
 
     deserialize(jsonObject:any){
+        this.system = this.deserializeFolder(jsonObject);
+    }
+
+    deserializeFolder(jsonObject:any):any{
         // @ts-ignore
-        for (let [key,frag] of Object.entries(jsonObject)){
-            if(typeof frag === "object"){}
+        for (let [key,value] of Object.entries(jsonObject)){
+            if(typeof value === "object"){
+                this.deserializeFolder(value)
+                continue;
+            }
+            let split = key.split(dotReplacer);
+            let file = new File(split[0], split[1]);
+            file.content = value;
+            jsonObject[key] = value;
         }
     }
 }

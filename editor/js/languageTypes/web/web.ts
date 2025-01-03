@@ -15,6 +15,7 @@ class WebType extends ProjectType {
 
     updateFilesystemBar(){
         let folders = this.filesystem.getAll();
+        document.querySelector(".file-list")!.innerHTML = "";
 
         this.populateHTMLForFolder("root",folders["/"],document.querySelector(".file-list"));
         this.setupFileEventListeners()
@@ -105,7 +106,9 @@ class WebType extends ProjectType {
     }
 
     onLoad(){
+        this.filesystem.deserialize(this.projectData?.files);
         this.openFile(this.currentFileId);
+        this.updateFilesystemBar();
     }
 
     saveCode(){
