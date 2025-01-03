@@ -1,3 +1,5 @@
+const dotReplacer = "➽";
+const blacklistedChars = [".", "$", "#", "[", "]", "/",];
 
 interface System{
     [location:string]:Folder
@@ -80,9 +82,17 @@ class Filesystem{
 
     serialize(){
         let jsonObject = {};
-        // @ts-ignore
-        for (let [key,frag] of Object.entries(this.system["/"])){
+        this.serializeFolder(this.system["/"],jsonObject);
+    }
 
+    serializeFolder(folder:Folder,jsonObject:any){
+        // @ts-ignore
+        for (let [key,frag] of Object.entries(folder)){
+            if(isFolder(frag)){
+                this.serializeFolder(frag,jsonObject[key]);
+            }
+            let serializedName = frag.getSerializedName();
+            jsonObject[serializedName] = frag.content;
         }
     }
 
@@ -126,6 +136,15 @@ class File{
 
     getIconUrl(){
         return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/"+this.extension+".png?raw=true"
+    }
+
+    getSerializedName(){
+        let name = this.name+dotReplacer+this.extension;
+        name = name.replace(".",dotReplacer)
+        for(let char in blacklistedChars){
+            name.replace(char,"");
+        }
+        return name;
     }
 }
 
