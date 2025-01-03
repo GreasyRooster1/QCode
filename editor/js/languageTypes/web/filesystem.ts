@@ -8,26 +8,26 @@ interface Folder{
 
 
 class Filesystem{
-    private folders:System;
+    private system:System;
     defaultFile:File;
     onFileSystemUpdate:Function;
 
     constructor() {
-        this.folders = {
+        this.system = {
             "/": {
                 "index.html": new File("index", "html"),
                 "index.js": new File("index", "js"),
                 "index.css": new File("index", "css"),
             }
         }
-        this.defaultFile = <File>this.folders["/"]["index.html"];
+        this.defaultFile = <File>this.system["/"]["index.html"];
         this.onFileSystemUpdate = ()=>{};
     }
 
     getFile(path:string):File{
         let sections = path.split("/");
         let name = sections.pop()
-        let parentFolder = this.folders["/"];
+        let parentFolder = this.system["/"];
         for(let folder in sections){
             let next = parentFolder[folder]
             if(isFolder(next)){
@@ -40,7 +40,7 @@ class Filesystem{
     getFolder(path:string):Folder{
         let sections = path.split("/");
         sections.pop();
-        let parentFolder = this.folders["/"];
+        let parentFolder = this.system["/"];
         for(let folder in sections){
             let next = parentFolder[folder]
             if(isFolder(next)){
@@ -56,11 +56,11 @@ class Filesystem{
     }
 
     getFileById(id:number):File|null{
-        return this.findFile(this.folders[id],id);
+        return this.findFile(this.system[id],id);
     }
     findFile(folder:Folder,id:number):File|null{
         // @ts-ignore
-        for (let [key,frag] of Object.entries(this.folders["/"])){
+        for (let [key,frag] of Object.entries(this.system["/"])){
             if(isFolder(frag)){
                 let out = this.findFile(folder,id)
                 if(out!==null){
@@ -75,7 +75,15 @@ class Filesystem{
     }
 
     getAll(){
-        return this.folders
+        return this.system
+    }
+
+    serialize(){
+
+    }
+
+    deserialize(){
+
     }
 }
 
