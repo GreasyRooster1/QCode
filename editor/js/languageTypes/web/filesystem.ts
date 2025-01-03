@@ -94,7 +94,9 @@ class Filesystem{
         // @ts-ignore
         for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
+                jsonObject[key] = {};
                 this.serializeFolder(frag,jsonObject[key]);
+                continue;
             }
             let serializedName = frag.getSerializedName();
             jsonObject[serializedName] = frag.content;
