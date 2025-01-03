@@ -83,6 +83,7 @@ class Filesystem{
     serialize(){
         let jsonObject = {};
         this.serializeFolder(this.system["/"],jsonObject);
+        return jsonObject
     }
 
     serializeFolder(folder:Folder,jsonObject:any){
