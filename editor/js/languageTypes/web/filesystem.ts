@@ -109,10 +109,7 @@ class Filesystem{
 }
 
 const isFolder = (value: Folder|File)=> {
-    if (value.extension)
-        return false
-    else
-        return true;
+    return !(value instanceof File);
 }
 
 
