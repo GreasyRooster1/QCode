@@ -21,22 +21,24 @@ class WebType extends ProjectType {
     }
 
     setupFileEventListeners(){
-        let list = document.querySelector(".file-list")
-        let children = list!.children;
-        for(let child of children){
-            if(!child.classList.contains("file")){
-                continue;
-            }
-            child.addEventListener("click", (e)=>{
-                // @ts-ignore
-                let target:HTMLElement = e.target!;
-                if(target.parentElement?.classList.contains("file")){
-                    target = target.parentElement;
+        let list = document.querySelectorAll(".file-list, .folder")
+        for (let folder of list) {
+            let children = folder.children;
+            for (let child of children) {
+                if (!child.classList.contains("file")) {
+                    continue;
                 }
-                console.log(target);
-                this.saveCurrentFile()
-                this.openFile(Number(target.getAttribute("data-id")!));
-            })
+                child.addEventListener("click", (e) => {
+                    // @ts-ignore
+                    let target: HTMLElement = e.target!;
+                    if (target.parentElement?.classList.contains("file")) {
+                        target = target.parentElement;
+                    }
+                    console.log(target);
+                    this.saveCurrentFile()
+                    this.openFile(Number(target.getAttribute("data-id")!));
+                })
+            }
         }
     }
 

@@ -20,6 +20,10 @@ class Filesystem{
                 "index.html": new File("index", "html"),
                 "index.js": new File("index", "js"),
                 "index.css": new File("index", "css"),
+                "js":{
+                    "index.js": new File("index", "js"),
+                    "test.js": new File("test", "js"),
+                }
             }
         }
         this.defaultFile = <File>this.system["/"]["index.html"];
