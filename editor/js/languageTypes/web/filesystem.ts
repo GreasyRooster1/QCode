@@ -79,7 +79,11 @@ class Filesystem{
     }
 
     serialize(){
+        let jsonObject = {};
+        // @ts-ignore
+        for (let [key,frag] of Object.entries(this.system["/"])){
 
+        }
     }
 
     deserialize(){
