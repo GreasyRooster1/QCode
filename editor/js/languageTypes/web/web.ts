@@ -1,7 +1,7 @@
 import { getCode } from "../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
 import {Filesystem, Folder, isFolder,File} from "./filesystem.js";
-import {setupEditor} from "../../codeEditor.js";
+import {Language, setupEditor} from "../../codeEditor.js";
 
 class WebType extends ProjectType {
     filesystem:Filesystem
@@ -190,7 +190,7 @@ class WebType extends ProjectType {
     runErrorCallback(content: string, type: string): void {
     }
 
-    getLanguage():string {
+    getLanguage():Language {
         return "javascript";
     }
 }
