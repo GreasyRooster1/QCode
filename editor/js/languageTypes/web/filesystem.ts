@@ -102,7 +102,6 @@ class Filesystem{
 
     deserialize(jsonObject:any){
         this.system["/"] = this.deserializeFolder(jsonObject);
-        debugger
         this.defaultFile = this.getFile("/index.html")
     }
 
