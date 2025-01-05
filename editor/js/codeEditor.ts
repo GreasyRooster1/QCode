@@ -38,6 +38,8 @@ import { cpp } from "codemirror/lang-cpp/dist/index.js"
 import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js'
 
 
+type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
+
 const customTheme = EditorView.theme({
     '&': {
         font:"'JetBrains Mono', monospace",
@@ -48,7 +50,7 @@ const customTheme = EditorView.theme({
 
 let editor;
 
-function setupEditor(language: string) {
+function setupEditor(language: Language) {
     let languagePair = getLanguagePair(language);
     editor = new EditorView({
         doc: "\n",
@@ -66,7 +68,7 @@ function setupEditor(language: string) {
     window.editor = editor;
 }
 
-function getLanguagePair(identifier:string): { func: any; lang: any } | null{
+function getLanguagePair(identifier:Language): { func: any; lang: any } | null{
     if(identifier == "javascript"){
         return {
             func: javascript(),
