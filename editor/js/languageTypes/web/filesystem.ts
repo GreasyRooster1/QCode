@@ -166,8 +166,26 @@ class File{
         }
         return name;
     }
-    language(){
-        
+
+    getLanguage(){
+         switch(this.extension){
+             case "js":
+                 return "javascript";
+             case "css":
+                 return "css";
+             case "html":
+                 return "html";
+             case "py":
+                 return "python";
+             case "rs":
+                 return "rust";
+             case "cpp":
+                 return "c++";
+             case "c":
+                 return "c++";
+             default:
+                 return "text";
+         }
     }
 }
 

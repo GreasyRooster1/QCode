@@ -1,6 +1,7 @@
 import { getCode } from "../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
 import {Filesystem, Folder, isFolder} from "./filesystem.js";
+import {setupEditor} from "../../codeEditor.js";
 
 class WebType extends ProjectType {
     filesystem:Filesystem
@@ -48,6 +49,7 @@ class WebType extends ProjectType {
         this.currentFileId = fileId;
         let file = this.filesystem.getFileById(this.currentFileId);
         document.querySelector(".current-file-view")!.innerHTML = file!.name+"."+file!.extension;
+        setupEditor(file?.getLanguage())
         writeToEditor(file!.content)
     }
     saveCurrentFile(){

@@ -51,6 +51,7 @@ const customTheme = EditorView.theme({
 let editor;
 
 function setupEditor(language: Language) {
+    document.querySelector(".code-editor")!.innerHTML = "";
     let languagePair = getLanguagePair(language);
     editor = new EditorView({
         doc: "\n",
