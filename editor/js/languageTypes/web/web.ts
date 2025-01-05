@@ -108,9 +108,19 @@ class WebType extends ProjectType {
         for (let [key,f ] of Object.entries(sortedObj)){
             let frag = f as File|Folder
             if(isFolder(frag)){
-                let wrapperEl = document.createElement("div");
-                wrapperEl.classList.add("folder-wrapper");
-                wrapperEl.innerHTML = `
+                let wrapperEl = this.createFolderEl(key,folder)
+                upperHtml.appendChild(wrapperEl);
+                this.populateHTMLForFolder(key,frag as Folder,wrapperEl.querySelector(".folder"));
+            }else{
+                (frag as File).appendToHtml(upperHtml);
+            }
+        }
+    }
+
+    createFolderEl(key:string,folder:Folder){
+        let wrapperEl = document.createElement("div");
+        wrapperEl.classList.add("folder-wrapper");
+        wrapperEl.innerHTML = `
                     <div class="folder-icon ">
                         <span class="name-icon">
                             <i class='fas fa-folder-open'></i>
@@ -123,14 +133,14 @@ class WebType extends ProjectType {
                     </div>
                     <div class="folder ${key}"></div>
                 `
+        wrapperEl.querySelector(".buttons .new-file-button")?.addEventListener("click", (e) => {
+            this.promptFileCreation(folder[key] as Folder);
+        });
+        wrapperEl.querySelector(".buttons .new-folder-button")?.addEventListener("click", (e) => {
+            this.promptFolderCreation(folder[key] as Folder);
+        });
 
-                upperHtml.appendChild(wrapperEl);
-
-                this.populateHTMLForFolder(key,frag as Folder,wrapperEl.querySelector(".folder"));
-            }else{
-                (frag as File).appendToHtml(upperHtml);
-            }
-        }
+        return wrapperEl
     }
 
     setupEditor(): void {
