@@ -48,9 +48,21 @@
     margin-left:2px;
     display:flex;
     align-items: center;
+    justify-content: space-between
 }
 .folder-icon .name{
     margin-left:5px;
+}
+
+.folder-icon .buttons{
+    opacity: 0;
+    pointer-events: none;
+    transition: .25s;
+}
+
+.folder-icon:hover .buttons{
+    opacity:1;
+    pointer-events: auto;
 }
 
 .text-editor-wrapper{
@@ -65,3 +77,4 @@
     background: var(--current-file-view);
     font-size: 1.3rem;
 }
+

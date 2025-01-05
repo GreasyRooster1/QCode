@@ -104,27 +104,29 @@ class WebType extends ProjectType {
             sortedObj[key] = folder[key];
         }
 
-
         // @ts-ignore
         for (let [key,f ] of Object.entries(sortedObj)){
             let frag = f as File|Folder
             if(isFolder(frag)){
                 let wrapperEl = document.createElement("div");
                 wrapperEl.classList.add("folder-wrapper");
+                wrapperEl.innerHTML = `
+                    <div class="folder-icon ">
+                        <span class="name-icon">
+                            <i class='fas fa-folder-open'></i>
+                            <span class='name'>${key}</span>
+                        </span>
+                        <span class="buttons">
+                            <i class='far fa-file-alt new-file-button'></i>
+                            <i class="far fa-folder new-folder-button"></i>
+                        </span>
+                    </div>
+                    <div class="folder ${key}"></div>
+                `
 
-                let folderEl = document.createElement("div");
-                folderEl.classList.add("folder");
-                folderEl.classList.add(key);
-
-                let folderIconEl = document.createElement("div");
-                folderIconEl.classList.add("folder-icon");
-                folderIconEl.innerHTML = "<i class='fas fa-folder-open'></i> <span class='name'>"+key+"</span>"
-
-                wrapperEl.appendChild(folderIconEl);
-                wrapperEl.appendChild(folderEl);
                 upperHtml.appendChild(wrapperEl);
 
-                this.populateHTMLForFolder(key,frag as Folder,folderEl)
+                this.populateHTMLForFolder(key,frag as Folder,wrapperEl.querySelector(".folder"));
             }else{
                 (frag as File).appendToHtml(upperHtml);
             }
