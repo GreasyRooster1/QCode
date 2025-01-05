@@ -1,6 +1,6 @@
 import { getCode } from "../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
-import {Filesystem, Folder, isFolder} from "./filesystem.js";
+import {Filesystem, Folder, isFolder,File} from "./filesystem.js";
 import {setupEditor} from "../../codeEditor.js";
 
 class WebType extends ProjectType {
@@ -46,7 +46,28 @@ class WebType extends ProjectType {
     }
 
     setupFileFolderButtons(){
-        document.querySelector("")
+        document.querySelector(".new-file-button")!.addEventListener("click", (e) => {
+            this.promptFileCreation(this.filesystem.getAll()["/"])
+        })
+        document.querySelector(".new-folder-button")!.addEventListener("click", (e) => {
+            this.promptFolderCreation(this.filesystem.getAll()["/"])
+        })
+    }
+
+    promptFileCreation(folder:Folder){
+        let name = prompt("Enter a name for the file")
+        if(name == null){
+            return;
+        }
+        let sec = name.split(".")
+        folder[name] = new File(sec[0],sec[1]);
+    }
+    promptFolderCreation(folder:Folder){
+        let name = prompt("Enter a name for the folder")
+        if(name == null){
+            return;
+        }
+        folder[name] = {};
     }
 
     openFile(fileId:number){
