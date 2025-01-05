@@ -59,6 +59,11 @@ function displayAuthErrors(errorType){
 function storeUser(user){
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("currentUser",JSON.stringify(user));
+    database.ref("userdata/"+user.uid+"/username").once("value", (snapshot)=>{
+        let obj = user
+        obj.username=snapshot.val();
+        localStorage.setItem("currentUser",JSON.stringify(JSON.stringify(obj)));
+    })
 }
 
 function storeUserPermissions(perms){
