@@ -32,15 +32,16 @@ class Filesystem{
 
     getFile(path:string):File{
         let sections = path.split("/");
-        let name = sections.pop()
+        sections.shift()
+        let name = sections.pop();
         let parentFolder = this.system["/"];
-        for(let folder in sections){
+        for(let folder of sections){
             let next = parentFolder[folder]
             if(isFolder(next)){
                 parentFolder = <Folder>next;
             }
         }
-        return <File>parentFolder[name!.split(".")[0]]
+        return <File>parentFolder[name!]
     }
 
     getFolder(path:string):Folder{
@@ -105,6 +106,8 @@ class Filesystem{
 
     deserialize(jsonObject:any){
         this.system["/"] = this.deserializeFolder(jsonObject);
+        debugger
+        this.defaultFile = this.getFile("/index.html")
     }
 
     deserializeFolder(jsonObject:any):any{
@@ -120,7 +123,7 @@ class Filesystem{
             let file = new File(split[0], split[1]);
             file.content = value;
             // @ts-ignore
-            folder[key] = value;
+            folder[split.join(".")] = file;
         }
         return folder
     }
