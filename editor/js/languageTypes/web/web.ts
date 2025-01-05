@@ -184,6 +184,22 @@ class WebType extends ProjectType {
 
     }
 
+    sendFileToHTMLHost(file:File){
+        let address = this.projectId+"."+getStoredUser().username+".esporterz.com/"+file.name+"."+file.extension;
+        fetch(address,
+            {
+                method: "PUT",
+                body:file.content,
+            }
+        ).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+        }).catch(function(err) {
+            console.log('Fetch Error :-S', err);
+        });
+    }
+
     stop(){
     }
 
