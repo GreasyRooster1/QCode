@@ -45,6 +45,10 @@ class WebType extends ProjectType {
         }
     }
 
+    setupFileFolderButtons(){
+        document.querySelector("")
+    }
+
     openFile(fileId:number){
         this.currentFileId = fileId;
         let file = this.filesystem.getFileById(this.currentFileId);
@@ -91,8 +95,8 @@ class WebType extends ProjectType {
                 <div class="header">
                     <span>Files</span>
                     <span>
-                    <i class='far fa-file-alt'></i>
-                    <i class="far fa-folder"></i>
+                        <i class='far fa-file-alt new-file-button'></i>
+                        <i class="far fa-folder new-folder-button"></i>
                     </span>
                 </div>
                 <div class="file-list">
@@ -105,6 +109,7 @@ class WebType extends ProjectType {
         </div> 
         `
         this.updateFilesystemBar()
+        this.setupFileFolderButtons()
     }
 
     onLoad(){
