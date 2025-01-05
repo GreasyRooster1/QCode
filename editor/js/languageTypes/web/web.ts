@@ -184,6 +184,16 @@ class WebType extends ProjectType {
 
     }
 
+    sendFolderToHTMLHost(folder:Folder){
+        // @ts-ignore
+        for(let [key,frag] of Object.entries(folder)){
+            if(isFolder(frag)){
+                this.sendFolderToHTMLHost(folder[key] as Folder);
+            }
+            this.sendFileToHTMLHost(frag)
+        }
+    }
+
     sendFileToHTMLHost(file:File){
         let address = this.projectId+"."+getStoredUser().username+".esporterz.com/"+file.name+"."+file.extension;
         fetch(address,
@@ -191,12 +201,8 @@ class WebType extends ProjectType {
                 method: "PUT",
                 body:file.content,
             }
-        ).then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            console.log(data);
-        }).catch(function(err) {
-            console.log('Fetch Error :-S', err);
+        ).catch(function(err) {
+            console.log('failed to post file @ '+address);
         });
     }
 
