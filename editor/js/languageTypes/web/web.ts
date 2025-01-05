@@ -107,7 +107,6 @@ class WebType extends ProjectType {
 
     onLoad(){
         this.filesystem.deserialize(this.projectData?.files);
-        debugger
         this.currentFileId=this.filesystem.getFile("/index.html").id;
         this.openFile(this.currentFileId);
         this.updateFilesystemBar();

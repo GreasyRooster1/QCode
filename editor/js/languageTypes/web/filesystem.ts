@@ -166,6 +166,9 @@ class File{
         }
         return name;
     }
+    language(){
+        
+    }
 }
 
 export {Filesystem,isFolder,File,Folder,System}

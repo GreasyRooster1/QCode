@@ -103,6 +103,12 @@ function getLanguagePair(identifier:string): { func: any; lang: any } | null{
             lang: cppLanguage
         }
     }
+    if(identifier == "text"){
+        return {
+            func: undefined,
+            lang: undefined
+        }
+    }
     return null;
 }
 
