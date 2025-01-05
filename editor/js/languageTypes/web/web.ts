@@ -181,6 +181,7 @@ class WebType extends ProjectType {
     }
 
     run(errorCallback:RunErrCallback) {
+
     }
 
     stop(){
