@@ -23,7 +23,7 @@ popupCloseButton.addEventListener('click', (e) => {
 popupCreateButton.addEventListener('click', (e) => {
     let projectName = popupNameInput.value;
     let type = popupTypeInput.value;
-    let cleanProjectId = projectName.toLowerCase().replaceAll("[^a-z0-9]","-");
+    let cleanProjectId = projectName.toLowerCase().replace(/[\W_]+/g,"-");
     createProject(cleanProjectId,projectName,type).then(()=>{
         openProjectInEditor(cleanProjectId,getStoredUser().uid,0);
     }).catch(() => {
