@@ -25,13 +25,14 @@ class WebType extends ProjectType {
     setupFileEventListeners(){
         let list = document.querySelectorAll(".file-list, .folder")
         console.log(list)
+        // @ts-ignore
         for (let folder of list) {
             let children = folder.children;
             for (let child of children) {
                 if (!child.classList.contains("file")) {
                     continue;
                 }
-                child.addEventListener("click", (e) => {
+                child.addEventListener("click", (e: any) => {
                     // @ts-ignore
                     let target: HTMLElement = e.target!;
                     if (target.parentElement?.classList.contains("file")) {
@@ -61,6 +62,7 @@ class WebType extends ProjectType {
         }
         let sec = name.split(".")
         folder[name] = new File(sec[0],sec[1]);
+        this.updateFilesystemBar();
     }
     promptFolderCreation(folder:Folder){
         let name = prompt("Enter a name for the folder")
@@ -68,6 +70,7 @@ class WebType extends ProjectType {
             return;
         }
         folder[name] = {};
+        this.updateFilesystemBar();
     }
 
     openFile(fileId:number){
@@ -84,8 +87,18 @@ class WebType extends ProjectType {
     }
 
     populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
-        // @ts-ignore
-        for (let [key,frag] of Object.entries(folder)){
+
+        const sortedKeys = Object.keys(folder).sort();
+
+        const sortedObj = {};
+        for (const key of sortedKeys) {
+            // @ts-ignore
+            sortedObj[key] = folder[key];
+        }
+
+
+        for (let [key,f ] of Object.entries(sortedObj)){
+            let frag = f as File|Folder
             if(isFolder(frag)){
                 let wrapperEl = document.createElement("div");
                 wrapperEl.classList.add("folder-wrapper");
@@ -102,9 +115,9 @@ class WebType extends ProjectType {
                 wrapperEl.appendChild(folderEl);
                 upperHtml.appendChild(wrapperEl);
 
-                this.populateHTMLForFolder(key,frag,folderEl)
+                this.populateHTMLForFolder(key,frag as Folder,folderEl)
             }else{
-                frag.appendToHtml(upperHtml);
+                (frag as File).appendToHtml(upperHtml);
             }
         }
     }

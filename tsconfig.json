@@ -8,5 +8,9 @@
     "skipLibCheck": true,
     "allowJs": true,
     "checkJs": false,
+    "lib": [
+      "es2017",
+      "dom"
+    ]
   }
 }
