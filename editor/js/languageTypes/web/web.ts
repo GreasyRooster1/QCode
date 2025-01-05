@@ -97,6 +97,7 @@ class WebType extends ProjectType {
         }
 
 
+        // @ts-ignore
         for (let [key,f ] of Object.entries(sortedObj)){
             let frag = f as File|Folder
             if(isFolder(frag)){
