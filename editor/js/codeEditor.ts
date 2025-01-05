@@ -27,6 +27,16 @@ import { css } from "codemirror/lang-css/dist/index.js"
 // @ts-ignore
 import { cssLanguage } from 'codemirror/lang-css/dist/index.js'
 
+// @ts-ignore
+import { python } from "codemirror/lang-python/dist/index.js"
+// @ts-ignore
+import { pythonLanguage } from 'codemirror/lang-python/dist/index.js'
+
+// @ts-ignore
+import { cpp } from "codemirror/lang-cpp/dist/index.js"
+// @ts-ignore
+import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js'
+
 
 const customTheme = EditorView.theme({
     '&': {
@@ -79,6 +89,18 @@ function getLanguagePair(identifier:string): { func: any; lang: any } | null{
         return {
             func: css(),
             lang: cssLanguage
+        }
+    }
+    if(identifier == "python"){
+        return {
+            func: python(),
+            lang: pythonLanguage
+        }
+    }
+    if(identifier == "c++"){
+        return {
+            func: cpp(),
+            lang: cppLanguage
         }
     }
     return null;
