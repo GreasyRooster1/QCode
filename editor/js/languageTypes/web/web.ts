@@ -182,7 +182,8 @@ class WebType extends ProjectType {
 
     run(errorCallback:RunErrCallback) {
         this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
-        window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
+        (document.getElementById("#exec-frame")?).contentWindow
+        //window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
     }
 
     sendFolderToHTMLHost(folder:Folder){
