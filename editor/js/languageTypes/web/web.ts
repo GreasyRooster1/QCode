@@ -181,7 +181,7 @@ class WebType extends ProjectType {
     }
 
     run(errorCallback:RunErrCallback) {
-
+        this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
     }
 
     sendFolderToHTMLHost(folder:Folder){
