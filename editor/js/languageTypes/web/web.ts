@@ -88,7 +88,15 @@ class WebType extends ProjectType {
 
     populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
 
-        const sortedKeys = Object.keys(folder).sort();
+        const sortedKeys = Object.keys(folder).sort((a,b)=>{
+            if(a.includes(".")&&!b.includes(".")){
+                return 1;
+            }
+            if(b.includes(".")&&!a.includes(".")){
+                return -1;
+            }
+            return a.localeCompare(b);
+        });
 
         const sortedObj = {};
         for (const key of sortedKeys) {
