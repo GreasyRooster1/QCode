@@ -1,4 +1,4 @@
-import { setupEditor } from "../codeEditor.js";
+import {Language, setupEditor} from "../codeEditor.js";
 
 interface RunErrCallback {
     (content:string,type:string):void,
@@ -77,7 +77,7 @@ abstract class ProjectType {
 
     abstract runErrorCallback(content:string,type:string):void;
 
-    abstract getLanguage(): string;
+    abstract getLanguage(): Language;
 }
 
 export {ProjectType,RunErrCallback};

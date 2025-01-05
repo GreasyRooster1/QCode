@@ -122,4 +122,4 @@ function onDocUpdate(){
 // @ts-ignore
 window.editor = null;
 
-export {editor,setupEditor};
+export {editor,setupEditor,Language};
