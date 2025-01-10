@@ -61,10 +61,9 @@ function storeUser(user,next){
     localStorage.setItem("currentUser",JSON.stringify(user));
 
     database.ref("userdata/"+user.uid+"/username").get().then((snapshot)=>{
-        let obj = user
-        obj.username=snapshot.val();
-        alert(obj.username);
-        localStorage.setItem("currentUser",JSON.stringify(obj));
+        let obj = JSON.parse(JSON.stringify(user));
+        obj.username = snapshot.val();
+        localStorage.setItem("currentUser",JSON.stringify(user));
         if(next) {
             next()
         }
