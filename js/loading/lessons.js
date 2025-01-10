@@ -103,14 +103,7 @@ function startInternalLesson(ref,lessonId,lessonData){
     if(starterCode==="default"){
         starterCode = defaultCode;
     }
-    database.ref(ref).child(lessonId).set({
-        code:starterCode,
-        name:lessonData.name,
-        lessonId: lessonId,
-        currentChapter: 0,
-        currentStep:1,
-        timestamp:Date.now()/1000
-    });
+    createProject(lessonId,lessonData.name,lessonData.type,lessonId)
     openProjectInEditor(lessonId,getStoredUser().uid,0);
 }
 
