@@ -45,23 +45,70 @@ function hideNewProjectPopup() {
     newProjectPopupContainer.style.pointerEvents = 'none';
 }
 
-function createProject(cleanProjectId,projectName,type){
+function createProject(cleanProjectId,projectName,type,lessonId){
     return new Promise((resolve,reject)=>{
         let user = getStoredUser();
         database.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).once("value", (snap) => {
             if(snap.exists()){
                 reject();
             }
-            database.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).set({
-                code:defaultCode,
-                lessonId:"none",
-                name:projectName,
-                currentChapter:0,
-                currentStep:0,
-                timestamp:Date.now()/1000,
-                language:type,
-            })
+            database.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).set(
+                setupProjectForType(type,projectName,lessonId)
+            )
             resolve();
         })
     });
+}
+
+function setupProjectForType(type,projectName,lessonId){
+    switch(type){
+        case 'javascript':
+            return getJSProjectData(projectName,lessonId)
+        case 'web':
+            return getWebProjectData(projectName,lessonId)
+        case 'arduino':
+            return getArduinoProjectData(projectName,lessonId)
+    }
+}
+
+function getJSProjectData(projectName,lessonId){
+    return {
+        code:defaultCodeJs,
+        lessonId:lessonId,
+        name:projectName,
+        currentChapter:0,
+        currentStep:0,
+        timestamp:Date.now()/1000,
+        language:"javascript",
+    }
+}
+
+function getWebProjectData(projectName,lessonId){
+    return {
+        files:{
+            "index➽css":"",
+            "index➽js":"",
+            "index➽html":"<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "  <head>\n" +
+                "    <title>My Website</title>\n" +
+                "    <link rel=\"stylesheet\" href=\"index.css\">\n" +
+                "    <script src=\"index.js\"></script>\n" +
+                "  </head>\n" +
+                "  <body>\n" +
+                "    \n" +
+                "  </body>\n" +
+                "</html>",
+        },
+        lessonId:lessonId,
+        name:projectName,
+        currentChapter:0,
+        currentStep:0,
+        timestamp:Date.now()/1000,
+        language:"web",
+    }
+}
+
+function getArduinoProjectData(projectName,lessonId){
+
 }
