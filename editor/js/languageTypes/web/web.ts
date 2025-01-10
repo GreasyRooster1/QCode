@@ -183,8 +183,12 @@ class WebType extends ProjectType {
     run(errorCallback:RunErrCallback) {
         this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
         let frame = document.getElementById("#exec-frame")! as HTMLIFrameElement
-        frame.contentWindow!.location.href = "https://"+this.projectId+"."+getStoredUser().username+".esporterz.com";
+        frame.contentWindow!.location.href = this.getServerAddress();
         //window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
+    }
+
+    getServerAddress(){
+        return "https://"+this.projectId+"."+getStoredUser().username+".esporterz.com";
     }
 
     sendFolderToHTMLHost(folder:Folder){
@@ -198,7 +202,7 @@ class WebType extends ProjectType {
     }
 
     sendFileToHTMLHost(file:File){
-        let address = this.projectId+"."+getStoredUser().username+".esporterz.com/"+file.name+"."+file.extension;
+        let address = this.getServerAddress()+"/"+file.name+"."+file.extension;
         fetch(address,
             {
                 method: "PUT",
