@@ -13,7 +13,7 @@ loginButton.addEventListener("click", function(){
         .then((userCredential) => {
 
             let user = userCredential.user;
-            console.log(user);
+
             database.ref("userpermissions/"+user.uid).once("value").then(function (snap) {
                 let data = snap.val();
                 console.log(data);
@@ -37,9 +37,10 @@ loginButton.addEventListener("click", function(){
 
 function handleAuthAdminLogin(user,perms){
     storeUserPermissions(perms)
-    storeUser(user);
-    console.log("logged in user");
-    window.location.replace("../admin/adminConsole.html");
+    storeUser(user, ()=>{
+        console.log("logged in user");
+        window.location.replace("../admin/adminConsole.html");
+    });
 }
 
 function showAuthError(msg){

@@ -31,14 +31,14 @@ loginButton.addEventListener("click", function(){
     firebase.auth().signInWithEmailAndPassword(extractEmailFromUsername(username), password)
         .then((userCredential) => {
             console.log("logged in user");
-            storeUser(userCredential.user);
-
-            database.ref("userdata/"+userCredential.user.uid).once("value").then((snap)=>{
-                if(!snap.exists()){
-                    createUser(userCredential.user.uid,username)
-                }
-                window.location.href = "../";
-            })
+            storeUser(userCredential.user, () => {
+                database.ref("userdata/"+userCredential.user.uid).once("value").then((snap)=>{
+                    if(!snap.exists()){
+                        createUser(userCredential.user.uid,username)
+                    }
+                    window.location.href = "../";
+                })
+            });
         })
         .catch((error) => {
             displayAuthErrors(handleAuthErrors(error));

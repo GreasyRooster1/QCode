@@ -56,13 +56,18 @@ function displayAuthErrors(errorType){
     }
 }
 
-function storeUser(user){
+function storeUser(user,next){
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("currentUser",JSON.stringify(user));
-    database.ref("userdata/"+user.uid+"/username").once("value", (snapshot)=>{
+
+    database.ref("userdata/"+user.uid+"/username").get().then((snapshot)=>{
         let obj = user
         obj.username=snapshot.val();
-        localStorage.setItem("currentUser",JSON.stringify(JSON.stringify(obj)));
+        alert(obj.username);
+        localStorage.setItem("currentUser",JSON.stringify(obj));
+        if(next) {
+            next()
+        }
     })
 }
 
