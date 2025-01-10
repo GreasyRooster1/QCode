@@ -182,7 +182,8 @@ class WebType extends ProjectType {
 
     run(errorCallback:RunErrCallback) {
         this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
-        (document.getElementById("#exec-frame")?).contentWindow
+        let frame = document.getElementById("#exec-frame")! as HTMLIFrameElement
+        frame.contentWindow!.location.href = "https://"+this.projectId+"."+getStoredUser().username+".esporterz.com";
         //window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
     }
 
