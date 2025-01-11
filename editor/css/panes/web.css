@@ -3,6 +3,7 @@
     --filesystem-header: #2c2c2c;
     --folder-icon-line: #636363;
     --current-file-view: #535252;
+    --filesystem-background: #a8a8a8;
 
     --header-text: #ececec;
     --current-file-view-text: #eaeaea;
@@ -39,13 +40,16 @@
 }
 .filesystem{
     margin-top:5px;
-    margin-bottom:20px;
+    margin-bottom:15px;
     margin-left:2px;
+    background: var(--filesystem-background);
+    padding:3px;
+    border-radius: 5px;
 }
 
 .filesystem-root{
     display: flex;
-    margin-bottom:5px;
+    margin-bottom:10px;
 }
 
 .filesystem-root img{
