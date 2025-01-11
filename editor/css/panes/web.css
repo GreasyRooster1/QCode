@@ -3,6 +3,9 @@
     --filesystem-header: #2c2c2c;
     --folder-icon-line: #636363;
     --current-file-view: #535252;
+
+    --header-text: #ececec;
+    --current-file-view-text: #eaeaea;
 }
 
 .code-editor-wrapper{
@@ -23,11 +26,12 @@
     display: flex;
     justify-content: space-around;
     font-size: 1.3rem;
+    color:var(--header-text);
 }
 
 .file-list{
     padding:3px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .file{
@@ -76,5 +80,6 @@
     padding-left:4px;
     background: var(--current-file-view);
     font-size: 1.3rem;
+    color:var(--current-file-view-text);
 }
 
