@@ -19,6 +19,8 @@
 .filesystem-sidebar{
     width: 13vw;
     background: var(--filesystem-sidebar);
+    display: flex;
+    flex-direction: column;
 }
 
 .filesystem-sidebar .header{
@@ -32,11 +34,17 @@
 .file-list{
     padding:3px;
     font-size: 1.3rem;
+    overflow: auto;
+    flex-grow: 1;
 }
 
 .file{
     display: flex;
     margin-top:5px
+}
+
+.file .filename{
+    text-wrap: nowrap;
 }
 
 .file-list .icon{

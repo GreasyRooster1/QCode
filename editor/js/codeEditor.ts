@@ -53,15 +53,17 @@ let editor;
 function setupEditor(language: Language) {
     document.querySelector(".code-editor")!.innerHTML = "";
     let languagePair = getLanguagePair(language);
+    let extensions = [
+        basicSetup,
+        keymap.of([indentWithTab]),
+        customTheme,
+    ]
+    if(languagePair!=null){
+        extensions.push(languagePair!.func,linter(languagePair!.lang));
+    }
     editor = new EditorView({
         doc: "\n",
-        extensions: [
-            basicSetup,
-            languagePair?.func,
-            linter(languagePair?.lang),
-            keymap.of([indentWithTab]),
-            customTheme,
-        ],
+        extensions: extensions,
         updateListener:onDocUpdate,
         parent: document.querySelector(".code-editor"),
     });
@@ -107,10 +109,7 @@ function getLanguagePair(identifier:Language): { func: any; lang: any } | null{
         }
     }
     if(identifier == "text"){
-        return {
-            func: undefined,
-            lang: undefined
-        }
+        return null;
     }
     return null;
 }
