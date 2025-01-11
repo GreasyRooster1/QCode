@@ -1,5 +1,5 @@
 const dotReplacer = "➽";
-const blacklistedChars = [".", "$", "#", "[", "]", "/",];
+const blacklistedChars = [".", "$", "#", "[", "]", "/","\\"];
 
 interface System{
     [location:string]:Folder
@@ -7,7 +7,6 @@ interface System{
 interface Folder{
     [name:string]:File|Folder
 }
-
 
 class Filesystem{
     private system:System;
@@ -209,6 +208,14 @@ function createFolderEl(key:string,folder:Folder){
                     <div class="folder ${key}"></div>
                 `
     return wrapperEl
+}
+
+function cleanFileName(filename: string){
+    let tmp = filename;
+    for(let char in blacklistedChars){
+        tmp.replace(char,"");
+    }
+    return tmp.trim();
 }
 
 function hasFileIcon(extension:string):boolean{

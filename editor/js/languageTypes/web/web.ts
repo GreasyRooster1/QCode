@@ -56,7 +56,7 @@ class WebType extends ProjectType {
     }
 
     promptFileCreation(folder:Folder){
-        let name = prompt("Enter a name for the file")
+        let name = cleanProjectName(prompt("Enter a name for the file")!);
         if(name == null){
             return;
         }
@@ -65,7 +65,7 @@ class WebType extends ProjectType {
         this.updateFilesystemBar();
     }
     promptFolderCreation(folder:Folder){
-        let name = prompt("Enter a name for the folder")!.trim()
+        let name = cleanProjectName(prompt("Enter a name for the folder")!);
         if(name == null||name.length==0){
             return;
         }
