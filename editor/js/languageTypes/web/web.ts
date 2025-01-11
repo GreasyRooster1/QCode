@@ -65,8 +65,8 @@ class WebType extends ProjectType {
         this.updateFilesystemBar();
     }
     promptFolderCreation(folder:Folder){
-        let name = prompt("Enter a name for the folder")
-        if(name == null){
+        let name = prompt("Enter a name for the folder")!.trim()
+        if(name == null||name.length==0){
             return;
         }
         folder[name] = {};
