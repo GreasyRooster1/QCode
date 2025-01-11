@@ -58,6 +58,16 @@
     margin-left:5px;
 }
 
+.folder-icon .name-icon{
+    display:flex;
+}
+
+.folder-icon img{
+    width:1.2em;
+    aspect-ratio: 1/1;
+    display: inline;
+}
+
 .folder-icon .buttons{
     opacity: 0;
     pointer-events: none;

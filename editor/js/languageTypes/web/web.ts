@@ -122,10 +122,10 @@ class WebType extends ProjectType {
         wrapperEl.classList.add("folder-wrapper");
         wrapperEl.innerHTML = `
                     <div class="folder-icon ">
-                        <span class="name-icon">
-                            <i class='fas fa-folder-open'></i>
+                        <div class="name-icon">
+                            <img src="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/folder.png?raw=true">
                             <span class='name'>${key}</span>
-                        </span>
+                        </div>
                         <span class="buttons">
                             <i class='far fa-file-alt new-file-button'></i>
                             <i class="far fa-folder new-folder-button"></i>
