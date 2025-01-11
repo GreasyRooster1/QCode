@@ -122,7 +122,11 @@ class WebType extends ProjectType {
                 upperHtml.appendChild(wrapperEl);
                 this.populateHTMLForFolder(key,frag as Folder,wrapperEl.querySelector(".folder"));
             }else{
-                (frag as File).appendToHtml(upperHtml);
+                let file = frag as File;
+                if(file.isDeleted){
+                    continue;
+                }
+                file.appendToHtml(upperHtml);
             }
         }
     }

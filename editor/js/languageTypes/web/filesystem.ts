@@ -84,8 +84,6 @@ class Filesystem{
             }
             if(frag.id==id){
                 frag.isDeleted = true;
-                let str = JSON.stringify(this.system["/"]);
-                this.system["/"] = JSON.parse(str);
                 return;
             }
         }
@@ -107,6 +105,9 @@ class Filesystem{
             if(isFolder(frag)){
                 jsonObject[key] = {};
                 this.serializeFolder(frag,jsonObject[key]);
+                continue;
+            }
+            if(frag.isDeleted){
                 continue;
             }
             let serializedName = frag.getSerializedName();
