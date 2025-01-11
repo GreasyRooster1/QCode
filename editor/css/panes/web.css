@@ -47,6 +47,10 @@
     border-radius: 5px;
 }
 
+.remote-assets-filesystem{
+    min-height: 20%;
+}
+
 .filesystem-root{
     display: flex;
     margin-bottom:10px;
