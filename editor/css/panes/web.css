@@ -31,11 +31,28 @@
     color:var(--header-text);
 }
 
-.filesystems{
+.filesystem-container{
     overflow: auto;
     flex-grow: 1;
     padding:3px;
     font-size: 1.3rem;
+}
+.filesystem{
+    margin-top:5px;
+    margin-bottom:20px;
+    margin-left:2px;
+}
+
+.filesystem-root{
+    display: flex;
+    margin-bottom:5px;
+}
+
+.filesystem-root img{
+    width:1.2em;
+    aspect-ratio: 1;
+    display: inline;
+    margin-right:5px
 }
 
 .file-list{

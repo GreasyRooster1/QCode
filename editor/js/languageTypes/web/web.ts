@@ -153,11 +153,20 @@ class WebType extends ProjectType {
                         <i class="far fa-folder new-folder-button"></i>
                     </span>
                 </div>
-                <div class="filesystems">
-                    <div class="file-list">
+                <div class="filesystem-container">
+                    <div class="default-filesystem filesystem">
+                        <div class="filesystem-root">
+                            <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
+                            <span>Files</span>
+                        </div>
+                        <div class="file-list"></div>
                     </div>
-                    <div class="remote-assets">
-                    
+                    <div class="remote-assets-filesystem filesystem">
+                        <div class="filesystem-root">
+                            <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/gallery-folder.png">
+                            <span>Assets</span>
+                        </div>
+                        <div class="remote-assets"></div>
                     </div>
                 </div>
             </div>
