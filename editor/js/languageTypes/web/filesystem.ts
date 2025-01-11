@@ -148,7 +148,7 @@ class File{
             <span class="filename">`+this.name+"."+this.extension+`</span>
         `
         el.classList.add("file")
-        el.classList.add(this.name)
+        el.classList.add(this.name.replace(" ","-"))
         el.setAttribute("data-filename",this.name+"."+this.extension);
         el.setAttribute("data-id",String(this.id));
         upperHtml.appendChild(el);
