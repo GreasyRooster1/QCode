@@ -74,7 +74,7 @@ function setupProjectForType(type,projectName,lessonId){
 function getJSProjectData(projectName,lessonId){
     return {
         code:defaultCodeJs,
-        lessonId:lessonId,
+        lessonId:lessonId??"none",
         name:projectName,
         currentChapter:0,
         currentStep:0,
@@ -100,7 +100,7 @@ function getWebProjectData(projectName,lessonId){
                 "  </body>\n" +
                 "</html>",
         },
-        lessonId:lessonId,
+        lessonId:lessonId??"none",
         name:projectName,
         currentChapter:0,
         currentStep:0,
