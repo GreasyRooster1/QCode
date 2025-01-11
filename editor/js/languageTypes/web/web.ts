@@ -67,7 +67,7 @@ class WebType extends ProjectType {
     }
 
     setupAssetDrop(){
-        addEventListener("drop", (event) => {
+        document.querySelector(".remote-assets-filesystem")!.addEventListener("drop", (event:any) => {
             console.log("File(s) dropped");
 
             event.preventDefault();
@@ -76,7 +76,7 @@ class WebType extends ProjectType {
                 [...event.dataTransfer!.items].forEach((item, i) => {
                     if (item.kind === "file") {
                         const file = item.getAsFile();
-                        console.log(`… file[${i}].name = ${file!.name}`);
+                        this.handleDroppedAssetFile(file!);
                     }
                 });
             } else {
@@ -88,7 +88,7 @@ class WebType extends ProjectType {
     }
 
     handleDroppedAssetFile(file: File){
-
+        console.log(file.name)
     }
 
     promptFileCreation(folder:Folder){
@@ -209,6 +209,7 @@ class WebType extends ProjectType {
         this.updateFilesystemBar()
         this.setupFileFolderButtons()
         this.setupHeaderButtons()
+        this.setupAssetDrop()
     }
 
     onLoad(){
