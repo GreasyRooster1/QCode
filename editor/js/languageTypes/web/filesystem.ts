@@ -155,7 +155,10 @@ class File{
     }
 
     getIconUrl(){
-        return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/"+this.extension+".png?raw=true"
+        if(hasFileIcon(this.extension)){
+            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/"+this.extension+".png?raw=true"
+        }
+        return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/file.png?raw=true"
     }
 
     getSerializedName(){
@@ -187,6 +190,12 @@ class File{
                  return "text";
          }
     }
+}
+
+function hasFileIcon(extension:string):boolean{
+    let allowedExtensions = ["css","html","ico","jar","jpg","js","mp3","obj","png","py","svg","sys","txt"]
+    return allowedExtensions.indexOf(extension) !== -1;
+
 }
 
 export {Filesystem,isFolder,File,Folder,System}
