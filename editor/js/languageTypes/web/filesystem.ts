@@ -80,13 +80,15 @@ class Filesystem{
         // @ts-ignore
         for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
-                let out = this.deleteFile(frag,id);
+                this.deleteFile(frag,id);
             }
             if(frag.id==id){
                 frag.isDeleted = true;
+                let str = JSON.stringify(this.system["/"]);
+                this.system["/"] = JSON.parse(str);
+                return;
             }
         }
-        return null;
     }
 
     getAll(){
