@@ -1,8 +1,8 @@
 :root{
     --filesystem-sidebar: #b5b5b5;
-    --filesystem-header: #858585;
+    --filesystem-header: #2c2c2c;
     --folder-icon-line: #636363;
-    --current-file-view: #717171;
+    --current-file-view: #535252;
 }
 
 .code-editor-wrapper{
