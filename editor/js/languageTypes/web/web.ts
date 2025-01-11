@@ -76,7 +76,7 @@ class WebType extends ProjectType {
     openFile(fileId:number){
         this.currentFileId = fileId;
         let file = this.filesystem.getFileById(this.currentFileId);
-        document.querySelector(".current-file-view")!.innerHTML = file!.name+"."+file!.extension;
+        document.querySelector(".current-file-view .filename")!.innerHTML = file!.name+"."+file!.extension;
         setupEditor(file?.getLanguage())
         writeToEditor(file!.content)
     }
@@ -142,7 +142,12 @@ class WebType extends ProjectType {
                 </div>
             </div>
             <div class="text-editor-wrapper">
-                <div class="current-file-view">index.html</div>
+                <div class="current-file-view">
+                    <div class="filename">index.html</div>
+                    <div class="icons">
+                        <div class="trash"><i class="far fa-trash-alt"></i></div>
+                    </div>
+                </div>
                 <div class="code-editor"></div>
             </div>
         </div> 

@@ -99,5 +99,10 @@
     background: var(--current-file-view);
     font-size: 1.3rem;
     color:var(--current-file-view-text);
+    display: flex;
+    justify-content: space-between;
 }
 
+.current-file-view .icons{
+    margin-right:4px;
+}
