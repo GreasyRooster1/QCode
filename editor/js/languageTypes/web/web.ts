@@ -156,7 +156,7 @@ class WebType extends ProjectType {
                 <div class="filesystems">
                     <div class="file-list">
                     </div>
-                    <div class="remote-images">
+                    <div class="remote-assets">
                     
                     </div>
                 </div>

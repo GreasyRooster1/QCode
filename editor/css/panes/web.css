@@ -16,11 +16,6 @@
     flex: 1
 }
 
-.filesystems{
-    overflow: auto;
-    flex-grow: 1;
-}
-
 .filesystem-sidebar{
     width: 13vw;
     background: var(--filesystem-sidebar);
@@ -36,9 +31,19 @@
     color:var(--header-text);
 }
 
-.file-list{
+.filesystems{
+    overflow: auto;
+    flex-grow: 1;
     padding:3px;
     font-size: 1.3rem;
+}
+
+.file-list{
+    margin-left:20px;
+}
+
+.remote-assets{
+    margin-left:20px;
 }
 
 .file{
