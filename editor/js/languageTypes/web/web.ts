@@ -55,6 +55,16 @@ class WebType extends ProjectType {
         })
     }
 
+    setupHeaderButtons(){
+        document.querySelector(".current-file-view .trash")!.addEventListener("click", (e) => {
+            let isSure = confirm("Are you sure you want to delete this file?");
+            if (!isSure) {
+                return
+            }
+            this.filesystem.deleteFile(this.filesystem.getAll()["/"],this.currentFileId);
+        })
+    }
+
     promptFileCreation(folder:Folder){
         let name = cleanProjectName(prompt("Enter a name for the file")!);
         if(name == null){
@@ -154,6 +164,7 @@ class WebType extends ProjectType {
         `
         this.updateFilesystemBar()
         this.setupFileFolderButtons()
+        this.setupHeaderButtons()
     }
 
     onLoad(){

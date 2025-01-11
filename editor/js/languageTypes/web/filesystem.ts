@@ -76,6 +76,19 @@ class Filesystem{
         return null;
     }
 
+    deleteFile(folder:Folder,id:number){
+        // @ts-ignore
+        for (let [key,frag] of Object.entries(folder)){
+            if(isFolder(frag)){
+                let out = this.deleteFile(frag,id);
+            }
+            if(frag.id==id){
+                frag.isDeleted = true;
+            }
+        }
+        return null;
+    }
+
     getAll(){
         return this.system
     }
@@ -133,11 +146,13 @@ class File{
     extension: string;
     content:string;
     id:number;
+    isDeleted:boolean;
     constructor(name:string, extension: string) {
         this.name = name;
         this.extension = extension;
         this.content = "";
         this.id = Math.random()*999999;
+        this.isDeleted = false;
     }
 
     appendToHtml(upperHtml:any){
