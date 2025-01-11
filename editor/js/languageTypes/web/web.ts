@@ -62,6 +62,7 @@ class WebType extends ProjectType {
                 return
             }
             this.filesystem.deleteFile(this.filesystem.getAll()["/"],this.currentFileId);
+            this.updateFilesystemBar()
         })
     }
 
