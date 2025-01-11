@@ -16,6 +16,11 @@
     flex: 1
 }
 
+.filesystems{
+    overflow: auto;
+    flex-grow: 1;
+}
+
 .filesystem-sidebar{
     width: 13vw;
     background: var(--filesystem-sidebar);
@@ -34,8 +39,6 @@
 .file-list{
     padding:3px;
     font-size: 1.3rem;
-    overflow: auto;
-    flex-grow: 1;
 }
 
 .file{

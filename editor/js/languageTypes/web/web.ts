@@ -153,7 +153,12 @@ class WebType extends ProjectType {
                         <i class="far fa-folder new-folder-button"></i>
                     </span>
                 </div>
-                <div class="file-list">
+                <div class="filesystems">
+                    <div class="file-list">
+                    </div>
+                    <div class="remote-images">
+                    
+                    </div>
                 </div>
             </div>
             <div class="text-editor-wrapper">
