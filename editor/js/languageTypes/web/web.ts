@@ -1,6 +1,6 @@
 import { getCode } from "../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
-import {Filesystem, Folder, isFolder,File,createFolderEl} from "./filesystem.js";
+import {Filesystem, Folder, isFolder,File as FilesystemFile,createFolderEl} from "./filesystem.js";
 import {Language, setupEditor} from "../../codeEditor.js";
 
 class WebType extends ProjectType {
@@ -66,13 +66,38 @@ class WebType extends ProjectType {
         })
     }
 
+    setupAssetDrop(){
+        addEventListener("drop", (event) => {
+            console.log("File(s) dropped");
+
+            event.preventDefault();
+
+            if (event.dataTransfer!.items) {
+                [...event.dataTransfer!.items].forEach((item, i) => {
+                    if (item.kind === "file") {
+                        const file = item.getAsFile();
+                        console.log(`… file[${i}].name = ${file!.name}`);
+                    }
+                });
+            } else {
+                [...event.dataTransfer!.files].forEach((file, i) => {
+                    this.handleDroppedAssetFile(file)
+                });
+            }
+        });
+    }
+
+    handleDroppedAssetFile(file: File){
+
+    }
+
     promptFileCreation(folder:Folder){
         let name = cleanProjectName(prompt("Enter a name for the file")!);
         if(name == null){
             return;
         }
         let sec = name.split(".")
-        folder[name] = new File(sec[0],sec[1]);
+        folder[name] = new FilesystemFile(sec[0],sec[1]);
         this.updateFilesystemBar();
     }
     promptFolderCreation(folder:Folder){
@@ -117,13 +142,13 @@ class WebType extends ProjectType {
 
         // @ts-ignore
         for (let [key,f ] of Object.entries(sortedObj)){
-            let frag = f as File|Folder
+            let frag = f as FilesystemFile|Folder
             if(isFolder(frag)){
                 let wrapperEl = this.createFolderEl(key,folder)
                 upperHtml.appendChild(wrapperEl);
                 this.populateHTMLForFolder(key,frag as Folder,wrapperEl.querySelector(".folder"));
             }else{
-                let file = frag as File;
+                let file = frag as FilesystemFile;
                 if(file.isDeleted){
                     continue;
                 }
@@ -220,7 +245,7 @@ class WebType extends ProjectType {
         }
     }
 
-    sendFileToHTMLHost(file:File){
+    sendFileToHTMLHost(file:FilesystemFile){
         let address = this.getServerAddress()+"/"+file.name+"."+file.extension;
         fetch(address,
             {
