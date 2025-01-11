@@ -182,7 +182,7 @@ class WebType extends ProjectType {
                     <div class="default-filesystem filesystem">
                         <div class="filesystem-root">
                             <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
-                            <span>Files</span>
+                            <span>Site</span>
                         </div>
                         <div class="file-list"></div>
                     </div>
