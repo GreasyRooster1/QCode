@@ -192,10 +192,29 @@ class File{
     }
 }
 
+function createFolderEl(key:string,folder:Folder){
+    let wrapperEl = document.createElement("div");
+    wrapperEl.classList.add("folder-wrapper");
+    wrapperEl.innerHTML = `
+                    <div class="folder-icon ">
+                        <div class="name-icon">
+                            <img src="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/folder.png?raw=true">
+                            <span class='name'>${key}</span>
+                        </div>
+                        <span class="buttons">
+                            <i class='far fa-file-alt new-file-button'></i>
+                            <i class="far fa-folder new-folder-button"></i>
+                        </span>
+                    </div>
+                    <div class="folder ${key}"></div>
+                `
+    return wrapperEl
+}
+
 function hasFileIcon(extension:string):boolean{
     let allowedExtensions = ["css","html","ico","jar","jpg","js","mp3","obj","png","py","svg","sys","txt"]
     return allowedExtensions.indexOf(extension) !== -1;
 
 }
 
-export {Filesystem,isFolder,File,Folder,System}
+export {Filesystem,isFolder,File,Folder,System,createFolderEl}

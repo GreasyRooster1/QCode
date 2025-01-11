@@ -1,6 +1,6 @@
 import { getCode } from "../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
-import {Filesystem, Folder, isFolder,File} from "./filesystem.js";
+import {Filesystem, Folder, isFolder,File,createFolderEl} from "./filesystem.js";
 import {Language, setupEditor} from "../../codeEditor.js";
 
 class WebType extends ProjectType {
@@ -116,31 +116,15 @@ class WebType extends ProjectType {
             }
         }
     }
-
     createFolderEl(key:string,folder:Folder){
-        let wrapperEl = document.createElement("div");
-        wrapperEl.classList.add("folder-wrapper");
-        wrapperEl.innerHTML = `
-                    <div class="folder-icon ">
-                        <div class="name-icon">
-                            <img src="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/folder.png?raw=true">
-                            <span class='name'>${key}</span>
-                        </div>
-                        <span class="buttons">
-                            <i class='far fa-file-alt new-file-button'></i>
-                            <i class="far fa-folder new-folder-button"></i>
-                        </span>
-                    </div>
-                    <div class="folder ${key}"></div>
-                `
+        let wrapperEl = createFolderEl(key,folder);
         wrapperEl.querySelector(".buttons .new-file-button")?.addEventListener("click", (e) => {
             this.promptFileCreation(folder[key] as Folder);
         });
         wrapperEl.querySelector(".buttons .new-folder-button")?.addEventListener("click", (e) => {
             this.promptFolderCreation(folder[key] as Folder);
         });
-
-        return wrapperEl
+        return wrapperEl;
     }
 
     setupEditor(): void {
