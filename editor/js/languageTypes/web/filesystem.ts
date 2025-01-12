@@ -172,10 +172,13 @@ class File{
     }
 
     getIconUrl(){
-        if(hasFileIcon(this.extension)){
-            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/"+this.extension+".png?raw=true"
+        if(!hasFileIcon(this.extension)){
+            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/file.png?raw=true"
         }
-        return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/file.png?raw=true"
+        if(this.extension=="sys"&&Math.random()<0.1){
+            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/sys.gif?raw=true"
+        }
+        return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/"+this.extension+".png?raw=true"
     }
 
     getSerializedName(){
@@ -242,4 +245,4 @@ function hasFileIcon(extension:string):boolean{
 
 }
 
-export {Filesystem,isFolder,File,Folder,System,createFolderEl}
+export {Filesystem,isFolder,File,Folder,System,createFolderEl,cleanFileName}

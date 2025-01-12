@@ -1,6 +1,6 @@
 import { getCode } from "../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
-import {Filesystem, Folder, isFolder,File as FilesystemFile,createFolderEl} from "./filesystem.js";
+import {Filesystem, Folder, isFolder, File as FilesystemFile, createFolderEl, cleanFileName} from "./filesystem.js";
 import {Language, setupEditor} from "../../codeEditor.js";
 
 class WebType extends ProjectType {
@@ -97,7 +97,8 @@ class WebType extends ProjectType {
     }
 
     promptFileCreation(folder:Folder){
-        let name = cleanProjectName(prompt("Enter a name for the file")!);
+        let name =
+            cleanFileName(prompt("Enter a name for the file")!);
         if(name == null){
             return;
         }
@@ -106,7 +107,7 @@ class WebType extends ProjectType {
         this.updateFilesystemBar();
     }
     promptFolderCreation(folder:Folder){
-        let name = cleanProjectName(prompt("Enter a name for the folder")!);
+        let name = cleanFileName(prompt("Enter a name for the folder")!);
         if(name == null||name.length==0){
             return;
         }
