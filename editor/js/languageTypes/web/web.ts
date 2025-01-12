@@ -67,7 +67,8 @@ class WebType extends ProjectType {
     }
 
     setupAssetDrop(){
-        document.querySelector(".remote-assets-filesystem")!.addEventListener("drop", (event:any) => {
+        let target = document.querySelector(".remote-assets-filesystem")!
+        target.addEventListener("drop", (event:any) => {
             console.log("File(s) dropped");
 
             event.preventDefault();
@@ -84,6 +85,10 @@ class WebType extends ProjectType {
                     this.handleDroppedAssetFile(file)
                 });
             }
+        });
+        target.addEventListener("dragover", (event) => {
+            // prevent default to allow drop
+            event.preventDefault();
         });
     }
 
