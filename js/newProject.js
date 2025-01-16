@@ -85,21 +85,7 @@ function getJSProjectData(projectName,lessonId){
 
 function getWebProjectData(projectName,lessonId){
     return {
-        files:{
-            "index➽css":"",
-            "index➽js":"",
-            "index➽html":"<!DOCTYPE html>\n" +
-                "<html lang=\"en\">\n" +
-                "  <head>\n" +
-                "    <title>My Website</title>\n" +
-                "    <link rel=\"stylesheet\" href=\"index.css\">\n" +
-                "    <script src=\"index.js\"></script>\n" +
-                "  </head>\n" +
-                "  <body>\n" +
-                "    \n" +
-                "  </body>\n" +
-                "</html>",
-        },
+        files:defaultFilesWeb,
         lessonId:lessonId??"none",
         name:projectName,
         currentChapter:0,
@@ -110,5 +96,13 @@ function getWebProjectData(projectName,lessonId){
 }
 
 function getArduinoProjectData(projectName,lessonId){
-
+    return {
+        code:defaultCodeArduino,
+        lessonId:lessonId??"none",
+        name:projectName,
+        currentChapter:0,
+        currentStep:0,
+        timestamp:Date.now()/1000,
+        language:"arduino",
+    }
 }
