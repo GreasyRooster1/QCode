@@ -11,7 +11,7 @@ module.exports = {
         adminConsole: "./src/admin/js/index.js",
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: 'bundles/[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
 };
