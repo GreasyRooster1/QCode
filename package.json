@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "codemirror": "^6.0.1",
+    "gh-pages": "^6.3.0",
     "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
   }
 }
