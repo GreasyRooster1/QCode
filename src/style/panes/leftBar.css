@@ -1,0 +1,147 @@
+.projects{
+    min-height: 50vh;
+    background: var(--left-sections-background);
+    padding-top:3px;
+    display:flex;
+    flex-direction: column;
+}
+
+.lessons{
+    min-height: 50vh;
+    background: var(--left-sections-background);
+    padding-top:3px
+}
+
+.bar-title{
+    margin: 10px 7px 7px;
+    font-size:30px;
+}
+
+.projects-display{
+    max-height:40vh;
+    overflow:auto;
+}
+
+.project-link{
+    display: block;
+    margin: 10px 7px 7px;
+}
+
+.project-link > a{
+    padding: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--project-link-background);
+    border-radius: 5px;
+
+    color: var(--project-link-text);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.project-link > a > span{
+    color: var(--project-date-text);
+    font-size:  0.7em;
+    font-weight: lighter;
+}
+
+.project-pages{
+    user-select: none;
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: bolder;
+    align-items: center;
+}
+
+
+.project-pages .page-display{
+    font-size: 1.2em;
+}
+
+.project-pages .arrow{
+    transition:0.1s;
+}
+
+.project-pages .arrow:hover{
+    font-size: 1.2em;
+}
+.project-pages .arrow:active{
+    color:#ffffff;
+}
+
+.recommended-lessons{
+    background:var(--lessons-recommended-background);
+    padding:3px;
+    border-radius:5px;
+    margin:5px;
+}
+
+.recommended-lessons .title{
+    font-size: 1.3em;
+}
+
+.lesson-link-wrapper{
+    padding: 3px;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    background: var(--project-link-background);
+    border-radius: 5px;
+
+    color: var(--project-link-text);
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.lesson-link{
+    font-size: 0.9em;
+}
+
+.lessons-chart-link{
+    background: var(--lessons-chart-link-background);
+    font-weight: bold;
+    margin:5px;
+    padding:2px;
+    border-radius: 5px;
+}
+
+.status-display{
+    font-size: 0.75em;
+    border-radius: 5px;
+    align-self: end;
+    color:var(--status-display-text);
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.status-display.external{
+    background-color: var(--status-display-external);
+}
+
+.status-display.not-started{
+    background-color: var(--status-display-not-started);
+}
+.status-display.started{
+    background-color: var(--status-display-started);
+}
+
+.new-project-button{
+    background: var(--new-button-background);
+    border-radius: 5px;
+
+    margin: 10px 7px 7px;
+    padding:2px;
+
+    text-align: center;
+    font-weight: 600;
+    font-size:17px;
+
+    color: var(--new-button-text-color);
+}

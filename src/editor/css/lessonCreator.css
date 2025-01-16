@@ -1,0 +1,46 @@
+:root{
+    --lesson-creator-container-color: #b8b8b8;
+    --lesson-creator-button-color: #dfdfdf;
+    --lesson-creator-meta-color: #a1a1a1;
+}
+
+.lesson-creator-button-container {
+    position: fixed;
+    display: flex;
+
+    bottom: 0;
+    left:50%;
+    transform: translateX(-50%);
+
+    background: var(--lesson-creator-container-color);
+
+
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.lesson-creator-button {
+    background: var(--lesson-creator-button-color);
+    margin: 5px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.meta-edit-pane{
+    position: fixed;
+    display: none;
+
+    background: var(--lesson-creator-meta-color);
+
+    top:50%;
+    left:50%;
+    width:50%;
+    height:50%;
+    transform: translate(-50%,-50%);
+
+    box-shadow: 0 0 10px black;
+
+    border-radius: 10px;
+    padding:10px;
+}

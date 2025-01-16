@@ -1,0 +1,70 @@
+:root{
+    --background-color: #555555;
+    --main-content-background: #8f8f8f;
+    --content-pane-background: #b5b5b5;
+
+    --data-item-color: #a3a3a3;
+    --details-background:#a3a3a3;
+
+    --lesson-link-accent: #1e6ec6;
+    --lesson-link-unlisted-accent: #d32f2f;
+
+    --lesson-creator-button-color: #1aca52;
+    --admin-button-color: #a1a1a1;
+    --admin-button-color-hover: #bbbbbb;
+
+    --add-badge-button-color:#1aca52;
+    --load-button-background: #8f8f8f;
+}
+
+.scrollable-content{
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color);
+    margin: 0;
+}
+
+.title-bar{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title{
+    font-size: 5em;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--main-content-background);
+    width: 60vw;
+    margin: 100px auto auto;
+
+    padding: 1vmin;
+}
+
+.content-pane{
+    background-color: var(--content-pane-background);
+    display: flex;
+    margin: 10px;
+    height: 60vh;
+}
+
+.details-pane{
+    margin-left:10%;
+    margin-right:10%;
+    width: 100%;
+}

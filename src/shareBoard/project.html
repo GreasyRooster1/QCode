@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project View | QCode</title>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "codemirror/": "https://deno.land/x/codemirror_esm@v6.0.1/esm/"
+            }
+        }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
+    <script src="https://kit.fontawesome.com/464579a9a3.js" crossorigin="anonymous"></script>
+
+    <link href="../global/nav/navbar.css" rel="stylesheet">
+    <link href="../global/global.css" rel="stylesheet">
+
+    <link href="css/global.css" rel="stylesheet">
+
+    <link href="css/project/index.css" rel="stylesheet">
+
+    <script src="../global/firebase/init.js" defer></script>
+    <script src="../global/firebase/auth.js" defer></script>
+    <script src="../global/firebase/database.js" defer></script>
+    <script src="../global/firebase/lockPageToAuth.js" defer></script>
+    <script src="../global/firebase/shareBoard.js" defer></script>
+
+    <script src="../global/util/points.js" defer></script>
+    <script src="../global/customElements.js" defer></script>
+    <script src="../global/nav/navbar.js" defer></script>
+    <script src="../global/util/rarity.js" defer></script>
+    <script src="../global/util/code.js" defer></script>
+    <script src="../global/util/projects.js" defer></script>
+
+    <script src="../js/loading/lessons.js" defer></script>
+    <script src="../js/loading/projects.js" defer></script>
+
+    <script src="js/project/tabs.js"></script>
+    <script src="js/project/remix.js"></script>
+    <script src="js/project/project.js"></script>
+    <script src="js/project/code.js" async type="module" defer></script>
+    <script src="js/project/index.js" defer></script>
+</head>
+<body>
+    <brand-nav></brand-nav>
+    <div class="nav-shift-fix"></div>
+    <div class="main-content">
+        <div class="info-pane">
+            <div class="tab-bar">
+                <div class="tab info">Info</div>
+                <div class="tab code">Code</div>
+            </div>
+            <div class="info section" id="info">
+                <div class="info-title">Title</div>
+                <div class="date-container">
+                    <div class="info-date-shared">Date Shared</div>
+                    <div class="info-date-created">Date Created</div>
+                    <div class="info-date-updated">Date Updated</div>
+                    <div class="info-version">Version</div>
+                </div>
+
+                <div class="info-author">
+                    <div class="user-title">
+                        Author:
+                    </div>
+                    <div class="author-block">
+
+                        <div class="author-icon">
+                            <img>
+                        </div>
+                        <div class="author-username">
+                            Username
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-original">
+                    <div class="user-title">
+                        Original:
+                    </div >
+                    <div class="original-block">
+                        <div class="title">
+                            Project Name
+                        </div>
+                        <div class="user">
+                            <div class="original-icon">
+                                <img>
+                            </div>
+                            <div class="original-username">
+                                Username
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-desc">description</div>
+
+                <div class="remix-container">
+                    <div class="remix-button">
+                        <span>Remix</span>
+                    </div>
+                </div>
+            </div>
+            <div class="code section" id="code">
+                <div class="code-editor">
+
+                </div>
+                <div class="lesson-button-container">
+                    <div class="card">
+                        <span class="lesson-title">title</span>
+                        <img alt="lesson thumbnail" class="lesson-thumb">
+                        <div class="lesson-button">Start Lesson</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view-pane">
+            <iframe id="exec-frame" src="../editor/exec/exec.html"></iframe>
+        </div>
+    </div>
+</body>
+</html>

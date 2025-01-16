@@ -1,0 +1,87 @@
+.share-popup-container{
+    height:100%;
+    width:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+    background-color: rgba(0,0,0, 0.8);
+    opacity:0;
+    pointer-events:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.3s ease-in-out;
+}
+
+.share-popup-content{
+    background-color:var(--share-popup-background);
+    display:flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    width:60vw;
+    height:40vw;
+
+    border-radius:10px;
+    overflow:clip;
+}
+
+.share-popup-content .title{
+    font-size:4em;
+}
+
+.share-preview{
+    width:40%;
+    aspect-ratio: 1;
+}
+
+.share-popup-button{
+    background-color:var(--share-button-background);
+    border-radius:10px;
+    padding:5px;
+    overflow: clip;
+    font-size:1.7em;
+    color:var(--share-button-text-color);
+}
+
+.share-popup-content .name-input{
+    background:var(--share-project-name-input);
+    min-width:75%;
+    padding:5px;
+    border-radius:5px;
+    overflow:clip;
+    text-align: center;
+    border:none;
+    font-size:1.5em;
+}
+
+.share-popup-content .desc-input{
+    background:var(--share-project-name-input);
+    min-width:75%;
+    padding:5px;
+    border-radius:5px;
+    overflow:clip;
+    text-align: center;
+    border:none;
+    font-size:1.5em;
+    overflow-y: scroll;
+}
+
+.share-preview{
+    border-radius: 10px;
+    overflow:clip;
+}
+
+.share-popup-content .top-bar{
+    display:flex;
+    width:100%;
+    flex-direction: row-reverse;
+}
+
+.share-popup-content .close-button{
+    margin: 5px;
+    color:var(--close-button-text-color);
+}

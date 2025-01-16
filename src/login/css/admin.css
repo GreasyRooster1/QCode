@@ -1,0 +1,111 @@
+:root{
+    --background-color: #4f4f4f;
+    --login-pane-color: #6b6b6b;
+    --input-container-color: #808080;
+    --input-wrapper-color: #939393;
+
+    --button-container-color: #808080;
+    --button-color: #939393;
+    --button-color-hover: #b0b0b0;
+
+    --auth-container-color: #808080;
+
+    --auth-error-background: rgba(210, 22, 22, 0.39);
+    --auth-error-solid: rgb(211, 48, 48);
+    --auth-error-text: rgb(35, 2, 2);
+}
+
+body{
+    background: var(--background-color);
+}
+
+.login-pane{
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+    background: var(--login-pane-color);
+    width:50vmin;
+    height:50vmin;
+
+    border-radius: 10px;
+
+    padding:5px
+}
+
+.login-title{
+    font-size: 2em;
+    text-align: center;
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    background: var(--input-container-color);
+    border-radius: 5px;
+    padding:4px;
+}
+
+.input-wrapper{
+    margin:5px;
+    padding:5px;
+    background:var(--input-wrapper-color);
+    border-radius: 5px;
+}
+
+.input-wrapper input{
+    border: none;
+    background-color: var(--input-wrapper-color);
+    outline: none;
+    font-family: var(--default-font);
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+.input-wrapper label{
+    font-family: var(--default-font);
+}
+
+.button-container{
+    padding:10px;
+    border-radius: 5px;
+    margin-top:10px;
+    background: var(--button-container-color);
+}
+
+.button-container > .button{
+    background:var(--button-color);
+    border-radius: 5px;
+    padding:5px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.button-container > .button:hover{
+    background:var(--button-color-hover);
+}
+
+.auth-error-container{
+    background: var(--auth-container-color);
+    height:100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.admin-console-link{
+    font-size: 0.7em;
+}
+
+.auth-error{
+    display: none;
+    margin: 10% auto auto;
+    border-radius: 5px;
+    width:80%;
+    padding: 5px;
+    background:var(--auth-error-background);
+    border-left:5px solid var(--auth-error-solid);
+    color:var(--auth-error-text);
+}
