@@ -40,13 +40,34 @@ import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js'
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
-const customTheme = EditorView.theme({
+const fixedFontTheme = EditorView.theme({
     '&': {
         font:"'JetBrains Mono', monospace",
         fontSize: "15px",
         fontVariantLigatures:"none",
     }
 })
+
+let arduinoTheme = EditorView.theme({
+    "&": {
+        color: "white",
+        backgroundColor: "#ffffff"
+    },
+    ".cm-content": {
+        caretColor: "#0e9"
+    },
+    "&.cm-focused .cm-cursor": {
+        borderLeftColor: "#0e9"
+    },
+    "&.cm-focused .cm-selectionBackground, ::selection": {
+        backgroundColor: "#074"
+    },
+    ".cm-gutters": {
+        backgroundColor: "#045",
+        color: "#ddd",
+        border: "none"
+    }
+}, {dark: true})
 
 let editor;
 
@@ -56,7 +77,7 @@ function setupEditor(language: Language) {
     let extensions = [
         basicSetup,
         keymap.of([indentWithTab]),
-        customTheme,
+        fixedFontTheme,
     ]
     if(languagePair!=null){
         extensions.push(languagePair!.func,linter(languagePair!.lang));

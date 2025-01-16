@@ -1,16 +1,7 @@
 //arduino.work
-
-import {ProjectType, RunErrCallback} from "./projectType";
-import {
-    frame,
-    frameContent,
-    getCode,
-    logNames,
-    runCode,
-    setupEvents as setupExecEvents,
-    stopFrame
-} from "../executionHelper";
-import {Language} from "../codeEditor";
+import {ProjectType, RunErrCallback} from "./projectType.js";
+import {frame, frameContent, getCode, logNames, runCode, setupEvents as setupExecEvents, stopFrame} from "../executionHelper.js";
+import {Language} from "../codeEditor.js";
 
 class ArduinoType extends ProjectType {
     constructor() {
@@ -68,7 +59,7 @@ class ArduinoType extends ProjectType {
     }
 
     getLanguage():Language {
-        return "javascript";
+        return "c++";
     }
 }
 
