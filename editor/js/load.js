@@ -59,6 +59,13 @@ function updateLanguage(id){
             });
             return;
         }
+        if (id === "arduino") {
+            import("./languageTypes/arduino.js").then((mod) => {
+                projectType = new mod.ArduinoType();
+                resolve(projectType)
+            });
+            return;
+        }
         reject();
     });
 }
