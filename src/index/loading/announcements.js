@@ -143,3 +143,5 @@ function shortTimeDifference(previous) {
 function clearAnnouncements(){
     announcementsDisplay.innerHTML = "";
 }
+
+export {loadAnnouncements}

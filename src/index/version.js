@@ -29,3 +29,5 @@ function getCommitNum() {
 
     return commitNum;
 }
+
+export {displayVersion};

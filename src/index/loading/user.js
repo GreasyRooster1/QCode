@@ -38,4 +38,4 @@ profileDisplayImg.addEventListener("click",function (){
    promptProfileIconChange();
 });
 
-loadUserDataToDisplay();
+export {loadUserDataToDisplay};

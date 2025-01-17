@@ -106,3 +106,5 @@ function getArduinoProjectData(projectName,lessonId){
         language:"arduino",
     }
 }
+
+export {cleanProjectName,createProject}

@@ -135,3 +135,5 @@ function runShareBoardCode(){
 shareBoardFrame.contentWindow.addEventListener("click", () => {
     window.location.href = "./shareBoard/shareBoard.html";
 })
+
+export {initShareBoard}

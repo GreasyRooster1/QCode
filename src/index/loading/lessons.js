@@ -116,3 +116,5 @@ function setupLessonChartLink(){
         window.location.href = "lessons/lessons.html";
     })
 }
+
+export {loadLessons};
