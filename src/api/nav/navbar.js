@@ -1,5 +1,6 @@
 import {database} from "../firebase";
 import {getStoredUser, getStoredUserPermissions} from "../auth";
+import {}
 
 const navWrapper = document.querySelector('brand-nav');
 const navbar = document.querySelector(".navbar");

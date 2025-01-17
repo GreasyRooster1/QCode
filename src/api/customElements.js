@@ -17,6 +17,10 @@ class StepElement extends HTMLElement {
         return ['type', 'head', 'image', 'count'];
     }
 
+    static register(){
+        customElements.define("editor-step", StepElement);
+    }
+
     connectedCallback() {
         this.head = document.createElement("div");
         this.head.classList.add("step-head");
@@ -131,6 +135,10 @@ class BrandNav extends HTMLElement {
         super();
     }
 
+    static register(){
+        customElements.define("brand-nav", BrandNav);
+    }
+
     connectedCallback() {
         this.innerHTML = `
             <div class="navbar">
@@ -165,6 +173,10 @@ class ConsoleLogElement extends HTMLElement {
 
     static get observedAttributes() {
         return ['type', 'message',"head"];
+    }
+
+    static register(){
+        customElements.define("console-log", ConsoleLogElement);
     }
 
     connectedCallback() {
@@ -220,6 +232,10 @@ class ProjectLinkElement extends HTMLElement {
         return ['href','name','timestamp'];
     }
 
+    static register(){
+        customElements.define("project-link", ProjectLinkElement);
+    }
+
     connectedCallback() {
         this.link = document.createElement("a");
         this.stamp = document.createElement("span");
@@ -261,8 +277,4 @@ class ProjectLinkElement extends HTMLElement {
     }
 }
 
-
-customElements.define("editor-step", StepElement);
-customElements.define("brand-nav", BrandNav);
-customElements.define("console-log", ConsoleLogElement);
-customElements.define("project-link", ProjectLinkElement);
+export { BrandNav, ConsoleLogElement, ProjectLinkElement,StepElement };
