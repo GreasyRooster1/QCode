@@ -1,5 +1,6 @@
 import {database} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
+import {cleanProjectName, createProject} from "../api/project";
 
 const newProjectButton = document.querySelector('.new-project-button');
 const popupCloseButton = document.querySelector('.close-button');
@@ -45,4 +46,4 @@ function setupNewProjectEvents(){
     })
 }
 
-export {cleanProjectName,createProject,setupNewProjectEvents}
+export {setupNewProjectEvents}
