@@ -16,10 +16,21 @@ let navDropdownItemCount = 2;
 let navbarVisible = true;
 let accountDropdownActive = false;
 
-function initNavbar(){
+
+
+function initNavbar(settings){
     initUsername();
     initPoints();
     initAdmin();
+    if(settings===undefined){
+        return
+    }
+    if(settings.hideHome){
+        removeNavHome()
+    }
+    if(settings.hideCollapse){
+        removeNavArrow()
+    }
 }
 
 function initPoints(){

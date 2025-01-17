@@ -5,7 +5,7 @@ const usernameTitle = document.querySelector('.username-title');
 const profileDisplayImg = document.querySelector('.user-profile-img');
 const pointsDisplayBar = document.querySelector('.user-points-progress-bar');
 
-function loadUserDataToDisplay(){
+function loadUserData(){
     loadUsername();
     loadProfileIcon();
     renderPoints();
@@ -34,4 +34,4 @@ profileDisplayImg.addEventListener("click",function (){
    promptProfileIconChange();
 });
 
-export {loadUserDataToDisplay};
+export {loadUserData};
