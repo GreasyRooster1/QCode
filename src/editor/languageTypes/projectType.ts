@@ -1,4 +1,4 @@
-import {Language, setupEditor} from "../codeEditor.js";
+import {Language, setupEditor} from "../../codeEditor.js";
 
 interface RunErrCallback {
     (content:string,type:string):void,

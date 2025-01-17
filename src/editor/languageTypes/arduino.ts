@@ -1,7 +1,7 @@
 //arduino.work
 import {ProjectType, RunErrCallback} from "./projectType.js";
-import {frame, frameContent, getCode, logNames, runCode, setupEvents as setupExecEvents, stopFrame} from "../executionHelper.js";
-import {Language} from "../codeEditor.js";
+import {frame, frameContent, getCode, logNames, runCode, setupEvents as setupExecEvents, stopFrame} from "../../executionHelper.js";
+import {Language} from "../../codeEditor.js";
 
 class ArduinoType extends ProjectType {
     constructor() {

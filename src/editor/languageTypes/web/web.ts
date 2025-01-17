@@ -1,7 +1,7 @@
-import { getCode } from "../../executionHelper.js";
+import { getCode } from "../../../executionHelper.js";
 import {ProjectType,RunErrCallback} from "../projectType.js";
 import {Filesystem, Folder, isFolder, File as FilesystemFile, createFolderEl, cleanFileName} from "./filesystem.js";
-import {Language, setupEditor} from "../../codeEditor.js";
+import {Language, setupEditor} from "../../../codeEditor.js";
 
 class WebType extends ProjectType {
     filesystem:Filesystem

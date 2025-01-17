@@ -1,6 +1,6 @@
 // @ts-ignore
 import {editor} from "./codeEditor.js"
-import {RunErrCallback} from "./languageTypes/projectType.js";
+import {RunErrCallback} from "./js/languageTypes/projectType.js";
 
 interface Logs {
     [log: string] : string;

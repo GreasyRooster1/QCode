@@ -1,6 +1,6 @@
 import {ProjectType,RunErrCallback} from "./projectType.js";
-import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../executionHelper.js"
-import {Language} from "../codeEditor";
+import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../../executionHelper.js"
+import {Language} from "../../codeEditor";
 
 class JavascriptType extends ProjectType {
     constructor() {

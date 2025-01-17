@@ -46,21 +46,21 @@ function loadProjectFromUrlData(){
 function updateLanguage(id){
     return new Promise((resolve, reject) => {
         if (id === "javascript") {
-            import("./languageTypes/javascript.js").then((mod) => {
+            import("./js/languageTypes/javascript.js").then((mod) => {
                 projectType = new mod.JavascriptType();
                 resolve(projectType)
             });
             return;
         }
         if (id === "web") {
-            import("./languageTypes/web/web.js").then((mod) => {
+            import("./js/languageTypes/web/web.js").then((mod) => {
                 projectType = new mod.WebType();
                 resolve(projectType)
             });
             return;
         }
         if (id === "arduino") {
-            import("./languageTypes/arduino.js").then((mod) => {
+            import("./js/languageTypes/arduino.js").then((mod) => {
                 projectType = new mod.ArduinoType();
                 resolve(projectType)
             });
