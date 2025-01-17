@@ -12,7 +12,7 @@ let rightArrow = document.querySelector(".slide-arrow.right");
 
 let moreButton = document.querySelector(".more-button");
 
-const shareBoardFrame = document.querySelector('#share-board-exec-frame');
+const shareBoardFrame = document.querySelector('#share-shareBoard-exec-frame');
 let iWindow = null;
 
 function initShareBoard(){
@@ -68,7 +68,7 @@ function setupArrowEvents(){
 
 function setupMoreRedirect(){
     moreButton.addEventListener("click", () => {
-        window.location.href = "./shareBoard/board.html";
+        window.location.href = "./shareBoard/shareBoard.html";
     })
 }
 
@@ -133,5 +133,5 @@ function runShareBoardCode(){
 }
 
 shareBoardFrame.contentWindow.addEventListener("click", () => {
-    window.location.href = "./shareBoard/board.html";
+    window.location.href = "./shareBoard/shareBoard.html";
 })

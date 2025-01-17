@@ -19,14 +19,14 @@ loginButton.addEventListener("click", function(){
                 console.log(data);
 
                 if(data===null){
-                    showAuthError("It appears you aren't an admin!");
+                    showAuthError("It appears you aren't an adminConsole!");
                     return;
                 }
 
                 if (data.hasAdminConsoleAccess){
                     handleAuthAdminLogin(user,data);
                 }else{
-                    showAuthError("It appears you aren't an admin!");
+                    showAuthError("It appears you aren't an adminConsole!");
                 }
             });
         })
