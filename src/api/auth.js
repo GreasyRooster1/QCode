@@ -1,7 +1,9 @@
 //https://stackoverflow.com/questions/59935608/solved-get-user-auth-data-from-firebase-add-it-to-firebase-db
 
-function createUserDefault(email,password){
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+import {auth, database} from "./firebase";
+
+function createUserDefault(email, password){
+    auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             console.log("created user");
             storeUser(userCredential.user);
@@ -12,7 +14,7 @@ function createUserDefault(email,password){
 }
 
 function logInUserDefault(email,password){
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             console.log("logged in user");
             storeUser(userCredential.user);
@@ -23,8 +25,9 @@ function logInUserDefault(email,password){
 
 }
 
-function logOutUserDefault(){
-    firebase.auth().signOut().then(() => {
+function logOutUser(){
+    clearStoredUser()
+    auth.signOut().then(() => {
         console.log("logged out user");
         clearStoredUser();
     }).catch((error) => {
@@ -118,5 +121,6 @@ export {
     getStoredUserPermissions,
     getStoredUser,
     storeUserPermissions,
-    displayAuthErrors
+    displayAuthErrors,
+    logOutUser
 }
