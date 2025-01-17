@@ -110,3 +110,13 @@ function extractEmailFromUsername(username){
 function extractUsernameFromEmail(email){
     return email.replace("@esporterz.com","");
 }
+
+export {
+    extractUsernameFromEmail,
+    extractEmailFromUsername,
+    isLoggedIn,
+    getStoredUserPermissions,
+    getStoredUser,
+    storeUserPermissions,
+    displayAuthErrors
+}
