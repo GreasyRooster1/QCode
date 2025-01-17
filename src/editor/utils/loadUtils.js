@@ -58,7 +58,7 @@ function createNextChapterStep(data){
 
 function homeLinkClick(){
     projectType.saveCode();
-    window.location.href = window.location.href="../../../index.html";
+    window.location.href = window.location.href="../../../dist/index.html";
 }
 
 function nextChapterClick(){
