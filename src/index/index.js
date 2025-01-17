@@ -37,7 +37,7 @@ function init(){
     setupsShareBoardFrame()
 }
 
-init();
+window.onload = init;
 
 export{
     badgeDisplay,
