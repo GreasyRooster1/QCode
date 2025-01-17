@@ -10,3 +10,5 @@ function getLinkToProject(projectId,uid,chapterNumber){
         return "../"+link;
     }
 }
+
+export {getLinkToProject,openProjectInEditor}

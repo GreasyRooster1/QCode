@@ -1,3 +1,6 @@
+import {database} from "../firebase";
+import {getStoredUser} from "../auth";
+
 function reCalculateUserPoints(exitFunc){
     database.ref("userdata/"+getStoredUser().uid+"/badges").once("value", function(snap){
         let data = snap.val();
@@ -25,3 +28,5 @@ function reCalculateUserPoints(exitFunc){
 function setPointValue(val){
     database.ref("userdata/"+getStoredUser().uid+"/points").set(val)
 }
+
+export {reCalculateUserPoints}

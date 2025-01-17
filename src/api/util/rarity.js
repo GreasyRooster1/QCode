@@ -12,3 +12,5 @@ function getRarityColor(rarity){
     let rarityValue = rarity.toLowerCase();
     return rootStyle.getPropertyValue("--"+rarityValue+"-rarity-color");
 }
+
+export {getRarityColor,rarities}

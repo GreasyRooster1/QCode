@@ -17,3 +17,5 @@ const defaultFilesWeb = {
 }
 
 const stepTypes = ["info","code","challenge","check","chapters","next"]
+
+export {defaultCodeJs, defaultCodeArduino, stepTypes,defaultFilesWeb}
