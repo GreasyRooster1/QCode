@@ -1,6 +1,8 @@
 import {database} from "../firebase";
-import {getStoredUser, getStoredUserPermissions} from "../auth";
-import {}
+import {getStoredUser, getStoredUserPermissions, logOutUser} from "../auth";
+import {BrandNav} from "../customElements";
+import {isValidUrl} from "../util/util";
+import {reCalculateUserPoints} from "../util/points";
 
 const navWrapper = document.querySelector('brand-nav');
 const navbar = document.querySelector(".navbar");
@@ -20,6 +22,7 @@ let accountDropdownActive = false;
 
 
 function initNavbar(settings){
+    BrandNav.register()
     initUsername();
     initPoints();
     initAdmin();
@@ -106,8 +109,7 @@ userLink.addEventListener("click", function (e){
 });
 
 logoutButton.addEventListener("click", function (e){
-    logOutUserDefault();
-    clearStoredUser();
+    logOutUser();
     if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
         window.location.href = "login/login.html";
     }else {
@@ -149,4 +151,4 @@ function removeNavArrow(){
     arrow.remove();
 }
 
-export {initNavbar}
+export {initNavbar,promptProfileIconChange}
