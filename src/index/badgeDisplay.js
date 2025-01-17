@@ -72,3 +72,6 @@ function loadBadges(){
 function clearBadges(){
     badgeDisplay.innerHTML = "";
 }
+
+
+export {loadBadges};

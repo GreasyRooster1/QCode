@@ -48,3 +48,5 @@ function getLinkToProject(projectId,uid,chapterNumber){
         return "../editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
     }
 }
+
+export {loadProjects};

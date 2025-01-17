@@ -1,3 +1,6 @@
+import {loadBadges} from "./badgeDisplay"
+import {loadProjects} from "./loading/projects.js"
+
 const badgeDisplay = document.querySelector(".badges-display");
 const projectsDisplay = document.querySelector(".projects-display");
 const lessonsDisplay = document.querySelector(".lessons-display");
