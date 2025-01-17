@@ -9,7 +9,7 @@ module.exports = {
         exec: "./src/exec/index.js",
         index: "./src/index/index.js",
         lessons: "./src/lessons/index.js",
-        login: "./src/login/js/index.js",
+        login: "./src/login/index.js",
         shareBoard: "./src/shareBoard/index.js",
         sharedProject: "./src/sharedProject/index.js",
     },
