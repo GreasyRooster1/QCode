@@ -1,3 +1,6 @@
+import {database} from "../firebase";
+import {getStoredUser, getStoredUserPermissions} from "../auth";
+
 const navWrapper = document.querySelector('brand-nav');
 const navbar = document.querySelector(".navbar");
 const navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
@@ -134,4 +137,4 @@ function removeNavArrow(){
     arrow.remove();
 }
 
-initNavbar();
+export {initNavbar}

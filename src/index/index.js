@@ -7,15 +7,17 @@ import {initShareBoard, setupsShareBoardFrame} from "./shareBoard";
 import {getStoredUser} from "../api/auth";
 import {setupFeaturedProject} from "./featuredProject";
 import {setupNewProjectEvents} from "./newProject";
+import {lockPageToAuth} from "../api/util/lockPageToAuth";
 
 
 const badgeDisplay = document.querySelector(".badges-display");
 const projectsDisplay = document.querySelector(".projects-display");
 const lessonsDisplay = document.querySelector(".lessons-display");
 const announcementsDisplay = document.querySelector(".announcements-display");
-let user = getStoredUser();
 
 function init(){
+    lockPageToAuth()
+
     loadBadges();
     loadProjects();
     loadLessons();
@@ -29,6 +31,11 @@ function init(){
     setupsShareBoardFrame()
 }
 
-
-
 init();
+
+export{
+    badgeDisplay,
+    projectsDisplay,
+    lessonsDisplay,
+    announcementsDisplay,
+}

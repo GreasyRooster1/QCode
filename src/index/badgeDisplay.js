@@ -1,3 +1,6 @@
+import {database} from "../api/firebase";
+import {badgeDisplay} from "./index";
+
 const badgeDetailName = document.querySelector(".badge-name");
 const badgeDetailDesc = document.querySelector(".badge-info-desc");
 const badgeDetailImage = document.querySelector(".badge-info-image");

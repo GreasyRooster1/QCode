@@ -1,3 +1,6 @@
+import {database} from "../../api/firebase";
+import {getStoredUser} from "../../api/auth";
+
 let defaultRecommendedLessons = [
     "intro-to-js",
     "bouncing-rainbow-squares"

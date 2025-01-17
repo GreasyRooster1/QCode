@@ -1,3 +1,5 @@
+import {projectsDisplay} from "../index";
+
 let currentProjectViewPage = 1;
 
 function loadProjects(){

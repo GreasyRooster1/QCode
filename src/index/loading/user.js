@@ -1,3 +1,6 @@
+import {database} from "../../api/firebase";
+import {getStoredUser} from "../../api/auth";
+
 const usernameTitle = document.querySelector('.username-title');
 const profileDisplayImg = document.querySelector('.user-profile-img');
 const pointsDisplayBar = document.querySelector('.user-points-progress-bar');
@@ -27,13 +30,6 @@ function renderPoints(){
 
 }
 
-const isValidUrl = urlString => {
-    let inputElement = document.createElement('input');
-    inputElement.type = 'url';
-    inputElement.value = urlString;
-
-    return inputElement.checkValidity() && urlString!==null;
-}
 profileDisplayImg.addEventListener("click",function (){
    promptProfileIconChange();
 });
