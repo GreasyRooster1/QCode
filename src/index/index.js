@@ -3,11 +3,10 @@ import {loadProjects} from "./loading/projects.js"
 import {loadUserDataToDisplay} from "./loading/user";
 import {loadAnnouncements} from "./loading/announcements";
 import {displayVersion} from "./version";
-import {initShareBoard} from "./shareBoard";
-
-import "./featuredProject"
-import "./newProject"
-import "./shareBoard"
+import {initShareBoard, setupsShareBoardFrame} from "./shareBoard";
+import {getStoredUser} from "../api/auth";
+import {setupFeaturedProject} from "./featuredProject";
+import {setupNewProjectEvents} from "./newProject";
 
 
 const badgeDisplay = document.querySelector(".badges-display");
@@ -25,6 +24,9 @@ function init(){
     removeNavHome();
     displayVersion();
     initShareBoard();
+    setupFeaturedProject()
+    setupNewProjectEvents()
+    setupsShareBoardFrame()
 }
 
 

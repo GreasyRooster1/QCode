@@ -1,3 +1,5 @@
+import {getShareBoardFeaturedProjects} from "../api/shareBoard";
+
 let featuredProjects = null;
 let currentFeaturedProject = 0;
 
@@ -119,11 +121,7 @@ function resetShareBoardFrame(){
     iWindow = null;
     shareBoardFrame.contentWindow.location.reload();
 }
-shareBoardFrame.addEventListener("load", () => {
-    iWindow = shareBoardFrame.contentWindow;
-    console.log(iWindow);
-    runShareBoardCode();
-});
+
 function runShareBoardCode(){
     if (iWindow === null||featuredProjects===null) {
         return;
@@ -132,8 +130,19 @@ function runShareBoardCode(){
     iWindow.postMessage(featuredProjects[currentFeaturedProject].code);
 }
 
-shareBoardFrame.contentWindow.addEventListener("click", () => {
-    window.location.href = "./shareBoard/shareBoard.html";
-})
 
-export {initShareBoard}
+
+function setupsShareBoardFrame(){
+    shareBoardFrame.contentWindow.addEventListener("click", () => {
+        window.location.href = "./shareBoard/shareBoard.html";
+    })
+    shareBoardFrame.addEventListener("load", () => {
+        iWindow = shareBoardFrame.contentWindow;
+        console.log(iWindow);
+        runShareBoardCode();
+    });
+
+}
+
+
+export {initShareBoard,setupsShareBoardFrame}

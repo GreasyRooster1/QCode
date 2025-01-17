@@ -1,3 +1,5 @@
+import {database} from "../api/firebase";
+
 const gitApiLink = "https://api.github.com/repos/GreasyRooster1/QCode/commits?sha=production&per_page=1&page=1"
 const versionEl = document.querySelector(".footer-content .version")
 

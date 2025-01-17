@@ -121,3 +121,5 @@ function getShareBoardProjects(next=function(){}){
         next(projects);
     })
 }
+
+export {getShareBoardFeaturedProjects,getShareBoardProjects,getSharedProjectId,ShareBoardProject}
