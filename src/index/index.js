@@ -10,12 +10,15 @@ import {setupFeaturedProject} from "./featuredProject";
 import {setupNewProjectEvents} from "./newProject";
 import {lockPageToAuth} from "../api/util/lockPageToAuth";
 import {initNavbar} from "../api/nav/navbar";
+import {ProjectLinkElement} from "../api/customElements";
 
 
 const badgeDisplay = document.querySelector(".badges-display");
 const projectsDisplay = document.querySelector(".projects-display");
 const lessonsDisplay = document.querySelector(".lessons-display");
 const announcementsDisplay = document.querySelector(".announcements-display");
+
+ProjectLinkElement.register()
 
 function init(){
     lockPageToAuth()
