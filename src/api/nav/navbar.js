@@ -19,10 +19,9 @@ let navDropdownItemCount = 2;
 let navbarVisible = true;
 let accountDropdownActive = false;
 
-
+BrandNav.register()
 
 function initNavbar(settings){
-    BrandNav.register()
     initUsername();
     initPoints();
     initAdmin();
