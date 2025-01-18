@@ -1,3 +1,5 @@
+import {acceptedFunctions, startP5} from "./p5Helper";
+
 let parent = null;
 
 const oldLog = console.log;
@@ -69,3 +71,5 @@ function runJs(js){
 
     startP5(draw,setup,eventFunctions);
 }
+
+export {runJs}
