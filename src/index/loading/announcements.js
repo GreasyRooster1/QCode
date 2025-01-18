@@ -1,6 +1,7 @@
 import {onValue, ref} from "firebase/database";
 import {db} from "../../api/firebase";
 import {announcementsDisplay} from "../index";
+import {getDateString, timeDifference} from "../../api/util/util";
 
 function loadAnnouncements(){
     onValue(ref(db,'announcements'),(snapshot) => {
@@ -52,8 +53,6 @@ function dateHoverIn(e){
 function dateHoverOut(e){
     e.target.innerHTML = timeDifference(e.target.getAttribute("data-date")*1000);
 }
-
-
 
 function clearAnnouncements(){
     announcementsDisplay.innerHTML = "";

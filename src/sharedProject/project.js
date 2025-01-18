@@ -109,21 +109,6 @@ function loadUserToHTML(usernameEl,imgEl,uid){
     });
 }
 
-
-
-function getDateString(unixStamp){
-    if(unixStamp===0||unixStamp===undefined||unixStamp===null){
-        return "Date not available"
-    }
-    let date = new Date(unixStamp * 1000);
-
-    let day = date.getDate();
-    let month = date.getMonth()+1;
-    let year = date.getFullYear();
-
-    return month+"/"+day+"/"+year;
-}
-
 function setupFrame(){
     execFrame = document.getElementById("exec-frame");
     execFrame.addEventListener("load", () => {
