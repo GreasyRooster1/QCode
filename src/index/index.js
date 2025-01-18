@@ -1,5 +1,6 @@
 import {loadBadges} from "./badgeDisplay"
 import {loadProjects} from "./loading/projects.js"
+import {loadLessons} from "./loading/lessons"
 import {addProfileListener, loadUserData} from "./loading/user";
 import {loadAnnouncements} from "./loading/announcements";
 import {displayVersion} from "./version";
