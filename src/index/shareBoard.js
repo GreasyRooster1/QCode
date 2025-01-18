@@ -14,7 +14,7 @@ let rightArrow = document.querySelector(".slide-arrow.right");
 
 let moreButton = document.querySelector(".more-button");
 
-const shareBoardFrame = document.querySelector('#share-shareBoard-exec-frame');
+const shareBoardFrame = document.querySelector('#share-board-exec-frame');
 let iWindow = null;
 
 function initShareBoard(){

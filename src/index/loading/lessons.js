@@ -3,6 +3,7 @@ import {getStoredUser} from "../../api/auth";
 import {get, ref, set} from "firebase/database";
 import {createProject} from "../../api/project";
 import {openProjectInEditor} from "../../api/util/projects";
+import {lessonsDisplay} from "../index";
 
 let defaultRecommendedLessons = [
     "intro-to-js",

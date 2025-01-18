@@ -103,7 +103,7 @@ function getShareBoardFeaturedProjects(next=function(){}){
         (async() => {
             let data = snapshot.val();
             for (let [_, pid] of Object.entries(data)) {
-                let snapshot = await get(db, ref("sharedProjects/metadata/" + pid));
+                let snapshot = await get(ref(db,"sharedProjects/metadata/" + pid));
                 projects.push(new ShareBoardProject(pid, snapshot.val()));
             }
             next(projects);
