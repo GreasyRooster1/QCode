@@ -1,9 +1,11 @@
 import {projectsDisplay} from "../index";
+import {ref} from "firebase/database";
+import {db} from "../../api/firebase";
 
 let currentProjectViewPage = 1;
 
 function loadProjects(){
-    let projectsRef = db.ref('userdata/'+user.uid+"/projects").orderByChild("dateUpdated")
+    let projectsRef = ref(db,'userdata/'+user.uid+"/projects").orderByChild("dateUpdated")
     projectsRef.on('value', (snapshot) => {
         clearProjects();
         let projects = []

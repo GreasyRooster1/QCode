@@ -1,5 +1,6 @@
 import {db} from "../api/firebase";
 import {badgeDisplay} from "./index";
+import {ref,get} from "firebase/database";
 
 const badgeDetailName = document.querySelector(".badge-name");
 const badgeDetailDesc = document.querySelector(".badge-info-desc");
@@ -8,7 +9,7 @@ const badgeDetailRarity = document.querySelector(".badge-rarity");
 
 function badgeClickEvent(badgeEl){
     let badgeId = badgeEl.getAttribute("data-badgeid");
-    db.ref("badges/"+badgeId).once("value").then(function (snapshot) {
+    get(ref(db,"badges/"+badgeId).once("value")).then(function (snapshot) {
         const data = snapshot.val();
         badgeDetailName.innerHTML = data.name;
         badgeDetailDesc.innerHTML = data.description;
@@ -56,8 +57,8 @@ function createBadgeElementFromSnap(snap,id){
 }
 
 function loadBadges(){
-    let badgesRef = db.ref('userdata/'+user.uid+"/badges");
-    badgesRef.on('value', (snapshot) => {
+    let badgesRef = ref(db,'userdata/'+user.uid+"/badges");
+    ref(db,'userdata/'+user.uid+"/badges").on('value', (snapshot) => {
         const data = snapshot.val();
         clearBadges();
 

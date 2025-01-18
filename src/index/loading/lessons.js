@@ -17,11 +17,11 @@ function loadLessons(){
         if(snapshot.exists()){
             data = snapshot.val();
         }else{
-            db.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").set(defaultRecommendedLessons);
+            ref(db,"userdata/"+getStoredUser().uid+"/recommendedLessons").set(defaultRecommendedLessons);
             data = defaultRecommendedLessons;
         }
         for(let lessonId of data){
-            db.ref("lessons/"+lessonId).once("value").then((snapshot) => {
+            ref(db,"lessons/"+lessonId).once("value").then((snapshot) => {
                 createLessonElement(lessonId,snapshot.val())
             })
         }
