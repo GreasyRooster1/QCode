@@ -1,3 +1,6 @@
+import {get, ref, set} from "firebase/database";
+import {db} from "./firebase";
+import {getStoredUser} from "./auth";
 
 const cyrb53 = (str, seed = 0) => {
     let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
@@ -39,29 +42,29 @@ class ShareBoardProject{
     }
 
     loadProjectCode(next=function(){}){
-        db.ref("sharedProjects/projectData/"+this.pid).once("value").then((snapshot) => {
+        get(ref(db,"sharedProjects/projectData/"+this.pid)).then((snapshot) => {
             this.code = snapshot.val();
             next(snapshot.val(),arguments[1]);
         })
     }
 
     like(){
-        db.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).set(Date.now()/1000)
+        set(ref(db,"sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid),Date.now()/1000)
         this.likedBy[getStoredUser().uid] = Date.now()/1000;
     }
 
     star(){
-        db.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).set(Date.now()/1000)
+        set(ref(db,"sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid),Date.now()/1000);
         this.staredBy[getStoredUser().uid] = Date.now()/1000;
     }
 
     removeLike(){
-        db.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).remove()
+        set(db.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid),null)
         delete this.likedBy[getStoredUser().uid]
     }
 
     removeStar(){
-        db.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).remove()
+        set(ref(db,"sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid),null)
         delete this.staredBy[getStoredUser().uid]
     }
 
@@ -96,7 +99,7 @@ class ShareBoardProject{
 
 function getShareBoardFeaturedProjects(next=function(){}){
     let projects = [];
-    db.ref("sharedProjects/featured").once("value").then((snapshot) => {
+    get(ref(db,"sharedProjects/featured")).then((snapshot) => {
         (async() => {
             let data = snapshot.val();
             for (let [_, pid] of Object.entries(data)) {
@@ -110,7 +113,7 @@ function getShareBoardFeaturedProjects(next=function(){}){
 
 function getShareBoardProjects(next=function(){}){
     let projects = [];
-    db.ref("sharedProjects/metadata").once("value").then((snapshot) => {
+    get(ref(db,"sharedProjects/metadata")).then((snapshot) => {
         let data = snapshot.val();
         for (let [pid, metadata] of Object.entries(data)) {
             console.log(metadata.shareDate)
