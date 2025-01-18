@@ -1,6 +1,6 @@
 import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
-import {ref} from "firebase/database";
+import {get, ref} from "firebase/database";
 import {createProject} from "../../api/project";
 import {openProjectInEditor} from "../../api/util/projects";
 
@@ -58,7 +58,7 @@ function setupStatusDisplay(statusDisplay,isExternal,lessonId){
     statusDisplay.innerHTML = "not started";
     statusDisplay.classList.add("not-started");
 
-    ref(db,"userdata/"+getStoredUser().uid+"/lessonStatuses/"+lessonId).once("value").then((snapshot)=>{
+    get(ref(db,"userdata/"+getStoredUser().uid+"/lessonStatuses/"+lessonId)).then((snapshot)=>{
 
         if(snapshot.exists()){
             let data= snapshot.val()
@@ -84,17 +84,17 @@ function openLesson(lessonId){
     let uid = getStoredUser().uid;
     let loc = "userdata/"+uid+"/projects/";
     let projectId = lessonId
-    ref(db,loc+projectId).once("value").then(function (snap) {
+    get(ref(db,loc+projectId)).then(function (snap) {
         if(snap.exists()){
             openProjectInEditor(projectId,uid,snap.val().currentChapter);
             return;
         }
-        ref(db,"lessons/"+lessonId).once("value").then(function (snap) {
+        get(ref(db,"lessons/"+lessonId)).then(function (snap) {
             let lessonData = snap.val();
             if(lessonData.isExternal){
                 startExternalLesson(lessonData);
             }else {
-                startInternalLesson(loclessonId,lessonData)
+                startInternalLesson(loc,lessonId,lessonData)
             }
         });
     })
