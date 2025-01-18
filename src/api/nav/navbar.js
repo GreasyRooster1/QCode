@@ -5,7 +5,6 @@ import {BrandNav} from "../customElements";
 import {isValidUrl} from "../util/util";
 import {reCalculateUserPoints} from "../util/points";
 
-let navWrapper;
 let navbarVisibilityButton;
 let userLink;
 let accountOptions;
@@ -17,7 +16,7 @@ let pointsDisplayNum;
 
 let navDropdownItemCount = 2;
 
-const navbar = document.querySelector("brand-nav");
+const navWrapper = document.querySelector("brand-nav");
 
 let navbarVisible = true;
 let accountDropdownActive = false;
@@ -25,7 +24,6 @@ let accountDropdownActive = false;
 BrandNav.register()
 
 function loadHandles(){
-    navWrapper = document.querySelector('brand-nav');
     navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
     userLink = document.querySelector(".username-link");
     accountOptions = document.querySelector(".account-options");
@@ -36,7 +34,7 @@ function loadHandles(){
 }
 
 function initNavbar(settings){
-    navbar.addEventListener("load", function(){
+    navWrapper.addEventListener("load", function(){
         loadHandles()
         initUsername();
         initPoints();
