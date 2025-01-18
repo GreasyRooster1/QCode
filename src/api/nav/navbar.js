@@ -1,5 +1,5 @@
 import {db} from "../firebase";
-import { getDatabase, ref, set } from "firebase/database";
+import {get, getDatabase, ref, set} from "firebase/database";
 import {getStoredUser, getStoredUserPermissions, logOutUser} from "../auth";
 import {BrandNav} from "../customElements";
 import {isValidUrl} from "../util/util";
@@ -45,7 +45,7 @@ function initPoints(){
 }
 
 function initUsername(){
-    ref(db,"userdata/"+getStoredUser().uid+"/username").once('value').then((snapshot) => {
+    get(ref(db,"userdata/"+getStoredUser().uid+"/username")).then((snapshot) => {
         let username = snapshot.val();
         let formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
         userLink.innerHTML = formattedUsername;
@@ -137,8 +137,7 @@ function setVisibilityForInner(vis){
 function promptProfileIconChange(){
     let imageLink = prompt("Enter link to image");
     if(isValidUrl(imageLink)){
-        db.ref("userdata/"+getStoredUser().uid+"/profileIcon").set(imageLink);
-        profileDisplayImg.setAttribute("src", imageLink);
+        set(ref(db,"userdata/"+getStoredUser().uid+"/profileIcon"),imageLink);
     }else{
         console.log("not a url");
     }
