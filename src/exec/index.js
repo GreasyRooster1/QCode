@@ -48,6 +48,7 @@ document.addEventListener('contextmenu', event => {
 
 function runJs(js){
     //clear dangerous objects and run code
+    console.log(js)
     eval(js);
 
     let eventFunctions = [];
