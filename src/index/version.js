@@ -1,5 +1,5 @@
 import {db} from "../api/firebase";
-import {ref} from "firebase/database";
+import {ref,onValue} from "firebase/database";
 
 const gitApiLink = "https://api.github.com/repos/GreasyRooster1/QCode/commits?sha=production&per_page=1&page=1"
 const versionEl = document.querySelector(".footer-content .version")
@@ -15,7 +15,7 @@ function httpGet(theUrl, return_headers) {
 }
 
 function displayVersion(){
-    ref(db,"version").on("value", (snapshot)=>{
+    onValue(ref(db,"version"),(snapshot)=>{
         let rawVersionString = snapshot.val();
         let formattedVersion = rawVersionString.replace("{commitNum}",getCommitNum);
         versionEl.innerHTML = formattedVersion;
