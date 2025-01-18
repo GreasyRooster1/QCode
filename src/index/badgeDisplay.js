@@ -1,6 +1,7 @@
 import {db} from "../api/firebase";
 import {badgeDisplay} from "./index";
 import {ref, get, onValue} from "firebase/database";
+import {getStoredUser} from "../api/auth";
 
 const badgeDetailName = document.querySelector(".badge-name");
 const badgeDetailDesc = document.querySelector(".badge-info-desc");
@@ -57,7 +58,7 @@ function createBadgeElementFromSnap(snap,id){
 }
 
 function loadBadges(){
-    let badgesRef = ref(db,'userdata/'+user.uid+"/badges");
+    let badgesRef = ref(db,'userdata/'+getStoredUser().uid+"/badges");
     onValue(badgesRef,(snapshot) => {
         const data = snapshot.val();
         clearBadges();
@@ -65,7 +66,7 @@ function loadBadges(){
         badgeDisplay.innerHTML = "";
         let badges = data.values().toArray().filter(b => b!==undefined);
         for(let badge of badges){
-            let badgeConnect = firebase.database().ref().child("badges").child(badge.id).get();
+            let badgeConnect = get(ref(db,"badges/"+badge.id))
             badgeConnect.then((snap)=>{
                 createBadgeElementFromSnap(snap,badge.id)
             });
