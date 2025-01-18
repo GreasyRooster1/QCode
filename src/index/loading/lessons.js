@@ -1,4 +1,4 @@
-import {database} from "../../api/firebase";
+import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
 
 let defaultRecommendedLessons = [
@@ -9,16 +9,16 @@ let defaultRecommendedLessons = [
 function loadLessons(){
     setupLessonChartLink();
 
-    database.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").once('value').then( (snapshot) => {
+    db.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").once('value').then( (snapshot) => {
         let data;
         if(snapshot.exists()){
             data = snapshot.val();
         }else{
-            database.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").set(defaultRecommendedLessons);
+            db.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").set(defaultRecommendedLessons);
             data = defaultRecommendedLessons;
         }
         for(let lessonId of data){
-            database.ref("lessons/"+lessonId).once("value").then((snapshot) => {
+            db.ref("lessons/"+lessonId).once("value").then((snapshot) => {
                 createLessonElement(lessonId,snapshot.val())
             })
         }
@@ -55,7 +55,7 @@ function setupStatusDisplay(statusDisplay,isExternal,lessonId){
     statusDisplay.innerHTML = "not started";
     statusDisplay.classList.add("not-started");
 
-    database.ref("userdata/"+getStoredUser().uid+"/lessonStatuses/"+lessonId).once("value").then((snapshot)=>{
+    db.ref("userdata/"+getStoredUser().uid+"/lessonStatuses/"+lessonId).once("value").then((snapshot)=>{
 
         if(snapshot.exists()){
             let data= snapshot.val()
@@ -81,12 +81,12 @@ function openLesson(lessonId){
     let uid = getStoredUser().uid;
     let ref = "userdata/"+uid+"/projects/";
     let projectId = lessonId
-    database.ref(ref+projectId).once("value").then(function (snap) {
+    db.ref(ref+projectId).once("value").then(function (snap) {
         if(snap.exists()){
             openProjectInEditor(projectId,uid,snap.val().currentChapter);
             return;
         }
-        database.ref("lessons/"+lessonId).once("value").then(function (snap) {
+        db.ref("lessons/"+lessonId).once("value").then(function (snap) {
             let lessonData = snap.val();
             if(lessonData.isExternal){
                 startExternalLesson(lessonData);

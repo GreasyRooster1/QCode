@@ -1,5 +1,8 @@
+import {ref} from "firebase/database";
+import {db} from "../../api/firebase";
+
 function loadAnnouncements(){
-    database.ref('announcements').on('value', (snapshot) => {
+    ref(db,'announcements').on('value', (snapshot) => {
         const data = snapshot.val();
         clearAnnouncements();
         console.log(data);

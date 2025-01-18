@@ -144,12 +144,12 @@ class ProjectDisplay {
     }
 
     updateUserData(){
-        database.ref("userdata/"+this.project.author+"/username").once("value",(snapshot) => {
+        db.ref("userdata/"+this.project.author+"/username").once("value",(snapshot) => {
             console.log(this);
             this.userNameDisplay.innerHTML = snapshot.val();
         })
 
-        database.ref("userdata/"+this.project.author+"/profileIcon").once("value",(snapshot) => {
+        db.ref("userdata/"+this.project.author+"/profileIcon").once("value",(snapshot) => {
             this.userIconDisplay.setAttribute("src", snapshot.val());
         })
 

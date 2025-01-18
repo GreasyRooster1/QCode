@@ -1,14 +1,14 @@
 import {getStoredUser} from "./auth";
-import {database} from "./firebase";
+import {db} from "./firebase";
 
 function createProject(cleanProjectId,projectName,type,lessonId){
     return new Promise((resolve,reject)=>{
         let user = getStoredUser();
-        database.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).once("value", (snap) => {
+        db.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).once("value", (snap) => {
             if(snap.exists()){
                 reject();
             }
-            database.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).set(
+            db.ref("userdata/"+user.uid+"/projects").child(cleanProjectId).set(
                 setupProjectForType(type,projectName,lessonId)
             )
             resolve();

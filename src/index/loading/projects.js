@@ -3,7 +3,7 @@ import {projectsDisplay} from "../index";
 let currentProjectViewPage = 1;
 
 function loadProjects(){
-    let projectsRef = database.ref('userdata/'+user.uid+"/projects").orderByChild("dateUpdated")
+    let projectsRef = db.ref('userdata/'+user.uid+"/projects").orderByChild("dateUpdated")
     projectsRef.on('value', (snapshot) => {
         clearProjects();
         let projects = []

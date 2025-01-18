@@ -32,7 +32,7 @@ loginButton.addEventListener("click", function(){
         .then((userCredential) => {
             console.log("logged in user");
             storeUser(userCredential.user, () => {
-                database.ref("userdata/"+userCredential.user.uid).once("value").then((snap)=>{
+                db.ref("userdata/"+userCredential.user.uid).once("value").then((snap)=>{
                     if(!snap.exists()){
                         createUser(userCredential.user.uid,username)
                     }
@@ -59,9 +59,9 @@ function getReturnURL(){
 
 function createUser(uid,username){
     for(let dataPoint of requiredUserData) {
-        database.ref("userdata/" + uid+"/"+dataPoint.name).set(dataPoint.val);
+        db.ref("userdata/" + uid+"/"+dataPoint.name).set(dataPoint.val);
     }
-    database.ref("userdata/" + uid+"/username").set(username);
+    db.ref("userdata/" + uid+"/username").set(username);
 }
 
 getReturnURL();

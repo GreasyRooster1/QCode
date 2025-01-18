@@ -14,7 +14,7 @@ loginButton.addEventListener("click", function(){
 
             let user = userCredential.user;
 
-            database.ref("userpermissions/"+user.uid).once("value").then(function (snap) {
+            db.ref("userpermissions/"+user.uid).once("value").then(function (snap) {
                 let data = snap.val();
                 console.log(data);
 

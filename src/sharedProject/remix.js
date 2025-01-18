@@ -8,12 +8,12 @@ function initRemix(){
             return;
         }
         let cleanProjectId = name.toLowerCase().replaceAll("[^a-z0-9]","-");
-        database.ref("userdata/"+getStoredUser().uid+"/projects").child(cleanProjectId).once("value", (snap) => {
+        db.ref("userdata/"+getStoredUser().uid+"/projects").child(cleanProjectId).once("value", (snap) => {
             if(snap.exists()){
                 alert("Project already exists with that name!");
                 return;
             }
-            database.ref("userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId).set({
+            db.ref("userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId).set({
                 code:projectCode,
                 lessonId:"none",
                 name:name,

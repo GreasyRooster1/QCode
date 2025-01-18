@@ -30,12 +30,12 @@ sharePopupButton.addEventListener('click', (e) => {
     let sharedProjectId = getSharedProjectId(projectId,getStoredUser().uid);
 
     if(isAlreadyShared){
-        database.ref("sharedProjects/metadata/" + sharedProjectId).once("value").then(function (snap) {
+        db.ref("sharedProjects/metadata/" + sharedProjectId).once("value").then(function (snap) {
             let data = snap.val();
             console.log(data);
             let now = Date.now() / 1000
 
-            database.ref("sharedProjects/metadata/" + sharedProjectId).set(cleanData(
+            db.ref("sharedProjects/metadata/" + sharedProjectId).set(cleanData(
                 {
                     author: getStoredUser().uid,
                     name: shareNameInput.value,
@@ -50,17 +50,17 @@ sharePopupButton.addEventListener('click', (e) => {
                 }
             )).then(() => {
                 //set projectData
-                database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+                db.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
             })
         })
         hidePopup();
         return;
     }
 
-    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId).once("value").then(function (snap) {
+    db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId).once("value").then(function (snap) {
         let data = snap.val();
         //set metadata
-        database.ref("sharedProjects/metadata/"+sharedProjectId).set(cleanData({
+        db.ref("sharedProjects/metadata/"+sharedProjectId).set(cleanData({
             author:getStoredUser().uid,
             name:shareNameInput.value,
             shareDate:Date.now()/1000,
@@ -70,7 +70,7 @@ sharePopupButton.addEventListener('click', (e) => {
             original:data.original,
         })).then(()=> {
             //set projectData
-            database.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+            db.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
         })
     })
     hidePopup();
@@ -84,13 +84,13 @@ function showPopup(){
     popupContainer.style.opacity = "1";
     popupContainer.style.pointerEvents = "auto";
     if(isAlreadyShared){
-        database.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
+        db.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
             let data= snap.val();
             shareNameInput.value =data.name;
             shareDescInput.value =data.desc;
         })
     }else {
-        database.ref("userdata/" + getStoredUser().uid + "/projects/" + projectId + "/name").once("value").then(function (snap) {
+        db.ref("userdata/" + getStoredUser().uid + "/projects/" + projectId + "/name").once("value").then(function (snap) {
             shareNameInput.value = snap.val();
         })
     }
@@ -109,7 +109,7 @@ function runPopupPreviewCode(){
     })
 }
 function checkSharedStatus(){
-    database.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
+    db.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
         if(snap.exists()){
             console.log("project is shared!");
             shareButton.innerText = "Update";

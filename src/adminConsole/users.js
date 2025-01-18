@@ -24,7 +24,7 @@ function setupUsers(){
 }
 
 function loadUsers(){
-    database.ref('userdata').once('value').then((snapshot) => {
+    db.ref('userdata').once('value').then((snapshot) => {
         const data = snapshot.val();
         clearUsers();
         console.log(data);
@@ -104,7 +104,7 @@ addBadgeButton.addEventListener("click",function (){
     let badges = dbUserdata[selectedUserUid].badges;
     badges.push({id:newBadgeId});
 
-    database.ref("userdata/" + selectedUserUid+"/badges").set(badges);
+    db.ref("userdata/" + selectedUserUid+"/badges").set(badges);
 })
 
 setupUsers();

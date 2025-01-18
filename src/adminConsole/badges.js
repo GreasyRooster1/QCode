@@ -8,7 +8,7 @@ const badgeDetailsDesc = document.querySelector(".badge-details .description");
 const badgeDetailsImg = document.querySelector(".badge-details .badge-img");
 
 function setupBadge(){
-    let lessonsRef = database.ref('badges');
+    let lessonsRef = db.ref('badges');
     lessonsRef.on('value', (snapshot) => {
         const data = snapshot.val();
         clearBadges();
@@ -38,7 +38,7 @@ function createBadgeElement(badgeId,badgeData){
 
 function showBadgeDetails(e){
     let badgeId = e.currentTarget.getAttribute("data-badgeid");
-    database.ref("badges/"+badgeId).once("value").then((snap)=>{
+    db.ref("badges/"+badgeId).once("value").then((snap)=>{
         let data = snap.val();
         badgeDetailsName.innerHTML = data.name;
         badgeDetailsId.innerHTML = badgeId;

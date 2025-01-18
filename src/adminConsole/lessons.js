@@ -8,7 +8,7 @@ const lessonDetailsChapterCount = document.querySelector(".lesson-details .chapt
 const lessonDetailsStepCount = document.querySelector(".lesson-details .step-count");
 
 function setupLessons(){
-    let lessonsRef = database.ref('lessons');
+    let lessonsRef = db.ref('lessons');
     lessonsRef.on('value', (snapshot) => {
         const data = snapshot.val();
         clearLessons();
@@ -42,7 +42,7 @@ function createLessonElement(lessonId,lessonData){
 
 function showLessonDetails(e){
     let lessonId = e.currentTarget.getAttribute("data-lessonid");
-    database.ref("lessons/"+lessonId).once("value").then((snap)=>{
+    db.ref("lessons/"+lessonId).once("value").then((snap)=>{
         let data = snap.val();
         lessonDetailsName.innerHTML = data.name;
         lessonDetailsId.innerHTML = lessonId;

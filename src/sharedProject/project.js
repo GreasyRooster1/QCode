@@ -9,11 +9,11 @@ let iWindow = null;
 function loadProject() {
     const urlParams = new URLSearchParams(window.location.search);
     shareBoardID = urlParams.get('shareboardid');
-    database.ref("sharedProjects/metadata/"+shareBoardID).once("value").then((snapshot) => {
+    db.ref("sharedProjects/metadata/"+shareBoardID).once("value").then((snapshot) => {
         projectMetadata = snapshot.val();
         insertInfo()
     })
-    database.ref("sharedProjects/projectData/"+shareBoardID).once("value").then((snapshot) => {
+    db.ref("sharedProjects/projectData/"+shareBoardID).once("value").then((snapshot) => {
         projectCode = snapshot.val();
         execFrame.contentWindow.location.reload();
         window.editor.dispatch({changes: {
@@ -58,10 +58,10 @@ function insertInfo(){
         version.innerText = "Version: "+ projectMetadata.version;
     }
 
-    database.ref("userdata/"+projectMetadata.author+"/username").once("value").then((snapshot) => {
+    db.ref("userdata/"+projectMetadata.author+"/username").once("value").then((snapshot) => {
         authorUsername.innerText = snapshot.val();
     });
-    database.ref("userdata/"+projectMetadata.author+"/profileIcon").once("value").then((snapshot) => {
+    db.ref("userdata/"+projectMetadata.author+"/profileIcon").once("value").then((snapshot) => {
         authorImg.setAttribute("src",snapshot.val());
     });
 
@@ -72,10 +72,10 @@ function insertInfo(){
     if(projectMetadata.lessonId!==null&&projectMetadata.lessonId!==undefined){
         document.querySelector(".code-editor").remove()
         document.querySelector(".lesson-button-container").style.display = "flex";
-        database.ref("lessons/"+projectMetadata.lessonId+"/name").once("value").then((snapshot) => {
+        db.ref("lessons/"+projectMetadata.lessonId+"/name").once("value").then((snapshot) => {
             document.querySelector(".lesson-title").innerHTML = snapshot.val()
         });
-        database.ref("lessons/"+projectMetadata.lessonId+"/thumb").once("value").then((snapshot) => {
+        db.ref("lessons/"+projectMetadata.lessonId+"/thumb").once("value").then((snapshot) => {
             document.querySelector(".lesson-thumb").src = snapshot.val()
         });
         document.querySelector(".lesson-button").addEventListener("click",()=>{
@@ -87,7 +87,7 @@ function insertInfo(){
 function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle){
     originalInfo.style.display="flex";
 
-    database.ref("sharedProjects/metadata/"+projectMetadata.original).once("value").then((snapshot) => {
+    db.ref("sharedProjects/metadata/"+projectMetadata.original).once("value").then((snapshot) => {
         let data = snapshot.val();
 
         loadUserToHTML(originalUsername,originalImg,data.author);
@@ -101,10 +101,10 @@ function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTi
 }
 
 function loadUserToHTML(usernameEl,imgEl,uid){
-    database.ref("userdata/"+uid+"/username").once("value").then((snapshot) => {
+    db.ref("userdata/"+uid+"/username").once("value").then((snapshot) => {
         usernameEl.innerText = snapshot.val();
     });
-    database.ref("userdata/"+uid+"/profileIcon").once("value").then((snapshot) => {
+    db.ref("userdata/"+uid+"/profileIcon").once("value").then((snapshot) => {
         imgEl.setAttribute("src",snapshot.val());
     });
 }

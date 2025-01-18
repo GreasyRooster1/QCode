@@ -137,7 +137,7 @@ function setVisibilityForInner(vis){
 function promptProfileIconChange(){
     let imageLink = prompt("Enter link to image");
     if(isValidUrl(imageLink)){
-        database.ref("userdata/"+getStoredUser().uid+"/profileIcon").set(imageLink);
+        db.ref("userdata/"+getStoredUser().uid+"/profileIcon").set(imageLink);
         profileDisplayImg.setAttribute("src", imageLink);
     }else{
         console.log("not a url");

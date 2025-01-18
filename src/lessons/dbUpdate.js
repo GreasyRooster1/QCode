@@ -32,7 +32,7 @@ function updateAllDb(){
 function updateLessonRecommendationsDb() {
     let recs = []
     searchForRecommendation(rootLesson,10,recs)
-    database.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").set(recs)
+    db.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").set(recs)
 }
 
 function searchForRecommendation(lessonId,depth,recs){
@@ -64,5 +64,5 @@ function updateLessonStatusDb(){
         }
         statuses[lesson.id] = status;
     }
-    database.ref("userdata/"+getStoredUser().uid+"/lessonStatuses").set(statuses)
+    db.ref("userdata/"+getStoredUser().uid+"/lessonStatuses").set(statuses)
 }

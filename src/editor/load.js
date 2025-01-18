@@ -20,12 +20,12 @@ function loadProjectFromUrlData(){
         return;
     }
 
-    database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").once("value",(snapshot)=> {
+    db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").once("value",(snapshot)=> {
         let id = "javascript";
         if(snapshot.exists()){
             id = snapshot.val();
         }else{
-            database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").set("javascript");
+            db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").set("javascript");
         }
         updateLanguage(id).then((projectType) =>
         {
@@ -72,7 +72,7 @@ function updateLanguage(id){
 
 
 function loadLesson(projectId){
-    database.ref("lessons/"+projectId).once('value').then((snapshot) => {
+    db.ref("lessons/"+projectId).once('value').then((snapshot) => {
         const data = snapshot.val();
         if(data.chapters[chapterNum]!==null) {
             scrollableSteps.innerHTML = "";

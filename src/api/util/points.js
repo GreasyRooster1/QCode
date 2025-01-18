@@ -1,8 +1,8 @@
-import {database} from "../firebase";
+import {db} from "../firebase";
 import {getStoredUser} from "../auth";
 
 function reCalculateUserPoints(exitFunc){
-    database.ref("userdata/"+getStoredUser().uid+"/badges").once("value", function(snap){
+    db.ref("userdata/"+getStoredUser().uid+"/badges").once("value", function(snap){
         let data = snap.val();
         let badges = data.values().toArray().filter(b => b!==undefined);
         let totalPoints = 0;
@@ -11,7 +11,7 @@ function reCalculateUserPoints(exitFunc){
        console.log(data)
 
         for(let badge of badges){
-            database.ref("badges/"+badge.id+"/value").once("value", function(snap){
+            db.ref("badges/"+badge.id+"/value").once("value", function(snap){
                 totalPoints+=snap.val();
                 console.log(count,badges.length)
                 if(count===badges.length){
@@ -26,7 +26,7 @@ function reCalculateUserPoints(exitFunc){
 }
 
 function setPointValue(val){
-    database.ref("userdata/"+getStoredUser().uid+"/points").set(val)
+    db.ref("userdata/"+getStoredUser().uid+"/points").set(val)
 }
 
 export {reCalculateUserPoints}

@@ -39,29 +39,29 @@ class ShareBoardProject{
     }
 
     loadProjectCode(next=function(){}){
-        database.ref("sharedProjects/projectData/"+this.pid).once("value").then((snapshot) => {
+        db.ref("sharedProjects/projectData/"+this.pid).once("value").then((snapshot) => {
             this.code = snapshot.val();
             next(snapshot.val(),arguments[1]);
         })
     }
 
     like(){
-        database.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).set(Date.now()/1000)
+        db.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).set(Date.now()/1000)
         this.likedBy[getStoredUser().uid] = Date.now()/1000;
     }
 
     star(){
-        database.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).set(Date.now()/1000)
+        db.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).set(Date.now()/1000)
         this.staredBy[getStoredUser().uid] = Date.now()/1000;
     }
 
     removeLike(){
-        database.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).remove()
+        db.ref("sharedProjects/metadata/"+this.pid+"/likedBy/"+getStoredUser().uid).remove()
         delete this.likedBy[getStoredUser().uid]
     }
 
     removeStar(){
-        database.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).remove()
+        db.ref("sharedProjects/metadata/"+this.pid+"/staredBy/"+getStoredUser().uid).remove()
         delete this.staredBy[getStoredUser().uid]
     }
 
@@ -96,11 +96,11 @@ class ShareBoardProject{
 
 function getShareBoardFeaturedProjects(next=function(){}){
     let projects = [];
-    database.ref("sharedProjects/featured").once("value").then((snapshot) => {
+    db.ref("sharedProjects/featured").once("value").then((snapshot) => {
         (async() => {
             let data = snapshot.val();
             for (let [_, pid] of Object.entries(data)) {
-                let snapshot = await database.ref("sharedProjects/metadata/" + pid).get();
+                let snapshot = await db.ref("sharedProjects/metadata/" + pid).get();
                 projects.push(new ShareBoardProject(pid, snapshot.val()));
             }
             next(projects);
@@ -110,7 +110,7 @@ function getShareBoardFeaturedProjects(next=function(){}){
 
 function getShareBoardProjects(next=function(){}){
     let projects = [];
-    database.ref("sharedProjects/metadata").once("value").then((snapshot) => {
+    db.ref("sharedProjects/metadata").once("value").then((snapshot) => {
         let data = snapshot.val();
         for (let [pid, metadata] of Object.entries(data)) {
             console.log(metadata.shareDate)

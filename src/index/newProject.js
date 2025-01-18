@@ -1,4 +1,3 @@
-import {database} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
 import {cleanProjectName, createProject} from "../api/project";
 

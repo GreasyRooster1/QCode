@@ -15,7 +15,7 @@ function isScrolledIntoView(parent,el) {
 }
 
 function scrollToCurrentStep(projectId){
-    let currentStepRef = database.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
+    let currentStepRef = db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
 
     currentStepRef.once('value').then((snapshot) => {
         let currentStep;

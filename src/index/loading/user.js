@@ -1,4 +1,4 @@
-import {database} from "../../api/firebase";
+import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
 import {promptProfileIconChange} from "../../api/nav/navbar.js"
 
@@ -13,19 +13,19 @@ function loadUserData(){
 }
 
 function loadUsername(){
-    database.ref("userdata/"+getStoredUser().uid+"/username").once("value").then(function(snapshot){
+    db.ref("userdata/"+getStoredUser().uid+"/username").once("value").then(function(snapshot){
         usernameTitle.innerHTML = snapshot.val();
     })
 }
 
 function loadProfileIcon(){
-    database.ref("userdata/"+getStoredUser().uid+"/profileIcon").once("value").then(function(snapshot){
+    db.ref("userdata/"+getStoredUser().uid+"/profileIcon").once("value").then(function(snapshot){
         profileDisplayImg.setAttribute("src", snapshot.val());
     })
 }
 
 function renderPoints(){
-    database.ref("userdata/"+getStoredUser().uid+"/points").once("value").then((snapshot)=>{
+    db.ref("userdata/"+getStoredUser().uid+"/points").once("value").then((snapshot)=>{
         pointsDisplayBar.setAttribute("value",snapshot.val());
     })
 

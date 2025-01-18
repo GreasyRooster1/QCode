@@ -2,7 +2,7 @@
 if(getStoredUser()===null){
     redirect()
 }else{
-    database.ref("userpermissions/"+getStoredUser().uid).once("value").then((snapshot) => {
+    db.ref("userpermissions/"+getStoredUser().uid).once("value").then((snapshot) => {
        let data = snapshot.val();
        if(data===null){
            redirect();
