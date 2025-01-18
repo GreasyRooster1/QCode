@@ -5,37 +5,53 @@ import {BrandNav} from "../customElements";
 import {isValidUrl} from "../util/util";
 import {reCalculateUserPoints} from "../util/points";
 
-const navWrapper = document.querySelector('brand-nav');
-const navbar = document.querySelector(".navbar");
-const navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
-const userLink = document.querySelector(".username-link");
-const accountOptions = document.querySelector(".account-options");
+let navWrapper;
+let navbarVisibilityButton;
+let userLink;
+let accountOptions;
 let innerContent;
-const logoutButton = document.querySelector(".logout-button");
-const changeProfileButton = document.querySelector(".change-profile-button");
-const homeButton = document.querySelector(".home-link")
-const pointsDisplayNum = document.querySelector(".points-display-num");
+let logoutButton;
+let changeProfileButton;
+let homeButton;
+let pointsDisplayNum;
+
 let navDropdownItemCount = 2;
+
+const navbar = document.querySelector("brand-nav");
 
 let navbarVisible = true;
 let accountDropdownActive = false;
 
 BrandNav.register()
 
+function loadHandles(){
+    navWrapper = document.querySelector('brand-nav');
+    navbarVisibilityButton = document.querySelector(".navbar-visibility-button");
+    userLink = document.querySelector(".username-link");
+    accountOptions = document.querySelector(".account-options");
+    logoutButton = document.querySelector(".logout-button");
+    changeProfileButton = document.querySelector(".change-profile-button");
+    homeButton = document.querySelector(".home-link")
+    pointsDisplayNum = document.querySelector(".points-display-num");
+}
+
 function initNavbar(settings){
-    initUsername();
-    initPoints();
-    initAdmin();
-    addEvents();
-    if(settings===undefined){
-        return
-    }
-    if(settings.hideHome){
-        removeNavHome()
-    }
-    if(settings.hideCollapse){
-        removeNavArrow()
-    }
+    navbar.addEventListener("load", function(){
+        loadHandles()
+        initUsername();
+        initPoints();
+        initAdmin();
+        addEvents();
+        if(settings===undefined){
+            return
+        }
+        if(settings.hideHome){
+            removeNavHome()
+        }
+        if(settings.hideCollapse){
+            removeNavArrow()
+        }
+    });
 }
 
 function initPoints(){
