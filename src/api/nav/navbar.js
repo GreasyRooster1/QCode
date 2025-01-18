@@ -25,6 +25,7 @@ function initNavbar(settings){
     initUsername();
     initPoints();
     initAdmin();
+    addEvents();
     if(settings===undefined){
         return
     }
@@ -69,60 +70,62 @@ function initAdmin(){
         }
     });
 }
+function addEvents(){
+    navbarVisibilityButton.addEventListener("click",function (){
+        innerContent = document.querySelectorAll(".navbar *");
+        navbarVisible = !navbarVisible;
+        if(navbarVisible){
+            navWrapper.style.height = "var(--navbar-height)";
+            setTimeout(function () {
+                setVisibilityForInner("visible")
+            },500);
+            navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
+        }else{
+            navWrapper.style.height = "0";
+            navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
+            accountDropdownActive=false;
+            setVisibilityForInner("hidden")
+        }
+    });
 
-navbarVisibilityButton.addEventListener("click",function (){
-    innerContent = document.querySelectorAll(".navbar *");
-    navbarVisible = !navbarVisible;
-    if(navbarVisible){
-        navWrapper.style.height = "var(--navbar-height)";
-        setTimeout(function () {
-            setVisibilityForInner("visible")
-        },500);
-        navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
-    }else{
-        navWrapper.style.height = "0";
-        navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
-        accountDropdownActive=false;
-        setVisibilityForInner("hidden")
-    }
-});
+    userLink.addEventListener("click", function (e){
+        if(userLink.innerHTML==="Login"){
+            if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
+                window.location.replace("login/login.html");
+            }else {
+                window.location.href = "../login/login.html";
+            }
+            return;
+        }
 
-userLink.addEventListener("click", function (e){
-    if(userLink.innerHTML==="Login"){
+        accountDropdownActive = !accountDropdownActive;
+        if(accountDropdownActive) {
+            accountOptions.style.height = (navDropdownItemCount*21)+"px";
+            userLink.style.borderRadius = "0";
+        }else{
+            accountOptions.style.height = "0";
+            userLink.style.borderRadius = "10px";
+        }
+    });
+
+    logoutButton.addEventListener("click", function (e){
+        logOutUser();
         if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-            window.location.replace("login/login.html");
+            window.location.href = "login/login.html";
         }else {
             window.location.href = "../login/login.html";
         }
-        return;
-    }
+    })
 
-    accountDropdownActive = !accountDropdownActive;
-    if(accountDropdownActive) {
-        accountOptions.style.height = (navDropdownItemCount*21)+"px";
-        userLink.style.borderRadius = "0";
-    }else{
-        accountOptions.style.height = "0";
-        userLink.style.borderRadius = "10px";
-    }
-});
+    changeProfileButton.addEventListener("click",()=>{
+        promptProfileIconChange()
+    });
 
-logoutButton.addEventListener("click", function (e){
-    logOutUser();
-    if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-        window.location.href = "login/login.html";
-    }else {
-        window.location.href = "../login/login.html";
-    }
-})
+    homeButton.addEventListener("click",function () {
+        window.location.href = "../";
+    });
+}
 
-changeProfileButton.addEventListener("click",()=>{
-    promptProfileIconChange()
-});
-
-homeButton.addEventListener("click",function () {
-   window.location.href = "../";
-});
 
 function setVisibilityForInner(vis){
     innerContent.forEach((item) => {
