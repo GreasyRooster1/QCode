@@ -1,12 +1,12 @@
 import {projectsDisplay} from "../index";
-import {onValue, ref} from "firebase/database";
+import {onValue, orderByChild, query, ref} from "firebase/database";
 import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
 
 let currentProjectViewPage = 1;
 
 function loadProjects(){
-    let projectsRef = ref(db,'userdata/'+getStoredUser().uid+"/projects").orderByChild("dateUpdated")
+    let projectsRef = query(ref(db,'userdata/'+getStoredUser().uid+"/projects"),orderByChild("dateUpdated"))
     onValue(projectsRef, (snapshot) => {
         clearProjects();
         let projects = []
