@@ -1,4 +1,5 @@
-import {database} from "../firebase";
+import {db} from "../firebase";
+import { getDatabase, ref, set } from "firebase/database";
 import {getStoredUser, getStoredUserPermissions, logOutUser} from "../auth";
 import {BrandNav} from "../customElements";
 import {isValidUrl} from "../util/util";
@@ -44,7 +45,7 @@ function initPoints(){
 }
 
 function initUsername(){
-    database.ref("userdata/"+getStoredUser().uid+"/username").once('value').then((snapshot) => {
+    ref(db,"userdata/"+getStoredUser().uid+"/username").once('value').then((snapshot) => {
         let username = snapshot.val();
         let formattedUsername = username.charAt(0).toUpperCase() + username.slice(1);
         userLink.innerHTML = formattedUsername;
