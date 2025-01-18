@@ -31,8 +31,10 @@ function renderPoints(){
 
 }
 
-profileDisplayImg.addEventListener("click",function (){
-   promptProfileIconChange();
-});
+function addProfileListener() {
+    profileDisplayImg.addEventListener("click", function () {
+        promptProfileIconChange();
+    });
+}
 
-export {loadUserData};
+export {loadUserData,addProfileListener};

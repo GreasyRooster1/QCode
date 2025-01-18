@@ -1,6 +1,6 @@
 import {loadBadges} from "./badgeDisplay"
 import {loadProjects} from "./loading/projects.js"
-import {loadUserData} from "./loading/user";
+import {addProfileListener, loadUserData} from "./loading/user";
 import {loadAnnouncements} from "./loading/announcements";
 import {displayVersion} from "./version";
 import {initShareBoard, setupsShareBoardFrame} from "./shareBoard";
@@ -23,6 +23,7 @@ function init(){
         hideCollapse:true,
         hideHome:true,
     })
+    addProfileListener()
 
     loadBadges();
     loadProjects();
