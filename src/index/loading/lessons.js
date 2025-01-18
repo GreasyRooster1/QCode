@@ -1,6 +1,6 @@
 import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
-import {get, ref} from "firebase/database";
+import {get, ref, set} from "firebase/database";
 import {createProject} from "../../api/project";
 import {openProjectInEditor} from "../../api/util/projects";
 
@@ -12,16 +12,16 @@ let defaultRecommendedLessons = [
 function loadLessons(){
     setupLessonChartLink();
 
-    ref(db,"userdata/"+getStoredUser().uid+"/recommendedLessons").once('value').then( (snapshot) => {
+    get(ref(db,"userdata/"+getStoredUser().uid+"/recommendedLessons")).then( (snapshot) => {
         let data;
         if(snapshot.exists()){
             data = snapshot.val();
         }else{
-            ref(db,"userdata/"+getStoredUser().uid+"/recommendedLessons").set(defaultRecommendedLessons);
+            set(ref(db,"userdata/"+getStoredUser().uid+"/recommendedLessons"),defaultRecommendedLessons);
             data = defaultRecommendedLessons;
         }
         for(let lessonId of data){
-            ref(db,"lessons/"+lessonId).once("value").then((snapshot) => {
+            get(ref(db,"lessons/"+lessonId)).then((snapshot) => {
                 createLessonElement(lessonId,snapshot.val())
             })
         }
