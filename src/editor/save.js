@@ -15,6 +15,10 @@ function showSaveAlert(){
     },10)
 }
 
-window.addEventListener("beforeunload", function (e) {
-    projectType.saveCode();
-});
+function setupAutoSave() {
+    window.addEventListener("beforeunload", function (e) {
+        projectType.saveCode();
+    });
+}
+
+export {setupAutoSave}

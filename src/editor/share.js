@@ -14,11 +14,19 @@ let isAlreadyShared = false;
 //     runPopupPreviewCode();
 // });
 
-closePopupButton.addEventListener("click", (e) => {
-    hidePopup();
-})
+function setupShareEvents(){
+    closePopupButton.addEventListener("click", (e) => {
+        hidePopup();
+    })
 
-sharePopupButton.addEventListener('click', (e) => {
+    sharePopupButton.addEventListener('click', (e) => {
+        shareProject()
+    })
+}
+
+//holy shit this function is huge
+//todo: refactor
+function shareProject(){
     if(shareNameInput.value === ''){
         shareNameInput.style.border = "5px solid red";
         return;
@@ -74,7 +82,7 @@ sharePopupButton.addEventListener('click', (e) => {
         })
     })
     hidePopup();
-})
+}
 
 function cleanData(data){
     return JSON.parse( JSON.stringify(data ) )
@@ -118,4 +126,4 @@ function checkSharedStatus(){
     })
 }
 
-checkSharedStatus();
+export {setupShareEvents,checkSharedStatus}

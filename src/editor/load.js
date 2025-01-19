@@ -85,4 +85,4 @@ function loadLesson(projectId){
     });
 }
 
-loadProjectFromUrlData()
+export {loadProjectFromUrlData}

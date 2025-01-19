@@ -54,23 +54,27 @@ function scrollWhenAllImagesAreLoaded(toStep,ref){
 
 
 //we could add styling to the steps if wanted
+//2025: or not
 
-scrollableSteps.addEventListener("scroll", (e) => {
+function setupScrollEvent(){
+    scrollableSteps.addEventListener("scroll", (e) => {
 
-    everyStep = document.querySelectorAll('.step');
+        everyStep = document.querySelectorAll('.step');
 
-    let high = 0;
-    everyStep.forEach((el) => {
-        if(isScrolledIntoView(scrollableSteps,el)){
-            let stepCount = el.getAttribute("count");
-            if(stepCount > high) {
-                high = stepCount;
+        let high = 0;
+        everyStep.forEach((el) => {
+            if(isScrolledIntoView(scrollableSteps,el)){
+                let stepCount = el.getAttribute("count");
+                if(stepCount > high) {
+                    high = stepCount;
+                }
+
+                el.classList.add(".focused-step")
+            }else{
+                el.classList.remove(".focused-step")
             }
+        })
+        projectType.highestViewedStep = high;
+    });
 
-            el.classList.add(".focused-step")
-        }else{
-            el.classList.remove(".focused-step")
-        }
-    })
-    projectType.highestViewedStep = high;
-});
+}

@@ -34,6 +34,3 @@ function setupPanes(hasLesson) {
         gutter.appendChild(block);
     }
 }
-
-//hide nav by default
-document.querySelector(".navbar-visibility-button").click()
