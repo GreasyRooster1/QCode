@@ -1,3 +1,7 @@
+import {get, ref} from "firebase/database";
+import {db} from "../api/firebase";
+import {getStoredUser} from "../api/auth";
+
 let projectId=null;
 let userUid = null;
 let chapterNum = null;
@@ -20,7 +24,7 @@ function loadProjectFromUrlData(){
         return;
     }
 
-    db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").once("value",(snapshot)=> {
+    get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language")).then((snapshot)=> {
         let id = "javascript";
         if(snapshot.exists()){
             id = snapshot.val();
@@ -72,7 +76,7 @@ function updateLanguage(id){
 
 
 function loadLesson(projectId){
-    db.ref("lessons/"+projectId).once('value').then((snapshot) => {
+    get(ref(db,"lessons/"+projectId)).then((snapshot) => {
         const data = snapshot.val();
         if(data.chapters[chapterNum]!==null) {
             scrollableSteps.innerHTML = "";
@@ -85,4 +89,4 @@ function loadLesson(projectId){
     });
 }
 
-export {loadProjectFromUrlData}
+export {loadProjectFromUrlData,loadLesson}
