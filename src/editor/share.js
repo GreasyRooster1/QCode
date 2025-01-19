@@ -1,7 +1,7 @@
 import {getStoredUser} from "../api/auth";
 import {getSharedProjectId} from "../api/shareBoard";
 import {db} from "../api/firebase";
-import {get, ref} from "firebase/database";
+import {get, ref, set} from "firebase/database";
 import {getCodeFromEditor} from "./codeExecution";
 import {projectId, projectType} from "./load";
 
@@ -41,12 +41,12 @@ function shareProject(){
     let sharedProjectId = getSharedProjectId(projectId,getStoredUser().uid);
 
     if(isAlreadyShared){
-        db.ref("sharedProjects/metadata/" + sharedProjectId).once("value").then(function (snap) {
+        get(ref(db,"sharedProjects/metadata/" + sharedProjectId)).then(function (snap) {
             let data = snap.val();
             console.log(data);
             let now = Date.now() / 1000
 
-            db.ref("sharedProjects/metadata/" + sharedProjectId).set(cleanData(
+            set(ref(db,"sharedProjects/metadata/" + sharedProjectId),cleanData(
                 {
                     author: getStoredUser().uid,
                     name: shareNameInput.value,
@@ -61,17 +61,17 @@ function shareProject(){
                 }
             )).then(() => {
                 //set projectData
-                db.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+                set(ref(db,"sharedProjects/projectData/" + sharedProjectId),getCodeFromEditor());
             })
         })
         hidePopup();
         return;
     }
 
-    db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId).once("value").then(function (snap) {
+    get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId)).then(function (snap) {
         let data = snap.val();
         //set metadata
-        db.ref("sharedProjects/metadata/"+sharedProjectId).set(cleanData({
+        set(ref(db,"sharedProjects/metadata/"+sharedProjectId),cleanData({
             author:getStoredUser().uid,
             name:shareNameInput.value,
             shareDate:Date.now()/1000,
@@ -81,7 +81,7 @@ function shareProject(){
             original:data.original,
         })).then(()=> {
             //set projectData
-            db.ref("sharedProjects/projectData/" + sharedProjectId).set(getCodeFromEditor());
+            set(ref(db,"sharedProjects/projectData/" + sharedProjectId),getCodeFromEditor());
         })
     })
     hidePopup();
