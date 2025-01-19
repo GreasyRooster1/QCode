@@ -1,3 +1,5 @@
+import Split from "split.js";
+
 const stepsPane = document.querySelector(".steps-pane");
 
 function setupPanes(hasLesson) {
@@ -34,3 +36,5 @@ function setupPanes(hasLesson) {
         gutter.appendChild(block);
     }
 }
+
+export {setupPanes}
