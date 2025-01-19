@@ -9,7 +9,7 @@ import { linter } from '@codemirror/lint';
 // @ts-ignore
 import { javascript } from "@codemirror/lang-javascript";
 // @ts-ignore
-import { javascriptLanguage } from '@codemirror/lang-javascripts';
+import { javascriptLanguage } from '@codemirror/lang-javascript';
 // @ts-ignore
 import { rust } from "@codemirror/lang-rust";
 // @ts-ignore
@@ -31,7 +31,7 @@ import { cpp } from "@codemirror/lang-cpp";
 // @ts-ignore
 import { cppLanguage } from '@codemirror/lang-cpp';
 // @ts-ignore
-import { tags } from "lezer/highlight";
+import { tags } from "@lezer/highlight";
 // @ts-ignore
 import { HighlightStyle } from "@codemirror/language";
 import { setHasSaved } from "./save";

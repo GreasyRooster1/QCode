@@ -38,7 +38,7 @@ import { cpp } from "@codemirror/lang-cpp"
 import { cppLanguage } from '@codemirror/lang-cpp'
 
 // @ts-ignore
-import {tags} from "lezer/highlight"
+import {tags} from "@lezer/highlight"
 // @ts-ignore
 import {HighlightStyle} from "@codemirror/language"
 import {hasSavedRecently, setHasSaved} from "./save";
