@@ -5,6 +5,7 @@ import {Language, setupEditor} from "../../codeEditor";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
+import {writeToEditor} from "../../utils/loadUtils";
 
 class WebType extends ProjectType {
     filesystem:Filesystem

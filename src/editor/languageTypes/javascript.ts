@@ -4,6 +4,7 @@ import {Language} from "../codeEditor";
 import {getStoredUser} from "../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../api/firebase";
+import {writeToEditor} from "../utils/loadUtils";
 
 class JavascriptType extends ProjectType {
     constructor() {

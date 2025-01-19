@@ -101,4 +101,4 @@ function createChapterLink(chapterNumber,chapterData){
     return linkEl.outerHTML;
 }
 
-export {populateSteps,createChapterLink,createStepFromObj,createNextChapterStep,createBufferSpace,createChapterStep,createStep}
+export {populateSteps,createChapterLink,createStepFromObj,createNextChapterStep,createBufferSpace,createChapterStep,createStep,writeToEditor}
