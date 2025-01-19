@@ -30,8 +30,10 @@ import { pythonLanguage } from 'codemirror/lang-python/dist/index.js';
 import { cpp } from "codemirror/lang-cpp/dist/index.js";
 // @ts-ignore
 import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js';
-import { tags } from "@lezer/highlight";
-import { HighlightStyle } from "@codemirror/language";
+// @ts-ignore
+import { tags } from "lezer/highlight";
+// @ts-ignore
+import { HighlightStyle } from "codemirror/language";
 import { setHasSaved } from "./save";
 const fixedFontTheme = EditorView.theme({
     '&': {

@@ -37,8 +37,10 @@ import { cpp } from "codemirror/lang-cpp/dist/index.js"
 // @ts-ignore
 import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js'
 
-import {tags} from "@lezer/highlight"
-import {HighlightStyle} from "@codemirror/language"
+// @ts-ignore
+import {tags} from "lezer/highlight"
+// @ts-ignore
+import {HighlightStyle} from "codemirror/language"
 import {hasSavedRecently, setHasSaved} from "./save";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
