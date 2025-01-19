@@ -40,19 +40,22 @@ function initNavbar(settings){
         initPoints();
         initAdmin();
         addEvents();
-        if(settings===undefined){
-            return
-        }
-        if(settings.hideHome){
-            removeNavHome()
-        }
-        if(settings.hideCollapse){
-            removeNavArrow()
-        }
-        if(settings.collapsed){
-            navbarVisibilityButton.click()
-        }
+        checkSettings(settings);
     });
+}
+function checkSettings(settings){
+    if(settings===undefined){
+        return
+    }
+    if(settings.hideHome){
+        removeNavHome()
+    }
+    if(settings.hideCollapse){
+        removeNavArrow()
+    }
+    if(settings.collapsed){
+        hideNav()
+    }
 }
 
 function initPoints(){
@@ -88,21 +91,31 @@ function initAdmin(){
         }
     });
 }
+
+function hideNav(){
+    console.log("sdfsdf")
+    navWrapper.style.height = "0";
+    navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
+    accountDropdownActive=false;
+    setVisibilityForInner("hidden")
+}
+
+function showNav(){
+    navWrapper.style.height = "var(--navbar-height)";
+    setTimeout(function () {
+        setVisibilityForInner("visible")
+    },500);
+    navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
+}
+
 function addEvents(){
     navbarVisibilityButton.addEventListener("click",function (){
         innerContent = document.querySelectorAll(".navbar *");
         navbarVisible = !navbarVisible;
         if(navbarVisible){
-            navWrapper.style.height = "var(--navbar-height)";
-            setTimeout(function () {
-                setVisibilityForInner("visible")
-            },500);
-            navbarVisibilityButton.style.transform = "scaleY(1) translateY(0px)";
+            showNav()
         }else{
-            navWrapper.style.height = "0";
-            navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
-            accountDropdownActive=false;
-            setVisibilityForInner("hidden")
+            hideNav()
         }
     });
 
