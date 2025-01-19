@@ -48,8 +48,7 @@ document.addEventListener('contextmenu', event => {
 
 function runJs(js){
     //clear dangerous objects and run code
-    console.log(js)
-    eval(js);
+    let required = eval(js+"\n ({_draw:draw,_setup:setup}) ");
 
     let eventFunctions = [];
 
@@ -65,6 +64,8 @@ function runJs(js){
             eventFunctions.push(funcDef);
         }
     }
+    let draw = required._draw;
+    let setup = required._setup;
 
     if(draw===undefined||setup===undefined){
         return;
