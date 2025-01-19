@@ -70,7 +70,7 @@ function setupEditor(language: Language) {
         fixedFontTheme,
     ]
     if(languagePair!=null){
-        extensions.push(languagePair!.func,linter(languagePair!.lang));
+        extensions.push(languagePair!);
     }
     editor = new EditorView({
         doc: "\n",
@@ -82,42 +82,24 @@ function setupEditor(language: Language) {
     window.editor = editor;
 }
 
-function getLanguagePair(identifier:Language): { func: any; lang: any } | null{
+function getLanguagePair(identifier:Language): any | null{
     if(identifier == "javascript"){
-        return {
-            func: javascript(),
-            lang: javascriptLanguage
-        }
+        return javascript()
     }
     if(identifier == "rust"){
-        return {
-            func: rust(),
-            lang: rustLanguage
-        }
+        return rust()
     }
     if(identifier == "html"){
-        return {
-            func: html(),
-            lang: htmlLanguage
-        }
+        return html()
     }
     if(identifier == "css"){
-        return {
-            func: css(),
-            lang: cssLanguage
-        }
+        return css()
     }
     if(identifier == "python"){
-        return {
-            func: python(),
-            lang: pythonLanguage
-        }
+        return python()
     }
     if(identifier == "c++"){
-        return {
-            func: cpp(),
-            lang: cppLanguage
-        }
+        return cpp()
     }
     if(identifier == "text"){
         return null;
