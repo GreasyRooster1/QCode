@@ -2,6 +2,7 @@ import {projectsDisplay} from "../index";
 import {onValue, orderByChild, query, ref} from "firebase/database";
 import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
+import {openProjectInEditor,getLinkToProject} from "../../api/util/projects";
 
 let currentProjectViewPage = 1;
 
@@ -40,18 +41,6 @@ function createProjectElement(projectId,projectData){
 
 function clearProjects(){
     projectsDisplay.innerHTML = "";
-}
-
-function openProjectInEditor(projectId,uid,chapterNumber){
-    window.location.href = getLinkToProject(projectId,uid,chapterNumber)
-}
-
-function getLinkToProject(projectId,uid,chapterNumber){
-    if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-        return "editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
-    }else {
-        return "../editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
-    }
 }
 
 export {loadProjects};
