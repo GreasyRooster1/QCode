@@ -5,27 +5,27 @@ interface System{
     [location:string]:Folder
 }
 interface Folder{
-    [name:string]:File|Folder
+    [name:string]:FilesystemFile|Folder
 }
 
 class Filesystem{
     private system:System;
-    defaultFile:File;
+    defaultFile:FilesystemFile;
     onFileSystemUpdate:Function;
 
     constructor() {
         this.system = {
             "/": {
-                "index.html": new File("index", "html"),
-                "index.js": new File("index", "js"),
-                "index.css": new File("index", "css"),
+                "index.html": new FilesystemFile("index", "html"),
+                "index.js": new FilesystemFile("index", "js"),
+                "index.css": new FilesystemFile("index", "css"),
             }
         }
-        this.defaultFile = <File>this.system["/"]["index.html"];
+        this.defaultFile = <FilesystemFile>this.system["/"]["index.html"];
         this.onFileSystemUpdate = ()=>{};
     }
 
-    getFile(path:string):File{
+    getFile(path:string):FilesystemFile{
         let sections = path.split("/");
         sections.shift()
         let name = sections.pop();
@@ -36,7 +36,7 @@ class Filesystem{
                 parentFolder = <Folder>next;
             }
         }
-        return <File>parentFolder[name!]
+        return <FilesystemFile>parentFolder[name!]
     }
 
     getFolder(path:string):Folder{
@@ -52,25 +52,25 @@ class Filesystem{
         return parentFolder;
     }
 
-    addFile(file:File,location:string){
+    addFile(file:FilesystemFile, location:string){
         this.getFolder(location)[file.name] = file;
         this.onFileSystemUpdate();
     }
 
-    getFileById(id:number):File|null{
+    getFileById(id:number):FilesystemFile|null{
         return this.findFile(this.system["/"],id);
     }
-    findFile(folder:Folder,id:number):File|null{
+    findFile(folder:Folder,id:number):FilesystemFile|null{
         // @ts-ignore
         for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
-                let out = this.findFile(frag,id)
+                let out = this.findFile(frag as Folder,id)
                 if(out!==null){
                     return out;
                 }
             }
             if(frag.id==id){
-                return frag;
+                return frag as FilesystemFile;
             }
         }
         return null;
@@ -80,7 +80,7 @@ class Filesystem{
         // @ts-ignore
         for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
-                this.deleteFile(frag,id);
+                this.deleteFile(frag as Folder,id);
             }
             if(frag.id==id){
                 frag.isDeleted = true;
@@ -104,13 +104,13 @@ class Filesystem{
         for (let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
                 jsonObject[key] = {};
-                this.serializeFolder(frag,jsonObject[key]);
+                this.serializeFolder(frag as Folder,jsonObject[key]);
                 continue;
             }
             if(frag.isDeleted){
                 continue;
             }
-            let serializedName = frag.getSerializedName();
+            let serializedName = (frag as FilesystemFile).getSerializedName();
             jsonObject[serializedName] = frag.content;
         }
     }
@@ -130,8 +130,8 @@ class Filesystem{
                 continue;
             }
             let split = key.split(dotReplacer);
-            let file = new File(split[0], split[1]);
-            file.content = value;
+            let file = new FilesystemFile(split[0], split[1]);
+            file.content = value as string;
             // @ts-ignore
             folder[split.join(".")] = file;
         }
@@ -139,12 +139,12 @@ class Filesystem{
     }
 }
 
-const isFolder = (value: Folder|File)=> {
-    return !(value instanceof File);
+const isFolder = (value: Folder|FilesystemFile)=> {
+    return !(value instanceof FilesystemFile);
 }
 
 
-class File{
+class FilesystemFile {
     name: string;
     extension: string;
     content:string;
@@ -245,4 +245,4 @@ function hasFileIcon(extension:string):boolean{
 
 }
 
-export {Filesystem,isFolder,File,Folder,System,createFolderEl,cleanFileName}
+export {Filesystem,isFolder,FilesystemFile,Folder,System,createFolderEl,cleanFileName}

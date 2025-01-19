@@ -1,6 +1,6 @@
 import { getCode } from "../../executionHelper";
 import {ProjectType,RunErrCallback} from "../projectType";
-import {Filesystem, Folder, isFolder, File as FilesystemFile, createFolderEl, cleanFileName} from "./filesystem";
+import {Filesystem, Folder, isFolder, FilesystemFile, createFolderEl, cleanFileName} from "./filesystem";
 import {Language, setupEditor} from "../../codeEditor";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
