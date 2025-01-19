@@ -25,4 +25,4 @@ function setHasSaved(val){
     hasSavedRecently = val;
 }
 
-export {setupAutoSave,hasSavedRecently,setHasSaved};
+export {setupAutoSave,hasSavedRecently,setHasSaved,showSaveAlert};
