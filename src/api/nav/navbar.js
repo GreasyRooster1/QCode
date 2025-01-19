@@ -34,7 +34,7 @@ function loadHandles(){
 }
 
 function initNavbar(settings){
-    navWrapper.addEventListener("load", function(){
+    navWrapper.addEventListener("load", ()=>{
         loadHandles()
         initUsername();
         initPoints();
@@ -48,6 +48,9 @@ function initNavbar(settings){
         }
         if(settings.hideCollapse){
             removeNavArrow()
+        }
+        if(settings.collapsed){
+            navbarVisibilityButton.click()
         }
     });
 }
