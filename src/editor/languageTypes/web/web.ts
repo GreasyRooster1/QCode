@@ -1,7 +1,10 @@
-import { getCode } from "../../../executionHelper.js";
-import {ProjectType,RunErrCallback} from "../projectType.js";
-import {Filesystem, Folder, isFolder, File as FilesystemFile, createFolderEl, cleanFileName} from "./filesystem.js";
-import {Language, setupEditor} from "../../../codeEditor.js";
+import { getCode } from "../../executionHelper";
+import {ProjectType,RunErrCallback} from "../projectType";
+import {Filesystem, Folder, isFolder, File as FilesystemFile, createFolderEl, cleanFileName} from "./filesystem";
+import {Language, setupEditor} from "../../codeEditor";
+import {ref, set} from "firebase/database";
+import {db} from "../../../api/firebase";
+import {getStoredUser} from "../../../api/auth";
 
 class WebType extends ProjectType {
     filesystem:Filesystem
@@ -228,7 +231,7 @@ class WebType extends ProjectType {
     saveCode(){
         this.saveCurrentFile()
         let serializedFiles = this.filesystem.serialize();
-        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files").set(serializedFiles);
+        set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files"),serializedFiles);
     }
 
     run(errorCallback:RunErrCallback) {
@@ -248,7 +251,7 @@ class WebType extends ProjectType {
             if(isFolder(frag)){
                 this.sendFolderToHTMLHost(folder[key] as Folder);
             }
-            this.sendFileToHTMLHost(frag)
+            this.sendFileToHTMLHost(frag as FilesystemFile)
         }
     }
 
