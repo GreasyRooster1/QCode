@@ -1,6 +1,9 @@
 import {get, ref} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
+import {JavascriptType} from "./languageTypes/javascript";
+import {WebType} from "./languageTypes/web/web";
+import {ArduinoType} from "./languageTypes/arduino";
 
 let projectId=null;
 let userUid = null;
@@ -50,24 +53,18 @@ function loadProjectFromUrlData(){
 function updateLanguage(id){
     return new Promise((resolve, reject) => {
         if (id === "javascript") {
-            import("./js/languageTypes/javascript.js").then((mod) => {
-                projectType = new mod.JavascriptType();
-                resolve(projectType)
-            });
+            projectType = new JavascriptType();
+            resolve(projectType)
             return;
         }
         if (id === "web") {
-            import("./js/languageTypes/web/web.js").then((mod) => {
-                projectType = new mod.WebType();
-                resolve(projectType)
-            });
+            projectType = new WebType();
+            resolve(projectType)
             return;
         }
         if (id === "arduino") {
-            import("./js/languageTypes/arduino.js").then((mod) => {
-                projectType = new mod.ArduinoType();
-                resolve(projectType)
-            });
+            projectType = new ArduinoType();
+            resolve(projectType)
             return;
         }
         reject();
@@ -89,4 +86,4 @@ function loadLesson(projectId){
     });
 }
 
-export {loadProjectFromUrlData,loadLesson}
+export {loadProjectFromUrlData,loadLesson,projectType}
