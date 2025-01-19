@@ -1,3 +1,9 @@
+import {getStoredUser} from "../api/auth";
+import {getSharedProjectId} from "../api/shareBoard";
+import {db} from "../api/firebase";
+import {get, ref} from "firebase/database";
+import {getCodeFromEditor} from "./codeExecution";
+
 const shareButton = document.querySelector('.share-button');
 const popupContainer = document.querySelector('.share-popup-container');
 const sharePopupButton = document.querySelector('.share-popup-button');
@@ -117,7 +123,7 @@ function runPopupPreviewCode(){
     })
 }
 function checkSharedStatus(){
-    db.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
+    get(ref(db,"sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid))).then((snap) => {
         if(snap.exists()){
             console.log("project is shared!");
             shareButton.innerText = "Update";

@@ -4,6 +4,7 @@ import {getStoredUser} from "../api/auth";
 import {JavascriptType} from "./languageTypes/javascript";
 import {WebType} from "./languageTypes/web/web";
 import {ArduinoType} from "./languageTypes/arduino";
+import {setupPanes} from "./panes";
 
 let projectId=null;
 let userUid = null;
@@ -86,4 +87,4 @@ function loadLesson(projectId){
     });
 }
 
-export {loadProjectFromUrlData,loadLesson,projectType}
+export {loadProjectFromUrlData,loadLesson,projectType,projectId}
