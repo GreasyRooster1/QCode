@@ -41,7 +41,7 @@ class ShareBoardProject{
         }
     }
 
-    loadProjectCode(next=function(){}){
+    loadProjectCode(next=function(projectCode,args){}){
         get(ref(db,"sharedProjects/projectData/"+this.pid)).then((snapshot) => {
             this.code = snapshot.val();
             next(snapshot.val(),arguments[1]);

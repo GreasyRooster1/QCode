@@ -20,7 +20,8 @@ let iWindow = null;
 function initShareBoard(){
     getShareBoardFeaturedProjects(function(projects){
         featuredProjects = projects;
-        featuredProjects[currentFeaturedProject].loadProjectCode(function(){
+        featuredProjects[currentFeaturedProject].loadProjectCode((code,args)=>{
+            console.log(featuredProjects)
             reloadCurrentFeaturedProject();
             runShareBoardCode()
         });
