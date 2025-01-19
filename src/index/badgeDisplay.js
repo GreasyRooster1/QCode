@@ -10,7 +10,7 @@ const badgeDetailRarity = document.querySelector(".badge-rarity");
 
 function badgeClickEvent(badgeEl){
     let badgeId = badgeEl.getAttribute("data-badgeid");
-    get(ref(db,"badges/"+badgeId).once("value")).then(function (snapshot) {
+    get(ref(db,"badges/"+badgeId)).then(function (snapshot) {
         const data = snapshot.val();
         badgeDetailName.innerHTML = data.name;
         badgeDetailDesc.innerHTML = data.description;
