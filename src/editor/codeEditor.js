@@ -61,7 +61,6 @@ function setupEditor(language) {
     editor = new EditorView({
         doc: "\n",
         extensions: extensions,
-        updateListener: onDocUpdate,
         parent: document.querySelector(".code-editor"),
     });
     // @ts-ignore
@@ -109,7 +108,7 @@ function getLanguagePair(identifier) {
     }
     return null;
 }
-function onDocUpdate() {
+function onDocUpdate(update) {
     setHasSaved(false);
 }
 // @ts-ignore

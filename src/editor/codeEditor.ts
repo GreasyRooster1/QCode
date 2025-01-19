@@ -42,6 +42,7 @@ import {tags} from "lezer/highlight"
 // @ts-ignore
 import {HighlightStyle} from "codemirror/language"
 import {hasSavedRecently, setHasSaved} from "./save";
+import {ViewUpdate} from "@codemirror/view";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
@@ -74,8 +75,8 @@ function setupEditor(language: Language) {
     editor = new EditorView({
         doc: "\n",
         extensions: extensions,
-        updateListener:onDocUpdate,
-        parent: document.querySelector(".code-editor"),
+
+        parent: document.querySelector(".code-editor")!,
     });
     // @ts-ignore
     window.editor = editor;
@@ -124,7 +125,7 @@ function getLanguagePair(identifier:Language): { func: any; lang: any } | null{
     return null;
 }
 
-function onDocUpdate(){
+function onDocUpdate(update: ViewUpdate){
     setHasSaved(false);
 }
 
