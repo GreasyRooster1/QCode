@@ -32,6 +32,7 @@ import { cpp } from "codemirror/lang-cpp/dist/index.js";
 import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js';
 import { tags } from "@lezer/highlight";
 import { HighlightStyle } from "@codemirror/language";
+import { setHasSaved } from "./save";
 const fixedFontTheme = EditorView.theme({
     '&': {
         font: "'JetBrains Mono', monospace",
@@ -107,7 +108,7 @@ function getLanguagePair(identifier) {
     return null;
 }
 function onDocUpdate() {
-    hasSavedRecently = false;
+    setHasSaved(false);
 }
 // @ts-ignore
 window.editor = null;

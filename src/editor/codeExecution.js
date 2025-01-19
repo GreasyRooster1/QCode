@@ -1,3 +1,5 @@
+import {frame} from "./executionHelper";
+
 const stopButton = document.querySelector('.stop-button');
 const runButton = document.querySelector('.run-button');
 
@@ -32,4 +34,4 @@ function getCodeFromEditor(){
 //when we get a message from the frame
 
 
-window.getCodeFromEditor = getCodeFromEditor;
+export {resetAllOutputs,getCodeFromEditor,iWindow,stopButton,runButton};

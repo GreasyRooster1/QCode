@@ -39,6 +39,7 @@ import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js'
 
 import {tags} from "@lezer/highlight"
 import {HighlightStyle} from "@codemirror/language"
+import {hasSavedRecently, setHasSaved} from "./save";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
@@ -122,7 +123,7 @@ function getLanguagePair(identifier:Language): { func: any; lang: any } | null{
 }
 
 function onDocUpdate(){
-    hasSavedRecently = false;
+    setHasSaved(false);
 }
 
 // @ts-ignore

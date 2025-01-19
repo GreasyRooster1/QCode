@@ -21,4 +21,8 @@ function setupAutoSave() {
     });
 }
 
-export {setupAutoSave}
+function setHasSaved(val){
+    hasSavedRecently = val;
+}
+
+export {setupAutoSave,hasSavedRecently,setHasSaved};
