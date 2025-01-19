@@ -5,7 +5,6 @@ import {setupScrollEvent} from "./steps";
 
 function init(){
     loadProjectFromUrlData()
-    loadLesson()
     setupAutoSave()
     setupShareEvents()
     setupScrollEvent()

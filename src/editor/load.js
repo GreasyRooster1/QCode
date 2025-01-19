@@ -5,6 +5,8 @@ import {JavascriptType} from "./languageTypes/javascript";
 import {WebType} from "./languageTypes/web/web";
 import {ArduinoType} from "./languageTypes/arduino";
 import {setupPanes} from "./panes";
+import {populateSteps} from "./utils/loadUtils";
+import {scrollToCurrentStep} from "./steps";
 
 let projectId=null;
 let userUid = null;
@@ -76,6 +78,7 @@ function updateLanguage(id){
 function loadLesson(projectId){
     get(ref(db,"lessons/"+projectId)).then((snapshot) => {
         const data = snapshot.val();
+        console.log(projectId)
         if(data.chapters[chapterNum]!==null) {
             scrollableSteps.innerHTML = "";
             populateSteps(data)

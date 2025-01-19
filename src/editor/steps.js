@@ -81,4 +81,4 @@ function setupScrollEvent(){
 
 }
 
-export {setupScrollEvent}
+export {setupScrollEvent,scrollToCurrentStep}
