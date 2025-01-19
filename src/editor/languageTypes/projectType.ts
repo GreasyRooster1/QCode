@@ -1,4 +1,9 @@
-import {Language, setupEditor} from "../../codeEditor.js";
+import {Language, setupEditor} from "../codeEditor";
+import {db} from "../../api/firebase";
+import {get, ref} from "firebase/database";
+import {getStoredUser} from "../../api/auth";
+import {setupPanes} from "../panes";
+import {showSaveAlert} from "../save";
 
 interface RunErrCallback {
     (content:string,type:string):void,
@@ -19,7 +24,7 @@ abstract class ProjectType {
 
     loadProjectData(projectId:string){
         this.projectId = projectId;
-        database.ref("userdata/"+getStoredUser().uid+"/projects/"+this.projectId).once("value",(snapshot:any)=>{
+        get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId)).then((snapshot:any)=>{
             this.projectData = snapshot.val();
             console.log(this.projectData);
             if(this.projectData!["lessonId"]==="none"){
