@@ -4,7 +4,7 @@ import {loadLessons} from "./loading/lessons"
 import {addProfileListener, loadUserData} from "./loading/user";
 import {loadAnnouncements} from "./loading/announcements";
 import {displayVersion} from "./version";
-import {initShareBoard, setupsShareBoardFrame} from "./shareBoard";
+import {initShareBoard, setupShareBoardFrame, setupsShareBoardFrame} from "./shareBoard";
 import {getStoredUser} from "../api/auth";
 import {setupFeaturedProject} from "./featuredProject";
 import {setupNewProjectEvents} from "./newProject";
@@ -27,6 +27,7 @@ function init(){
         hideCollapse:true,
         hideHome:true,
     })
+    setupShareBoardFrame();
     addProfileListener()
 
     loadBadges();
@@ -39,7 +40,6 @@ function init(){
     initShareBoard();
     setupFeaturedProject()
     setupNewProjectEvents()
-    setupsShareBoardFrame()
 }
 
 window.onload = init;

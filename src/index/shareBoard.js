@@ -123,26 +123,27 @@ function resetShareBoardFrame(){
 }
 
 function runShareBoardCode(){
-    console.log(iWindow)
     if (iWindow === null||featuredProjects===null) {
         return;
     }
-    console.log(featuredProjects[currentFeaturedProject].code)
 
     iWindow.postMessage(featuredProjects[currentFeaturedProject].code);
 }
 
-function setupsShareBoardFrame(){
+function setupShareBoardFrame(){
     shareBoardFrame.contentWindow.addEventListener("click", () => {
         window.location.href = "./shareBoard/shareBoard.html";
     })
     shareBoardFrame.addEventListener("load", () => {
-        iWindow = shareBoardFrame.contentWindow;
-        console.log(iWindow);
-        runShareBoardCode();
+        onLoadedFrame()
     });
-
+    onLoadedFrame()
 }
 
+function onLoadedFrame(){
+    iWindow = shareBoardFrame.contentWindow;
+    console.log(iWindow);
+    runShareBoardCode();
+}
 
-export {initShareBoard,setupsShareBoardFrame}
+export {initShareBoard,setupShareBoardFrame}
