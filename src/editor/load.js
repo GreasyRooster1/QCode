@@ -21,7 +21,7 @@ function loadProjectFromUrlData(){
     if(!searchParams.has("projectId")){
         return;
     }
-    let projectId = searchParams.get("projectId");
+    projectId = searchParams.get("projectId");
     if(!searchParams.has("uid")) {
         return;
     }

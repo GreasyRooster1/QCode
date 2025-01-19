@@ -67,8 +67,8 @@ function shareProject(){
         hidePopup();
         return;
     }
-
-    get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId)).then(function (snap) {
+    console.log("userdata/"+getStoredUser().uid+"/projects/"+projectId)
+    get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId)).then((snap)=> {
         let data = snap.val();
         //set metadata
         set(ref(db,"sharedProjects/metadata/"+sharedProjectId),cleanData({
