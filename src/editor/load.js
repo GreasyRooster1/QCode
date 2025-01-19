@@ -87,4 +87,4 @@ function loadLesson(projectId){
     });
 }
 
-export {loadProjectFromUrlData,loadLesson,projectType,projectId,scrollableSteps}
+export {loadProjectFromUrlData,loadLesson,projectType,projectId,scrollableSteps,chapterNum}

@@ -1,4 +1,6 @@
 import {setupPanes} from "../panes";
+import {chapterNum, projectId, projectType, scrollableSteps} from "../load";
+import {getStoredUser} from "../../api/auth";
 
 function populateSteps(data){
     createChapterStep(data);
@@ -98,3 +100,5 @@ function createChapterLink(chapterNumber,chapterData){
     }
     return linkEl.outerHTML;
 }
+
+export {populateSteps,createChapterLink,createStepFromObj,createNextChapterStep,createBufferSpace,createChapterStep,createStep}
