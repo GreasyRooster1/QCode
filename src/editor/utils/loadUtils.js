@@ -1,3 +1,5 @@
+import {setupPanes} from "../panes";
+
 function populateSteps(data){
     createChapterStep(data);
 

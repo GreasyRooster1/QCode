@@ -1,3 +1,5 @@
+import {projectType, scrollableSteps} from "./load";
+
 let everyStep;
 let highestViewedStepCount;
 
