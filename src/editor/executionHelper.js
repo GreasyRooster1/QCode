@@ -1,7 +1,6 @@
 // @ts-ignore
 import { editor } from "./codeEditor.js";
 const frame = document.querySelector('#exec-frame');
-const consoleOut = document.querySelector('.console-output-pane');
 let frameContent;
 const logNames = { log: "Info", warn: "Warning", error: "Error" };
 let frameLoadEvent;

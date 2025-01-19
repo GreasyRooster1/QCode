@@ -11,7 +11,6 @@ interface frameLoadCallback {
 }
 
 const frame: HTMLIFrameElement | null = document.querySelector('#exec-frame');
-const consoleOut = document.querySelector('.console-output-pane');
 let frameContent: Window | null;
 const logNames: Logs = {log:"Info",warn:"Warning",error:"Error"};
 let frameLoadEvent: {():void};

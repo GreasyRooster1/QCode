@@ -2,7 +2,7 @@ import {frame} from "./executionHelper";
 
 const stopButton = document.querySelector('.stop-button');
 const runButton = document.querySelector('.run-button');
-
+const consoleOut = document.querySelector('.console-output-pane');
 
 let iWindow = null;
 let runningCode = false;
