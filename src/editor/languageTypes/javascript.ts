@@ -8,7 +8,7 @@ import {writeToEditor} from "../utils/loadUtils";
 
 class JavascriptType extends ProjectType {
     constructor() {
-        super(false);
+        super(true);
     }
 
     setupEditor(): void {
