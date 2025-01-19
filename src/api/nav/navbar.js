@@ -31,17 +31,16 @@ function loadHandles(){
     changeProfileButton = document.querySelector(".change-profile-button");
     homeButton = document.querySelector(".home-link")
     pointsDisplayNum = document.querySelector(".points-display-num");
+    innerContent = document.querySelectorAll(".navbar *");
 }
 
 function initNavbar(settings){
-    navWrapper.addEventListener("load", ()=>{
-        loadHandles()
-        initUsername();
-        initPoints();
-        initAdmin();
-        addEvents();
-        checkSettings(settings);
-    });
+    loadHandles()
+    initUsername();
+    initPoints();
+    initAdmin();
+    addEvents();
+    checkSettings(settings);
 }
 function checkSettings(settings){
     if(settings===undefined){
@@ -54,6 +53,7 @@ function checkSettings(settings){
         removeNavArrow()
     }
     if(settings.collapsed){
+        navbarVisible= false;
         hideNav()
     }
 }
@@ -93,7 +93,6 @@ function initAdmin(){
 }
 
 function hideNav(){
-    console.log("sdfsdf")
     navWrapper.style.height = "0";
     navbarVisibilityButton.style.transform = "scaleY(-1) translateY(5px)";
     accountDropdownActive=false;
@@ -110,7 +109,6 @@ function showNav(){
 
 function addEvents(){
     navbarVisibilityButton.addEventListener("click",function (){
-        innerContent = document.querySelectorAll(".navbar *");
         navbarVisible = !navbarVisible;
         if(navbarVisible){
             showNav()
