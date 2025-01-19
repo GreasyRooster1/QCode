@@ -3,7 +3,7 @@ import {getSharedProjectId} from "../api/shareBoard";
 import {db} from "../api/firebase";
 import {get, ref} from "firebase/database";
 import {getCodeFromEditor} from "./codeExecution";
-import {projectType} from "./load";
+import {projectId, projectType} from "./load";
 
 const shareButton = document.querySelector('.share-button');
 const popupContainer = document.querySelector('.share-popup-container');
@@ -95,13 +95,13 @@ function showPopup(){
     popupContainer.style.opacity = "1";
     popupContainer.style.pointerEvents = "auto";
     if(isAlreadyShared){
-        db.ref("sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid)).once("value", (snap) => {
+        get(ref(db,"sharedProjects/metadata/"+getSharedProjectId(projectId,getStoredUser().uid))).then((snap) => {
             let data= snap.val();
             shareNameInput.value =data.name;
             shareDescInput.value =data.desc;
         })
     }else {
-        db.ref("userdata/" + getStoredUser().uid + "/projects/" + projectId + "/name").once("value").then(function (snap) {
+        get(ref(db,"userdata/" + getStoredUser().uid + "/projects/" + projectId + "/name")).then(function (snap) {
             shareNameInput.value = snap.val();
         })
     }

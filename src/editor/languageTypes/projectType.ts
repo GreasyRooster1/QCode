@@ -55,6 +55,7 @@ abstract class ProjectType {
             this.stop();
         })
         document.querySelector('.share-button')?.addEventListener('click', (e) => {
+            console.log("sadsd")
             if(!this.allowShare){
                 return
             }
