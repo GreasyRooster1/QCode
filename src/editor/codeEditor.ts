@@ -1,41 +1,41 @@
 // @ts-ignore
-import { basicSetup, EditorView} from "codemirror/codemirror/dist/index.js"
+import { basicSetup, EditorView} from "codemirror"
 // @ts-ignore
-import { keymap } from "codemirror/view/dist/index.js"
+import { keymap } from "codemirror/view"
 // @ts-ignore
-import { indentWithTab } from "codemirror/commands/dist/index.js"
+import { indentWithTab } from "codemirror/commands"
 // @ts-ignore
-import { linter } from 'codemirror/lint/dist/index.js'
+import { linter } from 'codemirror/lint'
 
 // @ts-ignore
-import { javascript } from "codemirror/lang-javascript/dist/index.js"
+import { javascript } from "codemirror/lang-javascript"
 // @ts-ignore
-import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
+import { javascriptLanguage } from 'codemirror/lang-javascripts'
 
 // @ts-ignore
-import { rust } from "codemirror/lang-rust/dist/index.js"
+import { rust } from "codemirror/lang-rust"
 // @ts-ignore
-import { rustLanguage } from 'codemirror/lang-rust/dist/index.js'
+import { rustLanguage } from 'codemirror/lang-rust'
 
 // @ts-ignore
-import { html } from "codemirror/lang-html/dist/index.js"
+import { html } from "codemirror/lang-html"
 // @ts-ignore
-import { htmlLanguage } from 'codemirror/lang-html/dist/index.js'
+import { htmlLanguage } from 'codemirror/lang-html'
 
 // @ts-ignore
-import { css } from "codemirror/lang-css/dist/index.js"
+import { css } from "codemirror/lang-css"
 // @ts-ignore
-import { cssLanguage } from 'codemirror/lang-css/dist/index.js'
+import { cssLanguage } from 'codemirror/lang-css'
 
 // @ts-ignore
-import { python } from "codemirror/lang-python/dist/index.js"
+import { python } from "codemirror/lang-python"
 // @ts-ignore
-import { pythonLanguage } from 'codemirror/lang-python/dist/index.js'
+import { pythonLanguage } from 'codemirror/lang-python'
 
 // @ts-ignore
-import { cpp } from "codemirror/lang-cpp/dist/index.js"
+import { cpp } from "codemirror/lang-cpp"
 // @ts-ignore
-import { cppLanguage } from 'codemirror/lang-cpp/dist/index.js'
+import { cppLanguage } from 'codemirror/lang-cpp'
 
 // @ts-ignore
 import {tags} from "lezer/highlight"
