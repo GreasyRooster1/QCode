@@ -120,7 +120,7 @@ function clearLessons(){
 
 function setupLessonChartLink(){
     document.querySelector(".lessons-chart-link").addEventListener("click", function(){
-        window.location.href = "lessons/lessons.html";
+        window.location.href = "./lessons.html";
     })
 }
 
