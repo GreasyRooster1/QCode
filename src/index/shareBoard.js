@@ -21,7 +21,6 @@ function initShareBoard(){
     getShareBoardFeaturedProjects(function(projects){
         featuredProjects = projects;
         featuredProjects[currentFeaturedProject].loadProjectCode((code,args)=>{
-            console.log(featuredProjects)
             reloadCurrentFeaturedProject();
             runShareBoardCode()
         });
@@ -124,14 +123,14 @@ function resetShareBoardFrame(){
 }
 
 function runShareBoardCode(){
+    console.log(iWindow)
     if (iWindow === null||featuredProjects===null) {
         return;
     }
+    console.log(featuredProjects[currentFeaturedProject].code)
 
     iWindow.postMessage(featuredProjects[currentFeaturedProject].code);
 }
-
-
 
 function setupsShareBoardFrame(){
     shareBoardFrame.contentWindow.addEventListener("click", () => {
