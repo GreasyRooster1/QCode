@@ -4,6 +4,8 @@ import {get, ref} from "firebase/database";
 import {getStoredUser} from "../../api/auth";
 import {setupPanes} from "../panes";
 import {showSaveAlert} from "../save";
+import {projectType} from "../load";
+import {runPopupPreviewCode, showPopup} from "../share";
 
 interface RunErrCallback {
     (content:string,type:string):void,
@@ -52,6 +54,15 @@ abstract class ProjectType {
         document.querySelector(".stop-button")?.addEventListener("click", ()=>{
             this.stop();
         })
+        document.querySelector('.share-button')?.addEventListener('click', (e) => {
+            if(!this.allowShare){
+                return
+            }
+            this.saveCode()
+            showPopup();
+            runPopupPreviewCode();
+            this.share();
+        });
     }
 
     checkShareAllowed(){
@@ -64,6 +75,10 @@ abstract class ProjectType {
 
     setupEditorLanguage(){
         setupEditor(this.getLanguage());
+    }
+
+    share(){
+
     }
 
     /*

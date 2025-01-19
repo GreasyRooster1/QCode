@@ -3,6 +3,7 @@ import {getSharedProjectId} from "../api/shareBoard";
 import {db} from "../api/firebase";
 import {get, ref} from "firebase/database";
 import {getCodeFromEditor} from "./codeExecution";
+import {projectType} from "./load";
 
 const shareButton = document.querySelector('.share-button');
 const popupContainer = document.querySelector('.share-popup-container');
@@ -14,11 +15,7 @@ const previewIframe = document.getElementById('share-preview-frame');
 
 let isAlreadyShared = false;
 
-// shareButton.addEventListener('click', (e) => {
-//     rawSave();
-//     showPopup();
-//     runPopupPreviewCode();
-// });
+
 
 function setupShareEvents(){
     closePopupButton.addEventListener("click", (e) => {
@@ -132,4 +129,4 @@ function checkSharedStatus(){
     })
 }
 
-export {setupShareEvents,checkSharedStatus}
+export {setupShareEvents,checkSharedStatus,showPopup,runPopupPreviewCode}

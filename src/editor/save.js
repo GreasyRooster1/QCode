@@ -1,3 +1,5 @@
+import {projectType} from "./load";
+
 const saveButton = document.querySelector('.save-button');
 const saveAlert = document.querySelector('.save-alert');
 let hasSavedRecently = false;
