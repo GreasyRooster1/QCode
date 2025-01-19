@@ -40,16 +40,16 @@ abstract class ProjectType {
     }
 
     setupEventListeners(){
-        document.querySelector(".save-button")!.addEventListener("click", ()=>{
+        document.querySelector(".save-button")?.addEventListener("click", ()=>{
             showSaveAlert()
             this.saveCode();
         })
-        document.querySelector(".run-button")!.addEventListener("click", ()=>{
+        document.querySelector(".run-button")?.addEventListener("click", ()=>{
             this.saveCode();
             showSaveAlert()
             this.run(this.runErrorCallback);
         })
-        document.querySelector(".stop-button")!.addEventListener("click", ()=>{
+        document.querySelector(".stop-button")?.addEventListener("click", ()=>{
             this.stop();
         })
     }

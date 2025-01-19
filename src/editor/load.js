@@ -1,4 +1,4 @@
-import {get, ref} from "firebase/database";
+import {get, ref, set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
 import {JavascriptType} from "./languageTypes/javascript";
@@ -35,10 +35,11 @@ function loadProjectFromUrlData(){
         if(snapshot.exists()){
             id = snapshot.val();
         }else{
-            db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language").set("javascript");
+            set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language"),"javascript");
         }
         updateLanguage(id).then((projectType) =>
         {
+            console.log(projectType.run)
             projectType.setupEditor();
             projectType.setupEditorLanguage()
             projectType.setupEventListeners()
