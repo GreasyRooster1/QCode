@@ -49,7 +49,7 @@ function checkSettings(settings){
     if(settings.hideHome){
         removeNavHome()
     }
-    if(settings.hideCollapse){
+    if(!settings.hideCollapse){
         removeNavArrow()
     }
     if(settings.collapsed){

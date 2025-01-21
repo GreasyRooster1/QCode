@@ -8,6 +8,7 @@ import {initNavbar} from "../api/nav/navbar";
 function init(){
     initNavbar({
         collapsed:true,
+        showCollapse:true,
     })
     loadProjectFromUrlData()
     setupAutoSave()

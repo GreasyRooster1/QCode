@@ -24,7 +24,6 @@ function init(){
     lockPageToAuth()
 
     initNavbar({
-        hideCollapse:true,
         hideHome:true,
     })
     setupShareBoardFrame();
