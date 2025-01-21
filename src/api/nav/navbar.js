@@ -84,11 +84,7 @@ function initAdmin(){
     accountOptions.appendChild(option);
 
     option.addEventListener("click",function () {
-        if(window.location.href.includes("index.html")||window.location.href.endsWith("/")) {
-            window.location.href = "adminConsole/adminConsole.html";
-        }else{
-            window.location.href = "../adminConsole/adminConsole.html";
-        }
+        window.location.href = "./adminConsole.html";
     });
 }
 
@@ -119,11 +115,7 @@ function addEvents(){
 
     userLink.addEventListener("click", function (e){
         if(userLink.innerHTML==="Login"){
-            if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-                window.location.replace("login/login.html");
-            }else {
-                window.location.href = "../login/login.html";
-            }
+            window.location.href = "./login.html";
             return;
         }
 
@@ -139,11 +131,7 @@ function addEvents(){
 
     logoutButton.addEventListener("click", function (e){
         logOutUser();
-        if(window.location.href.includes("index.html")||window.location.href.endsWith("/")){
-            window.location.href = "login/login.html";
-        }else {
-            window.location.href = "../login/login.html";
-        }
+         window.location.href = "./login.html";
     })
 
     changeProfileButton.addEventListener("click",()=>{
@@ -151,7 +139,7 @@ function addEvents(){
     });
 
     homeButton.addEventListener("click",function () {
-        window.location.href = "../";
+        window.location.href = "index.html";
     });
 }
 
