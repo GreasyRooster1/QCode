@@ -70,7 +70,7 @@ function setupArrowEvents(){
 
 function setupMoreRedirect(){
     moreButton.addEventListener("click", () => {
-        window.location.href = "./shareBoard/shareBoard.html";
+        window.location.href = "./shareBoard.html";
     })
 }
 
