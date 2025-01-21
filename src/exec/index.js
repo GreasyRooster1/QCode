@@ -53,14 +53,14 @@ function runJs(js){
         append+="_"+acceptedFunctions[i]+":"+acceptedFunctions[i]+", ";
     }
     append+="_draw:draw, _setup:setup})";
-    let required = eval(js+"\n "+append);
+    let functions = eval(js+"\n "+append);
 
     let eventFunctions = [];
 
     for (let acceptedFunc of acceptedFunctions){
         let funcDef;
         try {
-            funcDef = eval(acceptedFunc);
+            funcDef = functions.acceptedFunc;
         }catch(e){
             funcDef = undefined;
         }
@@ -69,8 +69,8 @@ function runJs(js){
             eventFunctions.push(funcDef);
         }
     }
-    let draw = required._draw;
-    let setup = required._setup;
+    let draw = functions._draw;
+    let setup = functions._setup;
 
     if(draw===undefined||setup===undefined){
         return;
