@@ -12,11 +12,11 @@ let iWindow = null;
 function loadProject() {
     const urlParams = new URLSearchParams(window.location.search);
     shareBoardId = urlParams.get('shareboardid');
-    get(ref(db,"sharedProjects/metadata/"+shareBoardID)).then((snapshot) => {
+    get(ref(db,"sharedProjects/metadata/"+shareBoardId)).then((snapshot) => {
         projectMetadata = snapshot.val();
         insertInfo()
     })
-    get(ref(db,"sharedProjects/projectData/"+shareBoardID)).then((snapshot) => {
+    get(ref(db,"sharedProjects/projectData/"+shareBoardId)).then((snapshot) => {
         projectCode = snapshot.val();
         execFrame.contentWindow.location.reload();
         window.editor.dispatch({changes: {
