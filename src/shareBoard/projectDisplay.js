@@ -64,7 +64,7 @@ class ProjectDisplay {
 
         this.domElement.classList.add("project-display");
 
-        this.iframe.src = "../editor/exec/exec.html";
+        this.iframe.src = "./exec.html";
 
         this.title.classList.add("title");
         this.titleWrapper.classList.add("title-wrapper");
