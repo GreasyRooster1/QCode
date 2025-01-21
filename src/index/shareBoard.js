@@ -132,7 +132,7 @@ function runShareBoardCode(){
 
 function setupShareBoardFrame(){
     shareBoardFrame.contentWindow.addEventListener("click", () => {
-        window.location.href = "./shareBoard/shareBoard.html";
+        window.location.href = "./shareBoard.html";
     })
     shareBoardFrame.addEventListener("load", () => {
         onLoadedFrame()
