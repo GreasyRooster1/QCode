@@ -4,20 +4,7 @@
     <meta charset="UTF-8">
     <title>Project View | QCode</title>
 
-    <script type="importmap">
-        {
-            "imports": {
-                "codemirror/": "https://deno.land/x/codemirror_esm@v6.0.1/esm/"
-            }
-        }
-    </script>
-
     <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
-
-    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
-    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <style>
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
@@ -25,34 +12,12 @@
 
     <script src="https://kit.fontawesome.com/464579a9a3.js" crossorigin="anonymous"></script>
 
-    <link href="../src/global/nav/navbar.css" rel="stylesheet">
-    <link href="../src/global/global.css" rel="stylesheet">
+    <link href="./style/navbar.css" rel="stylesheet">
+    <link href="./style/global.css" rel="stylesheet">
 
-    <link href="../src/shareBoard/css/global.css" rel="stylesheet">
+    <link href="./style/shareBoard/global.css" rel="stylesheet">
 
-    <link href="../src/shareBoard/css/project/index.css" rel="stylesheet">
-
-    <script src="../src/global/firebase/init.js" defer></script>
-    <script src="../src/global/firebase/auth.js" defer></script>
-    <script src="../src/global/firebase/database.js" defer></script>
-    <script src="../src/global/firebase/lockPageToAuth.js" defer></script>
-    <script src="../src/global/firebase/shareBoard.js" defer></script>
-
-    <script src="../src/global/util/points.js" defer></script>
-    <script src="../src/global/customElements.js" defer></script>
-    <script src="../src/global/nav/navbar.js" defer></script>
-    <script src="../src/global/util/rarity.js" defer></script>
-    <script src="../src/global/util/code.js" defer></script>
-    <script src="../src/global/util/projects.js" defer></script>
-
-    <script src="../src/js/loading/lessons.js" defer></script>
-    <script src="../src/js/loading/projects.js" defer></script>
-
-    <script src="../src/shareBoard/js/project/tabs.js"></script>
-    <script src="../src/shareBoard/js/project/remix.js"></script>
-    <script src="../src/shareBoard/js/project/project.js"></script>
-    <script src="../src/shareBoard/js/project/code.js" async type="module" defer></script>
-    <script src="../src/shareBoard/js/project/index.js" defer></script>
+    <link href="./style/sharedProject/index.css" rel="stylesheet">
 </head>
 <body>
     <brand-nav></brand-nav>
@@ -131,5 +96,7 @@
             <iframe id="exec-frame" src="../src/editor/exec/exec.html"></iframe>
         </div>
     </div>
+
+    <script src="./bundles/sharedProject.bundle.js" defer></script>
 </body>
 </html>
