@@ -1,3 +1,7 @@
+import {projectDataHeap} from "./index";
+import {get, ref} from "firebase/database";
+import {db} from "../api/firebase";
+
 class ProjectDisplay {
     constructor(projectData,index){
         this.index = index;
@@ -144,12 +148,12 @@ class ProjectDisplay {
     }
 
     updateUserData(){
-        db.ref("userdata/"+this.project.author+"/username").once("value",(snapshot) => {
+        get(ref(db,"userdata/"+this.project.author+"/username")).then((snapshot) => {
             console.log(this);
             this.userNameDisplay.innerHTML = snapshot.val();
         })
 
-        db.ref("userdata/"+this.project.author+"/profileIcon").once("value",(snapshot) => {
+        get(ref(db,"userdata/"+this.project.author+"/profileIcon")).then((snapshot) => {
             this.userIconDisplay.setAttribute("src", snapshot.val());
         })
 
@@ -176,3 +180,5 @@ class ProjectDisplay {
         this.domElement.classList.add(this.domClass);
     }
 }
+
+export {ProjectDisplay}

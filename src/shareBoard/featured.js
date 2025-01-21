@@ -1,3 +1,5 @@
+import {getShareBoardFeaturedProjects} from "../api/shareBoard";
+import {projectDataHeap} from "./index";
 
 class FeaturedProject extends ProjectDisplay{
     constructor(projectData,index) {
@@ -19,3 +21,6 @@ function initFeaturedBar(){
     })
 }
 
+
+
+export {initFeaturedBar,FeaturedProject}

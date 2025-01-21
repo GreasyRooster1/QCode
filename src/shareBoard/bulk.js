@@ -1,3 +1,6 @@
+import {projectDataHeap} from "./index";
+import {getShareBoardProjects} from "../api/shareBoard";
+import {ProjectDisplay} from "./projectDisplay";
 
 class BulkProject extends ProjectDisplay{
     constructor(projectData,index) {
@@ -43,3 +46,5 @@ function initBulk() {
         }
     })
 }
+
+export {BulkProject,initBulk};

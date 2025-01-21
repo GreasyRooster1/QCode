@@ -1,11 +1,13 @@
+import {initNavbar} from "../api/nav/navbar";
+
 let projectDataHeap = [];
 
 function init(){
+    initNavbar()
     initFeaturedBar();
     initBulk();
-    removeNavArrow();
 }
 
+window.onload = init;
 
-
-init();
+export {projectDataHeap};
