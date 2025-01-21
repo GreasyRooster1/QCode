@@ -60,6 +60,3 @@ function __canvasTest(){
     textAlign(CENTER);
     text("Welcome back",250,250);
 }
-
-
-export {acceptedFunctions,startP5}

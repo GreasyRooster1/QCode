@@ -1,5 +1,3 @@
-import {acceptedFunctions, startP5} from "./p5Helper";
-
 let parent = null;
 
 const oldLog = console.log;
@@ -48,19 +46,14 @@ document.addEventListener('contextmenu', event => {
 
 function runJs(js){
     //clear dangerous objects and run code
-    let append = "(";
-    for (let i=0; i < acceptedFunctions; i++) {
-        append+="_"+acceptedFunctions[i]+":"+acceptedFunctions[i]+", ";
-    }
-    append+="_draw:draw, _setup:setup})";
-    let functions = eval(js+"\n "+append);
+    eval(js);
 
     let eventFunctions = [];
 
     for (let acceptedFunc of acceptedFunctions){
         let funcDef;
         try {
-            funcDef = functions.acceptedFunc;
+            funcDef = eval(acceptedFunc);
         }catch(e){
             funcDef = undefined;
         }
@@ -69,8 +62,6 @@ function runJs(js){
             eventFunctions.push(funcDef);
         }
     }
-    let draw = functions._draw;
-    let setup = functions._setup;
 
     if(draw===undefined||setup===undefined){
         return;
@@ -78,5 +69,3 @@ function runJs(js){
 
     startP5(draw,setup,eventFunctions);
 }
-
-export {runJs}
