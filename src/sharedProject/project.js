@@ -2,6 +2,7 @@ import {get, ref} from "firebase/database";
 import {db} from "../api/firebase";
 import {getDateString} from "../api/util/util";
 import {openLesson} from "../api/util/projects";
+import {editorView} from "./code";
 
 let projectMetadata;
 let projectCode;
@@ -21,9 +22,9 @@ function loadProject() {
     get(ref(db,"sharedProjects/projectData/"+shareBoardId)).then((snapshot) => {
         projectCode = snapshot.val();
         execFrame.contentWindow.location.reload();
-        window.editor.dispatch({changes: {
+        editorView.dispatch({changes: {
             from: 0,
-            to: window.editor.state.doc.length,
+            to: editorView.state.doc.length,
             insert: projectCode
         }})
     })
