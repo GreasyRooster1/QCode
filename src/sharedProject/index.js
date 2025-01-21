@@ -1,5 +1,7 @@
+import {initNavbar} from "../api/nav/navbar";
+
 function init(){
-    removeNavArrow();
+    initNavbar()
     initTabs();
     setupFrame();
     loadProject();
