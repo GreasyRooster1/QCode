@@ -1,4 +1,6 @@
 import {initNavbar} from "../api/nav/navbar";
+import {initBulk} from "./bulk";
+import {initFeaturedBar} from "./featured";
 
 let projectDataHeap = [];
 

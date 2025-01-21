@@ -1,5 +1,6 @@
 import {getShareBoardFeaturedProjects} from "../api/shareBoard";
 import {projectDataHeap} from "./index";
+import {ProjectDisplay} from "./projectDisplay";
 
 class FeaturedProject extends ProjectDisplay{
     constructor(projectData,index) {
