@@ -90,7 +90,7 @@ function insertInfo(){
 function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTitle){
     originalInfo.style.display="flex";
 
-    db.ref("sharedProjects/metadata/"+projectMetadata.original).once("value").then((snapshot) => {
+    get(ref(db,"sharedProjects/metadata/"+projectMetadata.original)).then((snapshot) => {
         let data = snapshot.val();
 
         loadUserToHTML(originalUsername,originalImg,data.author);
