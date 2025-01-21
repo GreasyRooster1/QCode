@@ -1,3 +1,6 @@
+import {get, ref, set} from "firebase/database";
+import {db} from "../api/firebase";
+import {getStoredUser} from "../api/auth";
 
 
 function initRemix(){
@@ -8,12 +11,12 @@ function initRemix(){
             return;
         }
         let cleanProjectId = name.toLowerCase().replaceAll("[^a-z0-9]","-");
-        db.ref("userdata/"+getStoredUser().uid+"/projects").child(cleanProjectId).once("value", (snap) => {
+        get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId)).then( (snap) => {
             if(snap.exists()){
                 alert("Project already exists with that name!");
                 return;
             }
-            db.ref("userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId).set({
+            set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId),{
                 code:projectCode,
                 lessonId:"none",
                 name:name,
@@ -31,3 +34,4 @@ function initRemix(){
 function getLinkToProject(projectId,uid,chapterNumber){
     return "editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
 }
+export {getLinkToProject,initRemix};

@@ -123,4 +123,4 @@ function setupFrame(){
     });
 }
 
-export {setupFrame,loadProject}
+export {setupFrame,loadProject,projectCode,projectMetadata,shareBoardId}

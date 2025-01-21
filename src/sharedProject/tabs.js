@@ -19,3 +19,5 @@ function initTabs(){
         });
     }
 }
+
+export {initTabs,changeTab,tabBarTabs,tabBarSections};
