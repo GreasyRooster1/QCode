@@ -123,8 +123,8 @@ class ProjectDisplay {
             thisProject.updateInteractions();
         })
         this.openIcon.addEventListener("click",()=>{
-            console.log("project.html?shareboardid="+this.project.pid)
-            window.location.href = "project.html?shareboardid="+this.project.pid;
+            console.log("./sharedProject.html?shareboardid="+this.project.pid)
+            window.location.href = "./sharedProject.html?shareboardid="+this.project.pid;
         });
     }
 
