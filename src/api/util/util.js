@@ -9,6 +9,9 @@ const isValidUrl = urlString=> {
 }
 
 function getDateString(unixStamp){
+    if(unixStamp == null||unixStamp<=0){
+        return 'No Date';
+    }
     let date = new Date(unixStamp * 1000);
 
     let day = date.getDate();
