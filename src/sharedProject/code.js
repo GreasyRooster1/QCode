@@ -1,9 +1,9 @@
-import { basicSetup, EditorView} from "codemirror/codemirror/dist/index.js"
-import { keymap } from "codemirror/view/dist/index.js"
-import { javascript } from "codemirror/lang-javascript/dist/index.js"
-import { indentWithTab } from "codemirror/commands/dist/index.js"
-import { linter } from 'codemirror/lint/dist/index.js'
-import { javascriptLanguage } from 'codemirror/lang-javascript/dist/index.js'
+import { basicSetup, EditorView} from "@codemirror"
+import { keymap } from "@codemirror/view"
+import { javascript } from "@codemirror/lang-javascript"
+import { indentWithTab } from "@codemirror/commands"
+import { linter } from '@codemirror/lint'
+import { javascriptLanguage } from '@codemirror/lang-javascript'
 
 const customTheme = EditorView.theme({
     '&': {
@@ -31,6 +31,5 @@ function onDocUpdate(){
     window.editor.state.doc.toString();
 }
 
-window.editor = editorView;
 
-export const editor=editorView;
+export {editorView,customTheme};
