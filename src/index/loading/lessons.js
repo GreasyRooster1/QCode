@@ -2,7 +2,7 @@ import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
 import {get, ref, set} from "firebase/database";
 import {createProject} from "../../api/project";
-import {openProjectInEditor} from "../../api/util/projects";
+import {openLesson, openProjectInEditor} from "../../api/util/projects";
 import {lessonsDisplay} from "../index";
 
 let defaultRecommendedLessons = [
@@ -79,39 +79,6 @@ function lessonClickHandle(e){
     let linkEl = e.target;
     let lessonId = linkEl.getAttribute("data-lessonid");
     openLesson(lessonId);
-}
-
-function openLesson(lessonId){
-    let uid = getStoredUser().uid;
-    let loc = "userdata/"+uid+"/projects/";
-    let projectId = lessonId
-    get(ref(db,loc+projectId)).then(function (snap) {
-        if(snap.exists()){
-            openProjectInEditor(projectId,uid,snap.val().currentChapter);
-            return;
-        }
-        get(ref(db,"lessons/"+lessonId)).then(function (snap) {
-            let lessonData = snap.val();
-            if(lessonData.isExternal){
-                startExternalLesson(lessonData);
-            }else {
-                startInternalLesson(loc,lessonId,lessonData)
-            }
-        });
-    })
-}
-
-function startExternalLesson(lessonData){
-    window.location.href = lessonData.link;
-}
-
-function startInternalLesson(ref,lessonId,lessonData){
-    let starterCode = lessonData.starterCode;
-    if(starterCode==="default"){
-        starterCode = defaultCode;
-    }
-    createProject(lessonId,lessonData.name,lessonData.type,lessonId)
-    openProjectInEditor(lessonId,getStoredUser().uid,0);
 }
 
 function clearLessons(){
