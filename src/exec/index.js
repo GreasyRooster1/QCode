@@ -48,7 +48,12 @@ document.addEventListener('contextmenu', event => {
 
 function runJs(js){
     //clear dangerous objects and run code
-    let required = eval(js+"\n ({_draw:draw,_setup:setup}) ");
+    let append = "(";
+    for (let i=0; i < acceptedFunctions; i++) {
+        append+="_"+acceptedFunctions[i]+":"+acceptedFunctions[i]+", ";
+    }
+    append+="_draw:draw, _setup:setup})";
+    let required = eval(js+"\n "+append);
 
     let eventFunctions = [];
 
