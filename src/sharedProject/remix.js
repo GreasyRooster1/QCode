@@ -1,6 +1,7 @@
 import {get, ref, set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
+import {projectCode, shareBoardId} from "./project";
 
 
 function initRemix(){
@@ -23,7 +24,7 @@ function initRemix(){
                 currentChapter:0,
                 currentStep:0,
                 timestamp:Date.now()/1000,
-                original:shareBoardID,
+                original:shareBoardId,
             }).then(() => {
                 location.href = getLinkToProject(cleanProjectId,getStoredUser().uid,0);
             })

@@ -1,5 +1,7 @@
 import {get, ref} from "firebase/database";
 import {db} from "../api/firebase";
+import {getDateString} from "../api/util/util";
+import {openLesson} from "../api/util/projects";
 
 let projectMetadata;
 let projectCode;
