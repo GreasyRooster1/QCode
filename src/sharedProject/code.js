@@ -1,4 +1,4 @@
-import { basicSetup, EditorView} from "@codemirror"
+import { basicSetup, EditorView} from "codemirror"
 import { keymap } from "@codemirror/view"
 import { javascript } from "@codemirror/lang-javascript"
 import { indentWithTab } from "@codemirror/commands"
