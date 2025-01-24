@@ -44,7 +44,7 @@ loginButton.addEventListener("click", function(){
                     if(!snap.exists()){
                         createUser(userCredential.user.uid,username)
                     }
-                    window.location.href = "../";
+                    window.location.href = returnURL;
                 })
             });
         })
