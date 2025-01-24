@@ -53,6 +53,4 @@ function clearBadges(){
     badgesDisplay.innerHTML = "";
 }
 
-
-
-setupBadge();
+export {setupBadge}
