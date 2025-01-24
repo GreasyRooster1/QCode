@@ -28,7 +28,7 @@ const requiredUserData = [
     {name:"profileIcon",val:"https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/user.png?raw=true"},
 ]
 
-let returnURL = "../";
+let returnURL = "./index.html";
 
 loginButton.addEventListener("click", function(){
     let username = usernameInput.value;
@@ -37,6 +37,7 @@ loginButton.addEventListener("click", function(){
 
     signInWithEmailAndPassword(auth,email, password)
         .then((userCredential) => {
+            debugger
             console.log("logged in user");
             storeUser(userCredential.user, () => {
                 get(ref(db,"userdata/"+userCredential.user.uid)).then((snap)=>{
@@ -66,9 +67,9 @@ function getReturnURL(){
 
 function createUser(uid,username){
     for(let dataPoint of requiredUserData) {
-        set(ref("userdata/" + uid+"/"+dataPoint.name),dataPoint.val);
+        set(ref(db,"userdata/" + uid+"/"+dataPoint.name),dataPoint.val);
     }
-    set(ref("userdata/" + uid+"/username"),username);
+    set(ref(db,"userdata/" + uid+"/username"),username);
 }
 
 
