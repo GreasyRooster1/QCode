@@ -1,8 +1,12 @@
+import {getStoredUser} from "../api/auth";
+import {db} from "../api/firebase";
+import {get, ref} from "firebase/database";
+
 function lockToAdminAuth() {
     if (getStoredUser() === null) {
         redirect()
     } else {
-        db.ref("userpermissions/" + getStoredUser().uid).once("value").then((snapshot) => {
+        get(ref(db,"userpermissions/" + getStoredUser().uid)).then((snapshot) => {
             let data = snapshot.val();
             if (data === null) {
                 redirect();
