@@ -2,7 +2,7 @@
 //no i dont want to know how this can be    done better
 import p5 from 'p5';
 import {Camera} from "./camera";
-import {loadLessons} from "../index/loading/lessons";
+import {loadLessons} from "./lessons";
 import {setupColors} from "./colors";
 import {p5 as currentColors} from "p5/lib/p5";
 import {loadLessonsMetadata, solvePosition} from "./lesson";
