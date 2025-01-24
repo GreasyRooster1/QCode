@@ -1,3 +1,9 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth, db} from "../api/firebase";
+import {displayAuthErrors, extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
+import {get, ref, set} from "firebase/database";
+
+
 const loginButton = document.querySelector(".login-button");
 const usernameInput = document.querySelector(".username-input");
 const passwordInput = document.querySelector(".password-input");
@@ -27,12 +33,13 @@ let returnURL = "../";
 loginButton.addEventListener("click", function(){
     let username = usernameInput.value;
     let password = passwordInput.value;
+    let email = extractEmailFromUsername(username)
 
-    firebase.auth().signInWithEmailAndPassword(extractEmailFromUsername(username), password)
+    signInWithEmailAndPassword(auth,email, password)
         .then((userCredential) => {
             console.log("logged in user");
             storeUser(userCredential.user, () => {
-                db.ref("userdata/"+userCredential.user.uid).once("value").then((snap)=>{
+                get(ref(db,"userdata/"+userCredential.user.uid)).then((snap)=>{
                     if(!snap.exists()){
                         createUser(userCredential.user.uid,username)
                     }
@@ -59,9 +66,9 @@ function getReturnURL(){
 
 function createUser(uid,username){
     for(let dataPoint of requiredUserData) {
-        db.ref("userdata/" + uid+"/"+dataPoint.name).set(dataPoint.val);
+        set(ref("userdata/" + uid+"/"+dataPoint.name),dataPoint.val);
     }
-    db.ref("userdata/" + uid+"/username").set(username);
+    set(ref("userdata/" + uid+"/username"),username);
 }
 
 
