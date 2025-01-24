@@ -8,11 +8,11 @@ const addUserButton = document.querySelector(".create-user-button");
 
 function setupButtonEvents() {
     lessonCreatorButton.addEventListener("click", (e) => {
-        window.location.href = "../../dist/editor.html"
+        window.location.href = "./editor.html"
     })
 
     homeButton.addEventListener("click", (e) => {
-        window.location.href = "../";
+        window.location.href = "./index.html";
     })
 
     addUserButton.addEventListener("click", (e) => {
