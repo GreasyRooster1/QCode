@@ -1,5 +1,7 @@
 //yes im using p5 while teaching it at the same time
-//no i dont want to know how this can be done better
+//no i dont want to know how this can be    done better
+import p5 from 'p5';
+import {Camera} from "./camera";
 
 let darkMode = false;
 let camera = new Camera(0,0);
@@ -7,31 +9,31 @@ let lessonsIndex = [];
 let rootLesson;
 let font;
 
-new p5(function (){
-    p5.setup(){
+new p5((p) => {
+    p.setup = () => {
         const root = document.documentElement;
         const styles = getComputedStyle(root);
-        const navHeight = styles.getPropertyValue("--navbar-height").replace("px","");
+        const navHeight = styles.getPropertyValue("--navbar-height").replace("px", "");
         let height = window.innerHeight - navHeight;
-        textFont("JetBrains Mono")
-        createCanvas(window.innerWidth,height).parent("#canvas-parent");
+        p.textFont("JetBrains Mono")
+        p.createCanvas(window.innerWidth, height).parent("#canvas-parent");
         setupColors();
-        loadLessons((r)=>{
+        loadLessons((r) => {
             rootLesson = r;
             solvePosition(rootLesson);
             loadLessonsMetadata()
             beginCheckingStatuses();
         });
 
-    }
+    };
 
-    function draw(){
+    p.draw = () => {
         camera.move();
         camera.apply();
         drawBackground();
         drawLessons();
     }
-})
+});
 
 function drawLessons(){
     for(let [id,lesson] of Object.entries(lessonsIndex)){
