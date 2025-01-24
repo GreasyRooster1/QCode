@@ -90,4 +90,4 @@ function clearLessons(){
 
 
 
-setupLessons();
+export {setupLessons};

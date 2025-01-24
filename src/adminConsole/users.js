@@ -1,3 +1,6 @@
+import {db} from "../api/firebase";
+import {get, ref, set} from "firebase/database";
+
 const userDisplay = document.querySelector('.users-display');
 const userDetailsBadgeDisplay = document.querySelector('.user-details-badges-display');
 
@@ -24,7 +27,7 @@ function setupUsers(){
 }
 
 function loadUsers(){
-    db.ref('userdata').once('value').then((snapshot) => {
+    get(ref(db,'userdata')).then((snapshot) => {
         const data = snapshot.val();
         clearUsers();
         console.log(data);
@@ -104,7 +107,8 @@ addBadgeButton.addEventListener("click",function (){
     let badges = dbUserdata[selectedUserUid].badges;
     badges.push({id:newBadgeId});
 
-    db.ref("userdata/" + selectedUserUid+"/badges").set(badges);
+    set(ref(db,"userdata/" + selectedUserUid+"/badges"),badges);
 })
 
-setupUsers();
+
+export {setupUsers};

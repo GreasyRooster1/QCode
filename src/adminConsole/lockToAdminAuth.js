@@ -1,18 +1,19 @@
-
-if(getStoredUser()===null){
-    redirect()
-}else{
-    db.ref("userpermissions/"+getStoredUser().uid).once("value").then((snapshot) => {
-       let data = snapshot.val();
-       if(data===null){
-           redirect();
-       }
-       if(data.hasAdminConsoleAccess){
-           console.log("authorized");
-       }else{
-           redirect();
-       }
-    });
+function lockToAdminAuth() {
+    if (getStoredUser() === null) {
+        redirect()
+    } else {
+        db.ref("userpermissions/" + getStoredUser().uid).once("value").then((snapshot) => {
+            let data = snapshot.val();
+            if (data === null) {
+                redirect();
+            }
+            if (data.hasAdminConsoleAccess) {
+                console.log("authorized");
+            } else {
+                redirect();
+            }
+        });
+    }
 }
 
 function redirect(){
@@ -22,3 +23,6 @@ function redirect(){
         window.location.href = "../login/login.html?retUrl="+btoa(window.location.href);
     }
 }
+
+
+export {lockToAdminAuth}
