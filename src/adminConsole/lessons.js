@@ -1,3 +1,6 @@
+import {db} from "../api/firebase";
+import {get, onValue, ref} from "firebase/database";
+
 const lessonsDisplay = document.querySelector(".lessons-display");
 
 const lessonDetailsName = document.querySelector(".lesson-details .name");
@@ -8,8 +11,8 @@ const lessonDetailsChapterCount = document.querySelector(".lesson-details .chapt
 const lessonDetailsStepCount = document.querySelector(".lesson-details .step-count");
 
 function setupLessons(){
-    let lessonsRef = db.ref('lessons');
-    lessonsRef.on('value', (snapshot) => {
+    let lessonsRef = ref(db,'lessons');
+    onValue(lessonsRef, (snapshot) => {
         const data = snapshot.val();
         clearLessons();
         console.log(data);
@@ -42,7 +45,7 @@ function createLessonElement(lessonId,lessonData){
 
 function showLessonDetails(e){
     let lessonId = e.currentTarget.getAttribute("data-lessonid");
-    db.ref("lessons/"+lessonId).once("value").then((snap)=>{
+    get(ref(db,"lessons/"+lessonId)).then((snap)=>{
         let data = snap.val();
         lessonDetailsName.innerHTML = data.name;
         lessonDetailsId.innerHTML = lessonId;
