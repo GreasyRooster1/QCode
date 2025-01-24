@@ -1,3 +1,7 @@
+import {db} from "../api/firebase";
+import {ref} from "firebase/database";
+import {getStoredUser} from "../api/auth";
+
 class Lesson{
     constructor(children){
         this.x = 0;
@@ -60,7 +64,7 @@ class Lesson{
     }
 
     checkStatus(){
-        db.ref("userdata/"+getStoredUser().uid+"/projects/"+this.id).once("value").then((snapshot)=> {
+        get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.id)).then((snapshot)=> {
             let projData = snapshot.val();
             console.log(projData)
             if (snapshot.exists()) {
@@ -69,7 +73,7 @@ class Lesson{
                 this.statusChecked = true;
                 return;
             }
-            db.ref("lessons/"+this.id).once("value").then((snap)=> {
+            get(ref(db,"lessons/"+this.id)).then((snap)=> {
                 let lessonData = snap.val();
                 if (projData.currentChapter>=lessonData.chapters.length-1&&projData.currentStep>=lessonData.chapters[lessonData.chapters.length-1].steps.length) {
                     this.completed = true;
@@ -189,7 +193,7 @@ class Lesson{
 
 function loadLessons(next){
     let rootLesson;
-    db.ref("lessonChart").once("value").then((snapshot) => {
+    get(ref(db,"lessonChart")).then((snapshot) => {
         for(const [id, data] of Object.entries(snapshot.val())){
             lessonsIndex[id] = new Lesson(data.children);
             lessonsIndex[id].id = id;
@@ -210,7 +214,7 @@ function loadLessonsMetadata(){
     let dataPoints = ["thumb","name","unlisted","tags"]
     for(const [id, lesson] of Object.entries(lessonsIndex)){
         for(let dp of dataPoints) {
-            db.ref("lessons/" + id+"/"+dp).once("value").then((snapshot) => {
+            get(ref(db,"lessons/" + id+"/"+dp)).then((snapshot) => {
                 lesson.metadata[dp] = snapshot.val();
                 if(dp==="thumb"){
                     if(!snapshot.exists()){

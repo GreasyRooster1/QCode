@@ -1,3 +1,7 @@
+import {getStoredUser} from "../api/auth";
+import {ref} from "firebase/database";
+import {db} from "../api/firebase";
+
 let updatedStatus = false;
 
 function beginCheckingStatuses(){
@@ -32,7 +36,7 @@ function updateAllDb(){
 function updateLessonRecommendationsDb() {
     let recs = []
     searchForRecommendation(rootLesson,10,recs)
-    db.ref("userdata/"+getStoredUser().uid+"/recommendedLessons").set(recs)
+    set(ref(db,"userdata/"+getStoredUser().uid+"/recommendedLessons"),recs);
 }
 
 function searchForRecommendation(lessonId,depth,recs){
@@ -64,5 +68,7 @@ function updateLessonStatusDb(){
         }
         statuses[lesson.id] = status;
     }
-    db.ref("userdata/"+getStoredUser().uid+"/lessonStatuses").set(statuses)
+    set(ref(db,"userdata/"+getStoredUser().uid+"/lessonStatuses"),statuses)
 }
+
+export {updateLessonStatusDb}

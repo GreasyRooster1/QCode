@@ -1,4 +1,5 @@
 import {initNavbar} from "../api/nav/navbar";
+import "./chart"
 
 function init(){
     initNavbar()
