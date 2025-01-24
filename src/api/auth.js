@@ -119,5 +119,7 @@ export {
     getStoredUser,
     storeUserPermissions,
     displayAuthErrors,
-    logOutUser
+    logOutUser,
+    storeUser,
+    handleAuthErrors
 }
