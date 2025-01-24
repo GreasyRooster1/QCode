@@ -22,3 +22,4 @@ function setupColors(){
     }
     currentColors = colors.light;
 }
+export {setupColors,swapColors}

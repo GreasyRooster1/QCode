@@ -1,6 +1,7 @@
 //yes im using p5 while teaching it at the same time
 //no i dont want to know how this can be    done better
 import p5 from 'p5';
+import {Camera} from "./camera";
 
 let darkMode = false;
 let camera = new Camera(0,0);
