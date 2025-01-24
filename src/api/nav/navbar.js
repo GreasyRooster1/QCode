@@ -73,6 +73,9 @@ function initUsername(){
 }
 
 function initAdmin(){
+    if(getStoredUserPermissions()==null){
+        return;
+    }
     if(!getStoredUserPermissions().hasAdminConsoleAccess){
         return;
     }

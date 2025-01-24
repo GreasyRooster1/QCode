@@ -1,3 +1,8 @@
+import {handleAuthErrors, storeUser, storeUserPermissions} from "../api/auth";
+import {auth, db} from "../api/firebase";
+import {get, ref} from "firebase/database";
+import {signInWithEmailAndPassword} from "firebase/auth";
+
 const loginButton = document.querySelector(".login-button");
 const emailInput = document.querySelector(".email-input");
 const passwordInput = document.querySelector(".password-input");
@@ -9,24 +14,24 @@ loginButton.addEventListener("click", function(){
     let email = emailInput.value;
     let password = passwordInput.value;
 
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(auth,email, password)
         .then((userCredential) => {
 
             let user = userCredential.user;
 
-            db.ref("userpermissions/"+user.uid).once("value").then(function (snap) {
+            get(ref(db,"userpermissions/"+user.uid)).then(function (snap) {
                 let data = snap.val();
                 console.log(data);
 
                 if(data===null){
-                    showAuthError("It appears you aren't an adminConsole!");
+                    showAuthError("It appears you aren't an admin!");
                     return;
                 }
 
                 if (data.hasAdminConsoleAccess){
                     handleAuthAdminLogin(user,data);
                 }else{
-                    showAuthError("It appears you aren't an adminConsole!");
+                    showAuthError("It appears you aren't an admin!");
                 }
             });
         })
