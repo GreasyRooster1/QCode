@@ -5,6 +5,7 @@ import {Camera} from "./camera";
 import {loadLessons} from "../index/loading/lessons";
 import {setupColors} from "./colors";
 import {p5 as currentColors} from "p5/lib/p5";
+import {loadLessonsMetadata, solvePosition} from "./lesson";
 
 let darkMode = false;
 let camera = new Camera(0,0);
@@ -19,7 +20,7 @@ new p5((p)=>{
         let height = window.innerHeight - navHeight;
         p.textFont("JetBrains Mono")
         p.createCanvas(window.innerWidth,height).parent("#canvas-parent");
-        setupColors();
+        setupColors(p);
         loadLessons((r)=>{
             rootLesson = r;
             solvePosition(rootLesson);

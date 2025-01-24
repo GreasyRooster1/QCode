@@ -1,3 +1,5 @@
+import {darkMode} from "./chart";
+
 let currentColors = {}
 let colors;
 
@@ -11,13 +13,13 @@ function swapColors(){
     }
 }
 
-function setupColors(){
+function setupColors(p){
     colors = {
         light:{
-            background:color("#ffffff"),
+            background:p.color("#ffffff"),
         },
         dark:{
-            background:color("#000000"),
+            background:p.color("#000000"),
         }
     }
     currentColors = colors.light;

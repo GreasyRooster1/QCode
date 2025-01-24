@@ -1,6 +1,7 @@
 import {db} from "../api/firebase";
 import {ref} from "firebase/database";
 import {getStoredUser} from "../api/auth";
+import {lessonsIndex} from "./chart";
 
 class Lesson{
     constructor(children){
@@ -272,3 +273,4 @@ function getTagColor(tag){
     let col = tagColors[id]
     return col??"#676767"
 }
+export {solvePosition,loadLessons,loadLessonsMetadata,getTagColor,Lesson}
