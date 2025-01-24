@@ -7,29 +7,31 @@ let lessonsIndex = [];
 let rootLesson;
 let font;
 
-function setup(){
-    const root = document.documentElement;
-    const styles = getComputedStyle(root);
-    const navHeight = styles.getPropertyValue("--navbar-height").replace("px","");
-    let height = window.innerHeight - navHeight;
-    textFont("JetBrains Mono")
-    createCanvas(window.innerWidth,height).parent("#canvas-parent");
-    setupColors();
-    loadLessons((r)=>{
-        rootLesson = r;
-        solvePosition(rootLesson);
-        loadLessonsMetadata()
-        beginCheckingStatuses();
-    });
+new p5(function (){
+    p5.setup(){
+        const root = document.documentElement;
+        const styles = getComputedStyle(root);
+        const navHeight = styles.getPropertyValue("--navbar-height").replace("px","");
+        let height = window.innerHeight - navHeight;
+        textFont("JetBrains Mono")
+        createCanvas(window.innerWidth,height).parent("#canvas-parent");
+        setupColors();
+        loadLessons((r)=>{
+            rootLesson = r;
+            solvePosition(rootLesson);
+            loadLessonsMetadata()
+            beginCheckingStatuses();
+        });
 
-}
+    }
 
-function draw(){
-    camera.move();
-    camera.apply();
-    drawBackground();
-    drawLessons();
-}
+    function draw(){
+        camera.move();
+        camera.apply();
+        drawBackground();
+        drawLessons();
+    }
+})
 
 function drawLessons(){
     for(let [id,lesson] of Object.entries(lessonsIndex)){

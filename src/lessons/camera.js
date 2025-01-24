@@ -62,3 +62,5 @@ class Camera{
         return false;
     }
 }
+
+export {Camera}

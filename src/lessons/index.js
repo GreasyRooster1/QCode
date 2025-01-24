@@ -1,5 +1,7 @@
+import {initNavbar} from "../api/nav/navbar";
+
 function init(){
-    removeNavArrow()
+    initNavbar()
     setupButtons()
 }
 
@@ -34,4 +36,4 @@ function toDataURL(url, callback) {
     xhr.send();
 }
 
-init();
+window.onload = init();
