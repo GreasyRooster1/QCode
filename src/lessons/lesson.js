@@ -3,6 +3,8 @@ import {ref,get} from "firebase/database";
 import {getStoredUser} from "../api/auth";
 import {lessonsIndex} from "./chart";
 import {toDataURL} from "./index";
+import {openLesson} from "../api/util/projects";
+import {camera} from "./chart";
 
 class Lesson{
     constructor(children){

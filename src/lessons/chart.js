@@ -23,9 +23,9 @@ window.setup = function (){
 
     loadLessons((r)=>{
         rootLesson = r;
-        //solvePosition(rootLesson);
-        //loadLessonsMetadata()
-        //beginCheckingStatuses();
+        solvePosition(rootLesson);
+        loadLessonsMetadata()
+        beginCheckingStatuses();
     });
 
 }
@@ -77,4 +77,4 @@ window.windowResized = function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-export {drawLessons,drawBackground,darkMode,lessonsIndex};
+export {drawLessons,drawBackground,darkMode,lessonsIndex,camera};
