@@ -13,9 +13,8 @@ class ArduinoType extends ProjectType {
     }
 
     setupEditor(): void {
-        setupExecEvents(()=>{
-            runCode(getCode())
-        },this.runErrorCallback);
+        document.querySelector(".canvas-output-pane")?.remove()
+
     }
 
     onLoad(){
