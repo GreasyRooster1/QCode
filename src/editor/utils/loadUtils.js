@@ -52,18 +52,11 @@ function createChapterStep(data){
 
 function createNextChapterStep(data){
     if(data.chapters[projectType.chapterNum+1]===undefined){
-        createStep("You're done!","You finished the lesson!\nGo back <span class='chapter-end-home-link'>home</span>","none","next","-1");
-        document.querySelector(".chapter-end-home-link").addEventListener('click',homeLinkClick)
+        createStep("You're done!","You finished the lesson!\nGo back <a class='chapter-end-home-link' onclick='projectType.saveCode();' href='./index.html'>home</a>","none","next","-1");
         return;
     }
     createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(projectType.chapterNum+2)+" - "+data.chapters[projectType.chapterNum+1].name+"</span>","none","next","-1");
     document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
-}
-
-
-function homeLinkClick(){
-    projectType.saveCode();
-    window.location.href = window.location.href="../../../dist/index.html";
 }
 
 function nextChapterClick(){
