@@ -62,6 +62,8 @@ const arduinoStyle = HighlightStyle.define([
     {tag: tags.comment, color: "#737f80"},
     {tag: tags.number, color: "#444f7a"},
     {tag: tags.punctuation, color: "#444f54"},
+    {tag: tags.string, color: "#0f5b5f"},
+    {tag: tags.null, color: "#4f5b61"},
 ])
 
 let editor;
