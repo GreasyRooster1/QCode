@@ -2,7 +2,7 @@
 //no i dont want to know how this can be done better
 
 import {Camera} from "./camera.js"
-import {setupColors} from "./colors";
+import {currentColors, setupColors} from "./colors";
 import {loadLessons, loadLessonsMetadata, solvePosition} from "./lesson";
 import {beginCheckingStatuses} from "./dbUpdate";
 
@@ -23,9 +23,9 @@ window.setup = function (){
 
     loadLessons((r)=>{
         rootLesson = r;
-        solvePosition(rootLesson);
-        loadLessonsMetadata()
-        beginCheckingStatuses();
+        //solvePosition(rootLesson);
+        //loadLessonsMetadata()
+        //beginCheckingStatuses();
     });
 
 }

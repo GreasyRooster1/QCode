@@ -1,5 +1,5 @@
 import {db} from "../api/firebase";
-import {ref} from "firebase/database";
+import {ref,get} from "firebase/database";
 import {getStoredUser} from "../api/auth";
 import {lessonsIndex} from "./chart";
 import {toDataURL} from "./index";
