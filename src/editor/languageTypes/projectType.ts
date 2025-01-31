@@ -6,9 +6,6 @@ import {setupPanes} from "../panes";
 import {showSaveAlert} from "../save";
 import {loadLesson, projectType} from "../load";
 import {runPopupPreviewCode, showPopup} from "../share";
-import {ConsoleLogElement} from "../../api/customElements";
-
-ConsoleLogElement.register()
 
 interface RunErrCallback {
     (content:string,type:string):void,
