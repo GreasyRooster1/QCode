@@ -1,6 +1,7 @@
 import {setupPanes} from "../panes";
 import {chapterNum, projectId, projectType, scrollableSteps} from "../load";
 import {getStoredUser} from "../../api/auth";
+import {getLinkToProject} from "../../api/util/projects";
 
 function populateSteps(data){
     createChapterStep(data);
