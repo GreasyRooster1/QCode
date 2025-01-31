@@ -28,7 +28,7 @@ const fixedFontTheme = EditorView.theme({
         fontVariantLigatures: "none",
     }
 });
-const myHighlightStyle = HighlightStyle.define([
+const arduinoStyle = HighlightStyle.define([
     { tag: tags.keyword, color: "#fc6" },
     { tag: tags.comment, color: "#f5d", fontStyle: "italic" }
 ]);
