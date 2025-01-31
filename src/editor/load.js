@@ -79,7 +79,7 @@ function loadLesson(lessonId){
     get(ref(db,"lessons/"+lessonId)).then((snapshot) => {
         const data = snapshot.val();
         console.log(lessonId)
-        if(data.chapters[chapterNum]!==null) {
+        if(data.chapters[projectType.chapterNum]!==null) {
             scrollableSteps.innerHTML = "";
             populateSteps(data)
             scrollToCurrentStep(lessonId)
@@ -90,4 +90,4 @@ function loadLesson(lessonId){
     });
 }
 
-export {loadProjectFromUrlData,loadLesson,projectType,projectId,scrollableSteps,chapterNum}
+export {loadProjectFromUrlData,loadLesson,projectType,projectId,scrollableSteps}
