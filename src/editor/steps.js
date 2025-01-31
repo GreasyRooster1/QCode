@@ -23,7 +23,7 @@ function scrollToCurrentStep(projectId){
     let currentStepRef = ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
 
     get(currentStepRef).then((snapshot) => {
-        let currentStep = 0;
+        let currentStep =1;
         if(!snapshot.exists()){
             set(currentStepRef,0);
             console.log("no current step was set, defaulting to 0")
@@ -31,11 +31,12 @@ function scrollToCurrentStep(projectId){
         }else{
             currentStep = snapshot.val();
         }
-        scrollWhenAllImagesAreLoaded(currentStep,currentStepRef);
+        scrollWhenAllImagesAreLoaded(currentStep===0?1:currentStep,currentStepRef);
     });
 }
 
 function scrollWhenAllImagesAreLoaded(toStep,ref){
+    console.log('editor-step[count="'+toStep+'"]')
     let currentStepEl = scrollableSteps.querySelector('editor-step[count="'+toStep+'"]');
     let imagesToLoad = [...document.images].filter(x => !x.complete);
 
