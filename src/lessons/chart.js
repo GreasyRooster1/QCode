@@ -1,6 +1,8 @@
 //yes im using p5 while teaching it at the same time
 //no i dont want to know how this can be done better
 
+import {Camera} from "./camera";
+
 let darkMode = false;
 let camera = new Camera(0,0);
 let lessonsIndex = [];
@@ -70,3 +72,5 @@ function mouseWheel(event) {
 function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
+
+export {setup,draw,drawLessons,mouseWheel,drawBackground,windowResized};
