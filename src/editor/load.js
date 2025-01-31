@@ -10,7 +10,6 @@ import {scrollToCurrentStep} from "./steps";
 
 let projectId=null;
 let userUid = null;
-let chapterNum = null;
 let isLessonCreator = false;
 let hasLesson = true;
 let projectType;

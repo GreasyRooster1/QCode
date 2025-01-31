@@ -1,13 +1,13 @@
 import {setupPanes} from "../panes";
-import {chapterNum, projectId, projectType, scrollableSteps} from "../load";
+import { projectId, projectType, scrollableSteps} from "../load";
 import {getStoredUser} from "../../api/auth";
 import {getLinkToProject} from "../../api/util/projects";
 
 function populateSteps(data){
     createChapterStep(data);
 
-    console.log(data.chapters[chapterNum])
-    let steps = data.chapters[chapterNum].steps.values().toArray()
+    console.log(data,projectType.chapterNum)
+    let steps = data.chapters[projectType.chapterNum].steps.values().toArray()
 
     let count = 1;
     for (let step of steps) {
@@ -51,12 +51,12 @@ function createChapterStep(data){
 }
 
 function createNextChapterStep(data){
-    if(data.chapters[chapterNum+1]===undefined){
+    if(data.chapters[projectType.chapterNum+1]===undefined){
         createStep("You're done!","You finished the lesson!\nGo back <span class='chapter-end-home-link'>home</span>","none","next","-1");
         document.querySelector(".chapter-end-home-link").addEventListener('click',homeLinkClick)
         return;
     }
-    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(chapterNum+2)+" - "+data.chapters[chapterNum+1].name+"</span>","none","next","-1");
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(projectType.chapterNum+2)+" - "+data.chapters[projectType.chapterNum+1].name+"</span>","none","next","-1");
     document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
 }
 
@@ -68,7 +68,7 @@ function homeLinkClick(){
 
 function nextChapterClick(){
     projectType.saveCode();
-    window.location.href = window.location.href.replace("cNum="+chapterNum,"cNum="+(chapterNum+1))
+    window.location.href = window.location.href.replace("cNum="+projectType.chapterNum,"cNum="+(projectType.chapterNum+1))
 }
 
 function getChapterStepContent(chapters){
@@ -96,7 +96,7 @@ function createChapterLink(chapterNumber,chapterData){
     linkEl.innerHTML = name;
     linkEl.setAttribute("href",getLinkToProject(projectId,getStoredUser().uid,chapterNumber-1));
     linkEl.classList.add("chapter-link")
-    if(chapterNumber-1 === chapterNum) {
+    if(chapterNumber-1 === projectType.chapterNum) {
         linkEl.classList.add("current-chapter")
     }
     return linkEl.outerHTML;
