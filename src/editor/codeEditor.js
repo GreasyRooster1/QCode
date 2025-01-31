@@ -30,7 +30,8 @@ const fixedFontTheme = EditorView.theme({
 });
 const arduinoStyle = HighlightStyle.define([
     { tag: tags.keyword, color: "#20969d" },
-    { tag: tags.variableName, color: "#cf590f" },
+    { tag: tags.typeName, color: "#20969d" },
+    { tag: tags.name, color: "#cf590f" },
     { tag: tags.comment, color: "#96a5a6" },
     { tag: tags.number, color: "#444f7a" },
 ]);
