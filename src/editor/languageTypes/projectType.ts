@@ -20,7 +20,7 @@ abstract class ProjectType {
     projectData: { [key: string]: any; } | undefined;
     projectId: string | undefined;
     highestViewedStep: number | undefined;
-    currentChapter: number | undefined;
+    chapterNum: number | undefined;
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;

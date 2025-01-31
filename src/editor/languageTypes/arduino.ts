@@ -30,7 +30,7 @@ class ArduinoType extends ProjectType {
         if(this.hasLesson) {
             console.log(this.highestViewedStep)
             set(ref(db,"userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep"),this.highestViewedStep);
-            set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter"),this.currentChapter);
+            set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter"),this.chapterNum);
         }
 
     }

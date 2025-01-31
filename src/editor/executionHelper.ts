@@ -17,7 +17,7 @@ let frameLoadEvent: {():void};
 
 function getCode(){
     // @ts-ignore
-    return editor.state.doc.toString();
+    return window.editor.state.doc.toString();
 }
 
 function setupEvents(frameLoadCallback:frameLoadCallback,errorCallback:RunErrCallback){

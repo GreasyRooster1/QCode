@@ -3,6 +3,7 @@ import {setupAutoSave} from "./save";
 import {setupShareEvents} from "./share";
 import {setupScrollEvent} from "./steps";
 import {initNavbar} from "../api/nav/navbar";
+import {StepElement} from "../api/customElements";
 
 
 function init(){

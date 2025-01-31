@@ -1,4 +1,7 @@
 import {projectType, scrollableSteps} from "./load";
+import {ref,get} from "firebase/database";
+import {db} from "../api/firebase";
+import {getStoredUser} from "../api/auth";
 
 let everyStep;
 let highestViewedStepCount;
@@ -17,13 +20,12 @@ function isScrolledIntoView(parent,el) {
 }
 
 function scrollToCurrentStep(projectId){
-    let currentStepRef = db.ref("userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
+    let currentStepRef = ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/currentStep");
 
-    currentStepRef.once('value').then((snapshot) => {
-        let currentStep;
+    get(currentStepRef).then((snapshot) => {
+        let currentStep = 0;
         if(!snapshot.exists()){
-            currentStepRef.set(0);
-            currentStep = 0;
+            set(currentStepRef,0);
             console.log("no current step was set, defaulting to 0")
             return;
         }else{
