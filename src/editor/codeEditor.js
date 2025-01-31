@@ -19,7 +19,7 @@ import { cpp } from "@codemirror/lang-cpp";
 // @ts-ignore
 import { tags } from "@lezer/highlight";
 // @ts-ignore
-import { HighlightStyle } from "@codemirror/language";
+import { HighlightStyle, defaultHighlightStyle } from "@codemirror/language";
 import { setHasSaved } from "./save";
 const fixedFontTheme = EditorView.theme({
     '&': {
@@ -29,11 +29,12 @@ const fixedFontTheme = EditorView.theme({
     }
 });
 const arduinoStyle = HighlightStyle.define([
-    { tag: tags.keyword, color: "#fc6" },
-    { tag: tags.comment, color: "#f5d", fontStyle: "italic" }
+    { tag: tags.keyword, color: "#20969d" },
+    { tag: tags.comment, color: "#cf590f", fontStyle: "italic" }
 ]);
 let editor;
 function setupEditor(language) {
+    console.log(defaultHighlightStyle);
     document.querySelector(".code-editor").innerHTML = "";
     let languagePair = getLanguagePair(language);
     let extensions = [
