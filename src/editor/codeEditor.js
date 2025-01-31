@@ -19,7 +19,7 @@ import { cpp } from "@codemirror/lang-cpp";
 // @ts-ignore
 import { tags } from "@lezer/highlight";
 // @ts-ignore
-import { HighlightStyle, defaultHighlightStyle } from "@codemirror/language";
+import { HighlightStyle, defaultHighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { setHasSaved } from "./save";
 const fixedFontTheme = EditorView.theme({
     '&': {
@@ -30,13 +30,15 @@ const fixedFontTheme = EditorView.theme({
 });
 const arduinoStyle = HighlightStyle.define([
     { tag: tags.keyword, color: "#20969d" },
-    { tag: tags.comment, color: "#cf590f", fontStyle: "italic" }
+    { tag: tags.variableName, color: "#cf590f" },
+    { tag: tags.comment, color: "#96a5a6" },
+    { tag: tags.number, color: "#444f7a" },
 ]);
 let editor;
 function setupEditor(language) {
     console.log(defaultHighlightStyle);
     document.querySelector(".code-editor").innerHTML = "";
-    let languagePair = getLanguagePair(language);
+    let languagePair = getLanguage(language);
     let extensions = [
         basicSetup,
         keymap.of([indentWithTab]),
@@ -53,7 +55,7 @@ function setupEditor(language) {
     // @ts-ignore
     window.editor = editor;
 }
-function getLanguagePair(identifier) {
+function getLanguage(identifier) {
     if (identifier == "javascript") {
         return javascript();
     }
@@ -70,7 +72,7 @@ function getLanguagePair(identifier) {
         return python();
     }
     if (identifier == "c++") {
-        return cpp();
+        return [cpp(), syntaxHighlighting(arduinoStyle)];
     }
     if (identifier == "text") {
         return null;
