@@ -54,6 +54,9 @@ const fixedFontTheme = EditorView.theme({
     }
 })
 
+const arduinoTheme = EditorView.theme({
+    ".cm-content,": {background: "#fff"}
+})
 const arduinoStyle = HighlightStyle.define([
     {tag: tags.keyword, color: "#20969d"},
     {tag: tags.typeName, color: "#20969d"},
@@ -105,7 +108,7 @@ function getLanguage(identifier:Language): any | null{
         return python()
     }
     if(identifier == "c++"){
-        return [cpp(),syntaxHighlighting(arduinoStyle)]
+        return [cpp(),syntaxHighlighting(arduinoStyle),arduinoTheme]
     }
     if(identifier == "text"){
         return null;
