@@ -1,6 +1,7 @@
 import {getStoredUser} from "../api/auth";
 import {ref} from "firebase/database";
 import {db} from "../api/firebase";
+import {lessonsIndex} from "./chart";
 
 let updatedStatus = false;
 
@@ -71,4 +72,4 @@ function updateLessonStatusDb(){
     set(ref(db,"userdata/"+getStoredUser().uid+"/lessonStatuses"),statuses)
 }
 
-export {updateLessonStatusDb}
+export {updateLessonStatusDb,beginCheckingStatuses,searchForRecommendation}

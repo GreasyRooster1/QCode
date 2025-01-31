@@ -13,13 +13,13 @@ function swapColors(){
     }
 }
 
-function setupColors(p){
+function setupColors(){
     colors = {
         light:{
-            background:p.color("#ffffff"),
+            background:color("#ffffff"),
         },
         dark:{
-            background:p.color("#000000"),
+            background:color("#000000"),
         }
     }
     currentColors = colors.light;

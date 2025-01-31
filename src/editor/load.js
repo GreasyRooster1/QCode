@@ -1,9 +1,9 @@
 import {get, ref, set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
-import {JavascriptType} from "./languageTypes/javascript";
-import {WebType} from "./languageTypes/web/web";
-import {ArduinoType} from "./languageTypes/arduino";
+import {JavascriptType} from "./languageTypes/javascript.ts";
+import {WebType} from "./languageTypes/web/web.ts";
+import {ArduinoType} from "./languageTypes/arduino.ts";
 import {setupPanes} from "./panes";
 import {populateSteps} from "./utils/loadUtils";
 import {scrollToCurrentStep} from "./steps";

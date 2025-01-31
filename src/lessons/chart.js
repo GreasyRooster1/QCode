@@ -1,7 +1,10 @@
 //yes im using p5 while teaching it at the same time
 //no i dont want to know how this can be done better
 
-import {Camera} from "./camera";
+import {Camera} from "./camera.js"
+import {setupColors} from "./colors";
+import {loadLessons, loadLessonsMetadata, solvePosition} from "./lesson";
+import {beginCheckingStatuses} from "./dbUpdate";
 
 let darkMode = false;
 let camera = new Camera(0,0);
@@ -9,7 +12,7 @@ let lessonsIndex = [];
 let rootLesson;
 let font;
 
-function setup(){
+window.setup = function (){
     const root = document.documentElement;
     const styles = getComputedStyle(root);
     const navHeight = styles.getPropertyValue("--navbar-height").replace("px","");
@@ -26,7 +29,7 @@ function setup(){
 
 }
 
-function draw(){
+window.draw = function draw(){
     camera.move();
     camera.apply();
     drawBackground();
@@ -59,7 +62,7 @@ function drawBackground(){
     }
 }
 
-function mouseWheel(event) {
+window.mouseWheel = function mouseWheel(event) {
     const s = 1 - (event.delta / 1000);
     camera.zoom *= s;
     const mouse = createVector(mouseX, mouseY);
@@ -69,8 +72,8 @@ function mouseWheel(event) {
     camera.y = offset.y;
 }
 
-function windowResized() {
+window.windowResized = function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-export {setup,draw,drawLessons,mouseWheel,drawBackground,windowResized};
+export {drawLessons,drawBackground,darkMode,lessonsIndex};
