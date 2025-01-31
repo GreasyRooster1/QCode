@@ -1,7 +1,7 @@
 // @ts-ignore
 import { basicSetup, EditorView} from "codemirror"
 // @ts-ignore
-import { keymap } from "@codemirror/view"
+import {drawSelection, keymap} from "@codemirror/view"
 // @ts-ignore
 import { indentWithTab } from "@codemirror/commands"
 // @ts-ignore
@@ -54,16 +54,12 @@ const fixedFontTheme = EditorView.theme({
     }
 })
 
-const arduinoTheme = EditorView.theme({
-    ".cm-content": {background: "#fff"},
-    ".cm-selectionBackground":{background: "#addded"}
-})
 const arduinoStyle = HighlightStyle.define([
     {tag: tags.keyword, color: "#20969d"},
     {tag: tags.typeName, color: "#20969d"},
     {tag: tags.meta, color: "#758d24"},
     {tag: tags.name, color: "#cf590f"},
-    {tag: tags.comment, color: "#96a5a6"},
+    {tag: tags.comment, color: "#737f80"},
     {tag: tags.number, color: "#444f7a"},
     {tag: tags.punctuation, color: "#444f54"},
 ])
