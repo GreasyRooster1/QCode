@@ -37,4 +37,6 @@ function toDataURL(url, callback) {
     xhr.send();
 }
 
-window.onload = init();
+window.onload = init;
+
+export {toDataURL};

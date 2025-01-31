@@ -20,6 +20,7 @@ window.setup = function (){
     textFont("JetBrains Mono")
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
     setupColors();
+
     loadLessons((r)=>{
         rootLesson = r;
         solvePosition(rootLesson);
