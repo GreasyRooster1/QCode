@@ -58,10 +58,13 @@
 }
 
 .console-output-pane{
+    display: flex;
+}
+
+.console-log-area{
     overflow-y: auto;
     display: flex;
     flex-direction: column-reverse;
-
 }
 
 .console-log{
