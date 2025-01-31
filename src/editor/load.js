@@ -76,14 +76,14 @@ function updateLanguage(id){
 }
 
 
-function loadLesson(projectId){
-    get(ref(db,"lessons/"+projectId)).then((snapshot) => {
+function loadLesson(lessonId){
+    get(ref(db,"lessons/"+lessonId)).then((snapshot) => {
         const data = snapshot.val();
-        console.log(projectId)
+        console.log(lessonId)
         if(data.chapters[chapterNum]!==null) {
             scrollableSteps.innerHTML = "";
             populateSteps(data)
-            scrollToCurrentStep(projectId)
+            scrollToCurrentStep(lessonId)
         }else{
             console.log("invalid lesson!");
             setupPanes(false);

@@ -1,4 +1,4 @@
-import {loadLesson, loadProjectFromUrlData} from "./load";
+import {loadProjectFromUrlData} from "./load";
 import {setupAutoSave} from "./save";
 import {setupShareEvents} from "./share";
 import {setupScrollEvent} from "./steps";
