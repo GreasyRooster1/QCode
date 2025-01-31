@@ -1,4 +1,5 @@
 import {shortTimeDifference} from "./util/util";
+import {stepTypes} from "./util/code";
 
 class StepElement extends HTMLElement {
     head = null;
