@@ -49,16 +49,7 @@ class JavascriptType extends ProjectType {
     }
 
     runErrorCallback(content: string, type: string): void {
-        let logEl = document.createElement("console-log");
-        let consoleOut = document.querySelector(".console-output-pane")
-        while(consoleOut!.children.length > 100){
-            consoleOut!.children[consoleOut!.childElementCount-1].remove()
-        }
-        logEl.setAttribute("type", type);
-        logEl.setAttribute("message", content);
-        logEl.setAttribute("head", logNames[type]);
-        consoleOut!.insertBefore(logEl,consoleOut!.firstChild);
-
+        this.appendLog(content,type);
     }
 
     getLanguage():Language {

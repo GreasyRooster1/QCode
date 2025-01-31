@@ -6,6 +6,7 @@ import {setupPanes} from "../panes";
 import {showSaveAlert} from "../save";
 import {loadLesson, projectType} from "../load";
 import {runPopupPreviewCode, showPopup} from "../share";
+import {logNames} from "../executionHelper";
 
 interface RunErrCallback {
     (content:string,type:string):void,
@@ -81,6 +82,18 @@ abstract class ProjectType {
 
     share(){
 
+    }
+
+    appendLog(content: string, type: string){
+        let logEl = document.createElement("console-log");
+        let consoleOut = document.querySelector(".console-log-area")
+        while(consoleOut!.children.length > 100){
+            consoleOut!.children[consoleOut!.childElementCount-1].remove()
+        }
+        logEl.setAttribute("type", type);
+        logEl.setAttribute("message", content);
+        logEl.setAttribute("head", logNames[type]);
+        consoleOut!.insertBefore(logEl,consoleOut!.firstChild);
     }
 
     /*
