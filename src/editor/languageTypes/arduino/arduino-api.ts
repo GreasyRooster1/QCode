@@ -13,7 +13,6 @@ class Sketch{
             fetch(serverAddress + "/" + type + "/" + this.name, {
                 method: "POST",
                 body: body,
-                mode:"no-cors",
             }).then(async (response: Response) => {
                 console.log(response);
                 if (response.ok) {
@@ -21,6 +20,8 @@ class Sketch{
                 } else {
                     reject()
                 }
+            }).catch((e) => {
+                reject()
             })
         });
     }
