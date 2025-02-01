@@ -1,5 +1,6 @@
 import {createBufferSpace, createStepFromObj} from "../utils/loadUtils";
 import {stepTypes} from "../../api/util/code";
+import {buttonContainer, defaultStep} from "./setup";
 
 let currentStep = 0;
 let newStepButton = null;
