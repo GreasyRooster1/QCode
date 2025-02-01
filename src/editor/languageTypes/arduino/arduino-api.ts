@@ -12,7 +12,10 @@ class Sketch{
         return new Promise((resolve, reject) => {
             fetch(serverAddress + "/" + type + "/" + this.name, {
                 method: "POST",
-                body: body
+                body: body,
+                headers: {
+                    "Access-Control-Allow-Origin":"code.esporterz.com"
+                }
             }).then(async (response: Response) => {
                 if (response.status === 200) {
                     resolve(await response.json());
@@ -39,7 +42,12 @@ class Sketch{
 
 function startSketchServer(name:string):Promise<Sketch>{
     return new Promise((resolve, reject) => {
-        fetch(serverAddress+"/status").then(r => {
+        fetch(serverAddress+"/status",{
+            method: "GET",
+            headers: {
+                "Access-Control-Allow-Origin":"code.esporterz.com"
+            }
+        }).then(r => {
             resolve(new Sketch(name));
         }).catch(err=>{
             window.location.href = openProtocol;
