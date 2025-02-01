@@ -1,4 +1,4 @@
-const serverAddress = "http://localhost:8080";
+const serverAddress = "http://localhost:8181";
 
 class Sketch{
     readonly name: string;
@@ -9,7 +9,7 @@ class Sketch{
     private makeRequest(type:string,body:string):Promise<object> {
         return new Promise((resolve, reject) => {
             fetch(serverAddress + "/" + type + "/" + this.name, {
-                method: "GET",
+                method: "POST",
                 body: body
             }).then(async (response: Response) => {
                 if (response.status === 200) {
