@@ -13,11 +13,9 @@ class Sketch{
             fetch(serverAddress + "/" + type + "/" + this.name, {
                 method: "POST",
                 body: body,
-                headers: {
-                    "Access-Control-Allow-Origin":"code.esporterz.com"
-                }
+                mode:"no-cors",
             }).then(async (response: Response) => {
-                if (response.status === 200) {
+                if (response.status === 200||response.status === 204) {
                     resolve(await response.json());
                 } else {
                     reject()
@@ -44,9 +42,7 @@ function startSketchServer(name:string):Promise<Sketch>{
     return new Promise((resolve, reject) => {
         fetch(serverAddress+"/status",{
             method: "GET",
-            headers: {
-                "Access-Control-Allow-Origin":"code.esporterz.com"
-            }
+            mode:"no-cors",
         }).then(r => {
             resolve(new Sketch(name));
         }).catch(err=>{
