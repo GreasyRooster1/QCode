@@ -35,7 +35,7 @@
     background: var(--arduino-status-not-connected);
 }
 .status-display.ok{
-    background: var(--arduino-status-not-connected);
+    background: var(--arduino-status-ok);
 }
 .status-display.write{
     background: var(--arduino-status-loading);

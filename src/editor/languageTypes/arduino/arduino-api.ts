@@ -18,9 +18,10 @@ class Sketch{
                 if (response.ok) {
                     let json = await response.json()
                     if(json.success) {
-                        resolve(await response.json());
+                        resolve(json);
                     }else{
-                        reject("failed")
+                        console.log(json);
+                        reject(json)
                     }
                 } else {
                     reject("failed")

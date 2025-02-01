@@ -107,8 +107,8 @@ class ArduinoType extends ProjectType {
         }
         this.statusDisplay?.classList?.add(this.executionStatus);
         this.statusText?.classList?.add(this.executionStatus);
+        let txt = "";
         if(this.failedExecution){
-            let txt = "";
             if(this.executionStatus == "ok"){
                 txt = "Failed"
             }
@@ -124,9 +124,24 @@ class ArduinoType extends ProjectType {
             if(this.executionStatus == "not-connected"){
                 txt = "Agent not connected"
             }
-            this.statusText!.innerHTML = txt;
+        }else{
+            if(this.executionStatus == "ok"){
+                txt = "Success!"
+            }
+            if(this.executionStatus == "write"){
+                txt = "Writing..."
+            }
+            if(this.executionStatus == "compile"){
+                txt = "Compiling..."
+            }
+            if(this.executionStatus == "upload"){
+                txt = "Uploading..."
+            }
+            if(this.executionStatus == "not-connected"){
+                txt = "Agent not connected"
+            }
         }
-
+        this.statusText!.innerHTML = txt;
     }
 }
 
