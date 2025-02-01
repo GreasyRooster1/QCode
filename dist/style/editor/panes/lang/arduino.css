@@ -1,4 +1,4 @@
-#root{
+:root{
     --arduino-status-not-connected: #939393;
     --arduino-status-ok: #37d510;
     --arduino-status-write: #d5ae10;
