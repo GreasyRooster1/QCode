@@ -1,7 +1,7 @@
 :root{
     --arduino-status-not-connected: #939393;
     --arduino-status-ok: #0ed144;
-    --arduino-status-loading: #e6d50e;
+    --arduino-status-loading: #ffb617;
 }
 
 .console-head{
