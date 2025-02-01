@@ -12,6 +12,7 @@ class ArduinoType extends ProjectType {
     sketch: Sketch | undefined;
     executionStatus: string;
     failedExecution: boolean;
+    statusDisplay:HTMLDivElement | undefined;
 
     constructor() {
         super(false);
@@ -21,6 +22,7 @@ class ArduinoType extends ProjectType {
 
     setupEditor(): void {
         document.querySelector(".console-head")?.setAttribute("style","");
+        this.statusDisplay = document.querySelector(".output-head")?.firstElementChild?.appendChild(document.createElement('div'));
     }
 
     onLoad(){
@@ -50,21 +52,21 @@ class ArduinoType extends ProjectType {
         if(this.sketch==null){
             return;
         }
-        this.executionStatus = "write"
+        this.setExecStatus("write");
         this.sketch?.writeCode(getCode())?.then(()=> {
-            this.executionStatus = "compile"
+            this.setExecStatus("compile");
             this.sketch?.compile().then(()=> {
-                this.executionStatus = "upload"
+                this.setExecStatus("upload");
                 this.sketch?.upload().then(()=>{
-                    this.executionStatus = "ok"
+                    this.setExecStatus("ok");
                 }).catch(e => {
-                    this.failedExecution = true
+                    this.failExec()
                 });
             }).catch(e => {
-                this.failedExecution = true
+                this.failExec()
             });
         }).catch(e => {
-            this.failedExecution = true
+            this.failExec()
         })
     }
 
@@ -80,6 +82,14 @@ class ArduinoType extends ProjectType {
 
     getLanguage():Language {
         return "c++";
+    }
+
+    setExecStatus(status:string) {
+        this.executionStatus = status;
+        this.failedExecution = false;
+    }
+    failExec(){
+        this.failedExecution = true;
     }
 }
 
