@@ -16,7 +16,12 @@ class Sketch{
             }).then(async (response: Response) => {
                 console.log(response);
                 if (response.ok) {
-                    resolve(await response.json());
+                    let json = await response.json()
+                    if(json.success) {
+                        resolve(await response.json());
+                    }else{
+                        reject()
+                    }
                 } else {
                     reject()
                 }
