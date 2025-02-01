@@ -13,12 +13,12 @@ class ArduinoType extends ProjectType {
     }
 
     setupEditor(): void {
-        document.querySelector(".canvas-output-pane")?.remove()
 
     }
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
+        document.querySelector(".canvas-output-pane")?.remove()
     }
 
     saveCode(){
