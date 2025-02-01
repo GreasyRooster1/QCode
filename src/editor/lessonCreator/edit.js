@@ -1,3 +1,6 @@
+import {createBufferSpace, createStepFromObj} from "../utils/loadUtils";
+import {stepTypes} from "../../api/util/code";
+
 let currentStep = 0;
 let newStepButton = null;
 
@@ -76,4 +79,4 @@ function addStepClick(){
     createDefaultEditableStep(currentStep);
     createBufferSpace();
 }
-export {}
+export {createAddStepButton,addStepClick,escapeOnEnter,changeImage,swapTypes,createEditableStepFromData,createEditableStep,createDefaultEditableStep};

@@ -1,3 +1,6 @@
+import {buttonContainer} from "./setup";
+import {defaultCodeJs} from "../../api/util/code";
+
 let lessonCreatorMetaButton;
 let lessonMetaEditPane;
 let metaPaneOpen = false;
@@ -9,7 +12,7 @@ let unlistedInput;
 let lessonMetadata ={
     name:"",
     unlisted:true,
-    starterCode:defaultCode,
+    starterCode:defaultCodeJs,
 }
 
 function createMetaButton(){
@@ -81,6 +84,8 @@ function saveMeta(){
     lessonMetadata.unlisted=unlistedInput.querySelector("input").value==="on";
     lessonMetadata.starterCode=starterCodeInput.querySelector("textarea").value;
     if(lessonMetadata.starterCode==="default"){
-        lessonMetadata.starterCode=defaultCode;
+        lessonMetadata.starterCode=defaultCodeJs;
     }
 }
+
+export {lessonMetadata,createMetaButton,createMetaEditPane,createInputWithLabel,editLessonMeta,saveMeta}

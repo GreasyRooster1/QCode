@@ -1,3 +1,8 @@
+import {writeToEditor} from "../utils/loadUtils";
+import {loadCreatedChapter} from "./chapter";
+import {buttonContainer} from "./setup";
+import {createdLessonChapters} from "./save";
+
 let lessonCreatorLoadButton = null;
 
 function createLoadButton(){
@@ -41,3 +46,5 @@ function uploadLesson(){
 
     input.click();
 }
+
+export {createLoadButton, uploadLesson}

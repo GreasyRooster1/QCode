@@ -1,3 +1,12 @@
+import {setupPanes} from "../panes";
+import {createAddStepButton} from "./edit";
+import {createdLessonChapters, createSaveButton} from "./save";
+import {createChapterButton} from "./chapter";
+import {createLoadButton} from "./load";
+import {createMetaButton, createMetaEditPane} from "./metadata";
+import {createAutoSaveButton} from "./localStorage";
+import {createStep, getChapterStepContentNoLink} from "../utils/loadUtils";
+
 const buttonContainer = document.querySelector(".lesson-creator-button-container");
 let chapterStep;
 
@@ -31,3 +40,5 @@ function createLessonCreatorChapterStep(){
     chapterStep = createStep("[Lesson Name]",content,"none","chapters",0);
     chapterStep.querySelector(".step:first-child .step-head-content").setAttribute("contenteditable","true")
 }
+
+export {createLessonCreatorChapterStep,setupLessonCreator,defaultStep,chapterStep,buttonContainer}

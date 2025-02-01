@@ -1,3 +1,8 @@
+import {currentChapter, saveChapter} from "./chapter";
+import {lessonMetadata} from "./metadata";
+import {getCodeFromEditor} from "../codeExecution";
+import {buttonContainer} from "./setup";
+
 let createdLessonChapters = []
 let lessonCreatorSaveButton = null;
 
@@ -54,3 +59,5 @@ function downloadLessonData(data,name) {
     document.body.removeChild(link)
     window.URL.revokeObjectURL(url)
 }
+
+export {createdLessonChapters,saveLesson,createSaveButton,downloadLessonData}

@@ -1,3 +1,10 @@
+import {getCodeFromEditor} from "../codeExecution";
+import {currentChapter, loadCreatedChapter, saveChapter} from "./chapter";
+import {writeToEditor} from "../utils/loadUtils";
+import {scrollableSteps} from "../load";
+import {createdLessonChapters} from "./save";
+import {buttonContainer, createLessonCreatorChapterStep} from "./setup";
+
 const lessonDataStorageLocation = "lessonDataAutoSave";
 const codeStorageLocation = "lessonCodeAutoSave";
 const autoSaveToLocalStorageMinutes = 3;
@@ -36,3 +43,5 @@ function createAutoSaveButton(){
 }
 
 setInterval(autoSaveToLocalStorage,autoSaveToLocalStorageMinutes*60_000);
+
+export {createAutoSaveButton,setAutoSaveData,loadAutoSave,autoSaveToLocalStorage};
