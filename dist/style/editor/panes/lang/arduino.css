@@ -2,6 +2,7 @@
     --arduino-status-not-connected: #939393;
     --arduino-status-ok: #38e80c;
     --arduino-status-loading: #f8e513;
+    --arduino-status-loading-secondary: #f8a813;
 }
 
 .console-head{
@@ -31,22 +32,23 @@
     transition:0.3s ease-in-out;
     border: 10px solid;
     margin-left:10px;
+    border-image-slice: 1;
 }
 
 .status-display.not-connected{
-    border-color: var(--arduino-status-not-connected);
+    border-image: var(--arduino-status-not-connected);
 }
 .status-display.ok{
     border-color: var(--arduino-status-ok);
 }
 .status-display.write{
-    border-color: var(--arduino-status-loading);
+    animation: pulse 2s linear 0s infinite alternate;
 }
 .status-display.compile{
-    border-color: var(--arduino-status-loading);
+    animation: pulse 2s linear 0s infinite alternate;
 }
 .status-display.upload{
-    border-color: var(--arduino-status-loading);
+    animation: pulse 2s linear 0s infinite alternate;
 }
 
 .status-text{
@@ -54,4 +56,9 @@
     align-items: center;
     max-height: 30px;
     margin-left:5px;
+}
+
+@keyframes pulse {
+    0% { border-color: var(--arduino-status-loading); }
+    100% { border-color: var(--arduino-status-loading-secondary); }
 }
