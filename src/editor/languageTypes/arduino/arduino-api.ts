@@ -43,7 +43,9 @@ function startSketchServer(name:string):Promise<Sketch>{
             resolve(new Sketch(name));
         }).catch(err=>{
             window.location.href = openProtocol;
-            console.log("test");
+            setTimeout(()=>{
+                window.location.reload();
+            },5000);
         })
     });
 }
