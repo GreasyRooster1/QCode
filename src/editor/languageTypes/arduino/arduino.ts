@@ -25,6 +25,7 @@ class ArduinoType extends ProjectType {
             this.sketch = sketch;
         });
         document.querySelector(".canvas-output-pane")?.remove()
+        document.querySelector(".stop-button")?.remove()
     }
 
     saveCode(){
