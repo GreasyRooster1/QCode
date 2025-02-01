@@ -21,7 +21,9 @@ class ArduinoType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
-        this.sketch = startSketchServer(this.projectId!);
+        startSketchServer(this.projectId!).then(sketch=>{
+            this.sketch = sketch;
+        });
         document.querySelector(".canvas-output-pane")?.remove()
     }
 
@@ -39,6 +41,9 @@ class ArduinoType extends ProjectType {
     }
 
     run(errorCallback:RunErrCallback) {
+        if(this.sketch==null){
+            return;
+        }
         this.sketch?.writeCode(getCode())?.then(()=> {
             this.sketch?.compile().then(()=> {
                 this.sketch?.upload();

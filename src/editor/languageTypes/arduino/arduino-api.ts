@@ -39,12 +39,11 @@ class Sketch{
 
 function startSketchServer(name:string):Promise<Sketch>{
     return new Promise((resolve, reject) => {
-        fetch(openProtocol).then(r => {
-            if(r.ok){
-                resolve(new Sketch(name));
-                return;
-            }
-            reject()
+        fetch(serverAddress+"/status").then(r => {
+            resolve(new Sketch(name));
+        }).catch(err=>{
+            window.location.href = openProtocol;
+            console.log("test");
         })
     });
 }
