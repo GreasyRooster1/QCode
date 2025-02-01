@@ -34,7 +34,7 @@
 }
 
 .status-display.not-connected{
-    border-image: var(--arduino-status-not-connected);
+    border-color: var(--arduino-status-not-connected);
 }
 .status-display.ok{
     border-color: var(--arduino-status-ok);
