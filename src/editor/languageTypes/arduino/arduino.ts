@@ -20,7 +20,8 @@ class ArduinoType extends ProjectType {
     constructor() {
         super(false);
         this.executionStatus = "not connected";
-        this.failedExecution = true;
+        this.failedExecution = false;
+        this.updateStatusDisplay()
     }
 
     setupEditor(): void {
