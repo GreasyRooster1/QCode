@@ -8,11 +8,14 @@ import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
 import {startSketchServer, Sketch} from "./arduino-api";
 
+const possibleStatuses = ["not-connected","ok","write","compile","upload"];
+
 class ArduinoType extends ProjectType {
     sketch: Sketch | undefined;
     executionStatus: string;
     failedExecution: boolean;
     statusDisplay:HTMLDivElement | undefined;
+    statusText:HTMLDivElement | undefined;
 
     constructor() {
         super(false);
@@ -23,6 +26,8 @@ class ArduinoType extends ProjectType {
     setupEditor(): void {
         document.querySelector(".console-head")?.setAttribute("style","");
         this.statusDisplay = document.querySelector(".output-head")?.firstElementChild?.appendChild(document.createElement('div'));
+        this.statusText = document.querySelector(".output-head")?.firstElementChild?.appendChild(document.createElement('div'));
+
     }
 
     onLoad(){
@@ -87,9 +92,14 @@ class ArduinoType extends ProjectType {
     setExecStatus(status:string) {
         this.executionStatus = status;
         this.failedExecution = false;
+        this.updateStatusDisplay()
     }
     failExec(){
         this.failedExecution = true;
+        this.updateStatusDisplay()
+    }
+    updateStatusDisplay(){
+        this.statusDisplay.classList.remove()
     }
 }
 
