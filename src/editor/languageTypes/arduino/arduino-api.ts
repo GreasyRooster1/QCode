@@ -22,7 +22,7 @@ class Sketch{
     }
 
     writeCode(code:string):void{
-
+        this.makeRequest("write",code).then();
     }
 }
 
@@ -31,4 +31,4 @@ function createSketch(name:string):Sketch{
     return new Sketch(name);
 }
 
-export {serverAddress}
+export {serverAddress,Sketch,createSketch}
