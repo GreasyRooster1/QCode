@@ -1,3 +1,11 @@
+#root{
+    --arduino-status-not-connected: #939393;
+    --arduino-status-ok: #37d510;
+    --arduino-status-write: #d5ae10;
+    --arduino-status-compile: #d5ae10;
+    --arduino-status-upload: #d5ae10;
+}
+
 .console-head{
     display: flex;
     flex-direction: row;
@@ -18,3 +26,29 @@
     border-radius: 5px;
 }
 
+.status-display{
+    height: 30px;
+    width:30px;
+    border-radius: 100%;
+    transition:0.3s ease-in-out;
+}
+
+.status-display.not-connected{
+    background: var(--arduino-status-not-connected);
+}
+.status-display.ok{
+    background: var(--arduino-status-not-connected);
+}
+.status-display.write{
+    background: var(--arduino-status-write);
+}
+.status-display.compile{
+    background: var(--arduino-status-compile);
+}
+.status-display.upload{
+    background: var(--arduino-status-upload);
+}
+
+.status-text{
+
+}

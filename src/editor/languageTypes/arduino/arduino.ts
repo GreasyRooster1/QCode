@@ -28,7 +28,8 @@ class ArduinoType extends ProjectType {
         document.querySelector(".console-head")?.setAttribute("style","");
         this.statusDisplay = document.querySelector(".output-head")?.appendChild(document.createElement('div'));
         this.statusText = document.querySelector(".output-head")?.appendChild(document.createElement('div'));
-
+        this.statusDisplay?.classList.add("status-display");
+        this.statusText?.classList.add("status-text");
     }
 
     onLoad(){
