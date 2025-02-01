@@ -10,9 +10,13 @@ import {startSketchServer, Sketch} from "./arduino-api";
 
 class ArduinoType extends ProjectType {
     sketch: Sketch | undefined;
+    executionStatus: string;
+    failedExecution: boolean;
 
     constructor() {
         super(false);
+        this.executionStatus = "not connected";
+        this.failedExecution = true;
     }
 
     setupEditor(): void {
@@ -23,6 +27,7 @@ class ArduinoType extends ProjectType {
         writeToEditor(this.projectData!["code"]);
         startSketchServer(this.projectId!).then(sketch=>{
             this.sketch = sketch;
+            this.executionStatus = "ok"
         });
         document.querySelector(".canvas-output-pane")?.remove()
         document.querySelector(".stop-button")?.remove()
@@ -45,10 +50,21 @@ class ArduinoType extends ProjectType {
         if(this.sketch==null){
             return;
         }
+        this.executionStatus = "write"
         this.sketch?.writeCode(getCode())?.then(()=> {
+            this.executionStatus = "compile"
             this.sketch?.compile().then(()=> {
-                this.sketch?.upload();
+                this.executionStatus = "upload"
+                this.sketch?.upload().then(()=>{
+                    this.executionStatus = "ok"
+                }).catch(e => {
+                    this.failedExecution = true
+                });
+            }).catch(e => {
+                this.failedExecution = true
             });
+        }).catch(e => {
+            this.failedExecution = true
         })
     }
 
