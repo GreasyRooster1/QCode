@@ -7,6 +7,7 @@ import {ArduinoType} from "./languageTypes/arduino.ts";
 import {setupPanes} from "./panes";
 import {populateSteps} from "./utils/loadUtils";
 import {scrollToCurrentStep} from "./steps";
+import {setupLessonCreator} from "./lessonCreator/setup";
 
 let projectId=null;
 let userUid = null;
