@@ -20,13 +20,13 @@ class Sketch{
                     if(json.success) {
                         resolve(await response.json());
                     }else{
-                        reject()
+                        reject("failed")
                     }
                 } else {
-                    reject()
+                    reject("failed")
                 }
             }).catch((e) => {
-                reject()
+                reject("failed")
             })
         });
     }
