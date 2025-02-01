@@ -25,8 +25,8 @@ class ArduinoType extends ProjectType {
 
     setupEditor(): void {
         document.querySelector(".console-head")?.setAttribute("style","");
-        this.statusDisplay = document.querySelector(".output-head")?.firstElementChild?.appendChild(document.createElement('div'));
-        this.statusText = document.querySelector(".output-head")?.firstElementChild?.appendChild(document.createElement('div'));
+        this.statusDisplay = document.querySelector(".output-head")?.appendChild(document.createElement('div'));
+        this.statusText = document.querySelector(".output-head")?.appendChild(document.createElement('div'));
 
     }
 
@@ -99,7 +99,7 @@ class ArduinoType extends ProjectType {
         this.updateStatusDisplay()
     }
     updateStatusDisplay(){
-        for(let p in possibleStatuses) {
+        for(let p of possibleStatuses) {
             this.statusDisplay?.classList.remove(p)
             this.statusText?.classList.remove(p)
         }
