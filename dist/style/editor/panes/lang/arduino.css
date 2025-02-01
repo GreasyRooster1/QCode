@@ -34,19 +34,19 @@
 }
 
 .status-display.not-connected{
-    background: var(--arduino-status-not-connected);
+    border-color: var(--arduino-status-not-connected);
 }
 .status-display.ok{
-    background: var(--arduino-status-ok);
+    border-color: var(--arduino-status-ok);
 }
 .status-display.write{
-    background: var(--arduino-status-loading);
+    border-color: var(--arduino-status-loading);
 }
 .status-display.compile{
-    background: var(--arduino-status-loading);
+    border-color: var(--arduino-status-loading);
 }
 .status-display.upload{
-    background: var(--arduino-status-loading);
+    border-color: var(--arduino-status-loading);
 }
 
 .status-text{
