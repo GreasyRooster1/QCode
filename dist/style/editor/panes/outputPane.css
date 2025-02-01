@@ -112,25 +112,7 @@
     border-bottom: 2px solid var(--log-error-background);
 }
 
-.console-head{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding-top: 3px;
-}
 
-.console-input{
-    width:75%;
-    background: var(--console-input-button-background);
-    border-radius: 5px;
-    border: none;
-}
-
-.console-send-button{
-    background: var(--send-button-background);
-    padding: 3px;
-    border-radius: 5px;
-}
 
 .save-alert{
     position: absolute;
