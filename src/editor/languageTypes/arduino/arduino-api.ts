@@ -1,9 +1,11 @@
 const serverAddress = "http://localhost:8181";
+const openProtocol = "qcodecloudagent://";
 
 class Sketch{
     readonly name: string;
     constructor(name:string) {
         this.name = name;
+        this.makeRequest("create","");
     }
 
     private makeRequest(type:string,body:string):Promise<object> {
@@ -35,8 +37,17 @@ class Sketch{
 }
 
 
-function createSketch(name:string):Sketch{
-    return new Sketch(name);
+function startSketchServer(name:string):Promise<Sketch>{
+    return new Promise((resolve, reject) => {
+        fetch(openProtocol).then(r => {
+            if(r.ok){
+                resolve(new Sketch(name));
+                return;
+            }
+            reject()
+        })
+    });
 }
 
-export {serverAddress,Sketch,createSketch}
+
+export {serverAddress,Sketch,startSketchServer}

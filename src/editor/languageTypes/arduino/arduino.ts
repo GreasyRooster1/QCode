@@ -6,7 +6,7 @@ import {getStoredUser} from "../../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
-import {createSketch, Sketch} from "./arduino-api";
+import {startSketchServer, Sketch} from "./arduino-api";
 
 class ArduinoType extends ProjectType {
     sketch: Sketch | undefined;
@@ -21,7 +21,7 @@ class ArduinoType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
-        this.sketch = createSketch(this.projectId!);
+        this.sketch = startSketchServer(this.projectId!);
         document.querySelector(".canvas-output-pane")?.remove()
     }
 
