@@ -111,6 +111,12 @@
     border-bottom: 2px solid var(--log-error-background);
 }
 
+.console-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .save-alert{
     position: absolute;
     display: flex;

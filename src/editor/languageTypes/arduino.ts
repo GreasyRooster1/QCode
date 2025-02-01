@@ -13,7 +13,7 @@ class ArduinoType extends ProjectType {
     }
 
     setupEditor(): void {
-
+        document.querySelector(".console-head")?.setAttribute("style","");
     }
 
     onLoad(){
