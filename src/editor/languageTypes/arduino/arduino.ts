@@ -99,7 +99,32 @@ class ArduinoType extends ProjectType {
         this.updateStatusDisplay()
     }
     updateStatusDisplay(){
-        this.statusDisplay.classList.remove()
+        for(let p in possibleStatuses) {
+            this.statusDisplay?.classList.remove(p)
+            this.statusText?.classList.remove(p)
+        }
+        this.statusDisplay?.classList?.add(this.executionStatus);
+        this.statusText?.classList?.add(this.executionStatus);
+        if(this.failedExecution){
+            let txt = "";
+            if(this.executionStatus == "ok"){
+                txt = "Failed"
+            }
+            if(this.executionStatus == "write"){
+                txt = "Failed to write sketch"
+            }
+            if(this.executionStatus == "compile"){
+                txt = "Failed to compile sketch"
+            }
+            if(this.executionStatus == "upload"){
+                txt = "Failed to upload sketch"
+            }
+            if(this.executionStatus == "not-connected"){
+                txt = "Agent not connected"
+            }
+            this.statusText!.innerHTML = txt;
+        }
+
     }
 }
 
