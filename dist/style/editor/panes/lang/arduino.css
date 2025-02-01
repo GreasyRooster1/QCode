@@ -1,9 +1,7 @@
 :root{
     --arduino-status-not-connected: #939393;
-    --arduino-status-ok: #37d510;
-    --arduino-status-write: #d5ae10;
-    --arduino-status-compile: #d5ae10;
-    --arduino-status-upload: #d5ae10;
+    --arduino-status-ok: #38e80c;
+    --arduino-status-loading: #f8e513;
 }
 
 .console-head{
@@ -40,13 +38,13 @@
     background: var(--arduino-status-not-connected);
 }
 .status-display.write{
-    background: var(--arduino-status-write);
+    background: var(--arduino-status-loading);
 }
 .status-display.compile{
-    background: var(--arduino-status-compile);
+    background: var(--arduino-status-loading);
 }
 .status-display.upload{
-    background: var(--arduino-status-upload);
+    background: var(--arduino-status-loading);
 }
 
 .status-text{
