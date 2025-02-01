@@ -5,7 +5,7 @@ class Sketch{
     readonly name: string;
     constructor(name:string) {
         this.name = name;
-        this.makeRequest("create","");
+        this.makeRequest("create","").catch(e=>{});
     }
 
     private makeRequest(type:string,body:string):Promise<object> {
