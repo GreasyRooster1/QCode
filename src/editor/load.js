@@ -3,7 +3,7 @@ import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
 import {JavascriptType} from "./languageTypes/javascript.ts";
 import {WebType} from "./languageTypes/web/web.ts";
-import {ArduinoType} from "./languageTypes/arduino.ts";
+import {ArduinoType} from "./languageTypes/arduino/arduino.ts";
 import {setupPanes} from "./panes";
 import {populateSteps} from "./utils/loadUtils";
 import {scrollToCurrentStep} from "./steps";
