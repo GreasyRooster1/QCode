@@ -15,7 +15,8 @@ class Sketch{
                 body: body,
                 mode:"no-cors",
             }).then(async (response: Response) => {
-                if (response.status === 200||response.status === 204) {
+                console.log(response);
+                if (response.ok) {
                     resolve(await response.json());
                 } else {
                     reject()
