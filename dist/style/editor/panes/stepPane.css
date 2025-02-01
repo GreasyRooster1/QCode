@@ -70,6 +70,9 @@
 .step.other > .step-head{
     background: var(--step-other);
 }
+.step.build > .step-head{
+    background: var(--step-build);
+}
 
 .step-head > .step-head-content{
     display:inline;

@@ -16,6 +16,6 @@ const defaultFilesWeb = {
         "</html>",
 }
 
-const stepTypes = ["info","code","challenge","check","chapters","next"]
+const stepTypes = ["info","code","challenge","check","chapters","next","build"]
 
 export {defaultCodeJs, defaultCodeArduino, stepTypes,defaultFilesWeb}
