@@ -21,6 +21,13 @@ function loadProjectFromUrlData(){
         return;
     }
     projectId = searchParams.get("projectId");
+
+    if(projectId==="$$lesson$$creator$$"){
+        isLessonCreator = true;
+        setupLessonCreator()
+        return;
+    }
+
     if(!searchParams.has("uid")) {
         return;
     }

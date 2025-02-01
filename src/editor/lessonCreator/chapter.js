@@ -1,3 +1,6 @@
+import {scrollableSteps} from "../load";
+import {createBufferSpace} from "../utils/loadUtils";
+
 let lessonCreatorChapterButton = null;
 let currentChapter = 0;
 
@@ -58,3 +61,5 @@ function saveChapter(chapterNum){
     createdLessonChapters[chapterNum].steps = chapterSteps;
     createdLessonChapters[chapterNum].name = scrollableSteps.querySelector(".step:first-child .step-head-content").innerText;
 }
+
+export {createChapterButton,chapterClick,loadCreatedChapter,saveChapter};

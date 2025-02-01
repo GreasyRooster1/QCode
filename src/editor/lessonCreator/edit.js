@@ -76,3 +76,4 @@ function addStepClick(){
     createDefaultEditableStep(currentStep);
     createBufferSpace();
 }
+export {}
