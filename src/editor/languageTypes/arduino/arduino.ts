@@ -21,7 +21,6 @@ class ArduinoType extends ProjectType {
         super(false);
         this.executionStatus = "not connected";
         this.failedExecution = false;
-        this.updateStatusDisplay()
     }
 
     setupEditor(): void {
@@ -30,6 +29,7 @@ class ArduinoType extends ProjectType {
         this.statusText = document.querySelector(".output-head")?.appendChild(document.createElement('div'));
         this.statusDisplay?.classList.add("status-display");
         this.statusText?.classList.add("status-text");
+        this.updateStatusDisplay()
     }
 
     onLoad(){
