@@ -6,8 +6,11 @@ import {getStoredUser} from "../../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
+import {createSketch, Sketch} from "./arduino-api";
 
 class ArduinoType extends ProjectType {
+    sketch: Sketch | undefined;
+
     constructor() {
         super(false);
     }
@@ -18,6 +21,7 @@ class ArduinoType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
+        this.sketch = createSketch(this.projectId!);
         document.querySelector(".canvas-output-pane")?.remove()
     }
 
@@ -35,12 +39,11 @@ class ArduinoType extends ProjectType {
     }
 
     run(errorCallback:RunErrCallback) {
-        console.log(frameContent)
-        if(frameContent==undefined){
-            frame?.contentWindow?.location?.reload()
-        }
-        frameContent?.location.reload()
-        clearConsole()
+        this.sketch?.writeCode(getCode())?.then(()=> {
+            this.sketch?.compile().then(()=> {
+                this.sketch?.upload();
+            });
+        })
     }
 
     stop(){

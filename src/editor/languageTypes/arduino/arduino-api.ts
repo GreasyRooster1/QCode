@@ -21,8 +21,16 @@ class Sketch{
         });
     }
 
-    writeCode(code:string):void{
-        this.makeRequest("write",code).then();
+    writeCode(code:string):Promise<object> {
+        return this.makeRequest("write", code)
+    }
+
+    compile():Promise<object> {
+        return this.makeRequest("compile", "")
+    }
+
+    upload():Promise<object> {
+        return this.makeRequest("upload", "")
     }
 }
 
