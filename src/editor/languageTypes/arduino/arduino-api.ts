@@ -70,4 +70,4 @@ function startSketchServer(name:string):Promise<Sketch>{
 }
 
 
-export {serverAddress,Sketch,startSketchServer}
+export {serverAddress,Sketch,startSketchServer,openProtocol}

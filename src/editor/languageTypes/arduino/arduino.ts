@@ -6,7 +6,7 @@ import {getStoredUser} from "../../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
-import {startSketchServer, Sketch} from "./arduino-api";
+import {startSketchServer, Sketch, openProtocol} from "./arduino-api";
 
 const possibleStatuses = ["not-connected","ok","write","compile","upload"];
 
@@ -34,12 +34,28 @@ class ArduinoType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
-        startSketchServer(this.projectId!).then(sketch=>{
-            this.sketch = sketch;
-            this.executionStatus = "ok"
-        });
+        this.attemptSketchServer(3);
         document.querySelector(".canvas-output-pane")?.remove()
         document.querySelector(".stop-button")?.remove()
+    }
+
+    attemptSketchServer(depth:number){
+        if(depth<1){
+            this.statusText!.innerHTML = "<a href=''>Agent not installed!</a>"
+            return
+        }
+        startSketchServer(this.projectId!).then(sketch=>{
+            this.sketch = sketch;
+            this.setExecStatus("ok")
+        }).catch(err=>{
+            if(err=="failed to connect"){
+                window.location.href = openProtocol
+                this.attemptSketchServer(depth-1)
+            }
+            if(err=="incorrect version"){
+                this.statusText!.innerHTML = "Incorrect agent version"
+            }
+        });
     }
 
     saveCode(){
