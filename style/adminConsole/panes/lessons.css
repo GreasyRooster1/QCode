@@ -1,0 +1,50 @@
+.lessons-pane{
+    display: flex;
+    flex-direction: column;
+}
+
+.lessons-display-wrapper{
+    height: 60%;
+}
+
+.lesson-link{
+    border-left: 3px solid var(--lesson-link-accent);
+}
+
+.lesson-link.unlisted{
+    border-left: 3px solid var(--lesson-link-unlisted-accent);
+}
+
+.lesson-details{
+    height:40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--details-background);
+}
+
+.lesson-details-content{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.lesson-details .name{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.unlisted-red{
+    color: var(--lesson-link-unlisted-accent);
+}
+
+.unlisted-blue{
+    color: var(--lesson-link-accent);
+}
+.external-red{
+    color: var(--lesson-link-unlisted-accent);
+}
+
+.external-blue{
+    color: var(--lesson-link-accent);
+}

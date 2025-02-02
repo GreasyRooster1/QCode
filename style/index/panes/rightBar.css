@@ -1,0 +1,249 @@
+.right-bar{
+    display: flex;
+    flex-direction: column;
+}
+
+.badges{
+    height:60vh;
+    background: var(--right-sections-background);
+    display: flex;
+    flex-direction: column;
+}
+
+.badge-details{
+    height:30%;
+    background:var(--badge-details-background);
+    margin-top: auto;
+    overflow: clip;
+}
+
+.badge-title{
+    margin: 10px 7px 7px;
+    font-size:30px;
+    text-align: center;
+}
+
+.badge-info-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding:5px
+}
+
+.badge-name{
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.badge-info-image{
+    width: 30%;
+    height:30%;
+    margin:5px;
+    border-radius: 8px;
+}
+
+.badge-info-desc{
+    margin:5px;
+    width: 50%;
+}
+
+.badge-rarity{
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.badges-display{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    line-height: 0;
+}
+
+.badge{
+    margin:3px;
+    width:var(--badge-size);
+    height:var(--badge-size);
+    background:var(--badge-color);
+    border: 2px solid var(--badge-color);
+    border-radius: 4px;
+}
+
+.badge > img{
+    width:var(--badge-size);
+    height:var(--badge-size);
+    border-radius: 4px;
+}
+
+.badge-desc:hover{
+    opacity: 1;
+    border-radius: 4px;
+}
+
+.badge-desc{
+    position: relative;
+    height: var(--badge-size);
+    width: var(--badge-size);
+    opacity: 0;
+    transform: translate(0,-100%);
+    transition: .5s ease;
+    background:var(--badge-hover-color)
+}
+
+.badge-desc-text{
+    position: relative;
+    line-height:10px;
+
+    display: flex;
+    align-items: center;
+
+    text-align: center;
+
+    width:100%;
+    height:100%;
+}
+
+.badge-rarity.common{
+    color:var(--common-rarity-color);
+}
+.badge-rarity.uncommon{
+    color:var(--uncommon-rarity-color-dark);
+    -webkit-text-stroke: 1px var(--uncommon-rarity-color);
+}
+.badge-rarity.rare{
+    color:var(--rare-rarity-color-dark);
+    -webkit-text-stroke: 1px var(--rare-rarity-color);
+    text-shadow: 0 0 4px var(--rare-rarity-color);
+    letter-spacing: 1px;
+}
+.badge-rarity.legendary{
+    color:var(--legendary-rarity-color);
+    -webkit-text-stroke: 1px var(--legendary-rarity-color-dark);
+    text-shadow: 0 0 4px var(--legendary-rarity-color-faded);
+    letter-spacing: 2px;
+    filter: glow();
+}
+.badge-rarity.mythic{
+    color:var(--mythic-rarity-color);
+}
+
+
+
+.share-board{
+    background: var(--right-sections-background);
+}
+
+.share-board-title{
+    font-size:30px;
+    text-align: center;
+}
+
+.share-board-featured-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.share-board-featured{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.share-board .heart-icon {
+    color:var(--likes-color);
+}
+.share-board .heart-count {
+    color:var(--likes-text-color);
+}
+
+.share-board .star-icon {
+    color:var(--stars-color);
+}
+.share-board .star-count {
+    color:var(--stars-text-color);
+}
+
+.share-board .interaction-count{
+    font-weight: bold;
+}
+
+.share-board-featured iframe{
+    aspect-ratio: 1/1;
+    width:14vh;
+}
+
+.share-board .more-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top:-1em;
+    pointer-events: none
+}
+
+.share-board .more-button{
+    pointer-events: auto;
+    background: var(--share-board-more-button-color);
+    color: var(--share-board-more-button-text-color);
+    padding: 2px 4px;
+    border-radius: 7px;
+}
+.slides-wrapper{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.slides-wrapper .slide-arrow{
+    font-size: 7em;
+    margin: calc(5% - 21px) 5% 5%;
+}
+
+.user{
+    background: var(--right-sections-background);
+    display: flex;
+    flex-direction: column;
+}
+
+.username-title{
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.user-main-content{
+    flex:1;
+}
+
+.user-profile-icon{
+    height: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-profile-img{
+    height:10vh;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+}
+
+.user-points-bar-container{
+    height:10%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-points-progress-bar{
+    width:90%;
+    appearance: none;
+    border-radius: 100px;
+    overflow: clip;
+}
+
+.user-points-progress-bar::-webkit-progress-value {
+    background-color: var(--points-progress-bar-fill);
+}
+
+.user-points-progress-bar::-webkit-progress-bar {
+    background-color: var(--points-progress-bar-background);
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QCode | Admin Console</title>
+    <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <link rel="stylesheet" href="./style/global.css">
+    <link rel="stylesheet" href="./style/adminConsole/adminConsole.css">
+    <link rel="stylesheet" href="./style/adminConsole/dataLists.css">
+    <link rel="stylesheet" href="./style/adminConsole/panes/lessons.css">
+    <link rel="stylesheet" href="./style/adminConsole/panes/users.css">
+    <link rel="stylesheet" href="./style/adminConsole/panes/badge.css">
+    <link rel="stylesheet" href="./style/adminConsole/buttons.css">
+
+    <script src="./bundles/adminConsole.bundle.js" defer></script>
+</head>
+<body>
+    <div class="main-content">
+        <div class="title-bar">
+            <div class="main-title">
+                Admin Console
+            </div>
+        </div>
+
+        <div class="buttons-pane">
+            <span class="lesson-creator-button admin-button">Lesson Creator</span>
+            <span class="home-button admin-button">Home</span>
+            <span class="create-user-button admin-button">Create User</span>
+        </div>
+
+        <div class="lessons-pane content-pane">
+            <div class="listed-data-wrapper lessons-display-wrapper scrollable-content">
+                <div class="lessons-display listed-data">
+                </div>
+            </div>
+            <div class="lesson-details">
+                <div class="name">Click any lesson</div>
+                <div class="lesson-details-content">
+                    <div class="lesson-details-meta details-pane">
+                        <div class="details-title">Metadata</div>
+                        <div class="detail-container">Internal identifier: <span class="id">none</span></div>
+                        <div class="detail-container">Unlisted: <span class="unlisted"></span></div>
+                        <div class="detail-container">External: <span class="external"></span></div>
+                    </div>
+                    <div class="lesson-details-stats details-pane">
+                        <div class="details-title">Stats</div>
+                        <div class="detail-container">Amount of chapters: <span class="chapter-count">0</span></div>
+                        <div class="detail-container">Total steps: <span class="step-count">0</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="users-pane content-pane">
+            <div class="listed-data-wrapper scrollable-content user-display-wrapper">
+                <div class="users-display listed-data">
+                </div>
+            </div>
+            <div class="user-details">
+                <div class="name">Click any user</div>
+                <div class="users-load-button">Load Users (Heavy)</div>
+                <div class="user-details-content">
+                    <div class="user-details-data details-pane">
+                        <div class="details-title">Data</div>
+                        <div class="detail-container">Uid: <span class="uid"></span></div>
+                        <div class="detail-container">Points: <span class="points"></span></div>
+                        <div class="detail-container">Spent Points: <span class="spent-points"></span></div>
+                        <div class="detail-container">Projects: <span class="projects"></span></div>
+                    </div>
+                    <div class="user-details-badges details-pane">
+                        <div class="details-title">Badges</div>
+                        <div class="add-badge-button">Grant Badge</div>
+                        <div class="listed-data-wrapper scrollable-content user-details-badges-wrapper">
+                            <div class="user-details-badges-display listed-data">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="badges-pane content-pane">
+            <div class="listed-data-wrapper scrollable-content badge-display-wrapper">
+                <div class="badges-display listed-data">
+                </div>
+            </div>
+            <div class="badge-details">
+                <div class="name">Click a badge</div>
+                <div class="badge-details-content">
+                    <div class="badge-image-container details-pane">
+                        <img class="badge-img" src="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/missing.png?raw=true" alt="badge icon">
+                    </div>
+                    <div class="badge-details-stats details-pane">
+                        <div class="details-title">Stats</div>
+                        <div class="detail-container">Id: <span class="id"></span></div>
+                        <div class="detail-container">Value: <span class="value"></span></div>
+                        <div class="detail-container">Rarity: <span class="rarity"></span></div>
+                        <div class="detail-container">Description: <span class="description"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+body{
+    overflow:clip;
+    margin:0;
+
+    background: #7f7f7f;
+}
+
+main{
+    margin:0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#defaultCanvas0{
+    background: white;
+    margin:5%;
+}

@@ -1,0 +1,155 @@
+.steps-pane{
+    overflow: clip;
+}
+
+.scrollable-steps{
+    overflow-y:auto;
+    overflow-x:hidden;
+    height:100%;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    padding: 0 1em;
+}
+
+.scrollable-steps::-webkit-scrollbar {
+    display: none;
+}
+
+.step{
+    background: var(--step-background);
+    display: block;
+    border-radius:10px;
+    overflow:clip;
+
+    width:100%;
+
+    min-width: 10vw;
+    max-width: 30vw;
+
+    margin: 30px auto;
+}
+
+.step > .step-head{
+    background: var(--step-head-default);
+    padding:3%;
+    display:flex;
+    justify-content: space-between;
+}
+.step > .step-content{
+    background:var(--step-content-background);
+    display:flex;
+    flex-direction: column;
+    padding:3%;
+    flex:1;
+}
+
+.step-image{
+    flex:1;
+}
+
+.step.info > .step-head{
+    background: var(--step-info);
+}
+.step.code > .step-head{
+    background: var(--step-code);
+}
+.step.challenge > .step-head{
+    background: var(--step-challenge);
+}
+.step.chapters > .step-head{
+    background: var(--step-check);
+}
+.step.chapters > .step-head{
+    background: var(--step-chapters);
+}
+.step.next > .step-head{
+    background: var(--step-next);
+}
+.step.other > .step-head{
+    background: var(--step-other);
+}
+.step.build > .step-head{
+    background: var(--step-build);
+}
+
+.step-head > .step-head-content{
+    display:inline;
+}
+
+.step-head-stats{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.type-display{
+    background:var(--step-type-background);
+    display: block;
+
+    height: fit-content;
+    border-radius: 5px;
+    font-size:0.8em;
+    padding:3px;
+    color:white;
+}
+
+.step-count{
+    display: block;
+    height: fit-content;
+    width:fit-content;
+    margin-left: auto;
+    font-size:0.7em;
+    font-weight: bold;
+    padding:3px;
+}
+
+.buffer{
+    height:5vh;
+}
+
+.chapter-link{
+    text-decoration: none;
+    color:var(--chapter-link-color);
+    transition:.2s;
+}
+.chapter-link:hover{
+    color:var(--chapter-link-color-hover)
+}
+.chapter-link.current-chapter{
+    font-weight: bold;
+}
+
+/* step styles */
+
+.step code{
+    display: inline;
+    border-radius: 5px;
+    padding:2px;
+    background: var(--step-code-text-background);
+    color:var(--step-code-text-color);
+}
+
+.step multi-code{
+    display: inline-block;
+    border-radius: 5px;
+    padding:2px;
+    background: var(--step-code-text-background);
+    color:var(--step-code-text-color);
+}
+
+.step red{
+    display: inline;
+    color:var(--step-red-text-color);
+    font-weight: bold;
+}
+
+.chapter-end-home-link{
+    color:var(--chapter-end-home-link-color);
+    text-decoration: underline;
+}
+.next-chapter-text{
+    color:var(--chapter-end-home-link-color);
+    text-decoration: underline;
+}

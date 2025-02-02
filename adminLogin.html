@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QCode | Admin Login</title>
+    <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="./style/adminLogin/admin.css">
+    <script src="./bundles/adminLogin.bundle.js" defer></script>
+</head>
+<body>
+<div class="login-pane">
+    <div class="login-title">
+        Login
+    </div>
+    <div class="input-container">
+        <div class="username-input-wrapper input-wrapper">
+            <label>
+                Email:
+                <input type="text" class="email-input">
+            </label>
+        </div>
+        <div class="password-input-wrapper input-wrapper">
+            <label>
+                Password:
+                <input type="password" class="password-input">
+            </label>
+        </div>
+    </div>
+    <div class="button-container">
+        <div class="login-button button">Login</div>
+    </div>
+    <div class="auth-error-container">
+        <div class="auth-error">
+            <div class="auth-error-message">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

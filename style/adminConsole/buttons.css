@@ -1,0 +1,10 @@
+.admin-button{
+    margin: 5px;
+    padding:3px;
+    border-radius: 3px;
+    background: var(--admin-button-color);
+}
+
+.admin-button:hover{
+    background: var(--admin-button-color-hover);
+}

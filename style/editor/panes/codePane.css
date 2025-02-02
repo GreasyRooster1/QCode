@@ -1,0 +1,17 @@
+.code-editor-wrapper{
+    overflow: clip;
+}
+
+.code-editor{
+    height: 100vh;
+    background: var(--code-editor-background);
+
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+/* the codemirror generated editor */
+
+.cm-editor{
+    height: 100%;
+}

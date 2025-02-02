@@ -1,0 +1,251 @@
+:root{
+    --code-pane-background: #d0efcc;
+    --view-pane-background: #b6b6b6;
+
+    --info-tab-background: #acb4d6;
+    --code-tab-background: #90d89e;
+    --info-tab-color: #021930;
+    --code-tab-color: #033c03;
+    --info-section-background: #d1d7e8;
+
+    --info-inset-background: #c6cee3;
+    --author-block-background: #b6c3e6;
+
+    --tab-bar-background: #c3c3c3;
+
+    --remix-button-color: #2078e8;
+    --remix-button-text-color: #e3e5e8;
+
+    --original-title-border: #4b6ec8;
+
+    --lesson-card: #a4ecad;
+    --lesson-button: #6de383;
+
+    --user-img-size:13vh;
+}
+.nav-shift-fix{
+    height:var(--navbar-height);
+    width:100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.main-content{
+    display: flex;
+    height: calc(100vh - var(--navbar-height));
+}
+
+.info-pane{
+    background: var(--code-pane-background);
+    width: 45vw;
+    height: 100%;
+}
+
+.tab-bar{
+    padding-top: 4px;
+    display: flex;
+    background: var(--tab-bar-background);
+}
+
+.tab{
+    border-radius: 6px 6px 0 0;
+    font-size: 1.1em;
+    padding: 1px 6px 1px 3px;
+    width:20%;
+    margin-left:5px;
+    font-weight: bold;
+}
+
+.tab.info{
+    background: var(--info-tab-background);
+    color: var(--info-tab-color);
+}
+.tab.code{
+    background: var(--code-tab-background);
+    color: var(--code-tab-color);
+}
+
+.section{
+    height: 100%;
+}
+
+.view-pane{
+    background: var(--view-pane-background);
+    width: 55vw;
+    height: 100%;
+}
+
+#exec-frame{
+    width: 100%;
+    height: 100%;
+    border:none
+}
+
+
+
+.section.info{
+    background: var(--info-section-background);
+    font-size: 1.1em;
+}
+
+.info-title{
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.date-container{
+    background: var(--info-inset-background);
+    padding:2px;
+    margin: 1%;
+    border-radius:5px;
+}
+
+.info-desc{
+    background: var(--info-inset-background);
+    padding:2px;
+    margin: 1%;
+    border-radius:5px;
+}
+
+.info-author{
+    background: var(--info-inset-background);
+    padding:2px;
+    margin: 1%;
+    border-radius:5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.author-block{
+    background: var(--author-block-background);
+    padding:1%;
+    margin:5px;
+    border-radius: 10px;
+}
+
+.author-icon img{
+    width:var(--user-img-size);
+    height:var(--user-img-size);
+    border-radius: 15px;
+    overflow: clip;
+}
+
+.info-original{
+    background: var(--info-inset-background);
+    padding:2px;
+    margin: 1%;
+    border-radius:5px;
+    display: none;  /*set to flex in js*/
+    flex-direction: column;
+    align-items: center;
+}
+
+.original-block{
+    background: var(--author-block-background);
+    padding:1%;
+    margin:5px;
+    border-radius: 10px;
+}
+
+.original-block .title{
+    font-size: 1.25em;
+    border-bottom: 2px solid var(--original-title-border);
+    text-align: center;
+}
+
+.original-icon img{
+    width:var(--user-img-size);
+    height:var(--user-img-size);
+    border-radius: 15px;
+    overflow: clip;
+}
+
+.user-title{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
+.code-editor{
+    height: 100%;
+    background: var(--code-editor-background);
+
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.remix-container{
+    background: var(--info-inset-background);
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.remix-button{
+    margin:5px;
+    width:fit-content;
+    background:var(--remix-button-color);
+    border-radius:5px;
+    height:auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remix-button span{
+    font-size: 2em;
+    color:var(--remix-button-text-color);
+}
+
+.lesson-button-container{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+
+    background-image: radial-gradient(black 1px, var(--code-pane-background) 0);
+    background-size: 40px 40px;
+    background-position: -19px -19px;
+}
+
+.lesson-button-container .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width:40vh;
+    height:40vh;
+    background:var(--lesson-card);
+    border-radius:10px;
+}
+
+.lesson-button{
+    background:var(--lesson-button);
+    padding:10px;
+    border-radius:5px;
+    font-size: 1.2em;
+}
+
+.lesson-title{
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.lesson-thumb{
+    aspect-ratio: 1/1;
+    width: 50%;
+    border-radius: 10px;
+}
+
+/* the codemirror generated editor */
+
+.cm-editor{
+    height: 100%;
+}
