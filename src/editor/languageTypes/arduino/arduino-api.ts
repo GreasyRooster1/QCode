@@ -52,12 +52,12 @@ function startSketchServer(name:string):Promise<Sketch>{
         try {
             fetch(serverAddress + "/version", {
                 method: "GET",
-                mode: "no-cors",
             }).then(async r => {
                 if (!r.ok) {
                     reject("failed to connect")
                 }
                 let text = await r.text()
+                console.log("text:", text)
                 if (text == expectedVersion) {
                     resolve(new Sketch(name));
                 } else {
