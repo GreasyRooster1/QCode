@@ -39,6 +39,9 @@
 .status-display.ok{
     border-color: var(--arduino-status-ok);
 }
+.status-display.connected{
+    border-color: var(--arduino-status-ok);
+}
 .status-display.write{
     border-color: var(--arduino-status-loading);
 }

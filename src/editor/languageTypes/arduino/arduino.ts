@@ -8,7 +8,7 @@ import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
 import {startSketchServer, Sketch, openProtocol} from "./arduino-api";
 
-const possibleStatuses = ["not-connected","ok","write","compile","upload"];
+const possibleStatuses = ["not-connected","connected","ok","write","compile","upload"];
 
 class ArduinoType extends ProjectType {
     sketch: Sketch | undefined;
@@ -46,7 +46,7 @@ class ArduinoType extends ProjectType {
         }
         startSketchServer(this.projectId!).then(sketch=>{
             this.sketch = sketch;
-            this.setExecStatus("ok")
+            this.setExecStatus("connected")
         }).catch(err=>{
             if(err=="failed to connect"){
                 window.location.href = openProtocol
@@ -146,6 +146,9 @@ class ArduinoType extends ProjectType {
         }else{
             if(this.executionStatus == "ok"){
                 txt = "Success!"
+            }
+            if(this.executionStatus == "connected"){
+                txt = "Connected!"
             }
             if(this.executionStatus == "write"){
                 txt = "Writing..."
