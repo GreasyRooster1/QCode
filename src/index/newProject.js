@@ -1,5 +1,6 @@
 import {getStoredUser} from "../api/auth";
 import {cleanProjectName, createProject} from "../api/project";
+import {openProjectInEditor} from "../api/util/projects";
 
 const newProjectButton = document.querySelector('.new-project-button');
 const popupCloseButton = document.querySelector('.close-button');
