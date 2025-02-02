@@ -50,8 +50,10 @@ class ArduinoType extends ProjectType {
         }).catch(err=>{
             if(err=="failed to connect"){
                 window.location.href = openProtocol
-                this.attemptSketchServer(depth-1)
                 this.statusText!.innerHTML = "Launching... ("+depth+")"
+                setTimeout(()=>{
+                    this.attemptSketchServer(depth-1)
+                },5000)
             }
             if(err=="incorrect version"){
                 this.statusText!.innerHTML = "Incorrect agent version"
