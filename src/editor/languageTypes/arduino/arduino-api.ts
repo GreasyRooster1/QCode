@@ -49,23 +49,27 @@ class Sketch{
 
 function startSketchServer(name:string):Promise<Sketch>{
     return new Promise((resolve, reject) => {
-        fetch(serverAddress+"/version",{
-            method: "GET",
-            mode:"no-cors",
-        }).then(async r => {
-            if (!r.ok) {
-                reject("failed to connect")
-            }
-            let text = await r.text()
-            if(text==expectedVersion){
-                resolve(new Sketch(name));
-            }else{
-                reject("incorrect version")
-            }
+        try {
+            fetch(serverAddress + "/version", {
+                method: "GET",
+                mode: "no-cors",
+            }).then(async r => {
+                if (!r.ok) {
+                    reject("failed to connect")
+                }
+                let text = await r.text()
+                if (text == expectedVersion) {
+                    resolve(new Sketch(name));
+                } else {
+                    reject("incorrect version")
+                }
 
-        }).catch(err=>{
+            }).catch(err => {
+                reject("failed to connect")
+            })
+        }catch (err){
             reject("failed to connect")
-        })
+        }
     });
 }
 
