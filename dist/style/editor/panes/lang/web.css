@@ -1,0 +1,141 @@
+:root{
+    --filesystem-sidebar: #b5b5b5;
+    --filesystem-header: #2c2c2c;
+    --folder-icon-line: #636363;
+    --current-file-view: #535252;
+    --filesystem-background: #a8a8a8;
+
+    --header-text: #ececec;
+    --current-file-view-text: #eaeaea;
+}
+
+.code-editor-wrapper{
+    display: flex;
+}
+
+.code-editor{
+    flex: 1
+}
+
+.filesystem-sidebar{
+    width: 13vw;
+    background: var(--filesystem-sidebar);
+    display: flex;
+    flex-direction: column;
+}
+
+.filesystem-sidebar .header{
+    background: var(--filesystem-header);
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.3rem;
+    color:var(--header-text);
+}
+
+.filesystem-container{
+    overflow: auto;
+    flex-grow: 1;
+    padding:3px;
+    font-size: 1.3rem;
+}
+.filesystem{
+    margin-top:5px;
+    margin-bottom:15px;
+    margin-left:2px;
+    background: var(--filesystem-background);
+    padding:3px;
+    border-radius: 5px;
+}
+
+.remote-assets-filesystem{
+    min-height: 20%;
+}
+
+.filesystem-root{
+    display: flex;
+    margin-bottom:10px;
+}
+
+.filesystem-root img{
+    width:1.2em;
+    aspect-ratio: 1;
+    display: inline;
+    margin-right:5px
+}
+
+.file-list{
+    margin-left:20px;
+}
+
+.remote-assets{
+    margin-left:20px;
+}
+
+.file{
+    display: flex;
+    margin-top:5px
+}
+
+.file .filename{
+    text-wrap: nowrap;
+}
+
+.file-list .icon{
+    width:1.2em;
+    aspect-ratio: 1/1;
+}
+
+.folder{
+    margin-left:20px;
+}
+
+.folder-icon{
+    margin-left:2px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between
+}
+.folder-icon .name{
+    margin-left:5px;
+}
+
+.folder-icon .name-icon{
+    display:flex;
+}
+
+.folder-icon img{
+    width:1.2em;
+    aspect-ratio: 1/1;
+    display: inline;
+}
+
+.folder-icon .buttons{
+    opacity: 0;
+    pointer-events: none;
+    transition: .25s;
+}
+
+.folder-icon:hover .buttons{
+    opacity:1;
+    pointer-events: auto;
+}
+
+.text-editor-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    flex: 1
+}
+
+.current-file-view{
+    padding-left:4px;
+    background: var(--current-file-view);
+    font-size: 1.3rem;
+    color:var(--current-file-view-text);
+    display: flex;
+    justify-content: space-between;
+}
+
+.current-file-view .icons{
+    margin-right:4px;
+}

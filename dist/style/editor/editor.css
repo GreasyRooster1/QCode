@@ -1,0 +1,114 @@
+:root{
+    --pane-background: #bcbcbc;
+
+    --gutter-accent: #b3b3b3;
+    --gutter-main: #d3d3d3;
+
+    --step-background: #d5d5d5;
+    --step-content-background: #e4e4e4;
+
+    --step-head-default: rgba(209, 0, 255, 0.44);
+
+    --step-info: rgba(21, 156, 214, 0.44);
+    --step-code: rgba(27, 214, 21, 0.44);
+    --step-challenge: rgba(214, 21, 21, 0.44);
+    --step-chapters: rgba(101, 101, 101, 0.44);
+    --step-check: rgba(153, 44, 255, 0.44);
+    --step-next: rgba(255, 148, 34, 0.44);
+    --step-build: rgba(34, 45, 255, 0.44);
+    --step-other: rgba(21, 21, 21, 0.44);
+
+    --step-type-background: #707070;
+
+    --code-editor-background: #e0e0e0;
+
+    --run-button-background: #0ed144;
+    --run-button-text-color: #ffffff;
+
+    --stop-button-background: #d10e0e;
+    --stop-button-text-color: #ffffff;
+
+    --save-button-background: #0e86d1;
+    --save-button-text-color: #ffffff;
+
+    --share-button-background: #7f21e4;
+    --share-button-text-color: #ffffff;
+    --share-button-disabled-background: #808080;
+
+    --share-popup-background: #efefef;
+    --share-project-name-input: #cfcfcf;
+
+    --close-button-text-color: #6a6a6a;
+
+    --send-button-background: #959595;
+    --console-input-button-background: #dcdcdc;
+
+    --log-error-background: rgba(255, 27, 27, 0.37);
+    --log-warn-background: rgba(255, 243, 17, 0.37);
+    --log-log-background: rgb(71 70 68 / 22%);
+
+    --log-error-solid: rgb(255, 45, 45);
+    --log-warn-solid: rgb(220, 188, 13);
+    --log-log-solid: rgb(120, 119, 118);
+
+    --save-alert-background: #cfe6f8;
+    --save-alert-accent: #4094d6;
+
+    --chapter-link-color: #226d6e;
+    --chapter-link-color-hover: #22bcbd;
+
+    --step-code-text-background: #fae6e8;
+    --step-code-text-color: #c5244e;
+
+    --step-red-text-color: #ef0909;
+
+    --chapter-end-home-link-color: #2180d1;
+}
+
+body{
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.pane-container{
+    margin:0;
+    background: var(--pane-background);
+}
+
+.gutter{
+    background: var(--gutter-main);
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+    cursor: row-resize;
+}
+
+.gutter-block{
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 3px var(--gutter-main);
+    background: var(--gutter-accent);
+    position: relative;
+}
+
+.gutter.gutter-horizontal > .gutter-block{
+    height:25vh;
+    width:10px;
+    top: 50%;
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.gutter.gutter-vertical > .gutter-block{
+    height:10px;
+    width:25%;
+    left: 50%;
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%,0);
+}

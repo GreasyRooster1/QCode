@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QCode | Editor</title>
+    <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js" integrity="sha512-to2k78YjoNUq8+hnJS8AwFg/nrLRFLdYYalb18SlcsFRXavCOTfBF3lNyplKkLJeB8YjKVTb1FPHGSy9sXfSdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://kit.fontawesome.com/464579a9a3.js" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="./style/global.css">
+    <link rel="stylesheet" href="./style/navbar.css">
+
+    <link rel="stylesheet" href="./style/editor/editor.css">
+    <link rel="stylesheet" href="./style/editor/panes.css">
+    <link rel="stylesheet" href="./style/editor/panes/stepPane.css">
+    <link rel="stylesheet" href="./style/editor/panes/codePane.css">
+    <link rel="stylesheet" href="./style/editor/panes/outputPane.css">
+    <link rel="stylesheet" href="./style/editor/lessonCreator.css">
+    <link rel="stylesheet" href="./style/editor/share.css">
+    <link rel="stylesheet" href="./style/editor/panes/lang/web.css">
+    <link rel="stylesheet" href="./style/editor/panes/lang/arduino.css">
+</head>
+<body>
+    <brand-nav></brand-nav>
+
+    <div class="pane-container">
+
+        <div class="steps-pane editor-pane">
+            <div class="scrollable-steps">
+                <!-- Steps go here -->
+            </div>
+        </div>
+
+        <div class="code-pane editor-pane">
+            <div class="code-editor"></div>
+        </div>
+
+        <div class="output-pane editor-pane">
+            <div class="output-head">
+                <div>
+                    <button class="run-button">Run </button>
+                    <button class="stop-button">Stop </button>
+                    <button class="save-button">Save </button>
+                    <button class="share-button">Share </button>
+                </div>
+            </div>
+            <div class="output-panes-wrapper">
+                <div class="canvas-output-pane">
+                    <div class="save-alert">
+                        <div class="save-alert-header">
+                            Saved!
+                        </div>
+                    </div>
+                    <iframe class="canvas-output-iframe" src="./exec.html" id="exec-frame"></iframe>
+                </div>
+                <div class="console-output-pane">
+                    <div class="console-head" style="display:none">
+                        <input type="text" class="console-input" placeholder="Message...">
+                        <div class="console-send-button">Send</div>
+                    </div>
+                    <div class="console-log-area">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lesson-creator-button-container">
+    </div>
+
+    <div class="share-popup-container">
+        <div class="share-popup-content">
+            <div class="top-bar">
+                <span class="close-button">
+                    X
+                </span>
+            </div>
+            <div class="title">Share Project</div>
+            <div class="share-preview">
+                <iframe class="canvas-output-iframe" src="./exec.html" id="share-preview-frame"></iframe>
+            </div>
+            <input class="name-input" placeholder="Type project name" type="text">
+            <textarea class="desc-input" placeholder="Type project description" cols="40" rows="3"></textarea>
+            <div class="share-popup-button">Share</div>
+<!--            <div class="disclaimer">By sharing this project you agree that this project and its code will be publicly accessible, and can be removed from the share board at any time</div>-->
+        </div>
+    </div>
+
+    <script src="./bundles/editor.bundle.js" defer></script>
+</body>
+</html>

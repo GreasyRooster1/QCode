@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "@codemirror/commands": "^6.8.0",
+    "@codemirror/lang-cpp": "^6.0.2",
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.9",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/lang-python": "^6.1.7",
+    "@codemirror/lang-rust": "^6.0.1",
+    "@codemirror/language": "^6.10.8",
+    "@codemirror/lint": "^6.8.4",
+    "@codemirror/view": "^6.36.2",
+    "codemirror": "^6.0.1",
+    "firebase": "^11.2.0",
+    "gh-pages": "^6.3.0",
+    "lezer": "^0.13.5",
+    "p5": "^1.11.3",
+    "split.js": "^1.6.5",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  }
+}

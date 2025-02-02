@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QCode | Home</title>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
+    <script src="https://kit.fontawesome.com/464579a9a3.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
+
+
+
+    <link href="./style/navbar.css" rel="stylesheet">
+    <link href="./style/global.css" rel="stylesheet">
+
+    <link href="./style/shareBoard/global.css" rel="stylesheet">
+
+    <link href="./style/index/index.css" rel="stylesheet">
+    <link href="./style/index/panes/leftBar.css" rel="stylesheet">
+    <link href="./style/index/panes/rightBar.css" rel="stylesheet">
+    <link href="./style/index/panes/centerPane.css" rel="stylesheet">
+    <link href="./style/index/projectPopup.css" rel="stylesheet">
+</head>
+<body>
+    <!-- changes need to be made if this page is not the index, mainly to redirects -->
+    <!-- todo: points, shop, lesson flowchart, dark mode/themes, style projects better, rarity glints, mastery wheel, user stats, front page, save button glow, more modes? -->
+
+    <brand-nav></brand-nav>
+    <div class="nav-shift-fix"></div>
+
+    <div class="main-content">
+
+        <div class="left-bar">
+            <div class="lessons bar-section tall">
+                <div class="lessons-title bar-title">Lessons</div>
+                <div class="recommended-lessons">
+                    <div class="title">Recommended Lessons</div>
+                    <div class="lessons-display"></div>
+                </div>
+                <div class="lessons-chart-link">View All Lessons</div>
+            </div>
+            <div class="projects bar-section tall">
+                <div class="projects-title bar-title">Projects</div>
+                <div class="new-project-button">New</div>
+                <div class="projects-display">
+                </div>
+            </div>
+        </div>
+
+        <div class="center-content">
+            <div class="featured-project-wrapper">
+                <div class="featured-project-canvas">
+                    <iframe id="featured-exec-frame" src="./exec.html"></iframe>
+                </div>
+                <div class="featured-project-thumb">
+<!--                    <div class="title">-->
+<!--                        Title-->
+<!--                    </div>-->
+                    <div class="play-icon">
+                        <i class="fa fa-play"></i>
+                    </div>
+                </div>
+                <div class="featured-project-bar">
+<!--                    <i class="fa fa-refresh"></i>-->
+                </div>
+            </div>
+            <div class="announcements-pane">
+                <div class="announcements-title">
+                    Announcements
+                </div>
+                <div class="announcements-display">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="right-bar">
+            <div class="badges bar-section">
+                <div class="badge-title">
+                    Badges
+                </div>
+                <div class="badges-display">
+                </div>
+                <div class="badge-details">
+                    <div class="badge-name">
+                        Click a badge
+                    </div>
+                    <div class="badge-info-container">
+                        <img class="badge-info-image" alt="badge icon" style="display: none">
+                        <div class="badge-info-desc">
+
+                        </div>
+                    </div>
+                    <div class="badge-rarity">
+
+                    </div>
+                </div>
+            </div>
+            <div class="share-board bar-section short">
+                <div class="share-board-title">
+                    Share Board
+                </div>
+                <div class="share-board-featured-wrapper">
+                    <div class="slides-wrapper">
+                        <div class="slide-arrow left">
+                            <i class='fa fa-caret-left'></i>
+                        </div>
+                        <div class="share-board-featured">
+                            <iframe id="share-board-exec-frame" src="./exec.html"></iframe>
+                            <div class="interact-tray">
+                                <span class="hearts-wrapper">
+                                    <span class="heart-icon">
+                                        <i class='far fa-heart'></i>
+                                    </span>
+                                    <span class="heart-count interaction-count">0</span>
+                                </span>
+                                <span class="star-wrapper">
+                                    <span class="star-icon">
+                                        <i class='far fa-star'></i>
+                                    </span>
+                                    <span class="star-count interaction-count">0</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="slide-arrow right">
+                            <i class='fa fa-caret-right'></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="more-wrapper">
+                    <span class="more-button">More...</span>
+                </div>
+            </div>
+            <div class="user bar-section short">
+                <div class="username-title">
+
+                </div>
+                <div class="user-main-content">
+                    <div class="user-profile-icon">
+                        <img class="user-profile-img" alt="profile icon">
+                    </div>
+<!--                    <div class="user-stats">-->
+
+<!--                    </div>-->
+                    <div class="user-points-bar-container">
+                        <progress class="user-points-progress-bar" value="0" max="1000"></progress>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+            <div class="title">
+                QCode
+            </div>
+            <br>
+            <div class="sub-title">
+                <span class="version">0</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/GreasyRooster1/ProgrammingPlatform"><i class="fa fa-github"></i> Github</a>
+                <a href="https://www.esporterz.com"><i class="esporterz-logo-text">@</i> Esporterz</a>
+            </div>
+            <div class="legal">
+                <div>© Dillon Wilson 2024</div>
+                <div><a href="legal.html">Legal</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="new-project-popup-container">
+        <div class="new-project-popup">
+            <div class="close-bar">
+                <span class="close-button">X</span>
+            </div>
+            <div class="title">New Project</div>
+            <div class="inputs-container">
+                <div class="input-container">
+                    <label for="new-project-name-input">Name</label>
+                    <input type="text" id="new-project-name-input" class="name-input">
+                </div>
+                <div class="type-container">
+                    <label for="new-project-type">Project Type</label>
+                    <select id="new-project-type" class="type-select">
+                        <option value="javascript">Javascript</option>
+<!--                        <option value="web">Web</option>-->
+                        <option value="arduino">Arduino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="button-container">
+                <span class="create-button">
+                   Create Project
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <script src="./bundles/index.bundle.js" defer></script>
+</body>
+</html>

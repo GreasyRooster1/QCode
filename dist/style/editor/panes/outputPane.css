@@ -1,0 +1,152 @@
+
+.output-head{
+    padding: 5px;
+    height:40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.run-button{
+    background: var(--run-button-background);
+    border:none;
+    border-radius: 5px;
+
+    font-size: 20px;
+    height:30px;
+    color:var(--run-button-text-color);
+}
+
+.stop-button{
+    background: var(--stop-button-background);
+    border:none;
+    border-radius: 5px;
+
+    font-size: 20px;
+    height:30px;
+    color:var(--stop-button-text-color);
+}
+.save-button{
+    background: var(--save-button-background);
+    border:none;
+    border-radius: 5px;
+
+    font-size: 20px;
+    height:30px;
+    color:var(--save-button-text-color);
+}
+
+.share-button{
+    background: var(--share-button-background);
+    border:none;
+    border-radius: 5px;
+
+    font-size: 20px;
+    height:30px;
+    color:var(--share-button-text-color);
+}
+
+.share-button.disabled{
+    background: var(--share-button-disabled-background);
+    pointer-events: none;
+}
+
+.output-panes-wrapper{
+    height: calc(100% - 40px);
+}
+
+.canvas-output-iframe{
+    height: 100%;
+    width: 100%;
+}
+
+.console-output-pane{
+    display: flex;
+    flex-direction: column;
+}
+
+.console-log-area{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.console-log{
+    min-height: 75px;
+    margin-top: 10px;
+    font-family:monospace;
+}
+
+.console-log > .log-head{
+    min-height:20px;
+
+    font-weight: 600;
+    padding-left: 4px;
+}
+
+.console-log > .log-content{
+    min-height:15px;
+    padding: 2px 2px 2px 15px;
+}
+
+.console-log.log{
+    background: var(--log-log-background);
+    border-left: 5px solid var(--log-log-solid);
+}
+.console-log.log > .log-head{
+    border-bottom: 2px solid var(--log-log-background);
+}
+
+.console-log.warn{
+    background: var(--log-warn-background);
+    border-left: 5px solid var(--log-warn-solid);
+}
+
+.console-log.warn > .log-head{
+    border-bottom: 2px solid var(--log-warn-background);
+}
+
+.console-log.error{
+    background: var(--log-error-background);
+    border-left: 5px solid var(--log-error-solid);
+}
+
+.console-log.error > .log-head{
+    border-bottom: 2px solid var(--log-error-background);
+}
+
+
+
+.save-alert{
+    position: absolute;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width:30%;
+    height:20%;
+
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+
+    background: var(--save-alert-background);
+
+    border: 7px solid var(--save-alert-accent);
+    border-radius: 20px;
+
+    opacity: 0;
+    pointer-events: none
+}
+
+.save-alert-header{
+    color:var(--save-alert-accent);
+
+    font-weight: bold;
+    font-size: 70px;
+    text-align: center;
+}
+
+iframe{
+    border:3px solid #7f7f7f;
+}
