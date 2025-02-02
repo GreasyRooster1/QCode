@@ -41,7 +41,7 @@ class ArduinoType extends ProjectType {
 
     attemptSketchServer(depth:number){
         if(depth<1){
-            this.statusText!.innerHTML = "<a href=''>Agent not installed!</a>"
+            this.statusText!.innerHTML = "<a href='github.com/GreasyRooster1/QCodeCloudAgent/releases/latest'>Agent not installed!</a>"
             return
         }
         startSketchServer(this.projectId!).then(sketch=>{
