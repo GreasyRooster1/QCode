@@ -1,5 +1,6 @@
 const serverAddress = "http://localhost:8181";
 const openProtocol = "qcodecloudagent://";
+const expectedVersion = "1.0.0";
 
 class Sketch{
     readonly name: string;
@@ -48,16 +49,22 @@ class Sketch{
 
 function startSketchServer(name:string):Promise<Sketch>{
     return new Promise((resolve, reject) => {
-        fetch(serverAddress+"/status",{
+        fetch(serverAddress+"/version",{
             method: "GET",
             mode:"no-cors",
-        }).then(r => {
-            resolve(new Sketch(name));
+        }).then(async r => {
+            if (!r.ok) {
+                reject("failed to connect")
+            }
+            let text = await r.text()
+            if(text==expectedVersion){
+                resolve(new Sketch(name));
+            }else{
+                reject("incorrect version")
+            }
+
         }).catch(err=>{
-            window.location.href = openProtocol;
-            setTimeout(()=>{
-                window.location.reload();
-            },5000);
+            reject("failed to connect")
         })
     });
 }
