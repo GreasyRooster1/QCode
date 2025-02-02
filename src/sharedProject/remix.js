@@ -2,6 +2,8 @@ import {get, ref, set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
 import {projectCode, shareBoardId} from "./project";
+import {getLinkToProject} from "../api/util/projects";
+import {cleanProjectName} from "../api/project";
 
 
 function initRemix(){
@@ -11,7 +13,7 @@ function initRemix(){
         if(name==null){
             return;
         }
-        let cleanProjectId = name.toLowerCase().replaceAll("[^a-z0-9]","-");
+        let cleanProjectId = cleanProjectName(name);
         get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+cleanProjectId)).then( (snap) => {
             if(snap.exists()){
                 alert("Project already exists with that name!");
@@ -32,7 +34,4 @@ function initRemix(){
     })
 }
 
-function getLinkToProject(projectId,uid,chapterNumber){
-    return "editor/editor.html?projectId="+projectId+"&uid="+uid+"&cNum="+chapterNumber;
-}
-export {getLinkToProject,initRemix};
+export {initRemix};

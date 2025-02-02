@@ -16,10 +16,6 @@ function startExternalLesson(lessonData){
 }
 
 function startInternalLesson(ref,lessonId,lessonData){
-    let starterCode = lessonData.starterCode;
-    if(starterCode==="default"){
-        starterCode = defaultCode;
-    }
     createProject(lessonId,lessonData.name,lessonData.type,lessonId)
     openProjectInEditor(lessonId,getStoredUser().uid,0);
 }
