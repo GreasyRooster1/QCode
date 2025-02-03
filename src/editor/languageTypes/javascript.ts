@@ -49,7 +49,7 @@ class JavascriptType extends ProjectType {
     }
 
     runErrorCallback(content: string, type: string): void {
-        this.appendLog(content,type);
+        super.appendLog(content,type);
     }
 
     getLanguage():Language {
@@ -58,7 +58,7 @@ class JavascriptType extends ProjectType {
 }
 
 function clearConsole(){
-    let consoleOut = document.querySelector(".console-output-pane")
+    let consoleOut = document.querySelector(".console-log-area")
     consoleOut!.innerHTML = "";
 }
 
