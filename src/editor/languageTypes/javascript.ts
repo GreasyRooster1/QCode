@@ -5,6 +5,7 @@ import {getStoredUser} from "../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../api/firebase";
 import {writeToEditor} from "../utils/loadUtils";
+import {clearConsole} from "../codeExecution";
 
 class JavascriptType extends ProjectType {
     constructor() {
@@ -55,11 +56,6 @@ class JavascriptType extends ProjectType {
     getLanguage():Language {
         return "javascript";
     }
-}
-
-function clearConsole(){
-    let consoleOut = document.querySelector(".console-log-area")
-    consoleOut!.innerHTML = "";
 }
 
 export {JavascriptType};

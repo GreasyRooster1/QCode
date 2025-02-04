@@ -21,11 +21,17 @@ let runningCode = false;
 // });
 
 function resetAllOutputs(){
-    consoleOut.innerHTML = "";
+    clearConsole();
     frame.contentWindow.location.reload();
     iWindow = null;
     runningCode = false;
 }
+
+function clearConsole(){
+    let consoleOut = document.querySelector(".console-log-area")
+    consoleOut.innerHTML = "";
+}
+
 
 function getCodeFromEditor(){
     return window.editor.state.doc.toString();
@@ -34,4 +40,4 @@ function getCodeFromEditor(){
 //when we get a message from the frame
 
 
-export {resetAllOutputs,getCodeFromEditor,iWindow,stopButton,runButton};
+export {resetAllOutputs,getCodeFromEditor,iWindow,stopButton,runButton,clearConsole};

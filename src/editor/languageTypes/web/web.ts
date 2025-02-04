@@ -278,10 +278,4 @@ class WebType extends ProjectType {
         return "javascript";
     }
 }
-
-function clearConsole(){
-    let consoleOut = document.querySelector(".console-output-pane")
-    consoleOut!.innerHTML = "";
-}
-
 export {WebType};

@@ -7,6 +7,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
 import {startSketchServer, Sketch, openProtocol} from "./arduino-api";
+import {clearConsole} from "../../codeExecution";
 
 const possibleStatuses = ["not-connected","connected","ok","write","compile","upload"];
 
@@ -165,11 +166,6 @@ class ArduinoType extends ProjectType {
         }
         this.statusText!.innerHTML = txt;
     }
-}
-
-function clearConsole(){
-    let consoleOut = document.querySelector(".console-output-pane")
-    consoleOut!.innerHTML = "";
 }
 
 export {ArduinoType};
