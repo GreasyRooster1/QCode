@@ -12,8 +12,9 @@ function createProject(cleanProjectId,projectName,type,lessonId){
             if(snap.exists()){
                 reject();
             }
-            set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),setupProjectForType(type,projectName,lessonId));
-            resolve();
+            set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),setupProjectForType(type,projectName,lessonId)).then(()=>{
+                resolve();
+            });
         })
     });
 }
