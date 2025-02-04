@@ -93,7 +93,6 @@ function loadLesson(lessonId){
             scrollToCurrentStep(lessonId)
         }else{
             console.log("invalid lesson!");
-            setupPanes(false);
         }
     });
 }

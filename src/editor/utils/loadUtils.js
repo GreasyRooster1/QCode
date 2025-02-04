@@ -16,7 +16,6 @@ function populateSteps(data){
     }
     createNextChapterStep(data);
     createBufferSpace()
-    setupPanes(true);
 }
 
 function createStep(head,content,image,type,count){
