@@ -4,10 +4,11 @@ import {defaultCodeArduino, defaultCodeJs, defaultFilesWeb} from "./util/code";
 import {ref,get,set} from "firebase/database";
 
 function createProject(cleanProjectId,projectName,type,lessonId){
-    debugger
+
     return new Promise((resolve,reject)=>{
         let user = getStoredUser();
         get(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId)).then((snap) => {
+            debugger
             if(snap.exists()){
                 reject();
             }
