@@ -2,7 +2,7 @@ import {getCodeFromEditor} from "../codeExecution";
 import {currentChapter, loadCreatedChapter, saveChapter} from "./chapter";
 import {writeToEditor} from "../utils/loadUtils";
 import {scrollableSteps} from "../load";
-import {createdLessonChapters} from "./save";
+import {createdLessonChapters, setCreatedLessonChapters} from "./save";
 import {buttonContainer, createLessonCreatorChapterStep} from "./setup";
 
 const lessonDataStorageLocation = "lessonDataAutoSave";
@@ -18,7 +18,7 @@ function autoSaveToLocalStorage(){
 
 function loadAutoSave(){
     scrollableSteps.innerHTML = "";
-    createdLessonChapters = JSON.parse(localStorage.getItem(lessonDataStorageLocation));
+    setCreatedLessonChapters(JSON.parse(localStorage.getItem(lessonDataStorageLocation)));
     writeToEditor(localStorage.getItem(codeStorageLocation));
     createLessonCreatorChapterStep();
     loadCreatedChapter(currentChapter);
