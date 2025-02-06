@@ -67,6 +67,9 @@ function getArduinoProjectData(projectName,lessonId){
 }
 
 function cleanProjectName(projectName){
+    if(projectName.length<1){
+        projectName = "unnamed";
+    }
     return projectName.toLowerCase().trim().replace(/[\W_]+/g,"-");
 }
 
