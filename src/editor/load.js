@@ -25,8 +25,8 @@ function loadProjectFromUrlData(){
 
     if(projectId==="$$lesson$$creator$$"){
         isLessonCreator = true;
-        prompt("enter a type (javascript|web|arduino)")
-        updateLanguage().then((projectType) =>
+        let type = prompt("enter a type (javascript|web|arduino)")
+        updateLanguage(type).then((projectType) =>
         {
             setupProjectType(projectType)
             setupLessonCreator()
