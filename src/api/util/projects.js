@@ -16,8 +16,9 @@ function startExternalLesson(lessonData){
 }
 
 function startInternalLesson(ref,lessonId,lessonData){
-    createProject(lessonId,lessonData.name,lessonData.type,lessonId)
-    openProjectInEditor(lessonId,getStoredUser().uid,0);
+    createProject(lessonId,lessonData.name,lessonData.type,lessonId).then(()=>{
+        openProjectInEditor(lessonId,getStoredUser().uid,0);
+    })
 }
 
 function openLesson(lessonId){

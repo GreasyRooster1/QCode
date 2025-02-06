@@ -1,7 +1,7 @@
 import {writeToEditor} from "../utils/loadUtils";
 import {loadCreatedChapter} from "./chapter";
 import {buttonContainer} from "./setup";
-import {createdLessonChapters} from "./save";
+import {createdLessonChapters, setCreatedLessonChapters} from "./save";
 
 let lessonCreatorLoadButton = null;
 
@@ -37,7 +37,7 @@ function uploadLesson(){
                 }
                 chapters.push(chapter);
             }
-            createdLessonChapters = chapters;
+            setCreatedLessonChapters(chapters);
             loadCreatedChapter(0)
             writeToEditor(parsed.coachCode);
         }

@@ -6,6 +6,10 @@ import {buttonContainer} from "./setup";
 let createdLessonChapters = []
 let lessonCreatorSaveButton = null;
 
+function setCreatedLessonChapters(chapters){
+    createdLessonChapters = chapters;
+}
+
 function createSaveButton(){
     lessonCreatorSaveButton = document.createElement("div")
     lessonCreatorSaveButton.innerHTML = "Download Lesson";
@@ -60,4 +64,4 @@ function downloadLessonData(data,name) {
     window.URL.revokeObjectURL(url)
 }
 
-export {createdLessonChapters,saveLesson,createSaveButton,downloadLessonData}
+export {createdLessonChapters,saveLesson,createSaveButton,downloadLessonData,setCreatedLessonChapters}

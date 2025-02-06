@@ -75,8 +75,9 @@ class StepElement extends HTMLElement {
         }
 
         if (this.attributes.getNamedItem("image") !== null) {
-            this.image.setAttribute("src",this.attributes.getNamedItem("image").value);
-            if(this.attributes.getNamedItem("image").value==="none"){
+            let img = this.attributes.getNamedItem("image")
+            this.image.setAttribute("src",img.value);
+            if(img.value==="none"||img.value==="null"){
                 this.image.style.display = "none";
             }
         }

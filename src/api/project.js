@@ -4,15 +4,17 @@ import {defaultCodeArduino, defaultCodeJs, defaultFilesWeb} from "./util/code";
 import {ref,get,set} from "firebase/database";
 
 function createProject(cleanProjectId,projectName,type,lessonId){
-    debugger
+
     return new Promise((resolve,reject)=>{
         let user = getStoredUser();
         get(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId)).then((snap) => {
+            debugger
             if(snap.exists()){
                 reject();
             }
-            set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),setupProjectForType(type,projectName,lessonId));
-            resolve();
+            set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),setupProjectForType(type,projectName,lessonId)).then(()=>{
+                resolve();
+            });
         })
     });
 }
@@ -65,6 +67,9 @@ function getArduinoProjectData(projectName,lessonId){
 }
 
 function cleanProjectName(projectName){
+    if(projectName.length<1){
+        projectName = "unnamed";
+    }
     return projectName.toLowerCase().trim().replace(/[\W_]+/g,"-");
 }
 

@@ -25,7 +25,14 @@ function loadProjectFromUrlData(){
 
     if(projectId==="$$lesson$$creator$$"){
         isLessonCreator = true;
-        setupLessonCreator()
+        let type = prompt("enter a type (javascript|web|arduino)")
+        updateLanguage(type).then((projectType) =>
+        {
+            projectType.setupEditor();
+            projectType.setupEditorLanguage()
+            projectType.setupEventListeners()
+            setupLessonCreator()
+        })
         return;
     }
 
@@ -46,19 +53,22 @@ function loadProjectFromUrlData(){
         }
         updateLanguage(id).then((projectType) =>
         {
-            console.log(projectType.run)
-            projectType.setupEditor();
-            projectType.setupEditorLanguage()
-            projectType.setupEventListeners()
-            projectType.loadProjectData(searchParams.get("projectId"));
-            if(!searchParams.has("cNum")) {
-                return;
-            }
-            projectType.chapterNum = searchParams.get("cNum");
+            setupProjectType(projectType)
         })
     });
 }
 
+function setupProjectType(projectType){
+    console.log(projectType.run)
+    projectType.setupEditor();
+    projectType.setupEditorLanguage()
+    projectType.setupEventListeners()
+    projectType.loadProjectData(searchParams.get("projectId"));
+    if(!searchParams.has("cNum")) {
+        return;
+    }
+    projectType.chapterNum = searchParams.get("cNum");
+}
 
 
 function updateLanguage(id){
@@ -93,7 +103,6 @@ function loadLesson(lessonId){
             scrollToCurrentStep(lessonId)
         }else{
             console.log("invalid lesson!");
-            setupPanes(false);
         }
     });
 }
