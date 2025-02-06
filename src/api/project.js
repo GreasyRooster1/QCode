@@ -1,7 +1,7 @@
 import {getStoredUser} from "./auth";
 import {db} from "./firebase";
 import {defaultCodeArduino, defaultCodeJs, defaultFilesWeb} from "./util/code";
-import {ref,get,set} from "firebase/database";
+import {ref,get,update} from "firebase/database";
 
 function createProject(cleanProjectId,projectName,type,lessonId){
 
@@ -12,7 +12,7 @@ function createProject(cleanProjectId,projectName,type,lessonId){
             if(snap.exists()){
                 reject();
             }
-            set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),setupProjectForType(type,projectName,lessonId)).then(()=>{
+            update(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),setupProjectForType(type,projectName,lessonId)).then(()=>{
                 resolve();
             });
         })
