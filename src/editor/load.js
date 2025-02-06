@@ -53,12 +53,12 @@ function loadProjectFromUrlData(){
         }
         updateLanguage(id).then((projectType) =>
         {
-            setupProjectType(projectType)
+            setupProjectType(projectType,searchParams)
         })
     });
 }
 
-function setupProjectType(projectType){
+function setupProjectType(projectType,searchParams){
     console.log(projectType.run)
     projectType.setupEditor();
     projectType.setupEditorLanguage()
