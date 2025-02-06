@@ -36,8 +36,13 @@ function setupNewProjectEvents(){
 
     popupCreateButton.addEventListener('click', (e) => {
         let projectName = popupNameInput.value;
+        if(projectName === ""){
+            projectName = "unnamed"
+        }
         let type = popupTypeInput.value;
         let cleanProjectId = cleanProjectName(projectName);
+        console.log(projectName,cleanProjectId);
+
         if(cleanProjectId.length<1){
             alert("project must have a name");
             return;
