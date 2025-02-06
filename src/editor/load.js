@@ -28,7 +28,9 @@ function loadProjectFromUrlData(){
         let type = prompt("enter a type (javascript|web|arduino)")
         updateLanguage(type).then((projectType) =>
         {
-            setupProjectType(projectType)
+            projectType.setupEditor();
+            projectType.setupEditorLanguage()
+            projectType.setupEventListeners()
             setupLessonCreator()
         })
         return;
