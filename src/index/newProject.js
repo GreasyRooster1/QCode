@@ -38,6 +38,10 @@ function setupNewProjectEvents(){
         let projectName = popupNameInput.value;
         let type = popupTypeInput.value;
         let cleanProjectId = cleanProjectName(projectName);
+        if(cleanProjectId.length<1){
+            alert("project must have a name");
+            return;
+        }
         createProject(cleanProjectId,projectName,type).then(()=>{
             openProjectInEditor(cleanProjectId,getStoredUser().uid,0);
         }).catch(() => {
