@@ -1,7 +1,7 @@
 import {getStoredUser} from "./auth";
 import {db} from "./firebase";
 import {defaultCodeArduino, defaultCodeJs, defaultFilesWeb} from "./util/code";
-import {ref,get,update} from "firebase/database";
+import {ref,get,set} from "firebase/database";
 import {languageTypes} from "../editor/languageTypes";
 
 function createProject(cleanProjectId,projectName,type,lessonId){
@@ -13,7 +13,7 @@ function createProject(cleanProjectId,projectName,type,lessonId){
             if(snap.exists()){
                 reject();
             }
-            update(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),getProjectDataForType(type,projectName,lessonId)).then(()=>{
+            set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),getProjectDataForType(type,projectName,lessonId)).then(()=>{
                 resolve();
             });
         })
@@ -21,7 +21,6 @@ function createProject(cleanProjectId,projectName,type,lessonId){
 }
 
 function getProjectDataForType(type,projectName,lessonId){
-    debugger
     return languageTypes[type].getProjectDBData(projectName,lessonId)
 }
 
