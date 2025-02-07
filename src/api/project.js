@@ -2,6 +2,7 @@ import {getStoredUser} from "./auth";
 import {db} from "./firebase";
 import {defaultCodeArduino, defaultCodeJs, defaultFilesWeb} from "./util/code";
 import {ref,get,update} from "firebase/database";
+import {languageTypes} from "../editor/languageTypes";
 
 function createProject(cleanProjectId,projectName,type,lessonId){
 
@@ -12,59 +13,15 @@ function createProject(cleanProjectId,projectName,type,lessonId){
             if(snap.exists()){
                 reject();
             }
-            update(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),setupProjectForType(type,projectName,lessonId)).then(()=>{
+            update(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),getProjectDataForType(type,projectName,lessonId)).then(()=>{
                 resolve();
             });
         })
     });
 }
 
-function setupProjectForType(type,projectName,lessonId){
-
-    switch(type){
-        case 'javascript':
-            return getJSProjectData(projectName,lessonId)
-        case 'web':
-            return getWebProjectData(projectName,lessonId)
-        case 'arduino':
-            return getArduinoProjectData(projectName,lessonId)
-    }
-}
-
-function getJSProjectData(projectName,lessonId){
-    return {
-        code:defaultCodeJs,
-        lessonId:lessonId??"none",
-        name:projectName,
-        currentChapter:0,
-        currentStep:0,
-        timestamp:Date.now()/1000,
-        language:"javascript",
-    }
-}
-
-function getWebProjectData(projectName,lessonId){
-    return {
-        files:defaultFilesWeb,
-        lessonId:lessonId??"none",
-        name:projectName,
-        currentChapter:0,
-        currentStep:0,
-        timestamp:Date.now()/1000,
-        language:"web",
-    }
-}
-
-function getArduinoProjectData(projectName,lessonId){
-    return {
-        code:defaultCodeArduino,
-        lessonId:lessonId??"none",
-        name:projectName,
-        currentChapter:0,
-        currentStep:0,
-        timestamp:Date.now()/1000,
-        language:"arduino",
-    }
+function getProjectDataForType(type,projectName,lessonId){
+    return languageTypes[type].getProjectDBData(projectName,lessonId)
 }
 
 function cleanProjectName(projectName){
@@ -76,9 +33,6 @@ function cleanProjectName(projectName){
 
 export {
     createProject,
-    getArduinoProjectData,
-    getJSProjectData,
-    getWebProjectData,
     cleanProjectName,
-    setupProjectForType
+    getProjectDataForType
 }
