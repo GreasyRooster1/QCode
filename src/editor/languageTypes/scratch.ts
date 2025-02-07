@@ -13,6 +13,7 @@ class ScratchType extends ProjectType {
     }
 
     setupEditor(): void {
+
     }
 
     onLoad(){
