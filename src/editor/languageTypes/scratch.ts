@@ -13,7 +13,7 @@ class ScratchType extends ProjectType {
     }
 
     setupEditor(): void {
-
+        document.querySelector(".output-pane")!.remove();
     }
 
     onLoad(){
