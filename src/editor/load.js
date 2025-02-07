@@ -78,7 +78,7 @@ function updateLanguage(id){
         if(type===undefined){
             reject();
         }else{
-            resolve(new type);
+            resolve(new type());
         }
     });
 }
