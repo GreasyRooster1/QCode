@@ -21,6 +21,7 @@ function createProject(cleanProjectId,projectName,type,lessonId){
 }
 
 function getProjectDataForType(type,projectName,lessonId){
+    debugger
     return languageTypes[type].getProjectDBData(projectName,lessonId)
 }
 
