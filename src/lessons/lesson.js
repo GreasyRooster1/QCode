@@ -52,7 +52,6 @@ class Lesson{
             return;
         }
         let tags = this.metadata.tags;
-        console.log(tags)
         textSize(15);
         textAlign(LEFT)
         noStroke()
@@ -70,7 +69,6 @@ class Lesson{
     checkStatus(){
         get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.id)).then((snapshot)=> {
             let projData = snapshot.val();
-            console.log(projData)
             if (snapshot.exists()) {
                 this.started = true;
             }else{
