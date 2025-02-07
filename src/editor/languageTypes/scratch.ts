@@ -35,6 +35,13 @@ class ScratchType extends ProjectType {
     getLanguage():Language {
         return "javascript";
     }
+
+    static getProjectDBData(projectName: string, lessonId: string):Object {
+        return {
+            name: projectName,
+            lessonId: lessonId,
+        }
+    }
 }
 
 export {ScratchType};
