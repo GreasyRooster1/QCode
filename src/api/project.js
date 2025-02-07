@@ -20,6 +20,7 @@ function createProject(cleanProjectId,projectName,type,lessonId){
 }
 
 function setupProjectForType(type,projectName,lessonId){
+
     switch(type){
         case 'javascript':
             return getJSProjectData(projectName,lessonId)
