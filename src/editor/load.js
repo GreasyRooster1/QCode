@@ -8,6 +8,7 @@ import {setupPanes} from "./panes";
 import {populateSteps} from "./utils/loadUtils";
 import {scrollToCurrentStep} from "./steps";
 import {setupLessonCreator} from "./lessonCreator/setup";
+import {languageTypes} from "./languageTypes";
 
 let projectId=null;
 let userUid = null;
@@ -73,22 +74,12 @@ function setupProjectType(projectType,searchParams){
 
 function updateLanguage(id){
     return new Promise((resolve, reject) => {
-        if (id === "javascript") {
-            projectType = new JavascriptType();
-            resolve(projectType)
-            return;
+        let type = languageTypes[id];
+        if(type===undefined){
+            reject();
+        }else{
+            resolve(new type);
         }
-        if (id === "web") {
-            projectType = new WebType();
-            resolve(projectType)
-            return;
-        }
-        if (id === "arduino") {
-            projectType = new ArduinoType();
-            resolve(projectType)
-            return;
-        }
-        reject();
     });
 }
 
