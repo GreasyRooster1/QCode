@@ -4,7 +4,7 @@ import {get, ref} from "firebase/database";
 import {getStoredUser} from "../../api/auth";
 import {setupPanes} from "../panes";
 import {showSaveAlert} from "../save";
-import {loadLesson, projectType} from "../load";
+import {loadLesson} from "../load";
 import {runPopupPreviewCode, showPopup} from "../share";
 import {logNames} from "../executionHelper";
 
