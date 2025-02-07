@@ -8,6 +8,7 @@ import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
 import {startSketchServer, Sketch, openProtocol} from "./arduino-api";
 import {clearConsole} from "../../codeExecution";
+import {defaultCodeArduino, defaultCodeJs} from "../../../api/util/code";
 
 const possibleStatuses = ["not-connected","connected","ok","write","compile","upload"];
 
@@ -165,6 +166,18 @@ class ArduinoType extends ProjectType {
             }
         }
         this.statusText!.innerHTML = txt;
+    }
+
+    static getProjectDBData(projectName: string, lessonId: string):Object {
+        return {
+            code:defaultCodeArduino,
+            lessonId:lessonId??"none",
+            name:projectName,
+            currentChapter:0,
+            currentStep:0,
+            timestamp:Date.now()/1000,
+            language:"arduino",
+        }
     }
 }
 

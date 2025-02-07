@@ -6,6 +6,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {writeToEditor} from "../../utils/loadUtils";
+import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
 
 class WebType extends ProjectType {
     filesystem:Filesystem
@@ -276,6 +277,18 @@ class WebType extends ProjectType {
 
     getLanguage():Language {
         return "javascript";
+    }
+
+    static getProjectDBData(projectName: string, lessonId: string):Object {
+        return {
+            files:defaultFilesWeb,
+            lessonId:lessonId??"none",
+            name:projectName,
+            currentChapter:0,
+            currentStep:0,
+            timestamp:Date.now()/1000,
+            language:"web",
+        }
     }
 }
 export {WebType};

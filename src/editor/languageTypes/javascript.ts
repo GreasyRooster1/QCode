@@ -6,6 +6,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../api/firebase";
 import {writeToEditor} from "../utils/loadUtils";
 import {clearConsole} from "../codeExecution";
+import {defaultCodeJs} from "../../api/util/code";
 
 class JavascriptType extends ProjectType {
     constructor() {
@@ -55,6 +56,18 @@ class JavascriptType extends ProjectType {
 
     getLanguage():Language {
         return "javascript";
+    }
+
+    static getProjectDBData(projectName: string, lessonId: string):Object {
+        return {
+            code:defaultCodeJs,
+            lessonId:lessonId??"none",
+            name:projectName,
+            currentChapter:0,
+            currentStep:0,
+            timestamp:Date.now()/1000,
+            language:"javascript",
+        }
     }
 }
 
