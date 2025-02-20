@@ -1,4 +1,4 @@
-import {onValue, ref, set} from "firebase/database";
+import {onValue, ref, set,get} from "firebase/database";
 import {getStoredUser} from "./auth";
 import {db} from "./firebase";
 
@@ -14,12 +14,14 @@ function loadTheme(){
             return;
         }
         get(ref(db,"themes/"+themeId)).then((snap)=>{
+            console.log(snap.val())
             setPageTheme(snap.val())
         })
     })
 }
 
 function setPageTheme(theme){
+    debugger;
     document.querySelector(".theme-style-el")?.remove();
     let styleEl = document.createElement("link");
     styleEl.rel = "stylesheet";
