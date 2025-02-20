@@ -22,6 +22,7 @@ abstract class ProjectType {
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;
+        this.chapterNum = 0;
         this.checkShareAllowed()
     }
 

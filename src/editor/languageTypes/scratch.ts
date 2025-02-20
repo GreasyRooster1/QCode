@@ -41,7 +41,10 @@ class ScratchType extends ProjectType {
         return {
             language:"scratch",
             name: projectName,
-            lessonId: lessonId,
+            lessonId:lessonId??"none",
+            currentChapter:0,
+            currentStep:0,
+            timestamp:Date.now()/1000,
         }
     }
 }
