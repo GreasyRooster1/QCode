@@ -111,12 +111,152 @@
     --auth-error-text: rgb(35, 2, 2);
 }
 
+/* Lessons (lessons/index.css) */
+:root {
+    --ui-tray-background:#fff;
+    --ui-tray-border: #9f9f9f;
+    --ui-tray-icons: #474747;
+}
+
+/* Index (index/index.css) */
+:root{
+    --center-background: #eaeaea;
+
+    --left-bar-background: #dcdcdc;
+    --left-sections-background: #aab4dc;
+
+    --right-bar-background: #dddddd;
+    --right-sections-background: #aadcb4;
+
+    --project-link-background: #8d99dd;
+    --project-link-text: #191919;
+    --project-date-text: #c9d0dd;
+
+    --lessons-chart-link-background:#98a2da;
+    --lessons-recommended-background: #a1a9d8;
+
+    --badge-details-background: #94d89d;
+    --badge-hover-color: #83d88f;
+    --badge-color: #94d89d;
+
+    --new-button-background: #7583e1;
+    --new-button-text-color: #dde5e8;
+
+    --featured-project-thumb-background: rgba(0, 0, 0, 0.5);
+
+    --announcement-background: #d9d9d9;
+    --announcement-side-color: #bebebe;
+    --announcement-content-background: #e1e1e1;
+    --announcement-content-text: #4d4d4d;
+    --announcement-date-text: #4d4d4d;
+
+    --points-progress-bar-background: #cdcdcd;
+    --points-progress-bar-fill: #64d888;
+
+    --status-display-text: #dfdfdf;
+    --status-display-external: #ea473a;
+    --status-display-not-started: #3a78ea;
+    --status-display-started: #3aea78;
+
+    --footer-background: #c5c5c5;
+    --footer-text-color: #717171;
+
+    --badge-size:50px;
+
+    --share-board-more-button-color: #14a4e3;
+    --share-board-more-button-text-color: #eef9ff;
+
+    --new-project-popup-background: #b3b9df;
+    --popup-inputs-background: #9da6dd;
+}
+
+/* Exec (exec/style.css) */
+/* Override elements directly */
+
+/* Editor Main (editor/editor.css) */
+:root{
+    --pane-background: #bcbcbc;
+
+    --gutter-accent: #b3b3b3;
+    --gutter-main: #d3d3d3;
+
+    --step-background: #d5d5d5;
+    --step-content-background: #e4e4e4;
+
+    --step-head-default: rgba(209, 0, 255, 0.44);
+
+    --step-info: rgba(21, 156, 214, 0.44);
+    --step-code: rgba(27, 214, 21, 0.44);
+    --step-challenge: rgba(214, 21, 21, 0.44);
+    --step-chapters: rgba(101, 101, 101, 0.44);
+    --step-check: rgba(153, 44, 255, 0.44);
+    --step-next: rgba(255, 148, 34, 0.44);
+    --step-build: rgba(34, 45, 255, 0.44);
+    --step-other: rgba(21, 21, 21, 0.44);
+
+    --step-type-background: #707070;
+
+    --code-editor-background: #e0e0e0;
+
+    --run-button-background: #0ed144;
+    --run-button-text-color: #ffffff;
+
+    --stop-button-background: #d10e0e;
+    --stop-button-text-color: #ffffff;
+
+    --save-button-background: #0e86d1;
+    --save-button-text-color: #ffffff;
+
+    --share-button-background: #7f21e4;
+    --share-button-text-color: #ffffff;
+    --share-button-disabled-background: #808080;
+
+    --share-popup-background: #efefef;
+    --share-project-name-input: #cfcfcf;
+
+    --close-button-text-color: #6a6a6a;
+
+    --send-button-background: #959595;
+    --console-input-button-background: #dcdcdc;
+
+    --log-error-background: rgba(255, 27, 27, 0.37);
+    --log-warn-background: rgba(255, 243, 17, 0.37);
+    --log-log-background: rgb(71 70 68 / 22%);
+
+    --log-error-solid: rgb(255, 45, 45);
+    --log-warn-solid: rgb(220, 188, 13);
+    --log-log-solid: rgb(120, 119, 118);
+
+    --save-alert-background: #cfe6f8;
+    --save-alert-accent: #4094d6;
+
+    --chapter-link-color: #226d6e;
+    --chapter-link-color-hover: #22bcbd;
+
+    --step-code-text-background: #fae6e8;
+    --step-code-text-color: #c5244e;
+
+    --step-red-text-color: #ef0909;
+
+    --chapter-end-home-link-color: #2180d1;
+    --scratch-steps-background: #dddddd;
+}
+
+/* Editor Lesson Creator (editor/lessonCreator.css) */
+:root{
+    --lesson-creator-container-color: #b8b8b8;
+    --lesson-creator-button-color: #dfdfdf;
+    --lesson-creator-meta-color: #a1a1a1;
+}
+
+/* Editor Arduino (sharedProject/index.css) */
+:root{
+    --arduino-status-not-connected: #939393;
+    --arduino-status-ok: #0ed144;
+    --arduino-status-loading: #ffb617;
+}
+
 /* Shared Project (sharedProject/index.css) */
 
 
 /* Shared Project (sharedProject/index.css) */
-
-
-/* Shared Project (sharedProject/index.css) */
-
-
