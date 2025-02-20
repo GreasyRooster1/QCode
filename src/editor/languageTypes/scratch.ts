@@ -7,6 +7,7 @@ import {db} from "../../api/firebase";
 import {writeToEditor} from "../utils/loadUtils";
 import {clearConsole} from "../codeExecution";
 import {setupDefaultPanes} from "../panes";
+import Split from "split.js";
 
 class ScratchType extends ProjectType {
     constructor() {
@@ -19,13 +20,15 @@ class ScratchType extends ProjectType {
 
     onLoad(){
         document.querySelector(".output-pane")!.remove();
-        let gutters = document.querySelectorAll(".gutter.gutter-horizontal");
-        gutters[gutters.length - 1].remove();
-
     }
 
     createPanes(hasLesson:boolean){
-        setupDefaultPanes(hasLesson);
+        if(!hasLesson){
+            return
+        }
+        Split(['.steps-pane', '.code-pane'], {
+            sizes: [60,40],
+        });
     }
 
     saveCode(){
