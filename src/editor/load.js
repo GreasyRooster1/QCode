@@ -59,7 +59,7 @@ function loadProjectFromUrlData(){
 function setupProjectType(ptype,searchParams){
     console.log(ptype.run)
     if(searchParams.has("cNum")) {
-        ptype.chapterNum = searchParams.get("cNum")??0;
+        ptype.chapterNum = parseInt(searchParams.get("cNum")??0);
     }
     ptype.setupEditor();
     ptype.setupEditorLanguage()
