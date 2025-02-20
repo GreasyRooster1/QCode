@@ -64,7 +64,7 @@ function setupProjectType(projectType,searchParams){
     if(!searchParams.has("cNum")) {
         return;
     }
-    projectType.chapterNum = searchParams.get("cNum");
+    projectType.chapterNum = searchParams.get("cNum")??0;
 }
 
 
