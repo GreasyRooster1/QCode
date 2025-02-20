@@ -1,4 +1,4 @@
-import {setupPanes} from "../panes";
+import {setupDefaultPanes} from "../panes";
 import {createAddStepButton} from "./edit";
 import {createdLessonChapters, createSaveButton} from "./save";
 import {createChapterButton} from "./chapter";
@@ -19,7 +19,7 @@ const defaultStep = {
 }
 
 function setupLessonCreator(){
-    setupPanes(true);
+    setupDefaultPanes(true);
 
     createAddStepButton();
     createChapterButton();

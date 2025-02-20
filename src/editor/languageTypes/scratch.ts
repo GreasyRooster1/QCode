@@ -6,7 +6,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../api/firebase";
 import {writeToEditor} from "../utils/loadUtils";
 import {clearConsole} from "../codeExecution";
-import {setupPanes} from "../panes";
+import {setupDefaultPanes} from "../panes";
 
 class ScratchType extends ProjectType {
     constructor() {
@@ -25,7 +25,7 @@ class ScratchType extends ProjectType {
     }
 
     createPanes(hasLesson:boolean){
-        setupPanes(hasLesson);
+        setupDefaultPanes(hasLesson);
     }
 
     saveCode(){

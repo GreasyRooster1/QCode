@@ -2,7 +2,7 @@ import Split from "split.js";
 
 const stepsPane = document.querySelector(".steps-pane");
 
-function setupPanes(hasLesson) {
+function setupDefaultPanes(hasLesson) {
     if(hasLesson) {
         Split(['.steps-pane', '.code-pane', '.output-pane'], {
             sizes: [20, 50, 30],
@@ -20,7 +20,10 @@ function setupPanes(hasLesson) {
         minSize: 30,
         snapOffset: 10,
     });
+    createGutterBlocks()
+}
 
+function createGutterBlocks(){
     const horzGutters = document.querySelectorAll(".gutter.gutter-horizontal")
 
     for (let gutter of horzGutters) {
@@ -37,4 +40,4 @@ function setupPanes(hasLesson) {
     }
 }
 
-export {setupPanes}
+export {setupDefaultPanes}

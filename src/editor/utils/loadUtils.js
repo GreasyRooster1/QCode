@@ -1,4 +1,4 @@
-import {setupPanes} from "../panes";
+import {setupDefaultPanes} from "../panes";
 import { projectId, projectType, scrollableSteps} from "../load";
 import {getStoredUser} from "../../api/auth";
 import {getLinkToProject} from "../../api/util/projects";

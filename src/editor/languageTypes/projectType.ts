@@ -2,7 +2,7 @@ import {Language, setupEditor} from "../codeEditor";
 import {db} from "../../api/firebase";
 import {get, ref} from "firebase/database";
 import {getStoredUser} from "../../api/auth";
-import {setupPanes} from "../panes";
+import {setupDefaultPanes} from "../panes";
 import {showSaveAlert} from "../save";
 import {loadLesson} from "../load";
 import {runPopupPreviewCode, showPopup} from "../share";
@@ -45,7 +45,7 @@ abstract class ProjectType {
     }
 
     createPanes(hasLesson:boolean){
-        setupPanes(hasLesson);
+        setupDefaultPanes(hasLesson);
     }
 
     setupEventListeners(){
