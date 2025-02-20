@@ -249,14 +249,62 @@
     --lesson-creator-meta-color: #a1a1a1;
 }
 
-/* Editor Arduino (sharedProject/index.css) */
+/* Editor Arduino (editor/panes/lang/arduino.css) */
 :root{
     --arduino-status-not-connected: #939393;
     --arduino-status-ok: #0ed144;
     --arduino-status-loading: #ffb617;
 }
 
-/* Shared Project (sharedProject/index.css) */
+/* Editor Scratch (editor/panes/lang/scratch.css) */
+/* Override elements directly */
 
+/* Editor Web (editor/panes/lang/web.css) */
+:root{
+    --filesystem-sidebar: #b5b5b5;
+    --filesystem-header: #2c2c2c;
+    --folder-icon-line: #636363;
+    --current-file-view: #535252;
+    --filesystem-background: #a8a8a8;
 
-/* Shared Project (sharedProject/index.css) */
+    --header-text: #ececec;
+    --current-file-view-text: #eaeaea;
+}
+
+/* Admin Login (adminLogin/admin.css) */
+:root{
+    --background-color: #4f4f4f;
+    --login-pane-color: #6b6b6b;
+    --input-container-color: #808080;
+    --input-wrapper-color: #939393;
+
+    --button-container-color: #808080;
+    --button-color: #939393;
+    --button-color-hover: #b0b0b0;
+
+    --auth-container-color: #808080;
+
+    --auth-error-background: rgba(210, 22, 22, 0.39);
+    --auth-error-solid: rgb(211, 48, 48);
+    --auth-error-text: rgb(35, 2, 2);
+}
+
+/* Admin Console (adminConsole/adminConsole.css) */
+:root{
+    --background-color: #555555;
+    --main-content-background: #8f8f8f;
+    --content-pane-background: #b5b5b5;
+
+    --data-item-color: #a3a3a3;
+    --details-background:#a3a3a3;
+
+    --lesson-link-accent: #1e6ec6;
+    --lesson-link-unlisted-accent: #d32f2f;
+
+    --lesson-creator-button-color: #1aca52;
+    --admin-button-color: #a1a1a1;
+    --admin-button-color-hover: #bbbbbb;
+
+    --add-badge-button-color:#1aca52;
+    --load-button-background: #8f8f8f;
+}
