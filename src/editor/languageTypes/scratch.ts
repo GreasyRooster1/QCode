@@ -30,13 +30,13 @@ class ScratchType extends ProjectType {
         }
     }
 
-    saveCode(){
+    onSave(){
     }
 
-    run(errorCallback:RunErrCallback) {
+    onRun(errorCallback:RunErrCallback) {
     }
 
-    stop(){
+    onStop(){
     }
 
     runErrorCallback(content: string, type: string): void {

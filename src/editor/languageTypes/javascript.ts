@@ -23,7 +23,7 @@ class JavascriptType extends ProjectType {
         writeToEditor(this.projectData!["code"]);
     }
 
-    saveCode(){
+    onSave(){
         let code = getCode();
         let user = getStoredUser();
         set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/code"),code);
@@ -36,7 +36,7 @@ class JavascriptType extends ProjectType {
 
     }
 
-    run(errorCallback:RunErrCallback) {
+    onRun(errorCallback:RunErrCallback) {
         console.log(frameContent)
         if(frameContent==undefined){
             frame?.contentWindow?.location?.reload()
@@ -45,7 +45,7 @@ class JavascriptType extends ProjectType {
         clearConsole()
     }
 
-    stop(){
+    onStop(){
         stopFrame();
         clearConsole()
     }

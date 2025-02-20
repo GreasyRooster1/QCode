@@ -19,10 +19,12 @@ abstract class ProjectType {
     projectId: string | undefined;
     highestViewedStep: number | undefined;
     chapterNum: number | undefined;
+    isLessonCreator:boolean;
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;
         this.chapterNum = 0;
+        this.isLessonCreator = false;
         this.checkShareAllowed()
     }
 
@@ -56,10 +58,10 @@ abstract class ProjectType {
         document.querySelector(".run-button")?.addEventListener("click", ()=>{
             this.saveCode();
             showSaveAlert()
-            this.run(this.runErrorCallback);
+            this.onRun(this.runErrorCallback);
         })
         document.querySelector(".stop-button")?.addEventListener("click", ()=>{
-            this.stop();
+            this.saveCode();
         })
         document.querySelector('.share-button')?.addEventListener('click', (e) => {
             console.log("sadsd")
@@ -101,6 +103,13 @@ abstract class ProjectType {
         consoleOut!.insertBefore(logEl,consoleOut!.firstChild);
     }
 
+    saveCode(){
+        if(this.isLessonCreator){
+            return
+        }
+        this.onSave()
+    }
+
     /*
     * Abstract methods
     */
@@ -109,11 +118,11 @@ abstract class ProjectType {
 
     abstract onLoad():void;
 
-    abstract saveCode():void;
+    abstract onSave():void;
 
-    abstract run(errorCallback:RunErrCallback):void;
+    abstract onRun(errorCallback:RunErrCallback):void;
 
-    abstract stop():void;
+    abstract onStop():void;
 
     abstract runErrorCallback(content:string,type:string):void;
 

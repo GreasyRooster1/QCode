@@ -230,13 +230,13 @@ class WebType extends ProjectType {
         this.updateFilesystemBar();
     }
 
-    saveCode(){
+    onSave(){
         this.saveCurrentFile()
         let serializedFiles = this.filesystem.serialize();
         set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files"),serializedFiles);
     }
 
-    run(errorCallback:RunErrCallback) {
+    onRun(errorCallback:RunErrCallback) {
         this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
         let frame = document.getElementById("#exec-frame")! as HTMLIFrameElement
         frame.contentWindow!.location.href = this.getServerAddress();
@@ -269,7 +269,7 @@ class WebType extends ProjectType {
         });
     }
 
-    stop(){
+    onStop(){
     }
 
     runErrorCallback(content: string, type: string): void {

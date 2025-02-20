@@ -63,7 +63,7 @@ class ArduinoType extends ProjectType {
         });
     }
 
-    saveCode(){
+    onSave(){
         let code = getCode();
         let user = getStoredUser();
         set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/code"),code);
@@ -76,7 +76,7 @@ class ArduinoType extends ProjectType {
 
     }
 
-    run(errorCallback:RunErrCallback) {
+    onRun(errorCallback:RunErrCallback) {
         if(this.sketch==null){
             return;
         }
@@ -98,7 +98,7 @@ class ArduinoType extends ProjectType {
         })
     }
 
-    stop(){
+    onStop(){
         stopFrame();
         clearConsole()
     }
