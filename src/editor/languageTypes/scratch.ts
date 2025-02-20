@@ -20,16 +20,14 @@ class ScratchType extends ProjectType {
 
     setupEditor(){
         document.querySelector(".output-pane")!.remove();
+        document.querySelector(".code-pane")!.remove();
     }
 
     createPanes(hasLesson:boolean){
         if(!hasLesson){
-            return
+            alert("Scratch projects must have a lesson!");
+            window.location.href = "./index.html";
         }
-        Split(['.steps-pane', '.code-pane'], {
-            sizes: [30,70],
-        });
-        createGutterBlocks();
     }
 
     saveCode(){
