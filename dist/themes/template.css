@@ -38,3 +38,85 @@
 
     --legendary-rarity-color-faded: rgba(170, 135, 20, 0.71);
 }
+
+/* Shared Project (sharedProject/index.css) */
+:root{
+    --code-pane-background: #d0efcc;
+    --view-pane-background: #b6b6b6;
+
+    --info-tab-background: #acb4d6;
+    --code-tab-background: #90d89e;
+    --info-tab-color: #021930;
+    --code-tab-color: #033c03;
+    --info-section-background: #d1d7e8;
+
+    --info-inset-background: #c6cee3;
+    --author-block-background: #b6c3e6;
+
+    --tab-bar-background: #c3c3c3;
+
+    --remix-button-color: #2078e8;
+    --remix-button-text-color: #e3e5e8;
+
+    --original-title-border: #4b6ec8;
+
+    --lesson-card: #a4ecad;
+    --lesson-button: #6de383;
+
+    --user-img-size:13vh;
+}
+
+/* Share Board Global (shareBoard/global.css) */
+:root{
+    --stars-color: #edb90b;
+    --stars-text-color: #8a7009;
+    --likes-color: #f82062;
+    --likes-text-color: #9a0330;
+}
+
+/* Share Board (shareBoard/index.css) */
+:root{
+    --featured-project-bar-background: #eaeaea;
+    --bulk-project-bar-background: #dddddd;
+    --bar-seperator: #b1b1b1;
+    --interact-tray-background: #b5b5b5;
+    --title-color-background: #b5b5b5;
+
+    --open-icon-color: #000000;
+    --open-icon-border-color: #ffffff;
+
+    --bulk-project-overlay-background: rgba(0, 0, 0, 0.48);
+
+    --bar-seperator-height: 2px;
+}
+
+
+/* Login (login/login.css) */
+:root{
+    --background-color: #b4b4b4;
+    --login-pane-color: #c2c2c2;
+    --input-container-color: #cecece;
+    --input-wrapper-color: #e1e1e1;
+
+    --button-container-color: #cecece;
+    --button-color: #e1e1e1;
+    --button-color-hover: #f1f1f1;
+
+    --auth-container-color: #cecece;
+
+    --admin-link-color: #626262;
+
+    --auth-error-background: rgba(210, 22, 22, 0.39);
+    --auth-error-solid: rgb(211, 48, 48);
+    --auth-error-text: rgb(35, 2, 2);
+}
+
+/* Shared Project (sharedProject/index.css) */
+
+
+/* Shared Project (sharedProject/index.css) */
+
+
+/* Shared Project (sharedProject/index.css) */
+
+
