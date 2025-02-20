@@ -4,7 +4,7 @@ import {db} from "./firebase";
 
 
 function loadTheme(){
-    onValue(ref(db,"userdata/"+getStoredUser().uid+"/theme"),(snap)=>{
+    get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=>{
         if(!snap.exists()){
             set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),"default");
             return
