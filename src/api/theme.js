@@ -10,22 +10,22 @@ function loadTheme(){
             return
         }
         let themeId = snap.val();
-        get(ref(db,"themes/"+themeId)).then()
-        setPageTheme(theme)
+        if(themeId==="default"){
+            return;
+        }
+        get(ref(db,"themes/"+themeId)).then((snap)=>{
+            setPageTheme(snap.val())
+        })
     })
 }
 
 function setPageTheme(theme){
+    document.querySelector(".theme-style-el")?.remove();
     let styleEl = document.createElement("link");
     styleEl.rel = "stylesheet";
-    styleEl.href =
+    styleEl.href = theme.address
+    styleEl.classList.add("theme-style-el");
     document.head.appendChild(document.createElement('style'));
-}
-
-function getThemeAddress(theme){
-    if(theme.external){
-        return name
-    }
 }
 
 export {loadTheme}
