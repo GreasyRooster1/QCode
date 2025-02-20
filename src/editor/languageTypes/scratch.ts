@@ -15,12 +15,12 @@ class ScratchType extends ProjectType {
     }
 
     onLoad(): void {
-
+        document.querySelector(".code-pane")!.remove();
     }
 
     setupEditor(){
         document.querySelector(".output-pane")!.remove();
-        document.querySelector(".code-pane")!.remove();
+        document.querySelector(".pane-container")!.classList.add("scratch-style-override")
     }
 
     createPanes(hasLesson:boolean){
