@@ -32,16 +32,20 @@ abstract class ProjectType {
             this.projectData = snapshot.val();
             console.log(this.projectData);
             if(this.projectData!["lessonId"]==="none"){
-                setupPanes(false);
+                this.createPanes(false);
                 this.hasLesson = false;
             }else{
-                setupPanes(true);
+                this.createPanes(true);
                 loadLesson(this.projectData!["lessonId"]);
                 this.hasLesson = true;
             }
         }).then(()=>{
             this.onLoad()
         });
+    }
+
+    createPanes(hasLesson:boolean){
+        setupPanes(hasLesson);
     }
 
     setupEventListeners(){

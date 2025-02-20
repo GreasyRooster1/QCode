@@ -6,6 +6,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../api/firebase";
 import {writeToEditor} from "../utils/loadUtils";
 import {clearConsole} from "../codeExecution";
+import {setupPanes} from "../panes";
 
 class ScratchType extends ProjectType {
     constructor() {
@@ -18,6 +19,13 @@ class ScratchType extends ProjectType {
 
     onLoad(){
         document.querySelector(".output-pane")!.remove();
+        let gutters = document.querySelectorAll(".gutter.gutter-horizontal");
+        gutters[gutters.length - 1].remove();
+
+    }
+
+    createPanes(hasLesson:boolean){
+        setupPanes(hasLesson);
     }
 
     saveCode(){
