@@ -48,23 +48,23 @@ function loadProjectFromUrlData(){
         }else{
             set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language"),"javascript");
         }
-        updateLanguage(id).then((projectType) =>
+        updateLanguage(id).then((ptype) =>
         {
-            setupProjectType(projectType,searchParams)
+            projectType = ptype;
+            setupProjectType(ptype,searchParams)
         })
     });
 }
 
-function setupProjectType(projectType,searchParams){
-    console.log(projectType.run)
-    projectType.setupEditor();
-    projectType.setupEditorLanguage()
-    projectType.setupEventListeners()
-    projectType.loadProjectData(searchParams.get("projectId"));
-    if(!searchParams.has("cNum")) {
-        return;
+function setupProjectType(ptype,searchParams){
+    console.log(ptype.run)
+    if(searchParams.has("cNum")) {
+        ptype.chapterNum = searchParams.get("cNum")??0;
     }
-    projectType.chapterNum = searchParams.get("cNum")??0;
+    ptype.setupEditor();
+    ptype.setupEditorLanguage()
+    ptype.setupEventListeners()
+    ptype.loadProjectData(searchParams.get("projectId"));
 }
 
 
