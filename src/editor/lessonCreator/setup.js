@@ -22,8 +22,6 @@ const defaultStep = {
 function setupLessonCreator(){
     setupDefaultPanes(true);
 
-    projectType.isLessonCreator = true;
-
     createAddStepButton();
     createChapterButton();
     createSaveButton();
