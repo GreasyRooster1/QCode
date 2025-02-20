@@ -13,6 +13,7 @@ function loadTheme(){
         if(themeId==="default"){
             return;
         }
+        console.log(snap.val(),"themes/"+themeId);
         get(ref(db,"themes/"+themeId)).then((snap)=>{
             console.log(snap.val())
             setPageTheme(snap.val())
@@ -24,10 +25,10 @@ function setPageTheme(theme){
     debugger;
     document.querySelector(".theme-style-el")?.remove();
     let styleEl = document.createElement("link");
-    styleEl.rel = "stylesheet";
-    styleEl.href = theme.address
+    styleEl.setAttribute("rel","stylesheet");
+    styleEl.setAttribute("href", theme.address);
     styleEl.classList.add("theme-style-el");
-    document.head.appendChild(document.createElement('style'));
+    document.head.appendChild(styleEl);
 }
 
 export {loadTheme}
