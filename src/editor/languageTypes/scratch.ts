@@ -6,7 +6,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../api/firebase";
 import {writeToEditor} from "../utils/loadUtils";
 import {clearConsole} from "../codeExecution";
-import {setupDefaultPanes} from "../panes";
+import {createGutterBlocks, setupDefaultPanes} from "../panes";
 import Split from "split.js";
 
 class ScratchType extends ProjectType {
@@ -14,11 +14,11 @@ class ScratchType extends ProjectType {
         super(true);
     }
 
-    setupEditor(): void {
+    onLoad(): void {
 
     }
 
-    onLoad(){
+    setupEditor(){
         document.querySelector(".output-pane")!.remove();
     }
 
@@ -29,6 +29,7 @@ class ScratchType extends ProjectType {
         Split(['.steps-pane', '.code-pane'], {
             sizes: [30,70],
         });
+        createGutterBlocks();
     }
 
     saveCode(){

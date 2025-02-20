@@ -40,4 +40,4 @@ function createGutterBlocks(){
     }
 }
 
-export {setupDefaultPanes}
+export {setupDefaultPanes,createGutterBlocks}
