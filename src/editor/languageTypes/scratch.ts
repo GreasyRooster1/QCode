@@ -27,7 +27,7 @@ class ScratchType extends ProjectType {
             return
         }
         Split(['.steps-pane', '.code-pane'], {
-            sizes: [60,40],
+            sizes: [30,70],
         });
     }
 
