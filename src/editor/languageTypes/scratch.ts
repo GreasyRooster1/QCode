@@ -38,6 +38,7 @@ class ScratchType extends ProjectType {
 
     static getProjectDBData(projectName: string, lessonId: string):Object {
         return {
+            language:"scratch",
             name: projectName,
             lessonId: lessonId,
         }
