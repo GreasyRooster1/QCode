@@ -6,7 +6,9 @@ function init() {
     loadTheme()
     lockPageToAuth()
 
-    initNavbar()
+    initNavbar({
+        showCollapse:false
+    })
 }
 
 window.onload=init
