@@ -5,6 +5,7 @@
     --rows: #d6d6d6;
 
     --profile-card: #b5b5b5;
+    --advanced-line: #8e8e8e;
 }
 
 .nav-shift-fix{
@@ -55,4 +56,8 @@
 
 .profile-username{
     font-weight: bold;
+}
+
+.advanced-text{
+    margin-left:20px
 }
