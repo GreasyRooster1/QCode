@@ -3,6 +3,8 @@
     --main-background: #e8e8e8;
 
     --rows: #d6d6d6;
+
+    --profile-card: #b5b5b5;
 }
 
 .nav-shift-fix{
@@ -31,13 +33,21 @@
     justify-content: center;
     background:var(--rows);
     height:25vh;
+    margin:10px;
+    border-radius:5px;
 }
 .profile-card{
     display:flex;
     flex-direction: column;
-    padding:5px
+    padding:5px;
+    background:var(--profile-card);
+    border-radius:5px;
 }
 
 .profile-icon-img{
     border-radius: 10px;
+}
+
+.profile-username{
+    font-weight: bold;
 }
