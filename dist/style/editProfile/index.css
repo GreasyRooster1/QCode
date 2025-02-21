@@ -33,13 +33,20 @@
     flex-direction: column;
     justify-content: center;
     background:var(--rows);
-    height:25vh;
     margin:10px;
     border-radius:5px;
 }
 
+.profile-card-row{
+    height:25vh
+}
+
 .theme-row{
     height:5vh;
+}
+
+.advanced-row{
+    min-height:5vh;
 }
 
 .profile-card{
