@@ -26,7 +26,7 @@
     width:50%;
 }
 
-.profile-card-row{
+.row{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -36,6 +36,11 @@
     margin:10px;
     border-radius:5px;
 }
+
+.theme-row{
+    height:5vh;
+}
+
 .profile-card{
     display:flex;
     flex-direction: column;
