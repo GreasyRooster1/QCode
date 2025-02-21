@@ -4,13 +4,14 @@ import {db} from "./firebase";
 
 
 function loadTheme(){
-    get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=>{
+    onValue(ref(db,"userdata/"+getStoredUser().uid+"/theme"),(snap)=>{
         if(!snap.exists()){
             set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),"default");
             return
         }
         let themeId = snap.val();
         if(themeId==="default"){
+            removeTheme()
             return;
         }
         console.log(snap.val(),"themes/"+themeId);
@@ -22,12 +23,16 @@ function loadTheme(){
 }
 
 function setPageTheme(theme){
-    document.querySelector(".theme-style-el")?.remove();
+    removeTheme()
     let styleEl = document.createElement("link");
     styleEl.setAttribute("rel","stylesheet");
     styleEl.setAttribute("href", theme.address);
     styleEl.classList.add("theme-style-el");
     document.head.appendChild(styleEl);
+}
+
+function removeTheme(){
+    document.querySelector(".theme-style-el")?.remove();
 }
 
 export {loadTheme}
