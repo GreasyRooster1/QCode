@@ -1,5 +1,17 @@
 :root{
+    --page-background: #f4f4f4;
     --main-background: #e8e8e8;
+}
+
+.nav-shift-fix{
+    height: var(--navbar-height);
+}
+
+.page-wrapper{
+    background: var(--page-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-content{
@@ -7,4 +19,5 @@
     flex-direction: column;
     background:var(--main-background);
     height: calc(100vh - var(--navbar-height));
+    width:50%;
 }
