@@ -1,6 +1,8 @@
 :root{
     --page-background: #f4f4f4;
     --main-background: #e8e8e8;
+
+    --rows: #d6d6d6;
 }
 
 .nav-shift-fix{
@@ -20,4 +22,22 @@
     background:var(--main-background);
     height: calc(100vh - var(--navbar-height));
     width:50%;
+}
+
+.profile-card-row{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background:var(--rows);
+    height:25vh;
+}
+.profile-card{
+    display:flex;
+    flex-direction: column;
+    padding:5px
+}
+
+.profile-icon-img{
+    border-radius: 10px;
 }
