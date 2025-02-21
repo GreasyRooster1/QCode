@@ -1,0 +1,10 @@
+:root{
+    --main-background: #e8e8e8;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    background:var(--main-background);
+    height: calc(100vh - var(--navbar-height));
+}
