@@ -21,8 +21,9 @@ function loadProfileIcon(){
 }
 
 function loadTheme(){
-    get(ref(db,"userdata/"+getStoredUser().uid+"/profileIcon")).then((snap)=> {
+    get(ref(db,"themes")).then((snap)=> {
         let themes = snap.val();
+        console.log(themes);
         for(let [key,value] of Object.entries(themes)){
             let el = document.createElement("option");
             el.innerHTML = value.name;
@@ -30,7 +31,7 @@ function loadTheme(){
             document.getElementById("themes").appendChild(el);
         }
     }).then(()=>{
-        get(ref(db,"userdata/"+getStoredUser().uid+"/profileIcon")).then((snap)=> {
+        get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=> {
             if(snap.val()==="default"){
                 return;
             }
@@ -39,5 +40,7 @@ function loadTheme(){
         });
     })
 }
+
+
 
 export {loadUserData}
