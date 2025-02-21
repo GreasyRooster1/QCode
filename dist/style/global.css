@@ -21,6 +21,12 @@
     --legendary-rarity-color-faded: rgba(170, 135, 20, 0.71);
 }
 
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
 *{
     font-family: var(--default-font), monospace;
     font-variant-ligatures: none;
