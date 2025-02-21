@@ -1,4 +1,4 @@
-import {ref,get} from "firebase/database";
+import {ref,get,set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
 
@@ -6,6 +6,7 @@ function loadUserData(){
     loadUsername()
     loadProfileIcon()
     loadTheme()
+    setupThemeEvent();
 }
 
 function loadUsername(){
@@ -41,6 +42,11 @@ function loadTheme(){
     })
 }
 
-
+function setupThemeEvent(){
+    let drop = document.getElementById("themes");
+    drop.onchange = ()=>{
+        set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),drop.value)
+    }
+}
 
 export {loadUserData}
