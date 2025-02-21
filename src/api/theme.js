@@ -22,7 +22,6 @@ function loadTheme(){
 }
 
 function setPageTheme(theme){
-    debugger;
     document.querySelector(".theme-style-el")?.remove();
     let styleEl = document.createElement("link");
     styleEl.setAttribute("rel","stylesheet");
