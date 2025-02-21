@@ -7,6 +7,7 @@ function loadUserData(){
     loadProfileIcon()
     loadTheme()
     setupThemeEvent();
+    loadAdvanced();
 }
 
 function loadUsername(){
@@ -47,6 +48,26 @@ function setupThemeEvent(){
     drop.onchange = ()=>{
         set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),drop.value)
     }
+}
+
+function loadAdvanced(){
+    createAdvancedUserdataPoint("points")
+    createAdvancedUserdataPoint("spentPoints")
+    createAdvancedUserdataPoint("theme")
+    createAdvancedUserdataPoint("username")
+    createAdvancedUserdataPoint("profileIcon")
+}
+
+function createAdvancedUserdataPoint(r){
+    get(ref(db,"userdata/"+getStoredUser().uid+"/"+r)).then((snap)=>{
+        createAdvancedDatapoint(r,snap.val());
+    })
+}
+
+function createAdvancedDatapoint(name,value){
+    let el = document.createElement("div");
+    el.innerHTML = name+" : "+value;
+    document.querySelector(".advanced-content").appendChild(el);
 }
 
 export {loadUserData}
