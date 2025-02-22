@@ -6,6 +6,8 @@ import {currentColors, setupColors} from "./colors";
 import {loadLessons, loadLessonsMetadata, propagateArduino, solvePosition} from "./lesson";
 import {beginCheckingStatuses} from "./dbUpdate";
 
+const arduinoRootId = "intro-to-arduino"
+
 let darkMode = false;
 let camera = new Camera(0,0);
 let lessonsIndex = [];
@@ -24,7 +26,7 @@ window.setup = function (){
     loadLessons((r)=>{
         rootLesson = r;
         solvePosition(rootLesson);
-        propagateArduino()
+        propagateArduino(arduinoRootId)
         loadLessonsMetadata()
         beginCheckingStatuses();
     });
@@ -81,4 +83,4 @@ window.windowResized = function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-export {drawLessons,drawBackground,darkMode,lessonsIndex,camera,rootLesson};
+export {drawLessons,drawBackground,darkMode,lessonsIndex,camera,rootLesson,arduinoRootId};

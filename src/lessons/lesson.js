@@ -1,7 +1,7 @@
 import {db} from "../api/firebase";
 import {ref,get} from "firebase/database";
 import {getStoredUser} from "../api/auth";
-import {lessonsIndex, rootLesson} from "./chart";
+import {arduinoRootId, lessonsIndex, rootLesson} from "./chart";
 import {toDataURL} from "./index";
 import {openLesson} from "../api/util/projects";
 import {camera} from "./chart";
@@ -269,9 +269,17 @@ function solvePosition(id){
     }
 }
 
-function propagateArduino(){
-    const arduinoRootId = "intro-to-arduino"
-
+function propagateArduino(id){
+    if(id===arduinoRootId){
+        lessonsIndex[id].isArduino = true;
+    }
+    if(!lessonsIndex[id].isArduino){
+        return
+    }
+    for (let childId of lessonsIndex[id].children) {
+        lessonsIndex[childId].isArduino = true;
+        propagateArduino(childId)
+    }
 }
 
 function getTagColor(tag){
