@@ -116,7 +116,7 @@ class Lesson{
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
             imageMode(CENTER)
-            image(lockImage,this.x+100, this.y+100,60,60)
+            image(lockImage,this.x+100, this.y+100,120,120)
             imageMode(CORNER)
         }
     }
