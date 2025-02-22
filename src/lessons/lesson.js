@@ -283,6 +283,9 @@ function propagateArduino(id){
         return
     }
     for (let childId of lessonsIndex[id].children) {
+        if(childId==="none"){
+            continue
+        }
         lessonsIndex[childId].isArduino = true;
         propagateArduino(childId)
     }
