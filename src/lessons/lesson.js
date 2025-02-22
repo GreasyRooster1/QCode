@@ -280,9 +280,7 @@ function solvePosition(id){
 }
 
 function propagateLocked(id){
-    if(id===arduinoRootId){
-        lessonsIndex[id].locked = true;
-    }
+    lessonsIndex[id].locked = true;
     if(!lessonsIndex[id].locked){
         return
     }
@@ -290,7 +288,6 @@ function propagateLocked(id){
         if(childId==="none"){
             continue
         }
-        lessonsIndex[childId].locked = true;
         propagateLocked(childId)
     }
 }
