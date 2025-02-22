@@ -1,10 +1,11 @@
 import {db} from "../api/firebase";
 import {ref,get} from "firebase/database";
 import {getStoredUser} from "../api/auth";
-import {arduinoRootId, lessonsIndex, lockImage, rootLesson} from "./chart";
+import {lessonsIndex, lockImage, rootLesson} from "./chart";
 import {toDataURL} from "./index";
 import {openLesson} from "../api/util/projects";
 import {camera} from "./chart";
+import {arduinoRootId} from "./locking";
 
 class Lesson{
     constructor(children){
@@ -22,7 +23,6 @@ class Lesson{
         this.started = false;
         this.statusChecked = false;
         this.locked = false;
-
     }
 
     update(){
