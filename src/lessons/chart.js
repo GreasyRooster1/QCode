@@ -5,6 +5,7 @@ import {Camera} from "./camera.js"
 import {currentColors, setupColors} from "./colors";
 import {loadLessons, loadLessonsMetadata, propagateArduino, solvePosition} from "./lesson";
 import {beginCheckingStatuses} from "./dbUpdate";
+import {toDataURL} from "./index";
 
 const arduinoRootId = "intro-to-arduino"
 
@@ -14,6 +15,8 @@ let lessonsIndex = [];
 let rootLesson;
 let font;
 
+let lockImage;
+
 window.setup = function (){
     const root = document.documentElement;
     const styles = getComputedStyle(root);
@@ -22,6 +25,11 @@ window.setup = function (){
     textFont("JetBrains Mono")
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
     setupColors();
+
+    toDataURL("https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/lock.png?raw=true",(data)=>{
+        lockImage = loadImage(data)
+    })
+
 
     loadLessons((r)=>{
         rootLesson = r;
@@ -83,4 +91,4 @@ window.windowResized = function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-export {drawLessons,drawBackground,darkMode,lessonsIndex,camera,rootLesson,arduinoRootId};
+export {drawLessons,drawBackground,darkMode,lessonsIndex,camera,rootLesson,arduinoRootId,lockImage};

@@ -1,7 +1,7 @@
 import {db} from "../api/firebase";
 import {ref,get} from "firebase/database";
 import {getStoredUser} from "../api/auth";
-import {arduinoRootId, lessonsIndex, rootLesson} from "./chart";
+import {arduinoRootId, lessonsIndex, lockImage, rootLesson} from "./chart";
 import {toDataURL} from "./index";
 import {openLesson} from "../api/util/projects";
 import {camera} from "./chart";
@@ -115,6 +115,9 @@ class Lesson{
             fill("rgba(67,67,67,0.47)")
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
+            imageMode(CENTER)
+            image(lockImage)
+            imageMode(CORNER)
         }
     }
 
