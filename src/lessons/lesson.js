@@ -112,7 +112,7 @@ class Lesson{
         }
         if(this.isArduino) {
             stroke("#292929");
-            fill("rgba(128,128,128,0.47)")
+            fill("rgba(67,67,67,0.47)")
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
