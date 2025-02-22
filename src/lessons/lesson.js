@@ -134,6 +134,9 @@ class Lesson{
     }
 
     checkMouse(){
+        if(this.locked){
+            return
+        }
         if(camera.mouseCollision(this.x,this.y+this.h+20,this.w,50,10)&&this.selected&&mouseIsPressed){
             openLesson(this.id)
         }
