@@ -56,6 +56,15 @@ function loadAdvanced(){
     createAdvancedUserdataPoint("theme")
     createAdvancedUserdataPoint("username")
     createAdvancedUserdataPoint("profileIcon")
+    get(ref(db,"userpermissions/"+getStoredUser().uid)).then((snapshot)=>{
+        if(!snapshot.exists()){
+            return;
+        }
+        let data = snapshot.val();
+        for(let [key,value] of Object.entries(data)){
+            createAdvancedDatapoint("perm."+key,value)
+        }
+    })
 }
 
 function createAdvancedUserdataPoint(r){
