@@ -30,14 +30,15 @@ function loadTheme(){
         let themes = snap.val();
         console.log(themes);
         for(let [key,value] of Object.entries(themes)){
-            checkAllowedThemes().then()
-            if(!value.isVisible&&){
-                return
-            }
-            let el = document.createElement("option");
-            el.innerHTML = value.name;
-            el.value = key;
-            document.getElementById("themes").appendChild(el);
+            checkAllowedThemes().then(()=>{
+                createThemeEl(key,value.isVisible?value.name:(value.name+" (Hidden)"))
+            }).catch(()=>{
+                if(!value.isVisible){
+                    return
+                }
+                createThemeEl(key,value.name)
+            })
+
         }
     }).then(()=>{
         get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=> {
@@ -48,6 +49,13 @@ function loadTheme(){
             drop.value = snap.val();
         });
     })
+}
+
+function createThemeEl(val,name){
+    let el = document.createElement("option");
+    el.innerHTML = name;
+    el.value = val;
+    document.getElementById("themes").appendChild(el);
 }
 
 function checkAllowedThemes(){
