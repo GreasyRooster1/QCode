@@ -7,6 +7,7 @@ function loadUserData(){
     loadProfileIcon()
     loadTheme()
     setupThemeEvent();
+    setupAdvancedEvent()
     loadAdvanced();
 }
 
@@ -48,6 +49,12 @@ function setupThemeEvent(){
     drop.onchange = ()=>{
         set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),drop.value)
     }
+}
+
+function setupAdvancedEvent(){
+    document.querySelector(".advanced-dropdown").addEventListener("click", ()=>{
+        document.querySelector(".advanced-content").classList.toggle("active");
+    })
 }
 
 function loadAdvanced(){

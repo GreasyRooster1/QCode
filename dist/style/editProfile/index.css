@@ -70,5 +70,9 @@
 }
 
 .advanced-content{
+    display: none;
     font-size:0.75rem
+}
+.advanced-content.active{
+    display: block;
 }
