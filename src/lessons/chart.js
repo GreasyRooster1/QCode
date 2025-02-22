@@ -9,7 +9,7 @@ import {toDataURL} from "./index";
 import {checkLocks} from "./locking";
 
 let darkMode = false;
-let camera = new Camera(0,0);
+let camera = new Camera(0,-500);
 let lessonsIndex = [];
 let rootLesson;
 let font;
