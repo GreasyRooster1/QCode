@@ -30,6 +30,7 @@ function loadTheme(){
         let themes = snap.val();
         console.log(themes);
         for(let [key,value] of Object.entries(themes)){
+
             let el = document.createElement("option");
             el.innerHTML = value.name;
             el.value = key;
