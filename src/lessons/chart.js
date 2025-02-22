@@ -27,6 +27,7 @@ window.setup = function (){
 
     toDataURL("https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/lock.png",(data)=>{
         lockImage = loadImage(data)
+        console.log(lockImage)
     })
 
 
