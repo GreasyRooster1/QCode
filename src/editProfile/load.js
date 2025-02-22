@@ -30,7 +30,10 @@ function loadTheme(){
         let themes = snap.val();
         console.log(themes);
         for(let [key,value] of Object.entries(themes)){
-
+            checkAllowedThemes().then()
+            if(!value.isVisible&&){
+                return
+            }
             let el = document.createElement("option");
             el.innerHTML = value.name;
             el.value = key;
@@ -44,6 +47,20 @@ function loadTheme(){
             let drop = document.getElementById("themes");
             drop.value = snap.val();
         });
+    })
+}
+
+function checkAllowedThemes(){
+    return new Promise((resolve,reject)=>{
+        get(ref(db,"userpermissions/"+getStoredUser().uid+"/hasAdminConsoleAccess")).then((snap)=>{
+            if(!snap.exists()){
+                reject()
+            }
+            if(snap.val()){
+                resolve()
+            }
+            reject()
+        })
     })
 }
 
