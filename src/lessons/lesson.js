@@ -21,6 +21,7 @@ class Lesson{
         this.completed = false;
         this.started = false;
         this.statusChecked = false;
+        this.isArduino = false;
     }
 
     update(){
@@ -268,6 +269,11 @@ function solvePosition(id){
     }
 }
 
+function propagateArduino(){
+    const arduinoRootId = "intro-to-arduino"
+
+}
+
 function getTagColor(tag){
     let tagColors = {
         "game":"#f42cc2",
@@ -280,4 +286,4 @@ function getTagColor(tag){
     let col = tagColors[id]
     return col??"#676767"
 }
-export {solvePosition,loadLessons,loadLessonsMetadata,getTagColor,Lesson}
+export {solvePosition,loadLessons,loadLessonsMetadata,getTagColor,Lesson,propagateArduino}
