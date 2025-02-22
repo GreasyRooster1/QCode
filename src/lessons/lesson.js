@@ -242,6 +242,7 @@ function solvePosition(id){
     if(id===rootLesson){
         mainYShift = 500;
         sideYShift = 500;
+        xMargin = 700;
     }
 
     for (let childId of current.children){
