@@ -6,6 +6,7 @@
 
     --profile-card: #b5b5b5;
     --advanced-line: #8e8e8e;
+    --username-warning:#ff0000;
 }
 
 .nav-shift-fix{
@@ -74,5 +75,14 @@
     font-size:0.75rem
 }
 .advanced-content.active{
+    display: block;
+}
+
+.username-warning{
+    display: none;
+    font-size:0.85rem;
+    color:var(--username-warning)
+}
+.username-warning.active{
     display: block;
 }
