@@ -241,9 +241,7 @@ function solvePosition(id){
     for (let childId of current.children){
         let child = lessonsIndex[childId];
         if(child===undefined){
-            if(count>0) {
-                count++;
-            }
+            count++
             continue;
         }
         if(count===0){
