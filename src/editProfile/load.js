@@ -61,6 +61,7 @@ function setupAdvancedEvent(){
 }
 
 function loadAdvanced(){
+    createAdvancedDatapoint("uid",getStoredUser().uid)
     createAdvancedUserdataPoint("points")
     createAdvancedUserdataPoint("spentPoints")
     createAdvancedUserdataPoint("theme")
