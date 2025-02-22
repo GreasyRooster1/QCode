@@ -1,7 +1,7 @@
 import {db} from "../api/firebase";
 import {ref,get} from "firebase/database";
 import {getStoredUser} from "../api/auth";
-import {lessonsIndex} from "./chart";
+import {lessonsIndex, rootLesson} from "./chart";
 import {toDataURL} from "./index";
 import {openLesson} from "../api/util/projects";
 import {camera} from "./chart";
@@ -238,6 +238,12 @@ function solvePosition(id){
     let mainYShift = 400;
     let sideYShift = 300;
     let xMargin = 300;
+
+    if(id===rootLesson){
+        mainYShift = 500;
+        sideYShift = 500;
+    }
+
     for (let childId of current.children){
         let child = lessonsIndex[childId];
         if(child===undefined){
