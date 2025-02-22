@@ -77,4 +77,4 @@ window.windowResized = function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-export {drawLessons,drawBackground,darkMode,lessonsIndex,camera};
+export {drawLessons,drawBackground,darkMode,lessonsIndex,camera,rootLesson};
