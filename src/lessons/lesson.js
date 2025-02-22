@@ -232,6 +232,7 @@ function loadLessonsMetadata(){
 
 
 function solvePosition(id){
+
     let current = lessonsIndex[id];
     let count = 0;
     let mainYShift = 400;
