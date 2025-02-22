@@ -1,6 +1,7 @@
 import {ref,get,set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
+import {promptProfileIconChange} from "../api/nav/navbar";
 
 function loadUserData(){
     loadUsername()
@@ -9,6 +10,7 @@ function loadUserData(){
     setupThemeEvent();
     setupAdvancedEvent()
     loadAdvanced();
+    setupChangeProfileEvent();
 }
 
 function loadUsername(){
@@ -85,5 +87,13 @@ function createAdvancedDatapoint(name,value){
     el.innerHTML = name+" : "+value;
     document.querySelector(".advanced-content").appendChild(el);
 }
+
+function setupChangeProfileEvent(){
+    document.querySelector(".profile-icon-img").addEventListener("click", ()=>{
+        promptProfileIconChange()
+    })
+}
+
+
 
 export {loadUserData}

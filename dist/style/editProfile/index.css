@@ -60,6 +60,8 @@
 
 .profile-icon-img{
     border-radius: 10px;
+    width:20vh;
+    height:20vh;
 }
 
 .profile-username{
