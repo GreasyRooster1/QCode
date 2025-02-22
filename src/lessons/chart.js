@@ -26,7 +26,7 @@ window.setup = function (){
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
     setupColors();
 
-    toDataURL("https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/lock.png?raw=true",(data)=>{
+    toDataURL("https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/lock.png",(data)=>{
         lockImage = loadImage(data)
     })
 
