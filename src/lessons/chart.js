@@ -3,7 +3,7 @@
 
 import {Camera} from "./camera.js"
 import {currentColors, setupColors} from "./colors";
-import {loadLessons, loadLessonsMetadata, propagateArduino, solvePosition} from "./lesson";
+import {loadLessons, loadLessonsMetadata, propagateLocked, solvePosition} from "./lesson";
 import {beginCheckingStatuses} from "./dbUpdate";
 import {toDataURL} from "./index";
 
@@ -34,7 +34,7 @@ window.setup = function (){
     loadLessons((r)=>{
         rootLesson = r;
         solvePosition(rootLesson);
-        propagateArduino(arduinoRootId)
+        propagateLocked(arduinoRootId)
         loadLessonsMetadata()
         beginCheckingStatuses();
     });

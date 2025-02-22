@@ -21,7 +21,8 @@ class Lesson{
         this.completed = false;
         this.started = false;
         this.statusChecked = false;
-        this.isArduino = false;
+        this.locked = false;
+
     }
 
     update(){
@@ -110,7 +111,7 @@ class Lesson{
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
-        if(this.isArduino) {
+        if(this.locked) {
             stroke("#292929");
             fill("rgba(67,67,67,0.47)")
             strokeWeight(3)
@@ -278,19 +279,19 @@ function solvePosition(id){
     }
 }
 
-function propagateArduino(id){
+function propagateLocked(id){
     if(id===arduinoRootId){
-        lessonsIndex[id].isArduino = true;
+        lessonsIndex[id].locked = true;
     }
-    if(!lessonsIndex[id].isArduino){
+    if(!lessonsIndex[id].locked){
         return
     }
     for (let childId of lessonsIndex[id].children) {
         if(childId==="none"){
             continue
         }
-        lessonsIndex[childId].isArduino = true;
-        propagateArduino(childId)
+        lessonsIndex[childId].locked = true;
+        propagateLocked(childId)
     }
 }
 
@@ -306,4 +307,4 @@ function getTagColor(tag){
     let col = tagColors[id]
     return col??"#676767"
 }
-export {solvePosition,loadLessons,loadLessonsMetadata,getTagColor,Lesson,propagateArduino}
+export {solvePosition,loadLessons,loadLessonsMetadata,getTagColor,Lesson,propagateLocked}
