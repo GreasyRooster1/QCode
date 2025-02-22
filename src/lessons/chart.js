@@ -39,6 +39,9 @@ window.draw = function draw(){
 
 function drawLessons(){
     for(let [id,lesson] of Object.entries(lessonsIndex)){
+        if(id===rootLesson){
+            continue
+        }
         lesson.update();
     }
 }
