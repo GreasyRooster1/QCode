@@ -1,4 +1,3 @@
-import {loadTheme} from "../api/theme";
 
 let parent = null;
 
@@ -137,5 +136,3 @@ function __canvasTest(){
     textAlign(CENTER);
     text("Welcome back",250,250);
 }
-
-loadTheme()
