@@ -155,7 +155,7 @@ class BrandNav extends HTMLElement {
                         <div class="username-link">Login</div>
                         <div class="account-options">
                             <div class="logout-button option">Logout</div>
-                            <div class="change-profile-button option">Change Profile</div>
+                            <div class="edit-profile-button option"><a href="./editProfile.html">Profile</a></div>
                         </div>
                     </div>
                 </div>

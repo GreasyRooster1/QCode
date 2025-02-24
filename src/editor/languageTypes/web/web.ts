@@ -6,6 +6,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {writeToEditor} from "../../utils/loadUtils";
+import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
 
 class WebType extends ProjectType {
     filesystem:Filesystem
@@ -229,13 +230,13 @@ class WebType extends ProjectType {
         this.updateFilesystemBar();
     }
 
-    saveCode(){
+    onSave(){
         this.saveCurrentFile()
         let serializedFiles = this.filesystem.serialize();
         set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files"),serializedFiles);
     }
 
-    run(errorCallback:RunErrCallback) {
+    onRun(errorCallback:RunErrCallback) {
         this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
         let frame = document.getElementById("#exec-frame")! as HTMLIFrameElement
         frame.contentWindow!.location.href = this.getServerAddress();
@@ -268,7 +269,7 @@ class WebType extends ProjectType {
         });
     }
 
-    stop(){
+    onStop(){
     }
 
     runErrorCallback(content: string, type: string): void {
@@ -276,6 +277,18 @@ class WebType extends ProjectType {
 
     getLanguage():Language {
         return "javascript";
+    }
+
+    static getProjectDBData(projectName: string, lessonId: string):Object {
+        return {
+            files:defaultFilesWeb,
+            lessonId:lessonId??"none",
+            name:projectName,
+            currentChapter:0,
+            currentStep:0,
+            timestamp:Date.now()/1000,
+            language:"web",
+        }
     }
 }
 export {WebType};

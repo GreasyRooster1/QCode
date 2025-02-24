@@ -2,9 +2,9 @@ import {Language, setupEditor} from "../codeEditor";
 import {db} from "../../api/firebase";
 import {get, ref} from "firebase/database";
 import {getStoredUser} from "../../api/auth";
-import {setupPanes} from "../panes";
+import {setupDefaultPanes} from "../panes";
 import {showSaveAlert} from "../save";
-import {loadLesson, projectType} from "../load";
+import {loadLesson} from "../load";
 import {runPopupPreviewCode, showPopup} from "../share";
 import {logNames} from "../executionHelper";
 
@@ -19,9 +19,12 @@ abstract class ProjectType {
     projectId: string | undefined;
     highestViewedStep: number | undefined;
     chapterNum: number | undefined;
+    isLessonCreator:boolean;
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;
+        this.chapterNum = 0;
+        this.isLessonCreator = false;
         this.checkShareAllowed()
     }
 
@@ -31,16 +34,20 @@ abstract class ProjectType {
             this.projectData = snapshot.val();
             console.log(this.projectData);
             if(this.projectData!["lessonId"]==="none"){
-                setupPanes(false);
+                this.createPanes(false);
                 this.hasLesson = false;
             }else{
-                setupPanes(true);
+                this.createPanes(true);
                 loadLesson(this.projectData!["lessonId"]);
                 this.hasLesson = true;
             }
         }).then(()=>{
             this.onLoad()
         });
+    }
+
+    createPanes(hasLesson:boolean){
+        setupDefaultPanes(hasLesson);
     }
 
     setupEventListeners(){
@@ -51,10 +58,10 @@ abstract class ProjectType {
         document.querySelector(".run-button")?.addEventListener("click", ()=>{
             this.saveCode();
             showSaveAlert()
-            this.run(this.runErrorCallback);
+            this.onRun(this.runErrorCallback);
         })
         document.querySelector(".stop-button")?.addEventListener("click", ()=>{
-            this.stop();
+            this.saveCode();
         })
         document.querySelector('.share-button')?.addEventListener('click', (e) => {
             console.log("sadsd")
@@ -96,6 +103,13 @@ abstract class ProjectType {
         consoleOut!.insertBefore(logEl,consoleOut!.firstChild);
     }
 
+    saveCode(){
+        if(this.isLessonCreator){
+            return
+        }
+        this.onSave()
+    }
+
     /*
     * Abstract methods
     */
@@ -104,15 +118,19 @@ abstract class ProjectType {
 
     abstract onLoad():void;
 
-    abstract saveCode():void;
+    abstract onSave():void;
 
-    abstract run(errorCallback:RunErrCallback):void;
+    abstract onRun(errorCallback:RunErrCallback):void;
 
-    abstract stop():void;
+    abstract onStop():void;
 
     abstract runErrorCallback(content:string,type:string):void;
 
     abstract getLanguage(): Language;
+
+    static getProjectDBData(projectName: string, lessonId: string):Object {
+        throw new TypeError('This method should be overridden by inheriting classes.');
+    }
 }
 
 export {ProjectType,RunErrCallback};

@@ -1,3 +1,4 @@
+
 let parent = null;
 
 const acceptedFunctions = [

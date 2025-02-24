@@ -1,4 +1,4 @@
-import {setupPanes} from "../panes";
+import {setupDefaultPanes} from "../panes";
 import {createAddStepButton} from "./edit";
 import {createdLessonChapters, createSaveButton} from "./save";
 import {createChapterButton} from "./chapter";
@@ -6,6 +6,7 @@ import {createLoadButton} from "./load";
 import {createMetaButton, createMetaEditPane} from "./metadata";
 import {createAutoSaveButton} from "./localStorage";
 import {createStep, getChapterStepContentNoLink} from "../utils/loadUtils";
+import {projectType} from "../load";
 
 const buttonContainer = document.querySelector(".lesson-creator-button-container");
 let chapterStep;
@@ -19,7 +20,7 @@ const defaultStep = {
 }
 
 function setupLessonCreator(){
-    setupPanes(true);
+    setupDefaultPanes(true);
 
     createAddStepButton();
     createChapterButton();

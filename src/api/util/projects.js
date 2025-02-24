@@ -26,6 +26,7 @@ function openLesson(lessonId){
     let loc = "userdata/"+uid+"/projects/";
     let projectId = lessonId
     get(ref(db,loc+projectId)).then(function (snap) {
+        debugger
         if(snap.exists()){
             openProjectInEditor(projectId,uid,snap.val().currentChapter);
             return;

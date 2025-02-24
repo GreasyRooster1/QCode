@@ -1,13 +1,10 @@
 import {get, ref, set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
-import {JavascriptType} from "./languageTypes/javascript.ts";
-import {WebType} from "./languageTypes/web/web.ts";
-import {ArduinoType} from "./languageTypes/arduino/arduino.ts";
-import {setupPanes} from "./panes";
 import {populateSteps} from "./utils/loadUtils";
 import {scrollToCurrentStep} from "./steps";
 import {setupLessonCreator} from "./lessonCreator/setup";
+import {languageTypes} from "./languageTypes";
 
 let projectId=null;
 let userUid = null;
@@ -26,11 +23,13 @@ function loadProjectFromUrlData(){
     if(projectId==="$$lesson$$creator$$"){
         isLessonCreator = true;
         let type = prompt("enter a type (javascript|web|arduino)")
-        updateLanguage(type).then((projectType) =>
+        updateLanguage(type).then((ptype) =>
         {
-            projectType.setupEditor();
-            projectType.setupEditorLanguage()
-            projectType.setupEventListeners()
+            ptype.setupEditor();
+            ptype.setupEditorLanguage()
+            ptype.setupEventListeners()
+            ptype.isLessonCreator = true;
+            projectType = ptype
             setupLessonCreator()
         })
         return;
@@ -51,44 +50,34 @@ function loadProjectFromUrlData(){
         }else{
             set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/language"),"javascript");
         }
-        updateLanguage(id).then((projectType) =>
+        updateLanguage(id).then((ptype) =>
         {
-            setupProjectType(projectType,searchParams)
+            projectType = ptype;
+            setupProjectType(ptype,searchParams)
         })
     });
 }
 
-function setupProjectType(projectType,searchParams){
-    console.log(projectType.run)
-    projectType.setupEditor();
-    projectType.setupEditorLanguage()
-    projectType.setupEventListeners()
-    projectType.loadProjectData(searchParams.get("projectId"));
-    if(!searchParams.has("cNum")) {
-        return;
+function setupProjectType(ptype,searchParams){
+    console.log(ptype.run)
+    if(searchParams.has("cNum")) {
+        ptype.chapterNum = parseInt(searchParams.get("cNum")??0);
     }
-    projectType.chapterNum = searchParams.get("cNum");
+    ptype.setupEditor();
+    ptype.setupEditorLanguage()
+    ptype.setupEventListeners()
+    ptype.loadProjectData(searchParams.get("projectId"));
 }
 
 
 function updateLanguage(id){
     return new Promise((resolve, reject) => {
-        if (id === "javascript") {
-            projectType = new JavascriptType();
-            resolve(projectType)
-            return;
+        let type = languageTypes[id];
+        if(type===undefined){
+            reject();
+        }else{
+            resolve(new type());
         }
-        if (id === "web") {
-            projectType = new WebType();
-            resolve(projectType)
-            return;
-        }
-        if (id === "arduino") {
-            projectType = new ArduinoType();
-            resolve(projectType)
-            return;
-        }
-        reject();
     });
 }
 

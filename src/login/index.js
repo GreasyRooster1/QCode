@@ -2,6 +2,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "../api/firebase";
 import {displayAuthErrors, extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
 import {get, ref, set} from "firebase/database";
+import {loadTheme} from "../api/theme";
 
 
 const loginButton = document.querySelector(".login-button");
@@ -72,5 +73,5 @@ function createUser(uid,username){
     set(ref(db,"userdata/" + uid+"/username"),username);
 }
 
-
+loadTheme()
 getReturnURL();

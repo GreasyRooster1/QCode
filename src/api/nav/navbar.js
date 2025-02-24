@@ -10,7 +10,6 @@ let userLink;
 let accountOptions;
 let innerContent;
 let logoutButton;
-let changeProfileButton;
 let homeButton;
 let pointsDisplayNum;
 
@@ -28,7 +27,6 @@ function loadHandles(){
     userLink = document.querySelector(".username-link");
     accountOptions = document.querySelector(".account-options");
     logoutButton = document.querySelector(".logout-button");
-    changeProfileButton = document.querySelector(".change-profile-button");
     homeButton = document.querySelector(".home-link")
     pointsDisplayNum = document.querySelector(".points-display-num");
     innerContent = document.querySelectorAll(".navbar *");
@@ -136,10 +134,6 @@ function addEvents(){
         logOutUser();
          window.location.href = "./login.html";
     })
-
-    changeProfileButton.addEventListener("click",()=>{
-        promptProfileIconChange()
-    });
 
     homeButton.addEventListener("click",function () {
         window.location.href = "index.html";

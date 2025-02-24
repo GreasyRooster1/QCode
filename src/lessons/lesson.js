@@ -1,10 +1,11 @@
 import {db} from "../api/firebase";
 import {ref,get} from "firebase/database";
 import {getStoredUser} from "../api/auth";
-import {lessonsIndex} from "./chart";
+import {lessonsIndex, lockImage, rootLesson} from "./chart";
 import {toDataURL} from "./index";
 import {openLesson} from "../api/util/projects";
 import {camera} from "./chart";
+import {arduinoRootId} from "./locking";
 
 class Lesson{
     constructor(children){
@@ -21,6 +22,7 @@ class Lesson{
         this.completed = false;
         this.started = false;
         this.statusChecked = false;
+        this.locked = false;
     }
 
     update(){
@@ -52,7 +54,6 @@ class Lesson{
             return;
         }
         let tags = this.metadata.tags;
-        console.log(tags)
         textSize(15);
         textAlign(LEFT)
         noStroke()
@@ -70,7 +71,6 @@ class Lesson{
     checkStatus(){
         get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.id)).then((snapshot)=> {
             let projData = snapshot.val();
-            console.log(projData)
             if (snapshot.exists()) {
                 this.started = true;
             }else{
@@ -111,6 +111,15 @@ class Lesson{
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
+        if(this.locked) {
+            stroke("#292929");
+            fill("rgba(67,67,67,0.47)")
+            strokeWeight(3)
+            rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
+            imageMode(CENTER)
+            image(lockImage,this.x+100, this.y+100,120,120)
+            imageMode(CORNER)
+        }
     }
 
     drawStart(){
@@ -125,6 +134,9 @@ class Lesson{
     }
 
     checkMouse(){
+        if(this.locked){
+            return
+        }
         if(camera.mouseCollision(this.x,this.y+this.h+20,this.w,50,10)&&this.selected&&mouseIsPressed){
             openLesson(this.id)
         }
@@ -234,17 +246,23 @@ function loadLessonsMetadata(){
 
 
 function solvePosition(id){
+
     let current = lessonsIndex[id];
     let count = 0;
     let mainYShift = 400;
     let sideYShift = 300;
     let xMargin = 300;
+
+    if(id===rootLesson){
+        mainYShift = 500;
+        sideYShift = 500;
+        xMargin = 700;
+    }
+
     for (let childId of current.children){
         let child = lessonsIndex[childId];
         if(child===undefined){
-            if(count>0) {
-                count++;
-            }
+            count++
             continue;
         }
         if(count===0){
@@ -264,6 +282,19 @@ function solvePosition(id){
     }
 }
 
+function propagateLocked(id){
+    lessonsIndex[id].locked = true;
+    if(!lessonsIndex[id].locked){
+        return
+    }
+    for (let childId of lessonsIndex[id].children) {
+        if(childId==="none"){
+            continue
+        }
+        propagateLocked(childId)
+    }
+}
+
 function getTagColor(tag){
     let tagColors = {
         "game":"#f42cc2",
@@ -276,4 +307,4 @@ function getTagColor(tag){
     let col = tagColors[id]
     return col??"#676767"
 }
-export {solvePosition,loadLessons,loadLessonsMetadata,getTagColor,Lesson}
+export {solvePosition,loadLessons,loadLessonsMetadata,getTagColor,Lesson,propagateLocked}

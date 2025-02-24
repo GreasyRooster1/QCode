@@ -3,14 +3,18 @@
 
 import {Camera} from "./camera.js"
 import {currentColors, setupColors} from "./colors";
-import {loadLessons, loadLessonsMetadata, solvePosition} from "./lesson";
+import {loadLessons, loadLessonsMetadata, propagateLocked, solvePosition} from "./lesson";
 import {beginCheckingStatuses} from "./dbUpdate";
+import {toDataURL} from "./index";
+import {checkLocks} from "./locking";
 
 let darkMode = false;
-let camera = new Camera(0,0);
+let camera = new Camera(0,-500);
 let lessonsIndex = [];
 let rootLesson;
 let font;
+
+let lockImage;
 
 window.setup = function (){
     const root = document.documentElement;
@@ -21,9 +25,16 @@ window.setup = function (){
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
     setupColors();
 
+    toDataURL("https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/lock.png",(data)=>{
+        lockImage = loadImage(data)
+        console.log(lockImage)
+    })
+
+
     loadLessons((r)=>{
         rootLesson = r;
         solvePosition(rootLesson);
+        checkLocks()
         loadLessonsMetadata()
         beginCheckingStatuses();
     });
@@ -39,6 +50,9 @@ window.draw = function draw(){
 
 function drawLessons(){
     for(let [id,lesson] of Object.entries(lessonsIndex)){
+        if(id===rootLesson){
+            continue
+        }
         lesson.update();
     }
 }
@@ -77,4 +91,4 @@ window.windowResized = function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
 }
 
-export {drawLessons,drawBackground,darkMode,lessonsIndex,camera};
+export {drawLessons,drawBackground,darkMode,lessonsIndex,camera,rootLesson,lockImage};

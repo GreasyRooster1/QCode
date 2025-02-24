@@ -1,7 +1,7 @@
 import {getStoredUser} from "../api/auth";
 import {ref} from "firebase/database";
 import {db} from "../api/firebase";
-import {lessonsIndex} from "./chart";
+import {lessonsIndex, rootLesson} from "./chart";
 
 let updatedStatus = false;
 

@@ -1,0 +1,90 @@
+:root{
+    --page-background: #f4f4f4;
+    --main-background: #e8e8e8;
+
+    --rows: #d6d6d6;
+
+    --profile-card: #b5b5b5;
+    --advanced-line: #8e8e8e;
+    --username-warning:#ff0000;
+}
+
+.nav-shift-fix{
+    height: var(--navbar-height);
+}
+
+.page-wrapper{
+    background: var(--page-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    background:var(--main-background);
+    height: calc(100vh - var(--navbar-height));
+    width:50%;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background:var(--rows);
+    margin:10px;
+    border-radius:5px;
+}
+
+.profile-card-row{
+    height:25vh
+}
+
+.theme-row{
+    height:5vh;
+}
+
+.advanced-row{
+    min-height:5vh;
+}
+
+.profile-card{
+    display:flex;
+    flex-direction: column;
+    padding:5px;
+    background:var(--profile-card);
+    border-radius:5px;
+}
+
+.profile-icon-img{
+    border-radius: 10px;
+    width:20vh;
+    height:20vh;
+}
+
+.profile-username{
+    font-weight: bold;
+}
+
+.advanced-text{
+    margin-left:20px
+}
+
+.advanced-content{
+    display: none;
+    font-size:0.75rem
+}
+.advanced-content.active{
+    display: block;
+}
+
+.username-warning{
+    display: none;
+    font-size:0.85rem;
+    color:var(--username-warning)
+}
+.username-warning.active{
+    display: block;
+}
