@@ -1,0 +1,16 @@
+.scratch-style-override{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.scratch-style-override .steps-pane{
+    width: 100%;
+}
+.scratch-style-override .scrollable-steps{
+    background: var(--scratch-steps-background);
+}
+
+.scratch-style-override editor-step{
+    max-width: 500px;
+}

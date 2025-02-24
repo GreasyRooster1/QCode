@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+    </style>
+
+    <script src="https://kit.fontawesome.com/464579a9a3.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/svg+xml" href="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Icon/icon.svg?raw=true">
+
+    <link rel="stylesheet" href="./style/global.css">
+    <link rel="stylesheet" href="./style/navbar.css">
+
+    <link rel="stylesheet" href="./style/editProfile/index.css">
+</head>
+<body>
+    <brand-nav></brand-nav>
+    <div class="nav-shift-fix"></div>
+
+    <div class="page-wrapper">
+        <div class="main-content">
+            <div class="profile-card-row row">
+                <div class="profile-card">
+                    <img class="profile-icon-img" alt="profile">
+                    <span class="profile-username" spellcheck="false">Username</span>
+                </div>
+                <div class="username-warning">Changing username to anything inappropriate will result in account suspension</div>
+            </div>
+            <div class="theme-row row">
+                <div class="theme-card">
+                    <label for="themes">Theme: </label>
+                    <select name="themes" id="themes">
+                        <option value="default">Default</option>
+                    </select>
+                </div>
+            </div>
+            <div class="advanced-row row">
+                <div class="advanced-dropdown">
+                    v<span class="advanced-text">Advanced...</span>
+                </div>
+                <div class="advanced-content">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./bundles/editProfile.bundle.js" defer></script>
+</body>
+</html>
