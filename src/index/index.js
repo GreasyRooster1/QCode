@@ -5,13 +5,11 @@ import {addProfileListener, loadUserData} from "./loading/user";
 import {loadAnnouncements} from "./loading/announcements";
 import {displayVersion} from "./version";
 import {initShareBoard, setupShareBoardFrame, setupsShareBoardFrame} from "./shareBoard";
-import {getStoredUser} from "../api/auth";
 import {setupFeaturedProject} from "./featuredProject";
 import {setupNewProjectEvents} from "./newProject";
 import {lockPageToAuth} from "../api/util/lockPageToAuth";
 import {initNavbar} from "../api/nav/navbar";
 import {ProjectLinkElement} from "../api/customElements";
-import {loadTheme} from "../api/theme";
 
 
 const badgeDisplay = document.querySelector(".badges-display");
@@ -22,7 +20,6 @@ const announcementsDisplay = document.querySelector(".announcements-display");
 ProjectLinkElement.register()
 
 function init(){
-    loadTheme();
     lockPageToAuth()
 
     initNavbar({

@@ -1,9 +1,7 @@
 import {initNavbar} from "../api/nav/navbar";
 import "./chart"
-import {loadTheme} from "../api/theme";
 
 function init(){
-    loadTheme()
     initNavbar()
     setupButtons()
 }

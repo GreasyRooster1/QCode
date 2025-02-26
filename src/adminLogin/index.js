@@ -2,7 +2,6 @@ import {handleAuthErrors, storeUser, storeUserPermissions} from "../api/auth";
 import {auth, db} from "../api/firebase";
 import {get, ref} from "firebase/database";
 import {signInWithEmailAndPassword} from "firebase/auth";
-import {loadTheme} from "../api/theme";
 
 const loginButton = document.querySelector(".login-button");
 const emailInput = document.querySelector(".email-input");
@@ -53,4 +52,3 @@ function showAuthError(msg){
     authErrorDisplayWrapper.style.display = "block"
     authErrorContent.innerHTML = msg;
 }
-loadTheme()
