@@ -24,7 +24,7 @@ function loadThemeFromDB(){
         let themeId = snap.val();
 
         if(themeId==="default"){
-            removeTheme()
+            document.querySelector(".theme-style-el")?.remove()
             return;
         }
         console.log(snap.val(),"themes/"+themeId);
@@ -32,6 +32,7 @@ function loadThemeFromDB(){
             let theme = snap.val()
             console.log(theme)
             localStorage.setItem('theme',JSON.stringify(theme));
+            debugger
             setPageTheme(theme)
         })
     })
@@ -39,12 +40,13 @@ function loadThemeFromDB(){
 
 function setPageTheme(theme){
     let prevThemeEl = document.querySelector(".theme-style-el");
-    if(prevThemeEl!=null&&theme.address===prevThemeEl.src){
+    if(prevThemeEl!=null&&theme.address===prevThemeEl.getAttribute("data-theme-address")){
         return;
     }
     let styleEl = document.createElement("link");
     styleEl.setAttribute("rel","stylesheet");
     styleEl.setAttribute("href", theme.address);
+    styleEl.setAttribute("data-theme-address", theme.address);
     styleEl.classList.add("theme-style-el");
     prevThemeEl?.remove();
     document.head.appendChild(styleEl);
