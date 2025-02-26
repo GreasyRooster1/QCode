@@ -40,15 +40,14 @@ function loadTheme(){
             })
 
         }
-    }).then(()=>{
-        get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=> {
-            if(snap.val()==="default"){
-                return;
-            }
-            let drop = document.getElementById("themes");
-            drop.value = snap.val();
-        });
     })
+    get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=> {
+        if(snap.val()==="default"){
+            return;
+        }
+        let drop = document.getElementById("themes");
+        drop.value = snap.val();
+    });
 }
 
 function createThemeEl(val,name){
