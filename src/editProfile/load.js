@@ -29,25 +29,33 @@ function loadTheme(){
     get(ref(db,"themes")).then((snap)=> {
         let themes = snap.val();
         console.log(themes);
-        for(let [key,value] of Object.entries(themes)){
-            checkAllowedThemes().then(()=>{
-                createThemeEl(key,value.isVisible?value.name:(value.name+" (Hidden)"))
-            }).catch(()=>{
-                if(!value.isVisible){
-                    return
-                }
-                createThemeEl(key,value.name)
-            })
+        get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=> {
+            let selectedTheme;
+            if(snap.val()==="default"){
+                selectedTheme = "default";
+            }else {
+                selectedTheme = snap.val();
+            }
+            console.log(snap.val())
+            let drop = document.getElementById("themes");
+            
+            for(let [key,value] of Object.entries(themes)){
+                checkAllowedThemes().then(()=>{
+                    createThemeEl(key,value.isVisible?value.name:(value.name+" (Hidden)"))
+                    if(key===selectedTheme) {
+                        drop.value = snap.val();
+                    }
+                }).catch(()=>{
+                    if(!value.isVisible){
+                        return
+                    }
+                    createThemeEl(key,value.name)
+                })
 
-        }
+            }
+        });
     })
-    get(ref(db,"userdata/"+getStoredUser().uid+"/theme")).then((snap)=> {
-        if(snap.val()==="default"){
-            return;
-        }
-        let drop = document.getElementById("themes");
-        drop.value = snap.val();
-    });
+
 }
 
 function createThemeEl(val,name){
