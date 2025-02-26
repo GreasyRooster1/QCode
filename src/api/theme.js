@@ -38,21 +38,16 @@ function loadThemeFromDB(){
 }
 
 function setPageTheme(theme){
-    removeTheme()
     let prevThemeEl = document.querySelector(".theme-style-el");
-    if(theme.address===prevThemeEl.src){
+    if(prevThemeEl!=null&&theme.address===prevThemeEl.src){
         return;
     }
     let styleEl = document.createElement("link");
     styleEl.setAttribute("rel","stylesheet");
     styleEl.setAttribute("href", theme.address);
     styleEl.classList.add("theme-style-el");
-    prevThemeEl.remove();
+    prevThemeEl?.remove();
     document.head.appendChild(styleEl);
-}
-
-function removeTheme(){
-    document.querySelector(".theme-style-el")?.remove();
 }
 
 loadTheme();
