@@ -4,23 +4,34 @@ import {db} from "./firebase";
 
 
 function loadTheme(){
-    let theme = localStorage.getItem('theme')??"default";
+    loadThemeFromLocal()
+    loadThemeFromDB()
+}
+
+function loadThemeFromLocal(){
+    let theme = localStorage.getItem('theme');
+    if(theme===null)return;
     setPageTheme(theme);
+}
+
+function loadThemeFromDB(){
     onValue(ref(db,"userdata/"+getStoredUser().uid+"/theme"),(snap)=>{
         if(!snap.exists()){
             set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),"default");
             return
         }
         let themeId = snap.val();
-        localStorage.setItem('theme',themeId);
+
         if(themeId==="default"){
             removeTheme()
             return;
         }
         console.log(snap.val(),"themes/"+themeId);
         get(ref(db,"themes/"+themeId)).then((snap)=>{
-            console.log(snap.val())
-            setPageTheme(snap.val())
+            let theme = snap.val()
+            console.log(theme)
+            localStorage.setItem('theme',theme);
+            setPageTheme(theme)
         })
     })
 }
