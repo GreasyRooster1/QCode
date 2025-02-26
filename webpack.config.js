@@ -13,6 +13,8 @@ module.exports = {
         shareBoard: "./src/shareBoard/index.js",
         sharedProject: "./src/sharedProject/index.js",
         editProfile: "./src/editProfile/index.js",
+
+        theme: "./src/api/theme.js",
     },
     module: {
         rules: [
