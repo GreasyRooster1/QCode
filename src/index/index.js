@@ -22,7 +22,6 @@ const announcementsDisplay = document.querySelector(".announcements-display");
 ProjectLinkElement.register()
 
 function init(){
-    loadTheme()
     lockPageToAuth()
 
     initNavbar({
