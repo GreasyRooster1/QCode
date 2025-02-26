@@ -4,12 +4,15 @@ import {db} from "./firebase";
 
 
 function loadTheme(){
+    let theme = localStorage.getItem('theme')??"default";
+    setPageTheme(theme);
     onValue(ref(db,"userdata/"+getStoredUser().uid+"/theme"),(snap)=>{
         if(!snap.exists()){
             set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),"default");
             return
         }
         let themeId = snap.val();
+        localStorage.setItem('theme',themeId);
         if(themeId==="default"){
             removeTheme()
             return;
