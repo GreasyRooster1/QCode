@@ -4,12 +4,13 @@ import {db} from "./firebase";
 
 
 function loadTheme(){
+    debugger;
     loadThemeFromLocal()
     loadThemeFromDB()
 }
 
 function loadThemeFromLocal(){
-    let theme = localStorage.getItem('theme');
+    let theme = JSON.parse(localStorage.getItem('theme'));
     if(theme===null)return;
     setPageTheme(theme);
 }
@@ -30,7 +31,7 @@ function loadThemeFromDB(){
         get(ref(db,"themes/"+themeId)).then((snap)=>{
             let theme = snap.val()
             console.log(theme)
-            localStorage.setItem('theme',theme);
+            localStorage.setItem('theme',JSON.stringify(theme));
             setPageTheme(theme)
         })
     })
@@ -38,10 +39,15 @@ function loadThemeFromDB(){
 
 function setPageTheme(theme){
     removeTheme()
+    let prevThemeEl = document.querySelector(".theme-style-el");
+    if(theme.address===prevThemeEl.src){
+        return;
+    }
     let styleEl = document.createElement("link");
     styleEl.setAttribute("rel","stylesheet");
     styleEl.setAttribute("href", theme.address);
     styleEl.classList.add("theme-style-el");
+    prevThemeEl.remove();
     document.head.appendChild(styleEl);
 }
 
