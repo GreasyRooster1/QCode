@@ -35,4 +35,6 @@ function removeTheme(){
     document.querySelector(".theme-style-el")?.remove();
 }
 
-export {loadTheme}
+loadTheme();
+
+export {loadTheme};
