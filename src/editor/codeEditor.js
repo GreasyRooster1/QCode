@@ -12,7 +12,7 @@ import { tags } from "@lezer/highlight";
 // @ts-ignore
 import { HighlightStyle, defaultHighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { setHasSaved } from "./save";
-import { dracula } from 'thememirror';
+import { dracula } from "thememirror";
 const fixedFontTheme = EditorView.theme({
     '&': {
         font: "'JetBrains Mono', monospace",
@@ -45,6 +45,7 @@ function setupEditor(language) {
     if (languagePair != null) {
         extensions.push(languagePair);
     }
+    setThemeFromCSS(extensions);
     editor = new EditorView({
         doc: "\n",
         extensions: extensions,
@@ -52,6 +53,12 @@ function setupEditor(language) {
     });
     // @ts-ignore
     window.editor = editor;
+}
+function setThemeFromCSS(extensions) {
+    let themeCss = window.getComputedStyle(document.body).getPropertyValue('--code-editor-theme');
+    if (themeCss == "dracula") {
+        extensions.push(dracula);
+    }
 }
 function getLanguage(identifier) {
     if (identifier == "javascript") {

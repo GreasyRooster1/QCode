@@ -14,7 +14,7 @@ import {tags} from "@lezer/highlight"
 import {HighlightStyle, defaultHighlightStyle, syntaxHighlighting} from "@codemirror/language"
 import {hasSavedRecently, setHasSaved} from "./save";
 import {ViewUpdate} from "@codemirror/view";
-import {dracula} from 'thememirror';
+import {dracula} from "thememirror";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
@@ -53,6 +53,7 @@ function setupEditor(language: Language) {
     if(languagePair!=null){
         extensions.push(languagePair!);
     }
+    setThemeFromCSS(extensions);
     editor = new EditorView({
         doc: "\n",
         extensions: extensions,
@@ -61,6 +62,13 @@ function setupEditor(language: Language) {
     });
     // @ts-ignore
     window.editor = editor;
+}
+
+function setThemeFromCSS(extensions:any){
+    let themeCss = window.getComputedStyle(document.body).getPropertyValue('--code-editor-theme');
+    if(themeCss=="dracula"){
+        extensions.push(dracula);
+    }
 }
 
 function getLanguage(identifier:Language): any | null{
