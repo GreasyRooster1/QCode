@@ -11,7 +11,7 @@ function loadTheme(){
 
 function loadThemeFromLocal(){
     let theme = JSON.parse(localStorage.getItem('theme'));
-    if(theme===null)return;
+    if(theme===null||theme==="default")return;
     setPageTheme(theme);
 }
 
@@ -29,6 +29,7 @@ function loadThemeFromDB(){
 
         if(themeId==="default"){
             document.querySelector(".theme-style-el")?.remove()
+            localStorage.setItem('theme',"default");
             return;
         }
         console.log(snap.val(),"themes/"+themeId);
