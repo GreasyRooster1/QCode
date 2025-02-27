@@ -10,7 +10,6 @@ import {setupNewProjectEvents} from "./newProject";
 import {lockPageToAuth} from "../api/util/lockPageToAuth";
 import {initNavbar} from "../api/nav/navbar";
 import {ProjectLinkElement} from "../api/customElements";
-import {loadTheme} from "../api/theme";
 
 
 const badgeDisplay = document.querySelector(".badges-display");
@@ -21,7 +20,6 @@ const announcementsDisplay = document.querySelector(".announcements-display");
 ProjectLinkElement.register()
 
 function init(){
-    loadTheme()
     lockPageToAuth()
 
     initNavbar({

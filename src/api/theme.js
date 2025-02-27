@@ -56,4 +56,6 @@ function setPageTheme(theme){
     document.head.appendChild(styleEl);
 }
 
+loadTheme()
+
 export {loadTheme};
