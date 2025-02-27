@@ -10,8 +10,10 @@ function loadTheme(){
 }
 
 function loadThemeFromLocal(){
-    let theme = JSON.parse(localStorage.getItem('theme'));
-    if(theme===null||theme==="default")return;
+    let storageItem = localStorage.getItem('theme')
+    if(storageItem==="default")return;
+    let theme = JSON.parse(storageItem);
+    if(theme===null)return;
     setPageTheme(theme);
 }
 
