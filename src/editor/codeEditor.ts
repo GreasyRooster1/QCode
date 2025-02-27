@@ -48,7 +48,6 @@ function setupEditor(language: Language) {
         basicSetup,
         keymap.of([indentWithTab]),
         fixedFontTheme,
-        dracula
     ]
     if(languagePair!=null){
         extensions.push(languagePair!);
