@@ -4,6 +4,7 @@ import {initNavbar} from "../api/nav/navbar";
 import {loadUserData} from "./load";
 
 function init() {
+    loadTheme()
     lockPageToAuth()
 
     initNavbar({

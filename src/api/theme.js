@@ -17,6 +17,7 @@ function loadThemeFromLocal(){
 
 function loadThemeFromDB(){
     if(getStoredUser()===null){
+        console.log("no user")
         return;
     }
     onValue(ref(db,"userdata/"+getStoredUser().uid+"/theme"),(snap)=>{
