@@ -16,6 +16,9 @@ function loadThemeFromLocal(){
 }
 
 function loadThemeFromDB(){
+    if(getStoredUser()===null){
+        return;
+    }
     onValue(ref(db,"userdata/"+getStoredUser().uid+"/theme"),(snap)=>{
         if(!snap.exists()){
             set(ref(db,"userdata/"+getStoredUser().uid+"/theme"),"default");
