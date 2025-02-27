@@ -1,41 +1,12 @@
-// @ts-ignore
 import { basicSetup, EditorView} from "codemirror"
-// @ts-ignore
 import {drawSelection, keymap} from "@codemirror/view"
-// @ts-ignore
 import { indentWithTab } from "@codemirror/commands"
-// @ts-ignore
-import { linter } from '@codemirror/lint'
-
-// @ts-ignore
 import { javascript } from "@codemirror/lang-javascript"
-// @ts-ignore
-import { javascriptLanguage } from '@codemirror/lang-javascript'
-
-// @ts-ignore
 import { rust } from "@codemirror/lang-rust"
-// @ts-ignore
-import { rustLanguage } from '@codemirror/lang-rust'
-
-// @ts-ignore
 import { html } from "@codemirror/lang-html"
-// @ts-ignore
-import { htmlLanguage } from '@codemirror/lang-html'
-
-// @ts-ignore
 import { css } from "@codemirror/lang-css"
-// @ts-ignore
-import { cssLanguage } from '@codemirror/lang-css'
-
-// @ts-ignore
 import { python } from "@codemirror/lang-python"
-// @ts-ignore
-import { pythonLanguage } from '@codemirror/lang-python'
-
-// @ts-ignore
 import { cpp } from "@codemirror/lang-cpp"
-// @ts-ignore
-import { cppLanguage } from '@codemirror/lang-cpp'
 
 // @ts-ignore
 import {tags} from "@lezer/highlight"
@@ -43,6 +14,7 @@ import {tags} from "@lezer/highlight"
 import {HighlightStyle, defaultHighlightStyle, syntaxHighlighting} from "@codemirror/language"
 import {hasSavedRecently, setHasSaved} from "./save";
 import {ViewUpdate} from "@codemirror/view";
+import {dracula} from 'thememirror';
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
@@ -76,6 +48,7 @@ function setupEditor(language: Language) {
         basicSetup,
         keymap.of([indentWithTab]),
         fixedFontTheme,
+        dracula
     ]
     if(languagePair!=null){
         extensions.push(languagePair!);
