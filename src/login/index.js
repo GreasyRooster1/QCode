@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "../api/firebase";
 import {displayAuthErrors, extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
-import {get, ref, set} from "firebase/database";
+import {get, ref, set,update} from "firebase/database";
 
 
 const loginButton = document.querySelector(".login-button");
@@ -10,23 +10,6 @@ const passwordInput = document.querySelector(".password-input");
 
 const authErrorDisplayWrapper = document.querySelector(".auth-error");
 const authErrorContent = document.querySelector(".auth-error-message");
-
-const requiredUserData = [
-    {name:"projects",val:{
-        "bouncing-rainbow-squares":{
-            name:"Bouncing Rainbow Squares",
-            code:"\n\nfunction setup() {\n\n}\n\nfunction draw() {\n\n}\n",
-            currentChapter:0,
-            currentStep:1,
-            lessonId:"bouncing-rainbow-squares",
-            timestamp:Date.now()/1000,
-        }
-    }},
-    {name:"badges",val:{0:{id:"user"}}},
-    {name:"points",val:0},
-    {name:"spentPoints",val:0},
-    {name:"profileIcon",val:"https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/user.png?raw=true"},
-]
 
 let returnURL = "./index.html";
 
@@ -67,7 +50,7 @@ function getReturnURL(){
 
 function createUser(uid,username){
     for(let dataPoint of requiredUserData) {
-        set(ref(db,"userdata/" + uid+"/"+dataPoint.name),dataPoint.val);
+        update(ref(db,"userdata/" + uid+"/"+dataPoint.name),dataPoint.val);
     }
     set(ref(db,"userdata/" + uid+"/username"),username);
 }
