@@ -1,26 +1,18 @@
-// @ts-ignore
 import { basicSetup, EditorView } from "codemirror";
-// @ts-ignore
 import { keymap } from "@codemirror/view";
-// @ts-ignore
 import { indentWithTab } from "@codemirror/commands";
-// @ts-ignore
 import { javascript } from "@codemirror/lang-javascript";
-// @ts-ignore
 import { rust } from "@codemirror/lang-rust";
-// @ts-ignore
 import { html } from "@codemirror/lang-html";
-// @ts-ignore
 import { css } from "@codemirror/lang-css";
-// @ts-ignore
 import { python } from "@codemirror/lang-python";
-// @ts-ignore
 import { cpp } from "@codemirror/lang-cpp";
 // @ts-ignore
 import { tags } from "@lezer/highlight";
 // @ts-ignore
 import { HighlightStyle, defaultHighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { setHasSaved } from "./save";
+import { dracula } from "thememirror";
 const fixedFontTheme = EditorView.theme({
     '&': {
         font: "'JetBrains Mono', monospace",
@@ -52,6 +44,7 @@ function setupEditor(language) {
     if (languagePair != null) {
         extensions.push(languagePair);
     }
+    setThemeFromCSS(extensions);
     editor = new EditorView({
         doc: "\n",
         extensions: extensions,
@@ -59,6 +52,12 @@ function setupEditor(language) {
     });
     // @ts-ignore
     window.editor = editor;
+}
+function setThemeFromCSS(extensions) {
+    let themeCss = window.getComputedStyle(document.body).getPropertyValue('--code-editor-theme');
+    if (themeCss == "dracula") {
+        extensions.push(dracula);
+    }
 }
 function getLanguage(identifier) {
     if (identifier == "javascript") {

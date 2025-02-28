@@ -16,6 +16,7 @@
     "lezer": "^0.13.5",
     "p5": "^1.11.3",
     "split.js": "^1.6.5",
+    "thememirror": "^2.0.1",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.2"
   },

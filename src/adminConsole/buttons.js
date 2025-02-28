@@ -1,6 +1,7 @@
 import {extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
 import {createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../api/firebase";
+import {auth, db} from "../api/firebase";
+import {ref,set} from "firebase/database";
 
 const lessonCreatorButton = document.querySelector(".lesson-creator-button");
 const homeButton = document.querySelector(".home-button");
@@ -28,6 +29,7 @@ function setupButtonEvents() {
         createUserWithEmailAndPassword(auth,email, password)
             .then((userCredential) => {
                 console.log(userCredential.user);
+                set(ref(db,"userdata/"+userCredential.user.uid+"/username"),username)
                 storeUser(userCredential.user);
             })
             .catch((error) => {

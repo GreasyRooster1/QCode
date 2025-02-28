@@ -1,7 +1,8 @@
 import {db} from "../../api/firebase";
 import {getStoredUser} from "../../api/auth";
 import {promptProfileIconChange} from "../../api/nav/navbar.js"
-import {get, ref} from "firebase/database";
+import {get, ref, set} from "firebase/database";
+import {requiredUserData} from "../../login/data";
 
 const usernameTitle = document.querySelector('.username-title');
 const profileDisplayImg = document.querySelector('.user-profile-img');
@@ -11,6 +12,7 @@ function loadUserData(){
     loadUsername();
     loadProfileIcon();
     renderPoints();
+    validateUserData();
 }
 
 function loadUsername(){
@@ -36,6 +38,18 @@ function addProfileListener() {
     profileDisplayImg.addEventListener("click", function () {
         promptProfileIconChange();
     });
+}
+
+function validateUserData(){
+    let uid = getStoredUser().uid;
+    for(let dataPoint of requiredUserData) {
+        get(ref(db,"userdata/" + uid+"/"+dataPoint.name)).then((snap)=>{
+            if(snap.exists()){
+                return;
+            }
+            set(ref(db,"userdata/"+uid+"/"+dataPoint.name),dataPoint.val)
+        })
+    }
 }
 
 export {loadUserData,addProfileListener};
