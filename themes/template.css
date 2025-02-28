@@ -173,6 +173,11 @@
 /* Exec (exec/style.css) */
 /* Override elements directly */
 
+/* Editor Lang (editor/lang.css) */
+:root{
+    --code-editor-theme:"default"
+}
+
 /* Editor Main (editor/editor.css) */
 :root{
     --pane-background: #bcbcbc;

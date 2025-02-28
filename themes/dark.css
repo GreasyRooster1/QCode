@@ -1,51 +1,24 @@
-:root{
-    --mv-red:#b72c25
-}
-
-
 /* Navbar (navbar.css) */
 :root{
     --account-name-text: #ffffff;
-    --account-dropdown-option: #ffffff;
+    --account-dropdown-option: #d1d1d1;
 
-    --account-dropdown-seperator: var(--mv-red);
+    --account-dropdown-seperator: #4c4c4c;
 
-    --navbar-shrink-color: #1a1a1a;
+    --navbar-shrink-color: #eaeaea;
 
-    --generic-nav-button-color: var(--mv-red);
+    --generic-nav-button-color: #2e2e2e;
 
-    --points-display-background: #64a667;
+    --points-display-background: #11df5a;
     --points-display-text: #ffffff;
 
     --navbar-height:40px;
-}
-
-.navbar{
-    background: var(--mv-red);
-}
-
-.username-link{
-    font-size:1rem;
-    margin-right: 15px;
-}
-
-.account-dropdown-wrapper{
-    display: flex;
-    align-items: center;
-}
-
-.username-link::after{
-    content:"\f0d7";
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    margin-left:5px
+    color: #e3e3e3;
 }
 
 /* Global (global.css) */
 :root{
-    --default-font: "Helvetica Neue", Helvetica, Arial, sans-serif;;
+    --default-font: "JetBrains Mono";
 
     --brand-blue:#0D5DC5;
     --brand-green: #03FC04;
@@ -69,22 +42,22 @@
 
 /* Shared Project (sharedProject/index.css) */
 :root{
-    --code-pane-background: #d0efcc;
-    --view-pane-background: #b6b6b6;
+    --code-pane-background: #041903;
+    --view-pane-background: #323232;
 
-    --info-tab-background: #acb4d6;
-    --code-tab-background: #90d89e;
-    --info-tab-color: #021930;
-    --code-tab-color: #033c03;
-    --info-section-background: #d1d7e8;
+    --info-tab-background: #0c1123;
+    --code-tab-background: #07200c;
+    --info-tab-color: #b6cfe4;
+    --code-tab-color: #bfe4bf;
+    --info-section-background: #0b1120;
 
-    --info-inset-background: #c6cee3;
-    --author-block-background: #b6c3e6;
+    --info-inset-background: #202439;
+    --author-block-background: #2d3657;
 
-    --tab-bar-background: #c3c3c3;
+    --tab-bar-background: #292929;
 
-    --remix-button-color: #2078e8;
-    --remix-button-text-color: #e3e5e8;
+    --remix-button-color: #1a56a8;
+    --remix-button-text-color: #e8ecef;
 
     --original-title-border: #4b6ec8;
 
@@ -92,6 +65,9 @@
     --lesson-button: #6de383;
 
     --user-img-size:13vh;
+}
+.code-editor{
+    color:#000;
 }
 
 /* Share Board Global (shareBoard/global.css) */
@@ -104,20 +80,19 @@
 
 /* Share Board (shareBoard/index.css) */
 :root{
-    --featured-project-bar-background: #eaeaea;
-    --bulk-project-bar-background: #dddddd;
-    --bar-seperator: #b1b1b1;
-    --interact-tray-background: #b5b5b5;
-    --title-color-background: #b5b5b5;
+    --featured-project-bar-background: #2c2c2c;
+    --bulk-project-bar-background: #373737;
+    --bar-seperator: #535353;
+    --interact-tray-background: #333333;
+    --title-color-background: #474747;
 
     --open-icon-color: #000000;
     --open-icon-border-color: #ffffff;
 
-    --bulk-project-overlay-background: rgba(0, 0, 0, 0.48);
+    --bulk-project-overlay-background: rgba(0, 0, 0, 0.78);
 
     --bar-seperator-height: 2px;
 }
-
 
 /* Login (login/login.css) */
 :root{
@@ -148,81 +123,86 @@
 
 /* Index (index/index.css) */
 :root{
-    --center-background: #eaeaea;
+    --center-background: #1c1c1c;
 
-    --left-bar-background: #dcdcdc;
-    --left-sections-background: #aab4dc;
+    --left-bar-background: #292929;
+    --left-sections-background: #2a2c3e;
 
-    --right-bar-background: #dddddd;
-    --right-sections-background: #aadcb4;
+    --right-bar-background: #292929;
+    --right-sections-background: #2a3e2d;
 
-    --project-link-background: #8d99dd;
-    --project-link-text: #191919;
-    --project-date-text: #c9d0dd;
+    --project-link-background: #44455c;
+    --project-link-text: #f1f1f1;
+    --project-date-text: #697b8e;
 
-    --lessons-chart-link-background:#98a2da;
-    --lessons-recommended-background: #a1a9d8;
+    --lessons-chart-link-background: #3b3d51;
+    --lessons-recommended-background: #393e51;
 
-    --badge-details-background: #94d89d;
-    --badge-hover-color: #83d88f;
-    --badge-color: #94d89d;
+    --badge-details-background: #344a35;
+    --badge-hover-color: #425943;
+    --badge-color: #425943;
 
-    --new-button-background: #7583e1;
+    --new-button-background: #5d6de1;
     --new-button-text-color: #dde5e8;
 
     --featured-project-thumb-background: rgba(0, 0, 0, 0.5);
 
-    --announcement-background: #d9d9d9;
-    --announcement-side-color: #bebebe;
-    --announcement-content-background: #e1e1e1;
-    --announcement-content-text: #4d4d4d;
-    --announcement-date-text: #4d4d4d;
+    --announcement-background: #2e2e2e;
+    --announcement-side-color: #474747;
+    --announcement-content-background: #303030;
+    --announcement-content-text: #d8d8d8;
+    --announcement-date-text: #686868;
 
-    --points-progress-bar-background: #cdcdcd;
-    --points-progress-bar-fill: #64d888;
+    --points-progress-bar-background: #858585;
+    --points-progress-bar-fill: #2d7141;
 
-    --status-display-text: #dfdfdf;
-    --status-display-external: #ea473a;
-    --status-display-not-started: #3a78ea;
-    --status-display-started: #3aea78;
+    --status-display-text: #ffffff;
+    --status-display-external: #ae3025;
+    --status-display-not-started: #163e87;
+    --status-display-started: #189543;
 
-    --footer-background: #c5c5c5;
-    --footer-text-color: #717171;
+    --footer-background: #353535;
+    --footer-text-color: #878787;
 
     --badge-size:50px;
 
-    --share-board-more-button-color: #14a4e3;
+    --share-board-more-button-color: #0b5371;
     --share-board-more-button-text-color: #eef9ff;
 
-    --new-project-popup-background: #b3b9df;
-    --popup-inputs-background: #9da6dd;
+    --new-project-popup-background: #2a2c3e;
+    --popup-inputs-background: #3f4257;
 }
 
 /* Exec (exec/style.css) */
 /* Override elements directly */
 
+/* Editor Lang (editor/lang.css) */
+:root{
+    --code-editor-theme:"dracula"
+}
+
 /* Editor Main (editor/editor.css) */
 :root{
-    --pane-background: #bcbcbc;
+    --pane-background: #202020;
 
-    --gutter-accent: #b3b3b3;
-    --gutter-main: #d3d3d3;
+    --gutter-accent: #505050;
+    --gutter-main: #333333;
 
-    --step-background: #d5d5d5;
-    --step-content-background: #e4e4e4;
+    --step-background: #151515;
+    --step-content-background: #4c4c4c;
 
-    --step-head-default: rgba(209, 0, 255, 0.44);
+    --step-head-default: rgba(212, 17, 255, 0.44);
 
-    --step-info: rgba(21, 156, 214, 0.44);
-    --step-code: rgba(27, 214, 21, 0.44);
-    --step-challenge: rgba(214, 21, 21, 0.44);
-    --step-chapters: rgba(101, 101, 101, 0.44);
-    --step-check: rgba(153, 44, 255, 0.44);
-    --step-next: rgba(255, 148, 34, 0.44);
-    --step-build: rgba(34, 45, 255, 0.44);
-    --step-other: rgba(21, 21, 21, 0.44);
+    --step-info: rgba(80, 181, 230, 0.44);
+    --step-code: rgba(104, 255, 98, 0.44);
+    --step-challenge: rgba(255, 87, 87, 0.44);
+    --step-chapters: rgba(165, 165, 165, 0.44);
+    --step-check: rgba(186, 108, 255, 0.44);
+    --step-next: rgba(255, 175, 91, 0.44);
+    --step-build: rgba(99, 107, 255, 0.44);
+    --step-other: rgba(255, 255, 255, 0.44);
 
-    --step-type-background: #707070;
+    --step-type-background: #515151;
 
     --code-editor-background: #e0e0e0;
 
@@ -247,34 +227,34 @@
     --send-button-background: #959595;
     --console-input-button-background: #dcdcdc;
 
-    --log-error-background: rgba(255, 27, 27, 0.37);
-    --log-warn-background: rgba(255, 243, 17, 0.37);
-    --log-log-background: rgb(71 70 68 / 22%);
+    --log-error-background: rgba(255, 27, 27, 0.66);
+    --log-warn-background: rgba(255, 249, 84, 0.78);
+    --log-log-background: rgba(179, 179, 179, 0.85);
 
-    --log-error-solid: rgb(255, 45, 45);
-    --log-warn-solid: rgb(220, 188, 13);
-    --log-log-solid: rgb(120, 119, 118);
+    --log-error-solid: rgb(140, 6, 6);
+    --log-warn-solid: rgb(168, 143, 3);
+    --log-log-solid: rgb(76, 74, 74);
 
-    --save-alert-background: #cfe6f8;
-    --save-alert-accent: #4094d6;
+    --save-alert-background: #14293a;
+    --save-alert-accent: #15649f;
 
-    --chapter-link-color: #226d6e;
-    --chapter-link-color-hover: #22bcbd;
+    --chapter-link-color: #49cccd;
+    --chapter-link-color-hover: #26f7f8;
 
-    --step-code-text-background: #fae6e8;
-    --step-code-text-color: #c5244e;
+    --step-code-text-background: #452e2f;
+    --step-code-text-color: #e37693;
 
     --step-red-text-color: #ef0909;
 
-    --chapter-end-home-link-color: #2180d1;
-    --scratch-steps-background: #dddddd;
+    --chapter-end-home-link-color: #6cb6ff;
+    --scratch-steps-background: #292929;
 }
 
 /* Editor Lesson Creator (editor/lessonCreator.css) */
 :root{
-    --lesson-creator-container-color: #b8b8b8;
-    --lesson-creator-button-color: #dfdfdf;
-    --lesson-creator-meta-color: #a1a1a1;
+    --lesson-creator-container-color: #434343;
+    --lesson-creator-button-color: #222222;
+    --lesson-creator-meta-color: #434343;
 }
 
 /* Editor Arduino (editor/panes/lang/arduino.css) */
@@ -339,12 +319,12 @@
 
 /* Edit Profile (editProfile/index.css) */
 :root{
-    --page-background: #f4f4f4;
-    --main-background: #e8e8e8;
+    --page-background: #131313;
+    --main-background: #292929;
 
-    --rows: #d6d6d6;
+    --rows: #3e3e3e;
 
-    --profile-card: #b5b5b5;
+    --profile-card: #595959;
     --advanced-line: #8e8e8e;
     --username-warning:#ff0000;
 }
