@@ -55,7 +55,8 @@ function setupEditor(language) {
 }
 function setThemeFromCSS(extensions) {
     let themeCss = window.getComputedStyle(document.body).getPropertyValue('--code-editor-theme');
-    if (themeCss == "dracula") {
+    console.log(themeCss);
+    if (themeCss == "\"dracula\"") {
         extensions.push(dracula);
     }
 }

@@ -1,6 +1,6 @@
 const serverAddress = "http://localhost:8181";
 const openProtocol = "qcodecloudagent://";
-const expectedVersion = "1.0.0";
+const expectedVersion = "1.0";
 
 class Sketch{
     readonly name: string;
@@ -58,7 +58,7 @@ function startSketchServer(name:string):Promise<Sketch>{
                 }
                 let text = await r.text()
                 console.log("text:", text)
-                if (text == expectedVersion) {
+                if (text.startsWith(expectedVersion)) {
                     resolve(new Sketch(name));
                 } else {
                     reject("incorrect version")
