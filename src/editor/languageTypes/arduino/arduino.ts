@@ -88,12 +88,15 @@ class ArduinoType extends ProjectType {
                 this.sketch?.upload().then(()=>{
                     this.setExecStatus("ok");
                 }).catch(e => {
+                    this.appendLog(e.message,"error");
                     this.failExec()
                 });
             }).catch(e => {
+                this.appendLog(e.message,"error");
                 this.failExec()
             });
         }).catch(e => {
+            this.appendLog(e.message,"error");
             this.failExec()
         })
     }
