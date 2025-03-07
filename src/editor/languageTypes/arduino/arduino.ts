@@ -27,6 +27,7 @@ class ArduinoType extends ProjectType {
 
     setupEditor(): void {
         document.querySelector(".console-head")?.setAttribute("style","");
+        document.querySelector(".console-log-area")?.setAttribute("style","flex-direction:column");
         this.statusDisplay = document.querySelector(".output-head")?.appendChild(document.createElement('div'));
         this.statusText = document.querySelector(".output-head")?.appendChild(document.createElement('div'));
         this.statusDisplay?.classList.add("status-display");
@@ -88,15 +89,15 @@ class ArduinoType extends ProjectType {
                 this.sketch?.upload().then(()=>{
                     this.setExecStatus("ok");
                 }).catch(e => {
-                    this.appendLog(e.message,"error");
+                    this.appendLog(e.message.replace("\n","<br>"),"error");
                     this.failExec()
                 });
             }).catch(e => {
-                this.appendLog(e.message,"error");
+                this.appendLog(e.message.replace("\n","<br>"),"error");
                 this.failExec()
             });
         }).catch(e => {
-            this.appendLog(e.message,"error");
+            this.appendLog(e.message.replace("\n","<br>"),"error");
             this.failExec()
         })
     }
