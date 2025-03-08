@@ -20,7 +20,7 @@ type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c
 
 const fixedFontTheme = EditorView.theme({
     '&': {
-        font:"'JetBrains Mono', monospace",
+        font: getFontFromCSS(),
         fontSize: "15px",
         fontVariantLigatures:"none",
     }
@@ -98,6 +98,12 @@ function getLanguage(identifier:Language): any | null{
 
 function onDocUpdate(update: ViewUpdate){
     setHasSaved(false);
+}
+
+function getFontFromCSS(){
+    let fontCss = window.getComputedStyle(document.body).getPropertyValue('--editor-font');
+    console.log(fontCss)
+    return fontCss!=""?fontCss:"'JetBrains Mono', monospace";
 }
 
 // @ts-ignore
