@@ -46,16 +46,6 @@ class ArduinoType extends CloudAgentType {
         return "c++";
     }
 
-    setExecStatus(status:string) {
-        this.executionStatus = status;
-        this.failedExecution = false;
-        this.updateStatusDisplay()
-    }
-    failExec(){
-        this.failedExecution = true;
-        this.updateStatusDisplay()
-    }
-
     static getProjectDBData(projectName: string, lessonId: string):Object {
         return {
             code:defaultCodeArduino,
