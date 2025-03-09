@@ -9,11 +9,11 @@ enum ServerType {
     Python = "python",
 }
 
-function makeGlobalRequest(uri:string,body:string):Promise<object> {
-    return makeRequest(uri,body,globalPort,true)
+function makeGlobalRequest(uri:string,body:string):Promise<string> {
+    return makeRequest(uri,body,globalPort,true) as Promise<string>;
 }
 
-function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):Promise<object> {
+function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):Promise<object|string> {
     return new Promise((resolve, reject) => {
         fetch(globalServerAddress+":"+port + "/" + uri, {
             method: isDataRequest?"GET":"POST",
@@ -21,6 +21,10 @@ function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):P
         }).then(async (response: Response) => {
             console.log(response);
             if (response.ok) {
+                if(isDataRequest){
+                    resolve(await response.text());
+                    return;
+                }
                 let json = await response.json()
                 if(json.success) {
                     resolve(json);
@@ -39,8 +43,11 @@ function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):P
 
 function startServer(type:ServerType):Promise<string> {
     return new Promise((resolve, reject) => {
-        makeGlobalRequest("/start/" + type.valueOf(), "").then((json: object) => {
-            console.log(json);
+        makeGlobalRequest("/start/" + type.valueOf(), "").then((port: string) => {
+            console.log(port);
+            resolve(port);
+        }).catch(e => {
+            reject(e);
         })
     })
 }

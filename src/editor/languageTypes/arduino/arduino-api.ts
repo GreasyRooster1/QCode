@@ -1,6 +1,6 @@
 import {makeRequest, ServerType, startServer} from "../../utils/cloudAgentAPI";
 
-
+const arduinoVersion ="2.0";
 const openProtocol = "qcodecloudagent://";
 
 class Sketch{
@@ -33,8 +33,13 @@ class Sketch{
 function checkSketchServer(sketch:Sketch):Promise<Sketch>{
     return new Promise((resolve, reject) => {
         makeRequest("version","",sketch.port,true).then((data)=>{
-            if(data)
-            resolve(sketch);
+            let ver = data as string;
+            if(ver.startsWith(arduinoVersion)){
+                resolve(sketch);
+            }else{
+                console.log("Incorrect version: "+ver);
+                reject(ver);
+            }
         })
     });
 }
