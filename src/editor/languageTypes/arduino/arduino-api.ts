@@ -1,4 +1,4 @@
-import {makeRequest} from "../../utils/cloudAgentAPI";
+import {makeRequest, ServerType, startServer} from "../../utils/cloudAgentAPI";
 
 
 const openProtocol = "qcodecloudagent://";
@@ -30,29 +30,25 @@ class Sketch{
 }
 
 
+function checkSketchServer(sketch:Sketch):Promise<Sketch>{
+    return new Promise((resolve, reject) => {
+        makeRequest("version","",sketch.port,true).then((data)=>{
+            if(data)
+            resolve(sketch);
+        })
+    });
+}
+
 function startSketchServer(name:string):Promise<Sketch>{
     return new Promise((resolve, reject) => {
-        try {
-            fetch(serverAddress + "/version", {
-                method: "GET",
-            }).then(async r => {
-                if (!r.ok) {
-                    reject("failed to connect")
-                }
-                let text = await r.text()
-                console.log("text:", text)
-                if (text.startsWith(expectedVersion)) {
-                    resolve(new Sketch(name));
-                } else {
-                    reject("incorrect version")
-                }
-
-            }).catch(err => {
-                reject("failed to connect")
-            })
-        }catch (err){
-            reject("failed to connect")
-        }
+        startServer(ServerType.Arduino).then((port: string) => {
+            let sketch = new Sketch(name, port);
+            checkSketchServer(sketch).then((s) => {
+                resolve(s);
+            }).catch(e => {
+                reject(e);
+            });
+        })
     });
 }
 

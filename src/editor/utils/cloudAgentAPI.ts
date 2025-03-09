@@ -45,4 +45,4 @@ function startServer(type:ServerType):Promise<string> {
     })
 }
 
-export {makeGlobalRequest,makeRequest,openProtocol,ServerType}
+export {makeGlobalRequest,makeRequest,openProtocol,ServerType,startServer}
