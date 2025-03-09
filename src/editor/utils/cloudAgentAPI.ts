@@ -58,7 +58,7 @@ function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):P
 
 function startServer(type:ServerType):Promise<string> {
     return new Promise((resolve, reject) => {
-        makeGlobalRequest("/start/" + type.valueOf(), "").then((port: string) => {
+        makeGlobalRequest("start/" + type.valueOf(), "").then((port: string) => {
             console.trace(port);
             resolve(port);
         }).catch(e => {

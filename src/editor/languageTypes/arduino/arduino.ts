@@ -6,7 +6,7 @@ import {getStoredUser} from "../../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {writeToEditor} from "../../utils/loadUtils";
-import {startSketchServer, Sketch, openProtocol} from "./arduino-api";
+import {startSketchServer, Sketch} from "./arduino-api";
 import {clearConsole} from "../../codeExecution";
 import {defaultCodeArduino, defaultCodeJs} from "../../../api/util/code";
 import {establishAgentConnection, GlobalServerStatus} from "../../utils/cloudAgentAPI";
@@ -42,6 +42,9 @@ class ArduinoType extends ProjectType {
             if(status==GlobalServerStatus.Connected) {
                 this.statusText!.innerHTML="Connected";
                 this.setExecStatus("connected")
+                startSketchServer(this.projectId!).then(sketch => {
+                    this.sketch = sketch;
+                })
             }
             if(status==GlobalServerStatus.IncorrectVersion) {
                 this.statusText!.innerHTML="Incorrect Agent Version";

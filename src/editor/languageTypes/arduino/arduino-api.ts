@@ -1,7 +1,6 @@
 import {makeRequest, ServerType, startServer} from "../../utils/cloudAgentAPI";
 
-const arduinoVersion ="2.0";
-const openProtocol = "qcodecloudagent://";
+const arduinoVersion ="1.0";
 
 class Sketch{
     readonly name: string;
@@ -49,6 +48,7 @@ function startSketchServer(name:string):Promise<Sketch>{
         startServer(ServerType.Arduino).then((port: string) => {
             let sketch = new Sketch(name, port);
             checkSketchServer(sketch).then((s) => {
+                console.log(s);
                 resolve(s);
             }).catch(e => {
                 reject(e);
@@ -58,4 +58,4 @@ function startSketchServer(name:string):Promise<Sketch>{
 }
 
 
-export {Sketch,startSketchServer,openProtocol}
+export {Sketch,startSketchServer}
