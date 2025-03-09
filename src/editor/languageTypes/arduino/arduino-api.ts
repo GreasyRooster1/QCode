@@ -1,5 +1,7 @@
+import {makeRequest} from "../../utils/cloudAgentAPI";
+
+
 const openProtocol = "qcodecloudagent://";
-const expectedVersion = "1.0";
 
 class Sketch{
     readonly name: string;
@@ -7,23 +9,23 @@ class Sketch{
     constructor(name:string,port:string) {
         this.name = name;
         this.port = port;
-        this.makeRequest("create","").catch(e=>{});
+        this.doRequest("create","").catch(e=>{});
     }
 
-    private makeRequest(type:string,body:string):Promise<object> {
-        makeRequest()
+    private doRequest(type:string,body:string):Promise<object> {
+        return makeRequest(type+"/"+this.name,body,this.port);
     }
 
     writeCode(code:string):Promise<object> {
-        return this.makeRequest("write", code)
+        return this.doRequest("write", code)
     }
 
     compile():Promise<object> {
-        return this.makeRequest("compile", "")
+        return this.doRequest("compile", "")
     }
 
     upload():Promise<object> {
-        return this.makeRequest("upload", "")
+        return this.doRequest("upload", "")
     }
 }
 

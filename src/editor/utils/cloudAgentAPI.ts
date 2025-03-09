@@ -32,6 +32,8 @@ function makeRequest(uri:string,body:string,port:string):Promise<object> {
     });
 }
 
+function startServer(){
 
+}
 
 export {makeGlobalRequest,makeRequest,openProtocol}
