@@ -1,6 +1,6 @@
 //arduino.work
 import {ProjectType, RunErrCallback} from "./projectType";
-import {frame, frameContent, getCode, logNames, runCode, setupEvents as setupExecEvents, stopFrame} from "../../executionHelper";
+import {frame, frameContent, getCode, logNames, runCode, setupEvents as setupExecEvents, stopFrame} from "../executionHelper";
 import {Language} from "../codeEditor";
 import {getStoredUser} from "../../api/auth";
 import {ref, set} from "firebase/database";
