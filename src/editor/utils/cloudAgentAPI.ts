@@ -11,6 +11,17 @@ enum ServerType {
     Python = "python",
 }
 
+enum GlobalServerConnectionError{
+    CouldNotConnect,
+    IncorrectVersion
+}
+
+enum GlobalServerStatus{
+    Connected,
+    IncorrectVersion,
+    Failed,
+}
+
 function makeGlobalRequest(uri:string,body:string):Promise<string> {
     return makeRequest(uri,body,globalPort,true) as Promise<string>;
 }
@@ -56,34 +67,35 @@ function startServer(type:ServerType):Promise<string> {
 
 function checkGlobalServer():Promise<string>{
     return new Promise((resolve, reject) => {
-        makeRequest("version","",sketch.port,true).then((data)=>{
+        makeGlobalRequest("version","").then((data)=>{
             let ver = data as string;
             if(ver.startsWith(globalVersion)){
-                resolve(sketch);
+                resolve("Connected");
             }else{
                 console.log("Incorrect version: "+ver);
-                reject(ver);
+                reject(GlobalServerConnectionError.IncorrectVersion);
             }
+        }).catch(e => {
+            reject(GlobalServerConnectionError.CouldNotConnect);
         })
     });
 }
 
-function establishAgentConnection(depth:number):string{
+function establishAgentConnection(depth:number):GlobalServerStatus{
     if(depth<1){
-        return "<a href='github.com/GreasyRooster1/QCodeCloudAgent/releases/latest'>Agent not installed!</a>";
+        return GlobalServerStatus.Failed;
     }
-    makeGlobalRequest("status","").then(out=>{
+    checkGlobalServer().then(out=>{
         return "Connected";
     }).catch(err=>{
-        if(err=="failed to connect to could agent"){
+        if(err==GlobalServerConnectionError.CouldNotConnect){
             window.location.href = openProtocol
-            return "Launching... ("+depth+")"
             setTimeout(()=>{
                 return establishAgentConnection(depth-1)
             },5000)
         }
-        if(err=="incorrect version"){
-            return "Incorrect agent version"
+        if(err==GlobalServerConnectionError.IncorrectVersion){
+            return GlobalServerStatus.IncorrectVersion
         }
     });
 }
