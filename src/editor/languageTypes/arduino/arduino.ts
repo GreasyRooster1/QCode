@@ -9,6 +9,7 @@ import {writeToEditor} from "../../utils/loadUtils";
 import {startSketchServer, Sketch, openProtocol} from "./arduino-api";
 import {clearConsole} from "../../codeExecution";
 import {defaultCodeArduino, defaultCodeJs} from "../../../api/util/code";
+import {establishAgentConnection} from "../../utils/cloudAgentAPI";
 
 const possibleStatuses = ["not-connected","connected","ok","write","compile","upload"];
 
@@ -37,32 +38,11 @@ class ArduinoType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
-        this.attemptSketchServer(3);
+        establishAgentConnection(3);
         document.querySelector(".canvas-output-pane")?.remove()
         document.querySelector(".stop-button")?.remove()
     }
 
-    attemptSketchServer(depth:number){
-        if(depth<1){
-            this.statusText!.innerHTML = "<a href='github.com/GreasyRooster1/QCodeCloudAgent/releases/latest'>Agent not installed!</a>"
-            return
-        }
-        startSketchServer(this.projectId!).then(sketch=>{
-            this.sketch = sketch;
-            this.setExecStatus("connected")
-        }).catch(err=>{
-            if(err=="failed to connect"){
-                window.location.href = openProtocol
-                this.statusText!.innerHTML = "Launching... ("+depth+")"
-                setTimeout(()=>{
-                    this.attemptSketchServer(depth-1)
-                },5000)
-            }
-            if(err=="incorrect version"){
-                this.statusText!.innerHTML = "Incorrect agent version"
-            }
-        });
-    }
 
     onSave(){
         let code = getCode();

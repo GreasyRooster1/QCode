@@ -13,7 +13,7 @@ class Sketch{
     }
 
     private doRequest(type:string,body:string):Promise<object> {
-        return makeRequest(type+"/"+this.name,body,this.port);
+        return makeRequest(type+"/"+this.name,body,this.port,false) as Promise<object>;
     }
 
     writeCode(code:string):Promise<object> {
