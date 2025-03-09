@@ -30,20 +30,22 @@ function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):P
         console.log(serverAddress+":"+port + "/" + uri)
         fetch(serverAddress+":"+port + "/" + uri, {
             method: isDataRequest?"GET":"POST",
-            body: body,
+            body: isDataRequest?undefined:body,
         }).then(async (response: Response) => {
             console.log(response);
             if (response.ok) {
                 if(isDataRequest){
-                    resolve(await response.text());
-                    return;
-                }
-                let json = await response.json()
-                if(json.success) {
-                    resolve(json);
-                }else{
-                    console.log(json);
-                    reject(json)
+                    let text = await response.text()
+                    console.log(text)
+                    resolve(text);
+                }else {
+                    let json = await response.json()
+                    if (json.success) {
+                        resolve(json);
+                    } else {
+                        console.log(json);
+                        reject(json)
+                    }
                 }
             } else {
                 reject("failed to connect to could agent")
@@ -57,7 +59,7 @@ function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):P
 function startServer(type:ServerType):Promise<string> {
     return new Promise((resolve, reject) => {
         makeGlobalRequest("/start/" + type.valueOf(), "").then((port: string) => {
-            console.log(port);
+            console.trace(port);
             resolve(port);
         }).catch(e => {
             reject(e);
@@ -77,6 +79,7 @@ function checkGlobalServer():Promise<string>{
                 reject(GlobalServerConnectionError.IncorrectVersion);
             }
         }).catch(e => {
+            console.error(e);
             reject(GlobalServerConnectionError.CouldNotConnect);
         })
     });
