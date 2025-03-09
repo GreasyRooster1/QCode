@@ -10,13 +10,13 @@ enum ServerType {
 }
 
 function makeGlobalRequest(uri:string,body:string):Promise<object> {
-    return makeRequest(uri,body,globalPort)
+    return makeRequest(uri,body,globalPort,true)
 }
 
-function makeRequest(uri:string,body:string,port:string):Promise<object> {
+function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):Promise<object> {
     return new Promise((resolve, reject) => {
         fetch(globalServerAddress+":"+port + "/" + uri, {
-            method: "POST",
+            method: isDataRequest?"GET":"POST",
             body: body,
         }).then(async (response: Response) => {
             console.log(response);
