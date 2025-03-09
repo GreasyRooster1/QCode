@@ -81,22 +81,24 @@ function checkGlobalServer():Promise<string>{
     });
 }
 
-function establishAgentConnection(depth:number):GlobalServerStatus{
-    if(depth<1){
-        return GlobalServerStatus.Failed;
-    }
-    checkGlobalServer().then(out=>{
-        return "Connected";
-    }).catch(err=>{
-        if(err==GlobalServerConnectionError.CouldNotConnect){
-            window.location.href = openProtocol
-            setTimeout(()=>{
-                return establishAgentConnection(depth-1)
-            },5000)
+function establishAgentConnection(connect:boolean):Promise<GlobalServerStatus>{
+    return new Promise((resolve, reject) => {
+        if (!connect) {
+            resolve(GlobalServerStatus.Failed);
         }
-        if(err==GlobalServerConnectionError.IncorrectVersion){
-            return GlobalServerStatus.IncorrectVersion
-        }
+        checkGlobalServer().then(out => {
+            resolve(GlobalServerStatus.Connected);
+        }).catch(err => {
+            if (err == GlobalServerConnectionError.CouldNotConnect) {
+                window.location.href = openProtocol
+                setTimeout(async () => {
+                    resolve(await establishAgentConnection(false))
+                }, 5000)
+            }
+            if (err == GlobalServerConnectionError.IncorrectVersion) {
+                resolve(GlobalServerStatus.IncorrectVersion);
+            }
+        });
     });
 }
 
