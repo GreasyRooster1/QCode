@@ -41,12 +41,15 @@ class ArduinoType extends ProjectType {
         establishAgentConnection(3).then(status => {
             if(status==GlobalServerStatus.Connected) {
                 this.statusText!.innerHTML="Connected";
+                this.setExecStatus("connected")
             }
             if(status==GlobalServerStatus.IncorrectVersion) {
                 this.statusText!.innerHTML="Incorrect Agent Version";
+                this.setExecStatus("not-connected")
             }
             if(status==GlobalServerStatus.Failed) {
                 this.statusText!.innerHTML="Failed to connect";
+                this.setExecStatus("not-connected")
             }
         });
         document.querySelector(".canvas-output-pane")?.remove()
