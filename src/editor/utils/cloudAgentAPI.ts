@@ -1,6 +1,5 @@
 import {Sketch, startSketchServer} from "../languageTypes/arduino/arduino-api";
 
-const globalServerAddress = "http://localhost:8181";
 const serverAddress = "http://localhost";
 const openProtocol = "qcodecloudagent://";
 const globalVersion = "2.0";
@@ -28,7 +27,7 @@ function makeGlobalRequest(uri:string,body:string):Promise<string> {
 
 function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):Promise<object|string> {
     return new Promise((resolve, reject) => {
-        fetch(globalServerAddress+":"+port + "/" + uri, {
+        fetch(serverAddress+":"+port + "/" + uri, {
             method: isDataRequest?"GET":"POST",
             body: body,
         }).then(async (response: Response) => {
@@ -68,6 +67,7 @@ function startServer(type:ServerType):Promise<string> {
 function checkGlobalServer():Promise<string>{
     return new Promise((resolve, reject) => {
         makeGlobalRequest("version","").then((data)=>{
+            console.log(data);
             let ver = data as string;
             if(ver.startsWith(globalVersion)){
                 resolve("Connected");
@@ -81,10 +81,12 @@ function checkGlobalServer():Promise<string>{
     });
 }
 
-function establishAgentConnection(connect:boolean):Promise<GlobalServerStatus>{
+function establishAgentConnection(depth:number):Promise<GlobalServerStatus>{
     return new Promise((resolve, reject) => {
-        if (!connect) {
+        console.log(depth)
+        if (depth<1) {
             resolve(GlobalServerStatus.Failed);
+            return;
         }
         checkGlobalServer().then(out => {
             resolve(GlobalServerStatus.Connected);
@@ -92,7 +94,7 @@ function establishAgentConnection(connect:boolean):Promise<GlobalServerStatus>{
             if (err == GlobalServerConnectionError.CouldNotConnect) {
                 window.location.href = openProtocol
                 setTimeout(async () => {
-                    resolve(await establishAgentConnection(false))
+                    resolve(await establishAgentConnection(depth-1))
                 }, 5000)
             }
             if (err == GlobalServerConnectionError.IncorrectVersion) {
@@ -102,4 +104,4 @@ function establishAgentConnection(connect:boolean):Promise<GlobalServerStatus>{
     });
 }
 
-export {makeGlobalRequest,makeRequest,openProtocol,ServerType,startServer,establishAgentConnection}
+export {makeGlobalRequest,makeRequest,openProtocol,ServerType,startServer,establishAgentConnection,serverAddress,GlobalServerStatus}

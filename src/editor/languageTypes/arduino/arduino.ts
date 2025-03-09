@@ -9,7 +9,7 @@ import {writeToEditor} from "../../utils/loadUtils";
 import {startSketchServer, Sketch, openProtocol} from "./arduino-api";
 import {clearConsole} from "../../codeExecution";
 import {defaultCodeArduino, defaultCodeJs} from "../../../api/util/code";
-import {establishAgentConnection} from "../../utils/cloudAgentAPI";
+import {establishAgentConnection, GlobalServerStatus} from "../../utils/cloudAgentAPI";
 
 const possibleStatuses = ["not-connected","connected","ok","write","compile","upload"];
 
@@ -38,7 +38,17 @@ class ArduinoType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
-        establishAgentConnection(3);
+        establishAgentConnection(3).then(status => {
+            if(status==GlobalServerStatus.Connected) {
+                this.statusText!.innerHTML="Connected";
+            }
+            if(status==GlobalServerStatus.IncorrectVersion) {
+                this.statusText!.innerHTML="Incorrect Agent Version";
+            }
+            if(status==GlobalServerStatus.Failed) {
+                this.statusText!.innerHTML="Failed to connect";
+            }
+        });
         document.querySelector(".canvas-output-pane")?.remove()
         document.querySelector(".stop-button")?.remove()
     }
