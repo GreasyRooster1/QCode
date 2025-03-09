@@ -1,36 +1,17 @@
-const serverAddress = "http://localhost:8181";
 const openProtocol = "qcodecloudagent://";
 const expectedVersion = "1.0";
 
 class Sketch{
     readonly name: string;
-    constructor(name:string) {
+    readonly port :string;
+    constructor(name:string,port:string) {
         this.name = name;
+        this.port = port;
         this.makeRequest("create","").catch(e=>{});
     }
 
     private makeRequest(type:string,body:string):Promise<object> {
-        return new Promise((resolve, reject) => {
-            fetch(serverAddress + "/" + type + "/" + this.name, {
-                method: "POST",
-                body: body,
-            }).then(async (response: Response) => {
-                console.log(response);
-                if (response.ok) {
-                    let json = await response.json()
-                    if(json.success) {
-                        resolve(json);
-                    }else{
-                        console.log(json);
-                        reject(json)
-                    }
-                } else {
-                    reject("failed")
-                }
-            }).catch((e) => {
-                reject("failed")
-            })
-        });
+        makeRequest()
     }
 
     writeCode(code:string):Promise<object> {
@@ -74,4 +55,4 @@ function startSketchServer(name:string):Promise<Sketch>{
 }
 
 
-export {serverAddress,Sketch,startSketchServer,openProtocol}
+export {Sketch,startSketchServer,openProtocol}
