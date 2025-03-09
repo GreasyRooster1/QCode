@@ -4,6 +4,11 @@ const openProtocol = "qcodecloudagent://";
 const expectedVersion = "2.0";
 const globalPort = "8181";
 
+enum ServerType {
+    Arduino = "arduino",
+    Python = "python",
+}
+
 function makeGlobalRequest(uri:string,body:string):Promise<object> {
     return makeRequest(uri,body,globalPort)
 }
@@ -32,8 +37,12 @@ function makeRequest(uri:string,body:string,port:string):Promise<object> {
     });
 }
 
-function startServer(){
-
+function startServer(type:ServerType):Promise<string> {
+    return new Promise((resolve, reject) => {
+        makeGlobalRequest("/start/" + type.valueOf(), "").then((json: object) => {
+            console.log(json);
+        })
+    })
 }
 
-export {makeGlobalRequest,makeRequest,openProtocol}
+export {makeGlobalRequest,makeRequest,openProtocol,ServerType}
