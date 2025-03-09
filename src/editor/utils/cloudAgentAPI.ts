@@ -27,6 +27,7 @@ function makeGlobalRequest(uri:string,body:string):Promise<string> {
 
 function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):Promise<object|string> {
     return new Promise((resolve, reject) => {
+        console.log(serverAddress+":"+port + "/" + uri)
         fetch(serverAddress+":"+port + "/" + uri, {
             method: isDataRequest?"GET":"POST",
             body: body,
@@ -67,8 +68,8 @@ function startServer(type:ServerType):Promise<string> {
 function checkGlobalServer():Promise<string>{
     return new Promise((resolve, reject) => {
         makeGlobalRequest("version","").then((data)=>{
-            console.log(data);
             let ver = data as string;
+            console.log(ver);
             if(ver.startsWith(globalVersion)){
                 resolve("Connected");
             }else{
@@ -91,6 +92,7 @@ function establishAgentConnection(depth:number):Promise<GlobalServerStatus>{
         checkGlobalServer().then(out => {
             resolve(GlobalServerStatus.Connected);
         }).catch(err => {
+            console.log(err);
             if (err == GlobalServerConnectionError.CouldNotConnect) {
                 window.location.href = openProtocol
                 setTimeout(async () => {
