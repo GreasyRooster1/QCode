@@ -1,28 +1,51 @@
+:root{
+    --primary-color: #b90de6;
+    --subtle-primary-color: #500565;
+    --dark-primary-color: #100010;
+    --background-primary-color: #050005;
+    --text-color: #f3eaf4;
+    --inverse-text-color: #0a010c;
+
+    --primary-color-transparent: rgba(185, 13, 230, 0.49);
+
+    --border: 2px solid var(--primary-color);
+    --border-subtle: 2px solid var(--subtle-primary-color);
+
+    color:var(--text-color);
+}
+
 /* Navbar (navbar.css) */
 :root{
-    --account-name-text: #ffffff;
-    --account-dropdown-option: #d1d1d1;
+    --account-name-text: var(--text-color);
+    --account-dropdown-option: var(--text-color);
 
-    --account-dropdown-seperator: #4c4c4c;
+    --account-dropdown-seperator: var(--dark-primary-color);
 
-    --navbar-shrink-color: #1a1a1a;
+    --navbar-shrink-color: var(--dark-primary-color);
 
-    --generic-nav-button-color: #2e2e2e;
+    --generic-nav-button-color: var(--dark-primary-color);
 
-    --points-display-background: #11df5a;
-    --points-display-text: #ffffff;
+    --points-display-background: var(--primary-color);
+    --points-display-text: var(--text-color);
 
     --navbar-height:40px;
+}
+.home-link{
+    border:var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Global (global.css) */
 :root{
     --default-font: "JetBrains Mono";
 
-    --brand-blue:#0D5DC5;
-    --brand-green: #03FC04;
-    --brand-black:black;
-    --brand-gray:#999999;
+    --brand-blue:var(--dark-primary-color);
+    --brand-green: var(--primary-color);
+    --brand-black:var(--dark-primary-color);
+    --brand-gray:var(--dark-primary-color);
 
     --common-rarity-color: #484848;
     --uncommon-rarity-color: #0091e1;
@@ -120,46 +143,46 @@
 
 /* Index (index/index.css) */
 :root{
-    --center-background: #eaeaea;
+    --center-background: var(--background-primary-color);
 
-    --left-bar-background: #dcdcdc;
-    --left-sections-background: #aab4dc;
+    --left-bar-background: var(--dark-primary-color);
+    --left-sections-background: var(--dark-primary-color);
 
-    --right-bar-background: #dddddd;
-    --right-sections-background: #aadcb4;
+    --right-bar-background: var(--dark-primary-color);
+    --right-sections-background: var(--dark-primary-color);
 
-    --project-link-background: #8d99dd;
-    --project-link-text: #191919;
+    --project-link-background: var(--dark-primary-color);
+    --project-link-text:var(--text-color);
     --project-date-text: #c9d0dd;
 
-    --lessons-chart-link-background:#98a2da;
-    --lessons-recommended-background: #a1a9d8;
+    --lessons-chart-link-background:var(--dark-primary-color);
+    --lessons-recommended-background: var(--dark-primary-color);
 
-    --badge-details-background: #94d89d;
-    --badge-hover-color: #83d88f;
-    --badge-color: #94d89d;
+    --badge-details-background: var(--background-primary-color);
+    --badge-hover-color: var(--primary-color);
+    --badge-color: var(--dark-primary-color);
 
-    --new-button-background: #7583e1;
-    --new-button-text-color: #dde5e8;
+    --new-button-background: var(--primary-color);
+    --new-button-text-color: var(--text-color);
 
-    --featured-project-thumb-background: rgba(0, 0, 0, 0.5);
+    --featured-project-thumb-background: var(--primary-color-transparent);
 
-    --announcement-background: #d9d9d9;
-    --announcement-side-color: #bebebe;
-    --announcement-content-background: #e1e1e1;
-    --announcement-content-text: #4d4d4d;
-    --announcement-date-text: #4d4d4d;
+    --announcement-background: var(--dark-primary-color);
+    --announcement-side-color: var(--primary-color);
+    --announcement-content-background: var(--dark-primary-color);
+    --announcement-content-text: var(--text-color);
+    --announcement-date-text: var(--primary-color);
 
-    --points-progress-bar-background: #cdcdcd;
-    --points-progress-bar-fill: #64d888;
+    --points-progress-bar-background: var(--subtle-primary-color);
+    --points-progress-bar-fill: var(--primary-color);
 
-    --status-display-text: #dfdfdf;
+    --status-display-text: var(--text-color);
     --status-display-external: #ea473a;
-    --status-display-not-started: #3a78ea;
-    --status-display-started: #3aea78;
+    --status-display-not-started:var(--subtle-primary-color);
+    --status-display-started: var(--primary-color);
 
-    --footer-background: #c5c5c5;
-    --footer-text-color: #717171;
+    --footer-background: var(--dark-primary-color);
+    --footer-text-color: var(--primary-color);
 
     --badge-size:50px;
 
@@ -168,6 +191,17 @@
 
     --new-project-popup-background: #b3b9df;
     --popup-inputs-background: #9da6dd;
+}
+body{
+    background: var(--primary-color);
+}
+.bar-section{
+    border:var(--border);
+    border-radius: 10px;
+}
+.lesson-link-wrapper{
+    border:var(--border);
+    border-radius: 10px;
 }
 
 /* Exec (exec/style.css) */
@@ -245,8 +279,6 @@
 
     --chapter-end-home-link-color: #2180d1;
     --scratch-steps-background: #dddddd;
-
-    --code-editor-theme:"dracula";
 }
 
 /* Editor Lesson Creator (editor/lessonCreator.css) */
@@ -318,12 +350,25 @@
 
 /* Edit Profile (editProfile/index.css) */
 :root{
-    --page-background: #f4f4f4;
-    --main-background: #e8e8e8;
+    --page-background: var(--background-primary-color);
+    --main-background: var(--dark-primary-color);
 
-    --rows: #d6d6d6;
+    --rows: var(--background-primary-color);
 
-    --profile-card: #b5b5b5;
-    --advanced-line: #8e8e8e;
+    --profile-card: var(--dark-primary-color);
+    --advanced-line: var(--primary-color);
     --username-warning:#ff0000;
+}
+
+.main-content{
+    border:var(--border);
+    border-radius:20px;
+}
+.row{
+    border:var(--border);
+    border-radius:10px;
+}
+.profile-card{
+    border:var(--border);
+    border-radius:10px;
 }
