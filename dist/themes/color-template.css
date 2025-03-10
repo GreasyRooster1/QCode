@@ -1,10 +1,11 @@
 :root{
     --primary-color: #b90de6;
     --subtle-primary-color: #500565;
-    --dark-primary-color: #100010;
+    --dark-primary-color: #220022;
     --background-primary-color: #050005;
     --text-color: #f3eaf4;
     --inverse-text-color: #0a010c;
+    --light-primary-color: #de94f3;
 
     --primary-color-transparent: rgba(185, 13, 230, 0.49);
 
@@ -21,7 +22,7 @@
 
     --account-dropdown-seperator: var(--dark-primary-color);
 
-    --navbar-shrink-color: var(--dark-primary-color);
+    --navbar-shrink-color: var(--text-color);
 
     --generic-nav-button-color: var(--dark-primary-color);
 
@@ -65,30 +66,56 @@
 /* Shared Project (sharedProject/index.css) */
 :root{
     --code-pane-background: #d0efcc;
-    --view-pane-background: #b6b6b6;
+    --view-pane-background: var(--background-primary-color);
 
-    --info-tab-background: #acb4d6;
-    --code-tab-background: #90d89e;
-    --info-tab-color: #021930;
-    --code-tab-color: #033c03;
-    --info-section-background: #d1d7e8;
+    --info-tab-background: var(--background-primary-color);
+    --code-tab-background: var(--background-primary-color);
+    --info-tab-color: var(--text-color);
+    --code-tab-color: var(--text-color);
+    --info-section-background: var(--background-primary-color);
 
-    --info-inset-background: #c6cee3;
-    --author-block-background: #b6c3e6;
+    --info-inset-background: var(--dark-primary-color);
+    --author-block-background: var(--dark-primary-color);
 
-    --tab-bar-background: #c3c3c3;
+    --tab-bar-background: var(--background-primary-color);
 
-    --remix-button-color: #2078e8;
-    --remix-button-text-color: #e3e5e8;
+    --remix-button-color: var(--dark-primary-color);
+    --remix-button-text-color: var(--text-color);
 
-    --original-title-border: #4b6ec8;
+    --original-title-border: var(--primary-color);
 
-    --lesson-card: #a4ecad;
-    --lesson-button: #6de383;
+    --lesson-card: var(--dark-primary-color);
+    --lesson-button: var(--dark-primary-color);
 
     --user-img-size:13vh;
 }
 
+.author-block{
+    border:var(--border)
+}
+.tab{
+    border:var(--border);
+    border-bottom:0;
+}
+.section{
+    border:var(--border);
+    border-left:0;
+}
+.remix-button{
+    border:var(--border);
+}
+.original-block{
+    border:var(--border);
+}
+.lesson-button-container {
+    background-image: radial-gradient(var(--primary-color) 1px, var(--background-primary-color) 0);
+}
+.card{
+    border:var(--border);
+}
+.lesson-button{
+    border:var(--border);
+}
 /* Share Board Global (shareBoard/global.css) */
 :root{
     --stars-color: #edb90b;
@@ -99,16 +126,16 @@
 
 /* Share Board (shareBoard/index.css) */
 :root{
-    --featured-project-bar-background: #eaeaea;
-    --bulk-project-bar-background: #dddddd;
-    --bar-seperator: #b1b1b1;
-    --interact-tray-background: #b5b5b5;
+    --featured-project-bar-background: var(--dark-primary-color);
+    --bulk-project-bar-background: var(--background-primary-color);
+    --bar-seperator: var(--primary-color);
+    --interact-tray-background: var(--dark-primary-color);
     --title-color-background: #b5b5b5;
 
-    --open-icon-color: #000000;
+    --open-icon-color: var(--text-color);
     --open-icon-border-color: #ffffff;
 
-    --bulk-project-overlay-background: rgba(0, 0, 0, 0.48);
+    --bulk-project-overlay-background: var(--primary-color-transparent);
 
     --bar-seperator-height: 2px;
 }
@@ -209,18 +236,18 @@ body{
 
 /* Editor Lang (editor/lang.css) */
 :root{
-    --code-editor-theme:"default"
+    --code-editor-theme:"dracula"
 }
 
 /* Editor Main (editor/editor.css) */
 :root{
-    --pane-background: #bcbcbc;
+    --pane-background: var(--background-primary-color);
 
-    --gutter-accent: #b3b3b3;
-    --gutter-main: #d3d3d3;
+    --gutter-accent: var(--subtle-primary-color);
+    --gutter-main: var(--dark-primary-color);
 
-    --step-background: #d5d5d5;
-    --step-content-background: #e4e4e4;
+    --step-background: var(--dark-primary-color);
+    --step-content-background: var(--dark-primary-color);
 
     --step-head-default: rgba(209, 0, 255, 0.44);
 
@@ -233,30 +260,30 @@ body{
     --step-build: rgba(34, 45, 255, 0.44);
     --step-other: rgba(21, 21, 21, 0.44);
 
-    --step-type-background: #707070;
+    --step-type-background: var(--subtle-primary-color);
 
-    --code-editor-background: #e0e0e0;
+    --code-editor-background: #fffff;
 
-    --run-button-background: #0ed144;
-    --run-button-text-color: #ffffff;
+    --run-button-background: var(--dark-primary-color);
+    --run-button-text-color: var(--text-color);
 
-    --stop-button-background: #d10e0e;
-    --stop-button-text-color: #ffffff;
+    --stop-button-background: var(--dark-primary-color);
+    --stop-button-text-color: var(--text-color);
 
-    --save-button-background: #0e86d1;
-    --save-button-text-color: #ffffff;
+    --save-button-background: var(--dark-primary-color);
+    --save-button-text-color: var(--text-color);
 
-    --share-button-background: #7f21e4;
-    --share-button-text-color: #ffffff;
-    --share-button-disabled-background: #808080;
+    --share-button-background: var(--dark-primary-color);
+    --share-button-text-color: var(--text-color);
+    --share-button-disabled-background: var(--dark-primary-color);
 
-    --share-popup-background: #efefef;
-    --share-project-name-input: #cfcfcf;
+    --share-popup-background: var(--background-primary-color);
+    --share-project-name-input: var(--dark-primary-color);
 
-    --close-button-text-color: #6a6a6a;
+    --close-button-text-color: var(--primary-color);
 
-    --send-button-background: #959595;
-    --console-input-button-background: #dcdcdc;
+    --send-button-background: var(--dark-primary-color);
+    --console-input-button-background: var(--dark-primary-color);
 
     --log-error-background: rgba(255, 27, 27, 0.37);
     --log-warn-background: rgba(255, 243, 17, 0.37);
@@ -266,21 +293,41 @@ body{
     --log-warn-solid: rgb(220, 188, 13);
     --log-log-solid: rgb(120, 119, 118);
 
-    --save-alert-background: #cfe6f8;
-    --save-alert-accent: #4094d6;
+    --save-alert-background: var(--background-primary-color);
+    --save-alert-accent: var(--primary-color);
 
-    --chapter-link-color: #226d6e;
-    --chapter-link-color-hover: #22bcbd;
+    --chapter-link-color: var(--text-color);
+    --chapter-link-color-hover: var(--text-color);
 
-    --step-code-text-background: #fae6e8;
-    --step-code-text-color: #c5244e;
+    --step-code-text-background: var(--light-primary-color);
+    --step-code-text-color: var(--subtle-primary-color);
 
-    --step-red-text-color: #ef0909;
+    --step-red-text-color: var(--primary-color);
 
-    --chapter-end-home-link-color: #2180d1;
-    --scratch-steps-background: #dddddd;
+    --chapter-end-home-link-color: var(--primary-color);
+    --scratch-steps-background: var(--background-primary-color);
 }
-
+.name-input{
+    color:var(--text-color);
+    border:var(--border)!important;
+}
+.desc-input{
+    color:var(--text-color);
+    border:var(--border) !important;
+}
+.share-popup-content{
+    border:var(--border);
+}
+.output-head button{
+    border:var(--border);
+    display: inline-flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.share-popup-button{
+    border:var(--border);
+}
 /* Editor Lesson Creator (editor/lessonCreator.css) */
 :root{
     --lesson-creator-container-color: #b8b8b8;
