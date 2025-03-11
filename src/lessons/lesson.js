@@ -6,6 +6,7 @@ import {toDataURL} from "./index";
 import {openLesson} from "../api/util/projects";
 import {camera} from "./chart";
 import {arduinoRootId} from "./locking";
+import {currentColors} from "./colors";
 
 class Lesson{
     constructor(children){
@@ -62,7 +63,7 @@ class Lesson{
             let width = textWidth(tag)+10;
             fill(getTagColor(tag))
             rect(this.x+5+pos,this.y+this.h-22,width,17,10)
-            fill(255)
+            fill(currentColors.canvasText)
             text(tag,this.x+10+pos,this.y+this.h-20,width,17,10)
             pos+=width+5
         }
@@ -91,7 +92,7 @@ class Lesson{
     drawUnlisted(){
         drawingContext.setLineDash([6]);
         noFill()
-        stroke(127);
+        stroke(currentColors.lessonCardBorder);
 
         strokeWeight(2.5)
         rect(this.x,this.y,this.w,this.h,10);
@@ -100,14 +101,14 @@ class Lesson{
 
     renderStatus(){
         if(this.started) {
-            stroke("#15e368");
+            stroke(currentColors.startedAccent);
             noFill()
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
         if(this.completed) {
-            stroke("#15e368");
-            fill("#15e36877")
+            stroke(currentColors.startedAccent);
+            fill(currentColors.completedOverlay)
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
