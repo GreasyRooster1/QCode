@@ -180,7 +180,7 @@ class Lesson{
             return;
         }
 
-        fill(currentColors.textColorF);
+        fill(currentColors.textColor);
         noStroke();
         textSize(19)
         let lines = floor(textWidth(this.metadata.name)/this.w)
