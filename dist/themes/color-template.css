@@ -20,11 +20,11 @@
     --account-name-text: var(--text-color);
     --account-dropdown-option: var(--text-color);
 
-    --account-dropdown-seperator: var(--dark-primary-color);
+    --account-dropdown-seperator: var(--background-primary-color);
 
     --navbar-shrink-color: var(--text-color);
 
-    --generic-nav-button-color: var(--dark-primary-color);
+    --generic-nav-button-color: var(--background-primary-color);
 
     --points-display-background: var(--primary-color);
     --points-display-text: var(--text-color);
@@ -220,7 +220,6 @@
     --popup-inputs-background: #9da6dd;
 }
 body{
-    background: var(--primary-color);
 }
 .bar-section{
     border:var(--border);
@@ -338,16 +337,16 @@ body{
 }
 /* Editor Lesson Creator (editor/lessonCreator.css) */
 :root{
-    --lesson-creator-container-color: #b8b8b8;
+    --lesson-creator-container-color: var(--background-primary-color);
     --lesson-creator-button-color: #dfdfdf;
-    --lesson-creator-meta-color: #a1a1a1;
+    --lesson-creator-meta-color: var(--background-primary-color);
 }
 
 /* Editor Arduino (editor/panes/lang/arduino.css) */
 :root{
-    --arduino-status-not-connected: #939393;
-    --arduino-status-ok: #0ed144;
-    --arduino-status-loading: #ffb617;
+    --arduino-status-not-connected: var(--subtle-primary-color);
+    --arduino-status-ok: var(--primary-color);
+    --arduino-status-loading: var(--subtle-primary-color);
 }
 
 /* Editor Scratch (editor/panes/lang/scratch.css) */
@@ -355,14 +354,18 @@ body{
 
 /* Editor Web (editor/panes/lang/web.css) */
 :root{
-    --filesystem-sidebar: #b5b5b5;
-    --filesystem-header: #2c2c2c;
+    --filesystem-sidebar: var(--background-primary-color);
+    --filesystem-header: var(--dark-primary-color);
     --folder-icon-line: #636363;
-    --current-file-view: #535252;
-    --filesystem-background: #a8a8a8;
+    --current-file-view: var(--dark-primary-color);
+    --filesystem-background: var(--dark-primary-color);
 
-    --header-text: #ececec;
-    --current-file-view-text: #eaeaea;
+    --header-text: var(--text-color);
+    --current-file-view-text: var(--text-color);
+}
+
+.filesystem{
+    border:var(--border);
 }
 
 /* Admin Login (adminLogin/admin.css) */
@@ -385,24 +388,41 @@ body{
 
 /* Admin Console (adminConsole/adminConsole.css) */
 :root{
-    --background-color: #555555;
-    --main-content-background: #8f8f8f;
-    --content-pane-background: #b5b5b5;
+    --background-color: var(--background-primary-color);
+    --main-content-background: var(--dark-primary-color);
+    --content-pane-background: var(--background-primary-color);
 
-    --data-item-color: #a3a3a3;
-    --details-background:#a3a3a3;
+    --data-item-color: var(--dark-primary-color);
+    --details-background:var(--background-primary-color);
 
-    --lesson-link-accent: #1e6ec6;
-    --lesson-link-unlisted-accent: #d32f2f;
+    --lesson-link-accent: var(--primary-color);
+    --lesson-link-unlisted-accent: var(--subtle-primary-color);
 
-    --lesson-creator-button-color: #1aca52;
-    --admin-button-color: #a1a1a1;
-    --admin-button-color-hover: #bbbbbb;
+    --lesson-creator-button-color: var(--primary-color);
+    --admin-button-color: var(--background-primary-color);
+    --admin-button-color-hover: var(--dark-primary-color);
 
     --add-badge-button-color:#1aca52;
     --load-button-background: #8f8f8f;
 }
 
+.content-pane{
+    border: var(--border);
+    border-radius: 10px;
+}
+.listed-data-item{
+    border:var(--border);
+    border-radius: 10px;
+}
+.listed-data-wrapper{
+    border-bottom:var(--border);
+}
+.admin-button{
+    border:var(--border);
+}
+.buttons-pane{
+    margin-left:10px;
+}
 /* Edit Profile (editProfile/index.css) */
 :root{
     --page-background: var(--background-primary-color);
@@ -417,7 +437,6 @@ body{
 
 .main-content{
     border:var(--border);
-    border-radius:20px;
 }
 .row{
     border:var(--border);
