@@ -3,25 +3,14 @@ import {darkMode} from "./chart";
 let currentColors = {}
 let colors;
 
-function swapColors(){
-    darkMode = !darkMode;
+function loadColors(){
+    let style = window.getComputedStyle(element);
 
-    if(darkMode) {
-        currentColors = colors.dark
-    }else{
-        currentColors = colors.light
+    currentColors = {
+        background: style.getPropertyValue('--canvas-background-color'),
+        grid: style.getPropertyValue('--grid-color'),
+
     }
 }
 
-function setupColors(){
-    colors = {
-        light:{
-            background:color("#ffffff"),
-        },
-        dark:{
-            background:color("#000000"),
-        }
-    }
-    currentColors = colors.light;
-}
-export {setupColors,swapColors,currentColors}
+export {loadColors,currentColors}
