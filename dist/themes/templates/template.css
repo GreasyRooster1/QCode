@@ -116,6 +116,18 @@
     --ui-tray-background:#fff;
     --ui-tray-border: #9f9f9f;
     --ui-tray-icons: #474747;
+
+    --canvas-background-color:#fff;
+    --grid-color:#7f7f7f;
+    --canvas-text-color:#000;
+    --canvas-inverse-text-color:#fff;
+    --canvas-lesson-card-border:#7f7f7f;
+    --canvas-lesson-card-background:#fff;
+    --canvas-started-accent:#43e176;
+    --canvas-completed-overlay:#43e17677;
+    --canvas-locked-overlay:#00077;
+    --canvas-button-border:#89e6ae;
+    --canvas-line-color:#000;
 }
 
 /* Index (index/index.css) */
