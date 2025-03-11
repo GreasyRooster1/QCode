@@ -2,6 +2,9 @@
     --ui-tray-background:#fff;
     --ui-tray-border: #9f9f9f;
     --ui-tray-icons: #474747;
+
+    --canvas-background-color:#fff;
+    --canvas-grid-color:#7f7f7f;
 }
 
 body{
