@@ -15,6 +15,8 @@ import {HighlightStyle, defaultHighlightStyle, syntaxHighlighting} from "@codemi
 import {hasSavedRecently, setHasSaved} from "./save";
 import {ViewUpdate} from "@codemirror/view";
 import {dracula} from "thememirror";
+import {barf} from 'thememirror';
+import {hackerManTheme} from "./theme/hackerman";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
@@ -68,6 +70,12 @@ function setThemeFromCSS(extensions:any){
     console.log(themeCss)
     if(themeCss=="\"dracula\""){
         extensions.push(dracula);
+    }
+    if(themeCss=="\"hackerman\""){
+        extensions.push(hackerManTheme);
+    }
+    if(themeCss=="\"barf\""){
+        extensions.push(barf);
     }
 }
 
