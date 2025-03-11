@@ -1,13 +1,12 @@
 :root{
-    --primary-color: #b90de6;
-    --subtle-primary-color: #500565;
-    --dark-primary-color: #100010;
-    --background-primary-color: #050005;
-    --text-color: #f3eaf4;
-    --inverse-text-color: #0a010c;
-    --light-primary-color: #de94f3;
+    --primary-color: #1ad1e3;
+    --subtle-primary-color: #025963;
+    --dark-primary-color: #002327;
+    --background-primary-color: #001213;
+    --text-color: #d4feff;
+    --inverse-text-color: #001315;
+    --light-primary-color: #0fbfcf;
 
-    --primary-color-transparent: rgba(185, 13, 230, 0.49);
 
     --border: 2px solid var(--primary-color);
     --border-subtle: 2px solid var(--subtle-primary-color);
@@ -30,6 +29,9 @@
     --points-display-text: var(--text-color);
 
     --navbar-height:40px;
+}
+.navbar{
+    border-bottom: var(--border);
 }
 .home-link{
     border:var(--border);
@@ -129,7 +131,7 @@
     --featured-project-bar-background: var(--dark-primary-color);
     --bulk-project-bar-background: var(--background-primary-color);
     --bar-seperator: var(--primary-color);
-    --interact-tray-background: var(--dark-primary-color);
+    --interact-tray-background: var(--background-primary-color);
     --title-color-background: #b5b5b5;
 
     --open-icon-color: var(--text-color);
@@ -402,8 +404,14 @@ body{
     --admin-button-color: var(--background-primary-color);
     --admin-button-color-hover: var(--dark-primary-color);
 
-    --add-badge-button-color:#1aca52;
-    --load-button-background: #8f8f8f;
+    --add-badge-button-color:var(--background-primary-color);
+    --load-button-background: var(--background-primary-color);
+}
+.add-badge-button{
+    border:var(--border);
+}
+.users-load-button{
+    border:var(--border);
 }
 
 .content-pane{
