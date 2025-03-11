@@ -45,7 +45,8 @@ body{
 
 .project-display.featured > .overlay-wrapper{
     margin-top: -101.2%;
-    height: 100%;
+    width: calc(20vw + 1px);
+    height: calc(20vw + 1px);
     display: flex;
     pointer-events: none;
     justify-content: space-between;
@@ -237,7 +238,8 @@ body{
 
 .project-display.bulk > .overlay-wrapper{
     margin-top: -101.2%;
-    height: 100%;
+    width: calc(20vw + 1px);
+    height: calc(20vw + 1px);
     background: var(--bulk-project-overlay-background);
     display: flex;
     /*pointer-events: none;*/

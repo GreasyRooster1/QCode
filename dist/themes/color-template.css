@@ -1,7 +1,7 @@
 :root{
     --primary-color: #b90de6;
     --subtle-primary-color: #500565;
-    --dark-primary-color: #220022;
+    --dark-primary-color: #100010;
     --background-primary-color: #050005;
     --text-color: #f3eaf4;
     --inverse-text-color: #0a010c;
@@ -135,7 +135,7 @@
     --open-icon-color: var(--text-color);
     --open-icon-border-color: #ffffff;
 
-    --bulk-project-overlay-background: var(--primary-color-transparent);
+    --bulk-project-overlay-background: var(--dark-primary-color);
 
     --bar-seperator-height: 2px;
 }
@@ -173,10 +173,10 @@
     --center-background: var(--background-primary-color);
 
     --left-bar-background: var(--dark-primary-color);
-    --left-sections-background: var(--dark-primary-color);
+    --left-sections-background: var(--background-primary-color);
 
     --right-bar-background: var(--dark-primary-color);
-    --right-sections-background: var(--dark-primary-color);
+    --right-sections-background: var(--background-primary-color);
 
     --project-link-background: var(--dark-primary-color);
     --project-link-text:var(--text-color);
@@ -192,7 +192,7 @@
     --new-button-background: var(--primary-color);
     --new-button-text-color: var(--text-color);
 
-    --featured-project-thumb-background: var(--primary-color-transparent);
+    --featured-project-thumb-background: var(--dark-primary-color);
 
     --announcement-background: var(--dark-primary-color);
     --announcement-side-color: var(--primary-color);
@@ -229,6 +229,14 @@ body{
 .lesson-link-wrapper{
     border:var(--border);
     border-radius: 10px;
+}
+.play-icon{
+    -webkit-text-stroke: 2px var(--primary-color);
+    color: var(--background-primary-color);
+}
+.slide-arrow{
+    -webkit-text-stroke: 2px var(--primary-color);
+    color: var(--background-primary-color);
 }
 
 /* Exec (exec/style.css) */
