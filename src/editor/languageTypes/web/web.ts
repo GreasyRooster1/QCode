@@ -7,8 +7,9 @@ import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {writeToEditor} from "../../utils/loadUtils";
 import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
+import {FileSystemInterface} from "../fileSystemInterface";
 
-class WebType extends ProjectType {
+class WebType extends ProjectType implements FileSystemInterface {
     filesystem:Filesystem
     currentFileId:number;
 
