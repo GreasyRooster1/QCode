@@ -3,7 +3,7 @@ import {RunErrCallback} from "../projectType";
 import {Language} from "../../codeEditor";
 import {defaultCodeArduino} from "../../../api/util/code";
 import {CloudAgentType} from "../cloudAgentType";
-import {FileSystemInterface} from "../fileSystemInterface";
+import {FileSystemInterface, updateFilesystemBar} from "../fileSystemInterface";
 import {Filesystem} from "../web/filesystem";
 
 class PythonType extends CloudAgentType implements FileSystemInterface{
@@ -14,7 +14,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     constructor() {
         super();
         this.filesystem = new Filesystem();
-        this.filesystem.onFileSystemUpdate = this.updateFilesystemBar;
+        this.filesystem.onFileSystemUpdate = updateFilesystemBar;
         this.currentFileId = this.filesystem.defaultFile.id
     }
 

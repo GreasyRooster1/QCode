@@ -9,7 +9,7 @@ import {writeToEditor} from "../../utils/loadUtils";
 import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
 import {
     FileSystemInterface, openFile, saveCurrentFile, setupAssetDrop,
-    setupFileFolderButtons,
+    setupFileFolderButtons, setupFilesystemDom,
     setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
@@ -28,44 +28,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     }
 
     setupEditor(): void {
-        document.querySelector(".code-pane")!.innerHTML = `
-        <div class="code-editor-wrapper">
-            <div class="filesystem-sidebar">
-                <div class="header">
-                    <span>Files</span>
-                    <span>
-                        <i class='far fa-file-alt new-file-button'></i>
-                        <i class="far fa-folder new-folder-button"></i>
-                    </span>
-                </div>
-                <div class="filesystem-container">
-                    <div class="default-filesystem filesystem">
-                        <div class="filesystem-root">
-                            <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
-                            <span>Site</span>
-                        </div>
-                        <div class="file-list"></div>
-                    </div>
-                    <div class="remote-assets-filesystem filesystem">
-                        <div class="filesystem-root">
-                            <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/gallery-folder.png">
-                            <span>Assets</span>
-                        </div>
-                        <div class="remote-assets"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-editor-wrapper">
-                <div class="current-file-view">
-                    <div class="filename">index.html</div>
-                    <div class="icons">
-                        <div class="trash"><i class="far fa-trash-alt"></i></div>
-                    </div>
-                </div>
-                <div class="code-editor"></div>
-            </div>
-        </div> 
-        `
+        setupFilesystemDom()
         updateFilesystemBar(this)
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
