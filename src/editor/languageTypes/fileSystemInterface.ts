@@ -167,4 +167,4 @@ function createFolderEl(impl:any,key:string,folder:Folder){
     return wrapperEl;
 }
 
-export{FileSystemInterface}
+export{FileSystemInterface,createFolderEl,populateHTMLForFolder,saveCurrentFile,openFile,promptFolderCreation,promptFileCreation,handleDroppedAssetFile,setupAssetDrop,setupHeaderButtons,setupFileFolderButtons,setupFileEventListeners,updateFilesystemBar}
