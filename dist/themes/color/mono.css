@@ -170,9 +170,9 @@
 
 /* Lessons (lessons/index.css) */
 :root {
-    --ui-tray-background:#fff;
-    --ui-tray-border: #9f9f9f;
-    --ui-tray-icons: #474747;
+    --ui-tray-background:var(--background-primary-color);
+    --ui-tray-border: var(--primary-color);
+    --ui-tray-icons: var(--primary-color);
     --canvas-background-color: var(--background-primary-color);
     --grid-color: var(--subtle-primary-color);
     --canvas-text-color: var(--text-color);
