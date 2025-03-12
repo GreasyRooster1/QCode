@@ -13,7 +13,7 @@ class Filesystem{
     defaultFile:FilesystemFile;
     onFileSystemUpdate:Function;
 
-    constructor() {
+    constructor(defaultFileName:string) {
         this.system = {
             "/": {
                 "index.html": new FilesystemFile("index", "html"),
@@ -21,7 +21,7 @@ class Filesystem{
                 "index.css": new FilesystemFile("index", "css"),
             }
         }
-        this.defaultFile = <FilesystemFile>this.system["/"]["index.html"];
+        this.defaultFile = <FilesystemFile>this.system["/"][defaultFileName];
         this.onFileSystemUpdate = ()=>{};
     }
 
