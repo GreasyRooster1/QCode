@@ -10,6 +10,8 @@ import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
 import {FileSystemInterface} from "../fileSystemInterface";
 
 class WebType extends ProjectType implements FileSystemInterface {
+
+    /* Implements */
     filesystem:Filesystem
     currentFileId:number;
 
@@ -18,165 +20,6 @@ class WebType extends ProjectType implements FileSystemInterface {
         this.filesystem = new Filesystem();
         this.filesystem.onFileSystemUpdate = this.updateFilesystemBar
         this.currentFileId = this.filesystem.defaultFile.id
-    }
-
-    updateFilesystemBar(){
-        let folders = this.filesystem.getAll();
-        document.querySelector(".file-list")!.innerHTML = "";
-
-        this.populateHTMLForFolder("root",folders["/"],document.querySelector(".file-list"));
-        this.setupFileEventListeners()
-    }
-
-    setupFileEventListeners(){
-        let list = document.querySelectorAll(".file-list, .folder")
-        console.log(list)
-        // @ts-ignore
-        for (let folder of list) {
-            let children = folder.children;
-            for (let child of children) {
-                if (!child.classList.contains("file")) {
-                    continue;
-                }
-                child.addEventListener("click", (e: any) => {
-                    // @ts-ignore
-                    let target: HTMLElement = e.target!;
-                    if (target.parentElement?.classList.contains("file")) {
-                        target = target.parentElement;
-                    }
-                    console.log(target);
-                    this.saveCurrentFile()
-                    this.openFile(Number(target.getAttribute("data-id")!));
-                })
-            }
-        }
-    }
-
-    setupFileFolderButtons(){
-        document.querySelector(".new-file-button")!.addEventListener("click", (e) => {
-            this.promptFileCreation(this.filesystem.getAll()["/"])
-        })
-        document.querySelector(".new-folder-button")!.addEventListener("click", (e) => {
-            this.promptFolderCreation(this.filesystem.getAll()["/"])
-        })
-    }
-
-    setupHeaderButtons(){
-        document.querySelector(".current-file-view .trash")!.addEventListener("click", (e) => {
-            let isSure = confirm("Are you sure you want to delete this file?");
-            if (!isSure) {
-                return
-            }
-            this.filesystem.deleteFile(this.filesystem.getAll()["/"],this.currentFileId);
-            this.updateFilesystemBar()
-        })
-    }
-
-    setupAssetDrop(){
-        let target = document.querySelector(".remote-assets-filesystem")!
-        target.addEventListener("drop", (event:any) => {
-            console.log("File(s) dropped");
-
-            event.preventDefault();
-
-            if (event.dataTransfer!.items) {
-                [...event.dataTransfer!.items].forEach((item, i) => {
-                    if (item.kind === "file") {
-                        const file = item.getAsFile();
-                        this.handleDroppedAssetFile(file!);
-                    }
-                });
-            } else {
-                [...event.dataTransfer!.files].forEach((file, i) => {
-                    this.handleDroppedAssetFile(file)
-                });
-            }
-        });
-        target.addEventListener("dragover", (event) => {
-            // prevent default to allow drop
-            event.preventDefault();
-        });
-    }
-
-    handleDroppedAssetFile(file: File){
-        console.log(file.name)
-    }
-
-    promptFileCreation(folder:Folder){
-        let name =
-            cleanFileName(prompt("Enter a name for the file")!);
-        if(name == null){
-            return;
-        }
-        let sec = name.split(".")
-        folder[name] = new FilesystemFile(sec[0],sec[1]);
-        this.updateFilesystemBar();
-    }
-    promptFolderCreation(folder:Folder){
-        let name = cleanFileName(prompt("Enter a name for the folder")!);
-        if(name == null||name.length==0){
-            return;
-        }
-        folder[name] = {};
-        this.updateFilesystemBar();
-    }
-
-    openFile(fileId:number){
-        this.currentFileId = fileId;
-        let file = this.filesystem.getFileById(this.currentFileId);
-        document.querySelector(".current-file-view .filename")!.innerHTML = file!.name+"."+file!.extension;
-        setupEditor(file?.getLanguage())
-        writeToEditor(file!.content)
-    }
-    saveCurrentFile(){
-        let code = getCode();
-        let file = this.filesystem.getFileById(this.currentFileId);
-        file!.content = code;
-    }
-
-    populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
-
-        const sortedKeys = Object.keys(folder).sort((a,b)=>{
-            if(a.includes(".")&&!b.includes(".")){
-                return 1;
-            }
-            if(b.includes(".")&&!a.includes(".")){
-                return -1;
-            }
-            return a.localeCompare(b);
-        });
-
-        const sortedObj = {};
-        for (const key of sortedKeys) {
-            // @ts-ignore
-            sortedObj[key] = folder[key];
-        }
-
-        // @ts-ignore
-        for (let [key,f ] of Object.entries(sortedObj)){
-            let frag = f as FilesystemFile|Folder
-            if(isFolder(frag)){
-                let wrapperEl = this.createFolderEl(key,folder)
-                upperHtml.appendChild(wrapperEl);
-                this.populateHTMLForFolder(key,frag as Folder,wrapperEl.querySelector(".folder"));
-            }else{
-                let file = frag as FilesystemFile;
-                if(file.isDeleted){
-                    continue;
-                }
-                file.appendToHtml(upperHtml);
-            }
-        }
-    }
-    createFolderEl(key:string,folder:Folder){
-        let wrapperEl = createFolderEl(key,folder);
-        wrapperEl.querySelector(".buttons .new-file-button")?.addEventListener("click", (e) => {
-            this.promptFileCreation(folder[key] as Folder);
-        });
-        wrapperEl.querySelector(".buttons .new-folder-button")?.addEventListener("click", (e) => {
-            this.promptFolderCreation(folder[key] as Folder);
-        });
-        return wrapperEl;
     }
 
     setupEditor(): void {
@@ -218,17 +61,17 @@ class WebType extends ProjectType implements FileSystemInterface {
             </div>
         </div> 
         `
-        this.updateFilesystemBar()
-        this.setupFileFolderButtons()
-        this.setupHeaderButtons()
-        this.setupAssetDrop()
+        updateFilesystemBar()
+        setupFileFolderButtons()
+        setupHeaderButtons()
+        setupAssetDrop()
     }
 
     onLoad(){
         this.filesystem.deserialize(this.projectData?.files);
         this.currentFileId=this.filesystem.getFile("/index.html").id;
-        this.openFile(this.currentFileId);
-        this.updateFilesystemBar();
+        openFile(this.currentFileId);
+        updateFilesystemBar();
     }
 
     onSave(){

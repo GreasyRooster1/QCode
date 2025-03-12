@@ -3,12 +3,19 @@ import {RunErrCallback} from "../projectType";
 import {Language} from "../../codeEditor";
 import {defaultCodeArduino} from "../../../api/util/code";
 import {CloudAgentType} from "../cloudAgentType";
+import {FileSystemInterface} from "../fileSystemInterface";
+import {Filesystem} from "../web/filesystem";
 
-class PythonType extends CloudAgentType {
+class PythonType extends CloudAgentType implements FileSystemInterface{
     //project: Sketch | undefined;
+    currentFileId: number;
+    filesystem: Filesystem;
 
     constructor() {
         super();
+        this.filesystem = new Filesystem();
+        this.filesystem.onFileSystemUpdate = this.updateFilesystemBar;
+        this.currentFileId = this.filesystem.defaultFile.id
     }
 
     onRun(errorCallback:RunErrCallback) {
