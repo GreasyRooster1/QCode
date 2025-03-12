@@ -6,6 +6,7 @@
     --text-color: #d4feff;
     --inverse-text-color: #001315;
     --light-primary-color: #0fbfcf;
+    --transparent-primary-color: #1ad1e377;
 
 
     --border: 2px solid var(--primary-color);
