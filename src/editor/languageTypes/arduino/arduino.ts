@@ -5,6 +5,9 @@ import {Language} from "../../codeEditor";
 import {startSketchServer, Sketch} from "./arduino-api";
 import {defaultCodeArduino, defaultCodeJs} from "../../../api/util/code";
 import {CloudAgentType} from "../cloudAgentType";
+import {getStoredUser} from "../../../api/auth";
+import {ref, set} from "firebase/database";
+import {db} from "../../../api/firebase";
 
 class ArduinoType extends CloudAgentType {
     sketch: Sketch | undefined;
@@ -36,6 +39,18 @@ class ArduinoType extends CloudAgentType {
             this.appendLog(e.message.replace("\n","<br>"),"error");
             this.failExec()
         })
+    }
+    onSave(){
+        let code = getCode();
+        let user = getStoredUser();
+        set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/code"),code);
+        set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/dateUpdated"),Date.now()/1000);
+        if(this.hasLesson) {
+            console.log(this.highestViewedStep)
+            set(ref(db,"userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep"),this.highestViewedStep);
+            set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter"),this.chapterNum);
+        }
+
     }
 
     runErrorCallback(content: string, type: string): void {
