@@ -106,6 +106,7 @@ function getLanguage(identifier:Language): any | null{
     if(identifier == "css"){
         return css()
     }
+
     if(identifier == "python"){
         return python()
     }
