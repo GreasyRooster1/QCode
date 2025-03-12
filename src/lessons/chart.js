@@ -2,7 +2,7 @@
 //no i dont want to know how this can be done better
 
 import {Camera} from "./camera.js"
-import {currentColors, setupColors} from "./colors";
+import {currentColors, loadColors} from "./colors";
 import {loadLessons, loadLessonsMetadata, propagateLocked, solvePosition} from "./lesson";
 import {beginCheckingStatuses} from "./dbUpdate";
 import {toDataURL} from "./index";
@@ -23,7 +23,7 @@ window.setup = function (){
     let height = window.innerHeight - navHeight;
     textFont("JetBrains Mono")
     createCanvas(window.innerWidth,height).parent("#canvas-parent");
-    setupColors();
+    loadColors();
 
     toDataURL("https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/lock.png",(data)=>{
         lockImage = loadImage(data)
@@ -69,7 +69,7 @@ function drawBackground(){
     for(let i=0;i<w;i+=spacing){
         for(let j=0;j<h;j+=spacing){
             noStroke();
-            fill(127,alpha);
+            fill(currentColors.grid,alpha);
             let x = i-floor(camera.x/camera.zoom/spacing)*spacing;
             let y = j-floor(camera.y/camera.zoom/spacing)*spacing;
             ellipse(x,y,3,3);

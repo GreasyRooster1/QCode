@@ -6,6 +6,7 @@ import {toDataURL} from "./index";
 import {openLesson} from "../api/util/projects";
 import {camera} from "./chart";
 import {arduinoRootId} from "./locking";
+import {currentColors} from "./colors";
 
 class Lesson{
     constructor(children){
@@ -62,7 +63,7 @@ class Lesson{
             let width = textWidth(tag)+10;
             fill(getTagColor(tag))
             rect(this.x+5+pos,this.y+this.h-22,width,17,10)
-            fill(255)
+            fill(currentColors.inverseTextColor)
             text(tag,this.x+10+pos,this.y+this.h-20,width,17,10)
             pos+=width+5
         }
@@ -91,7 +92,7 @@ class Lesson{
     drawUnlisted(){
         drawingContext.setLineDash([6]);
         noFill()
-        stroke(127);
+        stroke(currentColors.lessonCardBorder);
 
         strokeWeight(2.5)
         rect(this.x,this.y,this.w,this.h,10);
@@ -100,20 +101,20 @@ class Lesson{
 
     renderStatus(){
         if(this.started) {
-            stroke("#15e368");
+            stroke(currentColors.startedAccent);
             noFill()
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
         if(this.completed) {
-            stroke("#15e368");
-            fill("#15e36877")
+            stroke(currentColors.startedAccent);
+            fill(currentColors.completedOverlay)
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
         }
         if(this.locked) {
-            stroke("#292929");
-            fill("rgba(67,67,67,0.47)")
+            stroke(currentColors.lessonCardBorder);
+            fill(currentColors.lockedOverlay)
             strokeWeight(3)
             rect(this.x - 2.5, this.y - 2.5, this.w + 5, this.h + 5, 13);
             imageMode(CENTER)
@@ -123,11 +124,11 @@ class Lesson{
     }
 
     drawStart(){
-        fill("#15e368");
+        fill(currentColors.startedAccent);
         strokeWeight(5)
-        stroke("#7fe8a9")
+        stroke(currentColors.buttonBorder)
         rect(this.x,this.y+this.h+20,this.w,50,10)
-        fill(255);
+        fill(currentColors.textColor);
         textAlign(CENTER)
         textSize(30)
         text(this.started?"Resume":"Start",this.x+this.w/2,this.y+this.h+55)
@@ -156,8 +157,8 @@ class Lesson{
     }
 
     drawBody(){
-        fill(255)
-        stroke(127);
+        fill(currentColors.lessonCardBg)
+        stroke(currentColors.lessonCardBorder);
 
         strokeWeight(this.isHovering||this.selected?2.5:1.5)
         rect(this.x,this.y,this.w,this.h,10);
@@ -170,7 +171,7 @@ class Lesson{
         image(this.image, this.x+10, this.y+10, 180, 180);
         noFill();
         strokeWeight(10);
-        stroke(255)
+        stroke(currentColors.lessonCardBg)
         rect(this.x+10, this.y+10, 180, 180,10)
     }
 
@@ -179,7 +180,7 @@ class Lesson{
             return;
         }
 
-        fill(0);
+        fill(currentColors.textColor);
         noStroke();
         textSize(19)
         let lines = floor(textWidth(this.metadata.name)/this.w)
@@ -194,7 +195,7 @@ class Lesson{
             if(child===undefined){
                 continue;
             }
-            stroke(0);
+            stroke(currentColors.lineColor);
             strokeWeight(1.5)
             line(this.x+this.w/2,this.y+this.h,child.x+child.w/2,child.y)
         }

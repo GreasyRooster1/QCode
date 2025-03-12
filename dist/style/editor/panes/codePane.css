@@ -14,4 +14,9 @@
 
 .cm-editor{
     height: 100%;
+    font-family: var(--editor-font) !important;
+}
+
+.ͼ1 .cm-scroller {
+    font-family: var(--editor-font) !important;
 }
