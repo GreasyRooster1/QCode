@@ -119,6 +119,18 @@
     --ui-tray-background:#fff;
     --ui-tray-border: #9f9f9f;
     --ui-tray-icons: #474747;
+
+    --canvas-background-color: #232323;
+    --grid-color: #575757;
+    --canvas-text-color: #ffffff;
+    --canvas-inverse-text-color: #ffffff;
+    --canvas-lesson-card-border:#7f7f7f;
+    --canvas-lesson-card-background: #202020;
+    --canvas-started-accent: #1c9744;
+    --canvas-completed-overlay: rgba(31, 166, 75, 0.47);
+    --canvas-locked-overlay:#00077;
+    --canvas-button-border: #225333;
+    --canvas-line-color: #ffffff;
 }
 
 /* Index (index/index.css) */
