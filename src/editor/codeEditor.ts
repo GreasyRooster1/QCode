@@ -14,7 +14,11 @@ import {tags} from "@lezer/highlight"
 import {HighlightStyle, defaultHighlightStyle, syntaxHighlighting} from "@codemirror/language"
 import {hasSavedRecently, setHasSaved} from "./save";
 import {ViewUpdate} from "@codemirror/view";
-import {dracula} from "thememirror";
+import {boysAndGirls, dracula} from "thememirror";
+import {barf} from 'thememirror';
+import {hackerManTheme} from "./theme/hackerman";
+import {amy} from 'thememirror';
+import {birdsOfParadise} from 'thememirror';
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
@@ -68,6 +72,24 @@ function setThemeFromCSS(extensions:any){
     console.log(themeCss)
     if(themeCss=="\"dracula\""){
         extensions.push(dracula);
+    }
+    if(themeCss=="\"hackerman\""){
+        extensions.push(hackerManTheme);
+    }
+    if(themeCss=="\"barf\""){
+        extensions.push(barf);
+    }
+    if(themeCss=="\"amy\""){
+        extensions.push(amy);
+    }
+    if(themeCss=="\"birdsOfParadise\""){
+        extensions.push(birdsOfParadise);
+    }
+    if(themeCss=="\"boysAndGirls\""){
+        extensions.push(boysAndGirls);
+    }
+    if(themeCss=="\"boysAndGirls\""){
+        extensions.push(boysAndGirls);
     }
 }
 

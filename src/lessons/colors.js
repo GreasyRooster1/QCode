@@ -3,25 +3,23 @@ import {darkMode} from "./chart";
 let currentColors = {}
 let colors;
 
-function swapColors(){
-    darkMode = !darkMode;
+function loadColors(){
+    let style = window.getComputedStyle(document.body);
 
-    if(darkMode) {
-        currentColors = colors.dark
-    }else{
-        currentColors = colors.light
+    currentColors = {
+        background: color(style.getPropertyValue('--canvas-background-color')),
+        grid: color(style.getPropertyValue('--grid-color')),
+        textColor: color(style.getPropertyValue('--canvas-text-color')),
+        inverseTextColor: color(style.getPropertyValue('--canvas-inverse-text-color')),
+        lessonCardBorder: color(style.getPropertyValue('--canvas-lesson-card-border')),
+        lessonCardBg: color(style.getPropertyValue('--canvas-lesson-card-background')),
+        startedAccent:color(style.getPropertyValue('--canvas-started-accent')),
+        completedOverlay:color(style.getPropertyValue('--canvas-completed-overlay')),
+        lockedOverlay: color(style.getPropertyValue('--canvas-locked-overlay')),
+        buttonBorder: color(style.getPropertyValue("--canvas-button-border")),
+        lineColor:color(style.getPropertyValue("--canvas-line-color")),
     }
+    console.log(currentColors);
 }
 
-function setupColors(){
-    colors = {
-        light:{
-            background:color("#ffffff"),
-        },
-        dark:{
-            background:color("#000000"),
-        }
-    }
-    currentColors = colors.light;
-}
-export {setupColors,swapColors,currentColors}
+export {loadColors,currentColors}

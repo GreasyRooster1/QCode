@@ -12,6 +12,7 @@ function createProject(cleanProjectId,projectName,type,lessonId){
             debugger
             if(snap.exists()){
                 reject();
+                return;
             }
             set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),getProjectDataForType(type,projectName,lessonId)).then(()=>{
                 resolve();
