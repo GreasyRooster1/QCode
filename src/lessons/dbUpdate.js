@@ -47,6 +47,9 @@ function searchForRecommendation(lessonId,depth,recs){
     let lesson = lessonsIndex[lessonId]
     for(let childId of lesson.children){
         let child = lessonsIndex[childId];
+        if(child===undefined){
+            continue;
+        }
         if(child.completed) {
             searchForRecommendation(childId, depth - 1,recs);
             continue
