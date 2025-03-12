@@ -1,6 +1,7 @@
 import {cleanFileName, Filesystem, FilesystemFile, Folder, getFolderDom, isFolder} from "./web/filesystem";
 import {writeToEditor} from "../utils/loadUtils";
 import {getCode} from "../executionHelper";
+import {setupEditor} from "../codeEditor";
 
 
 interface FileSystemInterface {
@@ -115,7 +116,7 @@ function openFile(impl:any,fileId:number){
     impl.currentFileId = fileId;
     let file = impl.filesystem.getFileById(impl.currentFileId);
     document.querySelector(".current-file-view .filename")!.innerHTML = file!.name+"."+file!.extension;
-    impl.setupEditor(file?.getLanguage())
+    setupEditor(file?.getLanguage())
     writeToEditor(file!.content)
 }
 function saveCurrentFile(impl:any){
