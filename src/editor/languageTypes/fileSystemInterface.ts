@@ -14,6 +14,8 @@ function updateFilesystemBar(impl:any){
 
     populateHTMLForFolder(impl,"root",folders["/"],document.querySelector(".file-list"));
     setupFileEventListeners(impl);
+
+
 }
 
 function setupFileEventListeners(impl:any){
