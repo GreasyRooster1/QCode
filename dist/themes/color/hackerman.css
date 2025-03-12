@@ -5,7 +5,7 @@
     --background-primary-color: #000000;
     --text-color: #00ff00;
     --inverse-text-color: #001315;
-    --light-primary-color: #0fbfcf;
+    --light-primary-color: #ccffc7;
 
 
     --border: 2px solid var(--primary-color);
@@ -171,6 +171,17 @@
     --ui-tray-background:#fff;
     --ui-tray-border: #9f9f9f;
     --ui-tray-icons: #474747;
+    --canvas-background-color: var(--background-primary-color);
+    --grid-color: var(--subtle-primary-color);
+    --canvas-text-color: var(--text-color);
+    --canvas-inverse-text-color: var(--text-color);
+    --canvas-lesson-card-border:var(--subtle-primary-color);
+    --canvas-lesson-card-background: #202020;
+    --canvas-started-accent: var(--primary-color);
+    --canvas-completed-overlay: var(--transparent-primary-color);
+    --canvas-locked-overlay:#00077;
+    --canvas-button-border: var(--subtle-primary-color);
+    --canvas-line-color: var(--primary-color);
 }
 
 /* Index (index/index.css) */
@@ -251,7 +262,7 @@ body{
 
 /* Editor Lang (editor/lang.css) */
 :root{
-    --code-editor-theme:"dracula"
+    --code-editor-theme:"hackerman"
 }
 
 /* Editor Main (editor/editor.css) */
