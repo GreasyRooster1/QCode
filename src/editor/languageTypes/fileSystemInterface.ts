@@ -1,4 +1,4 @@
-import {cleanFileName, Filesystem, FilesystemFile, Folder, isFolder} from "./web/filesystem";
+import {cleanFileName, Filesystem, FilesystemFile, Folder, getFolderDom, isFolder} from "./web/filesystem";
 import {writeToEditor} from "../utils/loadUtils";
 import {getCode} from "../executionHelper";
 
@@ -8,15 +8,15 @@ interface FileSystemInterface {
     currentFileId:number;
 }
 
-function updateFilesystemBar(impl:FileSystemInterface){
+function updateFilesystemBar(impl:any){
     let folders = impl.filesystem.getAll();
     document.querySelector(".file-list")!.innerHTML = "";
 
-    populateHTMLForFolder("root",folders["/"],document.querySelector(".file-list"));
+    populateHTMLForFolder(impl,"root",folders["/"],document.querySelector(".file-list"));
     setupFileEventListeners(impl);
 }
 
-function setupFileEventListeners(impl:FileSystemInterface){
+function setupFileEventListeners(impl:any){
     let list = document.querySelectorAll(".file-list, .folder")
     console.log(list)
     // @ts-ignore
@@ -33,30 +33,30 @@ function setupFileEventListeners(impl:FileSystemInterface){
                     target = target.parentElement;
                 }
                 console.log(target);
-                saveCurrentFile()
+                saveCurrentFile(impl,)
                 openFile(impl,Number(target.getAttribute("data-id")!));
             })
         }
     }
 }
 
-function setupFileFolderButtons(impl:FileSystemInterface){
+function setupFileFolderButtons(impl:any){
     document.querySelector(".new-file-button")!.addEventListener("click", (e) => {
-        promptFileCreation(impl.filesystem.getAll()["/"])
+        promptFileCreation(impl,impl.filesystem.getAll()["/"])
     })
     document.querySelector(".new-folder-button")!.addEventListener("click", (e) => {
-        promptFolderCreation(impl.filesystem.getAll()["/"])
+        promptFolderCreation(impl,impl.filesystem.getAll()["/"])
     })
 }
 
-function setupHeaderButtons(){
+function setupHeaderButtons(impl:any){
     document.querySelector(".current-file-view .trash")!.addEventListener("click", (e) => {
         let isSure = confirm("Are you sure you want to delete this file?");
         if (!isSure) {
             return
         }
         impl.filesystem.deleteFile(impl.filesystem.getAll()["/"],impl.currentFileId);
-        updateFilesystemBar()
+        updateFilesystemBar(impl)
     })
 }
 
@@ -90,7 +90,7 @@ function handleDroppedAssetFile(file: File){
     console.log(file.name)
 }
 
-function promptFileCreation(folder:Folder){
+function promptFileCreation(impl:any,folder:Folder){
     let name =
         cleanFileName(prompt("Enter a name for the file")!);
     if(name == null){
@@ -98,31 +98,31 @@ function promptFileCreation(folder:Folder){
     }
     let sec = name.split(".")
     folder[name] = new FilesystemFile(sec[0],sec[1]);
-    updateFilesystemBar();
+    updateFilesystemBar(impl);
 }
-function promptFolderCreation(folder:Folder){
+function promptFolderCreation(impl:any,folder:Folder){
     let name = cleanFileName(prompt("Enter a name for the folder")!);
     if(name == null||name.length==0){
         return;
     }
     folder[name] = {};
-    updateFilesystemBar();
+    updateFilesystemBar(impl);
 }
 
-function openFile(impl:FileSystemInterface,fileId:number){
-    currentFileId = fileId;
-    let file = filesystem.getFileById(currentFileId);
+function openFile(impl:any,fileId:number){
+    impl.currentFileId = fileId;
+    let file = impl.filesystem.getFileById(impl.currentFileId);
     document.querySelector(".current-file-view .filename")!.innerHTML = file!.name+"."+file!.extension;
     impl.setupEditor(file?.getLanguage())
     writeToEditor(file!.content)
 }
-function saveCurrentFile(){
+function saveCurrentFile(impl:any){
     let code = getCode();
-    let file = filesystem.getFileById(currentFileId);
+    let file = impl.filesystem.getFileById(impl.currentFileId);
     file!.content = code;
 }
 
-function populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
+function populateHTMLForFolder(impl:any,name:string,folder:Folder,upperHtml:any){
 
     const sortedKeys = Object.keys(folder).sort((a,b)=>{
         if(a.includes(".")&&!b.includes(".")){
@@ -144,9 +144,9 @@ function populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
     for (let [key,f ] of Object.entries(sortedObj)){
         let frag = f as FilesystemFile|Folder
         if(isFolder(frag)){
-            let wrapperEl = this.createFolderEl(key,folder)
+            let wrapperEl = createFolderEl(impl,key,folder)
             upperHtml.appendChild(wrapperEl);
-            this.populateHTMLForFolder(key,frag as Folder,wrapperEl.querySelector(".folder"));
+            populateHTMLForFolder(impl,key,frag as Folder,wrapperEl.querySelector(".folder"));
         }else{
             let file = frag as FilesystemFile;
             if(file.isDeleted){
@@ -156,13 +156,13 @@ function populateHTMLForFolder(name:string,folder:Folder,upperHtml:any){
         }
     }
 }
-function createFolderEl(key:string,folder:Folder){
-    let wrapperEl = createFolderEl(key,folder);
+function createFolderEl(impl:any,key:string,folder:Folder){
+    let wrapperEl = getFolderDom(key,folder);
     wrapperEl.querySelector(".buttons .new-file-button")?.addEventListener("click", (e) => {
-        this.promptFileCreation(folder[key] as Folder);
+        promptFileCreation(impl,folder[key] as Folder);
     });
     wrapperEl.querySelector(".buttons .new-folder-button")?.addEventListener("click", (e) => {
-        this.promptFolderCreation(folder[key] as Folder);
+        promptFolderCreation(impl,folder[key] as Folder);
     });
     return wrapperEl;
 }

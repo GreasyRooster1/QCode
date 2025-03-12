@@ -212,7 +212,7 @@ class FilesystemFile {
     }
 }
 
-function createFolderEl(key:string,folder:Folder){
+function getFolderDom(key:string, folder:Folder){
     let wrapperEl = document.createElement("div");
     wrapperEl.classList.add("folder-wrapper");
     wrapperEl.innerHTML = `
@@ -245,4 +245,4 @@ function hasFileIcon(extension:string):boolean{
 
 }
 
-export {Filesystem,isFolder,FilesystemFile,Folder,System,createFolderEl,cleanFileName}
+export {Filesystem,isFolder,FilesystemFile,Folder,System,getFolderDom,cleanFileName}
