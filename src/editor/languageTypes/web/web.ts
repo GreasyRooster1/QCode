@@ -7,7 +7,12 @@ import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {writeToEditor} from "../../utils/loadUtils";
 import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
-import {FileSystemInterface} from "../fileSystemInterface";
+import {
+    FileSystemInterface, openFile, saveCurrentFile, setupAssetDrop,
+    setupFileFolderButtons,
+    setupHeaderButtons,
+    updateFilesystemBar
+} from "../fileSystemInterface";
 
 class WebType extends ProjectType implements FileSystemInterface {
 
@@ -18,7 +23,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     constructor() {
         super(false);
         this.filesystem = new Filesystem();
-        this.filesystem.onFileSystemUpdate = this.updateFilesystemBar
+        this.filesystem.onFileSystemUpdate = updateFilesystemBar
         this.currentFileId = this.filesystem.defaultFile.id
     }
 
@@ -61,21 +66,21 @@ class WebType extends ProjectType implements FileSystemInterface {
             </div>
         </div> 
         `
-        updateFilesystemBar()
-        setupFileFolderButtons()
-        setupHeaderButtons()
+        updateFilesystemBar(this)
+        setupFileFolderButtons(this)
+        setupHeaderButtons(this)
         setupAssetDrop()
     }
 
     onLoad(){
         this.filesystem.deserialize(this.projectData?.files);
         this.currentFileId=this.filesystem.getFile("/index.html").id;
-        openFile(this.currentFileId);
-        updateFilesystemBar();
+        openFile(this,this.currentFileId);
+        updateFilesystemBar(this);
     }
 
     onSave(){
-        this.saveCurrentFile()
+        saveCurrentFile(this)
         let serializedFiles = this.filesystem.serialize();
         set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files"),serializedFiles);
     }
