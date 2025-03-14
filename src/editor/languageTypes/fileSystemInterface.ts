@@ -64,7 +64,7 @@ function setupHeaderButtons(impl:any){
 }
 
 function setupAssetDrop(){
-    let target = document.querySelector(".remote-assets-filesystem")!
+    let target = document.querySelector(".upload-drop")!
     target.addEventListener("drop", (event:any) => {
         console.log("File(s) dropped");
 
@@ -189,13 +189,9 @@ function setupFilesystemDom(){
                         </div>
                         <div class="file-list"></div>
                     </div>
-                    <div class="remote-assets-filesystem filesystem">
-                        <div class="filesystem-root">
-                            <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/gallery-folder.png">
-                            <span>Assets</span>
-                        </div>
-                        <div class="remote-assets"></div>
-                    </div>
+                </div>
+                <div class="upload-drop">
+                
                 </div>
             </div>
             <div class="text-editor-wrapper">
