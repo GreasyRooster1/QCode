@@ -190,8 +190,8 @@ function setupFilesystemDom(){
                         <div class="file-list"></div>
                     </div>
                     <div class="upload-drop">
-                
-                </div>
+                        <i class='fas fa-cloud-upload-alt'></i>
+                    </div>
                 </div>
             </div>
             <div class="text-editor-wrapper">
