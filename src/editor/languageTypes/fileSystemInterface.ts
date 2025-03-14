@@ -2,6 +2,7 @@ import {cleanFileName, Filesystem, FilesystemFile, Folder, getFolderDom, isFolde
 import {writeToEditor} from "../utils/loadUtils";
 import {getCode} from "../executionHelper";
 import {setupEditor} from "../codeEditor";
+import {getURLForProjectFile, sendImageToFileServer} from "../utils/fileServerAPI";
 
 const imageFileTypes = ["png","jpg","jpeg","gif","webp"];
 
@@ -101,17 +102,17 @@ function handleDroppedAssetFile(impl:any,file: File){
         }
     }
     impl.filesystem.system["/"][name] =systemFile;
-    writeFileFromDrop(systemFile,file);
+    writeFileFromDrop(impl,systemFile,file);
     updateFilesystemBar(impl);
 }
 
-function writeFileFromDrop(systemFile:FilesystemFile,file:File){
+function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
     let reader = new FileReader()
     let isImage = systemFile.extension in imageFileTypes
     reader.onload = ()=>{
         if(isImage){
             sendImageToFileServer(reader.result);
-            systemFile.content = ""
+            systemFile.content = getURLForProjectFile(impl.projectId,systemFile.name+"."+systemFile.extension);
         }
         systemFile.content = reader.result as string;
     }
@@ -121,9 +122,7 @@ function writeFileFromDrop(systemFile:FilesystemFile,file:File){
     reader.readAsText(file);
 }
 
-function sendImageToFileServer(data:any){
-    //todo
-}
+
 
 function promptFileCreation(impl:any,folder:Folder){
     let name =
