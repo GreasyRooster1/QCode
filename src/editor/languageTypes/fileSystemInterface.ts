@@ -95,7 +95,7 @@ function handleDroppedAssetFile(impl:any,file: File){
     let sec = name.split(".")
     let systemFile =  new FilesystemFile(sec[0],sec[1]);
     if(name in impl.filesystem.system["/"]){
-        if(!confirm("Do you want to override this file?"){
+        if(!confirm("Do you want to override this file?")){
             return;
         }
     }
