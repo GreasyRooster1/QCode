@@ -94,13 +94,23 @@ function handleDroppedAssetFile(impl:any,file: File){
     let name = cleanFileName(file.name);
     let sec = name.split(".")
     let systemFile =  new FilesystemFile(sec[0],sec[1]);
+    if(name in impl.filesystem.system["/"]){
+        if(!confirm("Do you want to override this file?"){
+            return;
+        }
+    }
     impl.filesystem.system["/"][name] =systemFile;
+    writeFileFromDrop(systemFile,file);
+    updateFilesystemBar(impl);
+}
+
+function writeFileFromDrop(systemFile:FilesystemFile,file:File){
+
     let reader = new FileReader()
     reader.onload = ()=>{
         systemFile.content = reader.result as string;
     }
     reader.readAsText(file);
-    updateFilesystemBar(impl);
 }
 
 function promptFileCreation(impl:any,folder:Folder){
