@@ -108,19 +108,22 @@ function handleDroppedAssetFile(impl:any,file: File){
 
 function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
     let reader = new FileReader()
-    let isImage = systemFile.extension in imageFileTypes
+    let isImage = imageFileTypes.includes(systemFile.extension)
+    console.log(systemFile.extension,isImage)
     reader.onload = ()=>{
         if(isImage){
             let url = getURLForProjectFile(impl.projectId,systemFile.name+"."+systemFile.extension);
             sendImageToFileServer(reader.result,url);
             systemFile.content = url;
+        }else {
+            systemFile.content = reader.result as string;
         }
-        systemFile.content = reader.result as string;
     }
     if(isImage) {
         reader.readAsArrayBuffer(file);
+    }else {
+        reader.readAsText(file)
     }
-    reader.readAsText(file);
 }
 
 
