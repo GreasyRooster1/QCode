@@ -1,0 +1,8 @@
+:root{
+}
+
+.upload-drop{
+    height:20vh;
+    border-radius: 5px;
+    background: var(--filesystem-background);
+}

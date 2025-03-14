@@ -189,9 +189,9 @@ function setupFilesystemDom(){
                         </div>
                         <div class="file-list"></div>
                     </div>
-                </div>
-                <div class="upload-drop">
+                    <div class="upload-drop">
                 
+                </div>
                 </div>
             </div>
             <div class="text-editor-wrapper">
