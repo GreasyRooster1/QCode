@@ -111,8 +111,9 @@ function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
     let isImage = systemFile.extension in imageFileTypes
     reader.onload = ()=>{
         if(isImage){
-            sendImageToFileServer(reader.result);
-            systemFile.content = getURLForProjectFile(impl.projectId,systemFile.name+"."+systemFile.extension);
+            let url = getURLForProjectFile(impl.projectId,systemFile.name+"."+systemFile.extension);
+            sendImageToFileServer(reader.result,url);
+            systemFile.content = url;
         }
         systemFile.content = reader.result as string;
     }

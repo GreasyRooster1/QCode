@@ -1,6 +1,7 @@
 import {extractUsernameFromEmail, getStoredUser} from "../../api/auth";
 
-function sendImageToFileServer(data:any){
+function sendImageToFileServer(data:any,url:string){
+    console.log("sending file to server: "+url)
     //todo
 }
 
