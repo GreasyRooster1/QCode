@@ -3,6 +3,7 @@ import {writeToEditor} from "../utils/loadUtils";
 import {getCode} from "../executionHelper";
 import {setupEditor} from "../codeEditor";
 
+const imageFileTypes = ["png","jpg","jpeg","gif","webp"];
 
 interface FileSystemInterface {
     filesystem:Filesystem
@@ -105,12 +106,23 @@ function handleDroppedAssetFile(impl:any,file: File){
 }
 
 function writeFileFromDrop(systemFile:FilesystemFile,file:File){
-
     let reader = new FileReader()
+    let isImage = systemFile.extension in imageFileTypes
     reader.onload = ()=>{
+        if(isImage){
+            sendImageToFileServer(reader.result);
+            systemFile.content = ""
+        }
         systemFile.content = reader.result as string;
     }
+    if(isImage) {
+        reader.readAsArrayBuffer(file);
+    }
     reader.readAsText(file);
+}
+
+function sendImageToFileServer(data:any){
+    //todo
 }
 
 function promptFileCreation(impl:any,folder:Folder){
