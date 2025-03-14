@@ -32,7 +32,7 @@ class WebType extends ProjectType implements FileSystemInterface {
         updateFilesystemBar(this)
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
-        setupAssetDrop()
+        setupAssetDrop(this)
     }
 
     onLoad(){

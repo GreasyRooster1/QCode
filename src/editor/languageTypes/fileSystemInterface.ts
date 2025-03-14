@@ -63,7 +63,7 @@ function setupHeaderButtons(impl:any){
     })
 }
 
-function setupAssetDrop(){
+function setupAssetDrop(impl:any){
     let target = document.querySelector(".upload-drop")!
     target.addEventListener("drop", (event:any) => {
         console.log("File(s) dropped");
@@ -74,12 +74,12 @@ function setupAssetDrop(){
             [...event.dataTransfer!.items].forEach((item, i) => {
                 if (item.kind === "file") {
                     const file = item.getAsFile();
-                    handleDroppedAssetFile(file!);
+                    handleDroppedAssetFile(impl,file!);
                 }
             });
         } else {
             [...event.dataTransfer!.files].forEach((file, i) => {
-                handleDroppedAssetFile(file)
+                handleDroppedAssetFile(impl,file)
             });
         }
     });
@@ -89,8 +89,18 @@ function setupAssetDrop(){
     });
 }
 
-function handleDroppedAssetFile(file: File){
+function handleDroppedAssetFile(impl:any,file: File){
     console.log(file.name)
+    let name = cleanFileName(file.name);
+    let sec = name.split(".")
+    let systemFile =  new FilesystemFile(sec[0],sec[1]);
+    impl.filesystem.system["/"][name] =systemFile;
+    let reader = new FileReader()
+    reader.onload = ()=>{
+        systemFile.content = reader.result as string;
+    }
+    reader.readAsText(file);
+    updateFilesystemBar(impl);
 }
 
 function promptFileCreation(impl:any,folder:Folder){
