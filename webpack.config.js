@@ -8,7 +8,10 @@ module.exports = {
         adminLogin: "./src/adminLogin/index.js",
         editor: "./src/editor/index.js",
         exec: "./src/exec/index.js",
-        index: "./src/index/index.js",
+        index: [
+            "./src/index/index.js",
+            "./style/test/index.less",
+        ],
         lessons: "./src/lessons/index.js",
         login: "./src/login/index.js",
         shareBoard: "./src/shareBoard/index.js",
@@ -28,7 +31,7 @@ module.exports = {
                 test: /\.less$/i,
                 use: [
                     // compiles Less to CSS
-                    MiniCssExtractPlugin.loader,//"style-loader",
+                    "style-loader",
                     "css-loader",
                     "less-loader",
                 ],
@@ -43,7 +46,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-        new MiniCssExtractPlugin()
+        //new MiniCssExtractPlugin()
     ]
 
 };
