@@ -21,6 +21,8 @@
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "less": "^4.2.2",
+    "less-loader": "^12.2.0",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1"
   },
