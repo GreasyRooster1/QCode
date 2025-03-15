@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode:"development",
@@ -27,7 +28,7 @@ module.exports = {
                 test: /\.less$/i,
                 use: [
                     // compiles Less to CSS
-                    "style-loader",
+                    MiniCssExtractPlugin.loader,//"style-loader",
                     "css-loader",
                     "less-loader",
                 ],
@@ -35,11 +36,14 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js','.less'],
     },
     output: {
         filename: 'bundles/[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new MiniCssExtractPlugin()
+    ]
 
 };
