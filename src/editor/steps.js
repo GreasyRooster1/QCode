@@ -85,7 +85,8 @@ function setupScrollEvent(){
 }
 
 function setupClosePopupEvent(){
-    document.getElementById('step-popup').addEventListener("click", (e) => {
+
+    document.querySelector('.step-popup').addEventListener("click", (e) => {
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
         if (e.target !== modalImg) {

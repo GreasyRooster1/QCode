@@ -60,12 +60,12 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.step-popup.img{
-    margin-top: 5%;
-    max-width: 90%;
-    max-height: 80%;
+.step-popup img{
+    min-height: 80%;
     border-radius: 10px;
 }
 
