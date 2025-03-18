@@ -32,7 +32,6 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
         setupAssetDrop(this)
-        setupFileMovement(this);
         document.querySelector(".filesystem-root span")!.innerHTML = "Project";
     }
 

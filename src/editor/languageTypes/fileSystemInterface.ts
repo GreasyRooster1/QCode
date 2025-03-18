@@ -18,7 +18,6 @@ function updateFilesystemBar(impl:any){
     populateHTMLForFolder(impl,"root",folders["/"],document.querySelector(".file-list"));
     setupFileEventListeners(impl);
 
-
 }
 
 function setupFileEventListeners(impl:any){
@@ -43,6 +42,7 @@ function setupFileEventListeners(impl:any){
             })
         }
     }
+    setupFileMovement(impl);
 }
 
 function setupFileFolderButtons(impl:any){
@@ -245,6 +245,7 @@ function setupFilesystemDom(){
 function setupFileMovement(impl:any){
     document.querySelectorAll(".file").forEach((el)=>{
         el.setAttribute("draggable","true");
+        el.querySelector("img")!.setAttribute("draggable","false");
     })
     document.querySelector(".filesystem-root")!.addEventListener("click",(e)=>{
         let el =(e.target! as Element);
