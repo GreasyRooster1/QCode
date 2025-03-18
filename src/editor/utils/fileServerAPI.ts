@@ -6,7 +6,7 @@ function sendImageToFileServer(data:any,url:string){
 }
 
 function getURLForProjectFile(projectid:any,path:string){
-    let username = extractUsernameFromEmail(getStoredUser().email);
+    let username = getStoredUser().email.split("@")[0];
     return username+"."+projectid+"/"+path;
 }
 
