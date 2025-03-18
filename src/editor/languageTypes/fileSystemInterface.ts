@@ -243,8 +243,12 @@ function setupFilesystemDom(){
 }
 
 function setupFileMovement(impl:any){
-    document.querySelector(".filesystem-root")!.addEventListener("click",()=>{
+    document.querySelector(".filesystem-root")!.addEventListener("click",(e)=>{
+        let el =(e.target! as Element);
+        if(el.classList.contains("file")){
+            let id = el.getAttribute("data-id");
 
+        }
     });
 }
 
