@@ -202,7 +202,7 @@ function createFolderEl(impl: any, key: string, folder: Folder, path: string){
     wrapperEl.querySelector(".buttons .new-folder-button")?.addEventListener("click", (e) => {
         promptFolderCreation(impl,folder[key] as Folder);
     });
-    wrapperEl.querySelector(".folder")!.setAttribute("data-id",path);
+    wrapperEl.querySelector(".folder")!.setAttribute("data-path",path);
     return wrapperEl;
 }
 
@@ -251,8 +251,8 @@ function setupFileMovement(impl:any){
     document.querySelector(".filesystem-root")!.addEventListener("drop",(e)=>{
         let el =(e.target! as Element);
         if(el.classList.contains("folder-wrapper")){
-            let id = el.getAttribute("data-id");
-
+            let path = el.getAttribute("data-path");
+            impl.filesystem.addFile(,path);
         }
     });
 }
