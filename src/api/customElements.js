@@ -82,6 +82,13 @@ class StepElement extends HTMLElement {
             }
         }
 
+        this.image.addEventListener("click", () => {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = this.image.src; // Set clicked image in the modal
+        });
+
         this.appendChild(this.head);
         this.appendChild(this.content);
 
