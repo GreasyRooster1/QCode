@@ -15,7 +15,7 @@ function updateFilesystemBar(impl:any){
     let folders = impl.filesystem.getAll();
     document.querySelector(".file-list")!.innerHTML = "";
 
-    populateHTMLForFolder(impl,"root",folders["/"],document.querySelector(".file-list"));
+    populateHTMLForFolder(impl,"root",folders["/"],document.querySelector(".file-list"),"");
     setupFileEventListeners(impl);
 
 }
@@ -160,7 +160,7 @@ function saveCurrentFile(impl:any){
     file!.content = code;
 }
 
-function populateHTMLForFolder(impl:any,name:string,folder:Folder,upperHtml:any){
+function populateHTMLForFolder(impl:any,name:string,folder:Folder,upperHtml:any,path:string){
 
     const sortedKeys = Object.keys(folder).sort((a,b)=>{
         if(a.includes(".")&&!b.includes(".")){
@@ -182,9 +182,9 @@ function populateHTMLForFolder(impl:any,name:string,folder:Folder,upperHtml:any)
     for (let [key,f ] of Object.entries(sortedObj)){
         let frag = f as FilesystemFile|Folder
         if(isFolder(frag)){
-            let wrapperEl = createFolderEl(impl,key,folder)
+            let wrapperEl = createFolderEl(impl,key,folder,path+"/"+key)
             upperHtml.appendChild(wrapperEl);
-            populateHTMLForFolder(impl,key,frag as Folder,wrapperEl.querySelector(".folder"));
+            populateHTMLForFolder(impl,key,frag as Folder,wrapperEl.querySelector(".folder"),path+"/"+key);
         }else{
             let file = frag as FilesystemFile;
             if(file.isDeleted){
@@ -194,7 +194,7 @@ function populateHTMLForFolder(impl:any,name:string,folder:Folder,upperHtml:any)
         }
     }
 }
-function createFolderEl(impl:any,key:string,folder:Folder){
+function createFolderEl(impl: any, key: string, folder: Folder, path: string){
     let wrapperEl = getFolderDom(key,folder);
     wrapperEl.querySelector(".buttons .new-file-button")?.addEventListener("click", (e) => {
         promptFileCreation(impl,folder[key] as Folder);
@@ -202,7 +202,7 @@ function createFolderEl(impl:any,key:string,folder:Folder){
     wrapperEl.querySelector(".buttons .new-folder-button")?.addEventListener("click", (e) => {
         promptFolderCreation(impl,folder[key] as Folder);
     });
-    wrapperEl.querySelector(".folder").setAttribute("data-id","");
+    wrapperEl.querySelector(".folder")!.setAttribute("data-id",path);
     return wrapperEl;
 }
 
