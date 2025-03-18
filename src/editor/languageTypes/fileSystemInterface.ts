@@ -256,11 +256,15 @@ function setupFileMovement(impl:any){
     document.querySelectorAll(".folder-wrapper").forEach((el)=>{
         el.addEventListener("drop",(e)=> {
             let el = (e.target! as Element);
+            console.log(el.querySelector(".folder"))
             let path = el.querySelector(".folder")!.getAttribute("data-path");
             const data = (e as DragEvent).dataTransfer!.getData("text/plain");
             let file = impl.filesystem.getFileById(parseFloat(data));
             console.log(path, data, file)
             impl.filesystem.addFile(file, path);
+        });
+        el.addEventListener("dragover",(e)=> {
+            e.preventDefault();
         });
     });
 }
