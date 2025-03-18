@@ -10,7 +10,7 @@ module.exports = {
         exec: "./src/exec/index.js",
         index: [
             "./src/index/index.js",
-            "./style/test/index.less",
+            //"./style/test/index.less",
         ],
         lessons: "./src/lessons/index.js",
         login: "./src/login/index.js",
