@@ -84,4 +84,14 @@ function setupScrollEvent(){
 
 }
 
-export {setupScrollEvent,scrollToCurrentStep}
+function setupClosePopupEvent(){
+    document.getElementById('step-popup').addEventListener("click", (e) => {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        if (e.target !== modalImg) {
+            modal.style.display = "none";
+        }
+    });
+}
+
+export {setupScrollEvent,scrollToCurrentStep, setupClosePopupEvent}

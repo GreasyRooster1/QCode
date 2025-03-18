@@ -1,13 +1,12 @@
 :root{
-    --primary-color: #ffffff;
-    --subtle-primary-color: #ffffff;
-    --dark-primary-color: #000000;
-    --background-primary-color: #000000;
-    --text-color: #ffffff;
-    --inverse-text-color: #000000;
-    --light-primary-color: #ffffff;
-
-    --transparent-primary-color: #ffffff77;
+    --primary-color: #b90de6;
+    --subtle-primary-color: #500565;
+    --dark-primary-color: #100010;
+    --background-primary-color: #050005;
+    --text-color: #f3eaf4;
+    --inverse-text-color: #0a010c;
+    --light-primary-color: #de94f3;
+    --transparent-primary-color: #b90de677;
 
 
     --border: 2px solid var(--primary-color);
@@ -27,12 +26,12 @@
 
     --generic-nav-button-color: var(--background-primary-color);
 
-    --points-display-background: var(--background-primary-color);
+    --points-display-background: var(--primary-color);
     --points-display-text: var(--text-color);
 
     --navbar-height:40px;
 }
-.navbar{
+navbar{
     border-bottom: var(--border);
 }
 .home-link{
@@ -41,9 +40,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.points-display{
-    border:var(--border);
 }
 
 /* Global (global.css) */
@@ -146,9 +142,7 @@
 
     --bar-seperator-height: 2px;
 }
-.project-display.bulk{
-    border:var(--border);
-}
+
 
 /* Login (login/login.css) */
 :root{
@@ -175,6 +169,7 @@
     --ui-tray-background:var(--background-primary-color);
     --ui-tray-border: var(--primary-color);
     --ui-tray-icons: var(--primary-color);
+
     --canvas-background-color: var(--background-primary-color);
     --grid-color: var(--subtle-primary-color);
     --canvas-text-color: var(--text-color);
@@ -209,7 +204,7 @@
     --badge-hover-color: var(--primary-color);
     --badge-color: var(--dark-primary-color);
 
-    --new-button-background: var(--background-primary-color);
+    --new-button-background: var(--primary-color);
     --new-button-text-color: var(--text-color);
 
     --featured-project-thumb-background: var(--dark-primary-color);
@@ -226,7 +221,7 @@
     --status-display-text: var(--text-color);
     --status-display-external: #ea473a;
     --status-display-not-started:var(--subtle-primary-color);
-    --status-display-started: var(--background-primary-color);
+    --status-display-started: var(--primary-color);
 
     --footer-background: var(--dark-primary-color);
     --footer-text-color: var(--primary-color);
@@ -245,9 +240,6 @@ body{
     border:var(--border);
     border-radius: 10px;
 }
-.new-project-button{
-    border:var(--border);
-}
 .lesson-link-wrapper{
     border:var(--border);
     border-radius: 10px;
@@ -260,22 +252,13 @@ body{
     -webkit-text-stroke: 2px var(--primary-color);
     color: var(--background-primary-color);
 }
-.featured-project-wrapper{
-    border:var(--border);
-    border-radius:10px;
-    overflow:clip;
-    height: calc(60vh);
-}
-.featured-project-wrapper .featured-project-bar{
-    height:0;
-}
 
 /* Exec (exec/style.css) */
 /* Override elements directly */
 
 /* Editor Lang (editor/lang.css) */
 :root{
-    --code-editor-theme:"boysAndGirls"
+    --code-editor-theme:"dracula"
 }
 
 /* Editor Main (editor/editor.css) */
