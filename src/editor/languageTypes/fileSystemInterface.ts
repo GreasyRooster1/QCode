@@ -252,7 +252,7 @@ function setupFileMovement(impl:any){
             (e as DragEvent).dataTransfer!.setData("text/plain",target.getAttribute("data-id")!);
         });
     })
-    document.querySelectorAll(".folder-wrapper")!.forEach((el)=>{
+    document.querySelectorAll(".folder-wrapper").forEach((el)=>{
         el.addEventListener("drop",(e)=> {
             let el = (e.target! as Element);
             let path = el.querySelector(".folder")!.getAttribute("data-path");
