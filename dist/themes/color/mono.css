@@ -6,7 +6,9 @@
     --text-color: #ffffff;
     --inverse-text-color: #000000;
     --light-primary-color: #ffffff;
+
     --transparent-primary-color: #ffffff77;
+
 
     --border: 2px solid var(--primary-color);
     --border-subtle: 2px solid var(--subtle-primary-color);

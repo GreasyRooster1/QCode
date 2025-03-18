@@ -1,7 +1,7 @@
 import {loadProjectFromUrlData} from "./load";
 import {setupAutoSave} from "./save";
 import {setupShareEvents} from "./share";
-import {setupScrollEvent} from "./steps";
+import {setupClosePopupEvent, setupScrollEvent} from "./steps";
 import {initNavbar} from "../api/nav/navbar";
 import {StepElement} from "../api/customElements";
 import {ConsoleLogElement} from "../api/customElements";
@@ -20,6 +20,7 @@ function init(){
     setupAutoSave()
     setupShareEvents()
     setupScrollEvent()
+    setupClosePopupEvent()
 }
 
 window.onload = init;

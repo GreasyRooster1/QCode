@@ -8,6 +8,7 @@
     --light-primary-color: #ccffc7;
     --transparent-primary-color: #13f40077;
 
+
     --border: 2px solid var(--primary-color);
     --border-subtle: 2px solid var(--subtle-primary-color);
 
@@ -171,6 +172,9 @@
     --ui-tray-background:var(--background-primary-color);
     --ui-tray-border: var(--primary-color);
     --ui-tray-icons: var(--primary-color);
+    --ui-tray-background:#fff;
+    --ui-tray-border: #9f9f9f;
+    --ui-tray-icons: #474747;
     --canvas-background-color: var(--background-primary-color);
     --grid-color: var(--subtle-primary-color);
     --canvas-text-color: var(--text-color);
