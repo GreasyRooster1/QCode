@@ -23,6 +23,7 @@ function updateFilesystemBar(impl:any){
 function setupFileEventListeners(impl:any){
     let list = document.querySelectorAll(".file-list, .folder")
     console.log(list)
+    setupFileMovement(impl);
     // @ts-ignore
     for (let folder of list) {
         let children = folder.children;
@@ -42,7 +43,7 @@ function setupFileEventListeners(impl:any){
             })
         }
     }
-    setupFileMovement(impl);
+
 }
 
 function setupFileFolderButtons(impl:any){
