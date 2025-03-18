@@ -247,7 +247,7 @@ function setupFileMovement(impl:any){
     document.querySelectorAll(".file").forEach((el)=>{
         el.setAttribute("draggable","true");
         el.querySelector("img")!.setAttribute("draggable","false");
-        el.addEventListener("click",(e)=>{
+        el.addEventListener("dragstart",(e)=>{
             let target =(e.target! as Element);
             (e as DragEvent).dataTransfer!.setData("text/plain",target.getAttribute("data-id")!);
         });
@@ -255,7 +255,7 @@ function setupFileMovement(impl:any){
     document.querySelector(".filesystem-root")!.addEventListener("drop",(e)=>{
         let el =(e.target! as Element);
         if(el.classList.contains("folder-wrapper")){
-            let path = el.getAttribute("data-path");
+            let path = el.querySelector(".folder")!.getAttribute("data-path");
             const data = (e as DragEvent).dataTransfer!.getData("text/plain");
             let file = impl.filesystem.getFileById(parseFloat(data));
             impl.filesystem.addFile(file,path);
