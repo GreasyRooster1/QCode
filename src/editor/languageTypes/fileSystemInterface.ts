@@ -243,6 +243,9 @@ function setupFilesystemDom(){
 }
 
 function setupFileMovement(impl:any){
+    document.querySelectorAll(".file").forEach((el)=>{
+        el.setAttribute("draggable","true");
+    })
     document.querySelector(".filesystem-root")!.addEventListener("click",(e)=>{
         let el =(e.target! as Element);
         if(el.classList.contains("file")){
