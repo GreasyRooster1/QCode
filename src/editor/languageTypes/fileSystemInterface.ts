@@ -202,6 +202,7 @@ function createFolderEl(impl:any,key:string,folder:Folder){
     wrapperEl.querySelector(".buttons .new-folder-button")?.addEventListener("click", (e) => {
         promptFolderCreation(impl,folder[key] as Folder);
     });
+    wrapperEl.querySelector(".folder").setAttribute("data-id","");
     return wrapperEl;
 }
 
@@ -247,9 +248,9 @@ function setupFileMovement(impl:any){
         el.setAttribute("draggable","true");
         el.querySelector("img")!.setAttribute("draggable","false");
     })
-    document.querySelector(".filesystem-root")!.addEventListener("click",(e)=>{
+    document.querySelector(".filesystem-root")!.addEventListener("drop",(e)=>{
         let el =(e.target! as Element);
-        if(el.classList.contains("file")){
+        if(el.classList.contains("folder-wrapper")){
             let id = el.getAttribute("data-id");
 
         }
