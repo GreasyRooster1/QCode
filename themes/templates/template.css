@@ -257,6 +257,9 @@
 
     --chapter-end-home-link-color: #2180d1;
     --scratch-steps-background: #dddddd;
+
+    --code-editor-theme:"dracula";
+
 }
 
 /* Editor Lesson Creator (editor/lessonCreator.css) */

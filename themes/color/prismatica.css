@@ -1,4 +1,6 @@
 :root{
+    --prismatic-gradient: linear-gradient(302deg, rgba(255,237,253,1) 0%, rgba(255,240,236,1) 20%, rgba(255,255,238,1) 39%, rgba(242,255,243,1) 59%, rgba(245,246,248,1) 79%, rgba(255,229,255,1) 100%);
+
     --primary-color: #ffffff;
     --subtle-primary-color: #ffffff;
     --dark-primary-color: #000000;
@@ -6,11 +8,9 @@
     --text-color: #ffffff;
     --inverse-text-color: #000000;
     --light-primary-color: #ffffff;
-
     --transparent-primary-color: #ffffff77;
 
-
-    --border: 2px solid var(--primary-color);
+    --border: 2px solid var(--prismatic-gradient);
     --border-subtle: 2px solid var(--subtle-primary-color);
 
     color:var(--text-color);
