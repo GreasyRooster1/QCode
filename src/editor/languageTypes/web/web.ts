@@ -9,7 +9,7 @@ import {writeToEditor} from "../../utils/loadUtils";
 import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
 import {
     FileSystemInterface, openFile, saveCurrentFile, setupAssetDrop,
-    setupFileFolderButtons, setupFilesystemDom,
+    setupFileFolderButtons, setupFileMovement, setupFilesystemDom,
     setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
@@ -33,6 +33,7 @@ class WebType extends ProjectType implements FileSystemInterface {
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
         setupAssetDrop(this)
+        setupFileMovement(this);
     }
 
     onLoad(){

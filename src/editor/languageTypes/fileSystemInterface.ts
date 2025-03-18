@@ -242,4 +242,10 @@ function setupFilesystemDom(){
         `
 }
 
-export{FileSystemInterface,setupFilesystemDom,createFolderEl,populateHTMLForFolder,saveCurrentFile,openFile,promptFolderCreation,promptFileCreation,handleDroppedAssetFile,setupAssetDrop,setupHeaderButtons,setupFileFolderButtons,setupFileEventListeners,updateFilesystemBar}
+function setupFileMovement(impl:any){
+    document.querySelector(".filesystem-root")!.addEventListener("click",()=>{
+
+    });
+}
+
+export{FileSystemInterface,setupFileMovement,setupFilesystemDom,createFolderEl,populateHTMLForFolder,saveCurrentFile,openFile,promptFolderCreation,promptFileCreation,handleDroppedAssetFile,setupAssetDrop,setupHeaderButtons,setupFileFolderButtons,setupFileEventListeners,updateFilesystemBar}

@@ -5,7 +5,7 @@ import {defaultCodeArduino, defaultFilesPython, defaultFilesWeb} from "../../../
 import {CloudAgentType} from "../cloudAgentType";
 import {
     FileSystemInterface, openFile, saveCurrentFile, setupAssetDrop,
-    setupFileFolderButtons,
+    setupFileFolderButtons, setupFileMovement,
     setupFilesystemDom, setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
@@ -32,6 +32,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
         setupAssetDrop(this)
+        setupFileMovement(this);
         document.querySelector(".filesystem-root span")!.innerHTML = "Project";
     }
 
