@@ -8,10 +8,7 @@ module.exports = {
         adminLogin: "./src/adminLogin/index.js",
         editor: "./src/editor/index.js",
         exec: "./src/exec/index.js",
-        index: [
-            "./src/index/index.js",
-            //"./style/test/index.less",
-        ],
+        index: "./src/index/index.js",
         lessons: "./src/lessons/index.js",
         login: "./src/login/index.js",
         shareBoard: "./src/shareBoard/index.js",
