@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    mode:"development",
+    mode:"production",
     entry:{
         adminConsole: "./src/adminConsole/index.js",
         adminLogin: "./src/adminLogin/index.js",
