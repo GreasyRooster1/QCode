@@ -20,6 +20,11 @@ jobs:
         with:
           ref: production
 
+      - name: Set Git User Identity
+        run: |
+          git config --local user.email greasyRooster1@gmail.com
+          git config --local user.name GreasyRooster1
+
       - name: Install Dependencies
         run: npm install
 
