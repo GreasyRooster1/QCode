@@ -1,26 +1,25 @@
 name: gh-pages
 
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main  # Set a branch name to trigger deployment
+      - production  # Set a branch name to trigger deployment
   pull_request:
+    branches:
+      - production
 
 jobs:
-  deploy:
-    runs-on: ubuntu-22.04
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-    steps:
+  deploy-webpack:
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        # If you're changing the branch from main,
-        # also change the `main` in `refs/heads/main`
-        # below accordingly.
-        if: github.ref == 'refs/heads/production'
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@production
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build for production
+        run: npm run deploy
