@@ -20,8 +20,8 @@ jobs:
         with:
           ref: production
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build for production
-        run: npm run deploy
+#      - name: Install Dependencies
+#        run: npm install
+#
+#      - name: Build for production
+#        run: npm run deploy
