@@ -52,6 +52,8 @@
 
 .output-panes-wrapper{
     height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
 }
 
 .canvas-output-iframe{
@@ -62,18 +64,19 @@
 .console-output-pane{
     display: flex;
     flex-direction: column;
+    flex: 1;
 }
 
 .console-log-area{
     overflow-y: auto;
     display: flex;
     flex-direction: column-reverse;
+    flex:1;
 }
 
 .console-log{
     min-height: 75px;
     margin-top: 10px;
-    font-family:monospace;
 }
 
 .console-log > .log-head{
