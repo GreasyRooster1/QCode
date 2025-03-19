@@ -8,8 +8,8 @@
 }
 
 .featured-project-thumb{
-    height:60vh;
-    width:60vh;
+    height: calc(60vh + 1px);
+    width: calc(60vh + 1px);
     margin-top: -100%;
     background: var(--featured-project-thumb-background);
     display: flex;

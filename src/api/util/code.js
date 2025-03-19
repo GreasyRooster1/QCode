@@ -15,7 +15,10 @@ const defaultFilesWeb = {
         "  </body>\n" +
         "</html>",
 }
+const defaultFilesPython = {
+    "main➽py":""
+}
 
 const stepTypes = ["info","code","challenge","check","chapters","next","build"]
 
-export {defaultCodeJs, defaultCodeArduino, stepTypes,defaultFilesWeb}
+export {defaultCodeJs, defaultCodeArduino, stepTypes,defaultFilesWeb,defaultFilesPython}

@@ -13,7 +13,7 @@ class Filesystem{
     defaultFile:FilesystemFile;
     onFileSystemUpdate:Function;
 
-    constructor() {
+    constructor(defaultFileName:string) {
         this.system = {
             "/": {
                 "index.html": new FilesystemFile("index", "html"),
@@ -21,7 +21,7 @@ class Filesystem{
                 "index.css": new FilesystemFile("index", "css"),
             }
         }
-        this.defaultFile = <FilesystemFile>this.system["/"]["index.html"];
+        this.defaultFile = <FilesystemFile>this.system["/"][defaultFileName];
         this.onFileSystemUpdate = ()=>{};
     }
 
@@ -212,7 +212,7 @@ class FilesystemFile {
     }
 }
 
-function createFolderEl(key:string,folder:Folder){
+function getFolderDom(key:string, folder:Folder){
     let wrapperEl = document.createElement("div");
     wrapperEl.classList.add("folder-wrapper");
     wrapperEl.innerHTML = `
@@ -245,4 +245,4 @@ function hasFileIcon(extension:string):boolean{
 
 }
 
-export {Filesystem,isFolder,FilesystemFile,Folder,System,createFolderEl,cleanFileName}
+export {Filesystem,isFolder,FilesystemFile,Folder,System,getFolderDom,cleanFileName}

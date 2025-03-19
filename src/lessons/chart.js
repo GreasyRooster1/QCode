@@ -33,6 +33,7 @@ window.setup = function (){
 
     loadLessons((r)=>{
         rootLesson = r;
+        console.log(lessonsIndex[rootLesson]);
         solvePosition(rootLesson);
         checkLocks()
         loadLessonsMetadata()

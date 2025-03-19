@@ -1,77 +1,61 @@
-const serverAddress = "http://localhost:8181";
-const openProtocol = "qcodecloudagent://";
-const expectedVersion = "1.0";
+import {makeRequest, ServerType, startServer} from "../../utils/cloudAgentAPI";
+
+const arduinoVersion ="1.0";
 
 class Sketch{
     readonly name: string;
-    constructor(name:string) {
+    readonly port :string;
+    constructor(name:string,port:string) {
         this.name = name;
-        this.makeRequest("create","").catch(e=>{});
+        this.port = port;
+        this.doRequest("create","").catch(e=>{});
     }
 
-    private makeRequest(type:string,body:string):Promise<object> {
-        return new Promise((resolve, reject) => {
-            fetch(serverAddress + "/" + type + "/" + this.name, {
-                method: "POST",
-                body: body,
-            }).then(async (response: Response) => {
-                console.log(response);
-                if (response.ok) {
-                    let json = await response.json()
-                    if(json.success) {
-                        resolve(json);
-                    }else{
-                        console.log(json);
-                        reject(json)
-                    }
-                } else {
-                    reject("failed")
-                }
-            }).catch((e) => {
-                reject("failed")
-            })
-        });
+    private doRequest(type:string,body:string):Promise<object> {
+        return makeRequest(type+"/"+this.name,body,this.port,false) as Promise<object>;
     }
 
     writeCode(code:string):Promise<object> {
-        return this.makeRequest("write", code)
+        return this.doRequest("write", code)
     }
 
     compile():Promise<object> {
-        return this.makeRequest("compile", "")
+        return this.doRequest("compile", "")
     }
 
     upload():Promise<object> {
-        return this.makeRequest("upload", "")
+        return this.doRequest("upload", "")
     }
 }
 
 
+function checkSketchServer(sketch:Sketch):Promise<Sketch>{
+    return new Promise((resolve, reject) => {
+        makeRequest("version","",sketch.port,true).then((data)=>{
+            let ver = data as string;
+            if(ver.startsWith(arduinoVersion)){
+                resolve(sketch);
+            }else{
+                console.log("Incorrect version: "+ver);
+                reject(ver);
+            }
+        })
+    });
+}
+
 function startSketchServer(name:string):Promise<Sketch>{
     return new Promise((resolve, reject) => {
-        try {
-            fetch(serverAddress + "/version", {
-                method: "GET",
-            }).then(async r => {
-                if (!r.ok) {
-                    reject("failed to connect")
-                }
-                let text = await r.text()
-                console.log("text:", text)
-                if (text.startsWith(expectedVersion)) {
-                    resolve(new Sketch(name));
-                } else {
-                    reject("incorrect version")
-                }
-
-            }).catch(err => {
-                reject("failed to connect")
-            })
-        }catch (err){
-            reject("failed to connect")
-        }
+        startServer(ServerType.Arduino).then((port: string) => {
+            let sketch = new Sketch(name, port);
+            checkSketchServer(sketch).then((s) => {
+                console.log(s);
+                resolve(s);
+            }).catch(e => {
+                reject(e);
+            });
+        })
     });
 }
 
 
-export {serverAddress,Sketch,startSketchServer,openProtocol}
+export {Sketch,startSketchServer}
