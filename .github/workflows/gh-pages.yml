@@ -32,5 +32,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/GreasyRooster1/QCode.git
-          npx gh-pages -d dist --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/GreasyRooster1/QCode.git --cname code.esporterz.com
+          git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/GreasyRooster1/QCode.git
+          npx gh-pages -d dist --repo https://x-access-token:${{ secrets.TOKEN }}@github.com/GreasyRooster1/QCode.git --cname code.esporterz.com
