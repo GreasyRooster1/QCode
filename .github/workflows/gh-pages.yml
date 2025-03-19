@@ -16,7 +16,9 @@ jobs:
 
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@production
+        uses: actions/checkout@v4
+        with:
+          ref: production
 
       - name: Install Dependencies
         run: npm install
