@@ -29,4 +29,7 @@ jobs:
         run: npm install
 
       - name: Build for production
-        run: npx gh-pages -d dist --cname code.esporterz.com
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx gh-pages -d dist --cname code.esporterz.com
