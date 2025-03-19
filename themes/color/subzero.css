@@ -7,9 +7,6 @@
     --inverse-text-color: #001315;
     --light-primary-color: #0fbfcf;
 
-    --transparent-primary-color: #1ad1e377;
-
-
 
     --border: 2px solid var(--primary-color);
     --border-subtle: 2px solid var(--subtle-primary-color);
@@ -168,9 +165,6 @@
 
 /* Lessons (lessons/index.css) */
 :root {
-    --ui-tray-background:var(--background-primary-color);
-    --ui-tray-border: var(--primary-color);
-    --ui-tray-icons: var(--primary-color);
     --ui-tray-background:#fff;
     --ui-tray-border: #9f9f9f;
     --ui-tray-icons: #474747;

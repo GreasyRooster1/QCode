@@ -47,26 +47,6 @@
 
 .step-image{
     flex:1;
-    cursor: pointer;
-}
-
-.step-popup{
-    display:none;
-    position: fixed;
-    z-index:10;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
-
-.step-popup img{
-    min-height: 80%;
-    border-radius: 10px;
 }
 
 .step.info > .step-head{
