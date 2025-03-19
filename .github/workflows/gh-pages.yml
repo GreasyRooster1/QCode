@@ -30,6 +30,6 @@ jobs:
 
       - name: Build for production
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
-          npx gh-pages -d dist --cname code.esporterz.com
+          npx gh-pages -d dist --cname code.esporterz.com --repo https://github.com/GreasyRooster1/QCode.git
