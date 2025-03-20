@@ -1,21 +1,38 @@
+@property --prismatic-hue {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
 :root{
     --prismatic-gradient: linear-gradient(50deg, rgba(255,235,235,1) 0%, rgba(255,249,232,1) 18%, rgba(250,255,236,1) 41%, rgba(239,251,243,1) 60%, rgba(240,241,246,1) 78%, rgba(255,223,250,1) 100%);
 
-    --primary-color: var(--prismatic-gradient);
+    --primary-color:hsl(var(--prismatic-hue), 100%, 100%);
     --subtle-primary-color: var(--prismatic-gradient);
     --dark-primary-color: #000000;
     --background-primary-color: #000000;
-    --text-color: #ffe5ec;
+    --text-color: #ffffff;
     --inverse-text-color: #150009;
     --light-primary-color: #f8838b;
 
     --transparent-primary-color: #cf0f1d77;
 
 
-    --border: 2px solid var(--primary-color);
-    --border-subtle: 2px solid var(--subtle-primary-color);
+    --border-width:2px;
+    --border: var(--border-width) solid var(--primary-color);
+    --border-subtle: var(--border-width) solid var(--subtle-primary-color);
 
     color:var(--text-color);
+}
+
+@keyframes prismatic {
+    to {
+        --prismatic-hue: 360;
+    }
+}
+html{
+    animation: 2s prismatic infinite;
+    background:var(--primary-color);
 }
 
 /* Navbar (navbar.css) */
@@ -35,10 +52,9 @@
     --navbar-height:40px;
 }
 .navbar{
-    border-image: var(--prismatic-gradient) 1;
-    border-width: 4px;
-    border-bottom-style: solid;
+    border-bottom:var(--border);
 
+    background:var(--prismatic-gradient);
 }
 .home-link{
     border:var(--border);
