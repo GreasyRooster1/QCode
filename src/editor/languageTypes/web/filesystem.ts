@@ -41,10 +41,11 @@ class Filesystem{
     }
 
     getFolder(path:string):Folder{
+        debugger
         let sections = path.split("/");
-        sections.pop();
+        //sections.pop();
         let parentFolder = this.system["/"];
-        for(let folder in sections){
+        for(let folder of sections){
             let next = parentFolder[folder]
             if(isFolder(next)){
                 parentFolder = <Folder>next;
