@@ -5,13 +5,23 @@
 }
 
 :root{
-    --prismatic-gradient: linear-gradient(50deg, rgba(255,235,235,1) 0%, rgba(255,249,232,1) 18%, rgba(250,255,236,1) 41%, rgba(239,251,243,1) 60%, rgba(240,241,246,1) 78%, rgba(255,223,250,1) 100%);
+    --gradient-lightness:6%;
+    --prismatic-gradient: linear-gradient(50deg,
+    hsl(calc(var(--prismatic-hue) + 0) 100% var(--gradient-lightness)) 0%,
+    hsl(calc(var(--prismatic-hue) + 50) 100% var(--gradient-lightness)) 16%,
+    hsl(calc(var(--prismatic-hue) + 100) 100% var(--gradient-lightness)) 32%,
+    hsl(calc(var(--prismatic-hue) + 130) 100% var(--gradient-lightness)) 48%,
+    hsl(calc(var(--prismatic-hue) + 200) 100% var(--gradient-lightness)) 64%,
+    hsl(calc(var(--prismatic-hue) + 330) 100% var(--gradient-lightness)) 88%);
 
     --primary-color:hsl(var(--prismatic-hue) 100% 90%);
+    --primary-color-mid:hsl(calc(var(--prismatic-hue) + 50) 100% 90%);
+    --primary-color-end:hsl(calc(var(--prismatic-hue) + 100) 100% 90%);
+
     --subtle-primary-color: hsl(var(--prismatic-hue) 100% 80%);
-    --dark-primary-color: hsl(var(--prismatic-hue) 100% 10%);
+    --dark-primary-color: hsl(var(--prismatic-hue) 100% 5%);
     --background-primary-color: hsl(var(--prismatic-hue) 100% 3%);
-    --text-color: hsl(var(--prismatic-hue) 100% 90%);
+    --text-color: hsl(var(--prismatic-hue) 100% 95%);
     --inverse-text-color: hsl(var(--prismatic-hue) 100% 6%);
     --light-primary-color: hsl(var(--prismatic-hue) 100% 90%);
 
@@ -31,7 +41,7 @@
     }
 }
 *{
-    animation: prismatic 20s infinite;
+    animation: prismatic 50s infinite;
 }
 
 /* Navbar (navbar.css) */
@@ -46,7 +56,7 @@
     --generic-nav-button-color: var(--background-primary-color);
 
     --points-display-background: var(--primary-color);
-    --points-display-text: var(--text-color);
+    --points-display-text: var(--inverse-text-color);
 
     --navbar-height:40px;
 }
@@ -225,7 +235,7 @@
     --badge-color: var(--dark-primary-color);
 
     --new-button-background: var(--primary-color);
-    --new-button-text-color: var(--text-color);
+    --new-button-text-color: var(--inverse-text-color);
 
     --featured-project-thumb-background: var(--dark-primary-color);
 
@@ -238,7 +248,7 @@
     --points-progress-bar-background: var(--subtle-primary-color);
     --points-progress-bar-fill: var(--primary-color);
 
-    --status-display-text: var(--text-color);
+    --status-display-text: var(--inverse-text-color);
     --status-display-external: #ea473a;
     --status-display-not-started:var(--subtle-primary-color);
     --status-display-started: var(--primary-color);
