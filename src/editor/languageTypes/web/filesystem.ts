@@ -99,16 +99,7 @@ class Filesystem{
 
     deleteFile(folder:Folder,id:number){
         // @ts-ignore
-        for (let [key,frag] of Object.entries(folder)){
-            if(isFolder(frag)){
-                this.deleteFile(frag as Folder,id);
-            }
-            if(frag.id==id){
-                frag.isDeleted = true;
-                this.onFileSystemUpdate(this.projectImpl);
-                return;
-            }
-        }
+        this.getFileById(id).delete();
     }
 
     getAll(){
@@ -178,6 +169,10 @@ class FilesystemFile {
         this.content = "";
         this.id = Math.random()*999999;
         this.isDeleted = false;
+    }
+
+    delete(){
+        this.isDeleted = true;
     }
 
     appendToHtml(upperHtml:any){
