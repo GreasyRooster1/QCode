@@ -105,6 +105,7 @@ class Filesystem{
             }
             if(frag.id==id){
                 frag.isDeleted = true;
+                this.onFileSystemUpdate(this.projectImpl);
                 return;
             }
         }
