@@ -53,7 +53,7 @@ class Filesystem{
     }
 
     addFile(file:FilesystemFile, location:string){
-        this.getFolder(location)[file.name] = file;
+        this.getFolder(location)[file.getFullName()] = file;
         this.onFileSystemUpdate();
     }
 
@@ -188,6 +188,10 @@ class FilesystemFile {
             name.replace(char,"");
         }
         return name;
+    }
+
+    getFullName(){
+        return this.name+"."+this.extension;
     }
 
     getLanguage(){
