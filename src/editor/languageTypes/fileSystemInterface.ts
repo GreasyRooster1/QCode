@@ -260,7 +260,7 @@ function setupFileMovement(impl:any){
             let path = el.querySelector(".folder")!.getAttribute("data-path")!;
             const data = (e as DragEvent).dataTransfer!.getData("text/plain");
             let file = impl.filesystem.getFileById(parseFloat(data));
-            console.log(path, data, file)
+            console.log(path, data, file,impl.filesystem.getFolder(path.substring(1,path.length)))
             impl.filesystem.addFile(file, path.substring(1,path.length));
         });
         el.addEventListener("dragover",(e)=> {
