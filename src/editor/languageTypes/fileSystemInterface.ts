@@ -268,4 +268,20 @@ function setupFileMovement(impl:any){
     });
 }
 
-export{FileSystemInterface,setupFileMovement,setupFilesystemDom,createFolderEl,populateHTMLForFolder,saveCurrentFile,openFile,promptFolderCreation,promptFileCreation,handleDroppedAssetFile,setupAssetDrop,setupHeaderButtons,setupFileFolderButtons,setupFileEventListeners,updateFilesystemBar}
+export {
+    FileSystemInterface,
+    setupFileMovement,
+    setupFilesystemDom,
+    createFolderEl,
+    populateHTMLForFolder,
+    saveCurrentFile,
+    openFile,
+    promptFolderCreation,
+    promptFileCreation,
+    handleDroppedAssetFile,
+    setupAssetDrop,
+    setupHeaderButtons,
+    setupFileFolderButtons,
+    setupFileEventListeners,
+    updateFilesystemBar
+}

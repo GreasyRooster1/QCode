@@ -23,7 +23,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     constructor() {
         super(false);
         this.filesystem = new Filesystem("index.html");
-        this.filesystem.onFileSystemUpdate = updateFilesystemBar
+        this.filesystem.onFileSystemUpdate = this.filesystemCallback;
         this.currentFileId = this.filesystem.defaultFile.id
     }
 
@@ -34,6 +34,10 @@ class WebType extends ProjectType implements FileSystemInterface {
         setupHeaderButtons(this)
         setupAssetDrop(this)
         setupFileMovement(this);
+    }
+
+    filesystemCallback(){
+        updateFilesystemBar(this)
     }
 
     onLoad(){
