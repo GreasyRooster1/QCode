@@ -12,6 +12,7 @@ class Filesystem{
     private system:System;
     defaultFile:FilesystemFile;
     onFileSystemUpdate:Function;
+    projectImpl:any;
 
     constructor(defaultFileName:string) {
         this.system = {
@@ -54,7 +55,7 @@ class Filesystem{
 
     addFile(file:FilesystemFile, location:string){
         this.getFolder(location)[file.getFullName()] = file;
-        this.onFileSystemUpdate();
+        this.onFileSystemUpdate(this.projectImpl);
     }
 
     getFileById(id:number):FilesystemFile|null{
