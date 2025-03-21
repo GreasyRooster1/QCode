@@ -62,6 +62,9 @@ class Filesystem{
     getFileById(id:number):FilesystemFile|null{
         return this.findFile(this.system["/"],id);
     }
+    getFilePathById(id:number):string|null{
+        return this.findFilePath(this.system["/"],id,"/");
+    }
     findFile(folder:Folder,id:number):FilesystemFile|null{
         // @ts-ignore
         for (let [key,frag] of Object.entries(folder)){
@@ -73,6 +76,22 @@ class Filesystem{
             }
             if(frag.id==id){
                 return frag as FilesystemFile;
+            }
+        }
+        return null;
+
+    }
+    findFilePath(folder:Folder,id:number,path:string):string|null {
+        // @ts-ignore
+        for (let [key, frag] of Object.entries(folder)) {
+            if (isFolder(frag)) {
+                let out = this.findFilePath(frag as Folder, id,path+"/"+key)
+                if (out !== null) {
+                    return out;
+                }
+            }
+            if (frag.id == id) {
+                return path+"/"+key;
             }
         }
         return null;
