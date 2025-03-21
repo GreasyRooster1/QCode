@@ -12,6 +12,7 @@ class Filesystem{
     private system:System;
     defaultFile:FilesystemFile;
     onFileSystemUpdate:Function;
+    projectImpl:any;
 
     constructor(defaultFileName:string) {
         this.system = {
@@ -40,10 +41,11 @@ class Filesystem{
     }
 
     getFolder(path:string):Folder{
+        debugger
         let sections = path.split("/");
-        sections.pop();
+        //sections.pop();
         let parentFolder = this.system["/"];
-        for(let folder in sections){
+        for(let folder of sections){
             let next = parentFolder[folder]
             if(isFolder(next)){
                 parentFolder = <Folder>next;
@@ -53,12 +55,15 @@ class Filesystem{
     }
 
     addFile(file:FilesystemFile, location:string){
-        this.getFolder(location)[file.name] = file;
-        this.onFileSystemUpdate();
+        this.getFolder(location)[file.getFullName()] = file;
+        this.onFileSystemUpdate(this.projectImpl);
     }
 
     getFileById(id:number):FilesystemFile|null{
         return this.findFile(this.system["/"],id);
+    }
+    getFilePathById(id:number):string|null{
+        return this.findFilePath(this.system["/"],id,"/");
     }
     findFile(folder:Folder,id:number):FilesystemFile|null{
         // @ts-ignore
@@ -74,19 +79,27 @@ class Filesystem{
             }
         }
         return null;
-    }
 
-    deleteFile(folder:Folder,id:number){
+    }
+    findFilePath(folder:Folder,id:number,path:string):string|null {
         // @ts-ignore
-        for (let [key,frag] of Object.entries(folder)){
-            if(isFolder(frag)){
-                this.deleteFile(frag as Folder,id);
+        for (let [key, frag] of Object.entries(folder)) {
+            if (isFolder(frag)) {
+                let out = this.findFilePath(frag as Folder, id,path+"/"+key)
+                if (out !== null) {
+                    return out;
+                }
             }
-            if(frag.id==id){
-                frag.isDeleted = true;
-                return;
+            if (frag.id == id) {
+                return path+"/"+key;
             }
         }
+        return null;
+    }
+
+    deleteFile(id:number){
+        // @ts-ignore
+        this.getFileById(id).delete();
     }
 
     getAll(){
@@ -158,6 +171,10 @@ class FilesystemFile {
         this.isDeleted = false;
     }
 
+    delete(){
+        this.isDeleted = true;
+    }
+
     appendToHtml(upperHtml:any){
         let el = document.createElement("div");
         el.innerHTML = `
@@ -188,6 +205,10 @@ class FilesystemFile {
             name.replace(char,"");
         }
         return name;
+    }
+
+    getFullName(){
+        return this.name+"."+this.extension;
     }
 
     getLanguage(){

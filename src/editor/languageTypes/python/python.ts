@@ -23,6 +23,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         super();
         this.filesystem = new Filesystem("index.html");
         this.filesystem.onFileSystemUpdate = updateFilesystemBar;
+        this.filesystem.projectImpl = this;
         this.currentFileId = this.filesystem.defaultFile.id
     }
 

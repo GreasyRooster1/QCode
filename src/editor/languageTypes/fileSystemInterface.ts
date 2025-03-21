@@ -12,6 +12,7 @@ interface FileSystemInterface {
 }
 
 function updateFilesystemBar(impl:any){
+    console.trace(impl,impl.filesystem)
     let folders = impl.filesystem.getAll();
     document.querySelector(".file-list")!.innerHTML = "";
 
@@ -61,7 +62,7 @@ function setupHeaderButtons(impl:any){
         if (!isSure) {
             return
         }
-        impl.filesystem.deleteFile(impl.filesystem.getAll()["/"],impl.currentFileId);
+        impl.filesystem.deleteFile(impl.currentFileId);
         updateFilesystemBar(impl)
     })
 }
@@ -255,12 +256,17 @@ function setupFileMovement(impl:any){
     })
     document.querySelectorAll(".folder-wrapper").forEach((el)=>{
         el.addEventListener("drop",(e)=> {
+            e.stopPropagation();
             console.log(el)
-            let path = el.querySelector(".folder")!.getAttribute("data-path");
-            const data = (e as DragEvent).dataTransfer!.getData("text/plain");
-            let file = impl.filesystem.getFileById(parseFloat(data));
-            console.log(path, data, file,impl.filesystem.getFolder(path))
-            impl.filesystem.addFile(file, path);
+
+            let path = el.querySelector(".folder")!.getAttribute("data-path")!;
+            const id = parseFloat((e as DragEvent).dataTransfer!.getData("text/plain"));
+            let file = impl.filesystem.getFileById(id);
+
+
+            console.log(path, id, file,impl.filesystem.getFolder(path.substring(1,path.length)))
+            impl.filesystem.addFile(file, path.substring(1,path.length));
+            impl.filesystem.deleteFile(id);
         });
         el.addEventListener("dragover",(e)=> {
             e.preventDefault();
@@ -268,4 +274,20 @@ function setupFileMovement(impl:any){
     });
 }
 
-export{FileSystemInterface,setupFileMovement,setupFilesystemDom,createFolderEl,populateHTMLForFolder,saveCurrentFile,openFile,promptFolderCreation,promptFileCreation,handleDroppedAssetFile,setupAssetDrop,setupHeaderButtons,setupFileFolderButtons,setupFileEventListeners,updateFilesystemBar}
+export {
+    FileSystemInterface,
+    setupFileMovement,
+    setupFilesystemDom,
+    createFolderEl,
+    populateHTMLForFolder,
+    saveCurrentFile,
+    openFile,
+    promptFolderCreation,
+    promptFileCreation,
+    handleDroppedAssetFile,
+    setupAssetDrop,
+    setupHeaderButtons,
+    setupFileFolderButtons,
+    setupFileEventListeners,
+    updateFilesystemBar
+}

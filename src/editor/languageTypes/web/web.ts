@@ -17,13 +17,14 @@ import {
 class WebType extends ProjectType implements FileSystemInterface {
 
     /* Implements */
-    filesystem:Filesystem
-    currentFileId:number;
+    public filesystem:Filesystem
+    public currentFileId:number;
 
     constructor() {
         super(false);
         this.filesystem = new Filesystem("index.html");
-        this.filesystem.onFileSystemUpdate = updateFilesystemBar
+        this.filesystem.onFileSystemUpdate = updateFilesystemBar;
+        this.filesystem.projectImpl = this;
         this.currentFileId = this.filesystem.defaultFile.id
     }
 
