@@ -7,15 +7,15 @@
 :root{
     --prismatic-gradient: linear-gradient(50deg, rgba(255,235,235,1) 0%, rgba(255,249,232,1) 18%, rgba(250,255,236,1) 41%, rgba(239,251,243,1) 60%, rgba(240,241,246,1) 78%, rgba(255,223,250,1) 100%);
 
-    --primary-color:hsl(var(--prismatic-hue), 100%, 100%);
-    --subtle-primary-color: var(--prismatic-gradient);
-    --dark-primary-color: #000000;
-    --background-primary-color: #000000;
-    --text-color: #ffffff;
-    --inverse-text-color: #150009;
-    --light-primary-color: #f8838b;
+    --primary-color:hsl(var(--prismatic-hue) 100% 90%);
+    --subtle-primary-color: hsl(var(--prismatic-hue) 100% 80%);
+    --dark-primary-color: hsl(var(--prismatic-hue) 100% 10%);
+    --background-primary-color: hsl(var(--prismatic-hue) 100% 3%);
+    --text-color: hsl(var(--prismatic-hue) 100% 90%);
+    --inverse-text-color: hsl(var(--prismatic-hue) 100% 6%);
+    --light-primary-color: hsl(var(--prismatic-hue) 100% 90%);
 
-    --transparent-primary-color: #cf0f1d77;
+    --transparent-primary-color: hsla(var(--prismatic-hue) 100% 80%,.5);
 
 
     --border-width:2px;
@@ -30,9 +30,8 @@
         --prismatic-hue: 360;
     }
 }
-html{
-    animation: 2s prismatic infinite;
-    background:var(--primary-color);
+*{
+    animation: prismatic 20s infinite;
 }
 
 /* Navbar (navbar.css) */
