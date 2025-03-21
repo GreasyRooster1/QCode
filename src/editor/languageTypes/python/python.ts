@@ -22,7 +22,8 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     constructor() {
         super();
         this.filesystem = new Filesystem("index.html");
-        this.filesystem.onFileSystemUpdate = this.filesystemCallback;
+        this.filesystem.onFileSystemUpdate = updateFilesystemBar;
+        this.filesystem.projectImpl = this;
         this.currentFileId = this.filesystem.defaultFile.id
     }
 
@@ -33,10 +34,6 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         setupHeaderButtons(this)
         setupAssetDrop(this)
         document.querySelector(".filesystem-root span")!.innerHTML = "Project";
-    }
-
-    filesystemCallback(){
-        updateFilesystemBar(this)
     }
 
     onLoad(){
