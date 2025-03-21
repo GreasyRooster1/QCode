@@ -12,7 +12,7 @@ interface FileSystemInterface {
 }
 
 function updateFilesystemBar(impl:any){
-    console.trace(impl)
+    console.trace(impl,impl.filesystem)
     let folders = impl.filesystem.getAll();
     document.querySelector(".file-list")!.innerHTML = "";
 
