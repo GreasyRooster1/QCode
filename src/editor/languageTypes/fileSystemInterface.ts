@@ -62,7 +62,7 @@ function setupHeaderButtons(impl:any){
         if (!isSure) {
             return
         }
-        impl.filesystem.deleteFile(impl.filesystem.getAll()["/"],impl.currentFileId);
+        impl.filesystem.deleteFile(impl.currentFileId);
         updateFilesystemBar(impl)
     })
 }

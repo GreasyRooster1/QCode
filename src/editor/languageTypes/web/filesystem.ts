@@ -97,7 +97,7 @@ class Filesystem{
         return null;
     }
 
-    deleteFile(folder:Folder,id:number){
+    deleteFile(id:number){
         // @ts-ignore
         this.getFileById(id).delete();
     }
