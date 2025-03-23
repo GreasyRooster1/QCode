@@ -44,6 +44,12 @@ class WebType extends ProjectType implements FileSystemInterface {
         updateFilesystemBar(this);
     }
 
+    onSave(){
+        saveCurrentFile(this)
+        let serializedFiles = this.filesystem.serialize();
+        set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files"),serializedFiles);
+    }
+
     onRun(errorCallback:RunErrCallback) {
         this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
         let frame = document.getElementById("#exec-frame")! as HTMLIFrameElement
