@@ -13,9 +13,13 @@ import {Filesystem} from "../web/filesystem";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
+import {Sketch, startSketchServer} from "../arduino/arduino-api";
+import {getCode} from "../../executionHelper";
+import {PythonProject, startPythonServer} from "./python-api";
+import * as console from "node:console";
 
 class PythonType extends CloudAgentType implements FileSystemInterface{
-    //project: Sketch | undefined;
+    project: PythonProject | undefined;
     currentFileId: number;
     filesystem: Filesystem;
 
@@ -50,8 +54,30 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     }
 
     onRun(errorCallback:RunErrCallback) {
-        //todo
+        if(this.project==null){
+            return;
+        }
+        this.setExecStatus("write");
+        this.project?.write(getCode())?.then(()=> {
+            this.setExecStatus("compile");
+            this.project?.deserialize().then(()=> {
+                this.setExecStatus("upload");
+                this.project?.execute().then(()=>{
+                    this.setExecStatus("ok");
+                }).catch(e => {
+                    this.appendLog(e.message.replace("\n","<br>"),"error");
+                    this.failExec()
+                });
+            }).catch(e => {
+                this.appendLog(e.message.replace("\n","<br>"),"error");
+                this.failExec()
+            });
+        }).catch(e => {
+            this.appendLog(e.message.replace("\n","<br>"),"error");
+            this.failExec()
+        })
     }
+
     runErrorCallback(content: string, type: string): void {
         this.appendLog(content,type);
     }
@@ -76,7 +102,9 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     }
 
     setupAgentConnection(): void {
-        //todo
+        startPythonServer(this.projectId!).then(proj => {
+            this.project = proj;
+        })
     }
 }
 
