@@ -267,30 +267,44 @@ function setupFileMovement(impl:any){
             e.stopPropagation();
             console.log(el)
             let path;
-            if(el.classList.contains("filesystem")){
-                path = "/"
-            }else{
-                path = el.querySelector(".folder")!.getAttribute("data-path")!;
-            }
-
             const id = parseFloat((e as DragEvent).dataTransfer!.getData("text/plain"));
-            let file = impl.filesystem.getFileById(id);
+            if(el.classList.contains("filesystem")){
+                moveFileToRoot(impl,id);
+                return;
+            }
+            path = el.querySelector(".folder")!.getAttribute("data-path")!;
+            moveFile(impl,id,path);
 
-            //create new file
-            let newFile = new FilesystemFile(file.name,file.extension)
-            newFile.content = file.content;
-
-            //delete old one
-            impl.filesystem.deleteFile(id);
-            console.log(path, id, file,impl.filesystem.getFolder(path.substring(1,path.length)))
-
-            //put new file at location
-            impl.filesystem.addFile(newFile, path.substring(1,path.length));
         });
         el.addEventListener("dragover",(e)=> {
             e.preventDefault();
         });
     });
+}
+
+function moveFile(impl:any,id:number,path:string){
+    let file = impl.filesystem.getFileById(id);
+    let newFile = new FilesystemFile(file.name,file.extension)
+    newFile.content = file.content;
+
+    //delete old one
+    impl.filesystem.deleteFile(id);
+    console.log(path, id, file,impl.filesystem.getFolder(path.substring(1,path.length)))
+
+    //put new file at location
+    impl.filesystem.addFile(newFile, path.substring(1,path.length));
+}
+function moveFileToRoot(impl:any,id:number){
+    let file = impl.filesystem.getFileById(id);
+    let newFile = new FilesystemFile(file.name,file.extension)
+    newFile.content = file.content;
+
+    //delete old one
+    impl.filesystem.deleteFile(id);
+
+    //put new file at location
+    impl.filesystem.system["/"][file.getFullName()] = file;
+    updateFilesystemBar(impl);
 }
 
 export {
