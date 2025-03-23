@@ -15,16 +15,16 @@ class PythonProject{
         return makeRequest(type+"/"+this.name,body,this.port,false) as Promise<object>;
     }
 
-    writeCode(code:string):Promise<object> {
-        return this.doRequest("write", code)
+    write(serializedFilesystem:string):Promise<object> {
+        return this.doRequest("write", serializedFilesystem)
     }
 
-    compile():Promise<object> {
-        return this.doRequest("compile", "")
+    deserialize():Promise<object> {
+        return this.doRequest("deserialize", "")
     }
 
-    upload():Promise<object> {
-        return this.doRequest("upload", "")
+    execute():Promise<object> {
+        return this.doRequest("execute", "")
     }
 }
 
