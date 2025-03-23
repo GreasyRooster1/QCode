@@ -115,6 +115,12 @@ abstract class CloudAgentType extends ProjectType {
             if(this.executionStatus == "not-connected"){
                 txt = "Agent not connected"
             }
+            if(this.executionStatus == "deserialize"){
+                txt = "Deserializing..."
+            }
+            if(this.executionStatus == "execute"){
+                txt = "Executing..."
+            }
         }
         this.statusText!.innerHTML = txt;
     }
