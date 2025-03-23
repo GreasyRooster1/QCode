@@ -149,6 +149,10 @@ function promptFolderCreation(impl:any,folder:Folder){
     if(name == null||name.length==0){
         return;
     }
+    if(name in folder){
+        alert("folder already exists!");
+        return
+    }
     folder[name] = {};
     updateFilesystemBar(impl);
 }
