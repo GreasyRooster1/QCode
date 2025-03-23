@@ -285,14 +285,21 @@ function setupFileMovement(impl:any){
 function moveFile(impl:any,id:number,path:string){
     let file = impl.filesystem.getFileById(id);
     let newFile = new FilesystemFile(file.name,file.extension)
+    let folder :Folder = impl.filesystem.getFolder(path.substring(1,path.length))
+
+    if(newFile.getFullName() in folder){
+        alert("file already exists in this location!");
+        return;
+    }
+
     newFile.content = file.content;
 
     //delete old one
     impl.filesystem.deleteFile(id);
-    console.log(path, id, file,impl.filesystem.getFolder(path.substring(1,path.length)))
+    console.log(path, id, file,folder)
 
     //put new file at location
-    impl.filesystem.addFile(newFile, path.substring(1,path.length));
+    folder[file.getFullName()] = newFile;
 }
 function moveFileToRoot(impl:any,id:number){
     let file = impl.filesystem.getFileById(id);
