@@ -36,6 +36,12 @@ abstract class CloudAgentType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
+        this.setupConnection();
+        document.querySelector(".canvas-output-pane")?.remove()
+        document.querySelector(".stop-button")?.remove()
+    }
+
+    setupConnection():void{
         establishAgentConnection(3).then(status => {
             if(status==GlobalServerStatus.Connected) {
                 this.statusText!.innerHTML="Connected";
@@ -51,8 +57,6 @@ abstract class CloudAgentType extends ProjectType {
                 this.setExecStatus("not-connected")
             }
         });
-        document.querySelector(".canvas-output-pane")?.remove()
-        document.querySelector(".stop-button")?.remove()
     }
 
     runErrorCallback(content: string, type: string): void {

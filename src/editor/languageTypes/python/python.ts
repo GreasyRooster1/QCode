@@ -46,6 +46,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         this.currentFileId=this.filesystem.getFile("/main.py").id;
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
+        this.setupAgentConnection();
     }
 
     onSave(){
