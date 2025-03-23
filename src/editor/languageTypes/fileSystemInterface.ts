@@ -138,7 +138,7 @@ function promptFileCreation(impl:any,folder:Folder){
     }
     let sec = name.split(".")
     if(sec.length==1) {
-        folder[name] = new FilesystemFile(sec[0],"txt");
+        folder[name+".txt"] = new FilesystemFile(sec[0],"txt");
     }else {
         folder[name] = new FilesystemFile(sec[0], sec[1]);
     }
