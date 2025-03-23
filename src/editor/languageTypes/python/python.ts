@@ -32,6 +32,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     }
 
     setupEditor(): void {
+        super.setupEditor();
         setupFilesystemDom()
         updateFilesystemBar(this)
         setupFileFolderButtons(this)
