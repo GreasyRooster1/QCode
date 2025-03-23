@@ -42,11 +42,11 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     }
 
     onLoad(){
+        this.setupConnection();
         this.filesystem.deserialize(this.projectData?.files);
         this.currentFileId=this.filesystem.getFile("/main.py").id;
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
-        this.setupAgentConnection();
     }
 
     onSave(){
