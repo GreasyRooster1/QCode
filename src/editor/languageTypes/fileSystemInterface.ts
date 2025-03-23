@@ -271,10 +271,16 @@ function setupFileMovement(impl:any){
             const id = parseFloat((e as DragEvent).dataTransfer!.getData("text/plain"));
             let file = impl.filesystem.getFileById(id);
 
+            //create new file
+            let newFile = new FilesystemFile(file.name,file.extension)
+            newFile.content = file.content;
 
-            console.log(path, id, file,impl.filesystem.getFolder(path.substring(1,path.length)))
-            impl.filesystem.addFile(file, path.substring(1,path.length));
+            //delete old one
             impl.filesystem.deleteFile(id);
+            console.log(path, id, file,impl.filesystem.getFolder(path.substring(1,path.length)))
+
+            //put new file at location
+            impl.filesystem.addFile(newFile, path.substring(1,path.length));
         });
         el.addEventListener("dragover",(e)=> {
             e.preventDefault();
