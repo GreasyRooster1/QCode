@@ -132,12 +132,16 @@ function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
 
 function promptFileCreation(impl:any,folder:Folder){
     let name =
-        cleanFileName(prompt("Enter a name for the file")!);
+        cleanFileName(prompt("Enter a name for the file and its extension:")!);
     if(name == null){
         return;
     }
     let sec = name.split(".")
-    folder[name] = new FilesystemFile(sec[0],sec[1]);
+    if(sec.length==1) {
+        folder[name] = new FilesystemFile(sec[0],"txt");
+    }else {
+        folder[name] = new FilesystemFile(sec[0], sec[1]);
+    }
     updateFilesystemBar(impl);
 }
 function promptFolderCreation(impl:any,folder:Folder){
