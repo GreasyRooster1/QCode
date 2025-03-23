@@ -15,12 +15,12 @@
     hsl(calc(var(--prismatic-hue) + 330) 100% var(--gradient-lightness)) 88%);
 
     --primary-color:hsl(var(--prismatic-hue) 100% 90%);
-    --primary-color-mid:hsl(calc(var(--prismatic-hue) + 50) 100% 90%);
-    --primary-color-end:hsl(calc(var(--prismatic-hue) + 100) 100% 90%);
+    /*--primary-color-mid:hsl(calc(var(--prismatic-hue) + 50) 100% 90%);*/
+    /*--primary-color-end:hsl(calc(var(--prismatic-hue) + 100) 100% 90%);*/
 
-    --subtle-primary-color: hsl(var(--prismatic-hue) 100% 80%);
-    --dark-primary-color: hsl(var(--prismatic-hue) 100% 5%);
-    --background-primary-color: hsl(var(--prismatic-hue) 100% 3%);
+    --subtle-primary-color: hsl(var(--prismatic-hue) 100% 5%);
+    --dark-primary-color: hsl(var(--prismatic-hue) 100% 3%);
+    --background-primary-color: hsl(var(--prismatic-hue) 100% 1%);
     --text-color: hsl(var(--prismatic-hue) 100% 95%);
     --inverse-text-color: hsl(var(--prismatic-hue) 100% 6%);
     --light-primary-color: hsl(var(--prismatic-hue) 100% 90%);
@@ -62,8 +62,6 @@
 }
 .navbar{
     border-bottom:var(--border);
-
-    background:var(--prismatic-gradient);
 }
 .home-link{
     border:var(--border);
@@ -77,10 +75,10 @@
 :root{
     --default-font: "JetBrains Mono";
 
-    --brand-blue:var(--dark-primary-color);
-    --brand-green: var(--primary-color);
-    --brand-black:var(--dark-primary-color);
-    --brand-gray:var(--dark-primary-color);
+    --brand-blue:var(--background-primary-color);
+    --brand-green: var(--subtle-primary-color);
+    --brand-black:var(--background-primary-color);
+    --brand-gray:var(--background-primary-color);
 
     --common-rarity-color: #484848;
     --uncommon-rarity-color: #0091e1;
