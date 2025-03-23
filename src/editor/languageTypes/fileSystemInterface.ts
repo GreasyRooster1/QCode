@@ -228,7 +228,7 @@ function setupFilesystemDom(){
                     </span>
                 </div>
                 <div class="filesystem-container">
-                    <div class="default-filesystem filesystem">
+                    <div class="default-filesystem filesystem folder-wrapper">
                         <div class="filesystem-root">
                             <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
                             <span>Site</span>
@@ -266,8 +266,13 @@ function setupFileMovement(impl:any){
         el.addEventListener("drop",(e)=> {
             e.stopPropagation();
             console.log(el)
+            let path;
+            if(el.classList.contains("filesystem")){
+                path = "/"
+            }else{
+                path = el.querySelector(".folder")!.getAttribute("data-path")!;
+            }
 
-            let path = el.querySelector(".folder")!.getAttribute("data-path")!;
             const id = parseFloat((e as DragEvent).dataTransfer!.getData("text/plain"));
             let file = impl.filesystem.getFileById(id);
 
