@@ -300,6 +300,7 @@ function moveFile(impl:any,id:number,path:string){
 
     //put new file at location
     folder[file.getFullName()] = newFile;
+    updateFilesystemBar(impl);
 }
 function moveFileToRoot(impl:any,id:number){
     let file = impl.filesystem.getFileById(id);
