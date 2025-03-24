@@ -8,7 +8,6 @@ class PythonProject{
     constructor(name:string,port:string) {
         this.name = name;
         this.port = port;
-        this.doRequest("create","").catch(e=>{});
     }
 
     private doRequest(type:string,body:string):Promise<object> {
