@@ -102,6 +102,10 @@ abstract class ProjectType {
         logEl.setAttribute("head", logNames[type]);
         consoleOut!.insertBefore(logEl,consoleOut!.firstChild);
     }
+    
+    saveMetadata(){
+        
+    }
 
     saveCode(){
         if(this.isLessonCreator){
