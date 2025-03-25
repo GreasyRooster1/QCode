@@ -40,6 +40,12 @@ class ArduinoType extends CloudAgentType {
             this.failExec()
         })
     }
+    onLoad() {
+        super.onLoad();
+        document.querySelector(".stop-button")?.remove()
+        document.querySelector(".canvas-output-pane")?.remove()
+    }
+
     onSave(){
         let code = getCode();
         let user = getStoredUser();

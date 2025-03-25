@@ -37,8 +37,6 @@ abstract class CloudAgentType extends ProjectType {
     onLoad(){
         writeToEditor(this.projectData!["code"]);
         this.setupConnection();
-        document.querySelector(".canvas-output-pane")?.remove()
-        document.querySelector(".stop-button")?.remove()
     }
 
     setupConnection():void{
