@@ -1,6 +1,6 @@
 import {Language, setupEditor} from "../codeEditor";
 import {db} from "../../api/firebase";
-import {get, ref} from "firebase/database";
+import {get, ref, set} from "firebase/database";
 import {getStoredUser} from "../../api/auth";
 import {setupDefaultPanes} from "../panes";
 import {showSaveAlert} from "../save";
@@ -104,7 +104,13 @@ abstract class ProjectType {
     }
     
     saveMetadata(){
-        
+        let user = getStoredUser();
+        set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/dateUpdated"),Date.now()/1000);
+        if(this.hasLesson) {
+            console.log(this.highestViewedStep)
+            set(ref(db,"userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep"),this.highestViewedStep);
+            set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter"),this.chapterNum);
+        }
     }
 
     saveCode(){
