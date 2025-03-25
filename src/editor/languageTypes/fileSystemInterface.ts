@@ -265,6 +265,7 @@ function setupFileMovement(impl:any){
     document.querySelectorAll(".folder-wrapper").forEach((el)=>{
         el.addEventListener("drop",(e)=> {
             e.stopPropagation();
+            saveCurrentFile(impl);
             console.log(el)
             let path;
             const id = parseFloat((e as DragEvent).dataTransfer!.getData("text/plain"));
