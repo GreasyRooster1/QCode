@@ -44,13 +44,6 @@ class ArduinoType extends CloudAgentType {
         let code = getCode();
         let user = getStoredUser();
         set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/code"),code);
-        set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/dateUpdated"),Date.now()/1000);
-        if(this.hasLesson) {
-            console.log(this.highestViewedStep)
-            set(ref(db,"userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep"),this.highestViewedStep);
-            set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter"),this.chapterNum);
-        }
-
     }
 
     runErrorCallback(content: string, type: string): void {

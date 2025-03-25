@@ -118,6 +118,7 @@ abstract class ProjectType {
             return
         }
         this.onSave()
+        this.saveMetadata();
     }
 
     /*
