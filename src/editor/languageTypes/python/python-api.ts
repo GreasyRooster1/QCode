@@ -15,6 +15,7 @@ class PythonProject{
     }
 
     write(serializedFilesystem:string):Promise<object> {
+        console.log(serializedFilesystem);
         return this.doRequest("write", serializedFilesystem)
     }
 

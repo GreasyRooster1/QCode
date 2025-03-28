@@ -62,7 +62,9 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
             return;
         }
         this.setExecStatus("write");
-        this.project?.write(getCode())?.then(()=> {
+        let serializedFiles = this.filesystem.serialize();
+        let stringifiedFiles = JSON.stringify(serializedFiles);
+        this.project?.write(stringifiedFiles)?.then(()=> {
             this.setExecStatus("deserialize");
             this.project?.deserialize().then(()=> {
                 this.setExecStatus("execute");
