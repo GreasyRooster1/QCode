@@ -49,7 +49,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         this.currentFileId=this.filesystem.getFile("/main.py").id;
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
-        document.querySelector(".console-log-head")!.innerHTML = "<div class='console-refresh-button'>Refresh</div>";
+        document.querySelector(".console-head")!.innerHTML = "<div class='console-refresh-button'>Refresh</div>";
 
     }
 
