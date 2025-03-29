@@ -17,6 +17,7 @@ import {Sketch, startSketchServer} from "../arduino/arduino-api";
 import {getCode} from "../../executionHelper";
 import {PythonProject, startPythonServer} from "./python-api";
 import * as console from "node:console";
+import {clearConsole} from "../../codeExecution";
 
 class PythonType extends CloudAgentType implements FileSystemInterface{
     project: PythonProject | undefined;
@@ -97,7 +98,12 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     }
 
     updateLogs():void {
+        this.project?.collectLogs().then((e)=>{
+            let logs = e.logs;
 
+        }).catch(e => {
+            this.appendLog(e.message.replace("\n","<br>"),"error");
+        });
     }
 
     static getProjectDBData(projectName: string, lessonId: string):Object {
