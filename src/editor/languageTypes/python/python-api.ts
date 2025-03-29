@@ -27,6 +27,10 @@ class PythonProject{
     execute():Promise<object> {
         return this.doRequest("execute", "")
     }
+
+    collectLogs():Promise<object> {
+        return this.doRequest("log", "")
+    }
 }
 
 
