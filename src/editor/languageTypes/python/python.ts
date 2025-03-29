@@ -1,23 +1,23 @@
 //arduino.work
 import {RunErrCallback} from "../projectType";
 import {Language} from "../../codeEditor";
-import {defaultCodeArduino, defaultFilesPython, defaultFilesWeb} from "../../../api/util/code";
+import {defaultFilesPython} from "../../../api/util/code";
 import {CloudAgentType} from "../cloudAgentType";
 import {
-    FileSystemInterface, openFile, saveCurrentFile, setupAssetDrop,
-    setupFileFolderButtons, setupFileMovement,
-    setupFilesystemDom, setupHeaderButtons,
+    FileSystemInterface,
+    openFile,
+    saveCurrentFile,
+    setupAssetDrop,
+    setupFileFolderButtons,
+    setupFilesystemDom,
+    setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
 import {Filesystem} from "../web/filesystem";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
-import {Sketch, startSketchServer} from "../arduino/arduino-api";
-import {getCode} from "../../executionHelper";
 import {PythonProject, startPythonServer} from "./python-api";
-import * as console from "node:console";
-import {clearConsole} from "../../codeExecution";
 
 class PythonType extends CloudAgentType implements FileSystemInterface{
     project: PythonProject | undefined;
@@ -98,9 +98,8 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     }
 
     updateLogs():void {
-        this.project?.collectLogs().then((e)=>{
-            let logs = e.logs;
-
+        this.project?.collectLogs().then((e:any)=>{
+            document.querySelector(".console-log-area")!.innerHTML = e.logs.replace("\n", "<br>");
         }).catch(e => {
             this.appendLog(e.message.replace("\n","<br>"),"error");
         });
