@@ -99,6 +99,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
 
     updateLogs():void {
         this.project?.collectLogs().then((e:any)=>{
+            console.log(e.logs);
             document.querySelector(".console-log-area")!.innerHTML = e.logs.replace("\n", "<br>");
         }).catch(e => {
             this.appendLog(e.message.replace("\n","<br>"),"error");

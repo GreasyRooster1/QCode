@@ -22,3 +22,7 @@
     background: var(--refresh-button);
     padding: 2px;
 }
+
+.console-log-area{
+    padding-left:5px;
+}
