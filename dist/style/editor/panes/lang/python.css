@@ -1,6 +1,6 @@
 :root{
     --upload-color: #717171;
-    --refresh-button: #717171;
+    --refresh-button: #8f8f8f;
 }
 
 .upload-drop{
@@ -20,4 +20,5 @@
 .console-refresh-button{
     border-radius: 5px;
     background: var(--refresh-button);
+    padding: 2px;
 }

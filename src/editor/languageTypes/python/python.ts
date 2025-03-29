@@ -50,7 +50,9 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
         document.querySelector(".console-head")!.innerHTML = "<div class='console-refresh-button'>Refresh</div>";
-
+        document.querySelector(".console-refresh-button")!.addEventListener("click", ()=>{
+            this.updateLogs();
+        })
     }
 
     onSave(){
@@ -92,6 +94,10 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
 
     getLanguage():Language {
         return "python";
+    }
+
+    updateLogs():void {
+
     }
 
     static getProjectDBData(projectName: string, lessonId: string):Object {
