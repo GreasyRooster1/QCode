@@ -75,6 +75,9 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
                 this.setExecStatus("execute");
                 this.project?.execute().then(()=>{
                     this.setExecStatus("ok");
+                    setTimeout(()=>{
+                        this.updateLogs();
+                    },1000);
                 }).catch(e => {
                     this.appendLog(e.message.replace("\n","<br>"),"error");
                     this.failExec()
