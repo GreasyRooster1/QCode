@@ -39,6 +39,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         setupHeaderButtons(this)
         setupAssetDrop(this)
         document.querySelector(".filesystem-root span")!.innerHTML = "Project";
+        document.querySelector(".console-log-head")!.innerHTML = "<div class='console-refresh-button'>Refresh</div>";
     }
 
     onLoad(){
