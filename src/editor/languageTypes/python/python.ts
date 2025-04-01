@@ -18,6 +18,7 @@ import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {PythonProject, startPythonServer} from "./python-api";
+import { clearConsole } from "../../codeExecution";
 
 class PythonType extends CloudAgentType implements FileSystemInterface{
     project: PythonProject | undefined;
@@ -69,6 +70,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         this.setExecStatus("write");
         let serializedFiles = this.filesystem.serialize();
         let stringifiedFiles = JSON.stringify(serializedFiles);
+        clearConsole()
         this.project?.write(stringifiedFiles)?.then(()=> {
             this.setExecStatus("deserialize");
             this.project?.deserialize().then(()=> {

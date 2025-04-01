@@ -8,6 +8,7 @@ import {CloudAgentType} from "../cloudAgentType";
 import {getStoredUser} from "../../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
+import {clearConsole} from "../../codeExecution";
 
 class ArduinoType extends CloudAgentType {
     sketch: Sketch | undefined;
@@ -20,6 +21,7 @@ class ArduinoType extends CloudAgentType {
         if(this.sketch==null){
             return;
         }
+        clearConsole()
         this.setExecStatus("write");
         this.sketch?.writeCode(getCode())?.then(()=> {
             this.setExecStatus("compile");
