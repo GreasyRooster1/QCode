@@ -80,6 +80,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
                     this.setExecStatus("ok");
                     clearInterval(this.logInterval)
                     this.logInterval=setInterval(()=>{
+                        clearConsole()
                         this.updateLogs();
                     },1000);
 
