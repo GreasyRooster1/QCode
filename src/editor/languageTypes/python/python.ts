@@ -24,6 +24,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
     project: PythonProject | undefined;
     currentFileId: number;
     filesystem: Filesystem;
+    logInterval:any;
 
     constructor() {
         super();
@@ -77,9 +78,11 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
                 this.setExecStatus("execute");
                 this.project?.execute().then(()=>{
                     this.setExecStatus("ok");
-                    setTimeout(()=>{
+                    clearInterval(this.logInterval)
+                    this.logInterval=setInterval(()=>{
                         this.updateLogs();
                     },1000);
+
                 }).catch(e => {
                     this.appendLog(e.message.replace("\n","<br>"),"error");
                     this.failExec()
