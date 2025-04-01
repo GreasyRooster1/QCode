@@ -58,6 +58,10 @@ class ArduinoType extends CloudAgentType {
         this.appendLog(content,type);
     }
 
+    setupSerialMonitor(){
+
+    }
+
     getLanguage():Language {
         return "c++";
     }
