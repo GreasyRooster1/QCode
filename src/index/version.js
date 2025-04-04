@@ -1,4 +1,4 @@
-import textContent from '../VERSION';
+import textContent from '../VERSION.txt';
 const versionEl = document.querySelector(".footer-content .version")
 
 
