@@ -44,6 +44,10 @@ class ArduinoType extends CloudAgentType {
     }
     onLoad() {
         super.onLoad();
+        document.querySelector(".console-head")!.innerHTML = "<div class='serial-monitor-button'>Serial Monitor</div>";
+        document.querySelector(".serial-monitor-button")!.addEventListener("click", ()=>{
+            this.sketch!.openSerialMonitor();
+        })
         document.querySelector(".stop-button")?.remove()
         document.querySelector(".canvas-output-pane")?.remove()
     }

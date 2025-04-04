@@ -26,6 +26,10 @@ class Sketch{
     upload():Promise<object> {
         return this.doRequest("upload", "")
     }
+
+    openSerialMonitor():Promise<object>{
+        return this.doRequest("serial", "")
+    }
 }
 
 
