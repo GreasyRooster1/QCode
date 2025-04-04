@@ -1,3 +1,3 @@
-echo %1 1> ../dist/VERSION
+echo %1 1> ../src/VERSION
 cd ../
 npx webpack
