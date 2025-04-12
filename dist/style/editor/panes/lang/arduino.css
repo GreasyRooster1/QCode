@@ -38,6 +38,12 @@
 .status-display.upload{
     border-color: var(--arduino-status-loading);
 }
+.status-display.execute{
+    border-color: var(--arduino-status-loading);
+}
+.status-display.deserialize{
+    border-color: var(--arduino-status-loading);
+}
 
 .status-text{
     display: flex;
