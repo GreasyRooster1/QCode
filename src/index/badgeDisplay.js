@@ -2,11 +2,14 @@ import {db} from "../api/firebase";
 import {badgeDisplay} from "./index";
 import {ref, get, onValue} from "firebase/database";
 import {getStoredUser} from "../api/auth";
+import {rarities} from "../api/util/rarity";
 
 const badgeDetailName = document.querySelector(".badge-name");
 const badgeDetailDesc = document.querySelector(".badge-info-desc");
 const badgeDetailImage = document.querySelector(".badge-info-image");
 const badgeDetailRarity = document.querySelector(".badge-rarity");
+
+
 
 function badgeClickEvent(badgeEl){
     let badgeId = badgeEl.getAttribute("data-badgeid");
@@ -16,6 +19,10 @@ function badgeClickEvent(badgeEl){
         badgeDetailDesc.innerHTML = data.description;
         badgeDetailImage.setAttribute("src",data.image)
         badgeDetailImage.style.display="block"
+        for(let r in rarities){
+            badgeDetailImage.classList.remove(r);
+        }
+        badgeDetailImage.classList.add(badgeProperties.rarity);
 
         let capRarity = data.rarity.charAt(0).toUpperCase() + data.rarity.slice(1);
         badgeDetailRarity.innerHTML = capRarity;
@@ -47,8 +54,6 @@ function createBadgeElementFromSnap(snap,id){
 
     badgeElement.setAttribute("data-badgeid",id)
     badgeElement.classList.add(badgeProperties.rarity);
-
-    img.classList.add(badgeProperties.rarity);
 
     badgeElement.appendChild(img);
     badgeElement.appendChild(hoverText);
