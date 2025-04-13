@@ -35,6 +35,7 @@ function badgeClickEvent(badgeEl){
 function createBadgeElementFromSnap(snap,id){
     let badgeProperties = snap.val();
 
+    let badgeWrapper = document.createElement("div");
     let badgeElement = document.createElement("div");
     badgeElement.classList.add("badge");
 
@@ -62,7 +63,8 @@ function createBadgeElementFromSnap(snap,id){
         badgeClickEvent(e.currentTarget);
     })
 
-    badgeDisplay.appendChild(badgeElement)
+    badgeWrapper.appendChild(badgeElement)
+    badgeDisplay.appendChild(badgeWrapper)
 }
 
 function loadBadges(){

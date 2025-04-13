@@ -122,21 +122,20 @@
     border:solid 4px var(--rare-rarity-color);
 }
 
-.badge.legendary::before {
+.badge.legendary img::before {
     background: linear-gradient(15deg, #ffffff 30%, rgba(255, 255, 255, 0.6) 50%, #ffffff 70%);
     content: "";
     display: block;
     height: 100%;
-    left: -1500%;
+    left: -150%;
     position: relative;
     top: 0;
     transform: skewX(-25deg);
     width: 50%;
     z-index: 99;
-    animation: badge-shine 5s linear infinite;
+    animation: badge-shine 1s linear infinite;
 }
 .badge.legendary{
-    position: relative;
     overflow: clip;
 
     background:var(--legendary-rarity-color);
