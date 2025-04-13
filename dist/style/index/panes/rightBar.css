@@ -122,13 +122,17 @@
     border:solid 4px var(--rare-rarity-color);
 }
 
-.badge.legendary:after {
+.badge.legendary:before {
+    content: '';
+    position: relative;
+    top: -100%;
+    display: inline-block;
     height: 100%;
     width: 100%;
     background:#fff;
 }
 .badge.legendary{
-    background:var(--legendary-rarity);
+    background:var(--legendary-rarity-color);
     border:solid 4px var(--legendary-rarity-color);
 
     -webkit-mask-image: -webkit-linear-gradient(15deg, #000 30%, rgba(0,0,0,.6) 50%,#000 70%);
