@@ -135,6 +135,20 @@
     text-shadow: 0 0 10px var(--mythic-rarity-color);
     letter-spacing: 6px;
     font-weight: 800;
+
+    -webkit-mask-image: -webkit-linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
+    -webkit-mask-size: 300%;
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+    from {
+        -webkit-mask-position: 150%;
+    }
+
+    to {
+        -webkit-mask-position: -50%;
+    }
 }
 
 
