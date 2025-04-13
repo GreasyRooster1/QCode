@@ -58,9 +58,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     line-height: 0;
-    flex:1;
+    height:60%;
     align-content: flex-start;
     justify-content: flex-start;
+    overflow: auto;
 }
 
 .badge{
