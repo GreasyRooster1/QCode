@@ -149,12 +149,6 @@ body{
     opacity: 1;
 }
 
-.bar-separator{
-    height:0;
-    display: flex;
-    position: relative;
-    top:calc(-1*var(--bar-seperator-height)/2);
-}
 
 .project-display.featured:hover .title{
     opacity: 0;
@@ -172,6 +166,12 @@ body{
     margin-left:0
 }
 
+.bar-separator{
+    display: flex;
+    position: relative;
+    top:calc(-1*var(--bar-seperator-height)/2);
+    height: 3vh;
+}
 
 .bar-separator > .empty{
     width:10vw
@@ -185,7 +185,7 @@ body{
 
 .bar-separator > .solid{
     width:60vw;
-    height:0;
+    display: flex;
     border-top:var(--bar-seperator-height) solid var(--bar-seperator);
 }
 
