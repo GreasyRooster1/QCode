@@ -126,35 +126,20 @@
 }
 
 .badge-wrapper.legendary::before {
-    mix-blend-mode: hard-light;
-    background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--legendary-rarity-badge-glint) 70%, rgba(255, 255, 255, 0) 90%);
+    mix-blend-mode: lighten;
+    background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--legendary-rarity-badge-glint) 60%,var(--legendary-rarity-badge-glint) 80%, rgba(255, 255, 255, 0) 90%);
     content: "";
     display: block;
     height: 100%;
-    left: -2000%;
+    left: -7000%;
     position: relative;
     top: 0;
     /*transform: skewX(-25deg);*/
     width: 100%;
     z-index: 99;
     opacity: .7;
-    animation: badge-shine 5s ease-out infinite;
+    animation: badge-shine 20s linear infinite;
 }
-.badge-wrapper.legendary::after {
-     mix-blend-mode: hard-light;
-     background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--legendary-rarity-badge-glint) 70%, rgba(255, 255, 255, 0) 90%);
-     content: "";
-     display: block;
-     height: 100%;
-     left: -2000%;
-     position: relative;
-     top: 0;
-     /*transform: skewX(-25deg);*/
-     width: 100%;
-     z-index: 99;
-     opacity: .7;
-     animation: badge-shine 5s ease-out infinite;
- }
 
 .badge-wrapper.legendary{
     overflow: clip;
