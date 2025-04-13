@@ -210,9 +210,9 @@ body{
     height:20vw;
     border-radius: 10px;
     overflow: clip;
-    margin-left:2%;
-    margin-right:2%;
-    margin-top:2%;
+    margin-left:.5vw;
+    margin-right:.5vw;
+    margin-top:2vw;
 }
 
 
@@ -273,5 +273,5 @@ body{
 }
 
 .play-icon{
-    font-size:7em
+    font-size:5vw;
 }
