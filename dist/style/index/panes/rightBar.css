@@ -118,7 +118,7 @@
 .badge-rarity.rare{
     color:var(--rare-rarity-color);
     -webkit-text-stroke: 1px var(--rare-rarity-color-dark);
-    text-shadow: 0 0 4px var(--rare-rarity-color);
+    text-shadow: 0 0 4px var(--rare-rarity-color-dark);
     letter-spacing: 1px;
     font-weight: 800;
 }
@@ -220,7 +220,6 @@
     flex:1;
 }
 
-.user-profile-icon{
 .user-profile-icon{
     height: 75%;
     display: flex;
