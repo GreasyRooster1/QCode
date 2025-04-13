@@ -24,7 +24,7 @@ body{
 }
 
 .featured-project-bar{
-    height:40vh;
+    height:80vh;
     background: var(--featured-project-bar-background);
     display: flex;
     justify-content: space-evenly;
