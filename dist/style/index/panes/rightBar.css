@@ -36,8 +36,8 @@
 }
 
 .badge-info-image{
-    width: 30%;
-    height:30%;
+    width: 8vh;
+    height:8vh;
     margin:5px;
     border-radius: 8px;
 }
@@ -219,6 +219,7 @@
     flex:1;
 }
 
+.user-profile-icon{
 .user-profile-icon{
     height: 75%;
     display: flex;
