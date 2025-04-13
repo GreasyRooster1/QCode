@@ -126,18 +126,36 @@
 }
 
 .badge-wrapper.legendary::before {
-    background: linear-gradient(15deg, #ffffff 30%, rgba(255, 255, 255, 0.6) 50%, #ffffff 70%);
+    mix-blend-mode: hard-light;
+    background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--legendary-rarity-badge-glint) 70%, rgba(255, 255, 255, 0) 90%);
     content: "";
     display: block;
     height: 100%;
-    left: -150%;
+    left: -2000%;
     position: relative;
     top: 0;
-    transform: skewX(-25deg);
-    width: 50%;
+    /*transform: skewX(-25deg);*/
+    width: 100%;
     z-index: 99;
-    animation: badge-shine 1s linear infinite;
+    opacity: .7;
+    animation: badge-shine 5s ease-out infinite;
 }
+.badge-wrapper.legendary::after {
+     mix-blend-mode: hard-light;
+     background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--legendary-rarity-badge-glint) 70%, rgba(255, 255, 255, 0) 90%);
+     content: "";
+     display: block;
+     height: 100%;
+     left: -2000%;
+     position: relative;
+     top: 0;
+     /*transform: skewX(-25deg);*/
+     width: 100%;
+     z-index: 99;
+     opacity: .7;
+     animation: badge-shine 5s ease-out infinite;
+ }
+
 .badge-wrapper.legendary{
     overflow: clip;
 
