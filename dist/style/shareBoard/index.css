@@ -86,7 +86,7 @@ body{
 }
 
 .interact-tray-wrapper{
-    margin: 1%;
+    margin: 3px;
     font-size:1.2rem
 }
 .project-display.featured .title-wrapper{
@@ -140,7 +140,7 @@ body{
     transition: .3s ease;
     color: var(--open-icon-color);
     background-color: var(--interact-tray-background);
-    border-radius: 3px;
+    border-radius: 6px;
     overflow: clip;
     padding-left: 3px;
     pointer-events: auto;
@@ -161,6 +161,10 @@ body{
 .project-display.featured:hover .user-display span{
     max-width:0;
     margin-left:0
+}
+
+.project-display.featured .interact-tray-wrapper{
+    font-size:1.4rem
 }
 
 .bar-separator{
