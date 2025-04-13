@@ -125,12 +125,16 @@
 .badge-rarity.legendary{
     color:var(--legendary-rarity-color);
     -webkit-text-stroke: 1px var(--legendary-rarity-color-dark);
-    text-shadow: 0 0 4px var(--legendary-rarity-color-faded);
-    letter-spacing: 2px;
-    filter: glow();
+    text-shadow: 0 0 4px var(--legendary-rarity-color);
+    letter-spacing: 1px;
+    font-weight: 800;
 }
 .badge-rarity.mythic{
     color:var(--mythic-rarity-color);
+    -webkit-text-stroke: 1px var(--mythic-rarity-color-dark);
+    text-shadow: 0 0 10px var(--mythic-rarity-color);
+    letter-spacing: 6px;
+    font-weight: 800;
 }
 
 
