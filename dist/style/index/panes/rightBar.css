@@ -108,6 +108,14 @@
     height:100%;
 }
 
+.badge.uncommon{
+    border:solid 2px var(--uncommon-rarity-color);
+}
+.badge-info-img.uncommon{
+    border:solid 2px var(--uncommon-rarity-color);
+}
+
+
 .badge-rarity.common{
     color:var(--common-rarity-color);
 }

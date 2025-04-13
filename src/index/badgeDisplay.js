@@ -48,6 +48,8 @@ function createBadgeElementFromSnap(snap,id){
     badgeElement.setAttribute("data-badgeid",id)
     badgeElement.classList.add(badgeProperties.rarity);
 
+    img.classList.add(badgeProperties.rarity);
+
     badgeElement.appendChild(img);
     badgeElement.appendChild(hoverText);
 
