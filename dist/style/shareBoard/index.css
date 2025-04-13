@@ -52,6 +52,28 @@ body{
     flex-direction: column;
 }
 
+.project-display.featured .interact-tray-wrapper{
+    font-size:1.4rem
+}
+
+.project-display.featured .title-wrapper{
+    margin:5px
+}
+.project-display.featured .title{
+    font-size: 2.5em;
+    font-weight: 500;
+
+    text-align: center;
+
+    transition: .3s ease;
+    background: var(--title-color-background);
+    border-radius: 10px;
+    padding:2px;
+}
+.project-display.featured .title-wrapper {
+    padding-top:5px;
+}
+
 .heart-icon{
     color: var(--likes-color);
 }
@@ -88,17 +110,6 @@ body{
 .interact-tray-wrapper{
     margin: 3px;
     font-size:1.2rem
-}
-.project-display.featured .title-wrapper{
-    margin:5px
-}
-.project-display.featured .title{
-    font-size: 2em;
-    font-weight: 500;
-
-    text-align: center;
-
-    transition: .3s ease;
 }
 
 .user-display{
@@ -161,10 +172,6 @@ body{
 .project-display.featured:hover .user-display span{
     max-width:0;
     margin-left:0
-}
-
-.project-display.featured .interact-tray-wrapper{
-    font-size:1.4rem
 }
 
 .bar-separator{
