@@ -19,10 +19,10 @@ function badgeClickEvent(badgeEl){
         badgeDetailDesc.innerHTML = data.description;
         badgeDetailImage.setAttribute("src",data.image)
         badgeDetailImage.style.display="block"
-        for(let r in rarities){
-            badgeDetailImage.classList.remove(r);
-        }
-        badgeDetailImage.classList.add(badgeProperties.rarity);
+
+        badgeDetailImage.className = "";
+        badgeDetailImage.classList.add("badge-info-image");
+        badgeDetailImage.classList.add(data.rarity);
 
         let capRarity = data.rarity.charAt(0).toUpperCase() + data.rarity.slice(1);
         badgeDetailRarity.innerHTML = capRarity;
