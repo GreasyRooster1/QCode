@@ -112,7 +112,7 @@
     border:solid 2px var(--uncommon-rarity-color);
 }
 .badge-info-image.uncommon{
-    border:solid 2px var(--uncommon-rarity-color);
+    border:solid 4px var(--uncommon-rarity-color);
 }
 
 .badge.rare{
@@ -120,6 +120,33 @@
 }
 .badge-info-image.rare{
     border:solid 4px var(--rare-rarity-color);
+}
+
+.badge.legendary:after {
+    height: 100%;
+    width: 100%;
+    background:#fff;
+}
+.badge.legendary{
+    background:var(--legendary-rarity);
+    border:solid 4px var(--legendary-rarity-color);
+
+    -webkit-mask-image: -webkit-linear-gradient(15deg, #000 30%, rgba(0,0,0,.6) 50%,#000 70%);
+    -webkit-mask-size: 200%;
+    animation: badge-shine 2s infinite;
+}
+.badge-info-image.legendary{
+    border:solid 4px var(--legendary-rarity-color);
+}
+
+@-webkit-keyframes badge-shine {
+    from {
+        -webkit-mask-position: 150%;
+    }
+
+    to {
+        -webkit-mask-position: -50%;
+    }
 }
 
 
