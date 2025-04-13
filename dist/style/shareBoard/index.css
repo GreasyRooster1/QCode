@@ -87,6 +87,7 @@ body{
 
 .interact-tray-wrapper{
     margin: 1%;
+    font-size:1.2rem
 }
 .project-display.featured .title-wrapper{
     margin:5px
@@ -135,8 +136,7 @@ body{
 
 .open-icon{
     float: right;
-    font-size: 1em;
-    opacity: 0;
+    font-size: 1.2em;
     transition: .3s ease;
     color: var(--open-icon-color);
     background-color: var(--interact-tray-background);
@@ -144,9 +144,6 @@ body{
     overflow: clip;
     padding-left: 3px;
     pointer-events: auto;
-}
-.project-display:hover .open-icon{
-    opacity: 1;
 }
 
 
