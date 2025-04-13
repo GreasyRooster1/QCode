@@ -24,7 +24,7 @@ body{
 }
 
 .featured-project-bar{
-    height:80vh;
+    height:75vh;
     background: var(--featured-project-bar-background);
     display: flex;
     justify-content: space-evenly;
@@ -32,8 +32,8 @@ body{
 }
 
 .project-display.featured{
-    width:38vh;
-    height:38vh;
+    width:73vh;
+    height:73vh;
     border-radius: 10px;
     overflow: clip;
 }
