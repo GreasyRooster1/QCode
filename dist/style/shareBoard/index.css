@@ -32,8 +32,8 @@ body{
 }
 
 .project-display.featured{
-    width:68vh;
-    height:68vh;
+    width:68vmin;
+    height:68vmin;
     border-radius: 10px;
     overflow: clip;
 }
@@ -261,7 +261,7 @@ body{
     justify-content: space-between;
     flex-direction: column;
     position: relative;
-    z-index: 999;
+    z-index: 1;
 }
 
 .project-display.bulk .user-display span{
