@@ -112,14 +112,15 @@
     color:var(--common-rarity-color);
 }
 .badge-rarity.uncommon{
-    color:var(--uncommon-rarity-color-dark);
-    -webkit-text-stroke: 1px var(--uncommon-rarity-color);
+    color:var(--uncommon-rarity-color);
+    -webkit-text-stroke: 1px var(--uncommon-rarity-color-dark);
 }
 .badge-rarity.rare{
-    color:var(--rare-rarity-color-dark);
-    -webkit-text-stroke: 1px var(--rare-rarity-color);
+    color:var(--rare-rarity-color);
+    -webkit-text-stroke: 1px var(--rare-rarity-color-dark);
     text-shadow: 0 0 4px var(--rare-rarity-color);
     letter-spacing: 1px;
+    font-weight: 800;
 }
 .badge-rarity.legendary{
     color:var(--legendary-rarity-color);
