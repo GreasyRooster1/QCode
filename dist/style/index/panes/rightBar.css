@@ -136,18 +136,21 @@
     letter-spacing: 6px;
     font-weight: 800;
 
-    -webkit-mask-image: -webkit-linear-gradient(-75deg, rgba(0,0,0,.6) 30%, #000 50%, rgba(0,0,0,.6) 70%);
-    -webkit-mask-size: 300%;
-    animation: shine 6s infinite;
+    background: linear-gradient(75deg, #FFF 48%,#000000 50%, #FFF 56%);
+    background-size: 200% auto;
+
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 20s linear infinite;
 }
 
 @keyframes shine {
-    from {
-        -webkit-mask-position: 150%;
-    }
-
     to {
-        -webkit-mask-position: -50%;
+        background-position: 400% center;
     }
 }
 
