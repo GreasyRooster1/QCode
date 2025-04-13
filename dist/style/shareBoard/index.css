@@ -169,8 +169,8 @@ body{
 .bar-separator{
     display: flex;
     position: relative;
-    top:calc(-1*var(--bar-seperator-height)/2);
     height: 3vh;
+    background: var(--bulk-project-bar-background);
 }
 
 .bar-separator > .empty{
