@@ -171,10 +171,12 @@ body{
     position: relative;
     height: 3vh;
     background: var(--bulk-project-bar-background);
+    padding-bottom:5vh;
 }
 
 .bar-separator > .empty{
-    width:10vw
+    width:10vw;
+
 }
 
 .bar-separator > .dotted{
@@ -187,6 +189,12 @@ body{
     width:60vw;
     display: flex;
     border-top:var(--bar-seperator-height) solid var(--bar-seperator);
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 500;
+    padding:.5vh;
+    height:7vh;
 }
 
 .bulk-projects-bar{
