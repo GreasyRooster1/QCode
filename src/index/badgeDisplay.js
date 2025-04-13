@@ -36,6 +36,7 @@ function createBadgeElementFromSnap(snap,id){
     let badgeProperties = snap.val();
 
     let badgeWrapper = document.createElement("div");
+    badgeWrapper.classList.add("badge-wrapper");
     let badgeElement = document.createElement("div");
     badgeElement.classList.add("badge");
 
@@ -55,6 +56,7 @@ function createBadgeElementFromSnap(snap,id){
 
     badgeElement.setAttribute("data-badgeid",id)
     badgeElement.classList.add(badgeProperties.rarity);
+    badgeWrapper.classList.add(badgeProperties.rarity);
 
     badgeElement.appendChild(img);
     badgeElement.appendChild(hoverText);

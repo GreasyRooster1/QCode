@@ -64,13 +64,16 @@
     overflow: auto;
 }
 
-.badge{
+.badge-wrapper{
     margin:3px;
+}
+
+.badge{
     width:var(--badge-size);
     height:var(--badge-size);
     background:var(--badge-color);
-    border: 2px solid var(--badge-color);
     border-radius: 4px;
+    overflow: clip;
 }
 
 .badge > img{
@@ -122,7 +125,7 @@
     border:solid 4px var(--rare-rarity-color);
 }
 
-.badge.legendary img::before {
+.badge-wrapper.legendary::before {
     background: linear-gradient(15deg, #ffffff 30%, rgba(255, 255, 255, 0.6) 50%, #ffffff 70%);
     content: "";
     display: block;
@@ -135,11 +138,15 @@
     z-index: 99;
     animation: badge-shine 1s linear infinite;
 }
-.badge.legendary{
+.badge-wrapper.legendary{
     overflow: clip;
 
     background:var(--legendary-rarity-color);
     border:solid 4px var(--legendary-rarity-color);
+}
+.badge.legendary {
+top:-100%;
+    position:relative;
 }
 .badge-info-image.legendary{
     border:solid 4px var(--legendary-rarity-color);
