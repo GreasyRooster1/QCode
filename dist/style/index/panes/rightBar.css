@@ -117,26 +117,26 @@
 }
 .badge-rarity.rare{
     color:var(--rare-rarity-color);
-    -webkit-text-stroke: 1px var(--rare-rarity-color-dark);
+    -webkit-text-stroke: .5px var(--rare-rarity-color-dark);
     text-shadow: 0 0 4px var(--rare-rarity-color-dark);
     letter-spacing: 1px;
     font-weight: 800;
 }
 .badge-rarity.legendary{
     color:var(--legendary-rarity-color);
-    -webkit-text-stroke: 1px var(--legendary-rarity-color-dark);
+    -webkit-text-stroke: .5px var(--legendary-rarity-color-dark);
     text-shadow: 0 0 4px var(--legendary-rarity-color);
     letter-spacing: 1px;
     font-weight: 800;
 }
 .badge-rarity.mythic{
     color:var(--mythic-rarity-color);
-    -webkit-text-stroke: 1px var(--mythic-rarity-color-dark);
+    -webkit-text-stroke: .5px var(--mythic-rarity-color-dark);
     text-shadow: 0 0 10px var(--mythic-rarity-color);
     letter-spacing: 6px;
     font-weight: 800;
 
-    background: linear-gradient(75deg, #FFF 48%,#000000 50%, #FFF 56%);
+    background: linear-gradient(75deg, var(--mythic-rarity-color) 48%,var(--mythic-rarity-color-glint) 50%,var(--mythic-rarity-color) 56%);
     background-size: 200% auto;
 
     background-clip: text;

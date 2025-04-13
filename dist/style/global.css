@@ -18,7 +18,7 @@
     --legendary-rarity-color-dark: #d89705;
     --mythic-rarity-color-dark: #9a1212;
 
-    --legendary-rarity-color-faded: rgba(170, 135, 20, 0.71);
+    --mythic-rarity-color-glint: #f3c9c9;
 }
 
 body{
