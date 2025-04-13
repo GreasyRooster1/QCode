@@ -127,17 +127,17 @@
     content: "";
     display: block;
     height: 100%;
-    left: -75%;
-    position: absolute;
+    left: -1500%;
+    position: relative;
     top: 0;
     transform: skewX(-25deg);
     width: 50%;
-    z-index: 2;
-    animation: shine 0.85s;
+    z-index: 99;
+    animation: badge-shine 5s linear infinite;
 }
 .badge.legendary{
     position: relative;
-    overflow: hidden;
+    overflow: clip;
 
     background:var(--legendary-rarity-color);
     border:solid 4px var(--legendary-rarity-color);
@@ -147,7 +147,7 @@
 }
 
 @keyframes badge-shine {
-    100% {
+    to {
         left: 125%;
     }
 }
