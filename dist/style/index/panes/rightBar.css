@@ -122,37 +122,35 @@
     border:solid 4px var(--rare-rarity-color);
 }
 
-.badge.legendary:before {
-    content: '';
-    position: relative;
-    top: -100%;
-    display: inline-block;
+.badge.legendary::before {
+    background: linear-gradient(15deg, #ffffff 30%, rgba(255, 255, 255, 0.6) 50%, #ffffff 70%);
+    content: "";
+    display: block;
     height: 100%;
-    width: 100%;
-    background:#fff;
+    left: -75%;
+    position: absolute;
+    top: 0;
+    transform: skewX(-25deg);
+    width: 50%;
+    z-index: 2;
+    animation: shine 0.85s;
 }
 .badge.legendary{
+    position: relative;
+    overflow: hidden;
+
     background:var(--legendary-rarity-color);
     border:solid 4px var(--legendary-rarity-color);
-
-    -webkit-mask-image: -webkit-linear-gradient(15deg, #000 30%, rgba(0,0,0,.6) 50%,#000 70%);
-    -webkit-mask-size: 200%;
-    animation: badge-shine 2s infinite;
 }
 .badge-info-image.legendary{
     border:solid 4px var(--legendary-rarity-color);
 }
 
-@-webkit-keyframes badge-shine {
-    from {
-        -webkit-mask-position: 150%;
-    }
-
-    to {
-        -webkit-mask-position: -50%;
+@keyframes badge-shine {
+    100% {
+        left: 125%;
     }
 }
-
 
 .badge-rarity.common{
     color:var(--common-rarity-color);
