@@ -1,0 +1,479 @@
+:root{
+    --primary-color: #0d72e6;
+    --subtle-primary-color: #053565;
+    --dark-primary-color: rgba(0, 9, 19, 0.85);
+    --background-primary-color: rgba(0, 2, 5, 0.14);
+    --text-color: #eaf0f4;
+    --inverse-text-color: #01080c;
+    --light-primary-color: #94d2f3;
+    --transparent-primary-color: rgba(13, 121, 230, 0.47);
+
+
+    --border: 2px solid var(--primary-color);
+    --border-subtle: 2px solid var(--subtle-primary-color);
+
+    color:var(--text-color);
+}
+body{
+    background-attachment: fixed;
+    background-position: top right;
+    background-image: url("https://raw.githubusercontent.com/GreasyRooster1/DesktopBackgrounds/refs/heads/main/Water/sparse.png");
+}
+/* Navbar (navbar.css) */
+:root{
+    --account-name-text: var(--text-color);
+    --account-dropdown-option: var(--text-color);
+
+    --account-dropdown-seperator: var(--background-primary-color);
+
+    --navbar-shrink-color: var(--text-color);
+
+    --generic-nav-button-color: var(--dark-primary-color);
+
+    --points-display-background: var(--primary-color);
+    --points-display-text: var(--text-color);
+
+    --navbar-height:40px;
+}
+.navbar{
+    border-bottom: var(--border);
+    background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-blue)24%, var(--brand-gray) 47%, var(--brand-black) 50%, var(--brand-green) 76%, #68bbf3 84%,var(--brand-green) 93%, var(--brand-black) 99%);
+}
+.home-link{
+    border:var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Global (global.css) */
+:root{
+    --default-font: "JetBrains Mono";
+
+    --brand-blue:var(--dark-primary-color);
+    --brand-green: var(--primary-color);
+    --brand-black:var(--dark-primary-color);
+    --brand-gray:var(--dark-primary-color);
+
+    --common-rarity-color: #484848;
+    --uncommon-rarity-color: #0091e1;
+    --rare-rarity-color: #9a25fa;
+    --legendary-rarity-color: #fac825;
+    --mythic-rarity-color: #36ffe1;
+
+    --common-rarity-color-dark: #2c2c2c;
+    --uncommon-rarity-color-dark: #00699f;
+    --rare-rarity-color-dark: #8313d6;
+    --legendary-rarity-color-dark: #d3ac0f;
+    --mythic-rarity-color-dark: #129a86;
+
+    --legendary-rarity-color-faded: rgba(170, 135, 20, 0.71);
+}
+
+/* Shared Project (sharedProject/index.css) */
+:root{
+    --code-pane-background: #d0efcc;
+    --view-pane-background: var(--background-primary-color);
+
+    --info-tab-background: var(--background-primary-color);
+    --code-tab-background: var(--background-primary-color);
+    --info-tab-color: var(--text-color);
+    --code-tab-color: var(--text-color);
+    --info-section-background: var(--background-primary-color);
+
+    --info-inset-background: var(--dark-primary-color);
+    --author-block-background: var(--dark-primary-color);
+
+    --tab-bar-background: var(--background-primary-color);
+
+    --remix-button-color: var(--dark-primary-color);
+    --remix-button-text-color: var(--text-color);
+
+    --original-title-border: var(--primary-color);
+
+    --lesson-card: var(--dark-primary-color);
+    --lesson-button: var(--dark-primary-color);
+
+    --user-img-size:13vh;
+}
+.info-pane {
+    background: none;
+}
+.author-block{
+    border:var(--border)
+}
+.tab{
+    border:var(--border);
+    border-bottom:0;
+}
+.section{
+    border:var(--border);
+    border-left:0;
+}
+.remix-button{
+    border:var(--border);
+}
+.original-block{
+    border:var(--border);
+}
+.lesson-button-container {
+    background-image: radial-gradient(var(--primary-color) 1px, var(--background-primary-color) 0);
+}
+.card{
+    border:var(--border);
+}
+.lesson-button{
+    border:var(--border);
+}
+/* Share Board Global (shareBoard/global.css) */
+:root{
+    --stars-color: #edb90b;
+    --stars-text-color: #8a7009;
+    --likes-color: #f82062;
+    --likes-text-color: #9a0330;
+}
+
+/* Share Board (shareBoard/index.css) */
+:root{
+    --featured-project-bar-background: var(--dark-primary-color);
+    --bulk-project-bar-background: var(--background-primary-color);
+    --bar-seperator: var(--primary-color);
+    --interact-tray-background: var(--background-primary-color);
+    --title-color-background: #b5b5b5;
+
+    --open-icon-color: var(--text-color);
+    --open-icon-border-color: #ffffff;
+
+    --bulk-project-overlay-background: var(--dark-primary-color);
+
+    --bar-seperator-height: 2px;
+}
+
+
+/* Login (login/login.css) */
+:root{
+    --background-color: #b4b4b4;
+    --login-pane-color: #c2c2c2;
+    --input-container-color: #cecece;
+    --input-wrapper-color: #e1e1e1;
+
+    --button-container-color: #cecece;
+    --button-color: #e1e1e1;
+    --button-color-hover: #f1f1f1;
+
+    --auth-container-color: #cecece;
+
+    --admin-link-color: #626262;
+
+    --auth-error-background: rgba(210, 22, 22, 0.39);
+    --auth-error-solid: rgb(211, 48, 48);
+    --auth-error-text: rgb(35, 2, 2);
+}
+
+/* Lessons (lessons/index.css) */
+:root {
+    --ui-tray-background:var(--background-primary-color);
+    --ui-tray-border: var(--primary-color);
+    --ui-tray-icons: var(--primary-color);
+
+    --canvas-background-color: #00040c;
+    --grid-color: var(--subtle-primary-color);
+    --canvas-text-color: var(--text-color);
+    --canvas-inverse-text-color: var(--text-color);
+    --canvas-lesson-card-border:var(--subtle-primary-color);
+    --canvas-lesson-card-background: #192a40;
+    --canvas-started-accent: var(--primary-color);
+    --canvas-completed-overlay: var(--transparent-primary-color);
+    --canvas-locked-overlay:#00077;
+    --canvas-button-border: var(--subtle-primary-color);
+    --canvas-line-color: var(--primary-color);
+}
+
+/* Index (index/index.css) */
+:root{
+    --center-background: var(--background-primary-color);
+
+    --left-bar-background: var(--dark-primary-color);
+    --left-sections-background: var(--background-primary-color);
+
+    --right-bar-background: var(--dark-primary-color);
+    --right-sections-background: var(--background-primary-color);
+
+    --project-link-background: var(--dark-primary-color);
+    --project-link-text:var(--text-color);
+    --project-date-text: #c9d0dd;
+
+    --lessons-chart-link-background:var(--dark-primary-color);
+    --lessons-recommended-background: var(--dark-primary-color);
+
+    --badge-details-background: var(--dark-primary-color);
+    --badge-hover-color: var(--primary-color);
+    --badge-color: var(--dark-primary-color);
+
+    --new-button-background: var(--primary-color);
+    --new-button-text-color: var(--text-color);
+
+    --featured-project-thumb-background: var(--dark-primary-color);
+
+    --announcement-background: var(--dark-primary-color);
+    --announcement-side-color: var(--primary-color);
+    --announcement-content-background: var(--dark-primary-color);
+    --announcement-content-text: var(--text-color);
+    --announcement-date-text: var(--primary-color);
+
+    --points-progress-bar-background: var(--subtle-primary-color);
+    --points-progress-bar-fill: var(--primary-color);
+
+    --status-display-text: var(--text-color);
+    --status-display-external: #ea473a;
+    --status-display-not-started:var(--subtle-primary-color);
+    --status-display-started: var(--primary-color);
+
+    --footer-background: var(--dark-primary-color);
+    --footer-text-color: var(--primary-color);
+
+    --badge-size:50px;
+
+    --share-board-more-button-color: #14a4e3;
+    --share-board-more-button-text-color: #eef9ff;
+
+    --new-project-popup-background: #b3b9df;
+    --popup-inputs-background: #9da6dd;
+}
+body{
+}
+.bar-section{
+    border:var(--border);
+    border-radius: 10px;
+}
+.lesson-link-wrapper{
+    border:var(--border);
+    border-radius: 10px;
+}
+.play-icon{
+    -webkit-text-stroke: 2px var(--primary-color);
+    color: var(--background-primary-color);
+}
+.slide-arrow{
+    -webkit-text-stroke: 2px var(--primary-color);
+    color: var(--background-primary-color);
+}
+
+/* Exec (exec/style.css) */
+/* Override elements directly */
+.body{
+    background:none;
+}
+
+/* Editor Lang (editor/lang.css) */
+:root{
+    --code-editor-theme:"dracula"
+}
+
+/* Editor Main (editor/editor.css) */
+:root{
+    --pane-background: var(--background-primary-color);
+
+    --gutter-accent: var(--subtle-primary-color);
+    --gutter-main: var(--dark-primary-color);
+
+    --step-background: var(--dark-primary-color);
+    --step-content-background: var(--dark-primary-color);
+
+    --step-head-default: rgba(209, 0, 255, 0.44);
+
+    --step-info: rgba(21, 156, 214, 0.44);
+    --step-code: rgba(27, 214, 21, 0.44);
+    --step-challenge: rgba(214, 21, 21, 0.44);
+    --step-chapters: rgba(101, 101, 101, 0.44);
+    --step-check: rgba(153, 44, 255, 0.44);
+    --step-next: rgba(255, 148, 34, 0.44);
+    --step-build: rgba(34, 45, 255, 0.44);
+    --step-other: rgba(21, 21, 21, 0.44);
+
+    --step-type-background: var(--subtle-primary-color);
+
+    --code-editor-background: #fffff;
+
+    --run-button-background: var(--dark-primary-color);
+    --run-button-text-color: var(--text-color);
+
+    --stop-button-background: var(--dark-primary-color);
+    --stop-button-text-color: var(--text-color);
+
+    --save-button-background: var(--dark-primary-color);
+    --save-button-text-color: var(--text-color);
+
+    --share-button-background: var(--dark-primary-color);
+    --share-button-text-color: var(--text-color);
+    --share-button-disabled-background: var(--dark-primary-color);
+
+    --share-popup-background: var(--background-primary-color);
+    --share-project-name-input: var(--dark-primary-color);
+
+    --close-button-text-color: var(--primary-color);
+
+    --send-button-background: var(--dark-primary-color);
+    --console-input-button-background: var(--dark-primary-color);
+
+    --log-error-background: rgba(255, 27, 27, 0.37);
+    --log-warn-background: rgba(255, 243, 17, 0.37);
+    --log-log-background: rgb(71 70 68 / 22%);
+
+    --log-error-solid: rgb(255, 45, 45);
+    --log-warn-solid: rgb(220, 188, 13);
+    --log-log-solid: rgb(120, 119, 118);
+
+    --save-alert-background: var(--background-primary-color);
+    --save-alert-accent: var(--primary-color);
+
+    --chapter-link-color: var(--text-color);
+    --chapter-link-color-hover: var(--text-color);
+
+    --step-code-text-background: var(--light-primary-color);
+    --step-code-text-color: var(--subtle-primary-color);
+
+    --step-red-text-color: var(--primary-color);
+
+    --chapter-end-home-link-color: var(--primary-color);
+    --scratch-steps-background: var(--background-primary-color);
+}
+.name-input{
+    color:var(--text-color);
+    border:var(--border)!important;
+}
+.desc-input{
+    color:var(--text-color);
+    border:var(--border) !important;
+}
+.share-popup-content{
+    border:var(--border);
+}
+.output-head button{
+    border:var(--border);
+    display: inline-flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.share-popup-button{
+    border:var(--border);
+}
+/* Editor Lesson Creator (editor/lessonCreator.css) */
+:root{
+    --lesson-creator-container-color: var(--background-primary-color);
+    --lesson-creator-button-color: #dfdfdf;
+    --lesson-creator-meta-color: var(--background-primary-color);
+}
+
+/* Editor Arduino (editor/panes/lang/arduino.css) */
+:root{
+    --arduino-status-not-connected: var(--subtle-primary-color);
+    --arduino-status-ok: var(--primary-color);
+    --arduino-status-loading: var(--subtle-primary-color);
+}
+
+/* Editor Scratch (editor/panes/lang/scratch.css) */
+/* Override elements directly */
+
+/* Editor Web (editor/panes/lang/web.css) */
+:root{
+    --filesystem-sidebar: var(--background-primary-color);
+    --filesystem-header: var(--dark-primary-color);
+    --folder-icon-line: #636363;
+    --current-file-view: var(--dark-primary-color);
+    --filesystem-background: var(--dark-primary-color);
+
+    --header-text: var(--text-color);
+    --current-file-view-text: var(--text-color);
+}
+
+.filesystem{
+    border:var(--border);
+}
+
+/* Admin Login (adminLogin/admin.css) */
+:root{
+    --background-color: #4f4f4f;
+    --login-pane-color: #6b6b6b;
+    --input-container-color: #808080;
+    --input-wrapper-color: #939393;
+
+    --button-container-color: #808080;
+    --button-color: #939393;
+    --button-color-hover: #b0b0b0;
+
+    --auth-container-color: #808080;
+
+    --auth-error-background: rgba(210, 22, 22, 0.39);
+    --auth-error-solid: rgb(211, 48, 48);
+    --auth-error-text: rgb(35, 2, 2);
+}
+
+/* Admin Console (adminConsole/adminConsole.css) */
+:root{
+    --background-color: var(--background-primary-color);
+    --main-content-background: var(--dark-primary-color);
+    --content-pane-background: var(--background-primary-color);
+
+    --data-item-color: var(--dark-primary-color);
+    --details-background:var(--background-primary-color);
+
+    --lesson-link-accent: var(--primary-color);
+    --lesson-link-unlisted-accent: var(--subtle-primary-color);
+
+    --lesson-creator-button-color: var(--primary-color);
+    --admin-button-color: var(--background-primary-color);
+    --admin-button-color-hover: var(--dark-primary-color);
+
+    --add-badge-button-color:var(--background-primary-color);
+    --load-button-background: var(--background-primary-color);
+}
+.add-badge-button{
+    border:var(--border);
+}
+.users-load-button{
+    border:var(--border);
+}
+
+.content-pane{
+    border: var(--border);
+    border-radius: 10px;
+}
+.listed-data-item{
+    border:var(--border);
+    border-radius: 10px;
+}
+.listed-data-wrapper{
+    border-bottom:var(--border);
+}
+.admin-button{
+    border:var(--border);
+}
+.buttons-pane{
+    margin-left:10px;
+}
+/* Edit Profile (editProfile/index.css) */
+:root{
+    --page-background: var(--background-primary-color);
+    --main-background: var(--dark-primary-color);
+
+    --rows: var(--background-primary-color);
+
+    --profile-card: var(--dark-primary-color);
+    --advanced-line: var(--primary-color);
+    --username-warning:#ff0000;
+}
+
+.main-content{
+    border:var(--border);
+}
+.row{
+    border:var(--border);
+    border-radius:10px;
+}
+.profile-card{
+    border:var(--border);
+    border-radius:10px;
+}

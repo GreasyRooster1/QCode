@@ -7,18 +7,20 @@
     --brand-gray:#999999;
 
     --common-rarity-color: #484848;
-    --uncommon-rarity-color: #0091e1;
-    --rare-rarity-color: #9a25fa;
+    --uncommon-rarity-color: #c36332;
+    --rare-rarity-color: #c0c8dc;
     --legendary-rarity-color: #fac825;
-    --mythic-rarity-color: #36ffe1;
+    --mythic-rarity-color: #ff3636;
 
     --common-rarity-color-dark: #2c2c2c;
-    --uncommon-rarity-color-dark: #00699f;
-    --rare-rarity-color-dark: #8313d6;
-    --legendary-rarity-color-dark: #d3ac0f;
-    --mythic-rarity-color-dark: #129a86;
+    --uncommon-rarity-color-dark: #c36332;
+    --rare-rarity-color-dark: #7a7f88;
+    --legendary-rarity-color-dark: #d89705;
+    --mythic-rarity-color-dark: #9a1212;
 
-    --legendary-rarity-color-faded: rgba(170, 135, 20, 0.71);
+    --mythic-rarity-color-glint: #f3c9c9;
+    --legendary-rarity-color-glint: #ffffff;
+    --legendary-rarity-badge-glint: #e8d0b4;
 }
 
 body{

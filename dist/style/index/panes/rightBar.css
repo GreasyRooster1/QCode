@@ -4,16 +4,16 @@
 }
 
 .badges{
-    height:60vh;
+    height:50vh;
     background: var(--right-sections-background);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .badge-details{
     height:30%;
     background:var(--badge-details-background);
-    margin-top: auto;
     overflow: clip;
 }
 
@@ -36,8 +36,8 @@
 }
 
 .badge-info-image{
-    width: 30%;
-    height:30%;
+    width: 8vh;
+    height:8vh;
     margin:5px;
     border-radius: 8px;
 }
@@ -58,15 +58,22 @@
     flex-direction: row;
     flex-wrap: wrap;
     line-height: 0;
+    height:60%;
+    align-content: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
+}
+
+.badge-wrapper{
+    margin:3px;
 }
 
 .badge{
-    margin:3px;
     width:var(--badge-size);
     height:var(--badge-size);
     background:var(--badge-color);
-    border: 2px solid var(--badge-color);
     border-radius: 4px;
+    overflow: clip;
 }
 
 .badge > img{
@@ -96,6 +103,7 @@
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
     text-align: center;
 
@@ -103,28 +111,111 @@
     height:100%;
 }
 
+.badge.uncommon{
+    border:solid 2px var(--uncommon-rarity-color);
+}
+.badge-info-image.uncommon{
+    border:solid 4px var(--uncommon-rarity-color);
+}
+
+.badge.rare{
+    border:solid 4px var(--rare-rarity-color);
+}
+.badge-info-image.rare{
+    border:solid 4px var(--rare-rarity-color);
+}
+
+.badge-wrapper.legendary::before {
+    mix-blend-mode: lighten;
+    background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--legendary-rarity-badge-glint) 60%,var(--legendary-rarity-badge-glint) 80%, rgba(255, 255, 255, 0) 90%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: -7000%;
+    position: relative;
+    top: 0;
+    /*transform: skewX(-25deg);*/
+    width: 100%;
+    z-index: 99;
+    opacity: .7;
+    animation: badge-shine 20s linear infinite;
+}
+
+.badge-wrapper.legendary{
+    overflow: clip;
+
+    background:var(--legendary-rarity-color);
+    border:solid 4px var(--legendary-rarity-color);
+}
+.badge.legendary {
+top:-100%;
+    position:relative;
+}
+.badge-info-image.legendary{
+    border:solid 4px var(--legendary-rarity-color);
+}
+
+@keyframes badge-shine {
+    to {
+        left: 125%;
+    }
+}
+
 .badge-rarity.common{
     color:var(--common-rarity-color);
 }
 .badge-rarity.uncommon{
-    color:var(--uncommon-rarity-color-dark);
-    -webkit-text-stroke: 1px var(--uncommon-rarity-color);
+    color:var(--uncommon-rarity-color);
+    -webkit-text-stroke: 1px var(--uncommon-rarity-color-dark);
 }
 .badge-rarity.rare{
-    color:var(--rare-rarity-color-dark);
-    -webkit-text-stroke: 1px var(--rare-rarity-color);
-    text-shadow: 0 0 4px var(--rare-rarity-color);
+    color:var(--rare-rarity-color);
+    -webkit-text-stroke: .5px var(--rare-rarity-color-dark);
+    text-shadow: 0 0 4px var(--rare-rarity-color-dark);
     letter-spacing: 1px;
+    font-weight: 800;
 }
 .badge-rarity.legendary{
     color:var(--legendary-rarity-color);
-    -webkit-text-stroke: 1px var(--legendary-rarity-color-dark);
-    text-shadow: 0 0 4px var(--legendary-rarity-color-faded);
-    letter-spacing: 2px;
-    filter: glow();
+    -webkit-text-stroke: .5px var(--legendary-rarity-color-dark);
+    text-shadow: 0 0 4px var(--legendary-rarity-color);
+    letter-spacing: 1px;
+    font-weight: 800;
+
+    background: linear-gradient(75deg, var(--legendary-rarity-color) 48%,var(--legendary-rarity-color-glint) 50%,var(--legendary-rarity-color) 56%);
+    background-size: 200% auto;
+
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 20s linear infinite;
 }
 .badge-rarity.mythic{
     color:var(--mythic-rarity-color);
+    -webkit-text-stroke: .5px var(--mythic-rarity-color-dark);
+    text-shadow: 0 0 10px var(--mythic-rarity-color);
+    letter-spacing: 6px;
+    font-weight: 800;
+
+    background: linear-gradient(75deg, var(--mythic-rarity-color) 48%,var(--mythic-rarity-color-glint) 50%,var(--mythic-rarity-color) 56%);
+    background-size: 200% auto;
+
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 20s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 400% center;
+    }
 }
 
 
