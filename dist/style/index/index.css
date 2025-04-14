@@ -60,7 +60,8 @@
 }
 
 .left-bar{
-    width:20vw;
+    max-width:20vw;
+    min-width: 350px;
     background:var(--left-bar-background);
 }
 
@@ -75,7 +76,8 @@
 }
 
 .right-bar{
-    width:20vw;
+    max-width:20vw;
+    min-width: 350px;
     background:var(--right-bar-background);;
 }
 
