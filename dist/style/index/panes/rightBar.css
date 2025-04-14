@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin:3px;
 }
 
 .badge-details{
@@ -113,20 +112,17 @@
 }
 
 .badge.uncommon{
-    border:solid 2px var(--uncommon-rarity-color);
-    margin:1px;
+    outline:solid 1px var(--uncommon-rarity-color);
 }
 .badge-info-image.uncommon{
-    border:solid 3px var(--uncommon-rarity-color);
-    margin:0;
+    outline:solid 2px var(--uncommon-rarity-color);
 }
 
 .badge.rare{
-    border:solid 3px var(--rare-rarity-color);
-    margin:0;
+    outline:solid 2px var(--rare-rarity-color);
 }
 .badge-info-image.rare{
-    border:solid 4px var(--rare-rarity-color);
+    outline:solid 4px var(--rare-rarity-color);
 }
 
 .badge-wrapper.legendary::before {
@@ -149,15 +145,14 @@
     overflow: clip;
 
     background:var(--legendary-rarity-color);
-    border:solid 3px var(--legendary-rarity-color);
-    margin:0;
+    outline:solid 2px var(--legendary-rarity-color);
 }
 .badge.legendary {
 top:-100%;
     position:relative;
 }
 .badge-info-image.legendary{
-    border:solid 4px var(--legendary-rarity-color);
+    outline:solid 4px var(--legendary-rarity-color);
 }
 
 @keyframes badge-shine {
