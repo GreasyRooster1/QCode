@@ -112,7 +112,7 @@
 }
 
 .badge.uncommon{
-    outline:solid 1px var(--uncommon-rarity-color);
+    outline:solid 2px var(--uncommon-rarity-color);
 }
 .badge-info-image.uncommon{
     outline:solid 2px var(--uncommon-rarity-color);
@@ -131,6 +131,35 @@
     content: "";
     display: block;
     height: 100%;
+    left: -3500%;
+    position: relative;
+    top: 0;
+    /*transform: skewX(-25deg);*/
+    width: 100%;
+    z-index: 99;
+    opacity: .7;
+    animation: badge-shine 10s linear infinite;
+}
+
+.badge-wrapper.legendary{
+    overflow: clip;
+    border-radius: 3px;
+    outline:solid 2px var(--legendary-rarity-color);
+}
+.badge.legendary {
+top:-100%;
+    position:relative;
+}
+.badge-info-image.legendary{
+    outline:solid 4px var(--legendary-rarity-color);
+}
+
+.badge-wrapper.mythic::before {
+    mix-blend-mode: lighten;
+    background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--mythic-rarity-badge-glint) 60%,var(--mythic-rarity-badge-glint) 80%, rgba(255, 255, 255, 0) 90%);
+    content: "";
+    display: block;
+    height: 100%;
     left: -7000%;
     position: relative;
     top: 0;
@@ -141,18 +170,17 @@
     animation: badge-shine 20s linear infinite;
 }
 
-.badge-wrapper.legendary{
+.badge-wrapper.mythic{
     overflow: clip;
-
-    background:var(--legendary-rarity-color);
-    outline:solid 2px var(--legendary-rarity-color);
+    border-radius: 3px;
+    outline:solid 2px var(--mythic-rarity-color);
 }
-.badge.legendary {
-top:-100%;
+.badge.mythic {
+    top:-100%;
     position:relative;
 }
-.badge-info-image.legendary{
-    outline:solid 4px var(--legendary-rarity-color);
+.badge-info-image.mythic{
+    outline:solid 4px var(--mythic-rarity-color);
 }
 
 @keyframes badge-shine {
