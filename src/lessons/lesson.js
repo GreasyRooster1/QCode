@@ -223,7 +223,11 @@ class Lesson{
         drawingContext.setLineDash([]);
         fill(currentColors.grid)
         textAlign(LEFT)
-        text(this.levelBreakNote,this.x-300,breakY)
+        noStroke()
+        textSize(30)
+        textStyle(BOLD)
+        text(this.levelBreakNote,this.x-300,breakY-5)
+        textStyle(NORMAL)
     }
 }
 
