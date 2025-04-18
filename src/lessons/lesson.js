@@ -217,7 +217,11 @@ class Lesson{
         let breakY = this.y+this.h+(400-this.h)/2;
 
         stroke(currentColors.grid)
-        line(this.x-100,breakY,this.x+this.w+100,breakY);
+        drawingContext.setLineDash([20]);
+        line(this.x-300,breakY,this.x+this.w+300,breakY);
+        drawingContext.setLineDash([]);
+        fill(currentColors.grid)
+        textAlign(CORNER)
     }
 }
 
