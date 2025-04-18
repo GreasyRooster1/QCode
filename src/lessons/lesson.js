@@ -283,7 +283,7 @@ function solvePosition(id){
     let xMargin = 300;
 
     if(id===rootLesson){
-        mainYShift = 500;
+        mainYShift = 400;
         sideYShift = 500;
         xMargin = 900;
     }
