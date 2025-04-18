@@ -217,7 +217,7 @@ class Lesson{
         let breakY = this.y+this.h+(400-this.h)/2;
 
         stroke(currentColors.grid)
-        line(this.x-30,breakY,this.x+this.w+30,breakY);
+        line(this.x-100,breakY,this.x+this.w+100,breakY);
     }
 }
 
