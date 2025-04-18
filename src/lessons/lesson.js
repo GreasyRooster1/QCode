@@ -25,6 +25,7 @@ class Lesson{
         this.statusChecked = false;
         this.locked = false;
         this.hasLevelBreak = false;
+        this.levelBreakNote = "";
     }
 
     update(){
@@ -221,7 +222,8 @@ class Lesson{
         line(this.x-300,breakY,this.x+this.w+300,breakY);
         drawingContext.setLineDash([]);
         fill(currentColors.grid)
-        textAlign(CORNER)
+        textAlign(LEFT)
+        text(this.levelBreakNote,this.x-300,breakY)
     }
 }
 
