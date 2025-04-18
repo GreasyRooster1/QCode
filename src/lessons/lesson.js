@@ -221,7 +221,7 @@ class Lesson{
         drawingContext.setLineDash([20]);
         line(this.x-300,breakY,this.x+this.w+300,breakY);
         drawingContext.setLineDash([]);
-        fill(currentColors.grid)
+        fill(currentColors.textColor)
         textAlign(LEFT)
         noStroke()
         textSize(30)
