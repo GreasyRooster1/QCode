@@ -63,6 +63,7 @@
     max-width:20vw;
     min-width: 350px;
     background:var(--left-bar-background);
+    flex: 1;
 }
 
 .center-content{
