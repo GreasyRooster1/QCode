@@ -101,7 +101,7 @@ function insertOriginalInfo(originalInfo,originalImg,originalUsername,originalTi
     })
 
     originalInfo.lastElementChild.addEventListener("click",()=>{
-        window.location.href="project.html?shareboardid="+projectMetadata.original;
+        window.location.href="sharedProject.html?shareboardid="+projectMetadata.original;
     })
 
 }
