@@ -214,7 +214,7 @@ class Lesson{
             return;
         }
         //mainYshift / 2
-        let breakY = this.y+this.h+200;
+        let breakY = this.y+this.h+(400-this.h)/2;
 
         stroke(currentColors.grid)
         line(this.x-30,breakY,this.x+this.w+30,breakY);
