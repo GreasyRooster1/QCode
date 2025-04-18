@@ -24,6 +24,7 @@ class Lesson{
         this.started = false;
         this.statusChecked = false;
         this.locked = false;
+        this.hasLevelBreak = false;
     }
 
     update(){
@@ -40,6 +41,7 @@ class Lesson{
             this.drawTags()
             this.drawTitle()
             this.renderStatus()
+            this.renderLevelBreak()
         }else{
             this.drawUnlisted();
             this.drawLines()
@@ -206,6 +208,12 @@ class Lesson{
             this.image = loadImage(data);
         })
     }
+
+    renderLevelBreak(){
+        if(!this.hasLevelBreak){
+            return;
+        }
+    }
 }
 
 function loadLessons(next){
@@ -220,6 +228,7 @@ function loadLessons(next){
                 lessonsIndex[id].y=height/2-height/3;
                 lessonsIndex[id].x=width/2-lessonsIndex[id].w/2;
             }
+            lessonsIndex[id].hasLevelBreak = (data.hasLevelBreak!==undefined);
         }
     }).then(()=>{
         next(rootLesson)
