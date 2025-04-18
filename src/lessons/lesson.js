@@ -216,7 +216,7 @@ class Lesson{
         //mainYshift / 2
         let breakY = this.y+this.h+200;
 
-        fill(currentColors.grid)
+        stroke(currentColors.grid)
         line(this.x-30,breakY,this.x+this.w+30,breakY);
     }
 }
@@ -233,7 +233,7 @@ function loadLessons(next){
                 lessonsIndex[id].y=height/2-height/3;
                 lessonsIndex[id].x=width/2-lessonsIndex[id].w/2;
             }
-            if(data.levelBreak===true){
+            if(data.levelBreak!==undefined){
                 lessonsIndex[id].hasLevelBreak = true;
                 lessonsIndex[id].levelBreakNote = data.levelBreak;
             }
