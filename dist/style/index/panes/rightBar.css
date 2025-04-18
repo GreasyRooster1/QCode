@@ -160,14 +160,14 @@ top:-100%;
     content: "";
     display: block;
     height: 100%;
-    left: -7000%;
+    left: -3500%;
     position: relative;
     top: 0;
     /*transform: skewX(-25deg);*/
     width: 100%;
     z-index: 99;
     opacity: .7;
-    animation: badge-shine 20s linear infinite;
+    animation: badge-shine 10s linear infinite;
 }
 
 .badge-wrapper.mythic{
