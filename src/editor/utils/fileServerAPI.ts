@@ -1,4 +1,5 @@
 import {extractUsernameFromEmail, getStoredUser} from "../../api/auth";
+import {auth} from "../../api/firebase";
 
 function sendImageToFileServer(data:any,url:string){
     console.log("sending file to server: "+url)
@@ -10,4 +11,19 @@ function getURLForProjectFile(projectid:any,path:string){
     return username+"."+projectid+"/"+path;
 }
 
-export{sendImageToFileServer,getURLForProjectFile};
+function getAuthSessionToken(){
+    auth.onAuthStateChanged((user:any)=> {
+        if (user) {
+            auth.currentUser!.getIdToken(/* forceRefresh */ true).then((idToken:any) =>{
+                //console.log(idToken);
+            }).catch((error:any)=> {
+               // console.log(error)
+            });
+        } else {
+            // No user is signed in.
+        }
+    });
+
+}
+
+export{sendImageToFileServer,getURLForProjectFile,getAuthSessionToken};
