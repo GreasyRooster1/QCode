@@ -18,6 +18,29 @@ const acceptedFunctions = [
     "touchEnded",
 ]
 
+const rejectedFunctions = [
+    "createCapture",
+    "createElement",
+    "createP",
+    "createSpan",
+    "select",
+    "createA",
+    "createCheckbox",
+    "createFileInput",
+    "createRadio",
+    "createVideo",
+    "selectAll",
+    "createAudio",
+    "createColorPicker",
+    "createImg",
+    "createSelect",
+    "input",
+    "createButton",
+    "createDiv",
+    "createInput",
+    "createSlider",
+]
+
 const oldLog = console.log;
 const oldWarn = console.warn;
 const oldErr = console.error;
@@ -97,6 +120,11 @@ function startP5(drawArg,setupArg,otherFunctions) {
         createCanvas(500,500);
         createCanvas = function (){
             console.error("createCanvas is disabled");
+        }
+        for(let s in rejectedFunctions){
+            eval(s+` = function(){
+                console.error(s+" is disabled");
+            }`)
         }
         document.getElementById("defaultCanvas0").style.width = "100vmin";
         document.getElementById("defaultCanvas0").style.height = "100vmin";
