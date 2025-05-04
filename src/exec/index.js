@@ -87,12 +87,14 @@ document.addEventListener('contextmenu', event => {
 
 function runJs(js){
     //clear dangerous objects and run code
+    let nl = "\n"
     eval(`
         try {
             `+js+`
         }catch(e){
-            let stack = e.stack.split("\n"); 
-            console.error(stack[0]+" - "+e.message);
+            let stack = e.stack.split(nl);
+            let line = stack[1].replace("at eval (eval at runJs (webpack:///./src/exec/index.js?),","Line").replace(")","");
+            console.error(line+" - "+e.message);
         }
     `);
 
