@@ -38,7 +38,9 @@ const config = {
         },
     },
     rules: {
-        semi: ["warn", "always"],
+        "semi": ["warn", "always"],
+        "no-debugger": ["error", "never"],
+        "no-dupe-args": ["error", "never"],
     },
 };
 
