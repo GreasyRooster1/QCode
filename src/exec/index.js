@@ -121,8 +121,8 @@ function startP5(drawArg,setupArg,otherFunctions) {
         createCanvas = function (){
             console.error("createCanvas is disabled");
         }
-        for(let s in rejectedFunctions){
-            eval(s+` = function(){
+        for(let s of rejectedFunctions){
+            eval(s+` = ()=>{
                 console.error(s+" is disabled");
             }`)
         }
