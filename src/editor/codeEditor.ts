@@ -1,7 +1,7 @@
 import { basicSetup, EditorView} from "codemirror"
 import {drawSelection, keymap} from "@codemirror/view"
-import { indentWithTab } from "@codemirror/commands"
-import { javascript } from "@codemirror/lang-javascript"
+import {defaultKeymap, indentWithTab} from "@codemirror/commands"
+import {esLint, javascript} from "@codemirror/lang-javascript"
 import { rust } from "@codemirror/lang-rust"
 import { html } from "@codemirror/lang-html"
 import { css } from "@codemirror/lang-css"
@@ -19,8 +19,28 @@ import {barf} from 'thememirror';
 import {hackerManTheme} from "./theme/hackerman";
 import {amy} from 'thememirror';
 import {birdsOfParadise} from 'thememirror';
+import {linter, lintGutter, lintKeymap} from "@codemirror/lint";
+import * as eslint from "eslint-linter-browserify";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
+
+const esLinter = new eslint.Linter();
+
+const config = {
+    // eslint configuration
+    languageOptions: {
+        globals: {
+            //...globals.node,
+        },
+        parserOptions: {
+            ecmaVersion: 2022,
+            sourceType: "module",
+        },
+    },
+    rules: {
+        semi: ["warn", "always"],
+    },
+};
 
 const fixedFontTheme = EditorView.theme({
     '&': {
@@ -50,7 +70,9 @@ function setupEditor(language: Language) {
     let languagePair = getLanguage(language);
     let extensions = [
         basicSetup,
-        keymap.of([indentWithTab]),
+        keymap.of([indentWithTab,...defaultKeymap, ...lintKeymap,]),
+        lintGutter(),
+        linter(esLint(new eslint.Linter(), config)),
         fixedFontTheme,
     ]
     if(languagePair!=null){
