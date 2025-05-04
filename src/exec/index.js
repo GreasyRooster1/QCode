@@ -87,7 +87,13 @@ document.addEventListener('contextmenu', event => {
 
 function runJs(js){
     //clear dangerous objects and run code
-    eval(js);
+    eval(`
+        try {
+            `+js+`
+        }catch(e){
+            console.error(e.stack+" - "+e.message);
+        }
+    `);
 
     let eventFunctions = [];
 
