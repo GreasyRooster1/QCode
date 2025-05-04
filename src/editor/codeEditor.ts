@@ -39,6 +39,13 @@ const config = {
         "semi": ["warn", "always"],
         "no-debugger": "error",
         "no-dupe-args": "error",
+        "no-const-assign": "error",
+        "no-constant-binary-expression":"warn",
+        "no-cond-assign":"warn",
+        "no-constructor-return":"error",
+        "no-irregular-whitespace":["error",{ "skipStrings": true }],
+        "no-self-assign":"warn",
+        "no-var":"error",
     },
 };
 
