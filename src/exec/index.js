@@ -93,8 +93,9 @@ function runJs(js){
             `+js+`
         }catch(e){
             let stack = e.stack.split(nl);
-            let line = stack[1].replace("at eval (eval at runJs (webpack:///./src/exec/index.js?),","Line").replace(")","");
-            console.error(line+" - "+e.message);
+            let lineCol = stack[1].replace("at eval (eval at runJs (webpack:///./src/exec/index.js?),","").replace(")","").split(":");
+            let out = lineCol[1]-2+":"+lineCol[2];
+            console.error(" "+out+" : "+stack[0]);
         }
     `);
 
