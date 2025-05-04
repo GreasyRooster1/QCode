@@ -24,8 +24,6 @@ import * as eslint from "eslint-linter-browserify";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
-const esLinter = new eslint.Linter();
-
 const config = {
     // eslint configuration
     languageOptions: {
@@ -34,13 +32,13 @@ const config = {
         },
         parserOptions: {
             ecmaVersion: 2022,
-            sourceType: "module",
+            sourceType: "script",
         },
     },
     rules: {
         "semi": ["warn", "always"],
-        "no-debugger": ["error", "never"],
-        "no-dupe-args": ["error", "never"],
+        "no-debugger": "error",
+        "no-dupe-args": "error",
     },
 };
 
