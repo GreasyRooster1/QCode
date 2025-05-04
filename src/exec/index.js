@@ -91,7 +91,7 @@ function runJs(js){
         try {
             `+js+`
         }catch(e){
-            console.error(e.stack+" - "+e.message);
+            console.error(e.stack[0]+" - "+e.message);
         }
     `);
 
