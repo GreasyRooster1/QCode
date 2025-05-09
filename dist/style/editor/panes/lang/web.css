@@ -139,3 +139,7 @@
 .current-file-view .icons{
     margin-right:4px;
 }
+
+.image-view{
+    display: none;
+}

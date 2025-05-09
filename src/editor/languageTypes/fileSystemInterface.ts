@@ -228,11 +228,6 @@ function createFolderEl(impl: any, key: string, folder: Folder, path: string){
 
 function setupFilesystemDom(){
     let imageView = document.createElement("div");
-    imageView.className = "image-view";
-    imageView.innerHTML = `
-        <img class="image-view-image" alt="stored image" src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/missing.png">
-    `
-    imageView.style.display="none";
     document.querySelector(".code-editor")!.appendChild(imageView);
     document.querySelector(".code-pane")!.innerHTML = `
         <div class="code-editor-wrapper">
@@ -265,6 +260,9 @@ function setupFilesystemDom(){
                     </div>
                 </div>
                 <div class="code-editor"></div>
+                <div class="image-view">
+                    <img class="image-view-image" alt="stored image" src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/missing.png">
+                </div>
             </div>
         </div> 
         `
