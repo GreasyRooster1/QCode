@@ -225,7 +225,7 @@ function setupFilesystemDom(){
     let imageView = document.createElement("div");
     imageView.className = "image-view";
     imageView.innerHTML = `
-        <img class="image-view-image" alt="stored image" src="">
+        <img class="image-view-image" alt="stored image" src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/missing.png">
     `
     document.querySelector(".code-editor")!.appendChild(imageView);
     document.querySelector(".code-pane")!.innerHTML = `
