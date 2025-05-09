@@ -160,9 +160,14 @@ function promptFolderCreation(impl:any,folder:Folder){
 function openFile(impl:any,fileId:number){
     impl.currentFileId = fileId;
     let file = impl.filesystem.getFileById(impl.currentFileId);
+    let isImage = imageFileTypes.includes(file.extension)
     document.querySelector(".current-file-view .filename")!.innerHTML = file!.name+"."+file!.extension;
-    setupEditor(file?.getLanguage())
-    writeToEditor(file!.content)
+    if(isImage){
+        document.querySelector(".code-editor")!.style.display="none";
+    }else {
+        setupEditor(file?.getLanguage())
+        writeToEditor(file!.content)
+    }
 }
 function saveCurrentFile(impl:any){
     let code = getCode();
@@ -217,6 +222,12 @@ function createFolderEl(impl: any, key: string, folder: Folder, path: string){
 }
 
 function setupFilesystemDom(){
+    let imageView = document.createElement("div");
+    imageView.className = "image-view";
+    imageView.innerHTML = `
+        <img class="image-view-image" alt="stored image" src="">
+    `
+    document.querySelector(".code-editor")!.appendChild(imageView);
     document.querySelector(".code-pane")!.innerHTML = `
         <div class="code-editor-wrapper">
             <div class="filesystem-sidebar">
