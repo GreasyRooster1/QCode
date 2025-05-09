@@ -8,7 +8,7 @@ function sendImageToFileServer(data:any,url:string){
 
 function getURLForProjectFile(projectid:any,path:string){
     let username = getStoredUser().email.split("@")[0];
-    return username+"."+projectid+"/"+path;
+    return username+".esporterz.com/"+projectid+"/"+path;
 }
 
 function getAuthSessionToken(){
