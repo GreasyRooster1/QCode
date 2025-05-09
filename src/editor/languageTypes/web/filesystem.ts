@@ -190,12 +190,12 @@ class FilesystemFile {
 
     getIconUrl(){
         if(!hasFileIcon(this.extension)){
-            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/file.png?raw=true"
+            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/file.png?raw=true"
         }
         if(this.extension=="sys"&&Math.random()<0.1){
-            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/sys.gif?raw=true"
+            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/sys.gif?raw=true"
         }
-        return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/"+this.extension+".png?raw=true"
+        return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/"+this.extension+".png?raw=true"
     }
 
     getSerializedName(){
@@ -239,7 +239,7 @@ function getFolderDom(key:string, folder:Folder){
     wrapperEl.innerHTML = `
                     <div class="folder-icon ">
                         <div class="name-icon">
-                            <img src="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/folder.png?raw=true">
+                            <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/folder.png?raw=true">
                             <span class='name'>${key}</span>
                         </div>
                         <span class="buttons">
