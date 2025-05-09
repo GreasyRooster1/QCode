@@ -162,9 +162,14 @@ function openFile(impl:any,fileId:number){
     let file = impl.filesystem.getFileById(impl.currentFileId);
     let isImage = imageFileTypes.includes(file.extension)
     document.querySelector(".current-file-view .filename")!.innerHTML = file!.name+"."+file!.extension;
+    let codeView = document.querySelector(".code-editor")! as HTMLElement;
+    let imageView = document.querySelector(".image-view")! as HTMLElement;
     if(isImage){
-        document.querySelector(".code-editor")!.style.display="none";
+        codeView.style.display="none";
+        imageView.style.display="flex";
     }else {
+        codeView.style.display="block";
+        imageView.style.display="none";
         setupEditor(file?.getLanguage())
         writeToEditor(file!.content)
     }
@@ -227,6 +232,7 @@ function setupFilesystemDom(){
     imageView.innerHTML = `
         <img class="image-view-image" alt="stored image" src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/missing.png">
     `
+    imageView.style.display="none";
     document.querySelector(".code-editor")!.appendChild(imageView);
     document.querySelector(".code-pane")!.innerHTML = `
         <div class="code-editor-wrapper">
