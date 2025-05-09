@@ -3,7 +3,14 @@ import {auth} from "../../api/firebase";
 
 function sendImageToFileServer(data:any,url:string){
     console.log("sending file to server: "+url)
-    //todo
+    fetch(url, {
+        method: "PUT",
+        body: data,
+    }).then(res => {
+        console.log(res+" "+url)
+    }).catch(err => {
+        console.log(err+" "+url)
+    });
 }
 
 function getURLForProjectFile(projectid:any,path:string){
