@@ -190,12 +190,12 @@ class FilesystemFile {
 
     getIconUrl(){
         if(!hasFileIcon(this.extension)){
-            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/file.png?raw=true"
+            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/file.png"
         }
         if(this.extension=="sys"&&Math.random()<0.1){
-            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/sys.gif?raw=true"
+            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/sys.gif"
         }
-        return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/"+this.extension+".png?raw=true"
+        return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/"+this.extension+".png"
     }
 
     getSerializedName(){
