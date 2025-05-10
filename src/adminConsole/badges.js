@@ -9,6 +9,8 @@ const badgeDetailsRarity = document.querySelector(".badge-details .rarity");
 const badgeDetailsDesc = document.querySelector(".badge-details .description");
 const badgeDetailsImg = document.querySelector(".badge-details .badge-img");
 
+let badgePriorities = [1,2,3]
+
 function setupBadge(){
     let lessonsRef = ref(db,'badges');
     onValue(lessonsRef, (snapshot) => {
@@ -53,7 +55,9 @@ function showBadgeDetails(e){
 }
 
 function clearBadges(){
-    badgesDisplay.innerHTML = "";
+    for(let p of badgePriorities) {
+        document.querySelector(".badges-display-"+p).innerHTML = "";
+    }
 }
 
 export {setupBadge}
