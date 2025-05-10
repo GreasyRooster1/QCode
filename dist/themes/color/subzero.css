@@ -209,8 +209,8 @@
     --badge-hover-color: var(--primary-color);
     --badge-color: var(--dark-primary-color);
 
-    --new-button-background: var(--primary-color);
-    --new-button-text-color: var(--text-color);
+    --left-bar-accent: var(--primary-color);
+    --left-bar-text-accent: var(--text-color);
 
     --featured-project-thumb-background: var(--dark-primary-color);
 
