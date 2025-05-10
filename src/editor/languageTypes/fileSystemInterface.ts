@@ -20,6 +20,7 @@ function updateFilesystemBar(impl:any){
     setupFileEventListeners(impl);
 }
 
+
 function setupFileEventListeners(impl:any){
     let list = document.querySelectorAll(".file-list, .folder")
     console.log(list)
