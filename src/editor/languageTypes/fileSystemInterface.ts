@@ -182,7 +182,6 @@ function saveCurrentFile(impl:any){
 }
 
 function populateHTMLForFolder(impl:any,name:string,folder:Folder,upperHtml:any,path:string){
-
     const sortedKeys = Object.keys(folder).sort((a,b)=>{
         if(a.includes(".")&&!b.includes(".")){
             return 1;
