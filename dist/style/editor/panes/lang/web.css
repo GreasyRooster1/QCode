@@ -142,4 +142,8 @@
 
 .image-view{
     display: none;
+    background: var(--current-file-view);
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
