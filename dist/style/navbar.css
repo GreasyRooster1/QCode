@@ -11,6 +11,12 @@
     --points-display-background: #11df5a;
     --points-display-text: #ffffff;
 
+    --nav-blue-pos: 32%;
+    --nav-grey-pos: 39%;
+    --nav-black-pos: 46%;
+    --nav-green-pos: 75%;
+    --nav-end-pos: 86%;
+
     --navbar-height:40px;
 }
 
@@ -33,8 +39,8 @@ brand-nav{
     height: 100%;
     display: flex;
     justify-content: space-between;
-    background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-blue)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-green) 87%, var(--brand-black) 99%);
-
+    /*background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-blue)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-green) 87%, var(--brand-black) 99%);*/
+    background: linear-gradient(56deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) var(--nav-blue-pos), rgba(0, 0, 255, 1) var(--nav-blue-pos), rgba(0, 0, 255, 1) var(--nav-grey-pos), rgba(151, 150, 141, 1) var(--nav-grey-pos), rgba(151, 150, 141, 1) var(--nav-black-pos), rgba(0, 0, 0, 1) var(--nav-black-pos), rgba(0, 0, 0, 1) var(--nav-green-pos), rgba(0, 255, 0, 1) var(--nav-green-pos), rgba(0, 255, 0, 1) var(--nav-end-pos), rgba(0, 0, 0, 1) var(--nav-end-pos));
 
     z-index: 999;
 
