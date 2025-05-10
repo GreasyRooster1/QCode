@@ -18,7 +18,7 @@
 }
 
 .filesystem-sidebar{
-    width: 13vw;
+    width: 20vw;
     background: var(--filesystem-sidebar);
     display: flex;
     flex-direction: column;
