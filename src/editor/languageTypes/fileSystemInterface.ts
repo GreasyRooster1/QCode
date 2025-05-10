@@ -114,7 +114,7 @@ function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
     console.log(systemFile.extension,isImage)
     reader.onload = ()=>{
         if(isImage){
-            let url = getURLForProjectFile(impl.projectId,systemFile.name+"."+systemFile.extension);
+            let url = getURLForProjectFile(impl.projectId,systemFile.getFullName());
             sendImageToFileServer(reader.result,url);
             systemFile.content = url;
         }else {
@@ -161,12 +161,13 @@ function openFile(impl:any,fileId:number){
     impl.currentFileId = fileId;
     let file = impl.filesystem.getFileById(impl.currentFileId);
     let isImage = imageFileTypes.includes(file.extension)
-    document.querySelector(".current-file-view .filename")!.innerHTML = file!.name+"."+file!.extension;
+    document.querySelector(".current-file-view .filename")!.innerHTML = file!.getFullName();
     let codeView = document.querySelector(".code-editor")! as HTMLElement;
     let imageView = document.querySelector(".image-view")! as HTMLElement;
     if(isImage){
         codeView.style.display="none";
         imageView.style.display="flex";
+        document.querySelector(".image-view-image")!.setAttribute("src",file.content);
     }else {
         codeView.style.display="block";
         imageView.style.display="none";
