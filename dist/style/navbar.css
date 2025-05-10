@@ -40,7 +40,7 @@ brand-nav{
     display: flex;
     justify-content: space-between;
     /*background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-blue)24%, var(--brand-gray) 47%, var(--brand-black) 66%, var(--brand-green) 87%, var(--brand-black) 99%);*/
-    background: linear-gradient(56deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) var(--nav-blue-pos), rgba(0, 0, 255, 1) var(--nav-blue-pos), rgba(0, 0, 255, 1) var(--nav-grey-pos), rgba(151, 150, 141, 1) var(--nav-grey-pos), rgba(151, 150, 141, 1) var(--nav-black-pos), rgba(0, 0, 0, 1) var(--nav-black-pos), rgba(0, 0, 0, 1) var(--nav-green-pos), rgba(0, 255, 0, 1) var(--nav-green-pos), rgba(0, 255, 0, 1) var(--nav-end-pos), rgba(0, 0, 0, 1) var(--nav-end-pos));
+    background: linear-gradient(56deg,var(--brand-black) 0%, var(--brand-black) var(--nav-blue-pos), var(--brand-blue) var(--nav-blue-pos), var(--brand-blue) var(--nav-grey-pos), var(--brand-gray) var(--nav-grey-pos), var(--brand-gray) var(--nav-black-pos), var(--brand-black) var(--nav-black-pos),var(--brand-black) var(--nav-green-pos), var(--brand-green) var(--nav-green-pos), var(--brand-green) var(--nav-end-pos), var(--brand-black) var(--nav-end-pos));
 
     z-index: 999;
 
