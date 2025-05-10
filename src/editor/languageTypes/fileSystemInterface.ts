@@ -110,10 +110,9 @@ function handleDroppedAssetFile(impl:any,file: File){
 
 function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
     let reader = new FileReader()
-    let isImage = imageFileTypes.includes(systemFile.extension)
-    console.log(systemFile.extension,isImage)
+    console.log(systemFile.extension,systemFile.isImage())
     reader.onload = ()=>{
-        if(isImage){
+        if(systemFile.isImage()){
             let url = getURLForProjectFile(impl.projectId,systemFile.getFullName());
             sendImageToFileServer(reader.result,url);
             systemFile.content = url;
@@ -121,7 +120,7 @@ function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
             systemFile.content = reader.result as string;
         }
     }
-    if(isImage) {
+    if(systemFile.isImage()) {
         reader.readAsArrayBuffer(file);
     }else {
         reader.readAsText(file)
@@ -160,11 +159,10 @@ function promptFolderCreation(impl:any,folder:Folder){
 function openFile(impl:any,fileId:number){
     impl.currentFileId = fileId;
     let file = impl.filesystem.getFileById(impl.currentFileId);
-    let isImage = imageFileTypes.includes(file.extension)
     document.querySelector(".current-file-view .filename")!.innerHTML = file!.getFullName();
     let codeView = document.querySelector(".code-editor")! as HTMLElement;
     let imageView = document.querySelector(".image-view")! as HTMLElement;
-    if(isImage){
+    if(file.isImage()){
         codeView.style.display="none";
         imageView.style.display="flex";
         document.querySelector(".image-view-image")!.setAttribute("src",file.content);
@@ -178,7 +176,11 @@ function openFile(impl:any,fileId:number){
 function saveCurrentFile(impl:any){
     let code = getCode();
     let file = impl.filesystem.getFileById(impl.currentFileId);
-    file!.content = code;
+    if(file.isImage()){
+        //image cant be edited
+    }else {
+        file!.content = code;
+    }
 }
 
 
@@ -347,5 +349,6 @@ export {
     setupHeaderButtons,
     setupFileFolderButtons,
     setupFileEventListeners,
-    updateFilesystemBar
+    updateFilesystemBar,
+    imageFileTypes
 }
