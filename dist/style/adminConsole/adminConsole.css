@@ -54,6 +54,9 @@ body{
     margin: 100px auto auto;
 
     padding: 1vmin;
+
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .content-pane{
@@ -61,6 +64,8 @@ body{
     display: flex;
     margin: 10px;
     height: 60vh;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .details-pane{
