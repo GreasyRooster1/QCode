@@ -11,11 +11,11 @@
     --points-display-background: #11df5a;
     --points-display-text: #ffffff;
 
-    --nav-blue-pos: 32%;
-    --nav-grey-pos: 39%;
-    --nav-black-pos: 46%;
-    --nav-green-pos: 75%;
-    --nav-end-pos: 86%;
+    --nav-blue-pos: 10%;
+    --nav-grey-pos: 30%;
+    --nav-black-pos: 40%;
+    --nav-green-pos: 68%;
+    --nav-end-pos: 95%;
 
     --navbar-height:40px;
 }
