@@ -89,6 +89,7 @@
 .bar-section{
     margin:5%;
     width:90%;
+    border-radius: 10px;
 }
 
 .bar-section.short{
