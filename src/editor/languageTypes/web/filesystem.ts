@@ -1,4 +1,4 @@
-import {imageFileTypes} from "../fileSystemInterface";
+import {textFileTypes} from "../fileSystemInterface";
 
 const dotReplacer = "➽";
 const blacklistedChars = [".", "$", "#", "[", "]", "/","\\"];
@@ -214,7 +214,7 @@ class FilesystemFile {
     }
 
     isImage(){
-        return imageFileTypes.includes(this.extension)
+        return !textFileTypes.includes(this.extension)
     }
 
     getLanguage(){

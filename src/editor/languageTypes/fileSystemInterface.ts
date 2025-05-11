@@ -4,7 +4,8 @@ import {getCode} from "../executionHelper";
 import {setupEditor} from "../codeEditor";
 import {getURLForProjectFile, sendImageToFileServer} from "../utils/fileServerAPI";
 
-const imageFileTypes = ["png","jpg","jpeg","gif","webp"];
+const textFileTypes = ["html","css","js","py","txt","json","bat","cpp","c","rs","ts","jsx","tsx","sh","dat","yaml","toml","xml","","http",""];
+const imageFileTypes = ["png","jpg","jpeg","jfif","gif","webp"];
 
 interface FileSystemInterface {
     filesystem:Filesystem
@@ -349,5 +350,5 @@ export {
     setupFileFolderButtons,
     setupFileEventListeners,
     updateFilesystemBar,
-    imageFileTypes
+    textFileTypes
 }
