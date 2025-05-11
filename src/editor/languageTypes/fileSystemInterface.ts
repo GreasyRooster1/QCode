@@ -162,15 +162,21 @@ function openFile(impl:any,fileId:number){
     document.querySelector(".current-file-view .filename")!.innerHTML = file!.getFullName();
     let codeView = document.querySelector(".code-editor")! as HTMLElement;
     let imageView = document.querySelector(".image-view")! as HTMLElement;
+    let dataView = document.querySelector(".data-view")! as HTMLElement;
     if(file.isImage()){
         codeView.style.display="none";
         imageView.style.display="flex";
+        dataView.style.display="none";
         document.querySelector(".image-view-image")!.setAttribute("src",file.content);
     }else if(file.isDataFile()) {
-
+        codeView.style.display="none";
+        imageView.style.display="none";
+        dataView.style.display="flex";
+        document.querySelector(".data-link")!.setAttribute("href",file.content);
     }else{
         codeView.style.display="block";
         imageView.style.display="none";
+        dataView.style.display="none";
         setupEditor(file?.getLanguage())
         writeToEditor(file!.content)
     }
@@ -267,6 +273,10 @@ function setupFilesystemDom(){
                 <div class="code-editor"></div>
                 <div class="image-view">
                     <img class="image-view-image" alt="stored image" src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/missing.png">
+                </div>
+                <div class="data-view">
+                    <p>Cant display this file!</p>
+                    <a class="data-link" href="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/missing.png">Open in browser...</a>
                 </div>
             </div>
         </div> 

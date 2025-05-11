@@ -147,3 +147,11 @@
     align-items: center;
     height: 100%;
 }
+
+.data-view{
+    display: none;
+    background: var(--current-file-view);
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
