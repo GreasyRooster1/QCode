@@ -350,5 +350,6 @@ export {
     setupFileFolderButtons,
     setupFileEventListeners,
     updateFilesystemBar,
-    textFileTypes
+    textFileTypes,
+    imageFileTypes
 }
