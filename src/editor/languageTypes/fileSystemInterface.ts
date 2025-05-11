@@ -110,9 +110,9 @@ function handleDroppedAssetFile(impl:any,file: File){
 
 function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
     let reader = new FileReader()
-    console.log(systemFile.extension,systemFile.isImage())
+    console.log(systemFile.extension,systemFile.isImage(),systemFile.isDataFile())
     reader.onload = ()=>{
-        if(systemFile.isImage()){
+        if(systemFile.isImage()||systemFile.isDataFile()){
             let url = getURLForProjectFile(impl.projectId,systemFile.getFullName());
             sendImageToFileServer(reader.result,url);
             systemFile.content = url;
@@ -120,7 +120,7 @@ function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
             systemFile.content = reader.result as string;
         }
     }
-    if(systemFile.isImage()) {
+    if(systemFile.isImage()||systemFile.isDataFile()) {
         reader.readAsArrayBuffer(file);
     }else {
         reader.readAsText(file)
@@ -166,7 +166,9 @@ function openFile(impl:any,fileId:number){
         codeView.style.display="none";
         imageView.style.display="flex";
         document.querySelector(".image-view-image")!.setAttribute("src",file.content);
-    }else {
+    }else if(file.isDataFile()) {
+
+    }else{
         codeView.style.display="block";
         imageView.style.display="none";
         setupEditor(file?.getLanguage())
@@ -176,7 +178,7 @@ function openFile(impl:any,fileId:number){
 function saveCurrentFile(impl:any){
     let code = getCode();
     let file = impl.filesystem.getFileById(impl.currentFileId);
-    if(file.isImage()){
+    if(file.isImage()||file.isDataFile()){
         //image cant be edited
     }else {
         file!.content = code;
