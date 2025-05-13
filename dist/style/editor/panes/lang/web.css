@@ -154,4 +154,9 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    color:white;
+}
+
+.image-view-image{
+    width: 100%;
 }
