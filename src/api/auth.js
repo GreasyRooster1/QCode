@@ -47,7 +47,7 @@ function handleAuthErrors(error){
         }
     }
 
-    return errorCode;
+    return errorCode+", "+errorMessage;
 }
 
 function storeUser(user,next){

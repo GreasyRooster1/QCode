@@ -42,8 +42,8 @@ function displayAuthErrors(errorType){
         case "auth/invalid-email": showAuthError("That username is not valid");return;
         case "auth/email-already-in-use": showAuthError("That account already exists!");return;
         case "auth/network-request-failed": showAuthError("Bad network!");return;
-        case "something went wrong!": showAuthError(errorType);return;
     }
+    showAuthError(errorType);
 }
 function showAuthError(msg){
     authErrorDisplayWrapper.style.display = "block"
