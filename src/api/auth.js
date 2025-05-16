@@ -50,16 +50,6 @@ function handleAuthErrors(error){
     return errorCode;
 }
 
-function displayAuthErrors(errorType){
-    switch (errorType){
-        case "invalid-credentials": showAuthError("Username or password is incorrect"); return;
-        case "auth/invalid-email": showAuthError("That username is not valid");return;
-        case "auth/email-already-in-use": showAuthError("That account already exists!");return;
-        case "auth/network-request-failed": showAuthError("Bad network!");return;
-        case "something went wrong!": break;
-    }
-}
-
 function storeUser(user,next){
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("currentUser",JSON.stringify(user));

@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "../api/firebase";
-import {displayAuthErrors, extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
+import {extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
 import {get, ref, set,update} from "firebase/database";
 
 
@@ -36,6 +36,15 @@ loginButton.addEventListener("click", function(){
         });
 });
 
+function displayAuthErrors(errorType){
+    switch (errorType){
+        case "invalid-credentials": showAuthError("Username or password is incorrect"); return;
+        case "auth/invalid-email": showAuthError("That username is not valid");return;
+        case "auth/email-already-in-use": showAuthError("That account already exists!");return;
+        case "auth/network-request-failed": showAuthError("Bad network!");return;
+        case "something went wrong!": showAuthError(errorType);return;
+    }
+}
 function showAuthError(msg){
     authErrorDisplayWrapper.style.display = "block"
     authErrorContent.innerHTML = msg;
