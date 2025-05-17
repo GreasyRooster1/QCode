@@ -49,6 +49,19 @@
     flex:1;
     cursor: pointer;
 }
+.step-image:before{
+    opacity: 0;
+    content: "Click to enlarge";
+    display: block;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    background: var(--step-image-hover-background);
+    transition: 1s;
+}
+.step-image:hover:before {
+    opacity: 1;
+}
 
 .step-popup{
     display:none;
