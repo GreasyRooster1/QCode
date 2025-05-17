@@ -15,6 +15,7 @@ let returnURL = "./index.html";
 
 let errorMessagePairs = {
     "auth/invalid-credential": "Incorrect username or password",
+    "auth/user-disabled" :"Account disabled! Contact an admin if you think this is a mistake",
 }
 
 loginButton.addEventListener("click", function(){
