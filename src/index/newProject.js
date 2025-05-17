@@ -21,6 +21,7 @@ function hideNewProjectPopup() {
 
 function setupNewProjectEvents(){
     newProjectButton.addEventListener('click', (e) => {
+        console.log("clicked");
         showNewProjectPopup();
     })
 

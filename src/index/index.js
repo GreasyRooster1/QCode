@@ -36,7 +36,7 @@ function init(){
 
     displayVersion();
     initShareBoard();
-    setupFeaturedProject()
+    // setupFeaturedProject()
     setupNewProjectEvents()
 }
 
