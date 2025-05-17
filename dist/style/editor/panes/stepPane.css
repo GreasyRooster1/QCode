@@ -19,7 +19,6 @@
 
 .step{
     background: var(--step-background);
-    display: block;
     border-radius:10px;
     overflow:clip;
 
@@ -29,6 +28,9 @@
     max-width: 30vw;
 
     margin: 30px auto;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .step > .step-head{
@@ -44,20 +46,24 @@
     padding:3%;
     flex:1;
 }
-
-.step-image{
+.step-image-wrapper{
     flex:1;
+}
+.step-image{
+    width:100%;
+    height:100%;
     cursor: pointer;
 }
 .step-image-wrapper:before{
     opacity: 1;
     content: "";
     display: block;
-    height: 100px;
-    width: 100px;
     color: #fff;
     background: var(--step-image-hover-background);
     transition: 1s;
+    position: relative;
+    top: 0;
+    left: 0;
     z-index: 99;
 }
 /*.step-image:hover:before {*/
