@@ -1,4 +1,12 @@
 
+.logo-container{
+    margin-top:3vh;
+}
+.logo-container img {
+    aspect-ratio: 1;
+    width: 8vw;
+}
+
 .featured-project-wrapper{
     margin-top: 2vh;
     width:60vh;

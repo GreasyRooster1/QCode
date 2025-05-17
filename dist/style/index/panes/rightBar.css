@@ -9,12 +9,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: clip;
 }
 
 .badge-details{
     height:30%;
     background:var(--badge-details-background);
     overflow: clip;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .badge-title{
