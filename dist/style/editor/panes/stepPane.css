@@ -48,27 +48,21 @@
 }
 .step-image-wrapper{
     flex:1;
+    z-index: 1;
 }
 .step-image{
     width:100%;
     height:100%;
     cursor: pointer;
 }
-.step-image-wrapper:before{
-    opacity: 1;
-    content: "";
-    display: block;
-    color: #fff;
-    background: var(--step-image-hover-background);
-    transition: 1s;
-    position: relative;
-    top: 0;
-    left: 0;
-    z-index: 99;
+.step-overlay{
+    width:100%;
+    height:100%;
+    margin-top:-100%;
+    pointer-events:none;
+    opacity: 0;
+    transition:0.3s;
 }
-/*.step-image:hover:before {*/
-/*    opacity: 1;*/
-/*}*/
 
 .step-popup{
     display:none;
