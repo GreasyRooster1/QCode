@@ -59,7 +59,7 @@ class StepElement extends HTMLElement {
         this.imageOverlay = document.createElement("img");
         this.imageOverlay.classList.add("step-image-overlay");
         this.imageWrapper.appendChild(this.image)
-        this.imageWrapper.appendChild(this.imageOverlay)
+        //this.imageWrapper.appendChild(this.imageOverlay)
 
         this.textContent = document.createElement("div");
         this.textContent.classList.add("step-text-content");

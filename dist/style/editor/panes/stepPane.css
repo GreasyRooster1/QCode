@@ -47,15 +47,15 @@
     flex:1;
 }
 .step-image-wrapper{
-    flex:1;
     z-index: 1;
+    display: flex;
 }
 .step-image{
     width:100%;
     height:100%;
     cursor: pointer;
 }
-.step-overlay{
+.step-image-overlay{
     width:100%;
     height:100%;
     margin-top:-100%;
