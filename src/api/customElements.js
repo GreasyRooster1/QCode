@@ -50,7 +50,7 @@ class StepElement extends HTMLElement {
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
 
-        this.imageWrapper = document.createElement("img");
+        this.imageWrapper = document.createElement("div");
         this.imageWrapper.classList.add("step-image-wrapper");
 
         this.image = document.createElement("img");
