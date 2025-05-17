@@ -13,6 +13,10 @@ const authErrorContent = document.querySelector(".auth-error-message");
 
 let returnURL = "./index.html";
 
+let errorMessagePairs = {
+    "auth/invalid-credential": "Incorrect username or password",
+}
+
 loginButton.addEventListener("click", function(){
     let username = usernameInput.value;
     let password = passwordInput.value;
@@ -32,18 +36,17 @@ loginButton.addEventListener("click", function(){
             });
         })
         .catch((error) => {
-            displayAuthErrors(handleAuthErrors(error));
+            console.log(error.code)
+            displayAuthErrors(error);
         });
 });
 
-function displayAuthErrors(errorType){
-    switch (errorType){
-        case "invalid-credentials": showAuthError("Username or password is incorrect"); return;
-        case "auth/invalid-email": showAuthError("That username is not valid");return;
-        case "auth/email-already-in-use": showAuthError("That account already exists!");return;
-        case "auth/network-request-failed": showAuthError("Bad network!");return;
+function displayAuthErrors(error){
+    if(error.code in errorMessagePairs){
+        showAuthError(errorMessagePairs[error.code]);
+        return;
     }
-    showAuthError(errorType);
+    showAuthError(error.message);
 }
 function showAuthError(msg){
     authErrorDisplayWrapper.style.display = "block"

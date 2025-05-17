@@ -10,7 +10,7 @@ function createUserDefault(email, password){
             storeUser(userCredential.user);
         })
         .catch((error) => {
-            handleAuthErrors(error.code,error.message);
+            handleAuthErrors(error);
         });
 }
 
@@ -21,7 +21,7 @@ function logInUserDefault(email,password){
             storeUser(userCredential.user);
         })
         .catch((error) => {
-            handleAuthErrors(error.code,error.message);
+            handleAuthErrors(error);
         });
 
 }
@@ -32,7 +32,7 @@ function logOutUser(){
         console.log("logged out user");
         clearStoredUser();
     }).catch((error) => {
-        handleAuthErrors(error.code,error.message);
+        handleAuthErrors(error);
     });
 }
 
@@ -110,7 +110,6 @@ export {
     getStoredUserPermissions,
     getStoredUser,
     storeUserPermissions,
-    displayAuthErrors,
     logOutUser,
     storeUser,
     handleAuthErrors
