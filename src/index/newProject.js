@@ -47,6 +47,7 @@ function setupNewProjectEvents(){
             alert("project must have a name");
             return;
         }
+
         createProject(cleanProjectId,projectName,type).then(()=>{
             openProjectInEditor(cleanProjectId,getStoredUser().uid,0);
         }).catch(() => {
