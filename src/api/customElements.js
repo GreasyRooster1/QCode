@@ -50,14 +50,18 @@ class StepElement extends HTMLElement {
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
 
+        this.imageWrapper = document.createElement("img");
+        this.imageWrapper.classList.add("step-image-wrapper");
+
         this.image = document.createElement("img");
         this.image.classList.add("step-image");
+        this.imageWrapper.appendChild(this.image)
 
         this.textContent = document.createElement("div");
         this.textContent.classList.add("step-text-content");
 
         this.content.appendChild(this.textContent);
-        this.content.appendChild(this.image);
+        this.content.appendChild(this.imageWrapper);
 
         this.textContent.innerHTML = this.innerHTML;
         this.innerHTML = "";

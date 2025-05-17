@@ -49,8 +49,8 @@
     flex:1;
     cursor: pointer;
 }
-.step-image:before{
-    opacity: 0.1;
+.step-image-wrapper:before{
+    opacity: 1;
     content: "";
     display: block;
     height: 100px;
@@ -59,13 +59,10 @@
     background: var(--step-image-hover-background);
     transition: 1s;
     z-index: 99;
-    position: relative;
-    top: 0;
-    left: 0;
 }
-.step-image:hover:before {
-    opacity: 1;
-}
+/*.step-image:hover:before {*/
+/*    opacity: 1;*/
+/*}*/
 
 .step-popup{
     display:none;
