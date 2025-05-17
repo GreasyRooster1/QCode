@@ -65,8 +65,9 @@
 }
 
 .step-popup img{
-    min-height: 80%;
-    border-radius: 10px;
+    width:95vmin;
+    max-height:95vh;
+    border-radius: 5px;
 }
 
 .step.info > .step-head{
