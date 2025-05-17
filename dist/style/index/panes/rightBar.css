@@ -131,7 +131,7 @@
     content: "";
     display: block;
     height: 100%;
-    left: -3500%;
+    left: -1500%;
     position: relative;
     top: 0;
     /*transform: skewX(-25deg);*/
@@ -155,12 +155,12 @@ top:-100%;
 }
 
 .badge-wrapper.mythic::before {
-    mix-blend-mode: lighten;
+    /*mix-blend-mode: lighten;*/
     background: linear-gradient(75deg, rgba(255, 255, 255, 0) 15%, var(--mythic-rarity-badge-glint) 60%,var(--mythic-rarity-badge-glint) 80%, rgba(255, 255, 255, 0) 90%);
     content: "";
     display: block;
     height: 100%;
-    left: -3500%;
+    left: -1500%;
     position: relative;
     top: 0;
     /*transform: skewX(-25deg);*/
