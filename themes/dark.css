@@ -119,6 +119,18 @@
     --ui-tray-background:#fff;
     --ui-tray-border: #9f9f9f;
     --ui-tray-icons: #474747;
+
+    --canvas-background-color: #232323;
+    --grid-color: #575757;
+    --canvas-text-color: #ffffff;
+    --canvas-inverse-text-color: #ffffff;
+    --canvas-lesson-card-border:#7f7f7f;
+    --canvas-lesson-card-background: #202020;
+    --canvas-started-accent: #1c9744;
+    --canvas-completed-overlay: rgba(31, 166, 75, 0.47);
+    --canvas-locked-overlay:#00077;
+    --canvas-button-border: #225333;
+    --canvas-line-color: #ffffff;
 }
 
 /* Index (index/index.css) */
@@ -142,8 +154,8 @@
     --badge-hover-color: #425943;
     --badge-color: #425943;
 
-    --new-button-background: #5d6de1;
-    --new-button-text-color: #dde5e8;
+    --left-bar-accent: #5d6de1;
+    --left-bar-text-accent: #dde5e8;
 
     --featured-project-thumb-background: rgba(0, 0, 0, 0.5);
 

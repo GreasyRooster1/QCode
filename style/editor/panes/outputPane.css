@@ -72,12 +72,12 @@
     display: flex;
     flex-direction: column-reverse;
     flex:1;
+    padding-bottom: 30px;
 }
 
 .console-log{
     min-height: 75px;
     margin-top: 10px;
-    font-family:monospace;
 }
 
 .console-log > .log-head{

@@ -18,6 +18,8 @@
     --step-build: rgba(34, 45, 255, 0.44);
     --step-other: rgba(21, 21, 21, 0.44);
 
+    --step-image-hover-background: rgba(0, 0, 0, 0.44);
+
     --step-type-background: #707070;
 
     --code-editor-background: #e0e0e0;

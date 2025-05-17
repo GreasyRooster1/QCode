@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="./style/editor/panes/lang/web.css">
     <link rel="stylesheet" href="./style/editor/panes/lang/arduino.css">
     <link rel="stylesheet" href="./style/editor/panes/lang/scratch.css">
+    <link rel="stylesheet" href="./style/editor/panes/lang/python.css">
 </head>
 <body>
     <script src="./bundles/theme.bundle.js"></script>
@@ -69,8 +70,7 @@
                 </div>
                 <div class="console-output-pane">
                     <div class="console-head" style="display:none">
-                        <input type="text" class="console-input" placeholder="Message...">
-                        <div class="console-send-button">Send</div>
+
                     </div>
                     <div class="console-log-area">
 
@@ -99,6 +99,11 @@
 <!--            <div class="disclaimer">By sharing this project you agree that this project and its code will be publicly accessible, and can be removed from the share board at any time</div>-->
         </div>
     </div>
+
+    <div class="step-popup" id="imageModal">
+        <img id="modalImage">
+    </div>
+
 
     <script src="./bundles/editor.bundle.js" defer></script>
 </body>
