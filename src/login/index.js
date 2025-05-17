@@ -16,12 +16,17 @@ let returnURL = "./index.html";
 let errorMessagePairs = {
     "auth/invalid-credential": "Incorrect username or password",
     "auth/user-disabled" :"Account disabled! Contact an admin if you think this is a mistake",
+    "too-many-requests":"Too many login requests! Please dont spam the button!"
 }
 
 loginButton.addEventListener("click", function(){
     let username = usernameInput.value;
     let password = passwordInput.value;
+    if(username.length <= 1||password.length <= 1){
+        return;
+    }
     let email = extractEmailFromUsername(username)
+    passwordInput.value = "";
 
     signInWithEmailAndPassword(auth,email, password)
         .then((userCredential) => {
