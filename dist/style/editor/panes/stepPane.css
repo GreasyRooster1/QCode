@@ -108,6 +108,9 @@
 .step.build > .step-head{
     background: var(--step-build);
 }
+.step.party > .step-head{
+    background: var(--step-build);
+}
 
 .step-head > .step-head-content{
     display:inline;
