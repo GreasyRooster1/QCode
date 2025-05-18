@@ -110,12 +110,12 @@
 }
 .step.party > .step-head{
     background: var(--step-party);
-    animation: party 1s linear infinite;
+    background-size: 200% 200%;
+    animation: party .7s linear infinite;
 }
 @keyframes party {
-    0%{background-position:10% 0%}
-    50%{background-position:91% 100%}
-    100%{background-position:10% 0%}
+    from{background-position:0% 0%}
+    to{background-position:200% 0%}
 }
 .step-head > .step-head-content{
     display:inline;
