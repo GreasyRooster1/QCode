@@ -33,6 +33,9 @@ function uploadLesson(){
                 let steps = chapter.steps
                 chapter.steps = [];
                 for(let [_,step] of Object.entries(steps)){
+                    if(step.type==="party"){
+                        step.type = "no party";
+                    }
                     chapter.steps.push(step);
                 }
                 chapters.push(chapter);
