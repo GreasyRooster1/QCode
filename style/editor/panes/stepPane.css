@@ -108,7 +108,15 @@
 .step.build > .step-head{
     background: var(--step-build);
 }
-
+.step.party > .step-head{
+    background: var(--step-party);
+    background-size: 200% 200%;
+    animation: party .7s linear infinite;
+}
+@keyframes party {
+    from{background-position:0% 0%}
+    to{background-position:200% 0%}
+}
 .step-head > .step-head-content{
     display:inline;
 }
