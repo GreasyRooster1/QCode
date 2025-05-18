@@ -13,6 +13,19 @@ let hasLesson = true;
 let projectType;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
+const lessonCreatorLangaugeShorthands = {
+    "js": "javascript",
+    "j": "javascript",
+    "w": "web",
+    "a": "arduino",
+    "py": "python",
+    "p": "python",
+    "s":"scratch",
+    "sc":"scratch",
+    "scr":"scratch",
+    "mit":"scratch",
+}
+
 function loadProjectFromUrlData(){
     let searchParams = new URLSearchParams(location.search);
     if(!searchParams.has("projectId")){
@@ -22,7 +35,7 @@ function loadProjectFromUrlData(){
 
     if(projectId==="$$lesson$$creator$$"){
         isLessonCreator = true;
-        let type = prompt("enter a type (javascript|web|arduino)")
+        let type = parseLangShorthands(prompt("enter a type (javascript|web|arduino|python|scratch)"));
         updateLanguage(type).then((ptype) =>
         {
             ptype.setupEditor();
@@ -56,6 +69,13 @@ function loadProjectFromUrlData(){
             setupProjectType(ptype,searchParams)
         })
     });
+}
+
+function parseLangShorthands(inp){
+    if(inp in lessonCreatorLangaugeShorthands){
+        return lessonCreatorLangaugeShorthands[inp];
+    }
+    return inp;
 }
 
 function setupProjectType(ptype,searchParams){
