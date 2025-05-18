@@ -109,9 +109,14 @@
     background: var(--step-build);
 }
 .step.party > .step-head{
-    background: var(--step-build);
+    background: var(--step-party);
+    animation: party 1s linear infinite;
 }
-
+@keyframes party {
+    0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%}
+}
 .step-head > .step-head-content{
     display:inline;
 }
