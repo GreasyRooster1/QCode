@@ -2,6 +2,13 @@ import {shortTimeDifference} from "./util/util";
 import {stepTypes} from "./util/code";
 import {projectType} from "../editor/load";
 
+const imageModalPopupEvent = () => {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "flex";
+    modalImg.src = this.image.src;
+}
+
 class StepElement extends HTMLElement {
     head = null;
     headContent = null;
@@ -91,15 +98,7 @@ class StepElement extends HTMLElement {
             }
         }
 
-        this.image.addEventListener("click", () => {
-            try{if(projectType.isLessonCreator){
-                return;
-            }}catch(e){}
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            modal.style.display = "flex";
-            modalImg.src = this.image.src;
-        });
+        this.image.addEventListener("click",imageModalPopupEvent);
 
         this.appendChild(this.head);
         this.appendChild(this.content);
@@ -300,4 +299,4 @@ class ProjectLinkElement extends HTMLElement {
     }
 }
 
-export { BrandNav, ConsoleLogElement, ProjectLinkElement,StepElement };
+export { BrandNav, ConsoleLogElement, ProjectLinkElement,StepElement,imageModalPopupEvent};
