@@ -42,6 +42,7 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         setupHeaderButtons(this)
         setupAssetDrop(this)
         document.querySelector(".filesystem-root span")!.innerHTML = "Project";
+        document.querySelector(".filesystem-root img")!.setAttribute("src","https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/house-folder.png")
     }
 
     onLoad(){
