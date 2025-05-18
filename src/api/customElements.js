@@ -1,5 +1,6 @@
 import {shortTimeDifference} from "./util/util";
 import {stepTypes} from "./util/code";
+import {projectType} from "../editor/load";
 
 class StepElement extends HTMLElement {
     head = null;
@@ -91,10 +92,13 @@ class StepElement extends HTMLElement {
         }
 
         this.image.addEventListener("click", () => {
+            try{if(projectType.isLessonCreator){
+                return;
+            }}catch(e){}
             const modal = document.getElementById("imageModal");
             const modalImg = document.getElementById("modalImage");
             modal.style.display = "flex";
-            modalImg.src = this.image.src; // Set clicked image in the modal
+            modalImg.src = this.image.src;
         });
 
         this.appendChild(this.head);
