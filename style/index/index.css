@@ -14,12 +14,12 @@
     --lessons-chart-link-background:#98a2da;
     --lessons-recommended-background: #a1a9d8;
 
-    --left-bar-accent: #7583e1;
-    --left-bar-text-accent: #dde5e8;
-
     --badge-details-background: #94d89d;
     --badge-hover-color: #83d88f;
     --badge-color: #94d89d;
+
+    --new-button-background: #7583e1;
+    --new-button-text-color: #dde5e8;
 
     --featured-project-thumb-background: rgba(0, 0, 0, 0.5);
 
@@ -60,10 +60,8 @@
 }
 
 .left-bar{
-    max-width:20vw;
-    min-width: 350px;
+    width:20vw;
     background:var(--left-bar-background);
-    flex: 1;
 }
 
 .center-content{
@@ -74,12 +72,10 @@
     align-content: center;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
 }
 
 .right-bar{
-    max-width:20vw;
-    min-width: 350px;
+    width:20vw;
     background:var(--right-bar-background);;
 }
 
@@ -90,7 +86,6 @@
 .bar-section{
     margin:5%;
     width:90%;
-    border-radius: 10px;
 }
 
 .bar-section.short{

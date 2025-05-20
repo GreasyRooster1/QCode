@@ -1,15 +1,10 @@
 .admin-button{
-    margin-right: 10px;
+    margin: 5px;
     padding:3px;
-    border-radius: 5px;
-    font-size: 1.3rem;
+    border-radius: 3px;
     background: var(--admin-button-color);
 }
 
 .admin-button:hover{
     background: var(--admin-button-color-hover);
-}
-
-.buttons-pane{
-    margin: 10px;
 }

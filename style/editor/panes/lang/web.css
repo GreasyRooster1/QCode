@@ -18,7 +18,7 @@
 }
 
 .filesystem-sidebar{
-    width: 20vw;
+    width: 13vw;
     background: var(--filesystem-sidebar);
     display: flex;
     flex-direction: column;
@@ -138,25 +138,4 @@
 
 .current-file-view .icons{
     margin-right:4px;
-}
-
-.image-view{
-    display: none;
-    background: var(--current-file-view);
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.data-view{
-    display: none;
-    background: var(--current-file-view);
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    color:white;
-}
-
-.image-view-image{
-    width: 100%;
 }

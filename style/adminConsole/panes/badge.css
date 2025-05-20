@@ -4,8 +4,6 @@
 
 .badge-display-wrapper{
     height: 60%;
-    padding:5px;
-    display: flex;
 }
 
 .badge-details{
@@ -39,10 +37,4 @@
 .badge-img{
     width:256px;
     height:256px;
-}
-
-.badge-priority-display{
-    border-radius: 10px;
-    margin-bottom: 5px;
-    background: var(--main-content-background);
 }
