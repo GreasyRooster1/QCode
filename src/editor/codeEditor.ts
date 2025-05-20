@@ -49,9 +49,8 @@ const config = {
     },
 };
 
-const fixedFontTheme = EditorView.theme({
+let fixedFontTheme = EditorView.theme({
     '&': {
-        font: getFontFromCSS(),
         fontSize: "15px",
         fontVariantLigatures:"none",
     }
@@ -72,6 +71,14 @@ const arduinoStyle = HighlightStyle.define([
 let editor;
 
 function setupEditor(language: Language) {
+    fixedFontTheme = EditorView.theme({
+        '&': {
+            font: getFontFromCSS(),
+            fontSize: "15px",
+            fontVariantLigatures:"none",
+        }
+    })
+
     console.log(defaultHighlightStyle)
     document.querySelector(".code-editor")!.innerHTML = "";
     let languagePair = getLanguage(language);
