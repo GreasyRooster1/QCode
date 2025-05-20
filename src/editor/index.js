@@ -6,6 +6,7 @@ import {initNavbar} from "../api/nav/navbar";
 import {StepElement} from "../api/customElements";
 import {ConsoleLogElement} from "../api/customElements";
 import {loadTheme} from "../api/theme";
+import {getAuthSessionToken} from "./utils/fileServerAPI";
 
 StepElement.register();
 ConsoleLogElement.register();
@@ -21,6 +22,7 @@ function init(){
     setupShareEvents()
     setupScrollEvent()
     setupClosePopupEvent()
+    getAuthSessionToken()
 }
 
 window.onload = init;

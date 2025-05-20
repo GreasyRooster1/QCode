@@ -8,6 +8,7 @@ import {CloudAgentType} from "../cloudAgentType";
 import {getStoredUser} from "../../../api/auth";
 import {ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
+import {clearConsole} from "../../codeExecution";
 
 class ArduinoType extends CloudAgentType {
     sketch: Sketch | undefined;
@@ -20,6 +21,7 @@ class ArduinoType extends CloudAgentType {
         if(this.sketch==null){
             return;
         }
+        clearConsole()
         this.setExecStatus("write");
         this.sketch?.writeCode(getCode())?.then(()=> {
             this.setExecStatus("compile");
@@ -40,21 +42,28 @@ class ArduinoType extends CloudAgentType {
             this.failExec()
         })
     }
+    onLoad() {
+        super.onLoad();
+        document.querySelector(".console-head")!.innerHTML = "<div class='serial-monitor-button'>Serial Monitor</div>";
+        document.querySelector(".serial-monitor-button")!.addEventListener("click", ()=>{
+            this.sketch!.openSerialMonitor();
+        })
+        document.querySelector(".stop-button")?.remove()
+        document.querySelector(".canvas-output-pane")?.remove()
+    }
+
     onSave(){
         let code = getCode();
         let user = getStoredUser();
         set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/code"),code);
-        set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/dateUpdated"),Date.now()/1000);
-        if(this.hasLesson) {
-            console.log(this.highestViewedStep)
-            set(ref(db,"userdata/" + user.uid + "/projects/" + this.projectId + "/currentStep"),this.highestViewedStep);
-            set(ref(db,"userdata/"+user.uid+"/projects/"+this.projectId+"/currentChapter"),this.chapterNum);
-        }
-
     }
 
     runErrorCallback(content: string, type: string): void {
         this.appendLog(content,type);
+    }
+
+    setupSerialMonitor(){
+
     }
 
     getLanguage():Language {

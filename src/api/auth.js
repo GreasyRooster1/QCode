@@ -10,7 +10,7 @@ function createUserDefault(email, password){
             storeUser(userCredential.user);
         })
         .catch((error) => {
-            handleAuthErrors(error.code,error.message);
+            handleAuthErrors(error);
         });
 }
 
@@ -21,7 +21,7 @@ function logInUserDefault(email,password){
             storeUser(userCredential.user);
         })
         .catch((error) => {
-            handleAuthErrors(error.code,error.message);
+            handleAuthErrors(error);
         });
 
 }
@@ -32,7 +32,7 @@ function logOutUser(){
         console.log("logged out user");
         clearStoredUser();
     }).catch((error) => {
-        handleAuthErrors(error.code,error.message);
+        handleAuthErrors(error);
     });
 }
 
@@ -47,17 +47,7 @@ function handleAuthErrors(error){
         }
     }
 
-    return errorCode;
-}
-
-function displayAuthErrors(errorType){
-    switch (errorType){
-        case "invalid-credentials": showAuthError("Username or password is incorrect"); return;
-        case "auth/invalid-email": showAuthError("That username is not valid");return;
-        case "auth/email-already-in-use": showAuthError("That account already exists!");return;
-        case "auth/network-request-failed": showAuthError("Bad network!");return;
-        case "something went wrong!": break;
-    }
+    return errorCode+", "+errorMessage;
 }
 
 function storeUser(user,next){
@@ -120,7 +110,6 @@ export {
     getStoredUserPermissions,
     getStoredUser,
     storeUserPermissions,
-    displayAuthErrors,
     logOutUser,
     storeUser,
     handleAuthErrors

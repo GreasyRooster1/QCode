@@ -1,5 +1,13 @@
 import {shortTimeDifference} from "./util/util";
 import {stepTypes} from "./util/code";
+import {projectType} from "../editor/load";
+
+const imageModalPopupEvent = () => {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "flex";
+    modalImg.src = this.image.src;
+}
 
 class StepElement extends HTMLElement {
     head = null;
@@ -50,14 +58,22 @@ class StepElement extends HTMLElement {
         this.content = document.createElement("div");
         this.content.classList.add("step-content");
 
+        this.imageWrapper = document.createElement("div");
+        this.imageWrapper.classList.add("step-image-wrapper");
+
         this.image = document.createElement("img");
         this.image.classList.add("step-image");
+
+        this.imageOverlay = document.createElement("img");
+        this.imageOverlay.classList.add("step-image-overlay");
+        this.imageWrapper.appendChild(this.image)
+        //this.imageWrapper.appendChild(this.imageOverlay)
 
         this.textContent = document.createElement("div");
         this.textContent.classList.add("step-text-content");
 
         this.content.appendChild(this.textContent);
-        this.content.appendChild(this.image);
+        this.content.appendChild(this.imageWrapper);
 
         this.textContent.innerHTML = this.innerHTML;
         this.innerHTML = "";
@@ -82,12 +98,7 @@ class StepElement extends HTMLElement {
             }
         }
 
-        this.image.addEventListener("click", () => {
-            const modal = document.getElementById("imageModal");
-            const modalImg = document.getElementById("modalImage");
-            modal.style.display = "flex";
-            modalImg.src = this.image.src; // Set clicked image in the modal
-        });
+        this.image.addEventListener("click",imageModalPopupEvent);
 
         this.appendChild(this.head);
         this.appendChild(this.content);
@@ -288,4 +299,4 @@ class ProjectLinkElement extends HTMLElement {
     }
 }
 
-export { BrandNav, ConsoleLogElement, ProjectLinkElement,StepElement };
+export { BrandNav, ConsoleLogElement, ProjectLinkElement,StepElement,imageModalPopupEvent};

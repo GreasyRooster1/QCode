@@ -1,7 +1,7 @@
 import { basicSetup, EditorView} from "codemirror"
 import {drawSelection, keymap} from "@codemirror/view"
-import { indentWithTab } from "@codemirror/commands"
-import { javascript } from "@codemirror/lang-javascript"
+import {defaultKeymap, indentWithTab} from "@codemirror/commands"
+import {esLint, javascript} from "@codemirror/lang-javascript"
 import { rust } from "@codemirror/lang-rust"
 import { html } from "@codemirror/lang-html"
 import { css } from "@codemirror/lang-css"
@@ -19,12 +19,38 @@ import {barf} from 'thememirror';
 import {hackerManTheme} from "./theme/hackerman";
 import {amy} from 'thememirror';
 import {birdsOfParadise} from 'thememirror';
+import {linter, lintGutter, lintKeymap} from "@codemirror/lint";
+import * as eslint from "eslint-linter-browserify";
 
 type Language =  "javascript" | "rust" | "html" | "css" | "text" | "python" | "c++" | undefined
 
-const fixedFontTheme = EditorView.theme({
+const config = {
+    // eslint configuration
+    languageOptions: {
+        globals: {
+            //...globals.node,
+        },
+        parserOptions: {
+            ecmaVersion: 2022,
+            sourceType: "script",
+        },
+    },
+    rules: {
+        "semi": ["warn", "always"],
+        "no-debugger": "error",
+        "no-dupe-args": "error",
+        "no-const-assign": "error",
+        "no-constant-binary-expression":"warn",
+        "no-cond-assign":"warn",
+        "no-constructor-return":"error",
+        "no-irregular-whitespace":["error",{ "skipStrings": true }],
+        "no-self-assign":"warn",
+        "no-var":"error",
+    },
+};
+
+let fixedFontTheme = EditorView.theme({
     '&': {
-        font: getFontFromCSS(),
         fontSize: "15px",
         fontVariantLigatures:"none",
     }
@@ -45,12 +71,22 @@ const arduinoStyle = HighlightStyle.define([
 let editor;
 
 function setupEditor(language: Language) {
+    fixedFontTheme = EditorView.theme({
+        '&': {
+            font: getFontFromCSS(),
+            fontSize: "15px",
+            fontVariantLigatures:"none",
+        }
+    })
+
     console.log(defaultHighlightStyle)
     document.querySelector(".code-editor")!.innerHTML = "";
     let languagePair = getLanguage(language);
     let extensions = [
         basicSetup,
-        keymap.of([indentWithTab]),
+        keymap.of([indentWithTab,...defaultKeymap, ...lintKeymap,]),
+        lintGutter(),
+        linter(esLint(new eslint.Linter(), config)),
         fixedFontTheme,
     ]
     if(languagePair!=null){

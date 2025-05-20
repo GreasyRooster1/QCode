@@ -1,7 +1,6 @@
 import {db} from "../api/firebase";
 import {get, onValue, ref} from "firebase/database";
 
-const badgesDisplay = document.querySelector(".badges-display");
 
 const badgeDetailsName = document.querySelector(".badge-details .name");
 const badgeDetailsId = document.querySelector(".badge-details .id");
@@ -9,6 +8,8 @@ const badgeDetailsValue = document.querySelector(".badge-details .value");
 const badgeDetailsRarity = document.querySelector(".badge-details .rarity");
 const badgeDetailsDesc = document.querySelector(".badge-details .description");
 const badgeDetailsImg = document.querySelector(".badge-details .badge-img");
+
+let badgePriorities = [1,2,3]
 
 function setupBadge(){
     let lessonsRef = ref(db,'badges');
@@ -36,7 +37,8 @@ function createBadgeElement(badgeId,badgeData){
     badgeEl.addEventListener("click",showBadgeDetails);
 
     wrapperEl.appendChild(badgeEl);
-    badgesDisplay.appendChild(wrapperEl);
+
+    document.querySelector(".badges-display-"+badgeData.priority).appendChild(wrapperEl);
 }
 
 function showBadgeDetails(e){
@@ -53,7 +55,9 @@ function showBadgeDetails(e){
 }
 
 function clearBadges(){
-    badgesDisplay.innerHTML = "";
+    for(let p of badgePriorities) {
+        document.querySelector(".badges-display-"+p).innerHTML = "";
+    }
 }
 
 export {setupBadge}

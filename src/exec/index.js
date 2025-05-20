@@ -18,6 +18,29 @@ const acceptedFunctions = [
     "touchEnded",
 ]
 
+const rejectedFunctions = [
+    "createCapture",
+    "createElement",
+    "createP",
+    "createSpan",
+    "select",
+    "createA",
+    "createCheckbox",
+    "createFileInput",
+    "createRadio",
+    "createVideo",
+    "selectAll",
+    "createAudio",
+    "createColorPicker",
+    "createImg",
+    "createSelect",
+    "input",
+    "createButton",
+    "createDiv",
+    "createInput",
+    "createSlider",
+]
+
 const oldLog = console.log;
 const oldWarn = console.warn;
 const oldErr = console.error;
@@ -64,7 +87,17 @@ document.addEventListener('contextmenu', event => {
 
 function runJs(js){
     //clear dangerous objects and run code
-    eval(js);
+    let nl = "\n"
+    eval(`
+        try {
+            `+js+`
+        }catch(e){
+            let stack = e.stack.split(nl);
+            let lineCol = stack[1].replace("at eval (eval at runJs (webpack:///./src/exec/index.js?),","").replace(")","").split(":");
+            let out = lineCol[1]-2+":"+lineCol[2];
+            console.error(" "+out+" : "+stack[0]);
+        }
+    `);
 
     let eventFunctions = [];
 
@@ -97,6 +130,11 @@ function startP5(drawArg,setupArg,otherFunctions) {
         createCanvas(500,500);
         createCanvas = function (){
             console.error("createCanvas is disabled");
+        }
+        for(let s of rejectedFunctions){
+            eval(s+` = ()=>{
+                console.error(s+" is disabled");
+            }`)
         }
         document.getElementById("defaultCanvas0").style.width = "100vmin";
         document.getElementById("defaultCanvas0").style.height = "100vmin";

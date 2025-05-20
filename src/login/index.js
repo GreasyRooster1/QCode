@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth, db} from "../api/firebase";
-import {displayAuthErrors, extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
+import {extractEmailFromUsername, handleAuthErrors, storeUser} from "../api/auth";
 import {get, ref, set,update} from "firebase/database";
 
 
@@ -13,10 +13,20 @@ const authErrorContent = document.querySelector(".auth-error-message");
 
 let returnURL = "./index.html";
 
+let errorMessagePairs = {
+    "auth/invalid-credential": "Incorrect username or password",
+    "auth/user-disabled" :"Account disabled! Contact an admin if you think this is a mistake",
+    "too-many-requests":"Too many login requests! Please dont spam the button!"
+}
+
 loginButton.addEventListener("click", function(){
     let username = usernameInput.value;
     let password = passwordInput.value;
+    if(username.length <= 1||password.length <= 1){
+        return;
+    }
     let email = extractEmailFromUsername(username)
+    passwordInput.value = "";
 
     signInWithEmailAndPassword(auth,email, password)
         .then((userCredential) => {
@@ -32,10 +42,18 @@ loginButton.addEventListener("click", function(){
             });
         })
         .catch((error) => {
-            displayAuthErrors(handleAuthErrors(error));
+            console.log(error.code)
+            displayAuthErrors(error);
         });
 });
 
+function displayAuthErrors(error){
+    if(error.code in errorMessagePairs){
+        showAuthError(errorMessagePairs[error.code]);
+        return;
+    }
+    showAuthError(error.message);
+}
 function showAuthError(msg){
     authErrorDisplayWrapper.style.display = "block"
     authErrorContent.innerHTML = msg;

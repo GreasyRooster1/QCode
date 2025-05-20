@@ -1,3 +1,5 @@
+import {imageFileTypes, textFileTypes} from "../fileSystemInterface";
+
 const dotReplacer = "➽";
 const blacklistedChars = [".", "$", "#", "[", "]", "/","\\"];
 
@@ -12,6 +14,7 @@ class Filesystem{
     private system:System;
     defaultFile:FilesystemFile;
     onFileSystemUpdate:Function;
+    projectImpl:any;
 
     constructor(defaultFileName:string) {
         this.system = {
@@ -40,10 +43,11 @@ class Filesystem{
     }
 
     getFolder(path:string):Folder{
+        debugger
         let sections = path.split("/");
-        sections.pop();
+        //sections.pop();
         let parentFolder = this.system["/"];
-        for(let folder in sections){
+        for(let folder of sections){
             let next = parentFolder[folder]
             if(isFolder(next)){
                 parentFolder = <Folder>next;
@@ -53,12 +57,15 @@ class Filesystem{
     }
 
     addFile(file:FilesystemFile, location:string){
-        this.getFolder(location)[file.name] = file;
-        this.onFileSystemUpdate();
+        this.getFolder(location)[file.getFullName()] = file;
+        this.onFileSystemUpdate(this.projectImpl);
     }
 
     getFileById(id:number):FilesystemFile|null{
         return this.findFile(this.system["/"],id);
+    }
+    getFilePathById(id:number):string|null{
+        return this.findFilePath(this.system["/"],id,"/");
     }
     findFile(folder:Folder,id:number):FilesystemFile|null{
         // @ts-ignore
@@ -74,19 +81,27 @@ class Filesystem{
             }
         }
         return null;
-    }
 
-    deleteFile(folder:Folder,id:number){
+    }
+    findFilePath(folder:Folder,id:number,path:string):string|null {
         // @ts-ignore
-        for (let [key,frag] of Object.entries(folder)){
-            if(isFolder(frag)){
-                this.deleteFile(frag as Folder,id);
+        for (let [key, frag] of Object.entries(folder)) {
+            if (isFolder(frag)) {
+                let out = this.findFilePath(frag as Folder, id,path+"/"+key)
+                if (out !== null) {
+                    return out;
+                }
             }
-            if(frag.id==id){
-                frag.isDeleted = true;
-                return;
+            if (frag.id == id) {
+                return path+"/"+key;
             }
         }
+        return null;
+    }
+
+    deleteFile(id:number){
+        // @ts-ignore
+        this.getFileById(id).delete();
     }
 
     getAll(){
@@ -158,6 +173,10 @@ class FilesystemFile {
         this.isDeleted = false;
     }
 
+    delete(){
+        this.isDeleted = true;
+    }
+
     appendToHtml(upperHtml:any){
         let el = document.createElement("div");
         el.innerHTML = `
@@ -173,12 +192,12 @@ class FilesystemFile {
 
     getIconUrl(){
         if(!hasFileIcon(this.extension)){
-            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/file.png?raw=true"
+            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/file.png"
         }
         if(this.extension=="sys"&&Math.random()<0.1){
-            return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/sys.gif?raw=true"
+            return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/sys.gif"
         }
-        return "https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/"+this.extension+".png?raw=true"
+        return "https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/"+this.extension+".png"
     }
 
     getSerializedName(){
@@ -188,6 +207,17 @@ class FilesystemFile {
             name.replace(char,"");
         }
         return name;
+    }
+
+    getFullName(){
+        return this.name+"."+this.extension;
+    }
+
+    isImage(){
+        return imageFileTypes.includes(this.extension)
+    }
+    isDataFile(){
+        return !textFileTypes.includes(this.extension) && !imageFileTypes.includes(this.extension)
     }
 
     getLanguage(){
@@ -218,7 +248,7 @@ function getFolderDom(key:string, folder:Folder){
     wrapperEl.innerHTML = `
                     <div class="folder-icon ">
                         <div class="name-icon">
-                            <img src="https://github.com/GreasyRooster1/QCodeStatic/blob/main/Files/folder.png?raw=true">
+                            <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/folder.png?raw=true">
                             <span class='name'>${key}</span>
                         </div>
                         <span class="buttons">

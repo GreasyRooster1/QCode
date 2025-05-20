@@ -10,7 +10,7 @@ import {clearConsole} from "../codeExecution";
 import {defaultCodeArduino, defaultCodeJs} from "../../api/util/code";
 import {establishAgentConnection, GlobalServerStatus} from "../utils/cloudAgentAPI";
 
-const possibleStatuses = ["not-connected","connected","ok","write","compile","upload"];
+const possibleStatuses = ["not-connected","connected","ok","write","compile","upload","execute","deserialize"];
 
 abstract class CloudAgentType extends ProjectType {
     executionStatus: string;
@@ -36,6 +36,10 @@ abstract class CloudAgentType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
+        this.setupConnection();
+    }
+
+    setupConnection():void{
         establishAgentConnection(3).then(status => {
             if(status==GlobalServerStatus.Connected) {
                 this.statusText!.innerHTML="Connected";
@@ -51,8 +55,6 @@ abstract class CloudAgentType extends ProjectType {
                 this.setExecStatus("not-connected")
             }
         });
-        document.querySelector(".canvas-output-pane")?.remove()
-        document.querySelector(".stop-button")?.remove()
     }
 
     runErrorCallback(content: string, type: string): void {
@@ -110,6 +112,12 @@ abstract class CloudAgentType extends ProjectType {
             }
             if(this.executionStatus == "not-connected"){
                 txt = "Agent not connected"
+            }
+            if(this.executionStatus == "deserialize"){
+                txt = "Deserializing..."
+            }
+            if(this.executionStatus == "execute"){
+                txt = "Executing..."
             }
         }
         this.statusText!.innerHTML = txt;

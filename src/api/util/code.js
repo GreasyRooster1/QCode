@@ -1,5 +1,7 @@
 const defaultCodeJs = "function setup(){\n  //setup code here\n}\n\nfunction draw(){\n  //draw code goes here\n}\n"
+
 const defaultCodeArduino = "void setup(){\n  // put your setup code here, to run once:\n\n}\n\nvoid loop(){\n  // put your main code here, to run repeatedly:\n\n}\n"
+
 const defaultFilesWeb = {
     "index➽css":"",
     "index➽js":"",
@@ -15,6 +17,7 @@ const defaultFilesWeb = {
         "  </body>\n" +
         "</html>",
 }
+
 const defaultFilesPython = {
     "main➽py":""
 }

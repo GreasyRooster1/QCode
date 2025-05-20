@@ -1,0 +1,25 @@
+name: debug-deploy-prod
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-deploy-prod:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Set Git User Identity
+        run: |
+          git config --local user.email greasyRooster1@gmail.com
+          git config --local user.name GreasyRooster1
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Cat package.json
+        run: |
+          cat packages.json

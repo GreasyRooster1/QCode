@@ -1,6 +1,7 @@
 import {createBufferSpace, createStepFromObj} from "../utils/loadUtils";
 import {stepTypes} from "../../api/util/code";
 import {buttonContainer, defaultStep} from "./setup";
+import {imageModalPopupEvent} from "../../api/customElements";
 
 let currentStep = 0;
 let newStepButton = null;
@@ -37,6 +38,7 @@ function createEditableStep(data){
 
     type.addEventListener("click", swapTypes);
 
+    image.removeEventListener("click",imageModalPopupEvent);
     image.addEventListener("click", changeImage);
 
     textContent.setAttribute("contenteditable","true");

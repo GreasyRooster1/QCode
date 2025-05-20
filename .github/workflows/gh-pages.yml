@@ -1,0 +1,36 @@
+name: gh-pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - production  # Set a branch name to trigger deployment
+  pull_request:
+    branches:
+      - production
+
+jobs:
+  deploy-webpack:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          ref: production
+
+      - name: Set Git User Identity
+        run: |
+          git config --local user.email greasyRooster1@gmail.com
+          git config --local user.name GreasyRooster1
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build for production
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/GreasyRooster1/QCode.git
+          npx gh-pages -d dist --repo https://x-access-token:${{ secrets.TOKEN }}@github.com/GreasyRooster1/QCode.git --cname code.esporterz.com

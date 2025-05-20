@@ -23,10 +23,23 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
+            {
+                test: /\.less$/i,
+                use: [
+                    // compiles Less to CSS
+                    "style-loader",
+                    "css-loader",
+                    "less-loader",
+                ],
+            },
+            {
+                test: /\.txt$/i,
+                use: 'raw-loader',
+            },
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js','.less'],
     },
     output: {
         filename: 'bundles/[name].bundle.js',

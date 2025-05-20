@@ -24,6 +24,8 @@ class Lesson{
         this.started = false;
         this.statusChecked = false;
         this.locked = false;
+        this.hasLevelBreak = false;
+        this.levelBreakNote = "";
     }
 
     update(){
@@ -40,6 +42,7 @@ class Lesson{
             this.drawTags()
             this.drawTitle()
             this.renderStatus()
+            this.renderLevelBreak()
         }else{
             this.drawUnlisted();
             this.drawLines()
@@ -206,6 +209,26 @@ class Lesson{
             this.image = loadImage(data);
         })
     }
+
+    renderLevelBreak(){
+        if(!this.hasLevelBreak){
+            return;
+        }
+        //mainYshift / 2
+        let breakY = this.y+this.h+(400-this.h)/2;
+
+        stroke(currentColors.grid)
+        drawingContext.setLineDash([20]);
+        line(this.x-300,breakY,this.x+this.w+300,breakY);
+        drawingContext.setLineDash([]);
+        fill(currentColors.textColor)
+        textAlign(LEFT)
+        noStroke()
+        textSize(30)
+        textStyle(BOLD)
+        text(this.levelBreakNote,this.x-300,breakY-5)
+        textStyle(NORMAL)
+    }
 }
 
 function loadLessons(next){
@@ -220,6 +243,11 @@ function loadLessons(next){
                 lessonsIndex[id].y=height/2-height/3;
                 lessonsIndex[id].x=width/2-lessonsIndex[id].w/2;
             }
+            if(data.levelBreak!==undefined){
+                lessonsIndex[id].hasLevelBreak = true;
+                lessonsIndex[id].levelBreakNote = data.levelBreak;
+            }
+
         }
     }).then(()=>{
         next(rootLesson)
@@ -251,13 +279,13 @@ function solvePosition(id){
     let current = lessonsIndex[id];
     let count = 0;
     let mainYShift = 400;
-    let sideYShift = 300;
+    let sideYShift = 400;
     let xMargin = 300;
 
     if(id===rootLesson){
-        mainYShift = 500;
+        mainYShift = 400;
         sideYShift = 500;
-        xMargin = 700;
+        xMargin = 900;
     }
 
     for (let childId of current.children){

@@ -2,11 +2,14 @@ import {db} from "../api/firebase";
 import {badgeDisplay} from "./index";
 import {ref, get, onValue} from "firebase/database";
 import {getStoredUser} from "../api/auth";
+import {rarities} from "../api/util/rarity";
 
 const badgeDetailName = document.querySelector(".badge-name");
 const badgeDetailDesc = document.querySelector(".badge-info-desc");
 const badgeDetailImage = document.querySelector(".badge-info-image");
 const badgeDetailRarity = document.querySelector(".badge-rarity");
+
+
 
 function badgeClickEvent(badgeEl){
     let badgeId = badgeEl.getAttribute("data-badgeid");
@@ -16,6 +19,10 @@ function badgeClickEvent(badgeEl){
         badgeDetailDesc.innerHTML = data.description;
         badgeDetailImage.setAttribute("src",data.image)
         badgeDetailImage.style.display="block"
+
+        badgeDetailImage.className = "";
+        badgeDetailImage.classList.add("badge-info-image");
+        badgeDetailImage.classList.add(data.rarity);
 
         let capRarity = data.rarity.charAt(0).toUpperCase() + data.rarity.slice(1);
         badgeDetailRarity.innerHTML = capRarity;
@@ -28,6 +35,8 @@ function badgeClickEvent(badgeEl){
 function createBadgeElementFromSnap(snap,id){
     let badgeProperties = snap.val();
 
+    let badgeWrapper = document.createElement("div");
+    badgeWrapper.classList.add("badge-wrapper");
     let badgeElement = document.createElement("div");
     badgeElement.classList.add("badge");
 
@@ -46,6 +55,8 @@ function createBadgeElementFromSnap(snap,id){
     hoverText.appendChild(hoverTextContent);
 
     badgeElement.setAttribute("data-badgeid",id)
+    badgeElement.classList.add(badgeProperties.rarity);
+    badgeWrapper.classList.add(badgeProperties.rarity);
 
     badgeElement.appendChild(img);
     badgeElement.appendChild(hoverText);
@@ -54,7 +65,8 @@ function createBadgeElementFromSnap(snap,id){
         badgeClickEvent(e.currentTarget);
     })
 
-    badgeDisplay.appendChild(badgeElement)
+    badgeWrapper.appendChild(badgeElement)
+    badgeDisplay.appendChild(badgeWrapper)
 }
 
 function loadBadges(){
