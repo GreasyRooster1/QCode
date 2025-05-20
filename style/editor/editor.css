@@ -17,6 +17,9 @@
     --step-next: rgba(255, 148, 34, 0.44);
     --step-build: rgba(34, 45, 255, 0.44);
     --step-other: rgba(21, 21, 21, 0.44);
+    --step-party: linear-gradient(65deg,rgba(253, 29, 29, 0.44) 0%, rgba(253, 134, 29, 0.44) 13%, rgba(253, 242, 29, 0.44) 31%, rgba(29, 253, 145, 0.44) 47%, rgba(29, 145, 253, 0.44) 68%, rgba(253, 29, 182, 0.44) 85%, rgba(253, 29, 29, 0.44) 99%);
+
+    --step-image-hover-background: rgba(0, 0, 0, 0.44);
 
     --step-type-background: #707070;
 

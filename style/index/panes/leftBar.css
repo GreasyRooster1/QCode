@@ -14,7 +14,7 @@
 
 .bar-title{
     margin: 10px 7px 7px;
-    font-size:30px;
+    font-size:2rem;
 }
 
 .projects-display{
@@ -73,9 +73,7 @@
 }
 
 .recommended-lessons{
-    background:var(--lessons-recommended-background);
-    padding:3px;
-    border-radius:5px;
+    padding-top:10px;
     margin:5px;
 }
 
@@ -105,11 +103,14 @@
 }
 
 .lessons-chart-link{
-    background: var(--lessons-chart-link-background);
-    font-weight: bold;
+    background: var(--left-bar-accent);
+    font-size:1.1rem;
+    font-weight: 600;
+    text-align: center;
     margin:5px;
     padding:2px;
     border-radius: 5px;
+    color: var(--left-bar-text-accent);
 }
 
 .status-display{
@@ -133,7 +134,7 @@
 }
 
 .new-project-button{
-    background: var(--new-button-background);
+    background: var(--left-bar-accent);
     border-radius: 5px;
 
     margin: 10px 7px 7px;
@@ -141,7 +142,7 @@
 
     text-align: center;
     font-weight: 600;
-    font-size:17px;
+    font-size:1.1rem;
 
-    color: var(--new-button-text-color);
+    color: var(--left-bar-text-accent);
 }

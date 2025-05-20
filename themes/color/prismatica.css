@@ -1,18 +1,47 @@
+@property --prismatic-hue {
+    syntax: '<number>';
+    initial-value: 0;
+    inherits: false;
+}
+
 :root{
-    --primary-color: #cf0f1d;
-    --subtle-primary-color: #63040b;
-    --dark-primary-color: #170101;
-    --background-primary-color: #000000;
-    --text-color: #ffe5ec;
-    --inverse-text-color: #150009;
-    --light-primary-color: #f8838b;
+    --gradient-lightness:6%;
+    --prismatic-gradient: linear-gradient(50deg,
+    hsl(calc(var(--prismatic-hue) + 0) 100% var(--gradient-lightness)) 0%,
+    hsl(calc(var(--prismatic-hue) + 50) 100% var(--gradient-lightness)) 16%,
+    hsl(calc(var(--prismatic-hue) + 100) 100% var(--gradient-lightness)) 32%,
+    hsl(calc(var(--prismatic-hue) + 130) 100% var(--gradient-lightness)) 48%,
+    hsl(calc(var(--prismatic-hue) + 200) 100% var(--gradient-lightness)) 64%,
+    hsl(calc(var(--prismatic-hue) + 330) 100% var(--gradient-lightness)) 88%);
 
-    --transparent-primary-color: #cf0f1d77;
+    --primary-color:hsl(var(--prismatic-hue) 100% 90%);
+    /*--primary-color-mid:hsl(calc(var(--prismatic-hue) + 50) 100% 90%);*/
+    /*--primary-color-end:hsl(calc(var(--prismatic-hue) + 100) 100% 90%);*/
 
-    --border: 2px solid var(--primary-color);
-    --border-subtle: 2px solid var(--subtle-primary-color);
+    --subtle-primary-color: hsl(var(--prismatic-hue) 100% 5%);
+    --dark-primary-color: hsl(var(--prismatic-hue) 100% 3%);
+    --background-primary-color: hsl(var(--prismatic-hue) 100% 1%);
+    --text-color: hsl(var(--prismatic-hue) 100% 95%);
+    --inverse-text-color: hsl(var(--prismatic-hue) 100% 6%);
+    --light-primary-color: hsl(var(--prismatic-hue) 100% 90%);
+
+    --transparent-primary-color: hsla(var(--prismatic-hue) 100% 80%,.5);
+
+
+    --border-width:2px;
+    --border: var(--border-width) solid var(--primary-color);
+    --border-subtle: var(--border-width) solid var(--subtle-primary-color);
 
     color:var(--text-color);
+}
+
+@keyframes prismatic {
+    to {
+        --prismatic-hue: 360;
+    }
+}
+*{
+    animation: prismatic 50s infinite;
 }
 
 /* Navbar (navbar.css) */
@@ -27,12 +56,12 @@
     --generic-nav-button-color: var(--background-primary-color);
 
     --points-display-background: var(--primary-color);
-    --points-display-text: var(--text-color);
+    --points-display-text: var(--inverse-text-color);
 
     --navbar-height:40px;
 }
 .navbar{
-    border-bottom: var(--border);
+    border-bottom:var(--border);
 }
 .home-link{
     border:var(--border);
@@ -46,10 +75,10 @@
 :root{
     --default-font: "JetBrains Mono";
 
-    --brand-blue:var(--dark-primary-color);
-    --brand-green: var(--primary-color);
-    --brand-black:var(--dark-primary-color);
-    --brand-gray:var(--dark-primary-color);
+    --brand-blue:var(--background-primary-color);
+    --brand-green: var(--subtle-primary-color);
+    --brand-black:var(--background-primary-color);
+    --brand-gray:var(--background-primary-color);
 
     --common-rarity-color: #484848;
     --uncommon-rarity-color: #0091e1;
@@ -204,7 +233,7 @@
     --badge-color: var(--dark-primary-color);
 
     --left-bar-accent: var(--primary-color);
-    --left-bar-text-accent: var(--text-color);
+    --left-bar-text-accent: var(--inverse-text-color);
 
     --featured-project-thumb-background: var(--dark-primary-color);
 
@@ -217,7 +246,7 @@
     --points-progress-bar-background: var(--subtle-primary-color);
     --points-progress-bar-fill: var(--primary-color);
 
-    --status-display-text: var(--text-color);
+    --status-display-text: var(--inverse-text-color);
     --status-display-external: #ea473a;
     --status-display-not-started:var(--subtle-primary-color);
     --status-display-started: var(--primary-color);
