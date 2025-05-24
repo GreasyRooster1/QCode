@@ -15,6 +15,7 @@ function createProject(cleanProjectId,projectName,type,lessonId){
                 return;
             }
             getProjectDataForType(type,projectName,lessonId).then((data)=>{
+                console.log(data)
                 set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),data).then(()=>{
                     resolve();
                 });
