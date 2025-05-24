@@ -14,10 +14,11 @@ function createProject(cleanProjectId,projectName,type,lessonId){
                 reject();
                 return;
             }
-            console.log(getProjectDataForType(type,projectName,lessonId));
-            set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),getProjectDataForType(type,projectName,lessonId)).then(()=>{
-                resolve();
-            });
+            getProjectDataForType(type,projectName,lessonId).then((data)=>{
+                set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),data).then(()=>{
+                    resolve();
+                });
+            })
         })
     });
 }
