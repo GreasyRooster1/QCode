@@ -27,11 +27,15 @@ function createSaveButton(){
 function saveLesson(){
     saveChapter(currentChapter);
     let lessonData = {
-        name:lessonMetadata.name,
+        name:lessonMetadata.name??"LESSON NAME",
         type:projectType.identifier,
         unlisted:true,
         chapters:convertChaptersToObjFormat(createdLessonChapters),
         coachCode:getCodeFromEditor(),
+        tags:{
+            0:"game",
+        },
+        thumb:"https://github.com/GreasyRooster1/QCodeStatic/blob/main/Global/missing.png",
     }
     console.log(lessonData.chapters)
     downloadLessonData(JSON.stringify(lessonData,null,4),lessonMetadata.name);
