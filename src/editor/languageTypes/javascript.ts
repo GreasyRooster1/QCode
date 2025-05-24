@@ -68,9 +68,12 @@ class JavascriptType extends ProjectType {
                 get(ref(db, "lessons/" + lessonId + "/starterCode")).then((snap) => {
                     if (snap.exists()) {
                         data.code = snap.val();
+                        console.log("found code")
+                        console.log(data)
                         resolve(data)
                         return;
                     }else{
+                        console.log("no default code")
                         resolve(data);
                         return;
                     }
