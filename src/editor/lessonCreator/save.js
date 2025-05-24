@@ -28,7 +28,7 @@ function saveLesson(){
     saveChapter(currentChapter);
     let lessonData = {
         name:lessonMetadata.name??"LESSON NAME",
-        type:projectType.identifier,
+        type:projectType.identifier??"TYPE HERE",
         unlisted:true,
         chapters:convertChaptersToObjFormat(createdLessonChapters),
         coachCode:getCodeFromEditor(),
