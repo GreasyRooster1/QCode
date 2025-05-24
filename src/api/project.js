@@ -23,7 +23,12 @@ function createProject(cleanProjectId,projectName,type,lessonId){
 }
 
 function getProjectDataForType(type,projectName,lessonId){
-    return languageTypes[type].getProjectDBData(projectName,lessonId)
+    let cleanLessonId = lessonId??"none"
+    let hasLesson = cleanLessonId != "none";
+    let data = languageTypes[type].getProjectDBData(projectName,lessonId);
+    if(hasLesson){
+        get(ref(db),"lessons/")
+    }
 }
 
 function cleanProjectName(projectName){

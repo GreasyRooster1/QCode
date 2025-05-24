@@ -56,7 +56,7 @@ class JavascriptType extends ProjectType {
         let hasLesson = cleanLessonId != "none";
         return {
             code:defaultCodeJs,
-            lessonId:lessonId??"none",
+            lessonId:cleanLessonId,
             name:projectName,
             currentChapter:0,
             currentStep:0,
