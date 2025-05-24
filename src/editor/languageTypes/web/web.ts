@@ -2,7 +2,7 @@ import { getCode } from "../../executionHelper";
 import {ProjectType,RunErrCallback} from "../projectType";
 import {Filesystem, Folder, isFolder, FilesystemFile, getFolderDom, cleanFileName} from "./filesystem";
 import {Language, setupEditor} from "../../codeEditor";
-import {ref, set} from "firebase/database";
+import {get, ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {writeToEditor} from "../../utils/loadUtils";
@@ -93,8 +93,10 @@ class WebType extends ProjectType implements FileSystemInterface {
         return "javascript";
     }
 
-    static getProjectDBData(projectName: string, lessonId: string):Object {
-        return {
+    static getProjectDBData(projectName: string, lessonId: string):Promise<Object> {
+        let cleanLessonId = lessonId ?? "none"
+        let hasLesson = cleanLessonId != "none";
+        let data = {
             files:defaultFilesWeb,
             lessonId:lessonId??"none",
             name:projectName,
@@ -103,6 +105,21 @@ class WebType extends ProjectType implements FileSystemInterface {
             timestamp:Date.now()/1000,
             language:"web",
         }
+        return new Promise((resolve, reject) => {
+            if (hasLesson) {
+                get(ref(db, "lessons/" + lessonId + "/starterFiles")).then((snap) => {
+                    if (snap.exists()) {
+                        data.files = snap.val();
+                        resolve(data)
+                        return;
+                    }else{
+                        resolve(data);
+                        return;
+                    }
+                })
+            }
+            resolve(data);
+        });
     }
 }
 export {WebType};
