@@ -15,7 +15,7 @@ import {
 } from "../fileSystemInterface";
 
 class WebType extends ProjectType implements FileSystemInterface {
-
+    static identifier = "web"
     /* Implements */
     public filesystem:Filesystem
     public currentFileId:number;

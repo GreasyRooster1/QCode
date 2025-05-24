@@ -2,6 +2,8 @@ import {currentChapter, saveChapter} from "./chapter";
 import {lessonMetadata} from "./metadata";
 import {getCodeFromEditor} from "../codeExecution";
 import {buttonContainer} from "./setup";
+import {projectType} from "../load";
+import {languageTypes} from "../languageTypes";
 
 let createdLessonChapters = []
 let lessonCreatorSaveButton = null;
@@ -26,8 +28,8 @@ function saveLesson(){
     saveChapter(currentChapter);
     let lessonData = {
         name:lessonMetadata.name,
-        unlisted:lessonMetadata.unlisted,
-        starterCode:lessonMetadata.starterCode,
+        type:projectType.identifier,
+        unlisted:true,
         chapters:convertChaptersToObjFormat(createdLessonChapters),
         coachCode:getCodeFromEditor(),
     }

@@ -21,6 +21,7 @@ import {PythonProject, startPythonServer} from "./python-api";
 import { clearConsole } from "../../codeExecution";
 
 class PythonType extends CloudAgentType implements FileSystemInterface{
+    static identifier = "python"
     project: PythonProject | undefined;
     currentFileId: number;
     filesystem: Filesystem;

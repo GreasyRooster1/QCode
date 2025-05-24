@@ -11,6 +11,7 @@ import {db} from "../../../api/firebase";
 import {clearConsole} from "../../codeExecution";
 
 class ArduinoType extends CloudAgentType {
+    static identifier = "arduino"
     sketch: Sketch | undefined;
 
     constructor() {

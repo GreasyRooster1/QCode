@@ -10,6 +10,7 @@ import {createGutterBlocks, setupDefaultPanes} from "../panes";
 import Split from "split.js";
 
 class ScratchType extends ProjectType {
+    static identifier = "scratch"
     constructor() {
         super(true);
     }

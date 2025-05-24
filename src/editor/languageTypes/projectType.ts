@@ -20,6 +20,7 @@ abstract class ProjectType {
     highestViewedStep: number | undefined;
     chapterNum: number | undefined;
     isLessonCreator:boolean;
+    static identifier:string;
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;

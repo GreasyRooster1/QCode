@@ -9,6 +9,8 @@ import {clearConsole} from "../codeExecution";
 import {defaultCodeJs} from "../../api/util/code";
 
 class JavascriptType extends ProjectType {
+    static identifier = "javascript"
+
     constructor() {
         super(true);
     }
