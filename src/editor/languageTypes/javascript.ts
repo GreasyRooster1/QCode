@@ -52,6 +52,8 @@ class JavascriptType extends ProjectType {
     }
 
     static getProjectDBData(projectName: string, lessonId: string):Object {
+        let cleanLessonId = lessonId??"none"
+        let hasLesson = cleanLessonId != "none";
         return {
             code:defaultCodeJs,
             lessonId:lessonId??"none",
