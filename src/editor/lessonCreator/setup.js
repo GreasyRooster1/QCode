@@ -38,7 +38,7 @@ function createLessonCreatorChapterStep(){
     if(createdLessonChapters.length>0) {
         content = getChapterStepContentNoLink(createdLessonChapters)
     }
-    chapterStep = createStep("[Lesson Name]",content,"none","chapters",0);
+    chapterStep = createStep("[Chapter Name]",content,"none","chapters",0);
     chapterStep.querySelector(".step:first-child .step-head-content").setAttribute("contenteditable","true")
 }
 
