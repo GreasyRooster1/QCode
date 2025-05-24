@@ -78,8 +78,9 @@ class JavascriptType extends ProjectType {
                         return;
                     }
                 })
+            }else{
+                resolve(data);
             }
-            resolve(data);
         });
     }
 }
