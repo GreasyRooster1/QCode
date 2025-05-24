@@ -117,8 +117,9 @@ class WebType extends ProjectType implements FileSystemInterface {
                         return;
                     }
                 })
+            }else{
+                resolve(data);
             }
-            resolve(data);
         });
     }
 }

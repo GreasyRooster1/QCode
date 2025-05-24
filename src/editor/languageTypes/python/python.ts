@@ -140,8 +140,9 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
                         return;
                     }
                 })
+            }else{
+                resolve(data);
             }
-            resolve(data);
         });
     }
 

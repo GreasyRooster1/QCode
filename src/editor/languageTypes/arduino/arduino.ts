@@ -94,8 +94,9 @@ class ArduinoType extends CloudAgentType {
                         return;
                     }
                 })
+            }else{
+                resolve(data);
             }
-            resolve(data);
         });
     }
 
