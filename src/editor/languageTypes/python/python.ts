@@ -13,7 +13,7 @@ import {
     setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
-import {Filesystem} from "../web/filesystem";
+import {Filesystem, FilesystemFile} from "../web/filesystem";
 import {get, ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
@@ -51,9 +51,13 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         document.querySelector(".canvas-output-pane")?.remove()
         this.setupConnection();
         this.filesystem.deserialize(this.projectData?.files);
-        //this.currentFileId=this.filesystem.getFile("/main.py").id;
-        //openFile(this,this.currentFileId);
-        //updateFilesystemBar(this);
+        this.currentFileId=this.filesystem.getFile("/main.py").id;
+        if(this.currentFileId==null){
+            this.filesystem.getFolder("/")["main.py"] = new FilesystemFile("main","py");
+            this.currentFileId=this.filesystem.getFile("/main.py").id;
+        }
+        openFile(this,this.currentFileId);
+        updateFilesystemBar(this);
         document.querySelector(".console-head")!.innerHTML = "<div class='console-refresh-button'>Refresh</div>";
         document.querySelector(".console-refresh-button")!.addEventListener("click", ()=>{
             this.updateLogs();
