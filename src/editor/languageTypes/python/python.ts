@@ -51,10 +51,13 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         document.querySelector(".canvas-output-pane")?.remove()
         this.setupConnection();
         this.filesystem.deserialize(this.projectData?.files);
-        this.currentFileId=this.filesystem.getFile("/main.py").id;
-        if(this.currentFileId==null){
+        let defaultFile = this.filesystem.getFile("/main.py")
+
+        if(defaultFile==null){
             this.filesystem.getFolder("/")["main.py"] = new FilesystemFile("main","py");
             this.currentFileId=this.filesystem.getFile("/main.py").id;
+        }else{
+            this.currentFileId=defaultFile.id;
         }
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
