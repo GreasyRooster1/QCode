@@ -63,6 +63,7 @@ abstract class ProjectType {
         })
         document.querySelector(".stop-button")?.addEventListener("click", ()=>{
             this.saveCode();
+            this.onStop();
         })
         document.querySelector('.share-button')?.addEventListener('click', (e) => {
             console.log("sadsd")
