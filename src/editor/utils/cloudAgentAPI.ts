@@ -26,6 +26,7 @@ function makeGlobalRequest(uri:string,body:string):Promise<string> {
 }
 
 function makeRequest(uri:string,body:string,port:string,isDataRequest:boolean):Promise<object|string> {
+    debugger
     return new Promise((resolve, reject) => {
         console.trace(serverAddress+":"+port + "/" + uri)
         fetch(serverAddress+":"+port + "/" + uri, {
