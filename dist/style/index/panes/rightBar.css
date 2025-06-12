@@ -402,8 +402,19 @@ top:-100%;
 }
 .timer-button{
     border-radius:5px;
+    background:var(--right-bar-accent);
+    padding:5px;
 }
 .timer-buttons{
     display:flex;
     flex-direction: row;
+    width:100%;
+    justify-content: space-evenly;
+}
+
+.timer-time-count{
+    font-size:2em;
+}
+.timer-bar-container{
+    width: 100%;
 }
