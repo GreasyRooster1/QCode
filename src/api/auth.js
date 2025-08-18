@@ -103,6 +103,14 @@ function extractUsernameFromEmail(email){
     return email.replace("@esporterz.com","");
 }
 
+function getCrypt(){
+    return new Promise((resolve, reject) => {
+        get(ref(db,"crypt")).then((snapshot)=>{
+            resolve(snapshot.val());
+        })
+    })
+}
+
 export {
     extractUsernameFromEmail,
     extractEmailFromUsername,
