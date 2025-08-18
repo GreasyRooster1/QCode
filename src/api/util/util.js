@@ -112,4 +112,4 @@ function shortTimeDifference(previous) {
     }
 }
 
-export {isValidUrl,timeDifference,shortTimeDifference,getDateString}
+export {isValidUrl,timeDifference,shortTimeDifference,getDateString,assert}
