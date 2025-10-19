@@ -32,7 +32,7 @@ function init(){
     loadProjects();
     loadLessons();
     loadAnnouncements();
-    // loadUserData();
+    loadUserData();
 
     displayVersion();
     initShareBoard();
