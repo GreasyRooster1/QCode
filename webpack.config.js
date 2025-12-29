@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     mode:"development",
@@ -45,5 +46,16 @@ module.exports = {
         filename: 'bundles/[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    devServer: {
+        hot: true, // Enable HMR
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 9000,
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(), // Add the HMR plugin
+    ],
 
 };

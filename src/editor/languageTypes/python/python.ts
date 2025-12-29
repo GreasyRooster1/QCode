@@ -1,7 +1,7 @@
 //arduino.work
 import {RunErrCallback} from "../projectType";
 import {Language} from "../../codeEditor";
-import {defaultFilesPython} from "../../../api/util/code";
+import {defaultFilesPython, defaultFilesWeb} from "../../../api/util/code";
 import {CloudAgentType} from "../cloudAgentType";
 import {
     FileSystemInterface,
@@ -13,14 +13,15 @@ import {
     setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
-import {Filesystem} from "../web/filesystem";
-import {ref, set} from "firebase/database";
+import {Filesystem, FilesystemFile} from "../web/filesystem";
+import {get, ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {PythonProject, startPythonServer} from "./python-api";
 import { clearConsole } from "../../codeExecution";
 
 class PythonType extends CloudAgentType implements FileSystemInterface{
+    static identifier = "python"
     project: PythonProject | undefined;
     currentFileId: number;
     filesystem: Filesystem;
@@ -50,7 +51,14 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         document.querySelector(".canvas-output-pane")?.remove()
         this.setupConnection();
         this.filesystem.deserialize(this.projectData?.files);
-        this.currentFileId=this.filesystem.getFile("/main.py").id;
+        let defaultFile = this.filesystem.getFile("/main.py")
+
+        if(defaultFile==null){
+            this.filesystem.getAll()["/"]["main.py"] = new FilesystemFile("main","py");
+            this.currentFileId=this.filesystem.getFile("/main.py").id;
+        }else{
+            this.currentFileId=defaultFile.id;
+        }
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
         document.querySelector(".console-head")!.innerHTML = "<div class='console-refresh-button'>Refresh</div>";
@@ -116,8 +124,10 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
         });
     }
 
-    static getProjectDBData(projectName: string, lessonId: string):Object {
-        return {
+    static getProjectDBData(projectName: string, lessonId: string):Promise<Object> {
+        let cleanLessonId = lessonId ?? "none"
+        let hasLesson = cleanLessonId != "none";
+        let data = {
             files:defaultFilesPython,
             lessonId:lessonId??"none",
             name:projectName,
@@ -126,6 +136,22 @@ class PythonType extends CloudAgentType implements FileSystemInterface{
             timestamp:Date.now()/1000,
             language:"python",
         }
+        return new Promise((resolve, reject) => {
+            if (hasLesson) {
+                get(ref(db, "lessons/" + lessonId + "/starterFiles")).then((snap) => {
+                    if (snap.exists()) {
+                        data.files = snap.val();
+                        resolve(data)
+                        return;
+                    }else{
+                        resolve(data);
+                        return;
+                    }
+                })
+            }else{
+                resolve(data);
+            }
+        });
     }
 
     onStop(): void {

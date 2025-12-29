@@ -20,6 +20,7 @@ abstract class ProjectType {
     highestViewedStep: number | undefined;
     chapterNum: number | undefined;
     isLessonCreator:boolean;
+    static identifier:string;
 
     constructor(allowShare:boolean) {
         this.allowShare = allowShare;
@@ -62,6 +63,7 @@ abstract class ProjectType {
         })
         document.querySelector(".stop-button")?.addEventListener("click", ()=>{
             this.saveCode();
+            this.onStop();
         })
         document.querySelector('.share-button')?.addEventListener('click', (e) => {
             console.log("sadsd")

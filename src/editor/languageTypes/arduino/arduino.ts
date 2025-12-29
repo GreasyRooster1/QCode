@@ -6,11 +6,12 @@ import {startSketchServer, Sketch} from "./arduino-api";
 import {defaultCodeArduino, defaultCodeJs} from "../../../api/util/code";
 import {CloudAgentType} from "../cloudAgentType";
 import {getStoredUser} from "../../../api/auth";
-import {ref, set} from "firebase/database";
+import {get, ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {clearConsole} from "../../codeExecution";
 
 class ArduinoType extends CloudAgentType {
+    static identifier = "arduino"
     sketch: Sketch | undefined;
 
     constructor() {
@@ -44,6 +45,7 @@ class ArduinoType extends CloudAgentType {
     }
     onLoad() {
         super.onLoad();
+        this.setupConnection();
         document.querySelector(".console-head")!.innerHTML = "<div class='serial-monitor-button'>Serial Monitor</div>";
         document.querySelector(".serial-monitor-button")!.addEventListener("click", ()=>{
             this.sketch!.openSerialMonitor();
@@ -70,8 +72,10 @@ class ArduinoType extends CloudAgentType {
         return "c++";
     }
 
-    static getProjectDBData(projectName: string, lessonId: string):Object {
-        return {
+    static getProjectDBData(projectName: string, lessonId: string):Promise<Object> {
+        let cleanLessonId = lessonId ?? "none"
+        let hasLesson = cleanLessonId != "none";
+        let data = {
             code:defaultCodeArduino,
             lessonId:lessonId??"none",
             name:projectName,
@@ -80,6 +84,22 @@ class ArduinoType extends CloudAgentType {
             timestamp:Date.now()/1000,
             language:"arduino",
         }
+        return new Promise((resolve, reject) => {
+            if (hasLesson) {
+                get(ref(db, "lessons/" + lessonId + "/starterCode")).then((snap) => {
+                    if (snap.exists()) {
+                        data.code = snap.val();
+                        resolve(data)
+                        return;
+                    }else{
+                        resolve(data);
+                        return;
+                    }
+                })
+            }else{
+                resolve(data);
+            }
+        });
     }
 
     onStop(): void {

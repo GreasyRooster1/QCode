@@ -61,6 +61,16 @@ function timeDifference(previous) {
     }
 }
 
+function assert(data, expected, actionFunc){
+    if(data===expected){
+        if(actionFunc!==null&&actionFunc!==undefined){
+            actionFunc(data,expected);
+        }else{
+            throw new Error("Assert Failed!");
+        }
+    }
+}
+
 function shortTimeDifference(previous) {
     if(previous===null||previous===undefined) {
         return "";
@@ -102,4 +112,4 @@ function shortTimeDifference(previous) {
     }
 }
 
-export {isValidUrl,timeDifference,shortTimeDifference,getDateString}
+export {isValidUrl,timeDifference,shortTimeDifference,getDateString,assert}

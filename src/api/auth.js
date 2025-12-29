@@ -2,6 +2,7 @@
 
 import {auth, db} from "./firebase";
 import {get, ref} from "firebase/database";
+import {assert} from "./util/util";
 
 function createUserDefault(email, password){
     auth.createUserWithEmailAndPassword(email, password)
@@ -101,6 +102,18 @@ function extractEmailFromUsername(username){
 
 function extractUsernameFromEmail(email){
     return email.replace("@esporterz.com","");
+}
+
+function getCrypt(){
+    return new Promise((resolve, reject) => {
+        get(ref(db,"crypt")).then((snapshot)=>{
+            resolve(snapshot.val());
+        })
+    })
+}
+
+function verifyCryptMetadata(data){
+    assert(data.method,"rsa")
 }
 
 export {

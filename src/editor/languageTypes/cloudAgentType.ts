@@ -36,7 +36,6 @@ abstract class CloudAgentType extends ProjectType {
 
     onLoad(){
         writeToEditor(this.projectData!["code"]);
-        this.setupConnection();
     }
 
     setupConnection():void{

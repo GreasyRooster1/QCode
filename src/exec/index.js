@@ -88,6 +88,10 @@ document.addEventListener('contextmenu', event => {
 function runJs(js){
     //clear dangerous objects and run code
     let nl = "\n"
+    let isWebGl = js.startsWith("// WebGL")
+    if(isWebGl) {
+        console.log("running in WebGL mode")
+    }
     eval(`
         try {
             `+js+`
@@ -118,16 +122,16 @@ function runJs(js){
         return;
     }
 
-    startP5(draw,setup,eventFunctions);
+    startP5(draw,setup,eventFunctions,isWebGl);
 }
 
 
 //helpers
 
 
-function startP5(drawArg,setupArg,otherFunctions) {
+function startP5(drawArg,setupArg,otherFunctions,isWebGL) {
     window.setup = function(){
-        createCanvas(500,500);
+        createCanvas(500,500, isWebGL?WEBGL:P2D);
         createCanvas = function (){
             console.error("createCanvas is disabled");
         }
