@@ -266,7 +266,7 @@ body{
 
 /* Editor Lang (editor/lang.css) */
 :root{
-    --code-editor-theme:"hackerman"
+    --code-editor-theme:"dracula"
 }
 
 /* Editor Main (editor/editor.css) */
