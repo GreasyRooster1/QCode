@@ -26,7 +26,7 @@ function init(){
         hideHome:true,
     })
     setupShareBoardFrame();
-    addProfileListener()
+    // addProfileListener()
 
     loadBadges();
     loadProjects();

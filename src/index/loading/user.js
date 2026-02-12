@@ -9,9 +9,9 @@ const profileDisplayImg = document.querySelector('.user-profile-img');
 const pointsDisplayBar = document.querySelector('.user-points-progress-bar');
 
 function loadUserData(){
-    loadUsername();
-    loadProfileIcon();
-    renderPoints();
+    //loadUsername();
+    //loadProfileIcon();
+    //renderPoints();
     validateUserData();
 }
 

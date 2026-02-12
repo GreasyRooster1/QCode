@@ -1,13 +1,14 @@
 :root{
-    --primary-color: #cf0f1d;
-    --subtle-primary-color: #63040b;
-    --dark-primary-color: #170101;
-    --background-primary-color: #000000;
-    --text-color: #ffe5ec;
-    --inverse-text-color: #150009;
-    --light-primary-color: #f8838b;
+    --primary-color: #7F19CE;
+    --subtle-primary-color: #3C0466;
+    --dark-primary-color: #151516;
+    --background-primary-color: #0F0F10;
+    --text-color: #ffffff;
+    --inverse-text-color: #000000;
+    --light-primary-color: #46494C;
 
-    --transparent-primary-color: #cf0f1d77;
+    --transparent-primary-color: #3C046677;
+
 
     --border: 2px solid var(--primary-color);
     --border-subtle: 2px solid var(--subtle-primary-color);
@@ -26,7 +27,7 @@
 
     --generic-nav-button-color: var(--background-primary-color);
 
-    --points-display-background: var(--primary-color);
+    --points-display-background: var(--background-primary-color);
     --points-display-text: var(--text-color);
 
     --navbar-height:40px;
@@ -40,6 +41,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.points-display{
+    border:var(--border);
 }
 
 /* Global (global.css) */
@@ -142,7 +146,9 @@
 
     --bar-seperator-height: 2px;
 }
-
+.project-display.bulk{
+    border:var(--border);
+}
 
 /* Login (login/login.css) */
 :root{
@@ -203,7 +209,7 @@
     --badge-hover-color: var(--primary-color);
     --badge-color: var(--dark-primary-color);
 
-    --left-bar-accent: var(--primary-color);
+    --left-bar-accent: var(--background-primary-color);
     --left-bar-text-accent: var(--text-color);
 
     --featured-project-thumb-background: var(--dark-primary-color);
@@ -220,7 +226,7 @@
     --status-display-text: var(--text-color);
     --status-display-external: #ea473a;
     --status-display-not-started:var(--subtle-primary-color);
-    --status-display-started: var(--primary-color);
+    --status-display-started: var(--background-primary-color);
 
     --footer-background: var(--dark-primary-color);
     --footer-text-color: var(--primary-color);
@@ -239,6 +245,9 @@ body{
     border:var(--border);
     border-radius: 10px;
 }
+.new-project-button{
+    border:var(--border);
+}
 .lesson-link-wrapper{
     border:var(--border);
     border-radius: 10px;
@@ -251,13 +260,22 @@ body{
     -webkit-text-stroke: 2px var(--primary-color);
     color: var(--background-primary-color);
 }
+.featured-project-wrapper{
+    border:var(--border);
+    border-radius:10px;
+    overflow:clip;
+    height: calc(60vh);
+}
+.featured-project-wrapper .featured-project-bar{
+    height:0;
+}
 
 /* Exec (exec/style.css) */
 /* Override elements directly */
 
 /* Editor Lang (editor/lang.css) */
 :root{
-    --code-editor-theme:"dracula"
+    --code-editor-theme:"boysAndGirls"
 }
 
 /* Editor Main (editor/editor.css) */

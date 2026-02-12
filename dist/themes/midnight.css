@@ -1,13 +1,13 @@
 :root{
-    --primary-color: #cf0f1d;
-    --subtle-primary-color: #63040b;
-    --dark-primary-color: #170101;
+    --primary-color: #151515;
+    --subtle-primary-color: #0c0c0c;
+    --dark-primary-color: #000000;
     --background-primary-color: #000000;
-    --text-color: #ffe5ec;
-    --inverse-text-color: #150009;
-    --light-primary-color: #f8838b;
+    --text-color: #ffffff;
+    --inverse-text-color: #e6e6e6;
+    --light-primary-color: #e6e6e6;
+    --transparent-primary-color: rgba(0, 0, 0, 0.47);
 
-    --transparent-primary-color: #cf0f1d77;
 
     --border: 2px solid var(--primary-color);
     --border-subtle: 2px solid var(--subtle-primary-color);
@@ -31,7 +31,7 @@
 
     --navbar-height:40px;
 }
-.navbar{
+navbar{
     border-bottom: var(--border);
 }
 .home-link{
@@ -169,6 +169,7 @@
     --ui-tray-background:var(--background-primary-color);
     --ui-tray-border: var(--primary-color);
     --ui-tray-icons: var(--primary-color);
+
     --canvas-background-color: var(--background-primary-color);
     --grid-color: var(--subtle-primary-color);
     --canvas-text-color: var(--text-color);
@@ -270,15 +271,15 @@ body{
     --step-background: var(--dark-primary-color);
     --step-content-background: var(--dark-primary-color);
 
-    --step-head-default: rgba(209, 0, 255, 0.44);
+    --step-head-default: rgba(255, 255, 255, 0.44);
 
-    --step-info: rgba(21, 156, 214, 0.44);
-    --step-code: rgba(27, 214, 21, 0.44);
-    --step-challenge: rgba(214, 21, 21, 0.44);
-    --step-chapters: rgba(101, 101, 101, 0.44);
-    --step-check: rgba(153, 44, 255, 0.44);
-    --step-next: rgba(255, 148, 34, 0.44);
-    --step-build: rgba(34, 45, 255, 0.44);
+    --step-info: rgba(198, 198, 198, 0.44);
+    --step-code: rgba(136, 136, 136, 0.44);
+    --step-challenge: rgba(74, 74, 74, 0.44);
+    --step-chapters: rgba(255, 255, 255, 0.44);
+    --step-check: rgba(255, 255, 255, 0.44);
+    --step-next: rgba(211, 211, 211, 0.44);
+    --step-build: rgba(66, 66, 66, 0.44);
     --step-other: rgba(21, 21, 21, 0.44);
 
     --step-type-background: var(--subtle-primary-color);

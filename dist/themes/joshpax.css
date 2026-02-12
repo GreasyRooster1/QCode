@@ -1,20 +1,24 @@
 :root{
-    --primary-color: #cf0f1d;
-    --subtle-primary-color: #63040b;
-    --dark-primary-color: #170101;
-    --background-primary-color: #000000;
-    --text-color: #ffe5ec;
-    --inverse-text-color: #150009;
-    --light-primary-color: #f8838b;
+    --primary-color: #e8c6f7;
+    --subtle-primary-color: #a17095;
+    --dark-primary-color: rgba(36, 34, 47, 0.76);
+    --background-primary-color: rgba(20, 19, 27, 0.1);
+    --text-color: #f8f1ff;
+    --inverse-text-color: #14131B;
+    --light-primary-color: #ffccf4;
+    --transparent-primary-color: rgba(232, 198, 247, 0.39);
 
-    --transparent-primary-color: #cf0f1d77;
 
     --border: 2px solid var(--primary-color);
     --border-subtle: 2px solid var(--subtle-primary-color);
 
     color:var(--text-color);
 }
-
+body{
+    background-attachment: scroll;
+    background-position: top right;
+    background-image: url("https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Global/josh.gif");
+}
 /* Navbar (navbar.css) */
 :root{
     --account-name-text: var(--text-color);
@@ -24,7 +28,7 @@
 
     --navbar-shrink-color: var(--text-color);
 
-    --generic-nav-button-color: var(--background-primary-color);
+    --generic-nav-button-color: var(--dark-primary-color);
 
     --points-display-background: var(--primary-color);
     --points-display-text: var(--text-color);
@@ -33,6 +37,7 @@
 }
 .navbar{
     border-bottom: var(--border);
+    background: linear-gradient(106deg, var(--brand-black) 9%, var(--brand-blue)24%, var(--brand-gray) 47%, var(--brand-black) 50%, var(--brand-green) 76%, #24222f 84%,var(--brand-green) 93%, var(--brand-black) 99%);
 }
 .home-link{
     border:var(--border);
@@ -92,7 +97,9 @@
 
     --user-img-size:13vh;
 }
-
+.info-pane {
+    background: none;
+}
 .author-block{
     border:var(--border)
 }
@@ -169,12 +176,13 @@
     --ui-tray-background:var(--background-primary-color);
     --ui-tray-border: var(--primary-color);
     --ui-tray-icons: var(--primary-color);
-    --canvas-background-color: var(--background-primary-color);
+
+    --canvas-background-color: #00040c;
     --grid-color: var(--subtle-primary-color);
     --canvas-text-color: var(--text-color);
     --canvas-inverse-text-color: var(--text-color);
     --canvas-lesson-card-border:var(--subtle-primary-color);
-    --canvas-lesson-card-background: #202020;
+    --canvas-lesson-card-background: #192a40;
     --canvas-started-accent: var(--primary-color);
     --canvas-completed-overlay: var(--transparent-primary-color);
     --canvas-locked-overlay:#00077;
@@ -199,7 +207,7 @@
     --lessons-chart-link-background:var(--dark-primary-color);
     --lessons-recommended-background: var(--dark-primary-color);
 
-    --badge-details-background: var(--background-primary-color);
+    --badge-details-background: var(--dark-primary-color);
     --badge-hover-color: var(--primary-color);
     --badge-color: var(--dark-primary-color);
 
@@ -254,6 +262,9 @@ body{
 
 /* Exec (exec/style.css) */
 /* Override elements directly */
+.body{
+    background:none;
+}
 
 /* Editor Lang (editor/lang.css) */
 :root{
