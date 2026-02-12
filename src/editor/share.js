@@ -58,6 +58,7 @@ function shareProject(){
                     likedBy: data.likedBy,
                     startedBy: data.staredBy,
                     original: data.original,
+                    lessonId: data.lessonId,
                 }
             )).then(() => {
                 //set projectData
@@ -79,6 +80,7 @@ function shareProject(){
             version:1,
             desc:desc,
             original:data.original,
+            lessonId: data.lessonId,
         })).then(()=> {
             //set projectData
             set(ref(db,"sharedProjects/projectData/" + sharedProjectId),getCodeFromEditor());
