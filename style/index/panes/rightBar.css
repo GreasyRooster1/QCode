@@ -370,3 +370,51 @@ top:-100%;
 .user-points-progress-bar::-webkit-progress-bar {
     background-color: var(--points-progress-bar-background);
 }
+
+.timer-bar-container{
+    height:10%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-progress-bar{
+    width:90%;
+    appearance: none;
+    border-radius: 100px;
+    overflow: clip;
+}
+
+.timer-progress-bar::-webkit-progress-value {
+    background-color: var(--points-progress-bar-fill);
+}
+
+.timer-progress-bar::-webkit-progress-bar {
+    background-color: var(--points-progress-bar-background);
+}
+.timer{
+    background: var(--right-sections-background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+.timer-button{
+    border-radius:5px;
+    background:var(--right-bar-accent);
+    padding:5px;
+}
+.timer-buttons{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-evenly;
+}
+
+.timer-time-count{
+    font-size:2em;
+}
+.timer-bar-container{
+    width: 100%;
+}

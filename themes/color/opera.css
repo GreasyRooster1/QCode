@@ -261,7 +261,7 @@ body{
 
 /* Editor Lang (editor/lang.css) */
 :root{
-    --code-editor-theme:"amy"
+    --code-editor-theme:"dracula"
 }
 
 /* Editor Main (editor/editor.css) */

@@ -257,7 +257,7 @@ body{
 
 /* Editor Lang (editor/lang.css) */
 :root{
-    --code-editor-theme:"birdsOfParadise"
+    --code-editor-theme:"dracula"
 }
 
 /* Editor Main (editor/editor.css) */
