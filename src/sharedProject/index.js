@@ -1,7 +1,7 @@
 import {initNavbar} from "../api/nav/navbar";
 import {loadProject, setupFrame} from "./project";
 import {initTabs} from "./tabs";
-import {initRemix} from "./remix";
+import {checkRemixBlock, initRemix} from "./remix";
 import {loadTheme} from "../api/theme";
 
 function init(){
@@ -11,6 +11,7 @@ function init(){
     setupFrame();
     loadProject();
     initRemix();
+    checkRemixBlock();r
 }
 
 

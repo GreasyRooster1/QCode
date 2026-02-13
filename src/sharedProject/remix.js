@@ -1,7 +1,7 @@
 import {get, ref, set} from "firebase/database";
 import {db} from "../api/firebase";
 import {getStoredUser} from "../api/auth";
-import {projectCode, shareBoardId} from "./project";
+import {projectCode, projectMetadata, shareBoardId} from "./project";
 import {getLinkToProject} from "../api/util/projects";
 import {cleanProjectName} from "../api/project";
 
@@ -34,4 +34,25 @@ function initRemix(){
     })
 }
 
-export {initRemix};
+function checkRemixBlock(){
+    get(ref(db,"sharedProjects/metadata/"+shareBoardId)).then((snapshot) => {
+        let data = snapshot.val();
+        if(data.lessonId){
+            document.querySelector(".remix-button").remove();
+        }
+    })
+    get(ref(db,"userpermissions/"+getStoredUser().uid+"/shareBoardRemixBan")).then((snapshot) => {
+        if(!snapshot.exists()){
+            document.querySelector(".remix-button").style.display = "inline"
+            return;
+        }
+        let data = snapshot.val();
+        if(data){
+            document.querySelector(".remix-button").remove();
+        }else{
+            document.querySelector(".remix-button").style.display = "inline"
+        }
+    })
+}
+
+export {initRemix,checkRemixBlock};
