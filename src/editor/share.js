@@ -46,8 +46,7 @@ function shareProject(){
             console.log(data);
             let now = Date.now() / 1000
 
-            set(ref(db,"sharedProjects/metadata/" + sharedProjectId),cleanData(
-                {
+            set(ref(db,"sharedProjects/metadata/" + sharedProjectId),cleanData({
                     author: getStoredUser().uid,
                     name: shareNameInput.value,
                     shareDate: data.shareDate,
@@ -58,7 +57,7 @@ function shareProject(){
                     likedBy: data.likedBy,
                     startedBy: data.staredBy,
                     original: data.original,
-                    lessonId: data.lessonId,
+                    lessonId: data.lessonId==="none"?undefined:data.lessonId,
                 }
             )).then(() => {
                 //set projectData
@@ -80,7 +79,7 @@ function shareProject(){
             version:1,
             desc:desc,
             original:data.original,
-            lessonId: data.lessonId,
+            lessonId: data.lessonId==="none"?undefined:data.lessonId,
         })).then(()=> {
             //set projectData
             set(ref(db,"sharedProjects/projectData/" + sharedProjectId),getCodeFromEditor());
