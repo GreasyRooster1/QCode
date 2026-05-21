@@ -19,7 +19,7 @@ let errorMessagePairs = {
     "too-many-requests":"Too many login requests! Please dont spam the button!"
 }
 
-loginButton.addEventListener("click", function(){
+function signIn() {
     let username = usernameInput.value;
     let password = passwordInput.value;
     if(username.length <= 1||password.length <= 1){
@@ -45,7 +45,45 @@ loginButton.addEventListener("click", function(){
             console.log(error.code)
             displayAuthErrors(error);
         });
+}
+
+loginButton.addEventListener("click", ()=>{
+    signIn();
 });
+
+document.body.addEventListener("keydown", ()=>{
+    if(event.keyCode==13){
+        signIn();
+    }
+})
+
+// loginButton.addEventListener("click", function(){
+//     let username = usernameInput.value;
+//     let password = passwordInput.value;
+//     if(username.length <= 1||password.length <= 1){
+//         return;
+//     }
+//     let email = extractEmailFromUsername(username)
+//     passwordInput.value = "";
+
+//     signInWithEmailAndPassword(auth,email, password)
+//         .then((userCredential) => {
+//             debugger
+//             console.log("logged in user");
+//             storeUser(userCredential.user, () => {
+//                 get(ref(db,"userdata/"+userCredential.user.uid)).then((snap)=>{
+//                     if(!snap.exists()){
+//                         createUser(userCredential.user.uid,username)
+//                     }
+//                     window.location.href = returnURL;
+//                 })
+//             });
+//         })
+//         .catch((error) => {
+//             console.log(error.code)
+//             displayAuthErrors(error);
+//         });
+// });
 
 function displayAuthErrors(error){
     if(error.code in errorMessagePairs){
