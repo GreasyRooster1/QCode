@@ -9,15 +9,15 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/exec/index.js":
+/***/ "./src/exec/index.js"
 /*!***************************!*\
   !*** ./src/exec/index.js ***!
   \***************************/
-/***/ (() => {
+() {
 
-eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePressed\",\r\n    \"mouseReleased\",\r\n    \"mouseClicked\",\r\n    \"mouseMoved\",\r\n    \"mouseDragged\",\r\n    \"doubleClicked\",\r\n    \"mouseWheel\",\r\n\r\n    \"keyPressed\",\r\n    \"keyReleased\",\r\n    \"keyTyped\",\r\n\r\n    \"touchStarted\",\r\n    \"touchEnded\",\r\n]\r\n\r\nconst rejectedFunctions = [\r\n    \"createCapture\",\r\n    \"createElement\",\r\n    \"createP\",\r\n    \"createSpan\",\r\n    \"select\",\r\n    \"createA\",\r\n    \"createCheckbox\",\r\n    \"createFileInput\",\r\n    \"createRadio\",\r\n    \"createVideo\",\r\n    \"selectAll\",\r\n    \"createAudio\",\r\n    \"createColorPicker\",\r\n    \"createImg\",\r\n    \"createSelect\",\r\n    \"input\",\r\n    \"createButton\",\r\n    \"createDiv\",\r\n    \"createInput\",\r\n    \"createSlider\",\r\n]\r\n\r\nconst oldLog = console.log;\r\nconst oldWarn = console.warn;\r\nconst oldErr = console.error;\r\n\r\nconsole.log = function (...args) {\r\n    logMessage(\"log\",args);\r\n}\r\n\r\nconsole.warn = function (...args) {\r\n    logMessage(\"warn\",args);\r\n}\r\n\r\nconsole.error = function (...args) {\r\n    logMessage(\"error\",args);\r\n}\r\n\r\n//log errors\r\nwindow.onerror = function(error) {\r\n    logMessage(\"error\",error);\r\n}\r\n\r\nfunction logMessage(type,...args){\r\n    if (parent === null) {\r\n        return;\r\n    }\r\n    let log = {type:type,message:args.join(\" \")};\r\n    parent.postMessage(JSON.stringify(log));\r\n}\r\n\r\n\r\nwindow.addEventListener(\"message\", ({ data, source }) => {\r\n    if (parent === null) {\r\n        parent = source;\r\n    }\r\n\r\n    runJs(data);\r\n});\r\n\r\ndocument.addEventListener('contextmenu', event => {\r\n    event.preventDefault();\r\n});\r\n\r\n\r\n\r\nfunction runJs(js){\r\n    //clear dangerous objects and run code\r\n    let nl = \"\\n\"\r\n    let isWebGl = js.startsWith(\"// WebGL\")\r\n    if(isWebGl) {\r\n        console.log(\"running in WebGL mode\")\r\n    }\r\n    eval(`\r\n        try {\r\n            `+js+`\r\n        }catch(e){\r\n            let stack = e.stack.split(nl);\r\n            let lineCol = stack[1].replace(\"at eval (eval at runJs (webpack:///./src/exec/index.js?),\",\"\").replace(\")\",\"\").split(\":\");\r\n            let out = lineCol[1]-2+\":\"+lineCol[2];\r\n            console.error(\" \"+out+\" : \"+stack[0]);\r\n        }\r\n    `);\r\n\r\n    let eventFunctions = [];\r\n\r\n    for (let acceptedFunc of acceptedFunctions){\r\n        let funcDef;\r\n        try {\r\n            funcDef = eval(acceptedFunc);\r\n        }catch(e){\r\n            funcDef = undefined;\r\n        }\r\n\r\n        if (funcDef !== undefined) {\r\n            eventFunctions.push(funcDef);\r\n        }\r\n    }\r\n\r\n    if(draw===undefined||setup===undefined){\r\n        return;\r\n    }\r\n\r\n    startP5(draw,setup,eventFunctions,isWebGl);\r\n}\r\n\r\n\r\n//helpers\r\n\r\n\r\nfunction startP5(drawArg,setupArg,otherFunctions,isWebGL) {\r\n    window.setup = function(){\r\n        createCanvas(500,500, isWebGL?WEBGL:P2D);\r\n        createCanvas = function (){\r\n            console.error(\"createCanvas is disabled\");\r\n        }\r\n        for(let s of rejectedFunctions){\r\n            eval(s+` = ()=>{\r\n                console.error(s+\" is disabled\");\r\n            }`)\r\n        }\r\n        document.getElementById(\"defaultCanvas0\").style.width = \"100vmin\";\r\n        document.getElementById(\"defaultCanvas0\").style.height = \"100vmin\";\r\n        setupArg()\r\n    };\r\n\r\n    for(let func of otherFunctions){\r\n        if(acceptedFunctions.includes(func.name)) {\r\n            window[func.name] = func;\r\n        }\r\n    }\r\n\r\n    window.draw = drawArg;\r\n\r\n    new p5();\r\n}\r\n\r\nfunction __canvasTest(){\r\n    background(0);\r\n    stroke(255);\r\n\r\n    for (let i = 0; i < 500; i+=10) {\r\n        let timeRatio = (frameCount % 500-i) / 490;\r\n        let bRat = i/500;\r\n\r\n        fill(timeRatio * 255, 0, bRat*255);\r\n        rect(timeRatio * 490, 0, 10, 10);\r\n\r\n        fill(0, timeRatio * 255, bRat*255);\r\n        rect(0, timeRatio * 490, 10, 10);\r\n    }\r\n\r\n    fill(255);\r\n\r\n    ellipse(mouseX,mouseY,10,10);\r\n\r\n    textAlign(CENTER);\r\n    text(\"Welcome back\",250,250);\r\n}\r\n\n\n//# sourceURL=webpack:///./src/exec/index.js?");
+eval("{\nlet parent = null;\n\nconst acceptedFunctions = [\n    \"mousePressed\",\n    \"mouseReleased\",\n    \"mouseClicked\",\n    \"mouseMoved\",\n    \"mouseDragged\",\n    \"doubleClicked\",\n    \"mouseWheel\",\n\n    \"keyPressed\",\n    \"keyReleased\",\n    \"keyTyped\",\n\n    \"touchStarted\",\n    \"touchEnded\",\n]\n\nconst rejectedFunctions = [\n    \"createCapture\",\n    \"createElement\",\n    \"createP\",\n    \"createSpan\",\n    \"select\",\n    \"createA\",\n    \"createCheckbox\",\n    \"createFileInput\",\n    \"createRadio\",\n    \"createVideo\",\n    \"selectAll\",\n    \"createAudio\",\n    \"createColorPicker\",\n    \"createImg\",\n    \"createSelect\",\n    \"input\",\n    \"createButton\",\n    \"createDiv\",\n    \"createInput\",\n    \"createSlider\",\n]\n\nconst oldLog = console.log;\nconst oldWarn = console.warn;\nconst oldErr = console.error;\n\nconsole.log = function (...args) {\n    logMessage(\"log\",args);\n}\n\nconsole.warn = function (...args) {\n    logMessage(\"warn\",args);\n}\n\nconsole.error = function (...args) {\n    logMessage(\"error\",args);\n}\n\n//log errors\nwindow.onerror = function(error) {\n    logMessage(\"error\",error);\n}\n\nfunction logMessage(type,...args){\n    if (parent === null) {\n        return;\n    }\n    let log = {type:type,message:args.join(\" \")};\n    parent.postMessage(JSON.stringify(log));\n}\n\n\nwindow.addEventListener(\"message\", ({ data, source }) => {\n    if (parent === null) {\n        parent = source;\n    }\n\n    runJs(data);\n});\n\ndocument.addEventListener('contextmenu', event => {\n    event.preventDefault();\n});\n\n\n\nfunction runJs(js){\n    //clear dangerous objects and run code\n    let nl = \"\\n\"\n    let isWebGl = js.startsWith(\"// WebGL\")\n    if(isWebGl) {\n        console.log(\"running in WebGL mode\")\n    }\n    eval(`\n        try {\n            `+js+`\n        }catch(e){\n            let stack = e.stack.split(nl);\n            let lineCol = stack[1].replace(\"at eval (eval at runJs (webpack:///./src/exec/index.js?),\",\"\").replace(\")\",\"\").split(\":\");\n            let out = lineCol[1]-2+\":\"+lineCol[2];\n            console.error(\" \"+out+\" : \"+stack[0]);\n        }\n    `);\n\n    let eventFunctions = [];\n\n    for (let acceptedFunc of acceptedFunctions){\n        let funcDef;\n        try {\n            funcDef = eval(acceptedFunc);\n        }catch(e){\n            funcDef = undefined;\n        }\n\n        if (funcDef !== undefined) {\n            eventFunctions.push(funcDef);\n        }\n    }\n\n    if(draw===undefined||setup===undefined){\n        return;\n    }\n\n    startP5(draw,setup,eventFunctions,isWebGl);\n}\n\n\n//helpers\n\n\nfunction startP5(drawArg,setupArg,otherFunctions,isWebGL) {\n    window.setup = function(){\n        createCanvas(500,500, isWebGL?WEBGL:P2D);\n        createCanvas = function (){\n            console.error(\"createCanvas is disabled\");\n        }\n        for(let s of rejectedFunctions){\n            eval(s+` = ()=>{\n                console.error(s+\" is disabled\");\n            }`)\n        }\n        document.getElementById(\"defaultCanvas0\").style.width = \"100vmin\";\n        document.getElementById(\"defaultCanvas0\").style.height = \"100vmin\";\n        setupArg()\n    };\n\n    for(let func of otherFunctions){\n        if(acceptedFunctions.includes(func.name)) {\n            window[func.name] = func;\n        }\n    }\n\n    window.draw = drawArg;\n\n    new p5();\n}\n\nfunction __canvasTest(){\n    background(0);\n    stroke(255);\n\n    for (let i = 0; i < 500; i+=10) {\n        let timeRatio = (frameCount % 500-i) / 490;\n        let bRat = i/500;\n\n        fill(timeRatio * 255, 0, bRat*255);\n        rect(timeRatio * 490, 0, 10, 10);\n\n        fill(0, timeRatio * 255, bRat*255);\n        rect(0, timeRatio * 490, 10, 10);\n    }\n\n    fill(255);\n\n    ellipse(mouseX,mouseY,10,10);\n\n    textAlign(CENTER);\n    text(\"Welcome back\",250,250);\n}\n\n\n//# sourceURL=webpack:///./src/exec/index.js?\n}");
 
-/***/ })
+/***/ }
 
 /******/ 	});
 /************************************************************************/
@@ -43,6 +43,12 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 		try {
 /******/ 			var execOptions = { id: moduleId, module: module, factory: __webpack_modules__[moduleId], require: __webpack_require__ };
 /******/ 			__webpack_require__.i.forEach(function(handler) { handler(execOptions); });
+/******/ 			if (!execOptions.factory) {
+/******/ 				delete __webpack_module_cache__[moduleId];
+/******/ 				var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 				e.code = 'MODULE_NOT_FOUND';
+/******/ 				throw e;
+/******/ 			}
 /******/ 			module = execOptions.module;
 /******/ 			execOptions.factory.call(module.exports, module, module.exports, execOptions.require);
 /******/ 		} catch(e) {
@@ -80,7 +86,7 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("f3528ff86227c4637905")
+/******/ 		__webpack_require__.h = () => ("0e04c50b9eeb6eb1c6b7")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -120,7 +126,6 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 				script = document.createElement('script');
 /******/ 		
 /******/ 				script.charset = 'utf-8';
-/******/ 				script.timeout = 120;
 /******/ 				if (__webpack_require__.nc) {
 /******/ 					script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 				}
@@ -417,7 +422,8 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 									update.m,
 /******/ 									promises,
 /******/ 									currentUpdateApplyHandlers,
-/******/ 									updatedModules
+/******/ 									updatedModules,
+/******/ 									update.css
 /******/ 								);
 /******/ 								return promises;
 /******/ 							}, [])
@@ -486,38 +492,50 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 			};
 /******/ 		
 /******/ 			var outdatedModules = [];
-/******/ 			results.forEach(function (result) {
-/******/ 				if (result.apply) {
-/******/ 					var modules = result.apply(reportError);
-/******/ 					if (modules) {
-/******/ 						for (var i = 0; i < modules.length; i++) {
-/******/ 							outdatedModules.push(modules[i]);
-/******/ 						}
-/******/ 					}
-/******/ 				}
-/******/ 			});
 /******/ 		
-/******/ 			return Promise.all([disposePromise, applyPromise]).then(function () {
-/******/ 				// handle errors in accept handlers and self accepted module load
-/******/ 				if (error) {
-/******/ 					return setStatus("fail").then(function () {
-/******/ 						throw error;
-/******/ 					});
-/******/ 				}
-/******/ 		
-/******/ 				if (queuedInvalidatedModules) {
-/******/ 					return internalApply(options).then(function (list) {
-/******/ 						outdatedModules.forEach(function (moduleId) {
-/******/ 							if (list.indexOf(moduleId) < 0) list.push(moduleId);
+/******/ 			var onAccepted = function () {
+/******/ 				return Promise.all([disposePromise, applyPromise]).then(function () {
+/******/ 					// handle errors in accept handlers and self accepted module load
+/******/ 					if (error) {
+/******/ 						return setStatus("fail").then(function () {
+/******/ 							throw error;
 /******/ 						});
-/******/ 						return list;
-/******/ 					});
-/******/ 				}
+/******/ 					}
 /******/ 		
-/******/ 				return setStatus("idle").then(function () {
-/******/ 					return outdatedModules;
+/******/ 					if (queuedInvalidatedModules) {
+/******/ 						return internalApply(options).then(function (list) {
+/******/ 							outdatedModules.forEach(function (moduleId) {
+/******/ 								if (list.indexOf(moduleId) < 0) list.push(moduleId);
+/******/ 							});
+/******/ 							return list;
+/******/ 						});
+/******/ 					}
+/******/ 		
+/******/ 					return setStatus("idle").then(function () {
+/******/ 						return outdatedModules;
+/******/ 					});
 /******/ 				});
-/******/ 			});
+/******/ 			};
+/******/ 		
+/******/ 			return Promise.all(
+/******/ 				results
+/******/ 					.filter(function (result) {
+/******/ 						return result.apply;
+/******/ 					})
+/******/ 					.map(function (result) {
+/******/ 						return result.apply(reportError);
+/******/ 					})
+/******/ 			)
+/******/ 				.then(function (applyResults) {
+/******/ 					applyResults.forEach(function (modules) {
+/******/ 						if (modules) {
+/******/ 							for (var i = 0; i < modules.length; i++) {
+/******/ 								outdatedModules.push(modules[i]);
+/******/ 							}
+/******/ 						}
+/******/ 					});
+/******/ 				})
+/******/ 				.then(onAccepted);
 /******/ 		}
 /******/ 		
 /******/ 		function applyInvalidatedModules() {
@@ -556,7 +574,7 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
 /******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
 /******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	})();
 /******/ 	
@@ -716,7 +734,6 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 			for (var moduleId in currentUpdate) {
 /******/ 				if (__webpack_require__.o(currentUpdate, moduleId)) {
 /******/ 					var newModuleFactory = currentUpdate[moduleId];
-/******/ 					/** @type {TODO} */
 /******/ 					var result = newModuleFactory
 /******/ 						? getAffectedModuleEffects(moduleId)
 /******/ 						: {
@@ -881,6 +898,7 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 					}
 /******/ 				},
 /******/ 				apply: function (reportError) {
+/******/ 					var acceptPromises = [];
 /******/ 					// insert new code
 /******/ 					for (var updateModuleId in appliedUpdate) {
 /******/ 						if (__webpack_require__.o(appliedUpdate, updateModuleId)) {
@@ -917,8 +935,9 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 									}
 /******/ 								}
 /******/ 								for (var k = 0; k < callbacks.length; k++) {
+/******/ 									var result;
 /******/ 									try {
-/******/ 										callbacks[k].call(null, moduleOutdatedDependencies);
+/******/ 										result = callbacks[k].call(null, moduleOutdatedDependencies);
 /******/ 									} catch (err) {
 /******/ 										if (typeof errorHandlers[k] === "function") {
 /******/ 											try {
@@ -955,54 +974,63 @@ eval("\r\nlet parent = null;\r\n\r\nconst acceptedFunctions = [\r\n    \"mousePr
 /******/ 											}
 /******/ 										}
 /******/ 									}
+/******/ 									if (result && typeof result.then === "function") {
+/******/ 										acceptPromises.push(result);
+/******/ 									}
 /******/ 								}
 /******/ 							}
 /******/ 						}
 /******/ 					}
 /******/ 		
-/******/ 					// Load self accepted modules
-/******/ 					for (var o = 0; o < outdatedSelfAcceptedModules.length; o++) {
-/******/ 						var item = outdatedSelfAcceptedModules[o];
-/******/ 						var moduleId = item.module;
-/******/ 						try {
-/******/ 							item.require(moduleId);
-/******/ 						} catch (err) {
-/******/ 							if (typeof item.errorHandler === "function") {
-/******/ 								try {
-/******/ 									item.errorHandler(err, {
-/******/ 										moduleId: moduleId,
-/******/ 										module: __webpack_require__.c[moduleId]
-/******/ 									});
-/******/ 								} catch (err1) {
+/******/ 					var onAccepted = function () {
+/******/ 						// Load self accepted modules
+/******/ 						for (var o = 0; o < outdatedSelfAcceptedModules.length; o++) {
+/******/ 							var item = outdatedSelfAcceptedModules[o];
+/******/ 							var moduleId = item.module;
+/******/ 							try {
+/******/ 								item.require(moduleId);
+/******/ 							} catch (err) {
+/******/ 								if (typeof item.errorHandler === "function") {
+/******/ 									try {
+/******/ 										item.errorHandler(err, {
+/******/ 											moduleId: moduleId,
+/******/ 											module: __webpack_require__.c[moduleId]
+/******/ 										});
+/******/ 									} catch (err1) {
+/******/ 										if (options.onErrored) {
+/******/ 											options.onErrored({
+/******/ 												type: "self-accept-error-handler-errored",
+/******/ 												moduleId: moduleId,
+/******/ 												error: err1,
+/******/ 												originalError: err
+/******/ 											});
+/******/ 										}
+/******/ 										if (!options.ignoreErrored) {
+/******/ 											reportError(err1);
+/******/ 											reportError(err);
+/******/ 										}
+/******/ 									}
+/******/ 								} else {
 /******/ 									if (options.onErrored) {
 /******/ 										options.onErrored({
-/******/ 											type: "self-accept-error-handler-errored",
+/******/ 											type: "self-accept-errored",
 /******/ 											moduleId: moduleId,
-/******/ 											error: err1,
-/******/ 											originalError: err
+/******/ 											error: err
 /******/ 										});
 /******/ 									}
 /******/ 									if (!options.ignoreErrored) {
-/******/ 										reportError(err1);
 /******/ 										reportError(err);
 /******/ 									}
 /******/ 								}
-/******/ 							} else {
-/******/ 								if (options.onErrored) {
-/******/ 									options.onErrored({
-/******/ 										type: "self-accept-errored",
-/******/ 										moduleId: moduleId,
-/******/ 										error: err
-/******/ 									});
-/******/ 								}
-/******/ 								if (!options.ignoreErrored) {
-/******/ 									reportError(err);
-/******/ 								}
 /******/ 							}
 /******/ 						}
-/******/ 					}
+/******/ 					};
 /******/ 		
-/******/ 					return outdatedModules;
+/******/ 					return Promise.all(acceptPromises)
+/******/ 						.then(onAccepted)
+/******/ 						.then(function () {
+/******/ 							return outdatedModules;
+/******/ 						});
 /******/ 				}
 /******/ 			};
 /******/ 		}
