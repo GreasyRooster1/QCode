@@ -95,4 +95,13 @@ function setupClosePopupEvent(){
     });
 }
 
+// function setupPopupEvent() {
+//     document.querySelector('.step-popup').addEventListener("click", (e) => {
+//         const modal = document.getElementById("imageModal");
+//         const modalImg = document.getElementById("modalImage");
+//         modalImg.src = e.target.src;
+//         modal.style.display = "flex";
+//     });
+// }
+
 export {setupScrollEvent,scrollToCurrentStep, setupClosePopupEvent}
