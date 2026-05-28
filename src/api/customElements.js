@@ -2,11 +2,11 @@ import {shortTimeDifference} from "./util/util";
 import {stepTypes} from "./util/code";
 import {projectType} from "../editor/load";
 
-const imageModalPopupEvent = (e) => {
+const imageModalPopupEvent = () => {
     const modal = document.getElementById("imageModal");
     const modalImg = document.getElementById("modalImage");
     modal.style.display = "flex";
-    modalImg.src = e.target.src;
+    modalImg.src = this.image.src;
 }
 
 class StepElement extends HTMLElement {
