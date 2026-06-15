@@ -1,6 +1,15 @@
-const defaultCodeJs = "function setup(){\n  //setup code here\n}\n\nfunction draw(){\n  //draw code goes here\n}\n"
+const defaultCodeJs = `
 
-const defaultCodeArduino = "void setup(){\n  // put your setup code here, to run once:\n\n}\n\nvoid loop(){\n  // put your main code here, to run repeatedly:\n\n}\n"
+function setup() {
+
+}
+
+function draw() {
+
+}
+`
+
+const defaultCodeArduino = "\n\nvoid setup(){\n  // put your setup code here, to run once:\n\n}\n\nvoid loop(){\n  // put your main code here, to run repeatedly:\n\n}\n"
 
 const defaultFilesWeb = {
     "index➽css":"",
