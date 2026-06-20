@@ -1,6 +1,6 @@
-# QCodeAI
+# QCode
 
-Teaching students how to use AI effectively
+Teaching students how to code
 
 ## Gallery 
 
