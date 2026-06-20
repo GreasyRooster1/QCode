@@ -1,6 +1,6 @@
-# QCode
+# QCodeAI
 
-Programming education platform for beginners
+Teaching students how to use AI effectively
 
 ## Gallery 
 

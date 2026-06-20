@@ -8,6 +8,12 @@
     "skipLibCheck": true,
     "allowJs": true,
     "checkJs": false,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@js/*": ["src/js/*"],
+      "@style/*": ["src/style/*"]
+    }
   }
 }
