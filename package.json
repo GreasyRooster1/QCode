@@ -1,4 +1,8 @@
 {
+  "name": "qcodeai",
+  "version": "0.0.1-0.7.1e",
+  "private": true,
+  "type": "module",
   "dependencies": {
     "@codemirror/commands": "^6.8.0",
     "@codemirror/lang-cpp": "^6.0.2",
@@ -12,11 +16,10 @@
     "@codemirror/view": "^6.36.2",
     "codemirror": "^6.0.1",
     "css-loader": "^7.1.2",
-    "css-minimizer-webpack-plugin": "^7.0.2",
+    "css-minimizer-webpack-plugin": "^8.0.0",
     "eslint-linter-browserify": "^9.26.0",
     "eslint4b-prebuilt": "^6.7.2",
     "firebase": "^11.2.0",
-    "gh-pages": "^6.3.0",
     "lezer": "^0.13.5",
     "mini-css-extract-plugin": "^2.9.2",
     "p5": "^1.11.3",
@@ -24,20 +27,14 @@
     "style-loader": "^4.0.0",
     "thememirror": "^2.0.1",
     "ts-loader": "^9.5.2",
-    "typescript": "^5.7.2",
-    "webpack-merge": "^6.0.1"
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "less": "^4.2.2",
-    "less-loader": "^12.2.0",
-    "raw-loader": "^4.0.2",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
+    "vite": "^8.0.14"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "deploy": "gh-pages -d dist --cname code.esporterz.com"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }

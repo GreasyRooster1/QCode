@@ -1,6 +1,6 @@
 # QCode
 
-Programming education platform for beginners
+Teaching students how to code
 
 ## Gallery 
 

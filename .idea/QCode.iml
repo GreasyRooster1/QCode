@@ -7,6 +7,7 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/dist/bundles" />
+      <excludeFolder url="file://$MODULE_DIR$/TESTQCodeAI" />
     </content>
     <content url="file://$MODULE_DIR$/dist" />
     <content url="file://$MODULE_DIR$/dist/bundles" />
