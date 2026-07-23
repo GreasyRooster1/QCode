@@ -1,0 +1,45 @@
+import {get, ref} from "firebase/database";
+import {db} from "../firebase.js";
+import {createProject} from "../project.js";
+import {getStoredUser} from "../auth.js";
+
+function openProjectInEditor(projectId,uid,chapterNumber){
+    window.location.href = getLinkToProject(projectId,uid,chapterNumber)
+}
+
+function getLinkToProject(projectId,uid,chapterNumber){
+    return "./editor.html?projectId=" + projectId + "&uid=" + uid + "&cNum=" + chapterNumber;
+}
+
+function startExternalLesson(lessonData){
+    window.location.href = lessonData.link;
+}
+
+function startInternalLesson(ref,lessonId,lessonData){
+    createProject(lessonId,lessonData.name,lessonData.type,lessonId).then(()=>{
+        openProjectInEditor(lessonId,getStoredUser().uid,0);
+    })
+}
+
+function openLesson(lessonId){
+    let uid = getStoredUser().uid;
+    let loc = "userdata/"+uid+"/projects/";
+    let projectId = lessonId
+    get(ref(db,loc+projectId)).then(function (snap) {
+        debugger
+        if(snap.exists()){
+            openProjectInEditor(projectId,uid,snap.val().currentChapter);
+            return;
+        }
+        get(ref(db,"lessons/"+lessonId)).then(function (snap) {
+            let lessonData = snap.val();
+            if(lessonData.isExternal){
+                startExternalLesson(lessonData);
+            }else {
+                startInternalLesson(loc,lessonId,lessonData)
+            }
+        });
+    })
+}
+
+export {getLinkToProject,openProjectInEditor,openLesson}

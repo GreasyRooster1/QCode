@@ -1,0 +1,42 @@
+import {getStoredUser} from "./auth.js";
+import {db} from "./firebase.js";
+import {defaultCodeArduino, defaultCodeJs, defaultFilesWeb} from "./util/code.js";
+import {ref,get,set} from "firebase/database";
+import {languageTypes} from "../editor/languageTypes.ts";
+
+function createProject(cleanProjectId,projectName,type,lessonId){
+
+    return new Promise((resolve,reject)=>{
+        let user = getStoredUser();
+        get(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId)).then((snap) => {
+            debugger
+            if(snap.exists()){
+                reject();
+                return;
+            }
+            getProjectDataForType(type,projectName,lessonId).then((data)=>{
+                console.log(data)
+                set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),data).then(()=>{
+                    resolve();
+                });
+            })
+        })
+    });
+}
+
+function getProjectDataForType(type,projectName,lessonId){
+    return languageTypes[type].getProjectDBData(projectName,lessonId)
+}
+
+function cleanProjectName(projectName){
+    if(projectName.length<1){
+        projectName = "unnamed";
+    }
+    return projectName.toLowerCase().trim().replace(/[\W_]+/g,"-");
+}
+
+export {
+    createProject,
+    cleanProjectName,
+    getProjectDataForType
+}
