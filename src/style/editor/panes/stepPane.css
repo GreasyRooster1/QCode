@@ -81,7 +81,7 @@
 .step-popup img{
     width:95vmin;
     max-height:95vh;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .step.info > .step-head{
