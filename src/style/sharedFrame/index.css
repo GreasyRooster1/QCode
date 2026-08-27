@@ -1,0 +1,37 @@
+:root{
+    --background-color:#7f7f7f;
+    --text-color: #000000;
+}
+
+body{
+    margin: 0;
+    background: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.view-pane{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100vh;
+    overflow: hidden;
+}
+
+iframe{
+    border: none;
+    flex:1;
+    width: 100%;
+    height: 100%;
+}
+
+.meta{
+    color: var(--text-color);
+    margin:4px;
+    font-size: 24px;
+}
