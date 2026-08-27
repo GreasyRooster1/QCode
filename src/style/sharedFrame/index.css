@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+}
+
+.view-pane{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+iframe{
+    border: none;
+    width: 100vmin;
+    aspect-ratio: 1/1;
+}
