@@ -11,6 +11,7 @@ let execFrame;
 let iWindow = null;
 
 function init(){
+    setupFrame();
     loadProject();
 }
 
@@ -26,5 +27,15 @@ function loadProject() {
     })
 }
 
+function setupFrame(){
+    execFrame = document.getElementById("exec-frame");
+    execFrame.addEventListener("load", () => {
+        if(projectCode===null){
+            return;
+        }
+        iWindow = execFrame.contentWindow;
+        iWindow.postMessage(projectCode);
+    });
+}
 
 init();
