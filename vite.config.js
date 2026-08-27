@@ -24,6 +24,7 @@ export default defineConfig({
                 lessons: resolve(__dirname, '/lessons.html'),
                 shareBoard: resolve(__dirname, '/shareBoard.html'),
                 sharedProject: resolve(__dirname, '/sharedProject.html'),
+                sharedFrame: resolve(__dirname, '/sharedFrame.html'),
             },
         }
     },
