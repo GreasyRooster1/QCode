@@ -18,6 +18,7 @@ export default defineConfig({
                 main: resolve(__dirname, '/index.html'),
                 login: resolve(__dirname, '/login.html'),
                 adminLogin: resolve(__dirname, '/adminLogin.html'),
+                adminConsole: resolve(__dirname, '/adminConsole.html'),
                 editor: resolve(__dirname, '/editor.html'),
                 editProfile: resolve(__dirname, '/editProfile.html'),
                 exec: resolve(__dirname, '/exec.html'),

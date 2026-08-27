@@ -1,6 +1,9 @@
+
 # QCode
 
 Teaching students how to code
+
+[![Deploy to GitHub Pages](https://github.com/Esporterz/QCode/actions/workflows/deploy.yml/badge.svg)](https://github.com/Esporterz/QCode/actions/workflows/deploy.yml)
 
 ## Gallery 
 
