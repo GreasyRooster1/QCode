@@ -5,6 +5,14 @@
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fportfolio-api.dillonjw.com%2Fqcode_project_count&query=%24&label=student%20projects&color=%23248af0&link=https%3A%2F%2Fdillonjw.com)
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fportfolio-api.dillonjw.com%2Fqcode_line_count&query=%24&label=student%20lines&color=%23eb3636&link=https%3A%2F%2Fdillonjw.com)
 
+This project has spans multiple repos:
+- **[QCode](https://github.com/GreasyRooster1/QCode/)**
+- **[QCodeAI](https://github.com/GreasyRooster1/QCodeAI)**
+- [QCodeCloudAgent](https://github.com/GreasyRooster1/QCodeCloudAgent)
+- [QCodeAI-Backend](https://github.com/GreasyRooster1/QCodeAI-Backend)
+- [QCodeProjectHostServer](https://github.com/GreasyRooster1/QCodeProjectHostServer)
+- [QCodeStatic](https://github.com/GreasyRooster1/QCodeStatic)
+
 ## Foundational Principles
 there are 3 major foundational principles QCode uses to teach effectively:
 - **Every student follows at their own pace**
