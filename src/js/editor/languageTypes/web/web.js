@@ -5,9 +5,12 @@ import { db } from "../../../api/firebase";
 import { getStoredUser } from "../../../api/auth";
 import { defaultFilesWeb } from "../../../api/util/code";
 import { openFile, saveCurrentFile, setupAssetDrop, setupFileFolderButtons, setupFileMovement, setupFilesystemDom, setupHeaderButtons, updateFilesystemBar } from "../fileSystemInterface";
+const DEV_SERVER_ACTIVE = true;
+const DEV_SERVER_ADDRESS = "qcode-html-api-dev.dillonjw.com";
 class WebType extends ProjectType {
     constructor() {
         super(false);
+        this.filesystemLoaded = false;
         this.filesystem = new Filesystem("index.html");
         this.filesystem.onFileSystemUpdate = updateFilesystemBar;
         this.filesystem.projectImpl = this;
@@ -27,8 +30,11 @@ class WebType extends ProjectType {
         this.currentFileId = this.filesystem.getFile("/index.html").id;
         openFile(this, this.currentFileId);
         updateFilesystemBar(this);
+        this.filesystemLoaded = true;
     }
     onSave() {
+        if (!this.filesystemLoaded)
+            return;
         saveCurrentFile(this);
         let serializedFiles = this.filesystem.serialize();
         set(ref(db, "userdata/" + getStoredUser().uid + "/projects/" + this.projectId + "/files"), serializedFiles);
@@ -40,7 +46,9 @@ class WebType extends ProjectType {
         //window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
     }
     getServerAddress() {
-        return "https://" + this.projectId + "." + getStoredUser().username + ".esporterz.com";
+        return DEV_SERVER_ACTIVE ?
+            `https://${DEV_SERVER_ADDRESS}/${getStoredUser().username}/${this.projectId}` :
+            "https://" + this.projectId + "." + getStoredUser().username + ".esporterz.com";
     }
     sendFolderToHTMLHost(folder) {
         // @ts-ignore
