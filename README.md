@@ -82,7 +82,7 @@ Students choose their course based on their own interests and their skill level.
 ## Impact
 Hundreds of students and parents have trusted QCode with their computer science education. Their trust has paid off, as those who stick with the program have shown significant improvement in the programming skills.
 
-QCode is primarily used to teach paying customers at a [local small business](https://esporterz.com), but it has also been used at a non-profit to teach underrepresented teens programming. QCode has also taught many mentally disabled students, often with great success. 
+QCode is primarily used to teach paying customers at a [local small business](https://esporterz.com), but it has also been used at a non-profit to teach underrepresented teens programming. QCode has also taught neurodivergent students, often with great success. 
 
 <img width="2142" height="2856" alt="kc5" src="https://github.com/user-attachments/assets/7ba7b3fa-183b-4d7b-84a9-9d33865a49a2" />
 <img width="2142" height="2856" alt="kc6" src="https://github.com/user-attachments/assets/f4bcf946-1aac-4495-a794-570c6b0c240e" />
