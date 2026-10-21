@@ -58,7 +58,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     }
 
     getServerAddress(){
-        return "https://"+this.projectId+"."+getStoredUser().username+".esporterz.com";
+        return "https://"+getStoredUser().username+".esporterz.com/"+this.projectId;
     }
 
     sendFolderToHTMLHost(folder:Folder){
