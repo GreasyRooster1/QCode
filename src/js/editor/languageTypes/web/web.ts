@@ -13,6 +13,7 @@ import {
     setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
+import {getAuth} from "firebase/auth";
 
 const DEV_SERVER_ACTIVE = false;
 const DEV_SERVER_ADDRESS = "qcode-html-api-dev.dillonjw.com"
@@ -57,8 +58,14 @@ class WebType extends ProjectType implements FileSystemInterface {
     }
 
     onRun(errorCallback:RunErrCallback) {
-        this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
-        let frame = document.getElementById("#exec-frame")! as HTMLIFrameElement
+        getAuth()!.currentUser?.getIdToken(true)
+            .then((idToken: string) => {
+                this.sendFolderToHTMLHost(this.filesystem.getAll()["/"],idToken);
+            })
+            .catch((error: any) => {
+                console.error("Error getting ID token:", error);
+            });
+        let frame = document.getElementById("exec-frame")! as HTMLIFrameElement
         frame.contentWindow!.location.href = this.getServerAddress();
         //window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
     }
@@ -69,22 +76,25 @@ class WebType extends ProjectType implements FileSystemInterface {
             `https://${getStoredUser().username}.esporterz.com/${this.projectId}`;
     }
 
-    sendFolderToHTMLHost(folder:Folder){
+    sendFolderToHTMLHost(folder:Folder,idToken:string){
         // @ts-ignore
         for(let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
-                this.sendFolderToHTMLHost(folder[key] as Folder);
+                this.sendFolderToHTMLHost(folder[key] as Folder,idToken);
             }
-            this.sendFileToHTMLHost(frag as FilesystemFile)
+            this.sendFileToHTMLHost(frag as FilesystemFile,idToken)
         }
     }
 
-    sendFileToHTMLHost(file:FilesystemFile){
+    sendFileToHTMLHost(file:FilesystemFile,idToken:string){
         let address = this.getServerAddress()+"/"+file.name+"."+file.extension;
         fetch(address,
             {
                 method: "PUT",
                 body:file.content,
+                headers:{
+                    "Authorization":"Bearer "+idToken,
+                }
             }
         ).catch(function(err) {
             console.log('failed to post file @ '+address);
