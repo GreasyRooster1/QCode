@@ -14,7 +14,7 @@ import {
     updateFilesystemBar
 } from "../fileSystemInterface";
 
-const DEV_SERVER_ACTIVE = true;
+const DEV_SERVER_ACTIVE = false;
 const DEV_SERVER_ADDRESS = "qcode-html-api-dev.dillonjw.com"
 
 class WebType extends ProjectType implements FileSystemInterface {
@@ -66,7 +66,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     getServerAddress(){
         return DEV_SERVER_ACTIVE?
             `https://${DEV_SERVER_ADDRESS}/${getStoredUser().username}/${this.projectId}`:
-            "https://"+this.projectId+"."+getStoredUser().username+".esporterz.com";
+            `https://${getStoredUser().username}.esporterz.com/${this.projectId}`;
     }
 
     sendFolderToHTMLHost(folder:Folder){
