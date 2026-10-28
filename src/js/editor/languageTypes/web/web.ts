@@ -36,7 +36,17 @@ class WebType extends ProjectType implements FileSystemInterface {
     }
 
     setupEditor(): void {
-        setupFilesystemDom()
+        setupFilesystemDom(`
+            <div class="filesystem-root">
+                <div>
+                    <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
+                    <span>Site</span>
+                </div>
+                <div>
+                    <div class="run-button">Publish</div>
+                    <div class="save-button">Save</div>
+                </div>
+            </div>`)
         updateFilesystemBar(this)
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
@@ -47,7 +57,7 @@ class WebType extends ProjectType implements FileSystemInterface {
 
     createPanes(){
         Split(['.filesystem-sidebar', '.text-editor-wrapper'], {
-            sizes: [20, 80],
+            sizes: [30, 70],
             direction: 'horizontal',
             minSize: 30,
             snapOffset: 10,
