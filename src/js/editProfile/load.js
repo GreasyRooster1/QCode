@@ -1,7 +1,8 @@
 import {ref,get,set} from "firebase/database";
-import {db} from "../api/firebase.js";
+import {auth, db} from "../api/firebase.js";
 import {getStoredUser} from "../api/auth.js";
 import {promptProfileIconChange} from "../api/nav/navbar.js";
+import {getAuth} from "firebase/auth";
 
 function loadUserData(){
     loadUsername()
@@ -108,6 +109,8 @@ function loadAdvanced(){
             createAdvancedDatapoint("perm."+key,value)
         }
     })
+    createIdTokenButton();
+
 }
 
 function createAdvancedUserdataPoint(r){
@@ -120,6 +123,29 @@ function createAdvancedDatapoint(name,value){
     let el = document.createElement("div");
     el.innerHTML = name+" : "+value;
     document.querySelector(".advanced-content").appendChild(el);
+}
+
+function createIdTokenButton(){
+    let el = document.createElement("div");
+    el.innerHTML = `<button onclick=>Load ID Token</button>`;
+    el.querySelector("button").addEventListener("click",()=>{
+        getAuth().currentUser.getIdToken(true)
+            .then((idToken) => {
+                // Send token to your backend API
+                let el = document.createElement("div");
+                el.innerHTML = "idToken"+" : "+idToken;
+                el.style.wordWrap = "break-word";
+                el.style.width = "300px";
+                el.style.height = "500px";
+                el.style.overflow = "auto";
+                document.querySelector(".advanced-content").appendChild(el);
+            })
+            .catch((error) => {
+                console.error("Error getting ID token:", error);
+            });
+    })
+    document.querySelector(".advanced-content").appendChild(el);
+
 }
 
 function setupChangeProfileEvent(){

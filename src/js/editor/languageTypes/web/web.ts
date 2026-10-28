@@ -13,12 +13,19 @@ import {
     setupHeaderButtons,
     updateFilesystemBar
 } from "../fileSystemInterface";
+import {getAuth} from "firebase/auth";
+import Split from "split.js";
+import {createGutterBlocks} from "@js/editor/panes";
+
+const DEV_SERVER_ACTIVE = false;
+const DEV_SERVER_ADDRESS = "qcode-html-api-dev.dillonjw.com"
 
 class WebType extends ProjectType implements FileSystemInterface {
     static identifier = "web"
     /* Implements */
     public filesystem:Filesystem
     public currentFileId:number;
+    public filesystemLoaded:boolean = false;
 
     constructor() {
         super(false);
@@ -33,8 +40,42 @@ class WebType extends ProjectType implements FileSystemInterface {
         updateFilesystemBar(this)
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
-        setupAssetDrop(this)
+        //setupAssetDrop(this)
         setupFileMovement(this);
+        document.querySelector(".output-pane")?.remove();
+    }
+
+    createButtons(){
+        let el = document.createElement("div");
+        el.innerHTML = `
+            <div class="html-button-container">
+                <div class="run-button">Publish</div>
+                <div class="save-button">Save</div>
+                <a class="visit-button" href="${this.getServerAddress()}" target="_blank" rel="noopener noreferrer">Visit</a>
+            </div>
+        `
+        document.querySelector(".filesystem-container")?.prepend(el)
+    }
+
+    createPanes(){
+        Split(['.filesystem-sidebar', '.text-editor-wrapper'], {
+            sizes: [30, 70],
+            direction: 'horizontal',
+            minSize: 30,
+            snapOffset: 10,
+        });
+        if(this.hasLesson) {
+            Split(['.steps-pane', '.code-pane'], {
+                sizes: [30, 70],
+                direction: 'horizontal',
+                minSize: 30,
+                snapOffset: 10,
+            });
+        }else{
+            document.querySelector(".steps-pane")?.remove();
+            document.querySelector(".code-pane")?.classList.add('single');
+        }
+        createGutterBlocks()
     }
 
     onLoad(){
@@ -42,41 +83,57 @@ class WebType extends ProjectType implements FileSystemInterface {
         this.currentFileId=this.filesystem.getFile("/index.html").id;
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
+        this.filesystemLoaded = true;
+        this.createButtons()
+        document.querySelector(".code-pane")?.remove();
+        document.querySelector(".filesystem-root span")!.innerHTML = `Site (${getStoredUser().username}.esporterz.com)`
     }
 
     onSave(){
+        if(!this.filesystemLoaded) return;
         saveCurrentFile(this)
         let serializedFiles = this.filesystem.serialize();
         set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files"),serializedFiles);
     }
 
     onRun(errorCallback:RunErrCallback) {
-        this.sendFolderToHTMLHost(this.filesystem.getAll()["/"]);
-        let frame = document.getElementById("#exec-frame")! as HTMLIFrameElement
+        getAuth()!.currentUser?.getIdToken(true)
+            .then((idToken: string) => {
+                this.sendFolderToHTMLHost(this.filesystem.getAll()["/"],idToken);
+            })
+            .catch((error: any) => {
+                console.error("Error getting ID token:", error);
+            });
+        let frame = document.getElementById("exec-frame")! as HTMLIFrameElement
         frame.contentWindow!.location.href = this.getServerAddress();
         //window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
     }
 
     getServerAddress(){
-        return "https://"+this.projectId+"."+getStoredUser().username+".esporterz.com";
+        return DEV_SERVER_ACTIVE?
+            `https://${DEV_SERVER_ADDRESS}/${getStoredUser().username}/${this.projectId}`:
+            `https://${getStoredUser().username}.esporterz.com/${this.projectId}`;
     }
 
-    sendFolderToHTMLHost(folder:Folder){
+    sendFolderToHTMLHost(folder:Folder,idToken:string){
         // @ts-ignore
         for(let [key,frag] of Object.entries(folder)){
             if(isFolder(frag)){
-                this.sendFolderToHTMLHost(folder[key] as Folder);
+                this.sendFolderToHTMLHost(folder[key] as Folder,idToken);
             }
-            this.sendFileToHTMLHost(frag as FilesystemFile)
+            this.sendFileToHTMLHost(frag as FilesystemFile,idToken)
         }
     }
 
-    sendFileToHTMLHost(file:FilesystemFile){
+    sendFileToHTMLHost(file:FilesystemFile,idToken:string){
         let address = this.getServerAddress()+"/"+file.name+"."+file.extension;
         fetch(address,
             {
                 method: "PUT",
                 body:file.content,
+                headers:{
+                    "Authorization":"Bearer "+idToken,
+                }
             }
         ).catch(function(err) {
             console.log('failed to post file @ '+address);

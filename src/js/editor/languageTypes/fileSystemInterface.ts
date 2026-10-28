@@ -237,9 +237,10 @@ function createFolderEl(impl: any, key: string, folder: Folder, path: string){
     return wrapperEl;
 }
 
-function setupFilesystemDom(){
+function setupFilesystemDom(root: any = null){
     let imageView = document.createElement("div");
     document.querySelector(".code-editor")!.appendChild(imageView);
+    console.log(root)
     document.querySelector(".code-pane")!.innerHTML = `
         <div class="code-editor-wrapper">
             <div class="filesystem-sidebar">
@@ -252,10 +253,10 @@ function setupFilesystemDom(){
                 </div>
                 <div class="filesystem-container">
                     <div class="default-filesystem filesystem folder-wrapper">
-                        <div class="filesystem-root">
+                        ${root?root:`<div class="filesystem-root">
                             <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
                             <span>Site</span>
-                        </div>
+                        </div>`}
                         <div class="file-list"></div>
                     </div>
                     <div class="upload-drop">
