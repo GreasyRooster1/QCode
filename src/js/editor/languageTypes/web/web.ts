@@ -16,6 +16,7 @@ import {
 import {getAuth} from "firebase/auth";
 import Split from "split.js";
 import {createGutterBlocks} from "@js/editor/panes";
+import {showSaveAlert} from "@js/editor/save";
 
 const DEV_SERVER_ACTIVE = false;
 const DEV_SERVER_ADDRESS = "qcode-html-api-dev.dillonjw.com"
@@ -93,6 +94,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     onSave(){
         if(!this.filesystemLoaded) return;
         saveCurrentFile(this)
+        showSaveAlert()
         let serializedFiles = this.filesystem.serialize();
         set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+this.projectId+"/files"),serializedFiles);
     }
