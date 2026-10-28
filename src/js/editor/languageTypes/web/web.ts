@@ -14,6 +14,8 @@ import {
     updateFilesystemBar
 } from "../fileSystemInterface";
 import {getAuth} from "firebase/auth";
+import Split from "split.js";
+import {createGutterBlocks} from "@js/editor/panes";
 
 const DEV_SERVER_ACTIVE = false;
 const DEV_SERVER_ADDRESS = "qcode-html-api-dev.dillonjw.com"
@@ -40,6 +42,28 @@ class WebType extends ProjectType implements FileSystemInterface {
         setupHeaderButtons(this)
         //setupAssetDrop(this)
         setupFileMovement(this);
+        document.querySelector(".output-pane")?.remove();
+    }
+
+    createPanes(){
+        Split(['.filesystem-sidebar', '.text-editor-wrapper'], {
+            sizes: [20, 80],
+            direction: 'horizontal',
+            minSize: 30,
+            snapOffset: 10,
+        });
+        if(this.hasLesson) {
+            Split(['.steps-pane', '.code-pane'], {
+                sizes: [30, 70],
+                direction: 'horizontal',
+                minSize: 30,
+                snapOffset: 10,
+            });
+        }else{
+            document.querySelector(".steps-pane")?.remove();
+            document.querySelector(".code-pane")?.classList.add('single');
+        }
+        createGutterBlocks()
     }
 
     onLoad(){

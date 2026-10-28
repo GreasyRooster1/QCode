@@ -18,10 +18,12 @@
 }
 
 .filesystem-sidebar{
-    width: 20vw;
+    width: 320px;
     background: var(--filesystem-sidebar);
     display: flex;
     flex-direction: column;
+    max-width: 40vw;
+    min-width: 260px;
 }
 
 .filesystem-sidebar .header{
@@ -30,6 +32,7 @@
     justify-content: space-around;
     font-size: 1.3rem;
     color:var(--header-text);
+
 }
 
 .filesystem-container{
