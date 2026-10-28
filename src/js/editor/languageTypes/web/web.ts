@@ -36,23 +36,25 @@ class WebType extends ProjectType implements FileSystemInterface {
     }
 
     setupEditor(): void {
-        setupFilesystemDom(`
-            <div class="filesystem-root">
-                <div>
-                    <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
-                    <span>Site</span>
-                </div>
-                <div>
-                    <div class="run-button">Publish</div>
-                    <div class="save-button">Save</div>
-                </div>
-            </div>`)
+        setupFilesystemDom()
         updateFilesystemBar(this)
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
         //setupAssetDrop(this)
         setupFileMovement(this);
         document.querySelector(".output-pane")?.remove();
+    }
+
+    createButtons(){
+        let el = document.createElement("div");
+        el.innerHTML = `
+            <div class="html-button-container">
+                <div class="run-button">Publish</div>
+                <div class="save-button">Save</div>
+                <a class="visit-button" href="${this.getServerAddress()}" target="_blank" rel="noopener noreferrer">Visit</a>
+            </div>
+        `
+        document.querySelector(".filesystem-container")?.prepend(el)
     }
 
     createPanes(){
@@ -82,6 +84,9 @@ class WebType extends ProjectType implements FileSystemInterface {
         openFile(this,this.currentFileId);
         updateFilesystemBar(this);
         this.filesystemLoaded = true;
+        this.createButtons()
+        document.querySelector(".code-pane")?.remove();
+        document.querySelector(".root-name-label")!.innerHTML = `Site (${getStoredUser().username}.esporterz.com)`
     }
 
     onSave(){

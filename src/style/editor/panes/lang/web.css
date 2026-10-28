@@ -163,3 +163,29 @@
 .image-view-image{
     width: 100%;
 }
+
+.html-button-container{
+    background: var(--filesystem-background);
+    display:flex;
+    flex-direction: row;
+    gap:8px;
+    padding:6px;
+    border-radius:5px;
+}
+
+.html-button-container div{
+    padding:0 4px;
+}
+.html-button-container a{
+    padding:0 4px;
+}
+.visit-button{
+    background: var(--share-button-background);
+    border:none;
+    border-radius: 5px;
+
+    font-size: 20px;
+    height:30px;
+    color:var(--share-button-text-color);
+    text-decoration:none;
+}

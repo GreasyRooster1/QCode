@@ -255,7 +255,7 @@ function setupFilesystemDom(root: any = null){
                     <div class="default-filesystem filesystem folder-wrapper">
                         ${root?root:`<div class="filesystem-root">
                             <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
-                            <span>Site</span>
+                            <span class="root-name-label">Site</span>
                         </div>`}
                         <div class="file-list"></div>
                     </div>
