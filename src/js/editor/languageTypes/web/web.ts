@@ -86,7 +86,7 @@ class WebType extends ProjectType implements FileSystemInterface {
         this.filesystemLoaded = true;
         this.createButtons()
         document.querySelector(".code-pane")?.remove();
-        document.querySelector(".root-name-label")!.innerHTML = `Site (${getStoredUser().username}.esporterz.com)`
+        document.querySelector(".filesystem-root span")!.innerHTML = `Site (${getStoredUser().username}.esporterz.com)`
     }
 
     onSave(){
