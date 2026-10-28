@@ -20,3 +20,7 @@
 .ͼ1 .cm-scroller {
     font-family: var(--editor-font) !important;
 }
+
+.code-pane.single{
+    width:100vw;
+}
