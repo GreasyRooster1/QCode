@@ -55,6 +55,7 @@ class WebType extends ProjectType implements FileSystemInterface {
             </div>
         `
         document.querySelector(".filesystem-container")?.prepend(el)
+        this.setupEventListeners()
     }
 
     createPanes(){
@@ -85,8 +86,8 @@ class WebType extends ProjectType implements FileSystemInterface {
         updateFilesystemBar(this);
         this.filesystemLoaded = true;
         this.createButtons()
-        document.querySelector(".code-pane")?.remove();
-        document.querySelector(".filesystem-root span")!.innerHTML = `Site (${getStoredUser().username}.esporterz.com)`
+        document.querySelector(".output-pane")?.remove();
+        //document.querySelector(".filesystem-root span")!.innerHTML = `Site (${getStoredUser().username}.esporterz.com)`
     }
 
     onSave(){
@@ -104,8 +105,8 @@ class WebType extends ProjectType implements FileSystemInterface {
             .catch((error: any) => {
                 console.error("Error getting ID token:", error);
             });
-        let frame = document.getElementById("exec-frame")! as HTMLIFrameElement
-        frame.contentWindow!.location.href = this.getServerAddress();
+        //let frame = document.getElementById("exec-frame")! as HTMLIFrameElement
+        //frame.contentWindow!.location.href = this.getServerAddress();
         //window.open("https://"+this.projectId+"."+getStoredUser().username+".esporterz.com")
     }
 
