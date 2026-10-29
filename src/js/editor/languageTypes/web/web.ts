@@ -6,7 +6,7 @@ import {get, ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {writeToEditor} from "../../utils/loadUtils";
-import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
+import {defaultCodeJs, defaultFilesWeb, genDefaultFilesWeb} from "../../../api/util/code";
 import {
     FileSystemInterface, openFile, saveCurrentFile, setupAssetDrop,
     setupFileFolderButtons, setupFileMovement, setupFilesystemDom,
@@ -153,11 +153,11 @@ class WebType extends ProjectType implements FileSystemInterface {
         return "javascript";
     }
 
-    static getProjectDBData(projectName: string, lessonId: string):Promise<Object> {
+    static getProjectDBData(projectName: string, lessonId: string,cleanProjectId:string):Promise<Object> {
         let cleanLessonId = lessonId ?? "none"
         let hasLesson = cleanLessonId != "none";
         let data = {
-            files:defaultFilesWeb,
+            files:genDefaultFilesWeb(`https://${getStoredUser().username}.esporterz.com/${cleanProjectId}`),
             lessonId:lessonId??"none",
             name:projectName,
             currentChapter:0,

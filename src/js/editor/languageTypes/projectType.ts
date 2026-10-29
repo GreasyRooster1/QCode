@@ -141,7 +141,7 @@ abstract class ProjectType {
 
     abstract getLanguage(): Language;
 
-    static getProjectDBData(projectName: string, lessonId: string):Object {
+    static getProjectDBData(projectName: string, lessonId: string, cleanProjectId:string):Object {
         throw new TypeError('This method should be overridden by inheriting classes.');
     }
 }
