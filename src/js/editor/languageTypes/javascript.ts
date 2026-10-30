@@ -1,5 +1,5 @@
-import {ProjectType,RunErrCallback} from "./projectType";
-import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../executionHelper"
+import {ProjectType,RunErrCallback} from "./projectType.ts";
+import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../executionHelper.ts"
 import {Language} from "../codeEditor";
 import {getStoredUser} from "../../api/auth";
 import {get, ref, set} from "firebase/database";

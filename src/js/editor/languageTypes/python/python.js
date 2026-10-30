@@ -101,7 +101,7 @@ class PythonType extends CloudAgentType {
             this.appendLog(e.message.replace("\n", "<br>"), "error");
         });
     }
-    static getProjectDBData(projectName, lessonId) {
+    static getProjectDBData(projectName, lessonId, cleanProjectId) {
         let cleanLessonId = lessonId !== null && lessonId !== void 0 ? lessonId : "none";
         let hasLesson = cleanLessonId != "none";
         let data = {
