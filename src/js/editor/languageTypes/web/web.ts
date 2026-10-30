@@ -129,6 +129,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     }
 
     sendFileToHTMLHost(file:FilesystemFile,idToken:string){
+        if(file.isImage()||file.isDataFile()) return;
         let address = this.getServerAddress()+"/"+file.name+"."+file.extension;
         fetch(address,
             {
