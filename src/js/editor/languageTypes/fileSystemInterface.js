@@ -15,7 +15,6 @@ function updateFilesystemBar(impl) {
 function setupFileEventListeners(impl) {
     let list = document.querySelectorAll(".file-list, .folder");
     console.log(list);
-    setupFileMovement(impl);
     // @ts-ignore
     for (let folder of list) {
         let children = folder.children;
