@@ -88,29 +88,39 @@ function handleDroppedAssetFile(impl, file) {
             return;
         }
     }
-    impl.filesystem.system["/"][name] = systemFile;
-    writeFileFromDrop(impl, systemFile, file);
+    writeFileFromDrop(impl, systemFile, file).then(() => {
+        impl.filesystem.system["/"][name] = systemFile;
+    }).catch(() => {
+        alert("Could not upload file! Is it too large?");
+    });
     updateFilesystemBar(impl);
 }
 function writeFileFromDrop(impl, systemFile, file) {
-    let reader = new FileReader();
-    console.log(systemFile.extension, systemFile.isImage(), systemFile.isDataFile());
-    reader.onload = () => {
+    return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+        console.log(systemFile.extension, systemFile.isImage(), systemFile.isDataFile());
+        reader.onload = () => {
+            if (systemFile.isImage() || systemFile.isDataFile()) {
+                let url = getURLForProjectFile(impl.projectId, systemFile.getFullName());
+                sendImageToFileServer(reader.result, url).then(() => {
+                    resolve();
+                }).catch(err => {
+                    reject(err);
+                });
+                systemFile.content = url;
+            }
+            else {
+                systemFile.content = reader.result;
+                resolve();
+            }
+        };
         if (systemFile.isImage() || systemFile.isDataFile()) {
-            let url = getURLForProjectFile(impl.projectId, systemFile.getFullName());
-            sendImageToFileServer(reader.result, url);
-            systemFile.content = url;
+            reader.readAsArrayBuffer(file);
         }
         else {
-            systemFile.content = reader.result;
+            reader.readAsText(file);
         }
-    };
-    if (systemFile.isImage() || systemFile.isDataFile()) {
-        reader.readAsArrayBuffer(file);
-    }
-    else {
-        reader.readAsText(file);
-    }
+    });
 }
 function promptFileCreation(impl, folder) {
     let name = cleanFileName(prompt("Enter a name for the file and its extension:"));

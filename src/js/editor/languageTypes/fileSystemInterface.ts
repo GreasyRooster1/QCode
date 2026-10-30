@@ -102,28 +102,39 @@ function handleDroppedAssetFile(impl:any,file: File){
             return;
         }
     }
-    impl.filesystem.system["/"][name] =systemFile;
-    writeFileFromDrop(impl,systemFile,file);
+
+    writeFileFromDrop(impl,systemFile,file).then(()=>{
+        impl.filesystem.system["/"][name] =systemFile;
+    }).catch(()=>{
+        alert("Could not upload file! Is it too large?");
+    });
     updateFilesystemBar(impl);
 }
 
 function writeFileFromDrop(impl:any,systemFile:FilesystemFile,file:File){
-    let reader = new FileReader()
-    console.log(systemFile.extension,systemFile.isImage(),systemFile.isDataFile())
-    reader.onload = ()=>{
-        if(systemFile.isImage()||systemFile.isDataFile()){
-            let url = getURLForProjectFile(impl.projectId,systemFile.getFullName());
-            sendImageToFileServer(reader.result,url);
-            systemFile.content = url;
-        }else {
-            systemFile.content = reader.result as string;
+    return new Promise<void>((resolve, reject)=>{
+        let reader = new FileReader()
+        console.log(systemFile.extension,systemFile.isImage(),systemFile.isDataFile())
+        reader.onload = ()=>{
+            if(systemFile.isImage()||systemFile.isDataFile()){
+                let url = getURLForProjectFile(impl.projectId,systemFile.getFullName());
+                sendImageToFileServer(reader.result,url).then(()=>{
+                    resolve();
+                }).catch(err=>{
+                    reject(err);
+                });
+                systemFile.content = url;
+            }else {
+                systemFile.content = reader.result as string;
+                resolve();
+            }
         }
-    }
-    if(systemFile.isImage()||systemFile.isDataFile()) {
-        reader.readAsArrayBuffer(file);
-    }else {
-        reader.readAsText(file)
-    }
+        if(systemFile.isImage()||systemFile.isDataFile()) {
+            reader.readAsArrayBuffer(file);
+        }else {
+            reader.readAsText(file)
+        }
+    })
 }
 
 
