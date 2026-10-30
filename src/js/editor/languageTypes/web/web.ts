@@ -59,14 +59,15 @@ class WebType extends ProjectType implements FileSystemInterface {
         this.setupEventListeners()
     }
 
-    createPanes(){
+    createPanes(hasLesson:boolean){
         Split(['.filesystem-sidebar', '.text-editor-wrapper'], {
             sizes: [30, 70],
             direction: 'horizontal',
             minSize: 30,
             snapOffset: 10,
         });
-        if(this.hasLesson) {
+        console.log(this.hasLesson)
+        if(hasLesson) {
             Split(['.steps-pane', '.code-pane'], {
                 sizes: [30, 70],
                 direction: 'horizontal',
