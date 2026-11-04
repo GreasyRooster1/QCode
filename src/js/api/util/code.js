@@ -15,16 +15,31 @@ const defaultFilesWeb = {
     "index➽css":"",
     "index➽js":"",
     "index➽html":"<!DOCTYPE html>\n" +
-        "<html lang=\"en\">\n" +
+        "<html>\n" +
         "  <head>\n" +
         "    <title>My Website</title>\n" +
-        "    <link rel=\"stylesheet\" href=\"index.css\">\n" +
-        "    <script src=\"index.js\"></script>\n" +
         "  </head>\n" +
         "  <body>\n" +
         "    \n" +
         "  </body>\n" +
         "</html>",
+}
+
+export function genDefaultFilesWeb(serverAddress){
+    return {
+        "index➽css":"",
+        "index➽js":"",
+        "index➽html":"<!DOCTYPE html>\n" +
+            "<html>\n" +
+            "  <head>\n" +
+            `    <base href="${serverAddress}">\n`+
+            "    <title>My Website</title>\n" +
+            "  </head>\n" +
+            "  <body>\n" +
+            "    \n" +
+            "  </body>\n" +
+            "</html>",
+    }
 }
 
 const defaultFilesPython = {

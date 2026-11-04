@@ -15,7 +15,6 @@ function updateFilesystemBar(impl) {
 function setupFileEventListeners(impl) {
     let list = document.querySelectorAll(".file-list, .folder");
     console.log(list);
-    setupFileMovement(impl);
     // @ts-ignore
     for (let folder of list) {
         let children = folder.children;
@@ -89,29 +88,39 @@ function handleDroppedAssetFile(impl, file) {
             return;
         }
     }
-    impl.filesystem.system["/"][name] = systemFile;
-    writeFileFromDrop(impl, systemFile, file);
+    writeFileFromDrop(impl, systemFile, file).then(() => {
+        impl.filesystem.system["/"][name] = systemFile;
+    }).catch(() => {
+        alert("Could not upload file! Is it too large?");
+    });
     updateFilesystemBar(impl);
 }
 function writeFileFromDrop(impl, systemFile, file) {
-    let reader = new FileReader();
-    console.log(systemFile.extension, systemFile.isImage(), systemFile.isDataFile());
-    reader.onload = () => {
+    return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+        console.log(systemFile.extension, systemFile.isImage(), systemFile.isDataFile());
+        reader.onload = () => {
+            if (systemFile.isImage() || systemFile.isDataFile()) {
+                let url = getURLForProjectFile(impl.projectId, systemFile.getFullName());
+                sendImageToFileServer(reader.result, url).then(() => {
+                    resolve();
+                }).catch(err => {
+                    reject(err);
+                });
+                systemFile.content = url;
+            }
+            else {
+                systemFile.content = reader.result;
+                resolve();
+            }
+        };
         if (systemFile.isImage() || systemFile.isDataFile()) {
-            let url = getURLForProjectFile(impl.projectId, systemFile.getFullName());
-            sendImageToFileServer(reader.result, url);
-            systemFile.content = url;
+            reader.readAsArrayBuffer(file);
         }
         else {
-            systemFile.content = reader.result;
+            reader.readAsText(file);
         }
-    };
-    if (systemFile.isImage() || systemFile.isDataFile()) {
-        reader.readAsArrayBuffer(file);
-    }
-    else {
-        reader.readAsText(file);
-    }
+    });
 }
 function promptFileCreation(impl, folder) {
     let name = cleanFileName(prompt("Enter a name for the file and its extension:"));
@@ -220,9 +229,10 @@ function createFolderEl(impl, key, folder, path) {
     wrapperEl.querySelector(".folder").setAttribute("data-path", path);
     return wrapperEl;
 }
-function setupFilesystemDom() {
+function setupFilesystemDom(root = null) {
     let imageView = document.createElement("div");
     document.querySelector(".code-editor").appendChild(imageView);
+    console.log(root);
     document.querySelector(".code-pane").innerHTML = `
         <div class="code-editor-wrapper">
             <div class="filesystem-sidebar">
@@ -235,10 +245,10 @@ function setupFilesystemDom() {
                 </div>
                 <div class="filesystem-container">
                     <div class="default-filesystem filesystem folder-wrapper">
-                        <div class="filesystem-root">
+                        ${root ? root : `<div class="filesystem-root">
                             <img src="https://raw.githubusercontent.com/GreasyRooster1/QCodeStatic/refs/heads/main/Files/globe-folder.png">
                             <span>Site</span>
-                        </div>
+                        </div>`}
                         <div class="file-list"></div>
                     </div>
                     <div class="upload-drop">

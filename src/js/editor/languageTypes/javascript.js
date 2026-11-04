@@ -1,5 +1,5 @@
-import { ProjectType } from "./projectType";
-import { getCode, setupEvents as setupExecEvents, runCode, frameContent, frame, stopFrame } from "../executionHelper";
+import { ProjectType } from "./projectType.ts";
+import { getCode, setupEvents as setupExecEvents, runCode, frameContent, frame, stopFrame } from "../executionHelper.ts";
 import { getStoredUser } from "../../api/auth";
 import { get, ref, set } from "firebase/database";
 import { db } from "../../api/firebase";
@@ -42,7 +42,7 @@ class JavascriptType extends ProjectType {
     getLanguage() {
         return "javascript";
     }
-    static getProjectDBData(projectName, lessonId) {
+    static getProjectDBData(projectName, lessonId, cleanProjectId) {
         let cleanLessonId = lessonId !== null && lessonId !== void 0 ? lessonId : "none";
         let hasLesson = cleanLessonId != "none";
         let data = {
