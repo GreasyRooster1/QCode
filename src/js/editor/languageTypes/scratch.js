@@ -28,7 +28,7 @@ class ScratchType extends ProjectType {
     getLanguage() {
         return "javascript";
     }
-    static getProjectDBData(projectName, lessonId) {
+    static getProjectDBData(projectName, lessonId, cleanProjectId) {
         let cleanLessonId = lessonId !== null && lessonId !== void 0 ? lessonId : "none";
         let hasLesson = cleanLessonId != "none";
         return new Promise((resolve, reject) => {

@@ -1,5 +1,5 @@
-import {ProjectType,RunErrCallback} from "./projectType";
-import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../executionHelper"
+import {ProjectType,RunErrCallback} from "./projectType.ts";
+import {getCode,setupEvents as setupExecEvents,logNames,runCode,frameContent,frame,stopFrame} from "../executionHelper.ts"
 import {Language} from "../codeEditor";
 import {getStoredUser} from "../../api/auth";
 import {get, ref, set} from "firebase/database";
@@ -53,7 +53,7 @@ class JavascriptType extends ProjectType {
         return "javascript";
     }
 
-    static getProjectDBData(projectName: string, lessonId: string):Promise<Object> {
+    static getProjectDBData(projectName: string, lessonId: string,cleanProjectId:string):Promise<Object> {
         let cleanLessonId = lessonId ?? "none"
         let hasLesson = cleanLessonId != "none";
         let data = {

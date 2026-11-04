@@ -6,7 +6,7 @@ import {get, ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
 import {getStoredUser} from "../../../api/auth";
 import {writeToEditor} from "../../utils/loadUtils";
-import {defaultCodeJs, defaultFilesWeb} from "../../../api/util/code";
+import {defaultCodeJs, defaultFilesWeb, genDefaultFilesWeb} from "../../../api/util/code";
 import {
     FileSystemInterface, openFile, saveCurrentFile, setupAssetDrop,
     setupFileFolderButtons, setupFileMovement, setupFilesystemDom,
@@ -41,8 +41,8 @@ class WebType extends ProjectType implements FileSystemInterface {
         updateFilesystemBar(this)
         setupFileFolderButtons(this)
         setupHeaderButtons(this)
-        //setupAssetDrop(this)
-        setupFileMovement(this);
+        setupAssetDrop(this)
+        //setupFileMovement(this);
         document.querySelector(".output-pane")?.remove();
     }
 
@@ -59,14 +59,15 @@ class WebType extends ProjectType implements FileSystemInterface {
         this.setupEventListeners()
     }
 
-    createPanes(){
+    createPanes(hasLesson:boolean){
         Split(['.filesystem-sidebar', '.text-editor-wrapper'], {
             sizes: [30, 70],
             direction: 'horizontal',
             minSize: 30,
             snapOffset: 10,
         });
-        if(this.hasLesson) {
+        console.log(this.hasLesson)
+        if(hasLesson) {
             Split(['.steps-pane', '.code-pane'], {
                 sizes: [30, 70],
                 direction: 'horizontal',
@@ -129,6 +130,7 @@ class WebType extends ProjectType implements FileSystemInterface {
     }
 
     sendFileToHTMLHost(file:FilesystemFile,idToken:string){
+        if(file.isImage()||file.isDataFile()) return;
         let address = this.getServerAddress()+"/"+file.name+"."+file.extension;
         fetch(address,
             {
@@ -153,11 +155,11 @@ class WebType extends ProjectType implements FileSystemInterface {
         return "javascript";
     }
 
-    static getProjectDBData(projectName: string, lessonId: string):Promise<Object> {
+    static getProjectDBData(projectName: string, lessonId: string,cleanProjectId:string):Promise<Object> {
         let cleanLessonId = lessonId ?? "none"
         let hasLesson = cleanLessonId != "none";
         let data = {
-            files:defaultFilesWeb,
+            files:genDefaultFilesWeb(`https://${getStoredUser().username}.esporterz.com/${cleanProjectId}`),
             lessonId:lessonId??"none",
             name:projectName,
             currentChapter:0,

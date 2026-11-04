@@ -14,7 +14,7 @@ function createProject(cleanProjectId,projectName,type,lessonId){
                 reject();
                 return;
             }
-            getProjectDataForType(type,projectName,lessonId).then((data)=>{
+            getProjectDataForType(type,projectName,lessonId,cleanProjectId).then((data)=>{
                 console.log(data)
                 set(ref(db,"userdata/"+user.uid+"/projects/"+cleanProjectId),data).then(()=>{
                     resolve();
@@ -24,8 +24,8 @@ function createProject(cleanProjectId,projectName,type,lessonId){
     });
 }
 
-function getProjectDataForType(type,projectName,lessonId){
-    return languageTypes[type].getProjectDBData(projectName,lessonId)
+function getProjectDataForType(type,projectName,lessonId,cleanProjectId){
+    return languageTypes[type].getProjectDBData(projectName,lessonId,cleanProjectId)
 }
 
 function cleanProjectName(projectName){

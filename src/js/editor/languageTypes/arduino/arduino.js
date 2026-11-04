@@ -62,7 +62,7 @@ class ArduinoType extends CloudAgentType {
     getLanguage() {
         return "c++";
     }
-    static getProjectDBData(projectName, lessonId) {
+    static getProjectDBData(projectName, lessonId, cleanProjectId) {
         let cleanLessonId = lessonId !== null && lessonId !== void 0 ? lessonId : "none";
         let hasLesson = cleanLessonId != "none";
         let data = {

@@ -6,7 +6,7 @@ import {setupDefaultPanes} from "../panes";
 import {showSaveAlert} from "../save";
 import {loadLesson} from "../load";
 import {runPopupPreviewCode, showPopup} from "../share";
-import {logNames} from "../executionHelper";
+import {logNames} from "../executionHelper.ts";
 
 interface RunErrCallback {
     (content:string,type:string):void,
@@ -141,7 +141,7 @@ abstract class ProjectType {
 
     abstract getLanguage(): Language;
 
-    static getProjectDBData(projectName: string, lessonId: string):Object {
+    static getProjectDBData(projectName: string, lessonId: string, cleanProjectId:string):Object {
         throw new TypeError('This method should be overridden by inheriting classes.');
     }
 }

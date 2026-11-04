@@ -1,19 +1,33 @@
 import { getStoredUser } from "../../api/auth";
 import { auth } from "../../api/firebase";
+import { getAuth } from "firebase/auth";
 function sendImageToFileServer(data, url) {
     console.log("sending file to server: " + url);
-    fetch(url, {
-        method: "PUT",
-        body: data,
-    }).then(res => {
-        console.log(res + " " + url);
-    }).catch(err => {
-        console.log(err + " " + url);
+    return new Promise((resolve, reject) => {
+        var _a;
+        (_a = getAuth().currentUser) === null || _a === void 0 ? void 0 : _a.getIdToken(true).then((idToken) => {
+            fetch(url, {
+                method: "PUT",
+                body: data,
+                headers: {
+                    "Authorization": "Bearer " + idToken,
+                }
+            }).then(res => {
+                console.log(res + " " + url);
+                resolve();
+            }).catch(err => {
+                console.log(err + " " + url);
+                reject(err);
+            });
+        }).catch((error) => {
+            console.error("Error getting ID token:", error);
+            reject(error);
+        });
     });
 }
 function getURLForProjectFile(projectid, path) {
-    let username = getStoredUser().email.split("@")[0];
-    return "http://" + username + ".esporterz.com/" + projectid + "/" + path;
+    let username = getStoredUser().username;
+    return "https://" + username + ".esporterz.com/" + projectid + "/" + path;
 }
 function getAuthSessionToken() {
     auth.onAuthStateChanged((user) => {
