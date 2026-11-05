@@ -1,4 +1,5 @@
 import {imageFileTypes, textFileTypes} from "../fileSystemInterface";
+import {genDefaultHTMLFIle} from "@js/api/util/code";
 
 const dotReplacer = "➽";
 const blacklistedChars = [".", "$", "#", "[", "]", "/","\\"];

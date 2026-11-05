@@ -29,17 +29,19 @@ export function genDefaultFilesWeb(serverAddress){
     return {
         "index➽css":"",
         "index➽js":"",
-        "index➽html":"<!DOCTYPE html>\n" +
+        "index➽html":genDefaultHTMLFIle(serverAddress),
+    }
+}
+export function genDefaultHTMLFIle(serverAddress){
+    return "<!DOCTYPE html>\n" +
             "<html>\n" +
             "  <head>\n" +
             `    <base href="${serverAddress}">\n`+
-            "    <title>My Website</title>\n" +
             "  </head>\n" +
             "  <body>\n" +
             "    \n" +
             "  </body>\n" +
-            "</html>",
-    }
+            "</html>"
 }
 
 const defaultFilesPython = {
