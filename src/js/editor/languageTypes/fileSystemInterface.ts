@@ -153,6 +153,7 @@ function promptFileCreation(impl:any,folder:Folder){
     }else {
         let file =new FilesystemFile(sec[0], sec[1]);
         folder[name] = file;
+        console.log(sec)
         if(sec[1]=="html"){
             file.content = genDefaultHTMLFIle(`https://${getStoredUser().username.toLowerCase()}.esporterz.com/${impl.projectId}/`)
         }

@@ -12,7 +12,7 @@ import {
     setupFilesystemDom,
     setupHeaderButtons,
     updateFilesystemBar
-} from "../fileSystemInterface";
+} from "../fileSystemInterface.ts";
 import {Filesystem, FilesystemFile} from "../web/filesystem";
 import {get, ref, set} from "firebase/database";
 import {db} from "../../../api/firebase";
