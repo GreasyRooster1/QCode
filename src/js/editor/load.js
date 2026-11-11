@@ -14,6 +14,7 @@ let projectType;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 const lessonCreatorLangaugeShorthands = {
+    "":"javascript",
     "js": "javascript",
     "j": "javascript",
     "w": "web",
