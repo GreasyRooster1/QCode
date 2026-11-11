@@ -50,6 +50,10 @@ function createChapterStep(data){
 }
 
 function createNextChapterStep(data){
+    if(data.chapters[projectType.chapterNum].lockEnd){
+        createStep("Wait!","You must complete all quiz steps correctly to move on. Please go back and ensure you have answered them all correctly!","none","next","-1");
+        return;
+    }
     if(data.chapters[projectType.chapterNum+1]===undefined){
         createStep("You're done!","You finished the lesson!\nGo back <a class='chapter-end-home-link' onclick='projectType.saveCode();' href='./index.html'>home</a>","none","next","-1");
         return;
