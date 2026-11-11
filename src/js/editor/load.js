@@ -43,6 +43,7 @@ function loadProjectFromUrlData(){
             ptype.setupEventListeners()
             ptype.isLessonCreator = true;
             projectType = ptype
+            projectType.highestViewedStep = 0;
             setupLessonCreator(projectType)
         })
         return;

@@ -63,7 +63,7 @@ function scrollWhenAllImagesAreLoaded(toStep,ref){
 //2026: forgot what this means
 
 function setupScrollEvent(){
-    projectType.highestViewedStep = 0;
+
     scrollableSteps.addEventListener("scroll", (e) => {
 
         everyStep = document.querySelectorAll('.step');
