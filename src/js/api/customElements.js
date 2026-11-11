@@ -115,11 +115,14 @@ class StepElement extends HTMLElement {
             this.quizWrapper.appendChild(this.quizResult);
             this.content.appendChild(this.quizWrapper);
             this.quizCheck.addEventListener("click",()=>{
-                console.log(this.quizInput.value);
-                if(this.quizInput.value===this.attributes.getNamedItem("correct")){
+                let guess = this.quizInput.value.trim().toLowerCase();
+                let answer = this.attributes.getNamedItem("correct").value.trim().toLowerCase();
+                if(guess===answer){
                     this.quizResult.textContent = "Correct!";
+                    this.setAttribute("status","correct");
                 }else{
                     this.quizResult.textContent = "Incorrect!";
+                    this.setAttribute("status","incorrect");
                 }
             });
         }
