@@ -60,6 +60,7 @@ function scrollWhenAllImagesAreLoaded(toStep,ref){
 
 //we could add styling to the steps if wanted
 //2025: or not
+//2026: forgot what this means
 
 function setupScrollEvent(){
     projectType.highestViewedStep = 0;
