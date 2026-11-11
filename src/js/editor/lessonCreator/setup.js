@@ -19,8 +19,9 @@ const defaultStep = {
     count:1,
 }
 
-function setupLessonCreator(){
-    setupDefaultPanes(true);
+function setupLessonCreator(projectType){
+
+    projectType.createPanes(true);
 
     createAddStepButton();
     createChapterButton();

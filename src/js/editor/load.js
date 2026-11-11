@@ -43,7 +43,7 @@ function loadProjectFromUrlData(){
             ptype.setupEventListeners()
             ptype.isLessonCreator = true;
             projectType = ptype
-            setupLessonCreator()
+            setupLessonCreator(projectType)
         })
         return;
     }
