@@ -69,6 +69,15 @@ function createNextChapterStep(data){
     document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
 }
 
+function createNormalNextChapterStep(data){
+    if(data.chapters[projectType.chapterNum+1]===undefined){
+        createStep("You're done!","You finished the lesson!\nGo back <a class='chapter-end-home-link' onclick='projectType.saveCode();' href='./index.html'>home</a>","none","next","-1");
+        return;
+    }
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(projectType.chapterNum+2)+" - "+data.chapters[projectType.chapterNum+1].name+"</span>","none","next","-1");
+    document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
+}
+
 function nextChapterClick(){
     projectType.saveCode();
     window.location.href = window.location.href.replace("cNum="+projectType.chapterNum,"cNum="+(projectType.chapterNum+1))
@@ -105,4 +114,4 @@ function createChapterLink(chapterNumber,chapterData){
     return linkEl.outerHTML;
 }
 
-export {populateSteps,createChapterLink,createStepFromObj,createNextChapterStep,createBufferSpace,createChapterStep,createStep,writeToEditor,getChapterStepContentNoLink}
+export {populateSteps,createChapterLink,createStepFromObj,createNextChapterStep,createBufferSpace,createChapterStep,createStep,writeToEditor,getChapterStepContentNoLink,createNormalNextChapterStep}

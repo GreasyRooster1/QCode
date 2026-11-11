@@ -2,6 +2,7 @@ import {projectType, scrollableSteps} from "./load.js";
 import {ref,get} from "firebase/database";
 import {db} from "../api/firebase.js";
 import {getStoredUser} from "../api/auth.js";
+import {createBufferSpace, createNormalNextChapterStep, createStep} from "@js/editor/utils/loadUtils.js";
 
 let everyStep;
 let highestViewedStepCount;
@@ -97,4 +98,33 @@ function setupClosePopupEvent(){
     });
 }
 
-export {setupScrollEvent,scrollToCurrentStep, setupClosePopupEvent}
+function areQuizzesComplete(){
+    everyStep = document.querySelectorAll('.step');
+
+    let total = 0;
+    let totalCorrect = 0;
+    everyStep.forEach((el) => {
+        if(el.getAttribute("type")==="quiz"){
+            total++;
+            if(el.getAttribute("status")==="correct"){
+                totalCorrect++;
+            }
+        }
+    })
+    return totalCorrect===total;
+}
+
+function checkQuizzes(){
+    if(areQuizzesComplete()){
+        scrollableSteps.querySelector('.next').remove();
+        scrollableSteps.querySelector('.buffer').remove();
+        get(ref(db,"lessons/"+projectType.projectData.lessonId)).then((snapshot) => {
+            console.log(snapshot.val());
+            createNormalNextChapterStep(snapshot.val());
+            createBufferSpace()
+        });
+
+    }
+}
+
+export {setupScrollEvent,scrollToCurrentStep, setupClosePopupEvent,areQuizzesComplete,checkQuizzes};

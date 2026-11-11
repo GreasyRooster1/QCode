@@ -1,6 +1,7 @@
 import {shortTimeDifference} from "./util/util.js";
 import {stepTypes} from "./util/code.js";
 import {projectType} from "../editor/load.js";
+import {checkQuizzes} from "@js/editor/steps.js";
 
 const imageModalPopupEvent = (e) => {
     const modal = document.getElementById("imageModal");
@@ -120,10 +121,12 @@ class StepElement extends HTMLElement {
                 if(guess===answer){
                     this.quizResult.textContent = "Correct!";
                     this.setAttribute("status","correct");
+                    checkQuizzes();
                 }else{
                     this.quizResult.textContent = "Incorrect!";
                     this.setAttribute("status","incorrect");
                 }
+
             });
         }
 
