@@ -105,13 +105,18 @@ class StepElement extends HTMLElement {
             this.quizInput = document.createElement("input");
             this.quizCheck = document.createElement("button");
             this.quizWrapper = document.createElement("div");
+            this.quizResult = document.createElement("div");
             this.quizCheck.innerHTML = "Check";
             this.quizWrapper.classList.add("quiz-wrapper");
             this.quizCheck.classList.add("quiz-check");
             this.quizInput.classList.add("quiz-input");
             this.quizWrapper.appendChild(this.quizInput);
             this.quizWrapper.appendChild(this.quizCheck);
+            this.quizWrapper.appendChild(this.quizResult);
             this.content.appendChild(this.quizWrapper);
+            this.quizCheck.addEventListener("click",()=>{
+                console.log(this.quizInput.value);
+            });
         }
 
         this.image.addEventListener("click",imageModalPopupEvent);
