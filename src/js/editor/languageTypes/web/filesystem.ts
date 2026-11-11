@@ -1,4 +1,5 @@
-import {imageFileTypes, textFileTypes} from "../fileSystemInterface";
+import {imageFileTypes, textFileTypes} from "../fileSystemInterface.ts";
+import {genDefaultHTMLFIle} from "@js/api/util/code";
 
 const dotReplacer = "➽";
 const blacklistedChars = [".", "$", "#", "[", "]", "/","\\"];

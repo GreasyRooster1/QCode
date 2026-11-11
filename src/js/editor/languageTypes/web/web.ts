@@ -159,7 +159,7 @@ class WebType extends ProjectType implements FileSystemInterface {
         let cleanLessonId = lessonId ?? "none"
         let hasLesson = cleanLessonId != "none";
         let data = {
-            files:genDefaultFilesWeb(`https://${getStoredUser().username}.esporterz.com/${cleanProjectId}`),
+            files:genDefaultFilesWeb(`https://${getStoredUser().username.toLowerCase()}.esporterz.com/${cleanProjectId}/`),
             lessonId:lessonId??"none",
             name:projectName,
             currentChapter:0,

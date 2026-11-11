@@ -3,6 +3,8 @@ import {writeToEditor} from "../utils/loadUtils";
 import {getCode} from "../executionHelper";
 import {setupEditor} from "../codeEditor";
 import {getURLForProjectFile, sendImageToFileServer} from "../utils/fileServerAPI";
+import {genDefaultHTMLFIle} from "@js/api/util/code";
+import {getStoredUser} from "@js/api/auth";
 
 const textFileTypes = ["html","css","js","py","txt","json","bat","cpp","c","rs","ts","jsx","tsx","sh","dat","yaml","toml","xml","","http",""];
 const imageFileTypes = ["png","jpg","jpeg","jfif","gif","webp"];
@@ -149,7 +151,12 @@ function promptFileCreation(impl:any,folder:Folder){
     if(sec.length==1) {
         folder[name+".txt"] = new FilesystemFile(sec[0],"txt");
     }else {
-        folder[name] = new FilesystemFile(sec[0], sec[1]);
+        let file =new FilesystemFile(sec[0], sec[1]);
+        folder[name] = file;
+        console.log(sec)
+        if(sec[1]=="html"){
+            file.content = genDefaultHTMLFIle(`https://${getStoredUser().username.toLowerCase()}.esporterz.com/${impl.projectId}/`)
+        }
     }
     updateFilesystemBar(impl);
 }
