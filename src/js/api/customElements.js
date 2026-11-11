@@ -17,6 +17,7 @@ class StepElement extends HTMLElement {
     stepCount = null;
     headStat = null;
     image = null;
+    type = null;
 
     content = null;
     textContent = null;
@@ -84,6 +85,7 @@ class StepElement extends HTMLElement {
         }
 
         if (this.attributes.getNamedItem("type") !== null) {
+            this.type = this.attributes.getNamedItem("type").value;
             this.typeDisplay.innerHTML = this.getTypeDisplayString();
         }
 
@@ -97,6 +99,19 @@ class StepElement extends HTMLElement {
             if(img.value==="none"||img.value==="null"){
                 this.image.style.display = "none";
             }
+        }
+
+        if(this.type=="quiz"){
+            this.quizInput = document.createElement("input");
+            this.quizCheck = document.createElement("button");
+            this.quizWrapper = document.createElement("div");
+            this.quizCheck.innerHTML = "Check";
+            this.quizWrapper.classList.add("quiz-wrapper");
+            this.quizCheck.classList.add("quiz-check");
+            this.quizInput.classList.add("quiz-input");
+            this.quizWrapper.appendChild(this.quizInput);
+            this.quizWrapper.appendChild(this.quizCheck);
+            this.content.appendChild(this.quizWrapper);
         }
 
         this.image.addEventListener("click",imageModalPopupEvent);
