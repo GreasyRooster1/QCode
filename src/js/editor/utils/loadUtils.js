@@ -11,11 +11,17 @@ function populateSteps(data){
 
     let count = 1;
     for (let step of steps) {
-        createStep(step.head,step.content,step.image,step.type,count);
+        let el = createStep(step.head,step.content,step.image,step.type,count);
+        giveQuizData(step,el)
         count++;
     }
     createNextChapterStep(data);
     createBufferSpace()
+}
+
+function giveQuizData(step,el){
+    if(step.type!=="quiz") return;
+    el.setAttribute("correct",step.correctAnswer);
 }
 
 function createStep(head,content,image,type,count){
