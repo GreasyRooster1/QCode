@@ -22,6 +22,7 @@ function populateSteps(data){
 function giveQuizData(step,el){
     if(step.type!=="quiz") return;
     el.setAttribute("correct",step.correctAnswer);
+    el.setAttribute("status","unanswered");
 }
 
 function createStep(head,content,image,type,count){
