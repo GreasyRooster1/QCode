@@ -48,6 +48,6 @@ const defaultFilesPython = {
     "main➽py":""
 }
 
-const stepTypes = ["info","code","challenge","check","chapters","next","build"]
+const stepTypes = ["info","code","challenge","check","chapters","next","build","quiz","other"]
 
 export {defaultCodeJs, defaultCodeArduino, stepTypes,defaultFilesWeb,defaultFilesPython}
