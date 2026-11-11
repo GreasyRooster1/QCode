@@ -111,8 +111,12 @@ class StepElement extends HTMLElement {
             this.quizWrapper.classList.add("quiz-wrapper");
             this.quizCheck.classList.add("quiz-check");
             this.quizInput.classList.add("quiz-input");
-            this.quizWrapper.appendChild(this.quizInput);
-            this.quizWrapper.appendChild(this.quizCheck);
+            this.quizInputWrapper = document.createElement("div");
+
+            this.quizInputWrapper.appendChild(this.quizInput);
+            this.quizInputWrapper.appendChild(this.quizCheck);
+            this.quizInputWrapper.classList.add("quiz-input-wrapper");
+            this.quizWrapper.appendChild(this.quizInputWrapper);
             this.quizWrapper.appendChild(this.quizResult);
             this.content.appendChild(this.quizWrapper);
             this.quizCheck.addEventListener("click",()=>{
