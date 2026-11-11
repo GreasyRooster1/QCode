@@ -1,7 +1,10 @@
 import {shortTimeDifference} from "./util/util.js";
 import {stepTypes} from "./util/code.js";
-import {projectType} from "../editor/load.js";
+import {projectId, projectType} from "../editor/load.js";
 import {checkQuizzes} from "@js/editor/steps.js";
+import {getStoredUser} from "@js/api/auth.js";
+import {ref,get,set} from "firebase/database";
+import {db} from "@js/api/firebase.js";
 
 const imageModalPopupEvent = (e) => {
     const modal = document.getElementById("imageModal");
@@ -92,6 +95,7 @@ class StepElement extends HTMLElement {
 
         if (this.attributes.getNamedItem("count") !== null) {
             this.stepCount.innerHTML = "Step "+this.attributes.getNamedItem("count").value;
+            this.count = this.attributes.getNamedItem("count").value;
         }
 
         if (this.attributes.getNamedItem("image") !== null) {
@@ -119,6 +123,13 @@ class StepElement extends HTMLElement {
             this.quizWrapper.appendChild(this.quizInputWrapper);
             this.quizWrapper.appendChild(this.quizResult);
             this.content.appendChild(this.quizWrapper);
+            get(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/quizAnswers/"+this.count)).then((snap)=>{
+                let val = snap.val();
+                if(val){
+                    this.quizInput.value = val;
+                    this.quizCheck.click();
+                }
+            });
             this.quizCheck.addEventListener("click",()=>{
                 let guess = this.quizInput.value.trim().toLowerCase();
                 let answer = this.attributes.getNamedItem("correct").value.trim().toLowerCase();
@@ -130,7 +141,7 @@ class StepElement extends HTMLElement {
                     this.quizResult.textContent = "Incorrect!";
                     this.setAttribute("status","incorrect");
                 }
-
+                set(ref(db,"userdata/"+getStoredUser().uid+"/projects/"+projectId+"/quizAnswers/"+this.count),this.quizInput.value);
             });
         }
 
