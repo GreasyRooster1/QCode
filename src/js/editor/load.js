@@ -14,6 +14,7 @@ let projectType;
 const scrollableSteps = document.querySelector('.scrollable-steps');
 
 const lessonCreatorLangaugeShorthands = {
+    "":"javascript",
     "js": "javascript",
     "j": "javascript",
     "w": "web",
@@ -43,7 +44,8 @@ function loadProjectFromUrlData(){
             ptype.setupEventListeners()
             ptype.isLessonCreator = true;
             projectType = ptype
-            setupLessonCreator()
+            projectType.highestViewedStep = 0;
+            setupLessonCreator(projectType)
         })
         return;
     }

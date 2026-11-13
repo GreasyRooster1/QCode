@@ -11,11 +11,18 @@ function populateSteps(data){
 
     let count = 1;
     for (let step of steps) {
-        createStep(step.head,step.content,step.image,step.type,count);
+        let el = createStep(step.head,step.content,step.image,step.type,count);
+        giveQuizData(step,el)
         count++;
     }
     createNextChapterStep(data);
     createBufferSpace()
+}
+
+function giveQuizData(step,el){
+    if(step.type!=="quiz") return;
+    el.setAttribute("correct",step.correctAnswer);
+    el.setAttribute("status","unanswered");
 }
 
 function createStep(head,content,image,type,count){
@@ -50,6 +57,19 @@ function createChapterStep(data){
 }
 
 function createNextChapterStep(data){
+    if(data.chapters[projectType.chapterNum].lockEnd){
+        createStep("Wait!","You must complete all quiz steps correctly to move on. Please go back and ensure you have answered them all correctly!","none","next","-1");
+        return;
+    }
+    if(data.chapters[projectType.chapterNum+1]===undefined){
+        createStep("You're done!","You finished the lesson!\nGo back <a class='chapter-end-home-link' onclick='projectType.saveCode();' href='./index.html'>home</a>","none","next","-1");
+        return;
+    }
+    createStep("Move on to the next chapter","<span class='next-chapter-text'>Chapter "+(projectType.chapterNum+2)+" - "+data.chapters[projectType.chapterNum+1].name+"</span>","none","next","-1");
+    document.querySelector(".next-chapter-text").addEventListener('click',nextChapterClick)
+}
+
+function createNormalNextChapterStep(data){
     if(data.chapters[projectType.chapterNum+1]===undefined){
         createStep("You're done!","You finished the lesson!\nGo back <a class='chapter-end-home-link' onclick='projectType.saveCode();' href='./index.html'>home</a>","none","next","-1");
         return;
@@ -94,4 +114,4 @@ function createChapterLink(chapterNumber,chapterData){
     return linkEl.outerHTML;
 }
 
-export {populateSteps,createChapterLink,createStepFromObj,createNextChapterStep,createBufferSpace,createChapterStep,createStep,writeToEditor,getChapterStepContentNoLink}
+export {populateSteps,createChapterLink,createStepFromObj,createNextChapterStep,createBufferSpace,createChapterStep,createStep,writeToEditor,getChapterStepContentNoLink,createNormalNextChapterStep}

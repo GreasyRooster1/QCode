@@ -108,6 +108,9 @@
 .step.build > .step-head{
     background: var(--step-build);
 }
+.step.quiz > .step-head{
+    background: var(--step-quiz);
+}
 .step.party > .step-head{
     background: var(--step-party);
     background-size: 200% 200%;
@@ -195,4 +198,33 @@
 .next-chapter-text{
     color:var(--chapter-end-home-link-color);
     text-decoration: underline;
+}
+.quiz-input-wrapper{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    padding:8px 0 ;
+    gap:8px;
+}
+.quiz-wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width:100%;
+}
+.quiz-input{
+    background: rgba(0, 0, 0, 0.17);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    flex:1;
+}
+.quiz-check{
+    background: rgba(0, 0, 0, 0.17);
+    border: none;
+    border-radius: 5px;
+}
+
+.quiz-check:hover{
+    background: rgba(0, 0, 0, 0.11);
 }
