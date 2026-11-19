@@ -106,7 +106,7 @@ class StepElement extends HTMLElement {
             }
         }
 
-        if(this.type==="quiz"){
+        if(this.type==="quiz"&&!projectType.isLessonCreator){
             this.quizInput = document.createElement("input");
             this.quizCheck = document.createElement("button");
             this.quizWrapper = document.createElement("div");
