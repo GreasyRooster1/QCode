@@ -59,6 +59,7 @@ function shareProject(){
                     startedBy: data.staredBy,
                     original: data.original,
                     lessonId: data.lessonId,
+                    public:data.public,
                 }
             )).then(() => {
                 //set projectData
